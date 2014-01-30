@@ -1,8 +1,10 @@
 stability = 1
-base_gravity = b2Vec2(0, 120)
+base_gravity = vec2(0, 120)
 gravity_angle_offset = 0
+target_gravity_rotation = 0
+changing_gravity = false
 
-current_gravity = b2Vec2(0, 120)
+current_gravity = vec2(0, 120)
 
 dofile "sensibilia\\scripts\\input.lua"
 dofile "sensibilia\\scripts\\camera.lua"
@@ -65,8 +67,24 @@ loop_only_info = create_scriptable_info {
 			function(message)
 				if message.intent == custom_intents.QUIT then
 					input_system.quit_flag = 1
+				elseif message.intent == custom_intents.GRAVITY_CHANGE then
+					changing_gravity = message.state_flag
+					if changing_gravity then
+						player.body.physics.body.enable_angle_motor = true
+						player.body.physics.body:SetFixedRotation(false)
+						target_gravity_rotation = player.body.physics.body:GetAngle() / 0.01745329251994329576923690768489
+					else
+						player.body.physics.body:SetFixedRotation(true)
+						player.body.physics.body.enable_angle_motor = false
+					end
+					
 				elseif message.intent == custom_intents.RESTART then
 						set_world_reloading_script(reloader_script)
+				elseif message.intent == intent_message.AIM then
+					if changing_gravity then
+						target_gravity_rotation = target_gravity_rotation + message.mouse_rel.y
+						player.body.physics.body.target_angle = target_gravity_rotation
+					end
 				elseif message.intent == custom_intents.INSTANT_SLOWDOWN then
 					physics_system.timestep_multiplier = 0.00001
 				elseif message.intent == custom_intents.SPEED_INCREASE then
@@ -83,7 +101,10 @@ loop_only_info = create_scriptable_info {
 			end,
 				
 		[scriptable_component.LOOP] = function(subject)
+			gravity_angle_offset = player.body.physics.body:GetAngle() / 0.01745329251994329576923690768489
+			current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
 			
+			physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
 		end
 	}
 }
@@ -95,7 +116,8 @@ create_entity {
 			custom_intents.SPEED_DECREASE,
 			custom_intents.INSTANT_SLOWDOWN,
 			custom_intents.QUIT,
-			custom_intents.RESTART
+			custom_intents.RESTART,
+			custom_intents.GRAVITY_CHANGE
 	},
 		
 	scriptable = {
