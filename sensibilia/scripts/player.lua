@@ -42,7 +42,7 @@ player = spawn_npc {
 		},
 		
 		transform = {
-			pos = vec2(20000, -10000)
+			pos = vec2(0, 0)
 		},
 		
 		input = {

@@ -4,7 +4,7 @@ function set_zoom_level(camera)
 	local mult = 1 + (current_zoom_level / 1000)
 	local new_w = config_table.resolution_w*mult
 	local new_h = config_table.resolution_h*mult
-	camera.camera.ortho = rect_ltrb(rect_xywh((config_table.resolution_w-new_w)/2, (config_table.resolution_h-new_h)/2, new_w, new_h))
+	camera.camera.ortho = rect_ltrb(rect_xywh(0, 0, new_w, new_h))
 	
 	--player.crosshair:get().crosshair.size_multiplier = vec2(mult, mult)
 	--target_entity.crosshair.size_multiplier = vec2(mult, mult)
@@ -36,7 +36,7 @@ camera_archetype = {
 		
 		enable_smoothing = true,
 		smoothing_average_factor = 0.5,
-		averages_per_sec = 5,
+		averages_per_sec = 15,
 		
 		crosshair = nil, 
 		player = nil,
@@ -47,8 +47,8 @@ camera_archetype = {
 	},
 	
 	chase = {
-		relative = false,
-		offset = vec2(config_table.resolution_w/(-2), config_table.resolution_h/(-2))
+		relative = false
+		--offset = vec2(config_table.resolution_w/(-2), config_table.resolution_h/(-2))
 	}
 }
 
@@ -207,7 +207,7 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			renderer:default_render(visible_area)
 			
 			--GL.glDisable(GL.GL_TEXTURE_2D)
-			renderer:draw_debug_info(drawn_transform)
+			renderer:draw_debug_info(visible_area, drawn_transform)
 			--GL.glEnable(GL.GL_TEXTURE_2D)
 			
 			renderer:clear_triangles()
@@ -230,7 +230,10 @@ world_camera = create_entity (archetyped(camera_archetype, {
 		custom_intents.ZOOM_CAMERA
 	},
 	
-	chase = {},
+	chase = {
+		chase_rotation = true,
+		rotation_multiplier = -1
+	},
 	
 	scriptable = {
 		available_scripts = scriptable_zoom

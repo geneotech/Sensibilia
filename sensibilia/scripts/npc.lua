@@ -22,13 +22,18 @@ function npc_class:loop()
 	local query_rect_p2 = pos + self.foot_sensor_p2
 	local query_rect = vec2_vector()
 	
-	add_vals(query_rect, { 
+	local query_coords = { 
 		query_rect_p1,
 		vec2(query_rect_p2.x, query_rect_p1.y),
 		query_rect_p2,
 		vec2(query_rect_p1.x, query_rect_p2.y)
-	})
-		
+	}
+	
+	for k, v in ipairs(query_coords) do
+		query_coords[k]:rotate(gravity_angle_offset, pos)
+	end
+	
+	add_vals(query_rect, query_coords)
 		
 	local under_foot_candidates = physics_system:query_polygon(query_rect, create(b2Filter, filter_npc_feet), self.entity)
 	
@@ -53,7 +58,7 @@ function npc_class:loop()
 	if self.is_jumping and self.jump_timer:get_milliseconds() > 100 then
 		if self.something_under_foot then
 			local body = self.entity.physics.body
-			local jump_impulse = vec2(0, -100):rotate(gravity_angle_offset, vec2(0, 0)) 
+			local jump_impulse = vec2(0, -150):rotate(gravity_angle_offset, vec2(0, 0)) 
 			
 			body:ApplyLinearImpulse(b2Vec2(jump_impulse.x, jump_impulse.y), body:GetWorldCenter(), true)
 		end
@@ -106,7 +111,7 @@ npc_group_archetype = {
 			
 			receivers = {},
 			
-			force_offset = vec2(0, 5)
+			--force_offset = vec2(0, 5)
 			
 			--receivers = {
 			--	{ target = "body", stop_at_zero_movement = false }, 
