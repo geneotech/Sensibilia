@@ -68,25 +68,18 @@ loop_only_info = create_scriptable_info {
 				if message.intent == custom_intents.QUIT then
 					input_system.quit_flag = 1
 				elseif message.intent == custom_intents.GRAVITY_CHANGE then
-					print (message.state_flag)
 					changing_gravity = message.state_flag
-					if changing_gravity then
-						player.body.physics.enable_angle_motor = true
-						player.body.physics.body:SetFixedRotation(false)
-						target_gravity_rotation = player.body.physics.body:GetAngle() / 0.01745329251994329576923690768489
-					else
-					print ("fixing...")
-						player.body.physics.body:SetFixedRotation(true)
-						player.body.physics.enable_angle_motor = false
-					end
+					get_self(player.body):set_gravity_shift_state(changing_gravity)
+					get_self(my_basic_npc.body):set_gravity_shift_state(changing_gravity)
 					
 				elseif message.intent == custom_intents.RESTART then
 						set_world_reloading_script(reloader_script)
 				elseif message.intent == intent_message.AIM then
 					if changing_gravity then
-						print (target_gravity_rotation, message.mouse_rel.y)
-						target_gravity_rotation = target_gravity_rotation + message.mouse_rel.y * 3
+						target_gravity_rotation = target_gravity_rotation + message.mouse_rel.y * 0.6
+						
 						player.body.physics.target_angle = target_gravity_rotation
+						my_basic_npc.body.physics.target_angle = target_gravity_rotation
 					end
 				elseif message.intent == custom_intents.INSTANT_SLOWDOWN then
 					physics_system.timestep_multiplier = 0.00001

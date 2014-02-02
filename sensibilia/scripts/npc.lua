@@ -1,3 +1,7 @@
+function get_self(entity)
+	return entity.scriptable.script_data
+end
+
 npc_class = inherits_from {}
 
 function npc_class:initialize(subject_entity) 
@@ -12,6 +16,19 @@ end
 	
 function npc_class:jump(jump_flag)
 	self.is_jumping = jump_flag
+end
+
+function npc_class:set_gravity_shift_state(enable)
+	local entity = self.entity
+
+	if enable then
+		entity.physics.enable_angle_motor = true
+		entity.physics.body:SetFixedRotation(false)
+		target_gravity_rotation = entity.physics.body:GetAngle() / 0.01745329251994329576923690768489
+	else
+		entity.physics.body:SetFixedRotation(true)
+		entity.physics.enable_angle_motor = false
+	end
 end
 
 function npc_class:loop()
@@ -77,6 +94,14 @@ function npc_class:set_foot_sensor_from_circle(radius, thickness)
 	self.foot_sensor_p2 = vec2( radius, radius + thickness) 
 end
 
+npc_basic_loop = create_scriptable_info {
+	scripted_events = {
+		[scriptable_component.LOOP] = function (subject)
+			get_self(subject):loop()
+		end
+	}
+}
+
 npc_group_archetype = {
 	body = {
 		physics = {
@@ -119,7 +144,9 @@ npc_group_archetype = {
 			--}
 		},
 		
-		scriptable = {}
+		scriptable = {
+			available_scripts = npc_basic_loop
+		}
 	}
 }
 
@@ -133,3 +160,5 @@ function spawn_npc(group_overrider)
 	
 	return my_new_npc
 end
+
+dofile "sensibilia\\scripts\\basic_npc.lua"

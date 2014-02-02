@@ -12,10 +12,6 @@ debug_sensor = create_sprite {
 player_debug_circle = simple_create_polygon (reversed(gen_circle_vertices(60, 5)))
 map_uv_square(player_debug_circle, images.blank)
 
-function get_self(entity)
-	return entity.scriptable.script_data
-end
-
 player_scriptable_info = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = function (message) 
@@ -30,7 +26,7 @@ player_scriptable_info = create_scriptable_info {
 		
 		[scriptable_component.LOOP] = function (subject)
 			get_self(subject):loop()
-			render_system:push_line(debug_line(subject.transform.current.pos + get_self(subject).foot_sensor_p1, subject.transform.current.pos + get_self(subject).foot_sensor_p2, rgba(255, 0, 0, 255)))
+			--render_system:push_line(debug_line(subject.transform.current.pos + get_self(subject).foot_sensor_p1, subject.transform.current.pos + get_self(subject).foot_sensor_p2, rgba(255, 0, 0, 255)))
 		end
 	}
 }
