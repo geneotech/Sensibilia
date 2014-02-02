@@ -71,7 +71,7 @@ loop_only_info = create_scriptable_info {
 					changing_gravity = message.state_flag
 					
 					if message.state_flag then
-						player.crosshair.crosshair.sensitivity = 0
+						player.crosshair.crosshair.sensitivity.y = 0
 						base_crosshair_position = vec2(player.crosshair.transform.current.pos)
 						base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
 						--world_camera.camera.crosshair_follows_interpolant = true
@@ -115,12 +115,13 @@ loop_only_info = create_scriptable_info {
 			current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
 			
 			player.body.movement.axis_rotation_degrees = gravity_angle_offset
-			player.crosshair.crosshair.rotation_offset = gravity_angle_offset
 			
 			if changing_gravity then
-				player.crosshair.transform.current.pos = vec2(base_crosshair_position):rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player.body.transform.current.pos)
+				player.crosshair.transform.current.pos:rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player.body.transform.current.pos)
+				base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
 			end
-							
+			
+			player.crosshair.crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
 			player.crosshair.transform.current.rotation = -world_camera.camera.last_interpolant.rotation
 			
 			physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
