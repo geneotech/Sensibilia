@@ -1,3 +1,13 @@
+seek_archetype = {
+	behaviour_type = seek_behaviour,
+	weight = 1,
+	force_color = rgba(0, 255, 255, 0)
+}			
+
+target_seek_steering = create_steering (archetyped(seek_archetype, {
+	radius_of_effect = 150
+}))
+
 function get_self(entity)
 	return entity.scriptable.script_data
 end
@@ -12,6 +22,20 @@ function npc_class:initialize(subject_entity)
 	
 	self.is_jumping = false
 	self.something_under_foot = false
+	
+	self.steering_behaviours = {
+		target_seeking = behaviour_state(target_seek_steering)
+	}
+	
+	self:refresh_behaviours()
+end
+
+function npc_class:refresh_behaviours() 
+	self.entity.steering:clear_behaviours()
+	
+	for k, v in pairs(self.steering_behaviours) do
+		self.entity.steering:add_behaviour(v)
+	end
 end
 	
 function npc_class:jump(jump_flag)
@@ -82,6 +106,8 @@ function npc_class:loop()
 		
 		self.jump_timer:reset()
 	end
+	
+	self.steering_behaviours.target_seeking.enabled = false
 end
 
 function npc_class:set_foot_sensor_from_sprite(subject_sprite, thickness) 
@@ -146,6 +172,30 @@ npc_group_archetype = {
 		
 		scriptable = {
 			available_scripts = npc_basic_loop
+		}
+		,
+		
+		visibility = {
+			visibility_layers = {
+				[visibility_component.DYNAMIC_PATHFINDING] = {
+					square_side = 15000,
+					color = rgba(0, 255, 255, 120),
+					ignore_discontinuities_shorter_than = -1,
+					filter = filter_pathfinding_visibility
+				}
+			}
+		},
+		
+		pathfinding = {
+			enable_backtracking = true,
+			target_offset = 100,
+			rotate_navpoints = 10,
+			distance_navpoint_hit = 2,
+			favor_velocity_parallellness = true
+		},
+		
+		steering = {
+			max_resultant_force = -1 -- -1 = no force clamping
 		}
 	}
 }

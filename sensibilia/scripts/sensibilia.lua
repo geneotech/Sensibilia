@@ -25,7 +25,7 @@ environment_archetype = {
 		body_info = {
 			shape_type = physics_info.POLYGON,
 			filter = filter_static_objects,
-			density = 1,
+			density = 1000,
 			friction = 0.1
 		}
 	},
@@ -69,6 +69,17 @@ loop_only_info = create_scriptable_info {
 					input_system.quit_flag = 1
 				elseif message.intent == custom_intents.GRAVITY_CHANGE then
 					changing_gravity = message.state_flag
+					
+					if message.state_flag then
+						player.crosshair.crosshair.sensitivity = 0
+						base_crosshair_position = vec2(player.crosshair.transform.current.pos)
+						base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
+						--world_camera.camera.crosshair_follows_interpolant = true
+					else
+						player.crosshair.crosshair.sensitivity = config_table.sensitivity
+						world_camera.camera.crosshair_follows_interpolant = false
+					end
+					
 					get_self(player.body):set_gravity_shift_state(changing_gravity)
 					get_self(my_basic_npc.body):set_gravity_shift_state(changing_gravity)
 					
@@ -76,7 +87,10 @@ loop_only_info = create_scriptable_info {
 						set_world_reloading_script(reloader_script)
 				elseif message.intent == intent_message.AIM then
 					if changing_gravity then
-						target_gravity_rotation = target_gravity_rotation + message.mouse_rel.y * 0.6
+						local added_angle = message.mouse_rel.y * 0.6
+					
+						target_gravity_rotation = target_gravity_rotation + added_angle
+						
 						
 						player.body.physics.target_angle = target_gravity_rotation
 						my_basic_npc.body.physics.target_angle = target_gravity_rotation
@@ -101,6 +115,13 @@ loop_only_info = create_scriptable_info {
 			current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
 			
 			player.body.movement.axis_rotation_degrees = gravity_angle_offset
+			player.crosshair.crosshair.rotation_offset = gravity_angle_offset
+			
+			if changing_gravity then
+				player.crosshair.transform.current.pos = vec2(base_crosshair_position):rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player.body.transform.current.pos)
+			end
+							
+			player.crosshair.transform.current.rotation = -world_camera.camera.last_interpolant.rotation
 			
 			physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
 		end
@@ -151,23 +172,25 @@ for i = 1, 30 do
 		},
 		
 		physics = {
-			body_type = Box2D.b2_staticBody,
+			body_type = Box2D.b2_dynamicBody,
 			
 			body_info = {
 				shape_type = physics_info.RECT,
-				density = randval(0.05, 2),
+				density = 1000,
 				restitution = randval(0.00, 0.01)
 			}
 		},
 		
 		render = {
 			model = my_sprite
-		},
-		
-		scriptable = {
-			available_scripts = swing_script
 		}
+		
+		--scriptable = {
+		--	available_scripts = swing_script
+		--}
 	}))
+	
+	new_entity.physics.body:SetGravityScale(0)
 	
 
 end

@@ -206,9 +206,9 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			
 			renderer:default_render(visible_area)
 			
-			--GL.glDisable(GL.GL_TEXTURE_2D)
-			--renderer:draw_debug_info(visible_area, drawn_transform)
-			--GL.glEnable(GL.GL_TEXTURE_2D)
+			GL.glDisable(GL.GL_TEXTURE_2D)
+			renderer:draw_debug_info(visible_area, drawn_transform)
+			GL.glEnable(GL.GL_TEXTURE_2D)
 			
 			renderer:clear_triangles()
 			

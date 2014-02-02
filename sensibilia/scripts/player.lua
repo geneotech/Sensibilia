@@ -31,6 +31,12 @@ player_scriptable_info = create_scriptable_info {
 	}
 }
 
+my_crosshair_sprite = create_sprite {
+	image = images.blank,
+	size = vec2(550, 550),
+	color = rgba(255, 0, 255, 255)
+}
+
 player = spawn_npc {
 	body = {
 		render = {
@@ -52,7 +58,33 @@ player = spawn_npc {
 		scriptable = {
 			available_scripts = player_scriptable_info
 		}
-	}
+	},
+	
+	crosshair = { 
+		transform = {
+			pos = vec2(0, 0),
+			rotation = 0
+		},
+		
+		render = {
+			layer = render_layers.GUI_OBJECTS,
+			model = my_crosshair_sprite
+		},
+		
+		crosshair = {
+			sensitivity = config_table.sensitivity,
+			size_multiplier = vec2(10, 10)
+		},
+		
+		chase = {
+			target = "body",
+			relative = true
+		},
+		
+		input = {
+			intent_message.AIM
+		}
+	},
 }
 
 
@@ -60,4 +92,4 @@ get_self(player.body):set_foot_sensor_from_sprite(player_sprite, 3)
 --get_self(player.body):set_foot_sensor_from_circle(60, 6)
 world_camera.chase:set_target(player.body)
 world_camera.camera.player:set(player.body)
---world_camera.camera.crosshair:set(player.crosshair:get())
+world_camera.camera.crosshair:set(player.crosshair)
