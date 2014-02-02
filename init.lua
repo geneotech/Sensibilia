@@ -58,7 +58,7 @@ function open_script(filename)
 	return my_script
 end
 
-ENGINE_DIRECTORY = "..\\Augmentations\\scripts\\engine\\"
+ENGINE_DIRECTORY = "engine\\"
 
 script_reloader:add_directory ("engine", true)
 
