@@ -61,6 +61,7 @@ environment_entity = create_entity (archetyped(environment_archetype, {
 dofile "sensibilia\\scripts\\npc.lua"
 dofile "sensibilia\\scripts\\player.lua"
 
+base_crosshair_rotation = 0
 loop_only_info = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = 
@@ -72,9 +73,7 @@ loop_only_info = create_scriptable_info {
 					
 					if message.state_flag then
 						player.crosshair.crosshair.sensitivity.y = 0
-						base_crosshair_position = vec2(player.crosshair.transform.current.pos)
 						base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
-						--world_camera.camera.crosshair_follows_interpolant = true
 					else
 						player.crosshair.crosshair.sensitivity = config_table.sensitivity
 						world_camera.camera.crosshair_follows_interpolant = false
@@ -90,7 +89,6 @@ loop_only_info = create_scriptable_info {
 						local added_angle = message.mouse_rel.y * 0.6
 					
 						target_gravity_rotation = target_gravity_rotation + added_angle
-						
 						
 						player.body.physics.target_angle = target_gravity_rotation
 						my_basic_npc.body.physics.target_angle = target_gravity_rotation
@@ -116,10 +114,8 @@ loop_only_info = create_scriptable_info {
 			
 			player.body.movement.axis_rotation_degrees = gravity_angle_offset
 			
-			if changing_gravity then
-				player.crosshair.transform.current.pos:rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player.body.transform.current.pos)
-				base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
-			end
+			player.crosshair.transform.current.pos:rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player.body.transform.current.pos)
+			base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
 			
 			player.crosshair.crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
 			player.crosshair.transform.current.rotation = -world_camera.camera.last_interpolant.rotation
