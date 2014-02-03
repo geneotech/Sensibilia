@@ -1,11 +1,11 @@
 seek_archetype = {
 	behaviour_type = seek_behaviour,
-	weight = 1,
-	force_color = rgba(0, 255, 255, 0)
+	weight = 0,
+	force_color = rgba(255, 255, 255, 255)
 }			
 
 target_seek_steering = create_steering (archetyped(seek_archetype, {
-	radius_of_effect = 150
+	radius_of_effect = 0
 }))
 
 function get_self(entity)
@@ -28,6 +28,9 @@ function npc_class:initialize(subject_entity)
 	}
 	
 	self:refresh_behaviours()
+	
+	self.steering_behaviours.target_seeking.enabled = false
+	self.current_pathfinding_eye = vec2(0, 0)
 end
 
 function npc_class:refresh_behaviours() 
@@ -48,7 +51,6 @@ function npc_class:set_gravity_shift_state(enable)
 	if enable then
 		entity.physics.enable_angle_motor = true
 		entity.physics.body:SetFixedRotation(false)
-		target_gravity_rotation = entity.physics.body:GetAngle() / 0.01745329251994329576923690768489
 	else
 		entity.physics.body:SetFixedRotation(true)
 		entity.physics.enable_angle_motor = false
@@ -107,7 +109,6 @@ function npc_class:loop()
 		self.jump_timer:reset()
 	end
 	
-	self.steering_behaviours.target_seeking.enabled = false
 end
 
 function npc_class:set_foot_sensor_from_sprite(subject_sprite, thickness) 
@@ -118,6 +119,15 @@ end
 function npc_class:set_foot_sensor_from_circle(radius, thickness) 
 	self.foot_sensor_p1 = vec2(-radius, radius)
 	self.foot_sensor_p2 = vec2( radius, radius + thickness) 
+end
+
+function npc_class:map_vector_to_movement(real_vector)
+	local jump_angle_threshold = 10
+	
+	self.entity.movement.requested_movement = real_vector
+	
+	local angle = real_vector:get_degrees() - self.entity.movement.axis_rotation_degrees
+	self:jump(angle > -90 - jump_angle_threshold and angle < -90 + jump_angle_threshold)
 end
 
 npc_basic_loop = create_scriptable_info {
@@ -195,15 +205,18 @@ npc_group_archetype = {
 		},
 		
 		steering = {
-			max_resultant_force = -1 -- -1 = no force clamping
+			max_resultant_force = -1, -- -1 = no force clamping
+			max_speed = 3500
 		}
 	}
 }
 
-function spawn_npc(group_overrider)
+function spawn_npc(group_overrider, what_class)
+	if what_class == nil then what_class = npc_class end
+	
 	local my_new_npc = create_entity_group (archetyped(npc_group_archetype, group_overrider))
 	
-	local new_npc_scriptable = npc_class:create()
+	local new_npc_scriptable = what_class:create()
 	new_npc_scriptable:initialize(my_new_npc.body)
 	
 	my_new_npc.body.scriptable.script_data = new_npc_scriptable

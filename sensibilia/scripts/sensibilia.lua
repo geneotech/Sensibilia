@@ -74,6 +74,7 @@ loop_only_info = create_scriptable_info {
 					if message.state_flag then
 						player.crosshair.crosshair.sensitivity.y = 0
 						base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
+						target_gravity_rotation = player.body.physics.body:GetAngle() / 0.01745329251994329576923690768489
 					else
 						player.crosshair.crosshair.sensitivity = config_table.sensitivity
 						world_camera.camera.crosshair_follows_interpolant = false
@@ -113,6 +114,7 @@ loop_only_info = create_scriptable_info {
 			current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
 			
 			player.body.movement.axis_rotation_degrees = gravity_angle_offset
+			my_basic_npc.body.movement.axis_rotation_degrees = gravity_angle_offset
 			
 			player.crosshair.transform.current.pos:rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player.body.transform.current.pos)
 			base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
