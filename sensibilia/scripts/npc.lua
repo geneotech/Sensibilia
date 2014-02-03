@@ -58,6 +58,24 @@ function npc_class:set_gravity_shift_state(enable)
 end
 
 function npc_class:loop()
+
+	-- handle pathfinding
+	if self.entity.pathfinding:is_still_pathfinding() or self.entity.pathfinding:is_still_exploring() then
+		target_entities.navigation.transform.current.pos = entity.pathfinding:get_current_navigation_target()
+	end
+
+	-- handle visibility offset for feet
+	local decided_offset = vec2(0, self.foot_sensor_p1.y)
+	
+	if to_vec2(self.entity.physics.body:GetLinearVelocity()):rotate(-self.entity.movement.axis_rotation_degrees, vec2(0, 0)).x < 0 then
+		decided_offset.x = self.foot_sensor_p1.x
+	else
+		decided_offset.x = self.foot_sensor_p2.x
+	end
+	
+	self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(decided_offset):rotate(self.entity.movement.axis_rotation_degrees, vec2(0, 0))
+	
+	
 	-- determine if something is under foot 
 	local pos = self.entity.transform.current.pos
 	
@@ -206,7 +224,7 @@ npc_group_archetype = {
 		
 		steering = {
 			max_resultant_force = -1, -- -1 = no force clamping
-			max_speed = 3500
+			max_speed = 12000
 		}
 	}
 }

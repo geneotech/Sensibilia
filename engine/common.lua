@@ -1,5 +1,10 @@
 -- Create a new class that inherits from a base class
 --
+
+function to_vec2(b2Vec2_)
+	return vec2(b2Vec2_.x, b2Vec2_.y)
+end
+
 function inherits_from(baseClass)
 
     -- The following lines are equivalent to the SimpleClass example:
