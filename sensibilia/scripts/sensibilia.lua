@@ -1,3 +1,9 @@
+debug_target_sprite = create_sprite {
+	image = images.blank,
+	size = vec2(50, 50),
+	color = rgba(0, 255, 255, 120)
+}
+
 stability = 1
 base_gravity = vec2(0, 120)
 gravity_angle_offset = 0

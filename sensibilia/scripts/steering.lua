@@ -1,4 +1,11 @@
-target_entity_archetype = { transform = {} }
+target_entity_archetype = { 
+	render = {
+		layer = render_layers.GUI_OBJECTS,
+		model = debug_target_sprite
+	},	
+
+	transform = {} 
+}
 		
 seek_archetype = {
 	behaviour_type = seek_behaviour,
