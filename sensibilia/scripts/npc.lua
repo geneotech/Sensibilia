@@ -1,12 +1,4 @@
-seek_archetype = {
-	behaviour_type = seek_behaviour,
-	weight = 0,
-	force_color = rgba(255, 255, 255, 255)
-}			
-
-target_seek_steering = create_steering (archetyped(seek_archetype, {
-	radius_of_effect = 0
-}))
+dofile "sensibilia\\scripts\\steering.lua"
 
 function get_self(entity)
 	return entity.scriptable.script_data
@@ -23,13 +15,29 @@ function npc_class:initialize(subject_entity)
 	self.is_jumping = false
 	self.something_under_foot = false
 	
-	self.steering_behaviours = {
-		target_seeking = behaviour_state(target_seek_steering)
+	self.steering_behaviours = {	
+		target_seeking = behaviour_state(target_seek_steering),
+		forward_seeking = behaviour_state(forward_seek_steering),
+		
+		sensor_avoidance = behaviour_state(sensor_avoidance_steering),
+		wandering = behaviour_state(wander_steering),
+		obstacle_avoidance = behaviour_state(obstacle_avoidance_steering),
+		separating = behaviour_state(separation_steering),
+		pursuit = behaviour_state(pursuit_steering)
+	}
+		
+	self.target_entities = {
+		navigation = create_entity(target_entity_archetype),
+		forward = create_entity(target_entity_archetype),
+		last_seen = create_entity(target_entity_archetype)
 	}
 	
 	self:refresh_behaviours()
 	
-	self.steering_behaviours.target_seeking.enabled = false
+	for k, v in pairs(self.steering_behaviours) do
+		v.enabled = false
+	end
+	
 	self.current_pathfinding_eye = vec2(0, 0)
 end
 
@@ -57,25 +65,64 @@ function npc_class:set_gravity_shift_state(enable)
 	end
 end
 
-function npc_class:loop()
-
-	-- handle pathfinding
-	if self.entity.pathfinding:is_still_pathfinding() or self.entity.pathfinding:is_still_exploring() then
+function npc_class:handle_steering()
+	local entity = self.entity
+	local behaviours = self.steering_behaviours
+	local target_entities = self.target_entities
+	
+	local myvel = entity.physics.body:GetLinearVelocity()
+	target_entities.forward.transform.current.pos = entity.transform.current.pos + vec2(myvel.x, myvel.y) * 50
+	
+	if entity.pathfinding:is_still_pathfinding() or entity.pathfinding:is_still_exploring() then
 		target_entities.navigation.transform.current.pos = entity.pathfinding:get_current_navigation_target()
-	end
-
-	-- handle visibility offset for feet
-	local decided_offset = vec2(0, self.foot_sensor_p1.y)
-	
-	if to_vec2(self.entity.physics.body:GetLinearVelocity()):rotate(-self.entity.movement.axis_rotation_degrees, vec2(0, 0)).x < 0 then
-		decided_offset.x = self.foot_sensor_p1.x
+		
+		behaviours.obstacle_avoidance.enabled = true
+		if behaviours.sensor_avoidance.last_output_force:non_zero() then
+			behaviours.target_seeking.enabled = false
+			behaviours.forward_seeking.enabled = true
+			behaviours.obstacle_avoidance.enabled = true
+		else
+			behaviours.target_seeking.enabled = true
+			behaviours.forward_seeking.enabled = false
+		end
 	else
-		decided_offset.x = self.foot_sensor_p2.x
+		behaviours.target_seeking.enabled = false
+		behaviours.forward_seeking.enabled = false
 	end
 	
-	self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(decided_offset):rotate(self.entity.movement.axis_rotation_degrees, vec2(0, 0))
+	behaviours.sensor_avoidance.max_intervention_length = (entity.transform.current.pos - target_entities.navigation.transform.current.pos):length() - 70
 	
-	
+	if behaviours.obstacle_avoidance.last_output_force:non_zero() then
+		behaviours.wandering.current_wander_angle = behaviours.obstacle_avoidance.last_output_force:get_degrees()
+	end
+end
+
+function npc_class:handle_player_visibility()
+	--if not player.body:exists() then 
+	--	self.is_seen = false
+	--else
+		-- resolve player visibility no matter what we're doing 
+		local p1 = self.entity.transform.current.pos
+		local p2 = player.body.transform.current.pos
+		
+		ray_output = physics_system:ray_cast(p1, p2, create(b2Filter, filter_player_visibility), self.entity)
+		
+		if not ray_output.hit then
+			self.target_entities.last_seen.transform.current.pos = player.body.transform.current.pos
+			
+			self.was_seen = true
+			self.is_seen = true
+			self.is_alert = true
+			
+			local player_vel = player.body.physics.body:GetLinearVelocity()
+			self.last_seen_velocity = vec2(player_vel.x, player_vel.y)
+		else
+			self.is_seen = false
+		end
+	--end
+end
+
+function npc_class:handle_jumping()
 	-- determine if something is under foot 
 	local pos = self.entity.transform.current.pos
 	
@@ -126,7 +173,10 @@ function npc_class:loop()
 		
 		self.jump_timer:reset()
 	end
-	
+end
+
+function npc_class:loop()	
+	self:handle_jumping()
 end
 
 function npc_class:set_foot_sensor_from_sprite(subject_sprite, thickness) 
@@ -146,6 +196,17 @@ function npc_class:map_vector_to_movement(real_vector)
 	
 	local angle = real_vector:get_degrees() - self.entity.movement.axis_rotation_degrees
 	self:jump(angle > -90 - jump_angle_threshold and angle < -90 + jump_angle_threshold)
+end
+
+function npc_class:pursue_target(target_entity)			
+	self.steering_behaviours.pursuit.target_from:set(target_entity)
+	self.steering_behaviours.pursuit.enabled = true
+	self.steering_behaviours.obstacle_avoidance.enabled = false
+end
+
+function npc_class:stop_pursuit()	
+	self.steering_behaviours.pursuit.enabled = false
+	self.steering_behaviours.obstacle_avoidance.enabled = true
 end
 
 npc_basic_loop = create_scriptable_info {
@@ -200,8 +261,7 @@ npc_group_archetype = {
 		
 		scriptable = {
 			available_scripts = npc_basic_loop
-		}
-		,
+		},
 		
 		visibility = {
 			visibility_layers = {

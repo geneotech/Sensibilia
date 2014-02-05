@@ -26,7 +26,10 @@ environment_archetype = {
 			shape_type = physics_info.POLYGON,
 			filter = filter_static_objects,
 			density = 1000,
-			friction = 0.1
+			friction = 0.1,
+			
+			linear_damping = 10,
+			angular_damping = 10
 		}
 	},
 	
