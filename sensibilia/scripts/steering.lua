@@ -9,7 +9,7 @@ target_entity_archetype = {
 		
 seek_archetype = {
 	behaviour_type = seek_behaviour,
-	weight = 0,
+	weight = 1,
 	force_color = rgba(255, 255, 255, 255)
 }			
 

@@ -50,5 +50,9 @@ print("Calling commands.lua...")
 --create_entity { 
 --}
 
-player.body.physics.body:SetTransform(b2Vec2(0, -20000 * PIXELS_TO_METERS), 45*0.01745329251994329576923690768489)
-physics_system.b2world:SetGravity(b2Vec2(-120, 120))
+--player.body.physics.body:SetTransform(b2Vec2(0, -20000 * PIXELS_TO_METERS), 45*0.01745329251994329576923690768489)
+--physics_system.b2world:SetGravity(b2Vec2(-120, 120))
+--
+--my_basic_npc
+
+

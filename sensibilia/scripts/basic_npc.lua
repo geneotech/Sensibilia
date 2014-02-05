@@ -32,19 +32,36 @@ function basic_npc_class:initialize(subject_entity)
 	self:set_all_behaviours_enabled(false)
 	self:set_movement_mode_flying(false)
 	
+	
+	self.was_seen = false
+	self.is_seen = false
+	self.is_alert = false
+	self.last_seen_velocity = vec2(0, 0)
+		
+	self.steering_behaviours.forward_seeking.target_from:set(self.target_entities.forward)
+	self.steering_behaviours.target_seeking.target_from:set(self.target_entities.navigation)
+	self.steering_behaviours.sensor_avoidance.target_from:set(self.target_entities.navigation)
+	
+	self.steering_behaviours.pursuit.enabled = false
+	
 	self.current_pathfinding_eye = vec2(0, 0)
-
 end
 
 function basic_npc_class:set_movement_mode_flying(flag)
 	self.movement_mode_flying = flag
 
 	if flag then
-		self:set_all_behaviours_enabled(true)
+		self.steering_behaviours.target_seeking.weight_multiplier = 1
+		self.entity.physics.body:SetGravityScale(0.1)
 	else
-		self:set_all_behaviours_enabled(false)
-		-- the only behaviour that is enabled and will be mapped to the left-right-jump movement
+		
+		self.steering_behaviours.target_seeking.weight_multiplier = 0
 		self.steering_behaviours.target_seeking.enabled = true
+		self.steering_behaviours.sensor_avoidance.enabled = true
+		self.steering_behaviours.forward_seeking.enabled = false
+		--self:set_all_behaviours_enabled(false)
+		-- the only behaviour that is enabled and will be mapped to the left-right-jump movement
+		--self.steering_behaviours.target_seeking.enabled = true
 	end
 end
 
@@ -62,6 +79,31 @@ function basic_npc_class:refresh_behaviours()
 	end
 end
 
+function basic_npc_class:angle_fits_in_threshold(angle, axis_angle, threshold)
+	angle = angle - self.entity.movement.axis_rotation_degrees
+	return angle > axis_angle - threshold and angle < axis_angle + threshold
+end
+
+function basic_npc_class:map_vector_to_movement(real_vector)
+	self.entity.movement.requested_movement = real_vector
+	self:jump(self:angle_fits_in_threshold(real_vector:get_degrees(), -90, 20))
+end
+
+function basic_npc_class:pursue_target(target_entity)			
+	self.steering_behaviours.pursuit.target_from:set(target_entity)
+	self.steering_behaviours.pursuit.enabled = true
+	self.steering_behaviours.obstacle_avoidance.enabled = false
+end
+
+function basic_npc_class:stop_pursuit()	
+	self.steering_behaviours.pursuit.enabled = false
+	self.steering_behaviours.obstacle_avoidance.enabled = true
+end
+
+function basic_npc_class:is_pathfinding()
+	return self.entity.pathfinding:is_still_pathfinding() or self.entity.pathfinding:is_still_exploring()
+end
+
 function basic_npc_class:handle_steering()
 	local entity = self.entity
 	local behaviours = self.steering_behaviours
@@ -70,7 +112,7 @@ function basic_npc_class:handle_steering()
 	local myvel = entity.physics.body:GetLinearVelocity()
 	target_entities.forward.transform.current.pos = entity.transform.current.pos + vec2(myvel.x, myvel.y) * 50
 	
-	if entity.pathfinding:is_still_pathfinding() or entity.pathfinding:is_still_exploring() then
+	if self:is_pathfinding() then
 		target_entities.navigation.transform.current.pos = entity.pathfinding:get_current_navigation_target()
 		
 		behaviours.obstacle_avoidance.enabled = true
@@ -119,52 +161,53 @@ function basic_npc_class:handle_player_visibility()
 	--end
 end
 
-function basic_npc_class:map_vector_to_movement(real_vector)
-	local jump_angle_threshold = 10
-	
-	self.entity.movement.requested_movement = real_vector
-	
-	local angle = real_vector:get_degrees() - self.entity.movement.axis_rotation_degrees
-	self:jump(angle > -90 - jump_angle_threshold and angle < -90 + jump_angle_threshold)
+function basic_npc_class:handle_visibility_offset()
+	if self:is_pathfinding() then
+		self.target_entities.navigation.transform.current.pos = self.entity.pathfinding:get_current_navigation_target()
+		
+		-- handle visibility offset for feet
+		self.current_pathfinding_eye = vec2(0, self.foot_sensor_p1.y)
+		
+		if to_vec2(self.entity.physics.body:GetLinearVelocity()):rotate(-self.entity.movement.axis_rotation_degrees, vec2(0, 0)).x < 0 then
+			self.current_pathfinding_eye.x = self.foot_sensor_p1.x
+		else
+			self.current_pathfinding_eye.x = self.foot_sensor_p2.x
+		end
+		
+		self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(self.current_pathfinding_eye):rotate(self.entity.movement.axis_rotation_degrees, vec2(0, 0))
+	end
 end
 
-function basic_npc_class:pursue_target(target_entity)			
-	self.steering_behaviours.pursuit.target_from:set(target_entity)
-	self.steering_behaviours.pursuit.enabled = true
-	self.steering_behaviours.obstacle_avoidance.enabled = false
-end
-
-function basic_npc_class:stop_pursuit()	
-	self.steering_behaviours.pursuit.enabled = false
-	self.steering_behaviours.obstacle_avoidance.enabled = true
+function basic_npc_class:handle_flying_state()
+	--if self:is_pathfinding() then
+	--	if self.movement_mode_flying and self.current_pathfinding_eye - 
+		self:set_movement_mode_flying(false)
+	-- end
 end
 
 function basic_npc_class:loop()
-	self:handle_steering()
 	self:handle_player_visibility()
 	
-		-- handle pathfinding
-	if self.entity.pathfinding:is_still_pathfinding() or self.entity.pathfinding:is_still_exploring() then
-		target_entities.navigation.transform.current.pos = entity.pathfinding:get_current_navigation_target()
-		
-		-- handle visibility offset for feet
-		local decided_offset = vec2(0, self.foot_sensor_p1.y)
-		
-		if to_vec2(self.entity.physics.body:GetLinearVelocity()):rotate(-self.entity.movement.axis_rotation_degrees, vec2(0, 0)).x < 0 then
-			decided_offset.x = self.foot_sensor_p1.x
-		else
-			decided_offset.x = self.foot_sensor_p2.x
-		end
-		
-		self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(decided_offset):rotate(self.entity.movement.axis_rotation_degrees, vec2(0, 0))
+	self:handle_flying_state()
+	self:handle_visibility_offset()
+	
+	if self.movement_mode_flying then
+		self:handle_steering()
+	else
+	 if self:is_pathfinding() then
+		self.target_entities.navigation.transform.current.pos = self.entity.pathfinding:get_current_navigation_target()
+	 end
+	 
+		self:map_vector_to_movement(self.steering_behaviours.target_seeking.last_output_force)
+		self:handle_jumping()
 	end
 	
-	self.steering_behaviours.target_seeking.enabled = true
-	self.steering_behaviours.target_seeking.target:set(player.crosshair.transform.current.pos, vec2(0, 0))
 	
-	self:map_vector_to_movement(self.steering_behaviours.target_seeking.last_output_force)
-	
-	self:handle_jumping()
+	print "\n\nBehaviours:\n\n"
+	for k, v in pairs(self.steering_behaviours) do
+		if type(v) == "userdata" then print(k, v.enabled) 
+		else print (k, type(v)) end
+	end
 end
 
 my_basic_npc = spawn_npc({
@@ -182,7 +225,7 @@ my_basic_npc = spawn_npc({
 				[visibility_component.DYNAMIC_PATHFINDING] = {
 					square_side = 15000,
 					color = rgba(0, 255, 255, 120),
-					ignore_discontinuities_shorter_than = -1,
+					ignore_discontinuities_shorter_than = 500,
 					filter = filter_pathfinding_visibility
 				}
 			}

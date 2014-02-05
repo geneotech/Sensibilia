@@ -3,7 +3,7 @@ physics_system.enable_interpolation = 0
 
 visibility_system.draw_cast_rays = 0
 visibility_system.draw_triangle_edges = 1
-visibility_system.draw_discontinuities = 0
+visibility_system.draw_discontinuities = 1
 visibility_system.draw_visible_walls = 0
 
 visibility_system.epsilon_ray_distance_variation = 0.005

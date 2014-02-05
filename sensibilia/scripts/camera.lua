@@ -14,7 +14,7 @@ scriptable_zoom = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = function(message)
 				if message.intent == custom_intents.ZOOM_CAMERA then
-					current_zoom_level = current_zoom_level-message.wheel_amount
+					current_zoom_level = current_zoom_level-message.wheel_amount*10
 					set_zoom_level(message.subject)
 				end
 			return false
@@ -42,7 +42,7 @@ camera_archetype = {
 		player = nil,
 	
 		orbit_mode = camera_component.LOOK,
-		max_look_expand = vec2(config_table.resolution_w/2, config_table.resolution_h/2),
+		max_look_expand = vec2(config_table.resolution_w/2*100, config_table.resolution_h/2)*100,
 		angled_look_length = 100
 	},
 	

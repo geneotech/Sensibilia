@@ -16,6 +16,7 @@ dofile "sensibilia\\scripts\\input.lua"
 dofile "sensibilia\\scripts\\camera.lua"
 
 current_zoom_level = 2000
+current_zoom_level = 10000
 set_zoom_level(world_camera)
 
 function set_color(poly, col)
@@ -212,3 +213,4 @@ environment_entity.name = "environment_entity"
 						--player.body.physics.enable_angle_motor = true
 						--player.body.physics.target_angle = 90
 physics_system.b2world:SetGravity(b2Vec2(0, 120))
+my_basic_npc.body.pathfinding:start_exploring()
