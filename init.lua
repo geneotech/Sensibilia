@@ -78,6 +78,7 @@ call_on_modification(entities, 				{ entities })
 call_on_modification(settings, 				{ settings })
 
 dofile (ENGINE_DIRECTORY .. "common.lua")
+dofile (ENGINE_DIRECTORY .. "integrator.lua")
 dofile (ENGINE_DIRECTORY .. "entity_creation_util.lua" )
 dofile (ENGINE_DIRECTORY .. "resource_creation_util.lua")
 dofile (ENGINE_DIRECTORY .. "settings.lua")

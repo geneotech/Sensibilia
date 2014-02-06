@@ -1,7 +1,7 @@
 debug_target_sprite = create_sprite {
 	image = images.blank,
 	size = vec2(50, 50),
-	color = rgba(0, 255, 255, 120)
+	color = rgba(0, 255, 255, 0)
 }
 
 stability = 1
@@ -133,6 +133,21 @@ loop_only_info = create_scriptable_info {
 			player.crosshair.transform.current.rotation = -world_camera.camera.last_interpolant.rotation
 			
 			physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
+			
+			local vel = player.body.physics.body:GetLinearVelocity()
+			
+			local f = 12000
+			if player.body.transform.current.pos.x > 70*50 then f = -f end
+			
+			--should_debug_draw = get_self(player.body).something_under_foot
+			if should_debug_draw then render_system:clear_non_cleared_lines() end
+			can_point_be_reached_by_jump(vec2(0, 120), vec2(f/50, 0), 0.1, vec2(70, 100/50), player.body.transform.current.pos/50, vec2(vel.x, vel.y), vec2(0, -150), player.body.physics.body:GetMass())
+			
+			if not should_debug_draw then 
+				render_system:push_non_cleared_line(debug_line(player.body.transform.current.pos, player.body.transform.current.pos + vec2(0, 10), rgba(255, 0, 0, 255)))
+			end
+			
+			render_system:push_line(debug_line(vec2(-11000, -400), vec2(11000, -400), rgba(255, 255, 0, 255)))
 		end
 	}
 }
@@ -165,7 +180,7 @@ swing_script = create_scriptable_info {
 	}
 }
 
-for i = 1, 30 do
+for i = 1, 0 do
 	local my_sprite = create_sprite {
 		image = images.blank,
 		color = rgba(0, 255, 0, 125),

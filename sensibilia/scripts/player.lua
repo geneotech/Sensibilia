@@ -16,7 +16,12 @@ player_scriptable_info = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = function (message) 
 			if message.intent == custom_intents.JUMP then
+				should_debug_draw = not message.state_flag
+				
+				--if message.state_flag then player.body.physics.body:ApplyLinearImpulse(b2Vec2(0, -50), player.body.physics.body:GetWorldCenter(), true) end
+			
 				get_self(message.subject):jump(message.state_flag)
+				get_self(message.subject):handle_jumping()
 			else 
 				return true
 			end
@@ -44,7 +49,7 @@ player = spawn_npc {
 		},
 		
 		transform = {
-			pos = vec2(0, 0)
+			pos = vec2(5000, -200)
 		},
 		
 		input = {

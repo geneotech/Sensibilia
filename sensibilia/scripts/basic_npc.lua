@@ -1,3 +1,6 @@
+
+
+
 basic_npc_sprite = create_sprite {
 	image = images.blank,
 	size = vec2(30, 100),
@@ -179,10 +182,17 @@ function basic_npc_class:handle_visibility_offset()
 end
 
 function basic_npc_class:handle_flying_state()
-	--if self:is_pathfinding() then
-	--	if self.movement_mode_flying and self.current_pathfinding_eye - 
-		self:set_movement_mode_flying(false)
-	-- end
+	 if self:is_pathfinding() then
+	 
+		local to_navigation_target_angle = (self.entity.pathfinding:get_current_navigation_target() - self.current_pathfinding_eye):get_degrees()
+		if self.movement_mode_flying and self:angle_fits_in_threshold(to_navigation_target_angle, 90, 170) then
+			self:set_movement_mode_flying(false)
+		elseif not self.movement_mode_flying then
+			
+		end
+		
+		
+	 end
 end
 
 function basic_npc_class:loop()
@@ -203,21 +213,24 @@ function basic_npc_class:loop()
 	end
 	
 	
-	print "\n\nBehaviours:\n\n"
-	for k, v in pairs(self.steering_behaviours) do
-		if type(v) == "userdata" then print(k, v.enabled) 
-		else print (k, type(v)) end
-	end
+	--print "\n\nBehaviours:\n\n"
+	--for k, v in pairs(self.steering_behaviours) do
+	--	if type(v) == "userdata" then print(k, v.enabled) 
+	--	else print (k, type(v)) end
+	--end
 end
 
 my_basic_npc = spawn_npc({
 	body = {
+		physics = {
+			body_type = Box2D.b2_staticBody
+		},
 		render = {
 			model = basic_npc_sprite
 		},
 		
 		transform = {
-			pos = vec2(500, -1000)
+			pos = vec2(21500, -21000)
 		},
 		
 		visibility = {
@@ -251,3 +264,4 @@ my_basic_npc = spawn_npc({
 	--self.steering_behaviours.target_seeking.target:set(player.crosshair.transform.current.pos, vec2(0, 0))
 
 get_self(my_basic_npc.body):set_foot_sensor_from_sprite(basic_npc_sprite, 3)
+--my_basic_npc.body:disable()

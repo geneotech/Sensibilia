@@ -7,7 +7,7 @@ end
 npc_class = inherits_from {}
 
 function npc_class:initialize(subject_entity) 
-	self.jump_timer = timer()
+	self.jump_timer = stepped_timer(physics_system)
 	self.entity = subject_entity
 	self.foot_sensor_p1 = vec2(0, 0)
 	self.foot_sensor_p2 = vec2(0, 0)
@@ -61,9 +61,9 @@ function npc_class:handle_jumping()
 		self.something_under_foot = true
 	end
 	
-	if self.something_under_foot then
+	if self.something_under_foot and self.jump_timer:get_steps() > 7 then
 		-- if there is, apply no gravity, simulate feet resistance
-		self.entity.physics.body:SetGravityScale(0.0)
+		--self.entity.physics.body:SetGravityScale(0.0)
 		self.entity.movement.thrust_parallel_to_ground_length = 500
 		--self.entity.movement.input_acceleration.x = 10000
 	else
@@ -73,11 +73,13 @@ function npc_class:handle_jumping()
 	end
 		
 	-- perform jumping 
-	if self.is_jumping and self.jump_timer:get_milliseconds() > 100 then
+	if self.is_jumping and self.jump_timer:get_steps() > 7 then
 		if self.something_under_foot then
 			local body = self.entity.physics.body
 			local jump_impulse = vec2(0, -150):rotate(gravity_angle_offset, vec2(0, 0)) 
 			
+			self.entity.physics.body:SetGravityScale(1.0)
+			self.entity.movement.thrust_parallel_to_ground_length = 0
 			body:ApplyLinearImpulse(b2Vec2(jump_impulse.x, jump_impulse.y), body:GetWorldCenter(), true)
 		end
 		
@@ -119,7 +121,7 @@ npc_group_archetype = {
 				filter = filter_objects,
 				density = 1,
 				friction = 2,
-				bullet = true,
+				bullet = false,
 				
 				--,
 				fixed_rotation = true
@@ -133,7 +135,7 @@ npc_group_archetype = {
 		transform = {},
 		
 		movement = {
-			input_acceleration = vec2(10000, 0),
+			input_acceleration = vec2(12000, 0),
 			max_speed_animation = 2300,
 			air_resistance = 0.1,
 			inverse_thrust_brake = vec2(500, 0),
