@@ -62,7 +62,26 @@ player = spawn_npc {
 		
 		scriptable = {
 			available_scripts = player_scriptable_info
-		}
+		},
+		
+			
+		--visibility = {
+		--	visibility_layers = {
+		--		[visibility_component.DYNAMIC_PATHFINDING] = {
+		--			square_side = 15000,
+		--			color = rgba(0, 255, 255, 120),
+		--			ignore_discontinuities_shorter_than = 500,
+		--			filter = filter_pathfinding_visibility
+		--		}
+		--	}
+		--},
+		--pathfinding = {
+		--	enable_backtracking = true,
+		--	target_offset = 100,
+		--	rotate_navpoints = 10,
+		--	distance_navpoint_hit = 2,
+		--	favor_velocity_parallellness = false
+		--}
 	},
 	
 	crosshair = { 

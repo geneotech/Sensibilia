@@ -14,6 +14,8 @@ function npc_class:initialize(subject_entity)
 	
 	self.is_jumping = false
 	self.something_under_foot = false
+	
+	self.jump_height = (50 * calc_max_jump_height(base_gravity, 0.1, vec2(0, -150), self.entity.physics.body:GetMass())) - 2
 end
 	
 function npc_class:jump(jump_flag)

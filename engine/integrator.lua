@@ -1,6 +1,13 @@
 should_debug_draw = false
+
+function pv(v)
+	print(v.x, v.y)
+end
+
 function debug_draw(p1, p2, r, g, b, a)
-	if should_debug_draw then render_system:push_non_cleared_line(debug_line(p1*50, p2*50, rgba(r,g,b,a))) end
+	--pv(p1)
+	--pv(p2)
+	render_system:push_line(debug_line(p1*50, p2*50, rgba(r,g,b,a)))
 end
 
 function simple_integration(p, dt)
@@ -18,8 +25,8 @@ function simple_integration(p, dt)
 end
 
 function point_below_segment(a, b, p)
-	-- make sure a is to the left
-	if a.x > b.x then a,b = b,a end
+	-- make sure a is to the right
+	if a.x < b.x then a,b = b,a end
 	
 	return ((b.x - a.x)*(p.y - a.y) - (b.y - a.y)*(p.x - a.x)) < 0
 end
@@ -27,6 +34,7 @@ end
 function calc_air_resistance(vel, mult)
 	return (vec2(vel):normalize() * (-1) * mult * vel:length_sq())
 end
+
 
 -- returns true or false
 function can_point_be_reached_by_jump
@@ -40,15 +48,30 @@ starting_velocity, -- vector (meters per seconds)
 jump_impulse, -- vector (meters per seconds)
 mass -- scalar (kilogrammes)
 )
+
+--	print "\n\nBEGIN\n\n"
+--	
+--pv(gravity) -- vector (meters per seconds^2)
+--pv(movement_force) -- vector (meters per seconds^2)
+--print(air_resistance_mult) -- scalar
+--pv(queried_point) -- vector (meters)
+--pv(starting_position) -- vector (meters)
+--pv(starting_velocity) -- vector (meters per seconds)
+--pv(jump_impulse) -- vector (meters per seconds)
+--print(mass) -- scalar (kilogrammes)
 	
 	local my_point = {
 		pos = starting_position,
 		vel = starting_velocity + jump_impulse/mass
 	}
 	
-	local direction_left = movement_force.x < 0
+	local direction_left = queried_point.x < starting_position.x
+	
+	if direction_left then movement_force.x = movement_force.x * -1 end
 	
 	local step = 1/60
+	
+	debug_draw(queried_point, starting_position, 0, 255, 255, 255)
 	
 	while true do			
 		-- calculate resultant force
@@ -69,10 +92,11 @@ mass -- scalar (kilogrammes)
 		
 		if (direction_left and new_p.pos.x < queried_point.x) or (not direction_left and new_p.pos.x > queried_point.x) then
 			if point_below_segment(new_p.pos, my_point.pos, queried_point) then
-				debug_draw(new_p.pos, my_point.pos, 255, 0, 0, 255)
+				debug_draw(new_p.pos, my_point.pos, 255, 255, 255, 255)
+				--print "can jump!!"
 				return true
 			else
-				debug_draw(new_p.pos, my_point.pos, 255, 255, 255, 255)
+				debug_draw(new_p.pos, my_point.pos, 255, 0, 0, 255)
 				return false
 			end
 		else 

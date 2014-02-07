@@ -148,9 +148,10 @@ loop_only_info = create_scriptable_info {
 			
 			--should_debug_draw = get_self(player.body).something_under_foot
 			if should_debug_draw then render_system:clear_non_cleared_lines() end
-			can_point_be_reached_by_jump(vec2(0, 120), vec2(12000*f/50, 0), 0.1, vec2(300 - f*250, -200-75)/50, player.body.transform.current.pos/50 + sensor/50, vec2(vel.x, vel.y), vec2(0, -150), player.body.physics.body:GetMass())	
 			
-			render_system:push_non_cleared_line(debug_line(
+			--can_point_be_reached_by_jump(vec2(0, 120), vec2(12000/50, 0), 0.1, vec2(300 - f*250, -200-75)/50, player.body.transform.current.pos/50 + sensor/50, vec2(vel.x, vel.y), vec2(0, -150), player.body.physics.body:GetMass())	
+			
+			render_system:push_line(debug_line(
 				player.body.transform.current.pos, 
 				player.body.transform.current.pos + vec2(0, -50 * calc_max_jump_height(vec2(0, 120), 0.1, vec2(0, -150), player.body.physics.body:GetMass())) , rgba(255, 0, 0, 255)))
 			
@@ -190,7 +191,7 @@ swing_script = create_scriptable_info {
 	}
 }
 
-for i = 1, 30 do
+for i = 1, 50 do
 	local my_sprite = create_sprite {
 		image = images.blank,
 		color = rgba(0, 255, 0, 125),

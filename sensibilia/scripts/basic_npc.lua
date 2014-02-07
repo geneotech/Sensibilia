@@ -48,16 +48,20 @@ function basic_npc_class:initialize(subject_entity)
 	self.steering_behaviours.pursuit.enabled = false
 	
 	self.current_pathfinding_eye = vec2(0, 0)
+	self.can_jump_to_navpoint = false
 end
 
 function basic_npc_class:set_movement_mode_flying(flag)
 	self.movement_mode_flying = flag
-
+	self.entity.movement.sidescroller_setup = not flag
+		
 	if flag then
 		self.steering_behaviours.target_seeking.weight_multiplier = 1
-		self.entity.physics.body:SetGravityScale(0.1)
-	else
+		self.entity.physics.body:SetGravityScale(0.0)
+		SetFriction(self.entity.physics.body, 0)
 		
+	else
+		SetFriction(self.entity.physics.body, 2)		
 		self.steering_behaviours.target_seeking.weight_multiplier = 0
 		self.steering_behaviours.target_seeking.enabled = true
 		self.steering_behaviours.sensor_avoidance.enabled = true
@@ -89,7 +93,18 @@ end
 
 function basic_npc_class:map_vector_to_movement(real_vector)
 	self.entity.movement.requested_movement = real_vector
-	self:jump(self:angle_fits_in_threshold(real_vector:get_degrees(), -90, 20))
+	local should_jump = self:angle_fits_in_threshold(real_vector:get_degrees(), -90, 20)
+	self:jump(should_jump)
+	
+	return should_jump
+end
+
+function basic_npc_class:determine_jumpability(queried_point)	
+	local vel = self.entity.physics.body:GetLinearVelocity()
+	local foot = self.entity.transform.current.pos + self.current_pathfinding_eye
+	
+	return can_point_be_reached_by_jump(base_gravity, self.entity.movement.input_acceleration/50, self.entity.movement.air_resistance, 
+					queried_point/50, foot/50, vec2(vel.x, vel.y), vec2(0, -150), self.entity.physics.body:GetMass())
 end
 
 function basic_npc_class:pursue_target(target_entity)			
@@ -166,40 +181,57 @@ end
 
 function basic_npc_class:handle_visibility_offset()
 	if self:is_pathfinding() then
-		self.target_entities.navigation.transform.current.pos = self.entity.pathfinding:get_current_navigation_target()
-		
-		-- handle visibility offset for feet
-		self.current_pathfinding_eye = vec2(0, self.foot_sensor_p1.y)
-		
-		if to_vec2(self.entity.physics.body:GetLinearVelocity()):rotate(-self.entity.movement.axis_rotation_degrees, vec2(0, 0)).x < 0 then
-			self.current_pathfinding_eye.x = self.foot_sensor_p1.x
+		if self.movement_mode_flying then
+			self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(0, 0)
 		else
-			self.current_pathfinding_eye.x = self.foot_sensor_p2.x
+			self.target_entities.navigation.transform.current.pos = self.entity.pathfinding:get_current_navigation_target()
+			
+			-- handle visibility offset for feet
+			self.current_pathfinding_eye = vec2(0, self.foot_sensor_p1.y)
+			
+			if to_vec2(self.entity.physics.body:GetLinearVelocity()):rotate(-self.entity.movement.axis_rotation_degrees, vec2(0, 0)).x < 0 then
+				self.current_pathfinding_eye.x = self.foot_sensor_p1.x
+			else
+				self.current_pathfinding_eye.x = self.foot_sensor_p2.x
+			end
+			
+			self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(self.current_pathfinding_eye):rotate(self.entity.movement.axis_rotation_degrees, vec2(0, 0))
 		end
-		
-		self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(self.current_pathfinding_eye):rotate(self.entity.movement.axis_rotation_degrees, vec2(0, 0))
 	end
 end
 
 function basic_npc_class:handle_flying_state()
 	 if self:is_pathfinding() then
+		local vel = self.entity.physics.body:GetLinearVelocity()
+		local nav_target = self.entity.pathfinding:get_current_navigation_target()
+		local foot = self.entity.transform.current.pos + self.current_pathfinding_eye
 	 
-		local to_navigation_target_angle = (self.entity.pathfinding:get_current_navigation_target() - self.current_pathfinding_eye):get_degrees()
-		if self.movement_mode_flying and self:angle_fits_in_threshold(to_navigation_target_angle, 90, 170) then
+		--print(self.movement_mode_flying, foot.y, nav_target.y, self.jump_height, (foot.y - nav_target.y))
+	 
+		local to_navigation_target_angle = (nav_target - foot):get_degrees()
+		if self.movement_mode_flying and self:angle_fits_in_threshold(to_navigation_target_angle, 90, 150) then
 			self:set_movement_mode_flying(false)
-		elseif not self.movement_mode_flying then
-			
+			print"idziemy"
+		elseif not self.movement_mode_flying and self.something_under_foot then
+			self.can_jump_there_now = self:determine_jumpability(nav_target)
+			local is_reachable_height = (foot.y - nav_target.y) <= self.jump_height 
+		
+			print (self.can_jump_there_now, is_reachable_height)
+			if not self.can_jump_there_now and not is_reachable_height then
+				print"lecimy"
+				self:set_movement_mode_flying(true)
+			end
 		end
-		
-		
+				self:set_movement_mode_flying(true)
 	 end
 end
 
 function basic_npc_class:loop()
 	self:handle_player_visibility()
 	
-	self:handle_flying_state()
 	self:handle_visibility_offset()
+	
+	self:handle_flying_state()
 	
 	if self.movement_mode_flying then
 		self:handle_steering()
@@ -208,7 +240,8 @@ function basic_npc_class:loop()
 		self.target_entities.navigation.transform.current.pos = self.entity.pathfinding:get_current_navigation_target()
 	 end
 	 
-		self:map_vector_to_movement(self.steering_behaviours.target_seeking.last_output_force)
+		local decided_to_jump_because_under_navpoint = self:map_vector_to_movement(self.steering_behaviours.target_seeking.last_output_force)
+		self:jump(not decided_to_jump_because_under_navpoint and self.can_jump_there_now)
 		self:handle_jumping()
 	end
 	
@@ -230,7 +263,7 @@ my_basic_npc = spawn_npc({
 		},
 		
 		transform = {
-			pos = vec2(0, 0)
+			pos = vec2(0, -10000)
 		},
 		
 		visibility = {
@@ -238,7 +271,7 @@ my_basic_npc = spawn_npc({
 				[visibility_component.DYNAMIC_PATHFINDING] = {
 					square_side = 15000,
 					color = rgba(0, 255, 255, 120),
-					ignore_discontinuities_shorter_than = 500,
+					ignore_discontinuities_shorter_than = 200,
 					filter = filter_pathfinding_visibility
 				}
 			}
@@ -249,7 +282,7 @@ my_basic_npc = spawn_npc({
 			target_offset = 100,
 			rotate_navpoints = 10,
 			distance_navpoint_hit = 2,
-			favor_velocity_parallellness = true
+			favor_velocity_parallellness = false
 		},
 		
 		steering = {
