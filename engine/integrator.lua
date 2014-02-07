@@ -3,13 +3,12 @@ function debug_draw(p1, p2, r, g, b, a)
 	if should_debug_draw then render_system:push_non_cleared_line(debug_line(p1*50, p2*50, rgba(r,g,b,a))) end
 end
 
-function quadratic_integration(p, dt)
+function simple_integration(p, dt)
 	local new_p = {}
 	
 	new_p.acc = p.acc
 	new_p.vel = p.vel + p.acc * dt 
 	new_p.pos = p.pos + new_p.vel * dt
-	--if should_debug_draw then print ("since " ..  new_p.pos.x ..  " = " ..  p.pos.x ..  " + " .. p.vel.x .. " * " .. dt .. "\n") end
 	-- uncomment this if you want to use quadratic integration
 	-- but with small timesteps even this is an overkill since Box2D itself uses traditional Euler
 	-- and I found that for calculations to be accurate I either way must keep the timesteps very low at the beginning of the jump
@@ -51,9 +50,6 @@ mass -- scalar (kilogrammes)
 	
 	local step = 1/60
 	
-	--if should_debug_draw then print("\nBEGIN\n", step) end
-	--local res = (vec2(my_point.vel):normalize() * -1 * air_resistance_mult * my_point.vel:length_sq())
-	--print(res.x, res.y, my_point.vel:length(), vec2(my_point.vel):normalize().x, vec2(my_point.vel):normalize().y)
 	while true do			
 		-- calculate resultant force
 		my_point.acc = 
@@ -62,15 +58,8 @@ mass -- scalar (kilogrammes)
 		-- remaining forces
 		+ gravity + movement_force/mass
 		
-		--if should_debug_draw then
-		--
-		--	print (my_point.acc.x, my_point.acc.y)
-		--	print (my_point.vel.x, my_point.vel.y)
-		--	print (my_point.pos.x, my_point.pos.y)
-		--end
-		
 		-- i've discarded any timestep optimizations at the moment as they are very context specific
-		local new_p = quadratic_integration(my_point, step)
+		local new_p = simple_integration(my_point, step)
 	
 		debug_draw(my_point.pos, new_p.pos, 255, 0, 255, 255)
 		debug_draw(new_p.pos, new_p.pos+vec2(0, -1), 255, 255, 0, 255)

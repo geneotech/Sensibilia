@@ -136,18 +136,24 @@ loop_only_info = create_scriptable_info {
 			
 			local vel = player.body.physics.body:GetLinearVelocity()
 			
-			local f = 12000
-			if player.body.transform.current.pos.x > 70*50 then f = -f end
+			local f = 1
+			
+			local sensor = vec2(get_self(player.body).foot_sensor_p1)
+			if player.body.transform.current.pos.x > 300/50 then 
+				f = -f 
+				sensor = get_self(player.body).foot_sensor_p1
+			else
+				sensor.x = get_self(player.body).foot_sensor_p2.x
+			end
 			
 			--should_debug_draw = get_self(player.body).something_under_foot
 			if should_debug_draw then render_system:clear_non_cleared_lines() end
-			can_point_be_reached_by_jump(vec2(0, 120), vec2(f/50, 0), 0.1, vec2(70, 100/50), player.body.transform.current.pos/50, vec2(vel.x, vel.y), vec2(0, -150), player.body.physics.body:GetMass())
+			can_point_be_reached_by_jump(vec2(0, 120), vec2(12000*f/50, 0), 0.1, vec2(300 - f*250, -200-75)/50, player.body.transform.current.pos/50 + sensor/50, vec2(vel.x, vel.y), vec2(0, -150), player.body.physics.body:GetMass())
 			
 			if not should_debug_draw then 
-				render_system:push_non_cleared_line(debug_line(player.body.transform.current.pos, player.body.transform.current.pos + vec2(0, 10), rgba(255, 0, 0, 255)))
-			end
-			
-			render_system:push_line(debug_line(vec2(-11000, -400), vec2(11000, -400), rgba(255, 255, 0, 255)))
+				render_system:push_non_cleared_line(debug_line(player.body.transform.current.pos+ sensor , 
+				player.body.transform.current.pos + sensor + vec2(0, 10), rgba(255, 0, 0, 255)))
+			end	
 		end
 	}
 }
@@ -180,19 +186,21 @@ swing_script = create_scriptable_info {
 	}
 }
 
-for i = 1, 0 do
+for i = 1, 1 do
 	local my_sprite = create_sprite {
 		image = images.blank,
 		color = rgba(0, 255, 0, 125),
-		size = vec2(randval(100, 6000), randval(100, 1000))
+		size = vec2(500, 150)
 	}
 	
 	table.insert(global_sprites, my_sprite)
 
 	local new_entity = create_entity(archetyped(environment_archetype, {
 		transform = {
-			pos = vec2(randval(-8000, 8000), randval(-16000, 1000)),
-			rotation = randval(0, 360)
+			--pos = vec2(randval(-8000, 8000), randval(-16000, 1000)),
+			pos = vec2(300, -200),
+			--rotation = randval(0, 360)
+			rotation = 0
 		},
 		
 		physics = {

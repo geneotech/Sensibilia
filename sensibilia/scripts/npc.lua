@@ -121,7 +121,7 @@ npc_group_archetype = {
 				filter = filter_objects,
 				density = 1,
 				friction = 2,
-				bullet = false,
+				bullet = true,
 				
 				--,
 				fixed_rotation = true
