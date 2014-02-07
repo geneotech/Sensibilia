@@ -24,6 +24,10 @@ function point_below_segment(a, b, p)
 	return ((b.x - a.x)*(p.y - a.y) - (b.y - a.y)*(p.x - a.x)) < 0
 end
 
+function calc_air_resistance(vel, mult)
+	return (vec2(vel):normalize() * (-1) * mult * vel:length_sq())
+end
+
 -- returns true or false
 function can_point_be_reached_by_jump
 (
@@ -42,10 +46,6 @@ mass -- scalar (kilogrammes)
 		vel = starting_velocity + jump_impulse/mass
 	}
 	
-	render_system:push_line(debug_line(queried_point*50, queried_point*50 + vec2(0, 5), rgba(0, 255, 255, 255)))
-	
-	local accumulated_time = 0
-	
 	local direction_left = movement_force.x < 0
 	
 	local step = 1/60
@@ -54,11 +54,14 @@ mass -- scalar (kilogrammes)
 		-- calculate resultant force
 		my_point.acc = 
 		-- air resistance (multiplier * squared length of the velocity * opposite normalized velocity)
-		(vec2(my_point.vel):normalize() * -1 * air_resistance_mult * my_point.vel:length_sq()) / mass
+		calc_air_resistance(my_point.vel, air_resistance_mult) 
 		-- remaining forces
-		+ gravity + movement_force/mass
+		+ movement_force
 		
-		-- i've discarded any timestep optimizations at the moment as they are very context specific
+		my_point.acc = my_point.acc * (1/mass)
+		my_point.acc = my_point.acc + gravity
+		
+		-- i have discarded any timestep optimizations at the moment as they are very context specific
 		local new_p = simple_integration(my_point, step)
 	
 		debug_draw(my_point.pos, new_p.pos, 255, 0, 255, 255)
@@ -78,4 +81,36 @@ mass -- scalar (kilogrammes)
 	end
 
 	return false
+end
+
+function calc_max_jump_height(
+gravity, -- vector (meters per seconds^2)
+air_resistance_mult, -- scalar
+jump_impulse, -- vector (meters per seconds)
+mass -- scalar (kilogrammes)
+)
+	local my_point = {
+		pos = vec2(0, 0),
+		vel = jump_impulse/mass
+	}
+	
+	local step = 1/60
+	
+	while true do	
+		-- calculate resultant force
+		my_point.acc = 
+		-- air resistance (multiplier * squared length of the velocity * opposite normalized velocity)
+		calc_air_resistance(my_point.vel, air_resistance_mult) 
+		
+		my_point.acc = my_point.acc * (1/mass)
+		my_point.acc = my_point.acc + gravity
+			
+		local new_p = simple_integration(my_point, step)
+		
+		if new_p.pos.y >= my_point.pos.y then 
+			return -my_point.pos.y
+		else my_point = new_p end
+	end
+	
+	return 0
 end

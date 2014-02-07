@@ -14,7 +14,7 @@ scriptable_zoom = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = function(message)
 				if message.intent == custom_intents.ZOOM_CAMERA then
-					current_zoom_level = current_zoom_level-message.wheel_amount*10
+					current_zoom_level = current_zoom_level-message.wheel_amount
 					set_zoom_level(message.subject)
 				end
 			return false

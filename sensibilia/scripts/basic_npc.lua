@@ -222,15 +222,15 @@ end
 
 my_basic_npc = spawn_npc({
 	body = {
-		physics = {
-			body_type = Box2D.b2_staticBody
-		},
+		--physics = {
+		--	body_type = Box2D.b2_staticBody
+		--},
 		render = {
 			model = basic_npc_sprite
 		},
 		
 		transform = {
-			pos = vec2(21500, -21000)
+			pos = vec2(0, 0)
 		},
 		
 		visibility = {

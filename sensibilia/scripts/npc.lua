@@ -63,7 +63,7 @@ function npc_class:handle_jumping()
 	
 	if self.something_under_foot and self.jump_timer:get_steps() > 7 then
 		-- if there is, apply no gravity, simulate feet resistance
-		--self.entity.physics.body:SetGravityScale(0.0)
+		self.entity.physics.body:SetGravityScale(0.0)
 		self.entity.movement.thrust_parallel_to_ground_length = 500
 		--self.entity.movement.input_acceleration.x = 10000
 	else
