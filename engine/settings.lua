@@ -14,7 +14,7 @@ pathfinding_system.draw_memorised_walls = 1
 pathfinding_system.draw_undiscovered = 1
 pathfinding_system.epsilon_max_segment_difference = 4
 pathfinding_system.epsilon_distance_visible_point = 2
-pathfinding_system.epsilon_distance_the_same_vertex = 50
+pathfinding_system.epsilon_distance_the_same_vertex = 10
 
 render_system.debug_drawing = 0
 

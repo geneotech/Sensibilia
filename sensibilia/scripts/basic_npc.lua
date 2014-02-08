@@ -49,6 +49,7 @@ function basic_npc_class:initialize(subject_entity)
 	
 	self.current_pathfinding_eye = vec2(0, 0)
 	self.can_jump_to_navpoint = false
+	self.frozen_navpoint = vec2(0, 0)
 end
 
 function basic_npc_class:set_movement_mode_flying(flag)
@@ -56,6 +57,7 @@ function basic_npc_class:set_movement_mode_flying(flag)
 	self.entity.movement.sidescroller_setup = not flag
 		
 	if flag then
+		self.entity.movement.requested_movement = vec2(0, 0)
 		self.steering_behaviours.target_seeking.weight_multiplier = 1
 		self.entity.physics.body:SetGravityScale(0.0)
 		SetFriction(self.entity.physics.body, 0)
@@ -131,7 +133,7 @@ function basic_npc_class:handle_steering()
 	target_entities.forward.transform.current.pos = entity.transform.current.pos + vec2(myvel.x, myvel.y) * 50
 	
 	if self:is_pathfinding() then
-		target_entities.navigation.transform.current.pos = entity.pathfinding:get_current_navigation_target()
+		target_entities.navigation.transform.current.pos = self.frozen_navpoint
 		
 		behaviours.obstacle_avoidance.enabled = true
 		if behaviours.sensor_avoidance.last_output_force:non_zero() then
@@ -184,7 +186,7 @@ function basic_npc_class:handle_visibility_offset()
 		if self.movement_mode_flying then
 			self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(0, 0)
 		else
-			self.target_entities.navigation.transform.current.pos = self.entity.pathfinding:get_current_navigation_target()
+			self.target_entities.navigation.transform.current.pos = self.frozen_navpoint
 			
 			-- handle visibility offset for feet
 			self.current_pathfinding_eye = vec2(0, self.foot_sensor_p1.y)
@@ -203,16 +205,16 @@ end
 function basic_npc_class:handle_flying_state()
 	 if self:is_pathfinding() then
 		local vel = self.entity.physics.body:GetLinearVelocity()
-		local nav_target = self.entity.pathfinding:get_current_navigation_target()
+		local nav_target = self.frozen_navpoint
 		local foot = self.entity.transform.current.pos + self.current_pathfinding_eye
 	 
 		--print(self.movement_mode_flying, foot.y, nav_target.y, self.jump_height, (foot.y - nav_target.y))
 	 
 		local to_navigation_target_angle = (nav_target - foot):get_degrees()
-		if self.movement_mode_flying and self:angle_fits_in_threshold(to_navigation_target_angle, 90, 150) then
+		if self.movement_mode_flying and foot.y < nav_target.y-20 then
 			self:set_movement_mode_flying(false)
 			print"idziemy"
-		elseif not self.movement_mode_flying and self.something_under_foot then
+		elseif not self.movement_mode_flying then
 			self.can_jump_there_now = self:determine_jumpability(nav_target)
 			local is_reachable_height = (foot.y - nav_target.y) <= self.jump_height 
 		
@@ -222,11 +224,16 @@ function basic_npc_class:handle_flying_state()
 				self:set_movement_mode_flying(true)
 			end
 		end
-				self:set_movement_mode_flying(true)
 	 end
 end
 
 function basic_npc_class:loop()
+	-- if walking mode and in air, let us just peacefully fall to just one navigation point mkay?
+	if not self.entity.pathfinding:exists_through_undiscovered_visible(self.frozen_navpoint, pathfinding_system.epsilon_distance_the_same_vertex)
+	or not (not self.movement_mode_flying and not self.something_under_foot) then
+		self.frozen_navpoint = self.entity.pathfinding:get_current_navigation_target()
+	end
+		
 	self:handle_player_visibility()
 	
 	self:handle_visibility_offset()
@@ -237,13 +244,15 @@ function basic_npc_class:loop()
 		self:handle_steering()
 	else
 	 if self:is_pathfinding() then
-		self.target_entities.navigation.transform.current.pos = self.entity.pathfinding:get_current_navigation_target()
+		self.target_entities.navigation.transform.current.pos = self.frozen_navpoint
 	 end
 	 
 		local decided_to_jump_because_under_navpoint = self:map_vector_to_movement(self.steering_behaviours.target_seeking.last_output_force)
 		self:jump(not decided_to_jump_because_under_navpoint and self.can_jump_there_now)
 		self:handle_jumping()
 	end
+	
+	render_system:push_line(debug_line(self.entity.transform.current.pos, self.frozen_navpoint, rgba(255, 255, 0, 255)))
 	
 	
 	--print "\n\nBehaviours:\n\n"

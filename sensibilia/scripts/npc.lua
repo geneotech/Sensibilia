@@ -93,9 +93,13 @@ function npc_class:loop()
 	self:handle_jumping()
 end
 
-function npc_class:set_foot_sensor_from_sprite(subject_sprite, thickness) 
-	self.foot_sensor_p1 = vec2(-subject_sprite.size.x / 2 + 1, subject_sprite.size.y / 2)
-	self.foot_sensor_p2 = vec2( subject_sprite.size.x / 2 - 1, subject_sprite.size.y / 2 + thickness) 
+function npc_class:set_foot_sensor_from_sprite(subject_sprite, thickness, edge_threshold)
+	if edge_threshold == nil then
+		edge_threshold = 0
+	end
+	
+	self.foot_sensor_p1 = vec2(-subject_sprite.size.x / 2 + edge_threshold, subject_sprite.size.y / 2)
+	self.foot_sensor_p2 = vec2( subject_sprite.size.x / 2 - edge_threshold, subject_sprite.size.y / 2 + thickness) 
 end
 
 function npc_class:set_foot_sensor_from_circle(radius, thickness) 
@@ -145,6 +149,8 @@ npc_group_archetype = {
 			ground_filter = filter_npc_feet,
 			
 			receivers = {},
+			
+			sidescroller_setup = true
 			
 			--force_offset = vec2(0, 5)
 			
