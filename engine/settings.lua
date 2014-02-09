@@ -1,5 +1,5 @@
 physics_system.timestep_multiplier = 1
-physics_system.enable_interpolation = 1
+physics_system.enable_interpolation = 0
 
 visibility_system.draw_cast_rays = 0
 visibility_system.draw_triangle_edges = 0
@@ -18,11 +18,11 @@ pathfinding_system.epsilon_distance_the_same_vertex = 10
 
 render_system.debug_drawing = 0
 
-render_system.draw_steering_forces = 1
-render_system.draw_substeering_forces = 1
-render_system.draw_velocities = 1
+render_system.draw_steering_forces = 0
+render_system.draw_substeering_forces = 0
+render_system.draw_velocities = 0
 
-render_system.draw_avoidance_info = 1
+render_system.draw_avoidance_info = 0
 render_system.draw_wandering_info = 0
 
 render_system.draw_weapon_info = 1

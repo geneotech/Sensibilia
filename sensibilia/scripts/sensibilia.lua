@@ -114,7 +114,10 @@ loop_only_info = create_scriptable_info {
 					if physics_system.timestep_multiplier < 0.01 then
 						physics_system.timestep_multiplier = 0.01
 					end
+				elseif message.intent == custom_intents.MY_INTENT then
+					my_basic_npc.body.pathfinding:start_exploring()
 				end
+
 				
 				return false
 			end,
@@ -172,6 +175,7 @@ create_entity {
 			custom_intents.QUIT,
 			custom_intents.RESTART,
 			custom_intents.GRAVITY_CHANGE,
+			custom_intents.MY_INTENT,
 			intent_message.AIM
 	},
 		
@@ -202,7 +206,7 @@ for i = 1, 50 do
 
 	local new_entity = create_entity(archetyped(environment_archetype, {
 		transform = {
-			pos = vec2(randval(-8000, 16000), randval(-16000, -1000)),
+			pos = vec2(randval(-8000, 16000), randval(-6000, -1000)),
 			--pos = vec2(300, -200),
 			rotation = randval(0, 360)
 			--rotation = 0
@@ -241,4 +245,5 @@ environment_entity.name = "environment_entity"
 						--player.body.physics.enable_angle_motor = true
 						--player.body.physics.target_angle = 90
 physics_system.b2world:SetGravity(b2Vec2(0, 120))
-my_basic_npc.body.pathfinding:start_exploring()
+
+	--get_self(my_basic_npc.body).steering_behaviours.target_seeking.target_from:set(player.crosshair)

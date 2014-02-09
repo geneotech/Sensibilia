@@ -3,7 +3,7 @@
 
 basic_npc_sprite = create_sprite {
 	image = images.blank,
-	size = vec2(30, 100),
+	size = vec2(30, 30),
 	color = rgba(255, 0, 0, 200)
 }
 
@@ -62,8 +62,15 @@ function basic_npc_class:set_movement_mode_flying(flag)
 		self.entity.physics.body:SetGravityScale(0.0)
 		SetFriction(self.entity.physics.body, 0)
 		
+		self.entity.pathfinding.first_priority_navpoint_check = nil
 	else
-		SetFriction(self.entity.physics.body, 2)		
+		SetFriction(self.entity.physics.body, 2)
+
+		self.entity.pathfinding.first_priority_navpoint_check = function(entity, transform, navpoint)
+			local foot = entity.transform.current.pos + self.current_pathfinding_eye
+			return (foot.y - navpoint.y) <= self.jump_height 
+		end
+		
 		self.steering_behaviours.target_seeking.weight_multiplier = 0
 		self.steering_behaviours.target_seeking.enabled = true
 		self.steering_behaviours.sensor_avoidance.enabled = true
@@ -90,6 +97,10 @@ end
 
 function basic_npc_class:angle_fits_in_threshold(angle, axis_angle, threshold)
 	angle = angle - self.entity.movement.axis_rotation_degrees
+	--print(111111111111111111111111111111111111111)
+	--print(angle, axis_angle, threshold)
+	--print (angle > axis_angle - threshold, angle < axis_angle + threshold)
+	--print(111111111111111111111111111111111111111)
 	return angle > axis_angle - threshold and angle < axis_angle + threshold
 end
 
@@ -219,20 +230,34 @@ function basic_npc_class:handle_flying_state()
 			local is_reachable_height = (foot.y - nav_target.y) <= self.jump_height 
 		
 			print (self.can_jump_there_now, is_reachable_height)
-			if not self.can_jump_there_now and not is_reachable_height then
+			if not is_reachable_height then
 				print"lecimy"
 				self:set_movement_mode_flying(true)
 			end
 		end
+				self:set_movement_mode_flying(false)
 	 end
 end
 
 function basic_npc_class:loop()
+
+	 if self:is_pathfinding() then
+	 
 	-- if walking mode and in air, let us just peacefully fall to just one navigation point mkay?
-	if not self.entity.pathfinding:exists_through_undiscovered_visible(self.frozen_navpoint, pathfinding_system.epsilon_distance_the_same_vertex)
-	or not (not self.movement_mode_flying and not self.something_under_foot) then
+	--if  self:is_pathfinding() and
+	--not self.entity.pathfinding:exists_through_undiscovered_visible(self.frozen_navpoint, pathfinding_system.epsilon_distance_the_same_vertex)
+	--or 
+	--not (not self.movement_mode_flying and not self.something_under_foot) then
 		self.frozen_navpoint = self.entity.pathfinding:get_current_navigation_target()
+	--end
+		
+	print(self.frozen_navpoint.x, self.frozen_navpoint.y)
+	
+	if not self.entity.pathfinding.first_priority_navpoint_check(self.entity, self.entity.transform.current, self.frozen_navpoint) then
+		self.entity.pathfinding:reset_persistent_navpoint()
 	end
+	
+	--self.frozen_navpoint = player.crosshair.transform.current.pos
 		
 	self:handle_player_visibility()
 	
@@ -248,11 +273,20 @@ function basic_npc_class:loop()
 	 end
 	 
 		local decided_to_jump_because_under_navpoint = self:map_vector_to_movement(self.steering_behaviours.target_seeking.last_output_force)
-		self:jump(not decided_to_jump_because_under_navpoint and self.can_jump_there_now)
+		
+		if not decided_to_jump_because_under_navpoint and not self:angle_fits_in_threshold(self.steering_behaviours.target_seeking.last_output_force:get_degrees(), 90, 30) and
+		
+		self.can_jump_there_now then
+			self:jump(true)
+		end
+		
 		self:handle_jumping()
 	end
 	
-	render_system:push_line(debug_line(self.entity.transform.current.pos, self.frozen_navpoint, rgba(255, 255, 0, 255)))
+	--render_system:push_line(debug_line(self.entity.transform.current.pos, self.frozen_navpoint, rgba(255, 255, 0, 255)))
+	--render_system:push_line(debug_line(self.entity.transform.current.pos, self.entity.pathfinding:get_current_target(), rgba(255, 0, 0, 255)))
+	 end
+
 	
 	
 	--print "\n\nBehaviours:\n\n"
@@ -264,9 +298,13 @@ end
 
 my_basic_npc = spawn_npc({
 	body = {
-		--physics = {
-		--	body_type = Box2D.b2_staticBody
-		--},
+		physics = {
+			--body_type = Box2D.b2_staticBody,
+			
+			body_info = {
+				density = 3
+			}
+		},
 		render = {
 			model = basic_npc_sprite
 		},
@@ -280,18 +318,21 @@ my_basic_npc = spawn_npc({
 				[visibility_component.DYNAMIC_PATHFINDING] = {
 					square_side = 15000,
 					color = rgba(0, 255, 255, 120),
-					ignore_discontinuities_shorter_than = 200,
+					ignore_discontinuities_shorter_than = 150,
 					filter = filter_pathfinding_visibility
 				}
 			}
 		},
 		
 		pathfinding = {
-			enable_backtracking = true,
-			target_offset = 100,
+			enable_backtracking = false,
+			target_offset = 10,
 			rotate_navpoints = 10,
-			distance_navpoint_hit = 2,
-			favor_velocity_parallellness = false
+			distance_navpoint_hit = 15,
+			favor_velocity_parallellness = false,
+			force_persistent_navpoints = true,
+			force_touch_sensors = true
+			
 		},
 		
 		steering = {

@@ -8,7 +8,8 @@ custom_intents = create_inverse_enum {
 	"QUIT",
 	"DROP_WEAPON",
 	"JUMP",
-	"GRAVITY_CHANGE"
+	"GRAVITY_CHANGE",
+	"MY_INTENT"
 }
 
 main_context = create_input_context {
@@ -21,6 +22,7 @@ main_context = create_input_context {
 		[keys.D] 				= intent_message.MOVE_RIGHT,
 		[keys.R] 				= custom_intents.RESTART,
 		[keys.V] 				= custom_intents.INSTANT_SLOWDOWN,
+		[keys.E] 				= custom_intents.MY_INTENT,
 		
 		[mouse.ldoubleclick] 	= intent_message.SHOOT,
 		[mouse.ltripleclick] 	= intent_message.SHOOT,
