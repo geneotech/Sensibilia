@@ -67,8 +67,8 @@ function basic_npc_class:set_movement_mode_flying(flag)
 		SetFriction(self.entity.physics.body, 2)
 
 		self.entity.pathfinding.first_priority_navpoint_check = function(entity, transform, navpoint)
-			local foot = entity.transform.current.pos + self.current_pathfinding_eye
-			return (foot.y - navpoint.y) <= self.jump_height 
+			--local foot = entity.transform.current.pos + self.current_pathfinding_eye
+			return (transform.pos.y - navpoint.y) <= self.jump_height 
 		end
 		
 		self.steering_behaviours.target_seeking.weight_multiplier = 0
@@ -249,6 +249,7 @@ function basic_npc_class:loop()
 	--or 
 	--not (not self.movement_mode_flying and not self.something_under_foot) then
 		self.frozen_navpoint = self.entity.pathfinding:get_current_navigation_target()
+		self.entity.pathfinding.eye_offset = self.current_pathfinding_eye
 	--end
 		
 	print(self.frozen_navpoint.x, self.frozen_navpoint.y)
@@ -310,7 +311,7 @@ my_basic_npc = spawn_npc({
 		},
 		
 		transform = {
-			pos = vec2(0, -10000)
+			pos = vec2(1000, -10000)
 		},
 		
 		visibility = {
@@ -325,8 +326,8 @@ my_basic_npc = spawn_npc({
 		},
 		
 		pathfinding = {
-			enable_backtracking = false,
-			target_offset = 10,
+			enable_backtracking = true,
+			target_offset = 20,
 			rotate_navpoints = 10,
 			distance_navpoint_hit = 15,
 			favor_velocity_parallellness = false,

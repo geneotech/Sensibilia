@@ -14,7 +14,7 @@ seek_archetype = {
 }			
 
 target_seek_steering = create_steering (archetyped(seek_archetype, {
-	radius_of_effect = 0
+	radius_of_effect = 50
 }))
 
 forward_seek_steering = create_steering (archetyped(seek_archetype, {

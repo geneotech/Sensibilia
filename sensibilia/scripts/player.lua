@@ -29,9 +29,14 @@ player_scriptable_info = create_scriptable_info {
 			return false
 		end,
 		
-		[scriptable_component.LOOP] = function (subject)
-			get_self(subject):loop()
-			--render_system:push_line(debug_line(subject.transform.current.pos + get_self(subject).foot_sensor_p1, subject.transform.current.pos + get_self(subject).foot_sensor_p2, rgba(255, 0, 0, 255)))
+		[scriptable_component.LOOP] = function (subject, is_substepping)
+			local my_self = get_self(subject)
+		
+			if is_substepping then
+				my_self:substep()
+			else
+				my_self:loop()
+			end
 		end
 	}
 }
@@ -49,7 +54,7 @@ player = spawn_npc {
 		},
 		
 		transform = {
-			pos = vec2(5000, -200)
+			pos = vec2(200, -200)*5
 		},
 		
 		input = {
