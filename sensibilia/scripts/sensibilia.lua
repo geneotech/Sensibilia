@@ -203,7 +203,7 @@ loop_only_info = create_scriptable_info {
 			local f = 1
 			
 			local sensor = vec2(get_self(player.body).foot_sensor_p1)
-			if player.body.transform.current.pos.x > 300/50 then 
+			if player.body.transform.current.pos.x > 1000/50 then 
 				f = -f 
 				sensor = get_self(player.body).foot_sensor_p1
 			else
@@ -213,11 +213,15 @@ loop_only_info = create_scriptable_info {
 			--should_debug_draw = get_self(player.body).something_under_foot
 			if should_debug_draw then render_system:clear_non_cleared_lines() end
 			
-			--can_point_be_reached_by_jump(vec2(0, 120), vec2(12000/50, 0), 0.1, vec2(300 - f*250, -200-75)/50, player.body.transform.current.pos/50 + sensor/50, vec2(vel.x, vel.y), vec2(0, -150), player.body.physics.body:GetMass())	
+			local self = get_self(player.body)
+			
+			can_point_be_reached_by_jump(base_gravity, self.entity.movement.input_acceleration/50, self.entity.movement.air_resistance, 
+			vec2(1000, 1000)/50, player.body.transform.current.pos/50 + sensor/50, vec2(vel.x, vel.y), 
+			self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, player.body.physics.body:GetMass())	
 			
 			render_system:push_line(debug_line(
 				player.body.transform.current.pos, 
-				player.body.transform.current.pos + vec2(0, -50 * calc_max_jump_height(vec2(0, 120), 0.1, vec2(0, -150), player.body.physics.body:GetMass())) , rgba(255, 0, 0, 255)))
+				player.body.transform.current.pos + vec2(0, -self.jump_height) , rgba(255, 0, 0, 255)))
 			
 			if not should_debug_draw then 
 				render_system:push_non_cleared_line(debug_line(player.body.transform.current.pos+ sensor , 
@@ -306,7 +310,7 @@ for k, v in pairs(rects) do
 		},
 		
 		physics = {
-			body_type = Box2D.b2_dynamicBody,
+			body_type = Box2D.b2_staticBody,
 			
 			body_info = {
 				shape_type = physics_info.RECT,

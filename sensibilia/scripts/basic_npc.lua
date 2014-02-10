@@ -117,7 +117,7 @@ function basic_npc_class:determine_jumpability(queried_point)
 	local foot = self.entity.transform.current.pos + self.current_pathfinding_eye
 	
 	return can_point_be_reached_by_jump(base_gravity, self.entity.movement.input_acceleration/50, self.entity.movement.air_resistance, 
-					queried_point/50, foot/50, vec2(vel.x, vel.y), vec2(0, -150), self.entity.physics.body:GetMass())
+					queried_point/50, foot/50, vec2(vel.x, vel.y), self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, self.entity.physics.body:GetMass())
 end
 
 function basic_npc_class:pursue_target(target_entity)			

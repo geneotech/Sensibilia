@@ -16,10 +16,13 @@ function npc_class:initialize(subject_entity)
 	self.wants_to_jump = false
 	self.something_under_foot = false
 	
-	self.jump_height = (50 * calc_max_jump_height(base_gravity, 0.1, vec2(0, -150), self.entity.physics.body:GetMass())) - 2
-	
 	self.max_jetpack_steps = 15
 	self.still_holding_jetpack = false
+	self.jetpack_impulse = vec2(0, -10)
+	self.jump_impulse = vec2(0, -31)
+	
+	self.jump_height = (50 * calc_max_jump_height(base_gravity, 0.1, self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, self.entity.physics.body:GetMass())) - 2
+	
 end
 	
 function npc_class:jump(jump_flag)
@@ -71,7 +74,7 @@ function npc_class:handle_jumping()
 	
 	if self.something_under_foot and self.jump_timer:get_steps() > 7 then
 		-- if there is, apply no gravity, simulate feet resistance
-		body:SetGravityScale(0.0)
+		--body:SetGravityScale(0.0)
 		SetFriction(body, 2)
 		self.entity.movement.thrust_parallel_to_ground_length = 500
 		--self.entity.movement.input_acceleration.x = 10000
@@ -85,11 +88,14 @@ function npc_class:handle_jumping()
 	-- perform jumping 
 	if self.wants_to_jump and self.jump_timer:get_steps() > 7 then
 		if self.something_under_foot then
-			local jump_impulse = vec2(0, -30):rotate(gravity_angle_offset, vec2(0, 0)) 
+			local jump_impulse = self.jump_impulse:rotate(gravity_angle_offset, vec2(0, 0)) 
 			
 			body:SetGravityScale(1.0)
 			self.entity.movement.thrust_parallel_to_ground_length = 0
+			--body:SetLinearVelocity(b2Vec2(0, 0))
+			print "APPLYING"
 			body:ApplyLinearImpulse(b2Vec2(jump_impulse.x, jump_impulse.y), body:GetWorldCenter(), true)
+			
 			
 			self.still_holding_jetpack = true
 			self.jetpack_timer:reset()
@@ -101,19 +107,21 @@ end
 
 function npc_class:handle_variable_height_jump()
 	local body = self.entity.physics.body
-	if self.still_holding_jetpack and self.jetpack_timer:get_steps() <= self.max_jetpack_steps then
+	if self.still_holding_jetpack and self.jetpack_timer:get_steps() < self.max_jetpack_steps then
 	--	print(self.still_holding_jetpack, self.jetpack_timer:get_steps(), self.max_jetpack_steps)
-		local jetpack_force = vec2(0, -10):rotate(gravity_angle_offset, vec2(0, 0)) 
+	print "JETPACKING"
+		local jetpack_force = self.jetpack_impulse:rotate(gravity_angle_offset, vec2(0, 0)) 
 		body:ApplyLinearImpulse(b2Vec2(jetpack_force.x, jetpack_force.y), body:GetWorldCenter(), true)
 		
 	end
 end
 
 function npc_class:loop()	
-	self:handle_jumping()
+	--self:handle_jumping()
 end
 
 function npc_class:substep()
+	self:handle_jumping()
 	self:handle_variable_height_jump()
 end
 

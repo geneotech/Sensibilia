@@ -7,7 +7,7 @@ end
 function debug_draw(p1, p2, r, g, b, a)
 	--pv(p1)
 	--pv(p2)
-	render_system:push_line(debug_line(p1*50, p2*50, rgba(r,g,b,a)))
+	if should_debug_draw then render_system:push_non_cleared_line(debug_line(p1*50, p2*50, rgba(r,g,b,a))) end
 end
 
 function simple_integration(p, dt)
@@ -46,11 +46,15 @@ queried_point, -- vector (meters)
 starting_position, -- vector (meters)
 starting_velocity, -- vector (meters per seconds)
 jump_impulse, -- vector (meters per seconds)
+
+jetpack_impulse,
+jetpack_steps,
+
 mass -- scalar (kilogrammes)
 )
 
 --	print "\n\nBEGIN\n\n"
---	
+----	
 --pv(gravity) -- vector (meters per seconds^2)
 --pv(movement_force) -- vector (meters per seconds^2)
 --print(air_resistance_mult) -- scalar
@@ -58,6 +62,8 @@ mass -- scalar (kilogrammes)
 --pv(starting_position) -- vector (meters)
 --pv(starting_velocity) -- vector (meters per seconds)
 --pv(jump_impulse) -- vector (meters per seconds)
+--pv(jetpack_impulse)
+--print(jetpack_steps)
 --print(mass) -- scalar (kilogrammes)
 	
 	local my_point = {
@@ -73,7 +79,12 @@ mass -- scalar (kilogrammes)
 	
 	debug_draw(queried_point, starting_position, 0, 255, 255, 255)
 	
-	while true do			
+	while true do
+		if jetpack_steps > 0 then
+			my_point.vel = my_point.vel + jetpack_impulse/mass
+			jetpack_steps = jetpack_steps - 1
+		end
+		
 		-- calculate resultant force
 		my_point.acc = 
 		-- air resistance (multiplier * squared length of the velocity * opposite normalized velocity)
@@ -86,7 +97,7 @@ mass -- scalar (kilogrammes)
 		
 		-- i have discarded any timestep optimizations at the moment as they are very context specific
 		local new_p = simple_integration(my_point, step)
-	
+		
 		debug_draw(my_point.pos, new_p.pos, 255, 0, 255, 255)
 		debug_draw(new_p.pos, new_p.pos+vec2(0, -1), 255, 255, 0, 255)
 		
@@ -111,6 +122,10 @@ function calc_max_jump_height(
 gravity, -- vector (meters per seconds^2)
 air_resistance_mult, -- scalar
 jump_impulse, -- vector (meters per seconds)
+
+jetpack_impulse,
+jetpack_steps,
+
 mass -- scalar (kilogrammes)
 )
 	local my_point = {
@@ -128,6 +143,11 @@ mass -- scalar (kilogrammes)
 		
 		my_point.acc = my_point.acc * (1/mass)
 		my_point.acc = my_point.acc + gravity
+		
+		if jetpack_steps > 0 then
+			my_point.vel = my_point.vel + jetpack_impulse/mass
+			jetpack_steps = jetpack_steps - 1
+		end
 			
 		local new_p = simple_integration(my_point, step)
 		
