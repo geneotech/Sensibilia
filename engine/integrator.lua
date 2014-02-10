@@ -136,6 +136,11 @@ mass -- scalar (kilogrammes)
 	local step = 1/60
 	
 	while true do	
+		if jetpack_steps > 0 then
+			my_point.vel = my_point.vel + jetpack_impulse/mass
+			jetpack_steps = jetpack_steps - 1
+		end
+		
 		-- calculate resultant force
 		my_point.acc = 
 		-- air resistance (multiplier * squared length of the velocity * opposite normalized velocity)
@@ -144,11 +149,6 @@ mass -- scalar (kilogrammes)
 		my_point.acc = my_point.acc * (1/mass)
 		my_point.acc = my_point.acc + gravity
 		
-		if jetpack_steps > 0 then
-			my_point.vel = my_point.vel + jetpack_impulse/mass
-			jetpack_steps = jetpack_steps - 1
-		end
-			
 		local new_p = simple_integration(my_point, step)
 		
 		if new_p.pos.y >= my_point.pos.y then 

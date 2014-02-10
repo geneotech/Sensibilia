@@ -220,8 +220,8 @@ loop_only_info = create_scriptable_info {
 			self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, player.body.physics.body:GetMass())	
 			
 			render_system:push_line(debug_line(
-				player.body.transform.current.pos, 
-				player.body.transform.current.pos + vec2(0, -self.jump_height) , rgba(255, 0, 0, 255)))
+				player.body.transform.current.pos + sensor, 
+				player.body.transform.current.pos  + sensor + vec2(0, -self.jump_height) , rgba(255, 0, 0, 255)))
 			
 			if not should_debug_draw then 
 				render_system:push_non_cleared_line(debug_line(player.body.transform.current.pos+ sensor , 
