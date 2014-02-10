@@ -112,12 +112,24 @@ function basic_npc_class:map_vector_to_movement(real_vector)
 	return should_jump
 end
 
-function basic_npc_class:determine_jumpability(queried_point)	
+function basic_npc_class:determine_jumpability(queried_point, apply_upwards_forces)	
 	local vel = self.entity.physics.body:GetLinearVelocity()
 	local foot = self.entity.transform.current.pos + self.current_pathfinding_eye
 	
-	return can_point_be_reached_by_jump(base_gravity, self.entity.movement.input_acceleration/50, self.entity.movement.air_resistance, 
-					queried_point/50, foot/50, vec2(vel.x, vel.y), self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, self.entity.physics.body:GetMass())
+	local upward_force_multiplier = 1
+	if not apply_upwards_forces then upward_force_multiplier = 0 end
+	
+	return can_point_be_reached_by_jump(
+	base_gravity, 
+	self.entity.movement.input_acceleration/50, 
+	self.entity.movement.air_resistance, 
+	queried_point/50, 
+	foot/50, 
+	vec2(vel.x, vel.y),
+	self.jump_impulse*upward_force_multiplier, 
+	self.jetpack_impulse, 
+	self.max_jetpack_steps*upward_force_multiplier, 
+	self.entity.physics.body:GetMass())
 end
 
 function basic_npc_class:pursue_target(target_entity)			
@@ -214,29 +226,26 @@ function basic_npc_class:handle_visibility_offset()
 end
 
 function basic_npc_class:handle_flying_state()
-	 if self:is_pathfinding() then
-		local vel = self.entity.physics.body:GetLinearVelocity()
-		local nav_target = self.frozen_navpoint
-		local foot = self.entity.transform.current.pos + self.current_pathfinding_eye
-	 
-		--print(self.movement_mode_flying, foot.y, nav_target.y, self.jump_height, (foot.y - nav_target.y))
-	 
-		local to_navigation_target_angle = (nav_target - foot):get_degrees()
-		if self.movement_mode_flying and foot.y < nav_target.y-20 then
-			self:set_movement_mode_flying(false)
-			print"idziemy"
-		elseif not self.movement_mode_flying then
-			self.can_jump_there_now = self:determine_jumpability(nav_target)
-			local is_reachable_height = (foot.y - nav_target.y) <= self.jump_height 
-		
-			print (self.can_jump_there_now, is_reachable_height)
-			if not is_reachable_height then
-				print"lecimy"
-				self:set_movement_mode_flying(true)
-			end
+	local vel = self.entity.physics.body:GetLinearVelocity()
+	local nav_target = self.frozen_navpoint
+	local foot = self.entity.transform.current.pos + self.current_pathfinding_eye
+ 
+	--print(self.movement_mode_flying, foot.y, nav_target.y, self.jump_height, (foot.y - nav_target.y))
+ 
+	local to_navigation_target_angle = (nav_target - foot):get_degrees()
+	if self.movement_mode_flying and foot.y < nav_target.y-20 then
+		self:set_movement_mode_flying(false)
+		print"idziemy"
+	elseif not self.movement_mode_flying then
+		local is_reachable_height = (foot.y - nav_target.y) <= self.jump_height 
+
+		if not is_reachable_height then
+			print"lecimy"
+			self:set_movement_mode_flying(true)
 		end
-				self:set_movement_mode_flying(false)
-	 end
+	end
+	
+	self:set_movement_mode_flying(false)
 end
 
 function basic_npc_class:loop()
@@ -250,6 +259,7 @@ function basic_npc_class:loop()
 	--not (not self.movement_mode_flying and not self.something_under_foot) then
 		self.frozen_navpoint = self.entity.pathfinding:get_current_navigation_target()
 		self.entity.pathfinding.eye_offset = self.current_pathfinding_eye
+		self.target_entities.navigation.transform.current.pos = self.frozen_navpoint
 	--end
 		
 	print(self.frozen_navpoint.x, self.frozen_navpoint.y)
@@ -269,17 +279,30 @@ function basic_npc_class:loop()
 	if self.movement_mode_flying then
 		self:handle_steering()
 	else
-	 if self:is_pathfinding() then
-		self.target_entities.navigation.transform.current.pos = self.frozen_navpoint
-	 end
-	 
-		local decided_to_jump_because_under_navpoint = self:map_vector_to_movement(self.steering_behaviours.target_seeking.last_output_force)
+		local real_vector = self.steering_behaviours.target_seeking.last_output_force
 		
-		if not decided_to_jump_because_under_navpoint and not self:angle_fits_in_threshold(self.steering_behaviours.target_seeking.last_output_force:get_degrees(), 90, 30) and
-		
-		self.can_jump_there_now then
+		-- if we can get there without applying more upward forces, then cancel out the jump behaviour (also stops holding the jetpack)
+		if self:determine_jumpability(self.frozen_navpoint, false) then
+			self:jump(false)
+		-- maybe we can get there by taking the jump now; let's do this then
+		elseif self:determine_jumpability(self.frozen_navpoint, true) then
 			self:jump(true)
+		-- else let the simple movement mapper decide whether to jump or not
+		else
+			--local should_jump = 
+			self:jump(self:angle_fits_in_threshold(real_vector:get_degrees(), -90, 20))
 		end
+		
+		self.entity.movement.requested_movement = real_vector
+	
+		
+		--local decided_to_jump_because_under_navpoint = self:map_vector_to_movement(self.steering_behaviours.target_seeking.last_output_force)
+		--
+		--if not decided_to_jump_because_under_navpoint and not self:angle_fits_in_threshold(self.steering_behaviours.target_seeking.last_output_force:get_degrees(), 90, 30) and
+		--
+		--self.can_jump_there_now then
+		--	self:jump(true)
+		--end
 		
 		self:handle_jumping()
 	end
@@ -327,9 +350,9 @@ my_basic_npc = spawn_npc({
 		
 		pathfinding = {
 			enable_backtracking = true,
-			target_offset = 20,
+			target_offset = 3,
 			rotate_navpoints = 10,
-			distance_navpoint_hit = 15,
+			distance_navpoint_hit = 25,
 			favor_velocity_parallellness = false,
 			force_persistent_navpoints = true,
 			force_touch_sensors = true
@@ -338,7 +361,7 @@ my_basic_npc = spawn_npc({
 		
 		steering = {
 			max_resultant_force = -1, -- -1 = no force clamping
-			max_speed = 12000
+			max_speed = 12000*1.4142135623730950488016887242097
 		}
 	}
 }, basic_npc_class)

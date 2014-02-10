@@ -6,7 +6,7 @@ visibility_system.draw_triangle_edges = 0
 visibility_system.draw_discontinuities = 1
 visibility_system.draw_visible_walls = 0
 
-visibility_system.epsilon_ray_distance_variation = 0.005
+visibility_system.epsilon_ray_distance_variation = 0.007
 visibility_system.epsilon_threshold_obstacle_hit = 10
 visibility_system.epsilon_distance_vertex_hit = 5
 
