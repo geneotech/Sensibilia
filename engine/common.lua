@@ -16,9 +16,11 @@ function inherits_from(baseClass)
     -- Note that this function uses class_mt as an upvalue, so every instance
     -- of the class will share the same metatable.
     --
-    function new_class:create()
+    function new_class:create(...)
         local newinst = {}
         setmetatable( newinst, class_mt )
+		
+		new_class:constructor(table.unpack({...}))
         return newinst
     end
 

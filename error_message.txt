@@ -21,315 +21,476 @@ level 2: {
   }
 }
 level 3: {
-  ["(*temporary)"] = "attempt to call field 'first_priority_navpoint_check' (a nil value)",
-  self = {
-    can_jump_to_navpoint = false,
-    current_pathfinding_eye = <userdata 1>,
-    entity = <userdata 2>,
-    foot_sensor_p1 = <userdata 3>,
-    foot_sensor_p2 = <userdata 4>,
-    frozen_navpoint = <userdata 5>,
-    is_alert = true,
-    is_seen = false,
-    jetpack_impulse = <userdata 6>,
-    jetpack_timer = <userdata 7>,
-    jump_height = 934.66582107544,
-    jump_impulse = <userdata 8>,
-    jump_timer = <userdata 9>,
-    last_seen_velocity = <userdata 10>,
-    max_jetpack_steps = 15,
-    movement_mode_flying = true,
-    something_under_foot = true,
-    steering_behaviours = {
-      forward_seeking = <userdata 11>,
-      obstacle_avoidance = <userdata 12>,
-      pursuit = <userdata 13>,
-      sensor_avoidance = <userdata 14>,
-      separating = <userdata 15>,
-      target_seeking = <userdata 16>,
-      wandering = <userdata 17>
-    },
-    still_holding_jetpack = false,
-    target_entities = {
-      forward = <userdata 18>,
-      last_seen = <userdata 19>,
-      navigation = <userdata 20>
-    },
-    wants_to_jump = false,
-    was_seen = true,
+  ["(*temporary)"] = "table expected, got nil"
+}
+level 4: {
+  ["(*temporary)"] = <1>{
+    angle_fits_in_threshold = <function 1>,
+    create = <function 2>,
+    determine_jumpability = <function 3>,
+    handle_flying_state = <function 4>,
+    handle_player_visibility = <function 5>,
+    handle_steering = <function 6>,
+    handle_visibility_offset = <function 7>,
+    initialize = <function 8>,
+    is_pathfinding = <function 9>,
+    loop = <function 10>,
+    map_vector_to_movement = <function 11>,
+    pursue_target = <function 12>,
+    refresh_behaviours = <function 13>,
+    set_all_behaviours_enabled = <function 14>,
+    set_movement_mode_flying = <function 15>,
+    stop_pursuit = <function 16>,
+    substep = <function 17>,
     <metatable> = {
       __index = {
-        angle_fits_in_threshold = <function 1>,
-        create = <function 2>,
-        determine_jumpability = <function 3>,
-        handle_flying_state = <function 4>,
-        handle_player_visibility = <function 5>,
-        handle_steering = <function 6>,
-        handle_visibility_offset = <function 7>,
-        initialize = <function 8>,
-        is_pathfinding = <function 9>,
-        loop = <function 10>,
-        map_vector_to_movement = <function 11>,
-        pursue_target = <function 12>,
-        refresh_behaviours = <function 13>,
-        set_all_behaviours_enabled = <function 14>,
-        set_movement_mode_flying = <function 15>,
-        stop_pursuit = <function 16>,
+        create = <function 18>,
+        handle_jumping = <function 19>,
+        handle_variable_height_jump = <function 20>,
+        initialize = <function 21>,
+        jump = <function 22>,
+        loop = <function 23>,
+        set_foot_sensor_from_circle = <function 24>,
+        set_foot_sensor_from_sprite = <function 25>,
+        set_gravity_shift_state = <function 26>,
+        substep = <function 27>,
         <metatable> = {
-          __index = {
-            create = <function 17>,
-            handle_jumping = <function 18>,
-            handle_variable_height_jump = <function 19>,
-            initialize = <function 20>,
-            jump = <function 21>,
-            loop = <function 22>,
-            set_foot_sensor_from_circle = <function 23>,
-            set_foot_sensor_from_sprite = <function 24>,
-            set_gravity_shift_state = <function 25>,
-            substep = <function 26>,
-            <metatable> = {
-              __index = {}
-            }
-          }
+          __index = {}
+        }
+      }
+    }
+  },
+  newinst = {
+    <metatable> = {
+      __index = <table 1>
+    }
+  },
+  self = <table 1>
+}
+level 5: {
+  group_overrider = {
+    body = {
+      pathfinding = {
+        distance_navpoint_hit = 2,
+        enable_backtracking = true,
+        favor_velocity_parallellness = false,
+        force_persistent_navpoints = true,
+        force_touch_sensors = true,
+        rotate_navpoints = 10,
+        target_offset = 3
+      },
+      physics = {
+        body_info = {
+          density = 3,
+          linear_damping = 18
+        }
+      },
+      render = {
+        model = <userdata 1>
+      },
+      steering = {
+        max_resultant_force = -1,
+        max_speed = 16970.562748477
+      },
+      transform = {
+        pos = <userdata 2>
+      },
+      visibility = {
+        visibility_layers = { {
+            color = <userdata 3>,
+            filter = {
+              categoryBits = 47,
+              maskBits = 4
+            },
+            ignore_discontinuities_shorter_than = 150,
+            square_side = 15000
+          } }
+      }
+    }
+  },
+  my_new_npc = {
+    body = <userdata 4>
+  },
+  what_class = {
+    angle_fits_in_threshold = <function 1>,
+    create = <function 2>,
+    determine_jumpability = <function 3>,
+    handle_flying_state = <function 4>,
+    handle_player_visibility = <function 5>,
+    handle_steering = <function 6>,
+    handle_visibility_offset = <function 7>,
+    initialize = <function 8>,
+    is_pathfinding = <function 9>,
+    loop = <function 10>,
+    map_vector_to_movement = <function 11>,
+    pursue_target = <function 12>,
+    refresh_behaviours = <function 13>,
+    set_all_behaviours_enabled = <function 14>,
+    set_movement_mode_flying = <function 15>,
+    stop_pursuit = <function 16>,
+    substep = <function 17>,
+    <metatable> = {
+      __index = {
+        create = <function 18>,
+        handle_jumping = <function 19>,
+        handle_variable_height_jump = <function 20>,
+        initialize = <function 21>,
+        jump = <function 22>,
+        loop = <function 23>,
+        set_foot_sensor_from_circle = <function 24>,
+        set_foot_sensor_from_sprite = <function 25>,
+        set_gravity_shift_state = <function 26>,
+        substep = <function 27>,
+        <metatable> = {
+          __index = {}
         }
       }
     }
   }
 }
-level 4: {
-  is_substepping = false,
-  my_self = {
-    can_jump_to_navpoint = false,
-    current_pathfinding_eye = <userdata 1>,
-    entity = <userdata 2>,
-    foot_sensor_p1 = <userdata 3>,
-    foot_sensor_p2 = <userdata 4>,
-    frozen_navpoint = <userdata 5>,
-    is_alert = true,
-    is_seen = false,
-    jetpack_impulse = <userdata 6>,
-    jetpack_timer = <userdata 7>,
-    jump_height = 934.66582107544,
-    jump_impulse = <userdata 8>,
-    jump_timer = <userdata 9>,
-    last_seen_velocity = <userdata 10>,
-    max_jetpack_steps = 15,
-    movement_mode_flying = true,
-    something_under_foot = true,
-    steering_behaviours = {
-      forward_seeking = <userdata 11>,
-      obstacle_avoidance = <userdata 12>,
-      pursuit = <userdata 13>,
-      sensor_avoidance = <userdata 14>,
-      separating = <userdata 15>,
-      target_seeking = <userdata 16>,
-      wandering = <userdata 17>
-    },
-    still_holding_jetpack = false,
-    target_entities = {
-      forward = <userdata 18>,
-      last_seen = <userdata 19>,
-      navigation = <userdata 20>
-    },
-    wants_to_jump = false,
-    was_seen = true,
-    <metatable> = {
-      __index = {
-        angle_fits_in_threshold = <function 1>,
-        create = <function 2>,
-        determine_jumpability = <function 3>,
-        handle_flying_state = <function 4>,
-        handle_player_visibility = <function 5>,
-        handle_steering = <function 6>,
-        handle_visibility_offset = <function 7>,
-        initialize = <function 8>,
-        is_pathfinding = <function 9>,
-        loop = <function 10>,
-        map_vector_to_movement = <function 11>,
-        pursue_target = <function 12>,
-        refresh_behaviours = <function 13>,
-        set_all_behaviours_enabled = <function 14>,
-        set_movement_mode_flying = <function 15>,
-        stop_pursuit = <function 16>,
-        <metatable> = {
-          __index = {
-            create = <function 17>,
-            handle_jumping = <function 18>,
-            handle_variable_height_jump = <function 19>,
-            initialize = <function 20>,
-            jump = <function 21>,
-            loop = <function 22>,
-            set_foot_sensor_from_circle = <function 23>,
-            set_foot_sensor_from_sprite = <function 24>,
-            set_gravity_shift_state = <function 25>,
-            substep = <function 26>,
-            <metatable> = {
-              __index = {}
-            }
-          }
-        }
-      }
-    }
-  },
-  subject = <userdata 21>
+level 6: {}
+level 7: {
+  ["(*temporary)"] = "sensibilia\\scripts\\basic_npc.lua"
+}
+level 8: {}
+level 9: {
+  ["(*temporary)"] = "sensibilia\\scripts\\npc.lua"
+}
+level 10: {}
+level 11: {
+  ["(*temporary)"] = "sensibilia\\scripts\\sensibilia.lua"
+}
+level 12: {}
+level 13: {
+  ["(*temporary)"] = "sensibilia\\scripts\\sensibilia_init.lua"
+}
+level 14: {
+  CURRENT_SCENE = "sensibilia\\scripts\\sensibilia_init.lua"
 }
 
 stack traceback:
 	[string "METERS_TO_PIXELS = 50..."]:39: in function <[string "METERS_TO_PIXELS = 50..."]:6>
-	[C]: in function 'first_priority_navpoint_check'
-	sensibilia\scripts\basic_npc.lua:281: in function 'loop'
-	sensibilia\scripts\npc.lua:150: in function <sensibilia\scripts\npc.lua:144>
+	[C]: in ?
+	[C]: in function 'unpack'
+	engine\common.lua:23: in function 'create'
+	sensibilia\scripts\npc.lua:212: in function 'spawn_npc'
+	sensibilia\scripts\basic_npc.lua:322: in main chunk
+	[C]: in function 'dofile'
+	sensibilia\scripts\npc.lua:220: in main chunk
+	[C]: in function 'dofile'
+	sensibilia\scripts\sensibilia.lua:132: in main chunk
+	[C]: in function 'dofile'
+	sensibilia\scripts\sensibilia_init.lua:48: in main chunk
+	[C]: in function 'dofile'
+	[string "METERS_TO_PIXELS = 50..."]:85: in main chunk
 Globals:
-STATIC_OBJECTS:
-4
-
-visibility_layer:
-<userdata 1>
-
-query_output:
-<userdata 1>
-
-to_vec2_table:
+class_info:
 <function 1>
 
-behaviour_tree_component:
+wander_behaviour:
 <userdata 1>
 
-npc_basic_loop:
-<userdata 1>
-
-commands:
-<userdata 1>
-
-keys:
-<userdata 1>
-
-create_animation:
+ptr_create_entity_group:
 <function 1>
 
-_physics_system:
+chase_component:
 <userdata 1>
 
-texture:
-<userdata 1>
-
-render_system:
-<userdata 1>
-
-containment_behaviour:
-<userdata 1>
-
-create_entity:
+getmetatable:
 <function 1>
 
-_render_system:
+wander_steering:
 <userdata 1>
 
-set_physics_info:
-<function 1>
+METERS_TO_PIXELS:
+50
+
+film_grain_vertex_shader:
+<userdata 1>
 
 sfMusic:
 <userdata 1>
 
-CHARACTERS:
-1
-
-bit32:
-{
-  arshift = <function 1>,
-  band = <function 2>,
-  bnot = <function 3>,
-  bor = <function 4>,
-  btest = <function 5>,
-  bxor = <function 6>,
-  extract = <function 7>,
-  lrotate = <function 8>,
-  lshift = <function 9>,
-  replace = <function 10>,
-  rrotate = <function 11>,
-  rshift = <function 12>
-}
-
-animation:
-<userdata 1>
-
-poly1:
-{ {
-    x = 0,
-    y = 0
-  }, {
-    x = 0,
-    y = 340
-  }, {
-    x = 640,
-    y = 340
-  }, {
-    x = 640,
-    y = 280
-  }, {
-    x = 60,
-    y = 280
-  }, {
-    x = 60,
-    y = 180
-  }, {
-    x = 240,
-    y = 180
-  }, {
-    x = 240,
-    y = 120
-  }, {
-    x = 60,
-    y = 120
-  }, {
-    x = 60,
-    y = 0
-  } }
-
-animate_info:
-<userdata 1>
-
-render_component:
-<userdata 1>
-
-input_context:
-<userdata 1>
-
-atlas:
-<userdata 1>
-
-collision_message:
-<userdata 1>
-
-_entity:
-<userdata 1>
-
-create_entity_group:
+calc_max_jump_height:
 <function 1>
 
-rawset:
-<function 1>
-
-_input_system:
+keys:
 <userdata 1>
 
 setmetatable:
 <function 1>
 
-my_crosshair_sprite:
+b2Vec2:
 <userdata 1>
 
-filter_obstacle_visibility:
+window:
+<userdata 1>
+
+render_system:
+<userdata 1>
+
+set_world_reloading_script:
+<function 1>
+
+physics_info:
+<userdata 1>
+
+seek_behaviour:
+<userdata 1>
+
+io:
 {
-  categoryBits = 47,
-  maskBits = 7
+  close = <function 1>,
+  flush = <function 2>,
+  input = <function 3>,
+  lines = <function 4>,
+  open = <function 5>,
+  output = <function 6>,
+  popen = <function 7>,
+  read = <function 8>,
+  stderr = <userdata 1>,
+  stdin = <userdata 2>,
+  stdout = <userdata 3>,
+  tmpfile = <function 9>,
+  type = <function 10>,
+  write = <function 11>
 }
 
-add_vals:
+animate_component:
+<userdata 1>
+
+rewrite:
 <function 1>
 
-can_point_be_reached_by_jump:
+CORPSES:
+32
+
+rewrite_ptr:
 <function 1>
+
+textures:
+<userdata 1>
+
+create_animation_set:
+<function 1>
+
+input_component:
+<userdata 1>
+
+entities:
+<userdata 1>
+
+ipairs:
+<function 1>
+
+create:
+<function 1>
+
+stability:
+1
+
+_physics_system:
+<userdata 1>
+
+assert:
+<function 1>
+
+set_physics_info:
+<function 1>
+
+npc_basic_loop:
+<userdata 1>
+
+visibility_component:
+<userdata 1>
+
+create_inverse_enum:
+<function 1>
+
+filter_characters:
+{
+  categoryBits = 1,
+  maskBits = 23
+}
+
+b2Body:
+<userdata 1>
+
+filter_shells:
+{
+  categoryBits = 128,
+  maskBits = 134
+}
+
+coroutine:
+{
+  create = <function 1>,
+  resume = <function 2>,
+  running = <function 3>,
+  status = <function 4>,
+  wrap = <function 5>,
+  yield = <function 6>
+}
+
+orthographic_projection:
+<function 1>
+
+entries_from_archetypes:
+<function 1>
+
+b2WeldJoint:
+<userdata 1>
+
+raycast_output:
+<userdata 1>
+
+query_output:
+<userdata 1>
+
+simple_create_polygon:
+<function 1>
+
+get_self:
+<function 1>
+
+pairs:
+<function 1>
+
+create_animation:
+<function 1>
+
+npc_class:
+{
+  create = <function 1>,
+  handle_jumping = <function 2>,
+  handle_variable_height_jump = <function 3>,
+  initialize = <function 4>,
+  jump = <function 5>,
+  loop = <function 6>,
+  set_foot_sensor_from_circle = <function 7>,
+  set_foot_sensor_from_sprite = <function 8>,
+  set_gravity_shift_state = <function 9>,
+  substep = <function 10>,
+  <metatable> = {
+    __index = {}
+  }
+}
+
+environment_entity2:
+<userdata 1>
+
+navigation_hint:
+<userdata 1>
+
+current_gravity:
+<userdata 1>
+
+xpcall:
+<function 1>
+
+dofile:
+<function 1>
+
+my_fragment_shader:
+<userdata 1>
+
+SetDensity:
+<function 1>
+
+create_particle_emitter_info:
+<function 1>
+
+_entity:
+<userdata 1>
+
+basic_texture_uniform:
+0
+
+obstacle_avoidance_behaviour:
+<userdata 1>
+
+environment_entity:
+<userdata 1>
+
+current_zoom_level:
+10000
+
+create_particle_effect:
+<function 1>
+
+STATIC_OBJECTS:
+4
+
+ptr_lookup:
+<function 1>
+
+config_table:
+{
+  bpp = 24,
+  doublebuffer = 1,
+  fullscreen = 0,
+  resolution_h = 1000,
+  resolution_w = 1500,
+  sensitivity = <userdata 1>,
+  window_border = 0,
+  window_name = "example",
+  window_x = 0,
+  window_y = 0
+}
+
+target_info:
+<userdata 1>
+
+atlas:
+<userdata 1>
+
+archetyped:
+<function 1>
+
+vertex:
+<userdata 1>
+
+gravity_angle_offset:
+0
+
+float_vector:
+<userdata 1>
+
+def:
+<function 1>
+
+entity_ptr:
+<userdata 1>
+
+common:
+<userdata 1>
+
+GL:
+<userdata 1>
+
+target_entity_archetype:
+{
+  render = {
+    layer = 0,
+    model = <userdata 1>
+  },
+  transform = {}
+}
+
+particle_emitter_component:
+<userdata 1>
+
+lookat_component:
+<userdata 1>
+
+damage_component:
+<userdata 1>
+
+create_steering:
+<function 1>
+
+flocking_behaviour:
+<userdata 1>
 
 filter_npc_feet:
 {
@@ -337,312 +498,29 @@ filter_npc_feet:
   maskBits = 71
 }
 
-raycast_output:
-<userdata 1>
-
-class_info_data:
-<userdata 1>
-
-filter_pathfinding_visibility:
+filter_characters_separation:
 {
-  categoryBits = 47,
-  maskBits = 4
+  categoryBits = 1,
+  maskBits = 1
 }
 
-camera_component:
-<userdata 1>
-
-create_emission:
+property:
 <function 1>
 
-SetFriction:
-<function 1>
-
-particle_emitter_info:
-<userdata 1>
-
-particle_emitter_component:
-<userdata 1>
-
-b2World:
-<userdata 1>
-
-npc_group_archetype:
-{
-  body = {
-    movement = {
-      air_resistance = 0.1,
-      ground_filter = {
-        categoryBits = 255,
-        maskBits = 71
-      },
-      input_acceleration = <userdata 1>,
-      inverse_thrust_brake = <userdata 2>,
-      max_speed_animation = 2300,
-      receivers = {},
-      sidescroller_setup = true
-    },
-    physics = {
-      body_info = {
-        bullet = true,
-        density = 1,
-        filter = {
-          categoryBits = 2,
-          maskBits = 63
-        },
-        fixed_rotation = true,
-        friction = 2,
-        radius = 60,
-        shape_type = 0
-      },
-      body_type = 2
-    },
-    render = {
-      layer = 2
-    },
-    scriptable = {
-      available_scripts = <userdata 3>
-    },
-    transform = {}
-  }
-}
-
-film_grain_fragment_shader:
-<userdata 1>
-
-my_atlas:
-<userdata 1>
-
-float_vector:
-<userdata 1>
-
-create_inverse_enum:
-<function 1>
-
-add_roots:
-<function 1>
-
-separation_steering:
-<userdata 1>
-
-class_names:
-<function 1>
-
-def:
-<function 1>
-
-calc_max_jump_height:
-<function 1>
-
-BULLETS:
-8
-
-tostring:
-<function 1>
-
-glwindow:
-<userdata 1>
-
-b2RevoluteJointDef:
-<userdata 1>
-
-class:
-<function 1>
-
-global_sprites:
-{ <userdata 1>, <userdata 2>, <userdata 3>, <userdata 4> }
-
-body_to_entity:
-<function 1>
-
-rect_xywh:
-<userdata 1>
-
-point_below_segment:
-<function 1>
-
-ENEMY_BULLETS:
-16
-
-ITEMS:
-64
-
-entries_from_archetypes:
-<function 1>
-
-GLSL_shader:
-<userdata 1>
-
-timer:
-<userdata 1>
-
-post_destroy:
-<function 1>
-
-b2Filter:
-<userdata 1>
-
-transform_state:
-<userdata 1>
-
-super:
-<function 1>
-
-orthographic_projection:
-<function 1>
-
-ptr_create_entity:
-<function 1>
-
-images:
-{
-  blank = <userdata 1>
-}
-
-METERS_TO_PIXELS:
-50
-
-create_options:
-<function 1>
-
-getmetatable:
-<function 1>
-
-debug_draw:
-<function 1>
-
-error:
-<function 1>
-
-renderable:
-<userdata 1>
-
-rects:
-{ {
-    height = 20,
-    width = 100,
-    x = 840,
-    y = 660
-  }, {
-    height = 40,
-    width = 100,
-    x = 980,
-    y = 540
-  }, {
-    height = 40,
-    width = 100,
-    x = 1040,
-    y = 220
-  }, {
-    height = 60,
-    width = 100,
-    x = 680,
-    y = 280
-  } }
-
-seek_behaviour:
-<userdata 1>
-
-shot_message:
+sprite:
 <userdata 1>
 
 to_vec2:
 <function 1>
 
-damage_component:
+_world:
 <userdata 1>
 
-load:
+time_uniform:
+0
+
+create_textures:
 <function 1>
-
-player_debug_circle:
-<userdata 1>
-
-children_component:
-<userdata 1>
-
-vertex_triangle:
-<userdata 1>
-
-gen_circle_vertices:
-<function 1>
-
-filter_doors:
-{
-  maskBits = 250
-}
-
-visibility_system:
-<userdata 1>
-
-math:
-{
-  abs = <function 1>,
-  acos = <function 2>,
-  asin = <function 3>,
-  atan = <function 4>,
-  atan2 = <function 5>,
-  ceil = <function 6>,
-  cos = <function 7>,
-  cosh = <function 8>,
-  deg = <function 9>,
-  exp = <function 10>,
-  floor = <function 11>,
-  fmod = <function 12>,
-  frexp = <function 13>,
-  huge = 1.#INF,
-  ldexp = <function 14>,
-  log = <function 15>,
-  max = <function 16>,
-  min = <function 17>,
-  modf = <function 18>,
-  pi = 3.1415926535898,
-  pow = <function 19>,
-  rad = <function 20>,
-  random = <function 21>,
-  randomseed = <function 22>,
-  sin = <function 23>,
-  sinh = <function 24>,
-  sqrt = <function 25>,
-  tan = <function 26>,
-  tanh = <function 27>
-}
-
-b2PolygonShape:
-<userdata 1>
-
-polygon:
-<userdata 1>
-
-b2Body:
-<userdata 1>
-
-player_sprite:
-<userdata 1>
-
-input_system:
-<userdata 1>
-
-containment_steering:
-<userdata 1>
-
-tonumber:
-<function 1>
-
-environment_entity:
-<userdata 1>
-
-raw_texture:
-<userdata 1>
-
-obstacle_avoidance_steering:
-<userdata 1>
-
-pairs:
-<function 1>
-
-intent_message:
-<userdata 1>
 
 debug:
 {
@@ -665,59 +543,61 @@ debug:
   upvaluejoin = <function 17>
 }
 
-PIXELS_TO_METERS:
-0.02
-
-OBJECTS:
-2
-
-io:
+filter_enemy_melee:
 {
-  close = <function 1>,
-  flush = <function 2>,
-  input = <function 3>,
-  lines = <function 4>,
-  open = <function 5>,
-  output = <function 6>,
-  popen = <function 7>,
-  read = <function 8>,
-  stderr = <userdata 1>,
-  stdin = <userdata 2>,
-  stdout = <userdata 3>,
-  tmpfile = <function 9>,
-  type = <function 10>,
-  write = <function 11>
+  categoryBits = 16,
+  maskBits = 1
 }
 
-current_gravity:
+error:
+<function 1>
+
+avoidance_behaviour:
 <userdata 1>
 
-emission:
+camera_component:
 <userdata 1>
 
-common:
+b2RevoluteJointDef:
 <userdata 1>
 
-settings:
+physics_component:
 <userdata 1>
 
-debug_sensor:
+changing_gravity:
+false
+
+glwindow:
 <userdata 1>
 
-filter_enemies:
+visibility_layer:
+<userdata 1>
+
+type:
+<function 1>
+
+visibility_system:
+<userdata 1>
+
+environment_archetype:
 {
-  categoryBits = 1,
-  maskBits = 15
+  physics = {
+    body_info = {
+      angular_damping = 10,
+      density = 1000,
+      filter = {
+        categoryBits = 4,
+        maskBits = 255
+      },
+      friction = 0.1,
+      linear_damping = 10,
+      shape_type = 1
+    },
+    body_type = 0
+  },
+  render = {},
+  transform = {}
 }
-
-damage_message:
-<userdata 1>
-
-target_gravity_rotation:
-0
-
-base_gravity:
-<userdata 1>
 
 containment_archetype:
 {
@@ -735,866 +615,176 @@ containment_archetype:
   weight = 1
 }
 
-create_scriptable_info:
+class_names:
 <function 1>
 
-ptr_lookup:
-<function 1>
-
-behaviour_decorator:
+my_shader_program:
 <userdata 1>
 
-map_uv_square:
-<function 1>
-
-b2RevoluteJoint:
-<userdata 1>
-
-GLSL_program:
-<userdata 1>
-
-simple_create_polygon:
-<function 1>
-
-scriptable_component:
-<userdata 1>
-
-create_steering:
-<function 1>
-
-world:
-<userdata 1>
-
-create_joint:
-<function 1>
-
-package:
-<1>{
-  config = "\\\\n;\\n?\\n!\\n-\\n",
-  cpath = "C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?.dll;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\loadall.dll;.\\?.dll",
-  loaded = {
-    _G = <2>{
-      BULLETS = 8,
-      Box2D = <userdata 1>,
-      CHARACTERS = 1,
-      CORPSES = 32,
-      ENEMY_BULLETS = 16,
-      ENGINE_DIRECTORY = "engine\\",
-      GL = <userdata 2>,
-      GLSL_program = <userdata 3>,
-      GLSL_shader = <userdata 4>,
-      ITEMS = 64,
-      METERS_TO_PIXELS = 50,
-      OBJECTS = 2,
-      PIXELS_TO_METERS = 0.02,
-      SHELLS = 128,
-      STATIC_OBJECTS = 4,
-      SetDensity = <function 1>,
-      SetFriction = <function 2>,
-      _G = <table 2>,
-      _VERSION = "Lua 5.2",
-      _entity = <userdata 5>,
-      _input_system = <userdata 6>,
-      _pathfinding_system = <userdata 7>,
-      _physics_system = <userdata 8>,
-      _render_system = <userdata 9>,
-      _script_reloader = <userdata 10>,
-      _visibility_system = <userdata 11>,
-      _world = <userdata 12>,
-      add_roots = <function 3>,
-      add_vals = <function 4>,
-      all_num = <function 5>,
-      animate_component = <userdata 13>,
-      animate_info = <userdata 14>,
-      animate_message = <userdata 15>,
-      animation = <userdata 16>,
-      animation_events = <userdata 17>,
-      archetyped = <function 6>,
-      assert = <function 7>,
-      atlas = <userdata 18>,
-      avoidance_behaviour = <userdata 19>,
-      b2Body = <userdata 20>,
-      b2Filter = <userdata 21>,
-      b2JointDef = <userdata 22>,
-      b2PolygonShape = <userdata 23>,
-      b2RevoluteJoint = <userdata 24>,
-      b2RevoluteJointDef = <userdata 25>,
-      b2Shape = <userdata 26>,
-      b2Vec2 = <userdata 27>,
-      b2WeldJoint = <userdata 28>,
-      b2WeldJointDef = <userdata 29>,
-      b2World = <userdata 30>,
-      base_crosshair_rotation = 0,
-      base_gravity = <userdata 31>,
-      basic_npc_class = {
-        angle_fits_in_threshold = <function 8>,
-        create = <function 9>,
-        determine_jumpability = <function 10>,
-        handle_flying_state = <function 11>,
-        handle_player_visibility = <function 12>,
-        handle_steering = <function 13>,
-        handle_visibility_offset = <function 14>,
-        initialize = <function 15>,
-        is_pathfinding = <function 16>,
-        loop = <function 17>,
-        map_vector_to_movement = <function 18>,
-        pursue_target = <function 19>,
-        refresh_behaviours = <function 20>,
-        set_all_behaviours_enabled = <function 21>,
-        set_movement_mode_flying = <function 22>,
-        stop_pursuit = <function 23>,
-        <metatable> = {
-          __index = <3>{
-            create = <function 24>,
-            handle_jumping = <function 25>,
-            handle_variable_height_jump = <function 26>,
-            initialize = <function 27>,
-            jump = <function 28>,
-            loop = <function 29>,
-            set_foot_sensor_from_circle = <function 30>,
-            set_foot_sensor_from_sprite = <function 31>,
-            set_gravity_shift_state = <function 32>,
-            substep = <function 33>,
-            <metatable> = {
-              __index = {}
-            }
-          }
-        }
-      },
-      basic_npc_sprite = <userdata 32>,
-      basic_texture_uniform = 0,
-      behaviour_decorator = <userdata 33>,
-      behaviour_node = <userdata 34>,
-      behaviour_state = <userdata 35>,
-      behaviour_timer_decorator = <userdata 36>,
-      behaviour_tree_component = <userdata 37>,
-      behaviour_tree_task = <userdata 38>,
-      bit32 = <4>{
-        arshift = <function 34>,
-        band = <function 35>,
-        bnot = <function 36>,
-        bor = <function 37>,
-        btest = <function 38>,
-        bxor = <function 39>,
-        extract = <function 40>,
-        lrotate = <function 41>,
-        lshift = <function 42>,
-        replace = <function 43>,
-        rrotate = <function 44>,
-        rshift = <function 45>
-      },
-      bitflag = <function 46>,
-      bitor = <function 47>,
-      body_to_entity = <function 48>,
-      calc_air_resistance = <function 49>,
-      calc_max_jump_height = <function 50>,
-      call_on_modification = <function 51>,
-      camera_archetype = {
-        camera = {
-          angled_look_length = 100,
-          averages_per_sec = 15,
-          enable_smoothing = true,
-          enabled = true,
-          layer = 0,
-          mask = 0,
-          max_look_expand = <userdata 39>,
-          orbit_mode = 2,
-          smoothing_average_factor = 0.5
-        },
-        chase = {
-          relative = false
-        },
-        transform = {
-          pos = <userdata 40>,
-          rotation = 0
-        }
-      },
-      camera_component = <userdata 41>,
-      can_point_be_reached_by_jump = <function 52>,
-      changing_gravity = false,
-      chase_component = <userdata 42>,
-      children_component = <userdata 43>,
-      class = <function 53>,
-      class_info = <function 54>,
-      class_info_data = <userdata 44>,
-      class_names = <function 55>,
-      collectgarbage = <function 56>,
-      collision_message = <userdata 45>,
-      commands = <userdata 46>,
-      common = <userdata 47>,
-      config_table = {
-        bpp = 24,
-        doublebuffer = 1,
-        fullscreen = 0,
-        resolution_h = 1000,
-        resolution_w = 1500,
-        sensitivity = <userdata 48>,
-        window_border = 0,
-        window_name = "example",
-        window_x = 0,
-        window_y = 0
-      },
-      containment_archetype = {
-        avoidance_rectangle_width = 0,
-        behaviour_type = <userdata 49>,
-        force_color = <userdata 50>,
-        intervention_time_ms = 240,
-        only_threats_in_OBB = false,
-        randomize_rays = true,
-        ray_count = 5,
-        ray_filter = <5>{
-          categoryBits = 47,
-          maskBits = 7
-        },
-        weight = 1
-      },
-      containment_behaviour = <userdata 49>,
-      containment_steering = <userdata 51>,
-      coroutine = <6>{
-        create = <function 57>,
-        resume = <function 58>,
-        running = <function 59>,
-        status = <function 60>,
-        wrap = <function 61>,
-        yield = <function 62>
-      },
-      count_all = <function 63>,
-      create = <function 64>,
-      create_animation = <function 65>,
-      create_animation_set = <function 66>,
-      create_behaviour_tree = <function 67>,
-      create_emission = <function 68>,
-      create_entity = <function 69>,
-      create_entity_group = <function 70>,
-      create_gun = <function 71>,
-      create_input_context = <function 72>,
-      create_inverse_enum = <function 73>,
-      create_joint = <function 74>,
-      create_options = <function 75>,
-      create_particle = <function 76>,
-      create_particle_effect = <function 77>,
-      create_particle_emitter_info = <function 78>,
-      create_physics_component = <function 79>,
-      create_polygon = <function 80>,
-      create_scriptable_info = <function 81>,
-      create_sprite = <function 82>,
-      create_steering = <function 83>,
-      create_textures = <function 84>,
-      crosshair_component = <userdata 52>,
-      current_gravity = <userdata 53>,
-      current_zoom_level = 10000,
-      custom_intents = {
-        DROP_WEAPON = 999999992,
-        GRAVITY_CHANGE = 999999990,
-        INSTANT_SLOWDOWN = 999999996,
-        JUMP = 999999991,
-        MY_INTENT = 999999989,
-        QUIT = 999999993,
-        RESTART = 999999997,
-        SPEED_DECREASE = 999999994,
-        SPEED_INCREASE = 999999995,
-        STEERING_REQUEST = 999999998,
-        ZOOM_CAMERA = 999999999
-      },
-      damage_component = <userdata 54>,
-      damage_message = <userdata 55>,
-      debug = <7>{
-        debug = <function 85>,
-        gethook = <function 86>,
-        getinfo = <function 87>,
-        getlocal = <function 88>,
-        getmetatable = <function 89>,
-        getregistry = <function 90>,
-        getupvalue = <function 91>,
-        getuservalue = <function 92>,
-        my_traceback = <function 93>,
-        sethook = <function 94>,
-        setlocal = <function 95>,
-        setmetatable = <function 96>,
-        setupvalue = <function 97>,
-        setuservalue = <function 98>,
-        traceback = <function 99>,
-        upvalueid = <function 100>,
-        upvaluejoin = <function 101>
-      },
-      debug_draw = <function 102>,
-      debug_line = <userdata 56>,
-      debug_sensor = <userdata 57>,
-      debug_target_sprite = <userdata 58>,
-      debugger_break = <function 103>,
-      def = <function 104>,
-      def_ptr = <function 105>,
-      destroy_message = <userdata 59>,
-      directed_behaviour = <userdata 60>,
-      dofile = <function 106>,
-      drawable_concave = <userdata 61>,
-      emission = <userdata 62>,
-      entities = <userdata 63>,
-      entity_creation_util = <userdata 64>,
-      entity_ptr = <userdata 65>,
-      entries_from_archetypes = <function 107>,
-      environment_archetype = {
-        physics = {
-          body_info = {
-            angular_damping = 10,
-            density = 1000,
-            filter = <8>{
-              categoryBits = 4,
-              maskBits = 255
-            },
-            friction = 0.1,
-            linear_damping = 10,
-            shape_type = 1
-          },
-          body_type = 0
-        },
-        render = {},
-        transform = {}
-      },
-      environment_entity = <userdata 66>,
-      environment_entity2 = <userdata 67>,
-      error = <function 108>,
-      film_grain_fragment_shader = <userdata 68>,
-      film_grain_program = <userdata 69>,
-      film_grain_vertex_shader = <userdata 70>,
-      filter_bullets = {
-        categoryBits = 8,
-        maskBits = 7
-      },
-      filter_characters = {
-        categoryBits = 1,
-        maskBits = 23
-      },
-      filter_characters_separation = {
-        categoryBits = 1,
-        maskBits = 1
-      },
-      filter_corpses = {
-        categoryBits = 32,
-        maskBits = 6
-      },
-      filter_doors = {
-        maskBits = 250
-      },
-      filter_enemies = {
-        categoryBits = 1,
-        maskBits = 15
-      },
-      filter_enemy_bullets = {
-        categoryBits = 16,
-        maskBits = 7
-      },
-      filter_enemy_melee = {
-        categoryBits = 16,
-        maskBits = 1
-      },
-      filter_melee = {
-        categoryBits = 8,
-        maskBits = 1
-      },
-      filter_melee_obstruction = {
-        categoryBits = 255,
-        maskBits = 6
-      },
-      filter_nothing = {
-        categoryBits = 0,
-        maskBits = 0
-      },
-      filter_npc_feet = <9>{
-        categoryBits = 255,
-        maskBits = 71
-      },
-      filter_objects = <10>{
-        categoryBits = 2,
-        maskBits = 63
-      },
-      filter_obstacle_visibility = <table 5>,
-      filter_pathfinding_visibility = {
-        categoryBits = 47,
-        maskBits = 4
-      },
-      filter_player_visibility = {
-        categoryBits = 255,
-        maskBits = 4
-      },
-      filter_shells = {
-        categoryBits = 128,
-        maskBits = 134
-      },
-      filter_static_objects = <table 8>,
-      flee_behaviour = <userdata 71>,
-      float_ptr = <userdata 72>,
-      float_vector = <userdata 73>,
-      flocking_behaviour = <userdata 74>,
-      forward_seek_steering = <userdata 75>,
-      framebuffer_object = <userdata 76>,
-      gen_circle_vertices = <function 109>,
-      get_display = <function 110>,
-      get_self = <function 111>,
-      getmetatable = <function 112>,
-      global_sound_table = {},
-      global_sprites = { <userdata 77>, <userdata 78>, <userdata 79>, <userdata 80> },
-      glwindow = <userdata 81>,
-      gravity_angle_offset = 0,
-      ground_poly = <userdata 82>,
-      ground_poly2 = <userdata 83>,
-      gun_component = <userdata 84>,
-      images = {
-        blank = <userdata 85>
-      },
-      inherits_from = <function 113>,
-      input_component = <userdata 86>,
-      input_context = <userdata 87>,
-      input_system = <userdata 88>,
-      intent_message = <userdata 89>,
-      io = <11>{
-        close = <function 114>,
-        flush = <function 115>,
-        input = <function 116>,
-        lines = <function 117>,
-        open = <function 118>,
-        output = <function 119>,
-        popen = <function 120>,
-        read = <function 121>,
-        stderr = <userdata 90>,
-        stdin = <userdata 91>,
-        stdout = <userdata 92>,
-        tmpfile = <function 122>,
-        type = <function 123>,
-        write = <function 124>
-      },
-      ipairs = <function 125>,
-      keys = <userdata 93>,
-      layers = <userdata 94>,
-      load = <function 126>,
-      loadfile = <function 127>,
-      lookat_component = <userdata 95>,
-      loop_only_info = <userdata 96>,
-      main_context = <userdata 97>,
-      map_uv_square = <function 128>,
-      math = <12>{
-        abs = <function 129>,
-        acos = <function 130>,
-        asin = <function 131>,
-        atan = <function 132>,
-        atan2 = <function 133>,
-        ceil = <function 134>,
-        cos = <function 135>,
-        cosh = <function 136>,
-        deg = <function 137>,
-        exp = <function 138>,
-        floor = <function 139>,
-        fmod = <function 140>,
-        frexp = <function 141>,
-        huge = 1.#INF,
-        ldexp = <function 142>,
-        log = <function 143>,
-        max = <function 144>,
-        min = <function 145>,
-        modf = <function 146>,
-        pi = 3.1415926535898,
-        pow = <function 147>,
-        rad = <function 148>,
-        random = <function 149>,
-        randomseed = <function 150>,
-        sin = <function 151>,
-        sinh = <function 152>,
-        sqrt = <function 153>,
-        tan = <function 154>,
-        tanh = <function 155>
-      },
-      message = <userdata 98>,
-      minmax = <userdata 99>,
-      minmax_u = <userdata 100>,
-      mouse = <userdata 101>,
-      movement_component = <userdata 102>,
-      my_atlas = <userdata 103>,
-      my_basic_npc = {
-        body = <userdata 104>
-      },
-      my_crosshair_sprite = <userdata 105>,
-      my_fragment_shader = <userdata 106>,
-      my_shader_program = <userdata 107>,
-      my_vertex_shader = <userdata 108>,
-      navigation_hint = <userdata 109>,
-      next = <function 156>,
-      npc_basic_loop = <userdata 110>,
-      npc_class = <table 3>,
-      npc_group_archetype = {
-        body = {
-          movement = {
-            air_resistance = 0.1,
-            ground_filter = <table 9>,
-            input_acceleration = <userdata 111>,
-            inverse_thrust_brake = <userdata 112>,
-            max_speed_animation = 2300,
-            receivers = {},
-            sidescroller_setup = true
-          },
-          physics = {
-            body_info = {
-              bullet = true,
-              density = 1,
-              filter = <table 10>,
-              fixed_rotation = true,
-              friction = 2,
-              radius = 60,
-              shape_type = 0
-            },
-            body_type = 2
-          },
-          render = {
-            layer = 2
-          },
-          scriptable = {
-            available_scripts = <userdata 110>
-          },
-          transform = {}
-        }
-      },
-      obstacle_avoidance_archetype = {
-        avoidance_rectangle_width = 0,
-        behaviour_type = <userdata 113>,
-        force_color = <userdata 114>,
-        ignore_discontinuities_narrower_than = 1,
-        intervention_time_ms = 200,
-        visibility_type = 1,
-        weight = 1
-      },
-      obstacle_avoidance_behaviour = <userdata 113>,
-      obstacle_avoidance_steering = <userdata 115>,
-      open_script = <function 157>,
-      orthographic_projection = <function 158>,
-      os = <13>{
-        clock = <function 159>,
-        date = <function 160>,
-        difftime = <function 161>,
-        execute = <function 162>,
-        exit = <function 163>,
-        getenv = <function 164>,
-        remove = <function 165>,
-        rename = <function 166>,
-        setlocale = <function 167>,
-        time = <function 168>,
-        tmpname = <function 169>
-      },
-      package = <table 1>,
-      pairs = <function 170>,
-      particle = <userdata 116>,
-      particle_burst_message = <userdata 117>,
-      particle_effect = <userdata 118>,
-      particle_emitter_component = <userdata 119>,
-      particle_emitter_info = <userdata 120>,
-      pathfinding_component = <userdata 121>,
-      pathfinding_system = <userdata 122>,
-      pcall = <function 171>,
-      physics_component = <userdata 123>,
-      physics_info = <userdata 124>,
-      physics_system = <userdata 125>,
-      player = {
-        body = <userdata 126>,
-        crosshair = <userdata 127>
-      },
-      player_debug_circle = <userdata 128>,
-      player_scriptable_info = <userdata 129>,
-      player_sprite = <userdata 130>,
-      point_below_segment = <function 172>,
-      poly1 = { {
-          x = 0,
-          y = 0
-        }, {
-          x = 0,
-          y = 340
-        }, {
-          x = 640,
-          y = 340
-        }, {
-          x = 640,
-          y = 280
-        }, {
-          x = 60,
-          y = 280
-        }, {
-          x = 60,
-          y = 180
-        }, {
-          x = 240,
-          y = 180
-        }, {
-          x = 240,
-          y = 120
-        }, {
-          x = 60,
-          y = 120
-        }, {
-          x = 60,
-          y = 0
-        } },
-      poly2 = { {
-          x = 0,
-          y = 0
-        }, {
-          x = -80,
-          y = 80
-        }, {
-          x = -80,
-          y = 740
-        }, {
-          x = 720,
-          y = 820
-        }, {
-          x = 1160,
-          y = 760
-        }, {
-          x = 1180,
-          y = 40
-        }, {
-          x = 960,
-          y = -20
-        }, {
-          x = 1060,
-          y = 120
-        }, {
-          x = 1040,
-          y = 700
-        }, {
-          x = 720,
-          y = 720
-        }, {
-          x = 0,
-          y = 660
-        } },
-      polygon = <userdata 131>,
-      post_destroy = <function 173>,
-      print = <function 174>,
-      projection_matrix_uniform = 1,
-      property = <function 175>,
-      ptr_create_entity = <function 176>,
-      ptr_create_entity_group = <function 177>,
-      ptr_lookup = <function 178>,
-      pursuit_steering = <userdata 132>,
-      pv = <function 179>,
-      query_output = <userdata 133>,
-      randval = <function 180>,
-      raw_texture = <userdata 134>,
-      rawequal = <function 181>,
-      rawget = <function 182>,
-      rawlen = <function 183>,
-      rawset = <function 184>,
-      ray_output = <userdata 135>,
-      raycast_output = <userdata 136>,
-      rect_ltrb = <userdata 137>,
-      rect_xywh = <userdata 138>,
-      rects = { {
-          height = 20,
-          width = 100,
-          x = 840,
-          y = 660
-        }, {
-          height = 40,
-          width = 100,
-          x = 980,
-          y = 540
-        }, {
-          height = 40,
-          width = 100,
-          x = 1040,
-          y = 220
-        }, {
-          height = 60,
-          width = 100,
-          x = 680,
-          y = 280
-        } },
-      recursive_write = <function 185>,
-      reloader_script = <userdata 139>,
-      render_component = <userdata 140>,
-      render_layers = {
-        BULLETS = 6,
-        EFFECTS = 1,
-        GROUND = 13,
-        GUI_OBJECTS = 0,
-        HEADS = 3,
-        LEGS = 8,
-        OBJECTS = 2,
-        ON_GROUND = 10,
-        PLAYERS = 5,
-        SHELLS = 9,
-        UNDER_CORPSES = 12,
-        WIELDED = 7,
-        WIELDED_GUNS = 4
-      },
-      render_system = <userdata 141>,
-      renderable = <userdata 142>,
-      require = <function 186>,
-      resource_creation_util = <userdata 143>,
-      reversed = <function 187>,
-      rewrite = <function 188>,
-      rewrite_ptr = <function 189>,
-      rgba = <userdata 144>,
-      scene_fbo = <userdata 145>,
-      script = <userdata 146>,
-      script_reloader = <userdata 147>,
-      scriptable_component = <userdata 148>,
-      scriptable_info = <userdata 149>,
-      scriptable_zoom = <userdata 150>,
-      seek_archetype = {
-        behaviour_type = <userdata 151>,
-        force_color = <userdata 152>,
-        weight = 1
-      },
-      seek_behaviour = <userdata 151>,
-      select = <function 190>,
-      sensor_avoidance_steering = <userdata 153>,
-      separation_behaviour = <userdata 154>,
-      separation_steering = <userdata 155>,
-      set_color = <function 191>,
-      set_components_from_entry = <function 192>,
-      set_physics_info = <function 193>,
-      set_world_reloading_script = <function 194>,
-      set_zoom_level = <function 195>,
-      setmetatable = <function 196>,
-      settings = <userdata 156>,
-      sfMusic = <userdata 157>,
-      sfSound = <userdata 158>,
-      sfSoundBuffer = <userdata 159>,
-      shot_message = <userdata 160>,
-      should_debug_draw = true,
-      simple_create_polygon = <function 197>,
-      simple_integration = <function 198>,
-      spawn_npc = <function 199>,
-      sprite = <userdata 161>,
-      stability = 1,
-      steering_behaviour = <userdata 162>,
-      steering_component = <userdata 163>,
-      stepped_timer = <userdata 164>,
-      string = <14>{
-        byte = <function 200>,
-        char = <function 201>,
-        dump = <function 202>,
-        find = <function 203>,
-        format = <function 204>,
-        gmatch = <function 205>,
-        gsub = <function 206>,
-        len = <function 207>,
-        lower = <function 208>,
-        match = <function 209>,
-        rep = <function 210>,
-        reverse = <function 211>,
-        sub = <function 212>,
-        upper = <function 213>
-      },
-      super = <function 214>,
-      swing_script = <userdata 165>,
-      table = <15>{
-        concat = <function 215>,
-        insert = <function 216>,
-        inspect = <16>{
-          _DESCRIPTION = "human-readable representations of tables",
-          _LICENSE = '    MIT LICENSE\n\n    Copyright (c) 2013 Enrique García Cota\n\n    Permission is hereby granted, free of charge, to any person obtaining a\n    copy of this software and associated documentation files (the\n    "Software"), to deal in the Software without restriction, including\n    without limitation the rights to use, copy, modify, merge, publish,\n    distribute, sublicense, and/or sell copies of the Software, and to\n    permit persons to whom the Software is furnished to do so, subject to\n    the following conditions:\n\n    The above copyright notice and this permission notice shall be included\n    in all copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS\n    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\n    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\n    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n  ',
-          _URL = "http://github.com/kikito/inspect.lua",
-          _VERSION = "inspect.lua 2.0.0",
-          inspect = <function 217>,
-          <metatable> = {
-            __call = <function 218>
-          }
-        },
-        pack = <function 219>,
-        remove = <function 220>,
-        sort = <function 221>,
-        unpack = <function 222>
-      },
-      target_entity_archetype = {
-        render = {
-          layer = 0,
-          model = <userdata 58>
-        },
-        transform = {}
-      },
-      target_gravity_rotation = 0,
-      target_info = <userdata 166>,
-      target_seek_steering = <userdata 167>,
-      texture = <userdata 168>,
-      textures = <userdata 169>,
-      time_uniform = 0,
-      timer = <userdata 170>,
-      to_vec2 = <function 223>,
-      to_vec2_table = <function 224>,
-      tonumber = <function 225>,
-      tostring = <function 226>,
-      transform_component = <userdata 171>,
-      transform_state = <userdata 172>,
-      type = <function 227>,
-      vec2 = <userdata 173>,
-      vec2_vector = <userdata 174>,
-      vertex = <userdata 175>,
-      vertex_triangle = <userdata 176>,
-      visibility_component = <userdata 177>,
-      visibility_layer = <userdata 178>,
-      visibility_system = <userdata 179>,
-      wander_behaviour = <userdata 180>,
-      wander_steering = <userdata 181>,
-      window = <userdata 182>,
-      world = <userdata 183>,
-      world_camera = <userdata 184>,
-      xpcall = <function 228>
-    },
-    bit32 = <table 4>,
-    coroutine = <table 6>,
-    debug = <table 7>,
-    inspect = <table 16>,
-    io = <table 11>,
-    math = <table 12>,
-    os = <table 13>,
-    package = <table 1>,
-    string = <table 14>,
-    table = <table 15>
-  },
-  loadlib = <function 229>,
-  path = "C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?\\init.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?\\init.lua;.\\?.lua",
-  preload = {},
-  searchers = { <function 230>, <function 231>, <function 232>, <function 233> },
-  searchpath = <function 234>
-}
-
-stability:
-1
-
-Box2D:
-<userdata 1>
-
-assert:
-<function 1>
-
-ground_poly:
-<userdata 1>
-
-main_context:
-<userdata 1>
-
-rgba:
+_render_system:
 <userdata 1>
 
 pathfinding_system:
 <userdata 1>
 
-GL:
+class_info_data:
+<userdata 1>
+
+damage_message:
+<userdata 1>
+
+settings:
 <userdata 1>
 
 destroy_message:
 <userdata 1>
 
-class_info:
+_script_reloader:
+<userdata 1>
+
+loadfile:
 <function 1>
 
-player:
+reversed:
+<function 1>
+
+create_gun:
+<function 1>
+
+behaviour_decorator:
+<userdata 1>
+
+rect_xywh:
+<userdata 1>
+
+containment_behaviour:
+<userdata 1>
+
+global_sound_table:
+{}
+
+intent_message:
+<userdata 1>
+
+create_entity:
+<function 1>
+
+filter_player_visibility:
 {
-  body = <userdata 1>,
-  crosshair = <userdata 2>
+  categoryBits = 255,
+  maskBits = 4
 }
 
-def_ptr:
+b2RevoluteJoint:
+<userdata 1>
+
+b2PolygonShape:
+<userdata 1>
+
+OBJECTS:
+2
+
+GLSL_program:
+<userdata 1>
+
+particle_effect:
+<userdata 1>
+
+map_uv_square:
 <function 1>
+
+input_context:
+<userdata 1>
+
+SetFriction:
+<function 1>
+
+filter_enemy_bullets:
+{
+  categoryBits = 16,
+  maskBits = 7
+}
+
+_pathfinding_system:
+<userdata 1>
+
+behaviour_timer_decorator:
+<userdata 1>
+
+create_emission:
+<function 1>
+
+GLSL_shader:
+<userdata 1>
+
+scriptable_info:
+<userdata 1>
+
+animate_info:
+<userdata 1>
+
+behaviour_state:
+<userdata 1>
+
+b2Shape:
+<userdata 1>
+
+_VERSION:
+"Lua 5.2"
+
+world_camera:
+<userdata 1>
+
+minmax:
+<userdata 1>
+
+SHELLS:
+128
+
+filter_obstacle_visibility:
+{
+  categoryBits = 47,
+  maskBits = 7
+}
+
+create_behaviour_tree:
+<function 1>
+
+behaviour_node:
+<userdata 1>
+
+particle_emitter_info:
+<userdata 1>
+
+movement_component:
+<userdata 1>
+
+flee_behaviour:
+<userdata 1>
+
+renderable:
+<userdata 1>
+
+_input_system:
+<userdata 1>
+
+b2World:
+<userdata 1>
+
+debugger_break:
+<function 1>
+
+to_vec2_table:
+<function 1>
+
+my_vertex_shader:
+<userdata 1>
+
+script_reloader:
+<userdata 1>
+
+Box2D:
+<userdata 1>
 
 _G:
 <1>{
@@ -1627,14 +817,13 @@ _G:
   _world = <userdata 12>,
   add_roots = <function 3>,
   add_vals = <function 4>,
-  all_num = <function 5>,
   animate_component = <userdata 13>,
   animate_info = <userdata 14>,
   animate_message = <userdata 15>,
   animation = <userdata 16>,
   animation_events = <userdata 17>,
-  archetyped = <function 6>,
-  assert = <function 7>,
+  archetyped = <function 5>,
+  assert = <function 6>,
   atlas = <userdata 18>,
   avoidance_behaviour = <userdata 19>,
   b2Body = <userdata 20>,
@@ -1648,25 +837,25 @@ _G:
   b2WeldJoint = <userdata 28>,
   b2WeldJointDef = <userdata 29>,
   b2World = <userdata 30>,
-  base_crosshair_rotation = 0,
   base_gravity = <userdata 31>,
   basic_npc_class = {
-    angle_fits_in_threshold = <function 8>,
-    create = <function 9>,
-    determine_jumpability = <function 10>,
-    handle_flying_state = <function 11>,
-    handle_player_visibility = <function 12>,
-    handle_steering = <function 13>,
-    handle_visibility_offset = <function 14>,
-    initialize = <function 15>,
-    is_pathfinding = <function 16>,
-    loop = <function 17>,
-    map_vector_to_movement = <function 18>,
-    pursue_target = <function 19>,
-    refresh_behaviours = <function 20>,
-    set_all_behaviours_enabled = <function 21>,
-    set_movement_mode_flying = <function 22>,
-    stop_pursuit = <function 23>,
+    angle_fits_in_threshold = <function 7>,
+    create = <function 8>,
+    determine_jumpability = <function 9>,
+    handle_flying_state = <function 10>,
+    handle_player_visibility = <function 11>,
+    handle_steering = <function 12>,
+    handle_visibility_offset = <function 13>,
+    initialize = <function 14>,
+    is_pathfinding = <function 15>,
+    loop = <function 16>,
+    map_vector_to_movement = <function 17>,
+    pursue_target = <function 18>,
+    refresh_behaviours = <function 19>,
+    set_all_behaviours_enabled = <function 20>,
+    set_movement_mode_flying = <function 21>,
+    stop_pursuit = <function 22>,
+    substep = <function 23>,
     <metatable> = {
       __index = <2>{
         create = <function 24>,
@@ -1744,15 +933,14 @@ _G:
   class_names = <function 55>,
   collectgarbage = <function 56>,
   collision_message = <userdata 45>,
-  commands = <userdata 46>,
-  common = <userdata 47>,
+  common = <userdata 46>,
   config_table = {
     bpp = 24,
     doublebuffer = 1,
     fullscreen = 0,
     resolution_h = 1000,
     resolution_w = 1500,
-    sensitivity = <userdata 48>,
+    sensitivity = <userdata 47>,
     window_border = 0,
     window_name = "example",
     window_x = 0,
@@ -1760,8 +948,8 @@ _G:
   },
   containment_archetype = {
     avoidance_rectangle_width = 0,
-    behaviour_type = <userdata 49>,
-    force_color = <userdata 50>,
+    behaviour_type = <userdata 48>,
+    force_color = <userdata 49>,
     intervention_time_ms = 240,
     only_threats_in_OBB = false,
     randomize_rays = true,
@@ -1772,8 +960,8 @@ _G:
     },
     weight = 1
   },
-  containment_behaviour = <userdata 49>,
-  containment_steering = <userdata 51>,
+  containment_behaviour = <userdata 48>,
+  containment_steering = <userdata 50>,
   coroutine = <5>{
     create = <function 57>,
     resume = <function 58>,
@@ -1782,30 +970,29 @@ _G:
     wrap = <function 61>,
     yield = <function 62>
   },
-  count_all = <function 63>,
-  create = <function 64>,
-  create_animation = <function 65>,
-  create_animation_set = <function 66>,
-  create_behaviour_tree = <function 67>,
-  create_emission = <function 68>,
-  create_entity = <function 69>,
-  create_entity_group = <function 70>,
-  create_gun = <function 71>,
-  create_input_context = <function 72>,
-  create_inverse_enum = <function 73>,
-  create_joint = <function 74>,
-  create_options = <function 75>,
-  create_particle = <function 76>,
-  create_particle_effect = <function 77>,
-  create_particle_emitter_info = <function 78>,
-  create_physics_component = <function 79>,
-  create_polygon = <function 80>,
-  create_scriptable_info = <function 81>,
-  create_sprite = <function 82>,
-  create_steering = <function 83>,
-  create_textures = <function 84>,
-  crosshair_component = <userdata 52>,
-  current_gravity = <userdata 53>,
+  create = <function 63>,
+  create_animation = <function 64>,
+  create_animation_set = <function 65>,
+  create_behaviour_tree = <function 66>,
+  create_emission = <function 67>,
+  create_entity = <function 68>,
+  create_entity_group = <function 69>,
+  create_gun = <function 70>,
+  create_input_context = <function 71>,
+  create_inverse_enum = <function 72>,
+  create_joint = <function 73>,
+  create_options = <function 74>,
+  create_particle = <function 75>,
+  create_particle_effect = <function 76>,
+  create_particle_emitter_info = <function 77>,
+  create_physics_component = <function 78>,
+  create_polygon = <function 79>,
+  create_scriptable_info = <function 80>,
+  create_sprite = <function 81>,
+  create_steering = <function 82>,
+  create_textures = <function 83>,
+  crosshair_component = <userdata 51>,
+  current_gravity = <userdata 52>,
   current_zoom_level = 10000,
   custom_intents = {
     DROP_WEAPON = 999999992,
@@ -1820,43 +1007,42 @@ _G:
     STEERING_REQUEST = 999999998,
     ZOOM_CAMERA = 999999999
   },
-  damage_component = <userdata 54>,
-  damage_message = <userdata 55>,
+  damage_component = <userdata 53>,
+  damage_message = <userdata 54>,
   debug = <6>{
-    debug = <function 85>,
-    gethook = <function 86>,
-    getinfo = <function 87>,
-    getlocal = <function 88>,
-    getmetatable = <function 89>,
-    getregistry = <function 90>,
-    getupvalue = <function 91>,
-    getuservalue = <function 92>,
-    my_traceback = <function 93>,
-    sethook = <function 94>,
-    setlocal = <function 95>,
-    setmetatable = <function 96>,
-    setupvalue = <function 97>,
-    setuservalue = <function 98>,
-    traceback = <function 99>,
-    upvalueid = <function 100>,
-    upvaluejoin = <function 101>
+    debug = <function 84>,
+    gethook = <function 85>,
+    getinfo = <function 86>,
+    getlocal = <function 87>,
+    getmetatable = <function 88>,
+    getregistry = <function 89>,
+    getupvalue = <function 90>,
+    getuservalue = <function 91>,
+    my_traceback = <function 92>,
+    sethook = <function 93>,
+    setlocal = <function 94>,
+    setmetatable = <function 95>,
+    setupvalue = <function 96>,
+    setuservalue = <function 97>,
+    traceback = <function 98>,
+    upvalueid = <function 99>,
+    upvaluejoin = <function 100>
   },
-  debug_draw = <function 102>,
-  debug_line = <userdata 56>,
-  debug_sensor = <userdata 57>,
-  debug_target_sprite = <userdata 58>,
-  debugger_break = <function 103>,
-  def = <function 104>,
-  def_ptr = <function 105>,
-  destroy_message = <userdata 59>,
-  directed_behaviour = <userdata 60>,
-  dofile = <function 106>,
-  drawable_concave = <userdata 61>,
-  emission = <userdata 62>,
-  entities = <userdata 63>,
-  entity_creation_util = <userdata 64>,
-  entity_ptr = <userdata 65>,
-  entries_from_archetypes = <function 107>,
+  debug_draw = <function 101>,
+  debug_line = <userdata 55>,
+  debug_target_sprite = <userdata 56>,
+  debugger_break = <function 102>,
+  def = <function 103>,
+  def_ptr = <function 104>,
+  destroy_message = <userdata 57>,
+  directed_behaviour = <userdata 58>,
+  dofile = <function 105>,
+  drawable_concave = <userdata 59>,
+  emission = <userdata 60>,
+  entities = <userdata 61>,
+  entity_creation_util = <userdata 62>,
+  entity_ptr = <userdata 63>,
+  entries_from_archetypes = <function 106>,
   environment_archetype = {
     physics = {
       body_info = {
@@ -1875,12 +1061,12 @@ _G:
     render = {},
     transform = {}
   },
-  environment_entity = <userdata 66>,
-  environment_entity2 = <userdata 67>,
-  error = <function 108>,
-  film_grain_fragment_shader = <userdata 68>,
-  film_grain_program = <userdata 69>,
-  film_grain_vertex_shader = <userdata 70>,
+  environment_entity = <userdata 64>,
+  environment_entity2 = <userdata 65>,
+  error = <function 107>,
+  film_grain_fragment_shader = <userdata 66>,
+  film_grain_program = <userdata 67>,
+  film_grain_vertex_shader = <userdata 68>,
   filter_bullets = {
     categoryBits = 8,
     maskBits = 7
@@ -1946,111 +1132,105 @@ _G:
     maskBits = 134
   },
   filter_static_objects = <table 7>,
-  flee_behaviour = <userdata 71>,
-  float_ptr = <userdata 72>,
-  float_vector = <userdata 73>,
-  flocking_behaviour = <userdata 74>,
-  forward_seek_steering = <userdata 75>,
-  framebuffer_object = <userdata 76>,
-  gen_circle_vertices = <function 109>,
-  get_display = <function 110>,
-  get_self = <function 111>,
-  getmetatable = <function 112>,
+  flee_behaviour = <userdata 69>,
+  float_ptr = <userdata 70>,
+  float_vector = <userdata 71>,
+  flocking_behaviour = <userdata 72>,
+  forward_seek_steering = <userdata 73>,
+  framebuffer_object = <userdata 74>,
+  gen_circle_vertices = <function 108>,
+  get_display = <function 109>,
+  get_self = <function 110>,
+  getmetatable = <function 111>,
   global_sound_table = {},
-  global_sprites = { <userdata 77>, <userdata 78>, <userdata 79>, <userdata 80> },
-  glwindow = <userdata 81>,
+  glwindow = <userdata 75>,
   gravity_angle_offset = 0,
-  ground_poly = <userdata 82>,
-  ground_poly2 = <userdata 83>,
-  gun_component = <userdata 84>,
+  ground_poly = <userdata 76>,
+  ground_poly2 = <userdata 77>,
+  gun_component = <userdata 78>,
   images = {
-    blank = <userdata 85>
+    blank = <userdata 79>
   },
-  inherits_from = <function 113>,
-  input_component = <userdata 86>,
-  input_context = <userdata 87>,
-  input_system = <userdata 88>,
-  intent_message = <userdata 89>,
+  inherits_from = <function 112>,
+  input_component = <userdata 80>,
+  input_context = <userdata 81>,
+  input_system = <userdata 82>,
+  intent_message = <userdata 83>,
   io = <10>{
-    close = <function 114>,
-    flush = <function 115>,
-    input = <function 116>,
-    lines = <function 117>,
-    open = <function 118>,
-    output = <function 119>,
-    popen = <function 120>,
-    read = <function 121>,
-    stderr = <userdata 90>,
-    stdin = <userdata 91>,
-    stdout = <userdata 92>,
-    tmpfile = <function 122>,
-    type = <function 123>,
-    write = <function 124>
+    close = <function 113>,
+    flush = <function 114>,
+    input = <function 115>,
+    lines = <function 116>,
+    open = <function 117>,
+    output = <function 118>,
+    popen = <function 119>,
+    read = <function 120>,
+    stderr = <userdata 84>,
+    stdin = <userdata 85>,
+    stdout = <userdata 86>,
+    tmpfile = <function 121>,
+    type = <function 122>,
+    write = <function 123>
   },
-  ipairs = <function 125>,
-  keys = <userdata 93>,
-  layers = <userdata 94>,
-  load = <function 126>,
-  loadfile = <function 127>,
-  lookat_component = <userdata 95>,
-  loop_only_info = <userdata 96>,
-  main_context = <userdata 97>,
-  map_uv_square = <function 128>,
+  ipairs = <function 124>,
+  keys = <userdata 87>,
+  layers = <userdata 88>,
+  load = <function 125>,
+  loadfile = <function 126>,
+  lookat_component = <userdata 89>,
+  main_context = <userdata 90>,
+  map_uv_square = <function 127>,
   math = <11>{
-    abs = <function 129>,
-    acos = <function 130>,
-    asin = <function 131>,
-    atan = <function 132>,
-    atan2 = <function 133>,
-    ceil = <function 134>,
-    cos = <function 135>,
-    cosh = <function 136>,
-    deg = <function 137>,
-    exp = <function 138>,
-    floor = <function 139>,
-    fmod = <function 140>,
-    frexp = <function 141>,
+    abs = <function 128>,
+    acos = <function 129>,
+    asin = <function 130>,
+    atan = <function 131>,
+    atan2 = <function 132>,
+    ceil = <function 133>,
+    cos = <function 134>,
+    cosh = <function 135>,
+    deg = <function 136>,
+    exp = <function 137>,
+    floor = <function 138>,
+    fmod = <function 139>,
+    frexp = <function 140>,
     huge = 1.#INF,
-    ldexp = <function 142>,
-    log = <function 143>,
-    max = <function 144>,
-    min = <function 145>,
-    modf = <function 146>,
+    ldexp = <function 141>,
+    log = <function 142>,
+    max = <function 143>,
+    min = <function 144>,
+    modf = <function 145>,
     pi = 3.1415926535898,
-    pow = <function 147>,
-    rad = <function 148>,
-    random = <function 149>,
-    randomseed = <function 150>,
-    sin = <function 151>,
-    sinh = <function 152>,
-    sqrt = <function 153>,
-    tan = <function 154>,
-    tanh = <function 155>
+    pow = <function 146>,
+    rad = <function 147>,
+    random = <function 148>,
+    randomseed = <function 149>,
+    sin = <function 150>,
+    sinh = <function 151>,
+    sqrt = <function 152>,
+    tan = <function 153>,
+    tanh = <function 154>
   },
-  message = <userdata 98>,
-  minmax = <userdata 99>,
-  minmax_u = <userdata 100>,
-  mouse = <userdata 101>,
-  movement_component = <userdata 102>,
-  my_atlas = <userdata 103>,
-  my_basic_npc = {
-    body = <userdata 104>
-  },
-  my_crosshair_sprite = <userdata 105>,
-  my_fragment_shader = <userdata 106>,
-  my_shader_program = <userdata 107>,
-  my_vertex_shader = <userdata 108>,
-  navigation_hint = <userdata 109>,
-  next = <function 156>,
-  npc_basic_loop = <userdata 110>,
+  message = <userdata 91>,
+  minmax = <userdata 92>,
+  minmax_u = <userdata 93>,
+  mouse = <userdata 94>,
+  movement_component = <userdata 95>,
+  my_atlas = <userdata 96>,
+  my_fragment_shader = <userdata 97>,
+  my_shader_program = <userdata 98>,
+  my_vertex_shader = <userdata 99>,
+  navigation_hint = <userdata 100>,
+  next = <function 155>,
+  npc_basic_loop = <userdata 101>,
   npc_class = <table 2>,
   npc_group_archetype = {
     body = {
       movement = {
         air_resistance = 0.1,
         ground_filter = <table 8>,
-        input_acceleration = <userdata 111>,
-        inverse_thrust_brake = <userdata 112>,
+        input_acceleration = <userdata 102>,
+        inverse_thrust_brake = <userdata 103>,
         max_speed_animation = 2300,
         receivers = {},
         sidescroller_setup = true
@@ -2071,36 +1251,36 @@ _G:
         layer = 2
       },
       scriptable = {
-        available_scripts = <userdata 110>
+        available_scripts = <userdata 101>
       },
       transform = {}
     }
   },
   obstacle_avoidance_archetype = {
     avoidance_rectangle_width = 0,
-    behaviour_type = <userdata 113>,
-    force_color = <userdata 114>,
+    behaviour_type = <userdata 104>,
+    force_color = <userdata 105>,
     ignore_discontinuities_narrower_than = 1,
     intervention_time_ms = 200,
     visibility_type = 1,
     weight = 1
   },
-  obstacle_avoidance_behaviour = <userdata 113>,
-  obstacle_avoidance_steering = <userdata 115>,
-  open_script = <function 157>,
-  orthographic_projection = <function 158>,
+  obstacle_avoidance_behaviour = <userdata 104>,
+  obstacle_avoidance_steering = <userdata 106>,
+  open_script = <function 156>,
+  orthographic_projection = <function 157>,
   os = <12>{
-    clock = <function 159>,
-    date = <function 160>,
-    difftime = <function 161>,
-    execute = <function 162>,
-    exit = <function 163>,
-    getenv = <function 164>,
-    remove = <function 165>,
-    rename = <function 166>,
-    setlocale = <function 167>,
-    time = <function 168>,
-    tmpname = <function 169>
+    clock = <function 158>,
+    date = <function 159>,
+    difftime = <function 160>,
+    execute = <function 161>,
+    exit = <function 162>,
+    getenv = <function 163>,
+    remove = <function 164>,
+    rename = <function 165>,
+    setlocale = <function 166>,
+    time = <function 167>,
+    tmpname = <function 168>
   },
   package = <13>{
     config = "\\\\n;\\n?\\n!\\n-\\n",
@@ -2115,9 +1295,9 @@ _G:
         _LICENSE = '    MIT LICENSE\n\n    Copyright (c) 2013 Enrique García Cota\n\n    Permission is hereby granted, free of charge, to any person obtaining a\n    copy of this software and associated documentation files (the\n    "Software"), to deal in the Software without restriction, including\n    without limitation the rights to use, copy, modify, merge, publish,\n    distribute, sublicense, and/or sell copies of the Software, and to\n    permit persons to whom the Software is furnished to do so, subject to\n    the following conditions:\n\n    The above copyright notice and this permission notice shall be included\n    in all copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS\n    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\n    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\n    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n  ',
         _URL = "http://github.com/kikito/inspect.lua",
         _VERSION = "inspect.lua 2.0.0",
-        inspect = <function 170>,
+        inspect = <function 169>,
         <metatable> = {
-          __call = <function 171>
+          __call = <function 170>
         }
       },
       io = <table 10>,
@@ -2125,57 +1305,50 @@ _G:
       os = <table 12>,
       package = <table 13>,
       string = <15>{
-        byte = <function 172>,
-        char = <function 173>,
-        dump = <function 174>,
-        find = <function 175>,
-        format = <function 176>,
-        gmatch = <function 177>,
-        gsub = <function 178>,
-        len = <function 179>,
-        lower = <function 180>,
-        match = <function 181>,
-        rep = <function 182>,
-        reverse = <function 183>,
-        sub = <function 184>,
-        upper = <function 185>
+        byte = <function 171>,
+        char = <function 172>,
+        dump = <function 173>,
+        find = <function 174>,
+        format = <function 175>,
+        gmatch = <function 176>,
+        gsub = <function 177>,
+        len = <function 178>,
+        lower = <function 179>,
+        match = <function 180>,
+        rep = <function 181>,
+        reverse = <function 182>,
+        sub = <function 183>,
+        upper = <function 184>
       },
       table = <16>{
-        concat = <function 186>,
-        insert = <function 187>,
+        concat = <function 185>,
+        insert = <function 186>,
         inspect = <table 14>,
-        pack = <function 188>,
-        remove = <function 189>,
-        sort = <function 190>,
-        unpack = <function 191>
+        pack = <function 187>,
+        remove = <function 188>,
+        sort = <function 189>,
+        unpack = <function 190>
       }
     },
-    loadlib = <function 192>,
+    loadlib = <function 191>,
     path = "C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?\\init.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?\\init.lua;.\\?.lua",
     preload = {},
-    searchers = { <function 193>, <function 194>, <function 195>, <function 196> },
-    searchpath = <function 197>
+    searchers = { <function 192>, <function 193>, <function 194>, <function 195> },
+    searchpath = <function 196>
   },
-  pairs = <function 198>,
-  particle = <userdata 116>,
-  particle_burst_message = <userdata 117>,
-  particle_effect = <userdata 118>,
-  particle_emitter_component = <userdata 119>,
-  particle_emitter_info = <userdata 120>,
-  pathfinding_component = <userdata 121>,
-  pathfinding_system = <userdata 122>,
-  pcall = <function 199>,
-  physics_component = <userdata 123>,
-  physics_info = <userdata 124>,
-  physics_system = <userdata 125>,
-  player = {
-    body = <userdata 126>,
-    crosshair = <userdata 127>
-  },
-  player_debug_circle = <userdata 128>,
-  player_scriptable_info = <userdata 129>,
-  player_sprite = <userdata 130>,
-  point_below_segment = <function 200>,
+  pairs = <function 197>,
+  particle = <userdata 107>,
+  particle_burst_message = <userdata 108>,
+  particle_effect = <userdata 109>,
+  particle_emitter_component = <userdata 110>,
+  particle_emitter_info = <userdata 111>,
+  pathfinding_component = <userdata 112>,
+  pathfinding_system = <userdata 113>,
+  pcall = <function 198>,
+  physics_component = <userdata 114>,
+  physics_info = <userdata 115>,
+  physics_system = <userdata 116>,
+  point_below_segment = <function 199>,
   poly1 = { {
       x = 0,
       y = 0
@@ -2241,51 +1414,29 @@ _G:
       x = 0,
       y = 660
     } },
-  polygon = <userdata 131>,
-  post_destroy = <function 201>,
-  print = <function 202>,
+  polygon = <userdata 117>,
+  post_destroy = <function 200>,
+  print = <function 201>,
   projection_matrix_uniform = 1,
-  property = <function 203>,
-  ptr_create_entity = <function 204>,
-  ptr_create_entity_group = <function 205>,
-  ptr_lookup = <function 206>,
-  pursuit_steering = <userdata 132>,
-  pv = <function 207>,
-  query_output = <userdata 133>,
-  randval = <function 208>,
-  raw_texture = <userdata 134>,
-  rawequal = <function 209>,
-  rawget = <function 210>,
-  rawlen = <function 211>,
-  rawset = <function 212>,
-  ray_output = <userdata 135>,
-  raycast_output = <userdata 136>,
-  rect_ltrb = <userdata 137>,
-  rect_xywh = <userdata 138>,
-  rects = { {
-      height = 20,
-      width = 100,
-      x = 840,
-      y = 660
-    }, {
-      height = 40,
-      width = 100,
-      x = 980,
-      y = 540
-    }, {
-      height = 40,
-      width = 100,
-      x = 1040,
-      y = 220
-    }, {
-      height = 60,
-      width = 100,
-      x = 680,
-      y = 280
-    } },
-  recursive_write = <function 213>,
-  reloader_script = <userdata 139>,
-  render_component = <userdata 140>,
+  property = <function 202>,
+  ptr_create_entity = <function 203>,
+  ptr_create_entity_group = <function 204>,
+  ptr_lookup = <function 205>,
+  pursuit_steering = <userdata 118>,
+  pv = <function 206>,
+  query_output = <userdata 119>,
+  randval = <function 207>,
+  raw_texture = <userdata 120>,
+  rawequal = <function 208>,
+  rawget = <function 209>,
+  rawlen = <function 210>,
+  rawset = <function 211>,
+  raycast_output = <userdata 121>,
+  rect_ltrb = <userdata 122>,
+  rect_xywh = <userdata 123>,
+  recursive_write = <function 212>,
+  reloader_script = <userdata 124>,
+  render_component = <userdata 125>,
   render_layers = {
     BULLETS = 6,
     EFFECTS = 1,
@@ -2301,268 +1452,143 @@ _G:
     WIELDED = 7,
     WIELDED_GUNS = 4
   },
-  render_system = <userdata 141>,
-  renderable = <userdata 142>,
-  require = <function 214>,
-  resource_creation_util = <userdata 143>,
-  reversed = <function 215>,
-  rewrite = <function 216>,
-  rewrite_ptr = <function 217>,
-  rgba = <userdata 144>,
-  scene_fbo = <userdata 145>,
-  script = <userdata 146>,
-  script_reloader = <userdata 147>,
-  scriptable_component = <userdata 148>,
-  scriptable_info = <userdata 149>,
-  scriptable_zoom = <userdata 150>,
+  render_system = <userdata 126>,
+  renderable = <userdata 127>,
+  require = <function 213>,
+  resource_creation_util = <userdata 128>,
+  reversed = <function 214>,
+  rewrite = <function 215>,
+  rewrite_ptr = <function 216>,
+  rgba = <userdata 129>,
+  scene_fbo = <userdata 130>,
+  script = <userdata 131>,
+  script_reloader = <userdata 132>,
+  scriptable_component = <userdata 133>,
+  scriptable_info = <userdata 134>,
+  scriptable_zoom = <userdata 135>,
   seek_archetype = {
-    behaviour_type = <userdata 151>,
-    force_color = <userdata 152>,
+    behaviour_type = <userdata 136>,
+    force_color = <userdata 137>,
     weight = 1
   },
-  seek_behaviour = <userdata 151>,
-  select = <function 218>,
-  sensor_avoidance_steering = <userdata 153>,
-  separation_behaviour = <userdata 154>,
-  separation_steering = <userdata 155>,
-  set_color = <function 219>,
-  set_components_from_entry = <function 220>,
-  set_physics_info = <function 221>,
-  set_world_reloading_script = <function 222>,
-  set_zoom_level = <function 223>,
-  setmetatable = <function 224>,
-  settings = <userdata 156>,
-  sfMusic = <userdata 157>,
-  sfSound = <userdata 158>,
-  sfSoundBuffer = <userdata 159>,
-  shot_message = <userdata 160>,
-  should_debug_draw = true,
-  simple_create_polygon = <function 225>,
-  simple_integration = <function 226>,
-  spawn_npc = <function 227>,
-  sprite = <userdata 161>,
+  seek_behaviour = <userdata 136>,
+  select = <function 217>,
+  sensor_avoidance_steering = <userdata 138>,
+  separation_behaviour = <userdata 139>,
+  separation_steering = <userdata 140>,
+  set_color = <function 218>,
+  set_components_from_entry = <function 219>,
+  set_physics_info = <function 220>,
+  set_world_reloading_script = <function 221>,
+  set_zoom_level = <function 222>,
+  setmetatable = <function 223>,
+  settings = <userdata 141>,
+  sfMusic = <userdata 142>,
+  sfSound = <userdata 143>,
+  sfSoundBuffer = <userdata 144>,
+  shot_message = <userdata 145>,
+  should_debug_draw = false,
+  simple_create_polygon = <function 224>,
+  simple_integration = <function 225>,
+  spawn_npc = <function 226>,
+  sprite = <userdata 146>,
   stability = 1,
-  steering_behaviour = <userdata 162>,
-  steering_component = <userdata 163>,
-  stepped_timer = <userdata 164>,
+  steering_behaviour = <userdata 147>,
+  steering_component = <userdata 148>,
+  stepped_timer = <userdata 149>,
   string = <table 15>,
-  super = <function 228>,
-  swing_script = <userdata 165>,
+  super = <function 227>,
   table = <table 16>,
   target_entity_archetype = {
     render = {
       layer = 0,
-      model = <userdata 58>
+      model = <userdata 56>
     },
     transform = {}
   },
   target_gravity_rotation = 0,
-  target_info = <userdata 166>,
-  target_seek_steering = <userdata 167>,
-  texture = <userdata 168>,
-  textures = <userdata 169>,
+  target_info = <userdata 150>,
+  target_seek_steering = <userdata 151>,
+  texture = <userdata 152>,
+  textures = <userdata 153>,
   time_uniform = 0,
-  timer = <userdata 170>,
-  to_vec2 = <function 229>,
-  to_vec2_table = <function 230>,
-  tonumber = <function 231>,
-  tostring = <function 232>,
-  transform_component = <userdata 171>,
-  transform_state = <userdata 172>,
-  type = <function 233>,
-  vec2 = <userdata 173>,
-  vec2_vector = <userdata 174>,
-  vertex = <userdata 175>,
-  vertex_triangle = <userdata 176>,
-  visibility_component = <userdata 177>,
-  visibility_layer = <userdata 178>,
-  visibility_system = <userdata 179>,
-  wander_behaviour = <userdata 180>,
-  wander_steering = <userdata 181>,
-  window = <userdata 182>,
-  world = <userdata 183>,
-  world_camera = <userdata 184>,
-  xpcall = <function 234>
+  timer = <userdata 154>,
+  to_vec2 = <function 228>,
+  to_vec2_table = <function 229>,
+  tonumber = <function 230>,
+  tostring = <function 231>,
+  transform_component = <userdata 155>,
+  transform_state = <userdata 156>,
+  type = <function 232>,
+  vec2 = <userdata 157>,
+  vec2_vector = <userdata 158>,
+  vertex = <userdata 159>,
+  vertex_triangle = <userdata 160>,
+  visibility_component = <userdata 161>,
+  visibility_layer = <userdata 162>,
+  visibility_system = <userdata 163>,
+  wander_behaviour = <userdata 164>,
+  wander_steering = <userdata 165>,
+  window = <userdata 166>,
+  world = <userdata 167>,
+  world_camera = <userdata 168>,
+  xpcall = <function 233>
 }
 
-filter_bullets:
+ENEMY_BULLETS:
+16
+
+sfSoundBuffer:
+<userdata 1>
+
+bit32:
 {
-  categoryBits = 8,
-  maskBits = 7
+  arshift = <function 1>,
+  band = <function 2>,
+  bnot = <function 3>,
+  bor = <function 4>,
+  btest = <function 5>,
+  bxor = <function 6>,
+  extract = <function 7>,
+  lrotate = <function 8>,
+  lshift = <function 9>,
+  replace = <function 10>,
+  rrotate = <function 11>,
+  rshift = <function 12>
 }
 
-type:
+float_ptr:
+<userdata 1>
+
+gen_circle_vertices:
 <function 1>
 
-ray_output:
-<userdata 1>
-
-all_num:
+collectgarbage:
 <function 1>
 
-b2WeldJoint:
-<userdata 1>
-
-swing_script:
-<userdata 1>
-
-b2Shape:
-<userdata 1>
-
-os:
-{
-  clock = <function 1>,
-  date = <function 2>,
-  difftime = <function 3>,
-  execute = <function 4>,
-  exit = <function 5>,
-  getenv = <function 6>,
-  remove = <function 7>,
-  rename = <function 8>,
-  setlocale = <function 9>,
-  time = <function 10>,
-  tmpname = <function 11>
-}
-
-loop_only_info:
-<userdata 1>
-
-gravity_angle_offset:
-0
-
-base_crosshair_rotation:
-0
-
-crosshair_component:
-<userdata 1>
-
-xpcall:
+create_polygon:
 <function 1>
 
-my_basic_npc:
-{
-  body = <userdata 1>
-}
+create_joint:
+<function 1>
+
+gun_component:
+<userdata 1>
+
+world:
+<userdata 1>
+
+create_input_context:
+<function 1>
+
+timer:
+<userdata 1>
 
 film_grain_program:
 <userdata 1>
 
-randval:
+rawequal:
 <function 1>
-
-spawn_npc:
-<function 1>
-
-obstacle_avoidance_behaviour:
-<userdata 1>
-
-_world:
-<userdata 1>
-
-physics_system:
-<userdata 1>
-
-set_components_from_entry:
-<function 1>
-
-npc_class:
-{
-  create = <function 1>,
-  handle_jumping = <function 2>,
-  handle_variable_height_jump = <function 3>,
-  initialize = <function 4>,
-  jump = <function 5>,
-  loop = <function 6>,
-  set_foot_sensor_from_circle = <function 7>,
-  set_foot_sensor_from_sprite = <function 8>,
-  set_gravity_shift_state = <function 9>,
-  substep = <function 10>,
-  <metatable> = {
-    __index = {}
-  }
-}
-
-global_sound_table:
-{}
-
-get_self:
-<function 1>
-
-SHELLS:
-128
-
-current_zoom_level:
-10000
-
-scene_fbo:
-<userdata 1>
-
-ENGINE_DIRECTORY:
-"engine\\"
-
-wander_steering:
-<userdata 1>
-
-filter_characters_separation:
-{
-  categoryBits = 1,
-  maskBits = 1
-}
-
-ipairs:
-<function 1>
-
-filter_objects:
-{
-  categoryBits = 2,
-  maskBits = 63
-}
-
-forward_seek_steering:
-<userdata 1>
-
-player_scriptable_info:
-<userdata 1>
-
-drawable_concave:
-<userdata 1>
-
-seek_archetype:
-{
-  behaviour_type = <userdata 1>,
-  force_color = <userdata 2>,
-  weight = 1
-}
-
-print:
-<function 1>
-
-reloader_script:
-<userdata 1>
-
-target_entity_archetype:
-{
-  render = {
-    layer = 0,
-    model = <userdata 1>
-  },
-  transform = {}
-}
-
-filter_melee:
-{
-  categoryBits = 8,
-  maskBits = 1
-}
-
-inherits_from:
-<function 1>
-
-scriptable_info:
-<userdata 1>
-
-ground_poly2:
-<userdata 1>
 
 poly2:
 { {
@@ -2600,29 +1626,778 @@ poly2:
     y = 660
   } }
 
-behaviour_tree_task:
-<userdata 1>
-
-ptr_create_entity_group:
+call_on_modification:
 <function 1>
 
-set_color:
-<function 1>
-
-world_camera:
+particle:
 <userdata 1>
 
-basic_texture_uniform:
-0
+filter_melee_obstruction:
+{
+  categoryBits = 255,
+  maskBits = 6
+}
 
-projection_matrix_uniform:
-1
-
-my_shader_program:
+steering_component:
 <userdata 1>
 
-time_uniform:
-0
+stepped_timer:
+<userdata 1>
+
+sfSound:
+<userdata 1>
+
+children_component:
+<userdata 1>
+
+package:
+<1>{
+  config = "\\\\n;\\n?\\n!\\n-\\n",
+  cpath = "C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?.dll;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\loadall.dll;.\\?.dll",
+  loaded = {
+    _G = <2>{
+      BULLETS = 8,
+      Box2D = <userdata 1>,
+      CHARACTERS = 1,
+      CORPSES = 32,
+      ENEMY_BULLETS = 16,
+      ENGINE_DIRECTORY = "engine\\",
+      GL = <userdata 2>,
+      GLSL_program = <userdata 3>,
+      GLSL_shader = <userdata 4>,
+      ITEMS = 64,
+      METERS_TO_PIXELS = 50,
+      OBJECTS = 2,
+      PIXELS_TO_METERS = 0.02,
+      SHELLS = 128,
+      STATIC_OBJECTS = 4,
+      SetDensity = <function 1>,
+      SetFriction = <function 2>,
+      _G = <table 2>,
+      _VERSION = "Lua 5.2",
+      _entity = <userdata 5>,
+      _input_system = <userdata 6>,
+      _pathfinding_system = <userdata 7>,
+      _physics_system = <userdata 8>,
+      _render_system = <userdata 9>,
+      _script_reloader = <userdata 10>,
+      _visibility_system = <userdata 11>,
+      _world = <userdata 12>,
+      add_roots = <function 3>,
+      add_vals = <function 4>,
+      animate_component = <userdata 13>,
+      animate_info = <userdata 14>,
+      animate_message = <userdata 15>,
+      animation = <userdata 16>,
+      animation_events = <userdata 17>,
+      archetyped = <function 5>,
+      assert = <function 6>,
+      atlas = <userdata 18>,
+      avoidance_behaviour = <userdata 19>,
+      b2Body = <userdata 20>,
+      b2Filter = <userdata 21>,
+      b2JointDef = <userdata 22>,
+      b2PolygonShape = <userdata 23>,
+      b2RevoluteJoint = <userdata 24>,
+      b2RevoluteJointDef = <userdata 25>,
+      b2Shape = <userdata 26>,
+      b2Vec2 = <userdata 27>,
+      b2WeldJoint = <userdata 28>,
+      b2WeldJointDef = <userdata 29>,
+      b2World = <userdata 30>,
+      base_gravity = <userdata 31>,
+      basic_npc_class = {
+        angle_fits_in_threshold = <function 7>,
+        create = <function 8>,
+        determine_jumpability = <function 9>,
+        handle_flying_state = <function 10>,
+        handle_player_visibility = <function 11>,
+        handle_steering = <function 12>,
+        handle_visibility_offset = <function 13>,
+        initialize = <function 14>,
+        is_pathfinding = <function 15>,
+        loop = <function 16>,
+        map_vector_to_movement = <function 17>,
+        pursue_target = <function 18>,
+        refresh_behaviours = <function 19>,
+        set_all_behaviours_enabled = <function 20>,
+        set_movement_mode_flying = <function 21>,
+        stop_pursuit = <function 22>,
+        substep = <function 23>,
+        <metatable> = {
+          __index = <3>{
+            create = <function 24>,
+            handle_jumping = <function 25>,
+            handle_variable_height_jump = <function 26>,
+            initialize = <function 27>,
+            jump = <function 28>,
+            loop = <function 29>,
+            set_foot_sensor_from_circle = <function 30>,
+            set_foot_sensor_from_sprite = <function 31>,
+            set_gravity_shift_state = <function 32>,
+            substep = <function 33>,
+            <metatable> = {
+              __index = {}
+            }
+          }
+        }
+      },
+      basic_npc_sprite = <userdata 32>,
+      basic_texture_uniform = 0,
+      behaviour_decorator = <userdata 33>,
+      behaviour_node = <userdata 34>,
+      behaviour_state = <userdata 35>,
+      behaviour_timer_decorator = <userdata 36>,
+      behaviour_tree_component = <userdata 37>,
+      behaviour_tree_task = <userdata 38>,
+      bit32 = <4>{
+        arshift = <function 34>,
+        band = <function 35>,
+        bnot = <function 36>,
+        bor = <function 37>,
+        btest = <function 38>,
+        bxor = <function 39>,
+        extract = <function 40>,
+        lrotate = <function 41>,
+        lshift = <function 42>,
+        replace = <function 43>,
+        rrotate = <function 44>,
+        rshift = <function 45>
+      },
+      bitflag = <function 46>,
+      bitor = <function 47>,
+      body_to_entity = <function 48>,
+      calc_air_resistance = <function 49>,
+      calc_max_jump_height = <function 50>,
+      call_on_modification = <function 51>,
+      camera_archetype = {
+        camera = {
+          angled_look_length = 100,
+          averages_per_sec = 15,
+          enable_smoothing = true,
+          enabled = true,
+          layer = 0,
+          mask = 0,
+          max_look_expand = <userdata 39>,
+          orbit_mode = 2,
+          smoothing_average_factor = 0.5
+        },
+        chase = {
+          relative = false
+        },
+        transform = {
+          pos = <userdata 40>,
+          rotation = 0
+        }
+      },
+      camera_component = <userdata 41>,
+      can_point_be_reached_by_jump = <function 52>,
+      changing_gravity = false,
+      chase_component = <userdata 42>,
+      children_component = <userdata 43>,
+      class = <function 53>,
+      class_info = <function 54>,
+      class_info_data = <userdata 44>,
+      class_names = <function 55>,
+      collectgarbage = <function 56>,
+      collision_message = <userdata 45>,
+      common = <userdata 46>,
+      config_table = {
+        bpp = 24,
+        doublebuffer = 1,
+        fullscreen = 0,
+        resolution_h = 1000,
+        resolution_w = 1500,
+        sensitivity = <userdata 47>,
+        window_border = 0,
+        window_name = "example",
+        window_x = 0,
+        window_y = 0
+      },
+      containment_archetype = {
+        avoidance_rectangle_width = 0,
+        behaviour_type = <userdata 48>,
+        force_color = <userdata 49>,
+        intervention_time_ms = 240,
+        only_threats_in_OBB = false,
+        randomize_rays = true,
+        ray_count = 5,
+        ray_filter = <5>{
+          categoryBits = 47,
+          maskBits = 7
+        },
+        weight = 1
+      },
+      containment_behaviour = <userdata 48>,
+      containment_steering = <userdata 50>,
+      coroutine = <6>{
+        create = <function 57>,
+        resume = <function 58>,
+        running = <function 59>,
+        status = <function 60>,
+        wrap = <function 61>,
+        yield = <function 62>
+      },
+      create = <function 63>,
+      create_animation = <function 64>,
+      create_animation_set = <function 65>,
+      create_behaviour_tree = <function 66>,
+      create_emission = <function 67>,
+      create_entity = <function 68>,
+      create_entity_group = <function 69>,
+      create_gun = <function 70>,
+      create_input_context = <function 71>,
+      create_inverse_enum = <function 72>,
+      create_joint = <function 73>,
+      create_options = <function 74>,
+      create_particle = <function 75>,
+      create_particle_effect = <function 76>,
+      create_particle_emitter_info = <function 77>,
+      create_physics_component = <function 78>,
+      create_polygon = <function 79>,
+      create_scriptable_info = <function 80>,
+      create_sprite = <function 81>,
+      create_steering = <function 82>,
+      create_textures = <function 83>,
+      crosshair_component = <userdata 51>,
+      current_gravity = <userdata 52>,
+      current_zoom_level = 10000,
+      custom_intents = {
+        DROP_WEAPON = 999999992,
+        GRAVITY_CHANGE = 999999990,
+        INSTANT_SLOWDOWN = 999999996,
+        JUMP = 999999991,
+        MY_INTENT = 999999989,
+        QUIT = 999999993,
+        RESTART = 999999997,
+        SPEED_DECREASE = 999999994,
+        SPEED_INCREASE = 999999995,
+        STEERING_REQUEST = 999999998,
+        ZOOM_CAMERA = 999999999
+      },
+      damage_component = <userdata 53>,
+      damage_message = <userdata 54>,
+      debug = <7>{
+        debug = <function 84>,
+        gethook = <function 85>,
+        getinfo = <function 86>,
+        getlocal = <function 87>,
+        getmetatable = <function 88>,
+        getregistry = <function 89>,
+        getupvalue = <function 90>,
+        getuservalue = <function 91>,
+        my_traceback = <function 92>,
+        sethook = <function 93>,
+        setlocal = <function 94>,
+        setmetatable = <function 95>,
+        setupvalue = <function 96>,
+        setuservalue = <function 97>,
+        traceback = <function 98>,
+        upvalueid = <function 99>,
+        upvaluejoin = <function 100>
+      },
+      debug_draw = <function 101>,
+      debug_line = <userdata 55>,
+      debug_target_sprite = <userdata 56>,
+      debugger_break = <function 102>,
+      def = <function 103>,
+      def_ptr = <function 104>,
+      destroy_message = <userdata 57>,
+      directed_behaviour = <userdata 58>,
+      dofile = <function 105>,
+      drawable_concave = <userdata 59>,
+      emission = <userdata 60>,
+      entities = <userdata 61>,
+      entity_creation_util = <userdata 62>,
+      entity_ptr = <userdata 63>,
+      entries_from_archetypes = <function 106>,
+      environment_archetype = {
+        physics = {
+          body_info = {
+            angular_damping = 10,
+            density = 1000,
+            filter = <8>{
+              categoryBits = 4,
+              maskBits = 255
+            },
+            friction = 0.1,
+            linear_damping = 10,
+            shape_type = 1
+          },
+          body_type = 0
+        },
+        render = {},
+        transform = {}
+      },
+      environment_entity = <userdata 64>,
+      environment_entity2 = <userdata 65>,
+      error = <function 107>,
+      film_grain_fragment_shader = <userdata 66>,
+      film_grain_program = <userdata 67>,
+      film_grain_vertex_shader = <userdata 68>,
+      filter_bullets = {
+        categoryBits = 8,
+        maskBits = 7
+      },
+      filter_characters = {
+        categoryBits = 1,
+        maskBits = 23
+      },
+      filter_characters_separation = {
+        categoryBits = 1,
+        maskBits = 1
+      },
+      filter_corpses = {
+        categoryBits = 32,
+        maskBits = 6
+      },
+      filter_doors = {
+        maskBits = 250
+      },
+      filter_enemies = {
+        categoryBits = 1,
+        maskBits = 15
+      },
+      filter_enemy_bullets = {
+        categoryBits = 16,
+        maskBits = 7
+      },
+      filter_enemy_melee = {
+        categoryBits = 16,
+        maskBits = 1
+      },
+      filter_melee = {
+        categoryBits = 8,
+        maskBits = 1
+      },
+      filter_melee_obstruction = {
+        categoryBits = 255,
+        maskBits = 6
+      },
+      filter_nothing = {
+        categoryBits = 0,
+        maskBits = 0
+      },
+      filter_npc_feet = <9>{
+        categoryBits = 255,
+        maskBits = 71
+      },
+      filter_objects = <10>{
+        categoryBits = 2,
+        maskBits = 63
+      },
+      filter_obstacle_visibility = <table 5>,
+      filter_pathfinding_visibility = {
+        categoryBits = 47,
+        maskBits = 4
+      },
+      filter_player_visibility = {
+        categoryBits = 255,
+        maskBits = 4
+      },
+      filter_shells = {
+        categoryBits = 128,
+        maskBits = 134
+      },
+      filter_static_objects = <table 8>,
+      flee_behaviour = <userdata 69>,
+      float_ptr = <userdata 70>,
+      float_vector = <userdata 71>,
+      flocking_behaviour = <userdata 72>,
+      forward_seek_steering = <userdata 73>,
+      framebuffer_object = <userdata 74>,
+      gen_circle_vertices = <function 108>,
+      get_display = <function 109>,
+      get_self = <function 110>,
+      getmetatable = <function 111>,
+      global_sound_table = {},
+      glwindow = <userdata 75>,
+      gravity_angle_offset = 0,
+      ground_poly = <userdata 76>,
+      ground_poly2 = <userdata 77>,
+      gun_component = <userdata 78>,
+      images = {
+        blank = <userdata 79>
+      },
+      inherits_from = <function 112>,
+      input_component = <userdata 80>,
+      input_context = <userdata 81>,
+      input_system = <userdata 82>,
+      intent_message = <userdata 83>,
+      io = <11>{
+        close = <function 113>,
+        flush = <function 114>,
+        input = <function 115>,
+        lines = <function 116>,
+        open = <function 117>,
+        output = <function 118>,
+        popen = <function 119>,
+        read = <function 120>,
+        stderr = <userdata 84>,
+        stdin = <userdata 85>,
+        stdout = <userdata 86>,
+        tmpfile = <function 121>,
+        type = <function 122>,
+        write = <function 123>
+      },
+      ipairs = <function 124>,
+      keys = <userdata 87>,
+      layers = <userdata 88>,
+      load = <function 125>,
+      loadfile = <function 126>,
+      lookat_component = <userdata 89>,
+      main_context = <userdata 90>,
+      map_uv_square = <function 127>,
+      math = <12>{
+        abs = <function 128>,
+        acos = <function 129>,
+        asin = <function 130>,
+        atan = <function 131>,
+        atan2 = <function 132>,
+        ceil = <function 133>,
+        cos = <function 134>,
+        cosh = <function 135>,
+        deg = <function 136>,
+        exp = <function 137>,
+        floor = <function 138>,
+        fmod = <function 139>,
+        frexp = <function 140>,
+        huge = 1.#INF,
+        ldexp = <function 141>,
+        log = <function 142>,
+        max = <function 143>,
+        min = <function 144>,
+        modf = <function 145>,
+        pi = 3.1415926535898,
+        pow = <function 146>,
+        rad = <function 147>,
+        random = <function 148>,
+        randomseed = <function 149>,
+        sin = <function 150>,
+        sinh = <function 151>,
+        sqrt = <function 152>,
+        tan = <function 153>,
+        tanh = <function 154>
+      },
+      message = <userdata 91>,
+      minmax = <userdata 92>,
+      minmax_u = <userdata 93>,
+      mouse = <userdata 94>,
+      movement_component = <userdata 95>,
+      my_atlas = <userdata 96>,
+      my_fragment_shader = <userdata 97>,
+      my_shader_program = <userdata 98>,
+      my_vertex_shader = <userdata 99>,
+      navigation_hint = <userdata 100>,
+      next = <function 155>,
+      npc_basic_loop = <userdata 101>,
+      npc_class = <table 3>,
+      npc_group_archetype = {
+        body = {
+          movement = {
+            air_resistance = 0.1,
+            ground_filter = <table 9>,
+            input_acceleration = <userdata 102>,
+            inverse_thrust_brake = <userdata 103>,
+            max_speed_animation = 2300,
+            receivers = {},
+            sidescroller_setup = true
+          },
+          physics = {
+            body_info = {
+              bullet = true,
+              density = 1,
+              filter = <table 10>,
+              fixed_rotation = true,
+              friction = 2,
+              radius = 60,
+              shape_type = 0
+            },
+            body_type = 2
+          },
+          render = {
+            layer = 2
+          },
+          scriptable = {
+            available_scripts = <userdata 101>
+          },
+          transform = {}
+        }
+      },
+      obstacle_avoidance_archetype = {
+        avoidance_rectangle_width = 0,
+        behaviour_type = <userdata 104>,
+        force_color = <userdata 105>,
+        ignore_discontinuities_narrower_than = 1,
+        intervention_time_ms = 200,
+        visibility_type = 1,
+        weight = 1
+      },
+      obstacle_avoidance_behaviour = <userdata 104>,
+      obstacle_avoidance_steering = <userdata 106>,
+      open_script = <function 156>,
+      orthographic_projection = <function 157>,
+      os = <13>{
+        clock = <function 158>,
+        date = <function 159>,
+        difftime = <function 160>,
+        execute = <function 161>,
+        exit = <function 162>,
+        getenv = <function 163>,
+        remove = <function 164>,
+        rename = <function 165>,
+        setlocale = <function 166>,
+        time = <function 167>,
+        tmpname = <function 168>
+      },
+      package = <table 1>,
+      pairs = <function 169>,
+      particle = <userdata 107>,
+      particle_burst_message = <userdata 108>,
+      particle_effect = <userdata 109>,
+      particle_emitter_component = <userdata 110>,
+      particle_emitter_info = <userdata 111>,
+      pathfinding_component = <userdata 112>,
+      pathfinding_system = <userdata 113>,
+      pcall = <function 170>,
+      physics_component = <userdata 114>,
+      physics_info = <userdata 115>,
+      physics_system = <userdata 116>,
+      point_below_segment = <function 171>,
+      poly1 = { {
+          x = 0,
+          y = 0
+        }, {
+          x = 0,
+          y = 340
+        }, {
+          x = 640,
+          y = 340
+        }, {
+          x = 640,
+          y = 280
+        }, {
+          x = 60,
+          y = 280
+        }, {
+          x = 60,
+          y = 180
+        }, {
+          x = 240,
+          y = 180
+        }, {
+          x = 240,
+          y = 120
+        }, {
+          x = 60,
+          y = 120
+        }, {
+          x = 60,
+          y = 0
+        } },
+      poly2 = { {
+          x = 0,
+          y = 0
+        }, {
+          x = -80,
+          y = 80
+        }, {
+          x = -80,
+          y = 740
+        }, {
+          x = 720,
+          y = 820
+        }, {
+          x = 1160,
+          y = 760
+        }, {
+          x = 1180,
+          y = 40
+        }, {
+          x = 960,
+          y = -20
+        }, {
+          x = 1060,
+          y = 120
+        }, {
+          x = 1040,
+          y = 700
+        }, {
+          x = 720,
+          y = 720
+        }, {
+          x = 0,
+          y = 660
+        } },
+      polygon = <userdata 117>,
+      post_destroy = <function 172>,
+      print = <function 173>,
+      projection_matrix_uniform = 1,
+      property = <function 174>,
+      ptr_create_entity = <function 175>,
+      ptr_create_entity_group = <function 176>,
+      ptr_lookup = <function 177>,
+      pursuit_steering = <userdata 118>,
+      pv = <function 178>,
+      query_output = <userdata 119>,
+      randval = <function 179>,
+      raw_texture = <userdata 120>,
+      rawequal = <function 180>,
+      rawget = <function 181>,
+      rawlen = <function 182>,
+      rawset = <function 183>,
+      raycast_output = <userdata 121>,
+      rect_ltrb = <userdata 122>,
+      rect_xywh = <userdata 123>,
+      recursive_write = <function 184>,
+      reloader_script = <userdata 124>,
+      render_component = <userdata 125>,
+      render_layers = {
+        BULLETS = 6,
+        EFFECTS = 1,
+        GROUND = 13,
+        GUI_OBJECTS = 0,
+        HEADS = 3,
+        LEGS = 8,
+        OBJECTS = 2,
+        ON_GROUND = 10,
+        PLAYERS = 5,
+        SHELLS = 9,
+        UNDER_CORPSES = 12,
+        WIELDED = 7,
+        WIELDED_GUNS = 4
+      },
+      render_system = <userdata 126>,
+      renderable = <userdata 127>,
+      require = <function 185>,
+      resource_creation_util = <userdata 128>,
+      reversed = <function 186>,
+      rewrite = <function 187>,
+      rewrite_ptr = <function 188>,
+      rgba = <userdata 129>,
+      scene_fbo = <userdata 130>,
+      script = <userdata 131>,
+      script_reloader = <userdata 132>,
+      scriptable_component = <userdata 133>,
+      scriptable_info = <userdata 134>,
+      scriptable_zoom = <userdata 135>,
+      seek_archetype = {
+        behaviour_type = <userdata 136>,
+        force_color = <userdata 137>,
+        weight = 1
+      },
+      seek_behaviour = <userdata 136>,
+      select = <function 189>,
+      sensor_avoidance_steering = <userdata 138>,
+      separation_behaviour = <userdata 139>,
+      separation_steering = <userdata 140>,
+      set_color = <function 190>,
+      set_components_from_entry = <function 191>,
+      set_physics_info = <function 192>,
+      set_world_reloading_script = <function 193>,
+      set_zoom_level = <function 194>,
+      setmetatable = <function 195>,
+      settings = <userdata 141>,
+      sfMusic = <userdata 142>,
+      sfSound = <userdata 143>,
+      sfSoundBuffer = <userdata 144>,
+      shot_message = <userdata 145>,
+      should_debug_draw = false,
+      simple_create_polygon = <function 196>,
+      simple_integration = <function 197>,
+      spawn_npc = <function 198>,
+      sprite = <userdata 146>,
+      stability = 1,
+      steering_behaviour = <userdata 147>,
+      steering_component = <userdata 148>,
+      stepped_timer = <userdata 149>,
+      string = <14>{
+        byte = <function 199>,
+        char = <function 200>,
+        dump = <function 201>,
+        find = <function 202>,
+        format = <function 203>,
+        gmatch = <function 204>,
+        gsub = <function 205>,
+        len = <function 206>,
+        lower = <function 207>,
+        match = <function 208>,
+        rep = <function 209>,
+        reverse = <function 210>,
+        sub = <function 211>,
+        upper = <function 212>
+      },
+      super = <function 213>,
+      table = <15>{
+        concat = <function 214>,
+        insert = <function 215>,
+        inspect = <16>{
+          _DESCRIPTION = "human-readable representations of tables",
+          _LICENSE = '    MIT LICENSE\n\n    Copyright (c) 2013 Enrique García Cota\n\n    Permission is hereby granted, free of charge, to any person obtaining a\n    copy of this software and associated documentation files (the\n    "Software"), to deal in the Software without restriction, including\n    without limitation the rights to use, copy, modify, merge, publish,\n    distribute, sublicense, and/or sell copies of the Software, and to\n    permit persons to whom the Software is furnished to do so, subject to\n    the following conditions:\n\n    The above copyright notice and this permission notice shall be included\n    in all copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS\n    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\n    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\n    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n  ',
+          _URL = "http://github.com/kikito/inspect.lua",
+          _VERSION = "inspect.lua 2.0.0",
+          inspect = <function 216>,
+          <metatable> = {
+            __call = <function 217>
+          }
+        },
+        pack = <function 218>,
+        remove = <function 219>,
+        sort = <function 220>,
+        unpack = <function 221>
+      },
+      target_entity_archetype = {
+        render = {
+          layer = 0,
+          model = <userdata 56>
+        },
+        transform = {}
+      },
+      target_gravity_rotation = 0,
+      target_info = <userdata 150>,
+      target_seek_steering = <userdata 151>,
+      texture = <userdata 152>,
+      textures = <userdata 153>,
+      time_uniform = 0,
+      timer = <userdata 154>,
+      to_vec2 = <function 222>,
+      to_vec2_table = <function 223>,
+      tonumber = <function 224>,
+      tostring = <function 225>,
+      transform_component = <userdata 155>,
+      transform_state = <userdata 156>,
+      type = <function 226>,
+      vec2 = <userdata 157>,
+      vec2_vector = <userdata 158>,
+      vertex = <userdata 159>,
+      vertex_triangle = <userdata 160>,
+      visibility_component = <userdata 161>,
+      visibility_layer = <userdata 162>,
+      visibility_system = <userdata 163>,
+      wander_behaviour = <userdata 164>,
+      wander_steering = <userdata 165>,
+      window = <userdata 166>,
+      world = <userdata 167>,
+      world_camera = <userdata 168>,
+      xpcall = <function 227>
+    },
+    bit32 = <table 4>,
+    coroutine = <table 6>,
+    debug = <table 7>,
+    inspect = <table 16>,
+    io = <table 11>,
+    math = <table 12>,
+    os = <table 13>,
+    package = <table 1>,
+    string = <table 14>,
+    table = <table 15>
+  },
+  loadlib = <function 228>,
+  path = "C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?\\init.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?\\init.lua;.\\?.lua",
+  preload = {},
+  searchers = { <function 229>, <function 230>, <function 231>, <function 232> },
+  searchpath = <function 233>
+}
 
 basic_npc_class:
 {
@@ -2642,18 +2417,19 @@ basic_npc_class:
   set_all_behaviours_enabled = <function 14>,
   set_movement_mode_flying = <function 15>,
   stop_pursuit = <function 16>,
+  substep = <function 17>,
   <metatable> = {
     __index = {
-      create = <function 17>,
-      handle_jumping = <function 18>,
-      handle_variable_height_jump = <function 19>,
-      initialize = <function 20>,
-      jump = <function 21>,
-      loop = <function 22>,
-      set_foot_sensor_from_circle = <function 23>,
-      set_foot_sensor_from_sprite = <function 24>,
-      set_gravity_shift_state = <function 25>,
-      substep = <function 26>,
+      create = <function 18>,
+      handle_jumping = <function 19>,
+      handle_variable_height_jump = <function 20>,
+      initialize = <function 21>,
+      jump = <function 22>,
+      loop = <function 23>,
+      set_foot_sensor_from_circle = <function 24>,
+      set_foot_sensor_from_sprite = <function 25>,
+      set_gravity_shift_state = <function 26>,
+      substep = <function 27>,
       <metatable> = {
         __index = {}
       }
@@ -2661,29 +2437,131 @@ basic_npc_class:
   }
 }
 
-my_fragment_shader:
+simple_integration:
+<function 1>
+
+basic_npc_sprite:
 <userdata 1>
 
-debug_target_sprite:
+body_to_entity:
+<function 1>
+
+spawn_npc:
+<function 1>
+
+super:
+<function 1>
+
+animation_events:
 <userdata 1>
-
-film_grain_vertex_shader:
-<userdata 1>
-
-create_behaviour_tree:
-<function 1>
-
-create_textures:
-<function 1>
-
-create_animation_set:
-<function 1>
-
-set_zoom_level:
-<function 1>
 
 pursuit_steering:
 <userdata 1>
+
+separation_steering:
+<userdata 1>
+
+ENGINE_DIRECTORY:
+"engine\\"
+
+sensor_avoidance_steering:
+<userdata 1>
+
+message:
+<userdata 1>
+
+obstacle_avoidance_steering:
+<userdata 1>
+
+obstacle_avoidance_archetype:
+{
+  avoidance_rectangle_width = 0,
+  behaviour_type = <userdata 1>,
+  force_color = <userdata 2>,
+  ignore_discontinuities_narrower_than = 1,
+  intervention_time_ms = 200,
+  visibility_type = 1,
+  weight = 1
+}
+
+create_options:
+<function 1>
+
+open_script:
+<function 1>
+
+containment_steering:
+<userdata 1>
+
+steering_behaviour:
+<userdata 1>
+
+PIXELS_TO_METERS:
+0.02
+
+target_seek_steering:
+<userdata 1>
+
+seek_archetype:
+{
+  behaviour_type = <userdata 1>,
+  force_color = <userdata 2>,
+  weight = 1
+}
+
+bitor:
+<function 1>
+
+create_particle:
+<function 1>
+
+ground_poly2:
+<userdata 1>
+
+ground_poly:
+<userdata 1>
+
+poly1:
+{ {
+    x = 0,
+    y = 0
+  }, {
+    x = 0,
+    y = 340
+  }, {
+    x = 640,
+    y = 340
+  }, {
+    x = 640,
+    y = 280
+  }, {
+    x = 60,
+    y = 280
+  }, {
+    x = 60,
+    y = 180
+  }, {
+    x = 240,
+    y = 180
+  }, {
+    x = 240,
+    y = 120
+  }, {
+    x = 60,
+    y = 120
+  }, {
+    x = 60,
+    y = 0
+  } }
+
+forward_seek_steering:
+<userdata 1>
+
+debug_draw:
+<function 1>
+
+def_ptr:
+<function 1>
 
 custom_intents:
 {
@@ -2700,248 +2578,16 @@ custom_intents:
   ZOOM_CAMERA = 999999999
 }
 
-changing_gravity:
-false
+projection_matrix_uniform:
+1
 
-my_vertex_shader:
+film_grain_fragment_shader:
 <userdata 1>
 
-window:
+scene_fbo:
 <userdata 1>
 
-scriptable_zoom:
-<userdata 1>
-
-script_reloader:
-<userdata 1>
-
-calc_air_resistance:
-<function 1>
-
-gun_component:
-<userdata 1>
-
-filter_melee_obstruction:
-{
-  categoryBits = 255,
-  maskBits = 6
-}
-
-bitor:
-<function 1>
-
-wander_behaviour:
-<userdata 1>
-
-environment_entity2:
-<userdata 1>
-
-string:
-{
-  byte = <function 1>,
-  char = <function 2>,
-  dump = <function 3>,
-  find = <function 4>,
-  format = <function 5>,
-  gmatch = <function 6>,
-  gsub = <function 7>,
-  len = <function 8>,
-  lower = <function 9>,
-  match = <function 10>,
-  rep = <function 11>,
-  reverse = <function 12>,
-  sub = <function 13>,
-  upper = <function 14>
-}
-
-filter_corpses:
-{
-  categoryBits = 32,
-  maskBits = 6
-}
-
-rect_ltrb:
-<userdata 1>
-
-message:
-<userdata 1>
-
-_visibility_system:
-<userdata 1>
-
-rawget:
-<function 1>
-
-filter_enemy_bullets:
-{
-  categoryBits = 16,
-  maskBits = 7
-}
-
-flocking_behaviour:
-<userdata 1>
-
-float_ptr:
-<userdata 1>
-
-b2JointDef:
-<userdata 1>
-
-visibility_component:
-<userdata 1>
-
-behaviour_state:
-<userdata 1>
-
-pathfinding_component:
-<userdata 1>
-
-filter_nothing:
-{
-  categoryBits = 0,
-  maskBits = 0
-}
-
-_VERSION:
-"Lua 5.2"
-
-steering_behaviour:
-<userdata 1>
-
-recursive_write:
-<function 1>
-
-animate_message:
-<userdata 1>
-
-behaviour_timer_decorator:
-<userdata 1>
-
-loadfile:
-<function 1>
-
-lookat_component:
-<userdata 1>
-
-target_seek_steering:
-<userdata 1>
-
-b2Vec2:
-<userdata 1>
-
-movement_component:
-<userdata 1>
-
-debug_line:
-<userdata 1>
-
-pv:
-<function 1>
-
-filter_characters:
-{
-  categoryBits = 1,
-  maskBits = 23
-}
-
-rawequal:
-<function 1>
-
-physics_info:
-<userdata 1>
-
-framebuffer_object:
-<userdata 1>
-
-obstacle_avoidance_archetype:
-{
-  avoidance_rectangle_width = 0,
-  behaviour_type = <userdata 1>,
-  force_color = <userdata 2>,
-  ignore_discontinuities_narrower_than = 1,
-  intervention_time_ms = 200,
-  visibility_type = 1,
-  weight = 1
-}
-
-call_on_modification:
-<function 1>
-
-navigation_hint:
-<userdata 1>
-
-debugger_break:
-<function 1>
-
-filter_static_objects:
-{
-  categoryBits = 4,
-  maskBits = 255
-}
-
-filter_shells:
-{
-  categoryBits = 128,
-  maskBits = 134
-}
-
-SetDensity:
-<function 1>
-
-animate_component:
-<userdata 1>
-
-bitflag:
-<function 1>
-
-chase_component:
-<userdata 1>
-
-should_debug_draw:
-true
-
-property:
-<function 1>
-
-create_particle_effect:
-<function 1>
-
-render_layers:
-{
-  BULLETS = 6,
-  EFFECTS = 1,
-  GROUND = 13,
-  GUI_OBJECTS = 0,
-  HEADS = 3,
-  LEGS = 8,
-  OBJECTS = 2,
-  ON_GROUND = 10,
-  PLAYERS = 5,
-  SHELLS = 9,
-  UNDER_CORPSES = 12,
-  WIELDED = 7,
-  WIELDED_GUNS = 4
-}
-
-textures:
-<userdata 1>
-
-dofile:
-<function 1>
-
-sfSound:
-<userdata 1>
-
-sfSoundBuffer:
-<userdata 1>
-
-filter_enemy_melee:
-{
-  categoryBits = 16,
-  maskBits = 1
-}
-
-create_gun:
+next:
 <function 1>
 
 camera_archetype:
@@ -2966,62 +2612,396 @@ camera_archetype:
   }
 }
 
-config_table:
+rect_ltrb:
+<userdata 1>
+
+drawable_concave:
+<userdata 1>
+
+texture:
+<userdata 1>
+
+base_gravity:
+<userdata 1>
+
+input_system:
+<userdata 1>
+
+scriptable_zoom:
+<userdata 1>
+
+tonumber:
+<function 1>
+
+set_zoom_level:
+<function 1>
+
+vec2:
+<userdata 1>
+
+main_context:
+<userdata 1>
+
+can_point_be_reached_by_jump:
+<function 1>
+
+_visibility_system:
+<userdata 1>
+
+images:
 {
-  bpp = 24,
-  doublebuffer = 1,
-  fullscreen = 0,
-  resolution_h = 1000,
-  resolution_w = 1500,
-  sensitivity = <userdata 1>,
-  window_border = 0,
-  window_name = "example",
-  window_x = 0,
-  window_y = 0
+  blank = <userdata 1>
 }
+
+add_roots:
+<function 1>
+
+load:
+<function 1>
+
+inherits_from:
+<function 1>
+
+script:
+<userdata 1>
 
 vec2_vector:
 <userdata 1>
 
-create_particle_emitter_info:
+require:
 <function 1>
 
-sprite:
+vertex_triangle:
 <userdata 1>
 
-behaviour_node:
-<userdata 1>
+CHARACTERS:
+1
 
-create_particle:
-<function 1>
-
-coroutine:
+math:
 {
-  create = <function 1>,
-  resume = <function 2>,
-  running = <function 3>,
-  status = <function 4>,
-  wrap = <function 5>,
-  yield = <function 6>
+  abs = <function 1>,
+  acos = <function 2>,
+  asin = <function 3>,
+  atan = <function 4>,
+  atan2 = <function 5>,
+  ceil = <function 6>,
+  cos = <function 7>,
+  cosh = <function 8>,
+  deg = <function 9>,
+  exp = <function 10>,
+  floor = <function 11>,
+  fmod = <function 12>,
+  frexp = <function 13>,
+  huge = 1.#INF,
+  ldexp = <function 14>,
+  log = <function 15>,
+  max = <function 16>,
+  min = <function 17>,
+  modf = <function 18>,
+  pi = 3.1415926535898,
+  pow = <function 19>,
+  rad = <function 20>,
+  random = <function 21>,
+  randomseed = <function 22>,
+  sin = <function 23>,
+  sinh = <function 24>,
+  sqrt = <function 25>,
+  tan = <function 26>,
+  tanh = <function 27>
 }
 
-create_input_context:
-<function 1>
-
-particle:
+collision_message:
 <userdata 1>
 
-open_script:
+resource_creation_util:
+<userdata 1>
+
+b2Filter:
+<userdata 1>
+
+ptr_create_entity:
 <function 1>
 
-get_display:
+pcall:
 <function 1>
 
-target_info:
+filter_melee:
+{
+  categoryBits = 8,
+  maskBits = 1
+}
+
+minmax_u:
+<userdata 1>
+
+behaviour_tree_component:
+<userdata 1>
+
+debug_target_sprite:
+<userdata 1>
+
+rawlen:
+<function 1>
+
+filter_bullets:
+{
+  categoryBits = 8,
+  maskBits = 7
+}
+
+transform_component:
+<userdata 1>
+
+filter_pathfinding_visibility:
+{
+  categoryBits = 47,
+  maskBits = 4
+}
+
+filter_objects:
+{
+  categoryBits = 2,
+  maskBits = 63
+}
+
+randval:
+<function 1>
+
+filter_static_objects:
+{
+  categoryBits = 4,
+  maskBits = 255
+}
+
+transform_state:
+<userdata 1>
+
+filter_doors:
+{
+  maskBits = 250
+}
+
+string:
+{
+  byte = <function 1>,
+  char = <function 2>,
+  dump = <function 3>,
+  find = <function 4>,
+  format = <function 5>,
+  gmatch = <function 6>,
+  gsub = <function 7>,
+  len = <function 8>,
+  lower = <function 9>,
+  match = <function 10>,
+  rep = <function 11>,
+  reverse = <function 12>,
+  sub = <function 13>,
+  upper = <function 14>
+}
+
+crosshair_component:
+<userdata 1>
+
+tostring:
+<function 1>
+
+b2JointDef:
+<userdata 1>
+
+filter_corpses:
+{
+  categoryBits = 32,
+  maskBits = 6
+}
+
+filter_nothing:
+{
+  categoryBits = 0,
+  maskBits = 0
+}
+
+ITEMS:
+64
+
+directed_behaviour:
+<userdata 1>
+
+animate_message:
+<userdata 1>
+
+entity_creation_util:
+<userdata 1>
+
+post_destroy:
+<function 1>
+
+scriptable_component:
+<userdata 1>
+
+BULLETS:
+8
+
+shot_message:
+<userdata 1>
+
+rawget:
+<function 1>
+
+framebuffer_object:
+<userdata 1>
+
+pathfinding_component:
+<userdata 1>
+
+reloader_script:
+<userdata 1>
+
+layers:
+<userdata 1>
+
+print:
+<function 1>
+
+render_component:
+<userdata 1>
+
+create_scriptable_info:
+<function 1>
+
+raw_texture:
 <userdata 1>
 
 mouse:
 <userdata 1>
+
+target_gravity_rotation:
+0
+
+recursive_write:
+<function 1>
+
+particle_burst_message:
+<userdata 1>
+
+npc_group_archetype:
+{
+  body = {
+    movement = {
+      air_resistance = 0.1,
+      ground_filter = {
+        categoryBits = 255,
+        maskBits = 71
+      },
+      input_acceleration = <userdata 1>,
+      inverse_thrust_brake = <userdata 2>,
+      max_speed_animation = 2300,
+      receivers = {},
+      sidescroller_setup = true
+    },
+    physics = {
+      body_info = {
+        bullet = true,
+        density = 1,
+        filter = {
+          categoryBits = 2,
+          maskBits = 63
+        },
+        fixed_rotation = true,
+        friction = 2,
+        radius = 60,
+        shape_type = 0
+      },
+      body_type = 2
+    },
+    render = {
+      layer = 2
+    },
+    scriptable = {
+      available_scripts = <userdata 3>
+    },
+    transform = {}
+  }
+}
+
+create_sprite:
+<function 1>
+
+add_vals:
+<function 1>
+
+physics_system:
+<userdata 1>
+
+set_components_from_entry:
+<function 1>
+
+create_entity_group:
+<function 1>
+
+filter_enemies:
+{
+  categoryBits = 1,
+  maskBits = 15
+}
+
+render_layers:
+{
+  BULLETS = 6,
+  EFFECTS = 1,
+  GROUND = 13,
+  GUI_OBJECTS = 0,
+  HEADS = 3,
+  LEGS = 8,
+  OBJECTS = 2,
+  ON_GROUND = 10,
+  PLAYERS = 5,
+  SHELLS = 9,
+  UNDER_CORPSES = 12,
+  WIELDED = 7,
+  WIELDED_GUNS = 4
+}
+
+rgba:
+<userdata 1>
+
+calc_air_resistance:
+<function 1>
+
+select:
+<function 1>
+
+point_below_segment:
+<function 1>
+
+pv:
+<function 1>
+
+should_debug_draw:
+false
+
+rawset:
+<function 1>
+
+animation:
+<userdata 1>
+
+polygon:
+<userdata 1>
+
+my_atlas:
+<userdata 1>
+
+class:
+<function 1>
+
+bitflag:
+<function 1>
+
+separation_behaviour:
+<userdata 1>
+
+set_color:
+<function 1>
 
 table:
 {
@@ -3043,164 +3023,36 @@ table:
   unpack = <function 8>
 }
 
-input_component:
+behaviour_tree_task:
 <userdata 1>
 
-rewrite_ptr:
+get_display:
 <function 1>
-
-create_polygon:
-<function 1>
-
-create_sprite:
-<function 1>
-
-environment_archetype:
-{
-  physics = {
-    body_info = {
-      angular_damping = 10,
-      density = 1000,
-      filter = {
-        categoryBits = 4,
-        maskBits = 255
-      },
-      friction = 0.1,
-      linear_damping = 10,
-      shape_type = 1
-    },
-    body_type = 0
-  },
-  render = {},
-  transform = {}
-}
-
-b2WeldJointDef:
-<userdata 1>
-
-create:
-<function 1>
-
-select:
-<function 1>
-
-stepped_timer:
-<userdata 1>
-
-simple_integration:
-<function 1>
-
-vec2:
-<userdata 1>
-
-reversed:
-<function 1>
-
-minmax:
-<userdata 1>
-
-archetyped:
-<function 1>
-
-script:
-<userdata 1>
-
-basic_npc_sprite:
-<userdata 1>
-
-directed_behaviour:
-<userdata 1>
-
-set_world_reloading_script:
-<function 1>
-
-require:
-<function 1>
-
-rawlen:
-<function 1>
-
-entities:
-<userdata 1>
-
-entity_creation_util:
-<userdata 1>
-
-next:
-<function 1>
-
-resource_creation_util:
-<userdata 1>
-
-filter_player_visibility:
-{
-  categoryBits = 255,
-  maskBits = 4
-}
-
-steering_component:
-<userdata 1>
-
-entity_ptr:
-<userdata 1>
-
-vertex:
-<userdata 1>
-
-sensor_avoidance_steering:
-<userdata 1>
-
-CORPSES:
-32
-
-layers:
-<userdata 1>
 
 create_physics_component:
 <function 1>
 
-particle_burst_message:
+os:
+{
+  clock = <function 1>,
+  date = <function 2>,
+  difftime = <function 3>,
+  execute = <function 4>,
+  exit = <function 5>,
+  getenv = <function 6>,
+  remove = <function 7>,
+  rename = <function 8>,
+  setlocale = <function 9>,
+  time = <function 10>,
+  tmpname = <function 11>
+}
+
+emission:
 <userdata 1>
 
-rewrite:
-<function 1>
-
-_pathfinding_system:
+debug_line:
 <userdata 1>
 
-animation_events:
-<userdata 1>
-
-transform_component:
-<userdata 1>
-
-pcall:
-<function 1>
-
-_script_reloader:
-<userdata 1>
-
-collectgarbage:
-<function 1>
-
-minmax_u:
-<userdata 1>
-
-avoidance_behaviour:
-<userdata 1>
-
-count_all:
-<function 1>
-
-flee_behaviour:
-<userdata 1>
-
-particle_effect:
-<userdata 1>
-
-separation_behaviour:
-<userdata 1>
-
-physics_component:
+b2WeldJointDef:
 <userdata 1>
 

@@ -6,7 +6,7 @@ end
 
 npc_class = inherits_from {}
 
-function npc_class:initialize(subject_entity) 
+function npc_class:constructor(subject_entity) 
 	self.jump_timer = stepped_timer(physics_system)
 	self.jetpack_timer = stepped_timer(physics_system)
 	self.entity = subject_entity
@@ -209,8 +209,7 @@ function spawn_npc(group_overrider, what_class)
 	
 	local my_new_npc = create_entity_group (archetyped(npc_group_archetype, group_overrider))
 	
-	local new_npc_scriptable = what_class:create()
-	new_npc_scriptable:initialize(my_new_npc.body)
+	local new_npc_scriptable = what_class:create(my_new_npc.body)
 	
 	my_new_npc.body.scriptable.script_data = new_npc_scriptable
 	
