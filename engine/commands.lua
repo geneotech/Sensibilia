@@ -41,6 +41,9 @@ print("Calling commands.lua...")
 --end
 
 
+--get_self(my_basic_npc.body).steering_behaviours.wandering.enabled = false
+
+
 
 
 --print(get_scripted(my_npcs[1].body).is_seen)

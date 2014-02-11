@@ -14,10 +14,11 @@ seek_archetype = {
 }			
 
 target_seek_steering = create_steering (archetyped(seek_archetype, {
-	radius_of_effect = 300
+	radius_of_effect = 0
 }))
 
 forward_seek_steering = create_steering (archetyped(seek_archetype, {
+	weight = 0.1,
 	radius_of_effect = 0
 }))
 
@@ -50,11 +51,11 @@ obstacle_avoidance_archetype = {
 }
 
 wander_steering = create_steering {
-	weight = 0.1, 
+	weight = 0.4, 
 	behaviour_type = wander_behaviour,
 	
-	circle_radius = 200,
-	circle_distance = 2540,
+	circle_radius = 400,
+	circle_distance = 2000,
 	displacement_degrees = 15,
 	
 	force_color = rgba(0, 255, 255, 0)

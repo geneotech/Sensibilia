@@ -215,9 +215,9 @@ loop_only_info = create_scriptable_info {
 			
 			local self = get_self(player.body)
 			
-			can_point_be_reached_by_jump(base_gravity, self.entity.movement.input_acceleration/50, self.entity.movement.air_resistance, 
-			vec2(1000, 1000)/50, player.body.transform.current.pos/50 + sensor/50, vec2(vel.x, vel.y), 
-			self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, player.body.physics.body:GetMass())	
+			--can_point_be_reached_by_jump(base_gravity, self.entity.movement.input_acceleration/50, self.entity.movement.air_resistance, 
+			--vec2(1000, 1000)/50, player.body.transform.current.pos/50 + sensor/50, vec2(vel.x, vel.y), 
+			--self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, player.body.physics.body:GetMass())	
 			
 			render_system:push_line(debug_line(
 				player.body.transform.current.pos + sensor, 
@@ -382,6 +382,6 @@ environment_entity.name = "environment_entity"
 						--player.body.physics.body:SetFixedRotation(false)
 						--player.body.physics.enable_angle_motor = true
 						--player.body.physics.target_angle = 90
-physics_system.b2world:SetGravity(b2Vec2(0, 120))
+physics_system.b2world:SetGravity(b2Vec2(base_gravity.x, base_gravity.y))
 
 	--get_self(my_basic_npc.body).steering_behaviours.target_seeking.target_from:set(player.crosshair)

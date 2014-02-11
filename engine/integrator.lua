@@ -7,7 +7,8 @@ end
 function debug_draw(p1, p2, r, g, b, a)
 	--pv(p1)
 	--pv(p2)
-	if should_debug_draw then render_system:push_non_cleared_line(debug_line(p1*50, p2*50, rgba(r,g,b,a))) end
+	--if should_debug_draw then render_system:push_non_cleared_line(debug_line(p1*50, p2*50, rgba(r,g,b,a))) end
+	render_system:push_line(debug_line(p1*50, p2*50, rgba(r,g,b,a)))
 end
 
 function simple_integration(p, dt)
