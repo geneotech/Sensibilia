@@ -134,24 +134,7 @@ dofile "sensibilia\\scripts\\player.lua"
 
 base_crosshair_rotation = 0
 
-my_sequence = timed_sequence:create()
 
-my_sequence:add_action {
-	on_enter = function() 
-		print "Action 1."
-	end,
-	
-	duration_ms = 1000
-}
-
-my_sequence:add_action {
-	on_enter = function() 
-		print "Action 2."
-	end,
-	
-	min_duration_ms = 1000,
-	max_duration_ms = 2000
-}
 
 loop_only_info = create_scriptable_info {
 	scripted_events = {
@@ -248,7 +231,6 @@ loop_only_info = create_scriptable_info {
 				player.body.transform.current.pos + sensor + vec2(0, 10), rgba(255, 0, 0, 255)))
 			end
 			
-			my_sequence:play()
 		end
 	}
 }

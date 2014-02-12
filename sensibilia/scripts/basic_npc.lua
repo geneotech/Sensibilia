@@ -49,6 +49,29 @@ function basic_npc_class:constructor(subject_entity)
 	self.frozen_navpoint = vec2(0, 0)
 	
 	self.flying_state_timer = stepped_timer(physics_system)
+	
+	
+	self.flying_state_changer = timed_sequence:create()
+
+	self.flying_state_changer:add_action {
+		on_enter = function() 
+			print "lecimy"
+			self:set_movement_mode_flying(true)
+		end,
+		
+		min_duration_ms = 1000,
+		max_duration_ms = 5000
+	}
+	
+	self.flying_state_changer:add_action {
+		on_enter = function() 
+			print "idziemy"
+			self:set_movement_mode_flying(false)
+		end,
+		
+		min_duration_ms = 500,
+		max_duration_ms = 4000
+	}
 end
 
 function basic_npc_class:set_movement_mode_flying(flag)
@@ -69,6 +92,7 @@ function basic_npc_class:set_movement_mode_flying(flag)
 		self.entity.pathfinding.force_touch_sensors = false
 		self.entity.pathfinding.braking_damping = 20
 		self.entity.pathfinding.target_offset = 100
+		self.entity.pathfinding.distance_navpoint_hit = 2
 		self.entity.pathfinding.mark_touched_as_discovered = false
 			
 		self.steering_behaviours.wandering.weight_multiplier = 1
@@ -84,7 +108,8 @@ function basic_npc_class:set_movement_mode_flying(flag)
 		self.entity.pathfinding.enable_session_rollbacks = false
 		self.entity.pathfinding.force_persistent_navpoints = true
 		self.entity.pathfinding.force_touch_sensors = true
-		self.entity.pathfinding.target_offset = 3
+		self.entity.pathfinding.target_offset = 100
+		self.entity.pathfinding.distance_navpoint_hit = 30
 		self.entity.pathfinding.mark_touched_as_discovered = true
 		
 		self.steering_behaviours.target_seeking.weight_multiplier = 0
@@ -245,16 +270,8 @@ function basic_npc_class:handle_visibility_offset()
 end
 
 function basic_npc_class:handle_flying_state()
-
-	if (self.flying_state_timer:get_steps()/100) % 2 then
-		--print"lecimy"
-		self:set_movement_mode_flying(true)
-	else
-		--print"idziemy"
-		self:set_movement_mode_flying(false)
-	end
+	self.flying_state_changer:play()
 end
-
 
 function basic_npc_class:substep()
 	if not self.movement_mode_flying then
@@ -287,18 +304,19 @@ function basic_npc_class:loop()
 		
 		-- if we can get there without applying more upward forces, then cancel out the jump behaviour (also stops holding the jetpack)
 		if self:determine_jumpability(self.frozen_navpoint, false) then
-			print "stopping jump because we can get there"
+			--print "stopping jump because we can get there"
 			self:jump(false)
 		-- maybe we can get there by taking the jump now; let's do this then
 		elseif self:determine_jumpability(self.frozen_navpoint, true) then
-			print "starting jump; target reachable only this way"
+			--print "starting jump; target reachable only this way"
 			self:jump(true)
 		-- else let the simple movement mapper decide whether to jump or not
 		else
 			local should_jump = self:angle_fits_in_threshold(real_vector:get_degrees(), -90, 20)
 			
-			if should_jump then print 
-				"jumping as target is higher up" 
+			if should_jump then 
+			--print 
+			--	"jumping as target is higher up" 
 				
 				self:jump(true)
 			end
@@ -325,8 +343,8 @@ my_basic_npc = spawn_npc({
 			--body_type = Box2D.b2_staticBody,
 			
 			body_info = {
-				density = 3,
-				linear_damping = 18
+				density = 3
+				--linear_damping = 18
 			}
 		},
 		render = {
@@ -362,6 +380,10 @@ my_basic_npc = spawn_npc({
 		steering = {
 			max_resultant_force = -1, -- -1 = no force clamping
 			max_speed = 12000*1.4142135623730950488016887242097
+		},
+		
+		movement = {
+			inverse_thrust_brake = vec2(15000, 0)
 		}
 	}
 }, basic_npc_class)
