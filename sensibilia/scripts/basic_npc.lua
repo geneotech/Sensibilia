@@ -247,10 +247,10 @@ end
 function basic_npc_class:handle_flying_state()
 
 	if (self.flying_state_timer:get_steps()/100) % 2 then
-		print"lecimy"
+		--print"lecimy"
 		self:set_movement_mode_flying(true)
 	else
-		print"idziemy"
+		--print"idziemy"
 		self:set_movement_mode_flying(false)
 	end
 end
@@ -312,11 +312,11 @@ function basic_npc_class:loop()
 	
 	--render_system:push_line(debug_line(self.entity.transform.current.pos, self.frozen_navpoint, rgba(255, 255, 0, 255)))
 	--render_system:push_line(debug_line(self.entity.transform.current.pos, self.entity.pathfinding:get_current_target(), rgba(255, 0, 0, 255)))
-	print "\n\nBehaviours:\n\n"
-	for k, v in pairs(self.steering_behaviours) do
-		if type(v) == "userdata" then print(k, v.enabled) 
-		else print (k, type(v)) end
-	end
+	--print "\n\nBehaviours:\n\n"
+	--for k, v in pairs(self.steering_behaviours) do
+	--	if type(v) == "userdata" then print(k, v.enabled) 
+	--	else print (k, type(v)) end
+	--end
 end
 
 my_basic_npc = spawn_npc({

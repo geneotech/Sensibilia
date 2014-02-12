@@ -133,6 +133,26 @@ dofile "sensibilia\\scripts\\npc.lua"
 dofile "sensibilia\\scripts\\player.lua"
 
 base_crosshair_rotation = 0
+
+my_sequence = timed_sequence:create()
+
+my_sequence:add_action {
+	callback = function() 
+		print "Action 1."
+	end,
+	
+	duration_ms = 1000
+}
+
+my_sequence:add_action {
+	callback = function() 
+		print "Action 2."
+	end,
+	
+	min_duration_ms = 1000,
+	max_duration_ms = 2000
+}
+
 loop_only_info = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = 
@@ -226,7 +246,9 @@ loop_only_info = create_scriptable_info {
 			if not should_debug_draw then 
 				render_system:push_non_cleared_line(debug_line(player.body.transform.current.pos+ sensor , 
 				player.body.transform.current.pos + sensor + vec2(0, 10), rgba(255, 0, 0, 255)))
-			end	
+			end
+			
+			my_sequence:play()
 		end
 	}
 }

@@ -93,7 +93,7 @@ function npc_class:handle_jumping()
 			body:SetGravityScale(1.0)
 			self.entity.movement.thrust_parallel_to_ground_length = 0
 			--body:SetLinearVelocity(b2Vec2(0, 0))
-			print "APPLYING"
+			--print "APPLYING"
 			body:ApplyLinearImpulse(b2Vec2(jump_impulse.x, jump_impulse.y), body:GetWorldCenter(), true)
 			
 			
@@ -109,7 +109,7 @@ function npc_class:handle_variable_height_jump()
 	local body = self.entity.physics.body
 	if self.still_holding_jetpack and self.jetpack_timer:get_steps() < self.max_jetpack_steps then
 	--	print(self.still_holding_jetpack, self.jetpack_timer:get_steps(), self.max_jetpack_steps)
-	print "JETPACKING"
+	--print "JETPACKING"
 		local jetpack_force = self.jetpack_impulse:rotate(gravity_angle_offset, vec2(0, 0)) 
 		body:ApplyLinearImpulse(b2Vec2(jetpack_force.x, jetpack_force.y), body:GetWorldCenter(), true)
 		
