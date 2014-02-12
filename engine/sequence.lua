@@ -20,7 +20,13 @@ function timed_sequence:now_action()
 end
 
 function timed_sequence:set_current_action(number)
+	if self:validate_action() then
+		if self:now_action().on_exit ~= nil then self:now_action().on_exit() end
+	end
+
 	self.current_action = number
+	if self:now_action().on_enter ~= nil then self:now_action().on_enter() end
+	
 	self.current_timer:reset()
 	
 	if self:now_action().duration_ms ~= nil then
@@ -30,6 +36,10 @@ function timed_sequence:set_current_action(number)
 	end
 end
 
+function timed_sequence:validate_action()
+	return not (self.current_action == nil or self.current_action > #self.actions or self.current_action < 1)
+end
+
 function timed_sequence:start()
 	self:set_current_action(1)
 end
@@ -37,16 +47,16 @@ end
 -- if the sequence should not be looped, this function returns false when the sequence ends
 function timed_sequence:play()
 	-- check if the action number is valid
-	if self.current_action == nil or self.current_action > #self.actions then
+	if not self:validate_action() then
 		self:start()
 	end
 	
 	if self.current_timer:get_milliseconds() <= self:now_action().current_duration_ms then
-		self:now_action().callback()
+		if self:now_action().on_loop ~= nil then self:now_action().on_loop() end
 	else
 		self.current_action = self.current_action + 1
 		
-		if self.current_action > #self.actions then
+		if not self:validate_action() then
 			if self.loop then
 				self:start()
 			else

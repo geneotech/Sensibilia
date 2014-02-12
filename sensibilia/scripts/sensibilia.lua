@@ -137,7 +137,7 @@ base_crosshair_rotation = 0
 my_sequence = timed_sequence:create()
 
 my_sequence:add_action {
-	callback = function() 
+	on_enter = function() 
 		print "Action 1."
 	end,
 	
@@ -145,7 +145,7 @@ my_sequence:add_action {
 }
 
 my_sequence:add_action {
-	callback = function() 
+	on_enter = function() 
 		print "Action 2."
 	end,
 	
