@@ -46,32 +46,20 @@ function basic_npc_class:constructor(subject_entity)
 	
 	self.current_pathfinding_eye = vec2(0, 0)
 	self.can_jump_to_navpoint = false
-	self.frozen_navpoint = vec2(0, 0)
+	self.frozen_navpoint = vec2(0, 0)	
 	
-	self.flying_state_timer = stepped_timer(physics_system)
-	
-	
-	self.flying_state_changer = timed_sequence:create()
-
-	self.flying_state_changer:add_action {
-		on_enter = function() 
-			print "lecimy"
-			self:set_movement_mode_flying(true)
-		end,
-		
-		min_duration_ms = 1000,
-		max_duration_ms = 5000
-	}
-	
-	self.flying_state_changer:add_action {
-		on_enter = function() 
-			print "idziemy"
-			self:set_movement_mode_flying(false)
-		end,
-		
-		min_duration_ms = 500,
-		max_duration_ms = 4000
-	}
+	self.flying_state_changer = coroutine.create(
+		function() 
+			while true do
+				print "lecimy"
+				self:set_movement_mode_flying(true)
+				coroutine.stepped_wait(randval(1000, 5000))
+				print "idziemy"
+				self:set_movement_mode_flying(false)
+				coroutine.stepped_wait(randval(500, 4000))
+			end
+		end
+	)
 end
 
 function basic_npc_class:set_movement_mode_flying(flag)
@@ -270,7 +258,7 @@ function basic_npc_class:handle_visibility_offset()
 end
 
 function basic_npc_class:handle_flying_state()
-	self.flying_state_changer:play()
+	coroutine.resume(self.flying_state_changer)
 end
 
 function basic_npc_class:substep()
@@ -281,7 +269,6 @@ function basic_npc_class:substep()
 end
 
 function basic_npc_class:loop()
-
 	 if self:is_pathfinding() then
 		self.frozen_navpoint = self.entity.pathfinding:get_current_navigation_target()
 		self.entity.pathfinding.eye_offset = self.current_pathfinding_eye
@@ -296,7 +283,7 @@ function basic_npc_class:loop()
 		self.entity.movement.requested_movement = vec2(0, 0)
 		self:handle_steering()
 	else
-		if not self.entity.pathfinding.first_priority_navpoint_check(self.entity, self.entity.transform.current.pos, self.frozen_navpoint) then
+		if self:is_pathfinding() and not self.entity.pathfinding.first_priority_navpoint_check(self.entity, self.entity.transform.current.pos, self.frozen_navpoint) then
 			self.entity.pathfinding:reset_persistent_navpoint()
 		end
 	

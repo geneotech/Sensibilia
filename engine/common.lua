@@ -1,6 +1,22 @@
 -- Create a new class that inherits from a base class
 --
 
+function coroutine.stepped_wait(ms_wait)
+	local my_timer = stepped_timer(physics_system)
+	
+	while my_timer:get_milliseconds() <= ms_wait do
+		coroutine.yield()
+	end
+end
+
+function coroutine.wait(ms_wait)
+	local my_timer = timer()
+	
+	while my_timer:get_milliseconds() <= ms_wait do
+		coroutine.yield()
+	end
+end
+
 function to_vec2(b2Vec2_)
 	return vec2(b2Vec2_.x, b2Vec2_.y)
 end
