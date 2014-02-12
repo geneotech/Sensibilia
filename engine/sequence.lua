@@ -47,8 +47,12 @@ end
 -- if the sequence should not be looped, this function returns false when the sequence ends
 function timed_sequence:play()
 	-- check if the action number is valid
-	if not self:validate_action() then
+	if self.current_action == nil then
 		self:start()
+	end
+	
+	if not self:validate_action() then
+		return false
 	end
 	
 	if self.current_timer:get_milliseconds() <= self:now_action().current_duration_ms then
@@ -57,7 +61,7 @@ function timed_sequence:play()
 		self.current_action = self.current_action + 1
 		
 		if not self:validate_action() then
-			if self.loop then
+			if self.loop == true then
 				self:start()
 			else
 				return false
