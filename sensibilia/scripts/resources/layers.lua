@@ -19,12 +19,7 @@ render_layers = {
 create_options { 
 	"CHARACTERS", 
 	"OBJECTS", 
-	"STATIC_OBJECTS",
-	"BULLETS", 
-	"ENEMY_BULLETS",
-	"CORPSES",
-	"ITEMS",
-	"SHELLS"
+	"STATIC_OBJECTS"
 }
 
 
@@ -33,23 +28,12 @@ filter_nothing = {
 	maskBits = 0
 }
 
-local mask_all = bitor(OBJECTS, STATIC_OBJECTS, BULLETS, ENEMY_BULLETS, CHARACTERS, CORPSES, ITEMS, SHELLS, DOORS)
+local mask_all = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS)
 
 
 filter_npc_feet = {
 	categoryBits = mask_all,
-	maskBits = bitor(OBJECTS, STATIC_OBJECTS, CHARACTERS, ITEMS, DOORS)
-}
-
-
-filter_doors = {
-	categoryBits = DOORS,
-	maskBits = bitor(SHELLS, OBJECTS, CORPSES, BULLETS, ENEMY_BULLETS, ITEMS)
-}
-
-filter_shells = {
-	categoryBits = SHELLS,
-	maskBits = bitor(SHELLS, STATIC_OBJECTS, OBJECTS, DOORS)
+	maskBits = mask_all
 }
 
 filter_static_objects = {
@@ -59,65 +43,30 @@ filter_static_objects = {
 
 filter_objects = {
 	categoryBits = OBJECTS,
-	maskBits = bitor(OBJECTS, STATIC_OBJECTS, BULLETS, ENEMY_BULLETS, CHARACTERS, CORPSES, DOORS)
+	maskBits = mask_all
 }
 
 filter_characters = {
 	categoryBits = CHARACTERS,
-	maskBits = bitor(OBJECTS, STATIC_OBJECTS, ENEMY_BULLETS, CHARACTERS, DOORS)
-}
-
-filter_enemies = {
-	categoryBits = CHARACTERS,
-	maskBits = bitor(OBJECTS, STATIC_OBJECTS, BULLETS, CHARACTERS, DOORS)
-}
-
-filter_characters_separation = {
-	categoryBits = CHARACTERS,
-	maskBits = bitor(CHARACTERS)
-}
-
-filter_bullets = {
-	categoryBits = BULLETS,
-	maskBits = bitor(OBJECTS, STATIC_OBJECTS, CHARACTERS, DOORS)
-}
-
-filter_enemy_bullets = {
-	categoryBits = ENEMY_BULLETS,
-	maskBits = bitor(OBJECTS, STATIC_OBJECTS, CHARACTERS, DOORS)
-}
-
-filter_corpses = {
-	categoryBits = CORPSES,
-	maskBits = bitor(OBJECTS, STATIC_OBJECTS, DOORS)
-}
-
-filter_melee = {
-	categoryBits = BULLETS,
-	maskBits = CHARACTERS
-}
-
-filter_enemy_melee = {
-	categoryBits = ENEMY_BULLETS,
-	maskBits = CHARACTERS
-}
-
-filter_melee_obstruction = {
-	categoryBits = mask_all,
-	maskBits = bitor(OBJECTS, STATIC_OBJECTS, DOORS)
+	maskBits = mask_all
 }
 
 filter_pathfinding_visibility = {
-	categoryBits = bitor(OBJECTS, STATIC_OBJECTS, BULLETS, CHARACTERS, CORPSES),
-	maskBits = bitor(STATIC_OBJECTS)
+	categoryBits = STATIC_OBJECTS,
+	maskBits = STATIC_OBJECTS
+}
+
+filter_characters_separation = {
+	categoryBits = mask_all,
+	maskBits = bitor(CHARACTERS)
 }
 
 filter_player_visibility = {
 	categoryBits = mask_all,
-	maskBits = bitor(STATIC_OBJECTS, DOORS)
+	maskBits = bitor(STATIC_OBJECTS)
 }
 
 filter_obstacle_visibility = {
-	categoryBits = bitor(OBJECTS, STATIC_OBJECTS, BULLETS, CHARACTERS, CORPSES),
-	maskBits = bitor(OBJECTS, STATIC_OBJECTS, CHARACTERS)
+	categoryBits = mask_all,
+	maskBits = mask_all
 }
