@@ -15,8 +15,8 @@ current_gravity = vec2(0, 120)
 dofile "sensibilia\\scripts\\input.lua"
 dofile "sensibilia\\scripts\\camera.lua"
 
-current_zoom_level = 2000
-current_zoom_level = 10000
+current_zoom_level = 0
+--current_zoom_level = 10000
 set_zoom_level(world_camera)
 
 function set_color(poly, col)
@@ -135,6 +135,46 @@ dofile "sensibilia\\scripts\\player.lua"
 base_crosshair_rotation = 0
 
 
+--myseq = timed_sequence:create()
+--
+--	myseq:add_action {
+--		on_enter = function() 
+--			print "A"
+--		end,
+--		
+--		min_duration_ms = 500,
+--		max_duration_ms = 1000
+--	}
+--	
+--	myseq:add_action {
+--		on_enter = function() 
+--			print "B"
+--		end,
+--		
+--		min_duration_ms = 500,
+--		max_duration_ms = 1000
+--	}
+	
+
+--function wait_yield(ms_wait)
+--	local my_timer = stepped_timer(physics_system)
+--	
+--	while my_timer:get_milliseconds() <= ms_wait do
+--		coroutine.yield()
+--	end
+--end
+--	
+--my_coroutine = coroutine.create(
+--	function()
+--		while true do
+--			print "A"
+--			wait_yield(randval(1000, 2000))
+--			print "B"
+--			wait_yield(randval(1000, 2000))
+--		end
+--	end
+--)
+
 
 loop_only_info = create_scriptable_info {
 	scripted_events = {
@@ -231,10 +271,12 @@ loop_only_info = create_scriptable_info {
 				player.body.transform.current.pos + sensor + vec2(0, 10), rgba(255, 0, 0, 255)))
 			end
 			
+			--coroutine.resume(my_coroutine)
+	--		myseq:play()
+			
 		end
 	}
 }
-
 
 create_entity {
 	input = {
@@ -387,5 +429,3 @@ environment_entity.name = "environment_entity"
 						--player.body.physics.enable_angle_motor = true
 						--player.body.physics.target_angle = 90
 physics_system.b2world:SetGravity(b2Vec2(base_gravity.x, base_gravity.y))
-
-	--get_self(my_basic_npc.body).steering_behaviours.target_seeking.target_from:set(player.crosshair)

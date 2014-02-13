@@ -3,6 +3,11 @@ PIXELS_TO_METERS = 1/METERS_TO_PIXELS
 
 table.inspect = require("inspect")
 
+function debug.my_breakpoint()
+	print(debug.my_traceback())
+	debugger_break()
+end
+
 function debug.my_traceback() 
 	local outstr = "\n"
 	

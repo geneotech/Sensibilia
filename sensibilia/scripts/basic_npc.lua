@@ -112,6 +112,10 @@ function basic_npc_class:set_movement_mode_flying(flag)
 	end
 end
 
+function basic_npc_class:death_callback()
+	print "dead"
+end
+
 function basic_npc_class:set_all_behaviours_enabled(flag)
 	for k, v in pairs(self.steering_behaviours) do
 		v.enabled = flag
@@ -324,7 +328,7 @@ function basic_npc_class:loop()
 	--end
 end
 
-my_basic_npc = spawn_npc({
+my_basic_npc_archetype = {
 	body = {
 		physics = {
 			--body_type = Box2D.b2_staticBody,
@@ -361,7 +365,6 @@ my_basic_npc = spawn_npc({
 			favor_velocity_parallellness = false,
 			force_persistent_navpoints = true,
 			force_touch_sensors = true
-			
 		},
 		
 		steering = {
@@ -373,6 +376,8 @@ my_basic_npc = spawn_npc({
 			inverse_thrust_brake = vec2(15000, 0)
 		}
 	}
-}, basic_npc_class)
+}
+
+my_basic_npc = spawn_npc(my_basic_npc_archetype, basic_npc_class)
 
 get_self(my_basic_npc.body):set_foot_sensor_from_sprite(basic_npc_sprite, 3)

@@ -19,7 +19,8 @@ render_layers = {
 create_options { 
 	"CHARACTERS", 
 	"OBJECTS", 
-	"STATIC_OBJECTS"
+	"STATIC_OBJECTS",
+	"INSTABILITY_RAY"
 }
 
 
@@ -28,32 +29,40 @@ filter_nothing = {
 	maskBits = 0
 }
 
-local mask_all = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS)
+-- used only for query/raycast filters
+local mask_all = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY)
 
 
-filter_npc_feet = {
-	categoryBits = mask_all,
-	maskBits = mask_all
-}
+
 
 filter_static_objects = {
 	categoryBits = STATIC_OBJECTS,
-	maskBits = mask_all
+	maskBits = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS)
 }
 
 filter_objects = {
 	categoryBits = OBJECTS,
-	maskBits = mask_all
+	maskBits = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS)
 }
 
 filter_characters = {
 	categoryBits = CHARACTERS,
-	maskBits = mask_all
+	maskBits = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY)
 }
 
 filter_pathfinding_visibility = {
 	categoryBits = STATIC_OBJECTS,
 	maskBits = STATIC_OBJECTS
+}
+
+filter_npc_feet = {
+	categoryBits = mask_all,
+	maskBits = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS)
+}
+
+filter_instability_ray = {
+	categoryBits = mask_all,
+	maskBits = bitor(CHARACTERS)
 }
 
 filter_characters_separation = {
@@ -68,5 +77,5 @@ filter_player_visibility = {
 
 filter_obstacle_visibility = {
 	categoryBits = mask_all,
-	maskBits = mask_all
+	maskBits = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS)
 }

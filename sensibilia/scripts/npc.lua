@@ -23,8 +23,17 @@ function npc_class:constructor(subject_entity)
 	
 	self.jump_height = (50 * calc_max_jump_height(base_gravity, 0.1, self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, self.entity.physics.body:GetMass())) - 2
 	
+	self.hp = 100
 end
+
+function npc_class:take_damage(amount)
+	self.hp = self.hp - amount
 	
+	if self.hp < 0 then
+		self:death_callback()
+	end
+end
+
 function npc_class:jump(jump_flag)
 	self.wants_to_jump = jump_flag
 	if not jump_flag then self.still_holding_jetpack = false end
@@ -162,7 +171,7 @@ npc_group_archetype = {
 				shape_type = physics_info.RECT,
 				radius = 60,
 				--rect_size = vec2(30, 30),
-				filter = filter_objects,
+				filter = filter_characters,
 				density = 1,
 				friction = 2,
 				bullet = true,

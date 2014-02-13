@@ -9,7 +9,9 @@ custom_intents = create_inverse_enum {
 	"DROP_WEAPON",
 	"JUMP",
 	"GRAVITY_CHANGE",
-	"MY_INTENT"
+	"MY_INTENT",
+	
+	"INSTABILITY_RAY"
 }
 
 main_context = create_input_context {
@@ -24,9 +26,9 @@ main_context = create_input_context {
 		[keys.V] 				= custom_intents.INSTANT_SLOWDOWN,
 		[keys.E] 				= custom_intents.MY_INTENT,
 		
-		[mouse.ldoubleclick] 	= intent_message.SHOOT,
-		[mouse.ltripleclick] 	= intent_message.SHOOT,
-		[mouse.ldown] 			= intent_message.SHOOT,
+		[mouse.ldoubleclick] 	= custom_intents.INSTABILITY_RAY,
+		[mouse.ltripleclick] 	= custom_intents.INSTABILITY_RAY,
+		[mouse.ldown] 			= custom_intents.INSTABILITY_RAY,
 		
 		[keys.LSHIFT] 			= intent_message.SWITCH_LOOK,
 		[mouse.rdown] 			= custom_intents.GRAVITY_CHANGE,

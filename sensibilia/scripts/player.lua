@@ -22,7 +22,9 @@ player_scriptable_info = create_scriptable_info {
 			
 				get_self(message.subject):jump(message.state_flag)
 				--get_self(message.subject):handle_jumping()
-			else 
+			elseif message.intent == custom_intents.INSTABILITY_RAY then 
+				player_ray_caster:cast(message.state_flag)
+			else
 				return true
 			end
 			
@@ -36,6 +38,22 @@ player_scriptable_info = create_scriptable_info {
 				my_self:substep()
 			else
 				my_self:loop()
+				player_ray_caster.position = player.body.transform.current.pos
+				player_ray_caster.direction = (player.crosshair.transform.current.pos - player.body.transform.current.pos):normalize()
+				--player_ray_caster.direction = vec2(-0.97090339660645, -0.23947174847126)
+				
+				--print "player"
+				--pv(player.body.transform.current.pos)
+				--print "crosshair"
+				--pv(player.crosshair.transform.current.pos)
+				--print "dir"
+				--pv  (player.crosshair.transform.current.pos - player.body.transform.current.pos)
+				--print "dirnorm"
+				--pv  ((player.crosshair.transform.current.pos - player.body.transform.current.pos):normalize())
+				
+				
+				player_ray_caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
+				player_ray_caster:loop()
 			end
 		end
 	}
@@ -62,7 +80,9 @@ player = spawn_npc {
 			--intent_message.MOVE_BACKWARD,
 			custom_intents.JUMP,
 			intent_message.MOVE_LEFT,
-			intent_message.MOVE_RIGHT
+			intent_message.MOVE_RIGHT,
+			
+			custom_intents.INSTABILITY_RAY
 		},
 		
 		scriptable = {
@@ -116,7 +136,7 @@ player = spawn_npc {
 	},
 }
 
-
+player_ray_caster = instability_ray_caster:create(player.body)
 get_self(player.body):set_foot_sensor_from_sprite(player_sprite, 3, 1)
 --get_self(player.body):set_foot_sensor_from_circle(60, 6)
 world_camera.chase:set_target(player.body)
