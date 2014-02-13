@@ -5,6 +5,7 @@ function set_zoom_level(camera)
 	local new_w = config_table.resolution_w*mult
 	local new_h = config_table.resolution_h*mult
 	camera.camera.ortho = rect_ltrb(rect_xywh(0, 0, new_w, new_h))
+	camera.camera.max_look_expand = vec2(new_w, new_h)/2
 	
 	--player.crosshair:get().crosshair.size_multiplier = vec2(mult, mult)
 	--target_entity.crosshair.size_multiplier = vec2(mult, mult)
@@ -42,7 +43,7 @@ camera_archetype = {
 		player = nil,
 	
 		orbit_mode = camera_component.LOOK,
-		max_look_expand = vec2(config_table.resolution_w/2*100, config_table.resolution_h/2)*100,
+		max_look_expand = vec2(config_table.resolution_w/2, config_table.resolution_h/2),
 		angled_look_length = 100
 	},
 	
