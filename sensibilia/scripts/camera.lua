@@ -164,11 +164,54 @@ void main()
 
 ]])
 
+fullscreen_vertex_shader = GLSL_shader(GL.GL_VERTEX_SHADER, [[
+#version 330
+
+uniform mat4 projection_matrix;
+layout(location = 0) in vec2 position;
+
+out vec2 theTexcoord;
+
+void main() 
+{
+	vec4 output_vert;
+	output_vert.x = position.x * 2.0 - 1.0;		
+	output_vert.y = position.y * 2.0 - 1.0;				
+	output_vert.z = 0.0f;						
+	output_vert.w = 1.0f;
+	
+	gl_Position = output_vert;
+	theTexcoord = position;
+}
+]])
+
+fullscreen_fragment_shader = GLSL_shader(GL.GL_FRAGMENT_SHADER, [[
+#version 330
+in vec2 theTexcoord;
+out vec4 outputColor;
+
+uniform sampler2D basic_texture;
+
+void main() 
+{
+    outputColor = texture(basic_texture, theTexcoord);
+}
+
+]])
+
+
 film_grain_program = GLSL_program()
 film_grain_program:attach(film_grain_vertex_shader)
 film_grain_program:attach(film_grain_fragment_shader)
 film_grain_program:use()
 time_uniform = GL.glGetUniformLocation(film_grain_program.id, "time")
+
+fullscreen_program = GLSL_program()
+fullscreen_program:attach(fullscreen_vertex_shader)
+fullscreen_program:attach(fullscreen_fragment_shader)
+fullscreen_program:use()
+fullscreen_texture_uniform = GL.glGetUniformLocation(fullscreen_program.id, "basic_texture")
+GL.glUniform1i(fullscreen_texture_uniform, 0)
 
 my_shader_program = GLSL_program()
 my_shader_program:attach(my_vertex_shader)
@@ -177,11 +220,9 @@ my_shader_program:use()
 
 projection_matrix_uniform = GL.glGetUniformLocation(my_shader_program.id, "projection_matrix")
 basic_texture_uniform = GL.glGetUniformLocation(my_shader_program.id, "basic_texture")
-
 GL.glUniform1i(basic_texture_uniform, 0)
 
 local my_timer = timer()
-
 
 world_camera = create_entity (archetyped(camera_archetype, {
 	transform = {
@@ -194,8 +235,10 @@ world_camera = create_entity (archetyped(camera_archetype, {
 		ortho = rect_ltrb(0, 0, config_table.resolution_w, config_table.resolution_h),
 		
 		drawing_callback = function (subject, renderer, visible_area, drawn_transform, target_transform, mask)
+			
 			my_shader_program:use()
 			my_atlas:bind()
+			
 			renderer:generate_triangles(visible_area, drawn_transform, mask)
 			
 			GL.glUniformMatrix4fv(
@@ -205,22 +248,39 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			orthographic_projection(visible_area.x, visible_area.r, visible_area.b, visible_area.y, 0, 1):data()
 			)
 			
-			renderer:default_render(visible_area)
+			--framebuffer_object.use_default()
+			scene_fbo:use()
+			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
+		
+			renderer:call_triangles()
+		
+			renderer:clear_triangles()
 			
 			GL.glDisable(GL.GL_TEXTURE_2D)
 			renderer:draw_debug_info(visible_area, drawn_transform)
 			GL.glEnable(GL.GL_TEXTURE_2D)
 			
-			renderer:clear_triangles()
+			framebuffer_object.use_default()
+			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
+			fullscreen_program:use()
+			
+			GL.glBindTexture(GL.GL_TEXTURE_2D, scene_fbo:get_texture_id())
+			
+			GL.glBegin(GL.GL_QUADS)	
+				GL.glVertexAttrib2f(0,1,1)
+				GL.glVertexAttrib2f(0,1,0)
+				GL.glVertexAttrib2f(0,0,0)
+				GL.glVertexAttrib2f(0,0,1)
+			GL.glEnd()
 			
 			film_grain_program:use()
 			GL.glUniform1i(time_uniform, my_timer:get_milliseconds())
 			
 			GL.glBegin(GL.GL_QUADS)	
-				GL.glVertexAttrib2f(0,1,1);
-				GL.glVertexAttrib2f(0,1,0);
-				GL.glVertexAttrib2f(0,0,0);
-				GL.glVertexAttrib2f(0,0,1);
+				GL.glVertexAttrib2f(0,1,1)
+				GL.glVertexAttrib2f(0,1,0)
+				GL.glVertexAttrib2f(0,0,0)
+				GL.glVertexAttrib2f(0,0,1)
 			GL.glEnd()
 			
 		end
