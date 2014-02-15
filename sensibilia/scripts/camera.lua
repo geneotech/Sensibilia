@@ -107,6 +107,32 @@ function fullscreen_pass(is_finalizing)
 	fullscreen_quad()
 end
 
+
+function instability_pass_function()
+
+
+	
+end
+
+INSTABILITY_PASSES = 3
+
+instability_passes = {
+	
+}
+
+--for i, INSTABILITY_PASSES do
+--	instability_passes[i] = coroutine.wrap(
+--		function(
+--	
+--	)
+--end
+
+
+
+--instability_pass_randomizer = coroutine.create(
+--
+--)
+
 world_camera = create_entity (archetyped(camera_archetype, {
 	transform = {
 		pos = vec2(),
@@ -151,11 +177,11 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			
 			
 			
-			hblur_program:use()
-			fullscreen_pass()
-			
-			vblur_program:use()
-			fullscreen_pass()
+			--hblur_program:use()
+			--fullscreen_pass()
+			--
+			--vblur_program:use()
+			--fullscreen_pass()
 			
 			chromatic_aberration_program:use()
 			fullscreen_pass()

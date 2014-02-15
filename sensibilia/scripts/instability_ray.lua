@@ -54,7 +54,7 @@ function instability_ray_caster:construct_world_polygon()
 end
 
 function instability_ray_caster:loop()
-	pv(self.direction)
+	--pv(self.direction)
 	local delta_ms = self.delta_timer:extract_milliseconds() * 3 * physics_system.timestep_multiplier
 	
 	
@@ -73,43 +73,43 @@ function instability_ray_caster:loop()
 	end
 	
 	--print "loopin"
-	pv(self.direction)
+	--pv(self.direction)
 	local direction_lengthened = self.direction * self.ray_length
-	pv(self.direction)
+	--pv(self.direction)
 	direction_lengthened:clamp(self.current_ortho)
-	pv(self.direction)
+	--pv(self.direction)
 	
 	local length_clamped = direction_lengthened:length()
 	
-	pv(self.direction)
+	--pv(self.direction)
 	if self.ray_length > length_clamped then
 		self.ray_length = length_clamped
 	end
 	
-	pv(self.direction)
+	--pv(self.direction)
 	self.current_endpoint = self.position
-	pv(self.direction)
+	--pv(self.direction)
 	self.current_endpoint = self.current_endpoint + direction_lengthened
-	pv(self.direction)
+	--pv(self.direction)
 	--render_system:push_line(debug_line(self.position, self.current_endpoint, rgba(255, 255, 255, 255)))
 
-	pv(self.direction)
+	--pv(self.direction)
 	-- check for collisions with enemies
 	local world_polygon = vec2_vector()
-	pv(self.direction)
+	--pv(self.direction)
 	add_vals(world_polygon, self:construct_world_polygon())
-	pv(self.direction)
+	--pv(self.direction)
 		
 		--print(debug.my_traceback())
-		print(self.ray_length)
-		pv(self.current_endpoint)
-		pv(self.position)
-		pv(self.direction)
-		pv(world_polygon:at(0))
-		pv(world_polygon:at(1))
-		pv(world_polygon:at(2))
-		pv(world_polygon:at(3))
-	debugger_break()
+		--print(self.ray_length)
+		--pv(self.current_endpoint)
+		--pv(self.position)
+		--pv(self.direction)
+		--pv(world_polygon:at(0))
+		--pv(world_polygon:at(1))
+		--pv(world_polygon:at(2))
+		--pv(world_polygon:at(3))
+	--debugger_break()
 	local hit_enemies_candidates = physics_system:query_polygon(world_polygon, create(b2Filter, filter_instability_ray), self.entity_owner)
 	
 	--self.something_under_foot = false

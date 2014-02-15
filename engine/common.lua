@@ -1,20 +1,38 @@
 -- Create a new class that inherits from a base class
 --
 
-function coroutine.stepped_wait(ms_wait)
-	local my_timer = stepped_timer(physics_system)
+function coroutine.wait_routine(my_timer, ms_wait, loop_func, constant_delta)
+	if constant_delta == nil then constant_delta = false end
+
+	local accumulated_time = 0
+	local delta_multiplier = 1
 	
-	while my_timer:get_milliseconds() <= ms_wait do
-		coroutine.yield()
+	while true do
+		local extracted_ms = my_timer:extract_milliseconds()
+		if not constant_delta then extracted_ms = extracted_ms * delta_multiplier end
+		
+		accumulated_time = accumulated_time + extracted_ms
+		
+		if accumulated_time <= ms_wait then
+			if loop_func ~= nil then
+				loop_func(accumulated_time)
+			end
+				
+			local new_multiplier = coroutine.yield()
+			
+			if new_multiplier ~= nil then delta_multiplier = new_multiplier end	
+		else 
+			break
+		end
 	end
 end
 
-function coroutine.wait(ms_wait)
-	local my_timer = timer()
-	
-	while my_timer:get_milliseconds() <= ms_wait do
-		coroutine.yield()
-	end
+function coroutine.stepped_wait(ms_wait, loop_func, constant_delta)
+	coroutine.wait_routine(stepped_timer(physics_system), ms_wait, loop_func, constant_delta)
+end
+
+function coroutine.wait(ms_wait, loop_func, constant_delta)
+	coroutine.wait_routine(timer(), ms_wait, loop_func, constant_delta)
 end
 
 function to_vec2(b2Vec2_)
