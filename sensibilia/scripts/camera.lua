@@ -63,6 +63,7 @@ dofile (SHADERS_DIRECTORY .. "scene_shader.lua")
 dofile (SHADERS_DIRECTORY .. "film_grain.lua")
 dofile (SHADERS_DIRECTORY .. "chromatic_aberration.lua")
 dofile (SHADERS_DIRECTORY .. "blur.lua")
+dofile (SHADERS_DIRECTORY .. "color_adjustment.lua")
 
 local my_timer = timer()
 
@@ -149,6 +150,7 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			-- postprocessing
 			
 			
+			
 			hblur_program:use()
 			fullscreen_pass()
 			
@@ -156,6 +158,9 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			fullscreen_pass()
 			
 			chromatic_aberration_program:use()
+			fullscreen_pass()
+			
+			color_adjustment_program:use()
 			fullscreen_pass(true)
 			
 			film_grain_program:use()

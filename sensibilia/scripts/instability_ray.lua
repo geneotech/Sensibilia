@@ -14,7 +14,7 @@ function instability_ray_caster:constructor(entity)
 	self.delta_timer = timer()
 	
 	self.ray_quad_width = 100
-	self.ray_quad_end_width = 200
+	self.ray_quad_end_width = 120
 	
 	self.entity_owner = entity
 	self.current_ortho = vec2(0, 0)

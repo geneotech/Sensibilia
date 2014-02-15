@@ -17,20 +17,20 @@ void main()
 	gl_Position = output_vert;
 	theTexcoord = position;
 	
-	blur_coords[ 0] = theTexcoord + vec2(-0.028, 0.0)/4;
-    blur_coords[ 1] = theTexcoord + vec2(-0.024, 0.0)/4;
-    blur_coords[ 2] = theTexcoord + vec2(-0.020, 0.0)/4;
-    blur_coords[ 3] = theTexcoord + vec2(-0.016, 0.0)/4;
-    blur_coords[ 4] = theTexcoord + vec2(-0.012, 0.0)/4;
-    blur_coords[ 5] = theTexcoord + vec2(-0.008, 0.0)/4;
-    blur_coords[ 6] = theTexcoord + vec2(-0.004, 0.0)/4;
-    blur_coords[ 7] = theTexcoord + vec2( 0.004, 0.0)/4;
-    blur_coords[ 8] = theTexcoord + vec2( 0.008, 0.0)/4;
-    blur_coords[ 9] = theTexcoord + vec2( 0.012, 0.0)/4;
-    blur_coords[10] = theTexcoord + vec2( 0.016, 0.0)/4;
-    blur_coords[11] = theTexcoord + vec2( 0.020, 0.0)/4;
-    blur_coords[12] = theTexcoord + vec2( 0.024, 0.0)/4;
-    blur_coords[13] = theTexcoord + vec2( 0.028, 0.0)/4;
+	blur_coords[ 0] = theTexcoord + vec2(-0.028, 0.0)/5;
+    blur_coords[ 1] = theTexcoord + vec2(-0.024, 0.0)/5;
+    blur_coords[ 2] = theTexcoord + vec2(-0.020, 0.0)/5;
+    blur_coords[ 3] = theTexcoord + vec2(-0.016, 0.0)/5;
+    blur_coords[ 4] = theTexcoord + vec2(-0.012, 0.0)/5;
+    blur_coords[ 5] = theTexcoord + vec2(-0.008, 0.0)/5;
+    blur_coords[ 6] = theTexcoord + vec2(-0.004, 0.0)/5;
+    blur_coords[ 7] = theTexcoord + vec2( 0.004, 0.0)/5;
+    blur_coords[ 8] = theTexcoord + vec2( 0.008, 0.0)/5;
+    blur_coords[ 9] = theTexcoord + vec2( 0.012, 0.0)/5;
+    blur_coords[10] = theTexcoord + vec2( 0.016, 0.0)/5;
+    blur_coords[11] = theTexcoord + vec2( 0.020, 0.0)/5;
+    blur_coords[12] = theTexcoord + vec2( 0.024, 0.0)/5;
+    blur_coords[13] = theTexcoord + vec2( 0.028, 0.0)/5;
 }
 ]])
 
@@ -53,20 +53,20 @@ void main()
 	gl_Position = output_vert;
 	theTexcoord = position;
 	
-	blur_coords[ 0] = theTexcoord + vec2(0.0, -0.028)/4;
-    blur_coords[ 1] = theTexcoord + vec2(0.0, -0.024)/4;
-    blur_coords[ 2] = theTexcoord + vec2(0.0, -0.020)/4;
-    blur_coords[ 3] = theTexcoord + vec2(0.0, -0.016)/4;
-    blur_coords[ 4] = theTexcoord + vec2(0.0, -0.012)/4;
-    blur_coords[ 5] = theTexcoord + vec2(0.0, -0.008)/4;
-    blur_coords[ 6] = theTexcoord + vec2(0.0, -0.004)/4;
-    blur_coords[ 7] = theTexcoord + vec2(0.0,  0.004)/4;
-    blur_coords[ 8] = theTexcoord + vec2(0.0,  0.008)/4;
-    blur_coords[ 9] = theTexcoord + vec2(0.0,  0.012)/4;
-    blur_coords[10] = theTexcoord + vec2(0.0,  0.016)/4;
-    blur_coords[11] = theTexcoord + vec2(0.0,  0.020)/4;
-    blur_coords[12] = theTexcoord + vec2(0.0,  0.024)/4;
-    blur_coords[13] = theTexcoord + vec2(0.0,  0.028)/4;
+	blur_coords[ 0] = theTexcoord + vec2(0.0, -0.028)/5;
+    blur_coords[ 1] = theTexcoord + vec2(0.0, -0.024)/5;
+    blur_coords[ 2] = theTexcoord + vec2(0.0, -0.020)/5;
+    blur_coords[ 3] = theTexcoord + vec2(0.0, -0.016)/5;
+    blur_coords[ 4] = theTexcoord + vec2(0.0, -0.012)/5;
+    blur_coords[ 5] = theTexcoord + vec2(0.0, -0.008)/5;
+    blur_coords[ 6] = theTexcoord + vec2(0.0, -0.004)/5;
+    blur_coords[ 7] = theTexcoord + vec2(0.0,  0.004)/5;
+    blur_coords[ 8] = theTexcoord + vec2(0.0,  0.008)/5;
+    blur_coords[ 9] = theTexcoord + vec2(0.0,  0.012)/5;
+    blur_coords[10] = theTexcoord + vec2(0.0,  0.016)/5;
+    blur_coords[11] = theTexcoord + vec2(0.0,  0.020)/5;
+    blur_coords[12] = theTexcoord + vec2(0.0,  0.024)/5;
+    blur_coords[13] = theTexcoord + vec2(0.0,  0.028)/5;
 }
 ]])
 
