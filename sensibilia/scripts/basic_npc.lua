@@ -113,7 +113,12 @@ function basic_npc_class:set_movement_mode_flying(flag)
 end
 
 function basic_npc_class:death_callback()
-	print "dead"
+	-- first have to remove all occurences of my_basic_npc from scripts
+	-- and remove its reference in global npc table
+	
+	--local msg = destroy_message()
+	--msg.subject = self.entity
+	--world:post_message(msg)
 end
 
 function basic_npc_class:set_all_behaviours_enabled(flag)
