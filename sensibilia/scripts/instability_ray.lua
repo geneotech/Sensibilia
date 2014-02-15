@@ -14,10 +14,12 @@ function instability_ray_caster:constructor(entity)
 	self.delta_timer = timer()
 	
 	self.ray_quad_width = 100
-	self.ray_quad_end_width = 160
+	self.ray_quad_end_width = 200
 	
 	self.entity_owner = entity
 	self.current_ortho = vec2(0, 0)
+	
+	self.trapezoid_height = 200
 
 	-- for rendering
 	table.insert(global_instability_rays, self)
@@ -41,16 +43,18 @@ end
 function instability_ray_caster:construct_world_polygon()
 	local perpendicular = self.direction:perpendicular_cw()
 	
+	local width_at_end = self.ray_quad_width + (self.ray_quad_end_width - self.ray_quad_width) * (self.ray_length / self.trapezoid_height)
+	
 	return reversed ({ 
 		self.position - perpendicular * self.ray_quad_width/2,
-		self.current_endpoint - perpendicular * self.ray_quad_end_width/2,
-		self.current_endpoint + perpendicular * self.ray_quad_end_width/2,
+		self.current_endpoint - perpendicular * width_at_end/2,
+		self.current_endpoint + perpendicular * width_at_end/2,
 		self.position + perpendicular * self.ray_quad_width/2
 	})
 end
 
 function instability_ray_caster:loop()
-	--pv(self.direction)
+	pv(self.direction)
 	local delta_ms = self.delta_timer:extract_milliseconds() * 3 * physics_system.timestep_multiplier
 	
 	
@@ -64,47 +68,47 @@ function instability_ray_caster:loop()
 		self.ray_length = 0
 	end 
 	
-	if self.ray_length <= 1 then
+	if self.ray_length <= 50 then
 		return false
 	end
 	
 	--print "loopin"
-	--pv(self.direction)
+	pv(self.direction)
 	local direction_lengthened = self.direction * self.ray_length
-	--pv(self.direction)
+	pv(self.direction)
 	direction_lengthened:clamp(self.current_ortho)
-	--pv(self.direction)
+	pv(self.direction)
 	
 	local length_clamped = direction_lengthened:length()
 	
-	--pv(self.direction)
+	pv(self.direction)
 	if self.ray_length > length_clamped then
 		self.ray_length = length_clamped
 	end
 	
-	--pv(self.direction)
+	pv(self.direction)
 	self.current_endpoint = self.position
-	--pv(self.direction)
+	pv(self.direction)
 	self.current_endpoint = self.current_endpoint + direction_lengthened
-	--pv(self.direction)
+	pv(self.direction)
 	--render_system:push_line(debug_line(self.position, self.current_endpoint, rgba(255, 255, 255, 255)))
 
-	--pv(self.direction)
+	pv(self.direction)
 	-- check for collisions with enemies
 	local world_polygon = vec2_vector()
-	--pv(self.direction)
+	pv(self.direction)
 	add_vals(world_polygon, self:construct_world_polygon())
-	--pv(self.direction)
+	pv(self.direction)
 		
 		--print(debug.my_traceback())
-		--print(self.ray_length)
-		--pv(self.current_endpoint)
-		--pv(self.position)
-		--pv(self.direction)
-		--pv(world_polygon:at(0))
-		--pv(world_polygon:at(1))
-		--pv(world_polygon:at(2))
-		--pv(world_polygon:at(3))
+		print(self.ray_length)
+		pv(self.current_endpoint)
+		pv(self.position)
+		pv(self.direction)
+		pv(world_polygon:at(0))
+		pv(world_polygon:at(1))
+		pv(world_polygon:at(2))
+		pv(world_polygon:at(3))
 	debugger_break()
 	local hit_enemies_candidates = physics_system:query_polygon(world_polygon, create(b2Filter, filter_instability_ray), self.entity_owner)
 	
