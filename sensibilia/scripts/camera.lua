@@ -108,17 +108,103 @@ function fullscreen_pass(is_finalizing)
 end
 
 
-function instability_pass_function()
-
-
-	
-end
 
 INSTABILITY_PASSES = 3
 
 instability_passes = {
 	
 }
+
+function table_of_tables(num)
+	local out = {}
+	
+	for i = 1, num do
+		out[i] = {}
+	end
+	
+	return out
+end
+
+
+function randomize_properties(min_val, max_val, prop_name, target_table)
+	for k, v in ipairs(target_table) do
+		target_table[k][prop_name] = randval(min_val, max_val)
+	end
+end
+
+
+function randomize_transitions(min_duration, max_duration, target_table)
+	for k, v in ipairs(target_table) do
+		target_table[k].transition_duration = randval(min_duration, max_duration)
+	end
+end
+
+function randomize_translations(min_radius, max_radius, target_table)
+	for k, v in ipairs(target_table) do
+		target_table[k].translation = vec2.random_on_circle(randval(min_duration, max_duration))
+	end
+end
+	
+
+function hblur_instability_effect()
+	while true do
+		local transitions = table_of_tables(randval(10, 20))
+		
+		--if #transitions < 1 then coroutine.yield() end
+		
+		
+		--print (#transitions)
+		
+		randomize_properties(10, 500, "transition_duration", transitions)
+		randomize_properties(0.1, 1, "target_mult", transitions)
+		
+		--print (table.inspect(transitions))
+		
+		local last_mult = 0
+		for k, v in ipairs(transitions) do
+			--print(last_mult, v.target_mult)
+			local my_val_animator = value_animator(last_mult, v.target_mult, v.transition_duration)
+			my_val_animator:set_exponential()
+		
+			coroutine.wait(v.transition_duration, function()
+				hblur_program:use()
+				
+				last_mult = my_val_animator:get_animated()
+				--print (last_mult)
+				GL.glUniform1f(h_offset_multiplier, last_mult*instability)
+				
+				
+				fullscreen_pass()
+				
+				
+				vblur_program:use()
+				
+				--last_mult = my_val_animator:get_animated()
+				--print (last_mult)
+				GL.glUniform1f(v_offset_multiplier, last_mult*instability)
+				
+				
+				fullscreen_pass()
+			end)
+		end
+	end
+end	
+
+
+function refresh_coroutines()
+	hblur_coroutine = coroutine.wrap(hblur_instability_effect)
+end
+
+instability_effects = {
+
+}
+
+function instability_pass_function(is_last)
+	
+
+	
+end
+
 
 --for i, INSTABILITY_PASSES do
 --	instability_passes[i] = coroutine.wrap(
@@ -170,12 +256,21 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			current_postprocessing_fbo = 0
 			
 			
-			
+			print(instability)
 			
 			
 			-- postprocessing
 			
+			if instability > 0 then
 			
+			local new_multiplier = instability*300
+			if new_multiplier < 1 then new_multiplier = 1 end
+			
+			--print (new_multiplier)
+			hblur_coroutine()
+			else
+				refresh_coroutines()
+			end
 			
 			--hblur_program:use()
 			--fullscreen_pass()
@@ -183,9 +278,9 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			--vblur_program:use()
 			--fullscreen_pass()
 			
-			chromatic_aberration_program:use()
-			fullscreen_pass()
-			
+			--chromatic_aberration_program:use()
+			--fullscreen_pass()
+			--
 			color_adjustment_program:use()
 			fullscreen_pass(true)
 			

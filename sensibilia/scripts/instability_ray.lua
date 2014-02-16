@@ -31,7 +31,6 @@ end
 
 function instability_ray_caster:cast(flag)
 	self.currently_casting = flag
-	
 	--if flag then
 	--	self.rendering_routine = coroutine.create( function () 
 	--	
@@ -54,14 +53,16 @@ function instability_ray_caster:construct_world_polygon()
 end
 
 function instability_ray_caster:loop()
+	self.instability_bonus = 0
 	--pv(self.direction)
-	local delta_ms = self.delta_timer:extract_milliseconds() * 3 * physics_system.timestep_multiplier
+	local delta_ms = self.delta_timer:extract_milliseconds() * physics_system.timestep_multiplier
 	
 	
 	if self.currently_casting then
-		self.ray_length = self.ray_length + delta_ms 
+		self.ray_length = self.ray_length + delta_ms * 3
+		self.instability_bonus = delta_ms/1000/10
 	else
-		self.ray_length = self.ray_length - delta_ms
+		self.ray_length = self.ray_length - delta_ms * 3
 	end
 
 	if self.ray_length < 0 then
