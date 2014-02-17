@@ -66,13 +66,13 @@ dofile (SHADERS_DIRECTORY .. "chromatic_aberration.lua")
 dofile (SHADERS_DIRECTORY .. "blur.lua")
 dofile (SHADERS_DIRECTORY .. "color_adjustment.lua")
 
-
 dofile (EFFECTS_DIRECTORY .. "utility.lua")
 dofile (EFFECTS_DIRECTORY .. "blur.lua")
-
+dofile (EFFECTS_DIRECTORY .. "chromatic_aberration.lua")
 
 function refresh_coroutines()
 	hblur_coroutine = coroutine.wrap(hblur_instability_effect)
+	aberration_coroutine = coroutine.wrap(aberration_instability_effect)
 end
 
 world_camera = create_entity (archetyped(camera_archetype, {
@@ -112,18 +112,15 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			current_postprocessing_fbo = 0
 			
 			
-			print(instability)
+			--print(instability)
 			
 			
 			-- postprocessing
 			
+			if instability > 1 then instability = 1 end
 			if instability > 0 then
-			
-			local new_multiplier = instability*300
-			if new_multiplier < 1 then new_multiplier = 1 end
-			
-			--print (new_multiplier)
-			hblur_coroutine()
+				hblur_coroutine()
+				aberration_coroutine(instability)
 			else
 				refresh_coroutines()
 			end

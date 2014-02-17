@@ -1,4 +1,4 @@
-local my_timer = timer()
+my_timer = timer()
 
 function fullscreen_quad()
 	GL.glBegin(GL.GL_QUADS)	
@@ -58,6 +58,6 @@ end
 
 function randomize_properties_vector(min_radius, max_radius, prop_name, target_table)
 	for k, v in ipairs(target_table) do
-		target_table[k][prop_name] = vec2.random_on_circle(randval(min_duration, max_duration))
+		target_table[k][prop_name] = vec2.random_on_circle(randval(min_radius, max_radius))
 	end
 end
