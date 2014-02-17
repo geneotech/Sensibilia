@@ -3,6 +3,7 @@ film_grain_vertex_shader = GLSL_shader(GL.GL_VERTEX_SHADER, fullscreen_vertex_sh
 film_grain_fragment_shader = GLSL_shader(GL.GL_FRAGMENT_SHADER, [[
 #version 330
 uniform int time;
+uniform float intensity;
 
 // A single iteration of Bob Jenkins' One-At-A-Time hashing algorithm.
 uint hash( uint x ) {
@@ -48,7 +49,7 @@ void main()
     float rand   = random( inputs );              // Random per-pixel value
     vec3  luma   = vec3( rand );                  // Expand to RGB
 	
-    outputColor = vec4(luma, 0.1);
+    outputColor = vec4(luma, intensity);
 }
 
 ]])
@@ -58,3 +59,5 @@ film_grain_program:attach(film_grain_vertex_shader)
 film_grain_program:attach(film_grain_fragment_shader)
 film_grain_program:use()
 time_uniform = GL.glGetUniformLocation(film_grain_program.id, "time")
+film_grain_intensity = GL.glGetUniformLocation(film_grain_program.id, "intensity")
+GL.glUniform1f(film_grain_intensity, 0.1)

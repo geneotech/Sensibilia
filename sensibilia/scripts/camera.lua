@@ -69,10 +69,13 @@ dofile (SHADERS_DIRECTORY .. "color_adjustment.lua")
 dofile (EFFECTS_DIRECTORY .. "utility.lua")
 dofile (EFFECTS_DIRECTORY .. "blur.lua")
 dofile (EFFECTS_DIRECTORY .. "chromatic_aberration.lua")
+dofile (EFFECTS_DIRECTORY .. "film_grain_variation.lua")
 
 function refresh_coroutines()
 	hblur_coroutine = coroutine.wrap(hblur_instability_effect)
+	vblur_coroutine = coroutine.wrap(vblur_instability_effect)
 	aberration_coroutine = coroutine.wrap(aberration_instability_effect)
+	film_grain_variation_coroutine = coroutine.wrap(film_grain_variation_instability_effect)
 end
 
 world_camera = create_entity (archetyped(camera_archetype, {
@@ -117,11 +120,25 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			
 			-- postprocessing
 			
+			
+
 			if instability > 1 then instability = 1 end
 			if instability > 0 then
 				hblur_coroutine()
+				vblur_coroutine()
+				
+				film_grain_program:use()
+				film_grain_variation_coroutine(instability)
+				--film_grain_program:use()
+				GL.glUniform1i(time_uniform, my_timer:get_milliseconds())
+				fullscreen_quad()
 				aberration_coroutine(instability)
+				
 			else
+				film_grain_program:use()
+				GL.glUniform1f(film_grain_intensity, 0.1)
+				GL.glUniform1i(time_uniform, my_timer:get_milliseconds())
+				fullscreen_quad()
 				refresh_coroutines()
 			end
 			
@@ -137,10 +154,7 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			color_adjustment_program:use()
 			fullscreen_pass(true)
 			
-			film_grain_program:use()
-			GL.glUniform1i(time_uniform, my_timer:get_milliseconds())
 			
-			fullscreen_quad()
 			--framebuffer_object.use_default()
 			--GL.glBindTexture(GL.GL_TEXTURE_2D, postprocessing_fbos[0]:get_texture_id())
 			--fullscreen_quad()

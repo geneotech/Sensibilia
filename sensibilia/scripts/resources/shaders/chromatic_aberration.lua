@@ -10,7 +10,7 @@ uniform vec2 aberration_offset;
 void main() 
 {	
     vec4 fbo1 = texture(basic_texture, theTexcoord - aberration_offset);  
-    vec4 fbo2 = texture(basic_texture, theTexcoord);  
+    vec4 fbo2 = texture(basic_texture, theTexcoord - aberration_offset/3);  
     vec4 fbo3 = texture(basic_texture, theTexcoord + aberration_offset);
 
     vec4 colFinal = vec4(fbo1.r, fbo2.g, fbo3.b, 1.);	
