@@ -4,7 +4,9 @@ debug_target_sprite = create_sprite {
 	color = rgba(0, 255, 255, 0)
 }
 
-stability = 1
+-- 1 - max
+instability = 0
+
 base_gravity = vec2(0, 120)
 gravity_angle_offset = 0
 target_gravity_rotation = 0
@@ -176,6 +178,8 @@ base_crosshair_rotation = 0
 --)
 
 
+instability_decreaser = timer()
+
 loop_only_info = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = 
@@ -274,6 +278,14 @@ loop_only_info = create_scriptable_info {
 			--coroutine.resume(my_coroutine)
 	--		myseq:play()
 			
+			if not player_ray_caster.currently_casting then
+			
+				--print(instability_decreaser:extract_milliseconds() / 1000 / 10)
+				instability = instability - (instability_decreaser:get_seconds() / 5) 
+			end
+			
+			if instability < 0 then instability = 0 end
+			instability_decreaser:reset()
 		end
 	}
 }
