@@ -7,16 +7,19 @@ layout(location = 0) in vec2 position;
 layout(location = 1) in vec2 texcoord;
 layout(location = 2) in vec4 color;
 
+uniform vec2 player_pos;
+uniform float shift_amount;
+
 smooth out vec4 theColor;
  out vec2 theTexcoord;
 
 void main() 
 {
-	vec4 output_vert;
-	output_vert.x = position.x;		
-	output_vert.y = position.y;				
-	output_vert.z = 0.0f;						
-	output_vert.w = 1.0f;
+	vec4 output_vert = vec4(position.xy + normalize(player_pos - position)*shift_amount, 0.0f, 1.0f);
+	//output_vert.x = position.x;		
+	//output_vert.y = position.y;				
+	//output_vert.z = 0.0f;						
+	//output_vert.w = 1.0f;
 	
 	gl_Position = projection_matrix*output_vert;
 	theColor = color;
@@ -48,4 +51,12 @@ scene_program:attach(scene_fragment_shader)
 scene_program:use()
 
 projection_matrix_uniform = GL.glGetUniformLocation(scene_program.id, "projection_matrix")
+
+player_pos_uniform = GL.glGetUniformLocation(scene_program.id, "player_pos")
+shift_amount_uniform = GL.glGetUniformLocation(scene_program.id, "shift_amount")
+
+
 GL.glUniform1i(GL.glGetUniformLocation(scene_program.id, "basic_texture"), 0)
+
+GL.glUniform2f(player_pos_uniform, 0, 0)
+GL.glUniform1f(shift_amount_uniform, 0)

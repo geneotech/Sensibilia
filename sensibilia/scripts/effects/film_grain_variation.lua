@@ -11,7 +11,7 @@ function film_grain_variation_instability_effect()
 		
 		coroutine.wait(transition_duration, function()
 			local new_intensity =  0.1 + intensity_offset * instability
-			print (new_intensity)
+			--print (new_intensity)
 			GL.glUniform1f(film_grain_intensity, new_intensity)
 		
 			fullscreen_pass()

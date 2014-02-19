@@ -266,14 +266,14 @@ loop_only_info = create_scriptable_info {
 			--vec2(1000, 1000)/50, player.body.transform.current.pos/50 + sensor/50, vec2(vel.x, vel.y), 
 			--self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, player.body.physics.body:GetMass())	
 			
-			render_system:push_line(debug_line(
-				player.body.transform.current.pos + sensor, 
-				player.body.transform.current.pos  + sensor + vec2(0, -self.jump_height) , rgba(255, 0, 0, 255)))
+			--render_system:push_line(debug_line(
+			--	player.body.transform.current.pos + sensor, 
+			--	player.body.transform.current.pos  + sensor + vec2(0, -self.jump_height) , rgba(255, 0, 0, 255)))
 			
-			if not should_debug_draw then 
-				render_system:push_non_cleared_line(debug_line(player.body.transform.current.pos+ sensor , 
-				player.body.transform.current.pos + sensor + vec2(0, 10), rgba(255, 0, 0, 255)))
-			end
+			--if not should_debug_draw then 
+			--	render_system:push_non_cleared_line(debug_line(player.body.transform.current.pos+ sensor , 
+			--	player.body.transform.current.pos + sensor + vec2(0, 10), rgba(255, 0, 0, 255)))
+			--end
 			
 			--coroutine.resume(my_coroutine)
 	--		myseq:play()

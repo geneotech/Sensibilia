@@ -70,6 +70,7 @@ dofile (EFFECTS_DIRECTORY .. "utility.lua")
 dofile (EFFECTS_DIRECTORY .. "blur.lua")
 dofile (EFFECTS_DIRECTORY .. "chromatic_aberration.lua")
 dofile (EFFECTS_DIRECTORY .. "film_grain_variation.lua")
+dofile (EFFECTS_DIRECTORY .. "vertex_shift.lua")
 
 function refresh_coroutines()
 	hblur_coroutine = coroutine.wrap(hblur_instability_effect)
@@ -78,6 +79,8 @@ function refresh_coroutines()
 	film_grain_variation_coroutine = coroutine.wrap(film_grain_variation_instability_effect)
 end
 
+vertex_shift_coroutine = coroutine.wrap(vertex_shift_instability_effect)
+	
 world_camera = create_entity (archetyped(camera_archetype, {
 	transform = {
 		pos = vec2(),
@@ -90,6 +93,14 @@ world_camera = create_entity (archetyped(camera_archetype, {
 		
 		drawing_callback = function (subject, renderer, visible_area, drawn_transform, target_transform, mask)
 			scene_program:use()
+			
+			local player_pos = player.body.transform.current.pos
+			GL.glUniform2f(player_pos_uniform, player_pos.x, player_pos.y)
+			vertex_shift_coroutine(instability)
+			
+			
+			--GL.glUniform1f(shift_amount_uniform, math.pow(700, instability))
+
 			my_atlas:bind()
 			
 			renderer:generate_triangles(visible_area, drawn_transform, mask)
