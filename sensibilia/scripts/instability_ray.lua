@@ -59,10 +59,10 @@ function instability_ray_caster:loop()
 	
 	
 	if self.currently_casting then
-		self.ray_length = self.ray_length + delta_ms * 3
+		self.ray_length = self.ray_length + delta_ms * 20
 		self.instability_bonus = delta_ms/1000/10
 	else
-		self.ray_length = self.ray_length - delta_ms * 3
+		self.ray_length = self.ray_length - delta_ms * 20
 	end
 
 	if self.ray_length < 0 then

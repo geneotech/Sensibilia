@@ -10,7 +10,7 @@ function hblur_instability_effect()
 		if randval(0, 1) > 0.5 then
 			my_val_animator:set_exponential()
 		else
-			my_val_animator:set_logarithmic()
+			my_val_animator:set_quadratic()
 		end
 		
 		coroutine.wait(transition_duration, function()

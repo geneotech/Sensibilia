@@ -54,7 +54,7 @@ player_scriptable_info = create_scriptable_info {
 				
 				player_ray_caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
 				player_ray_caster:loop()
-				instability = instability + player_ray_caster.instability_bonus*10
+				instability = instability + player_ray_caster.instability_bonus
 				
 			end
 		end

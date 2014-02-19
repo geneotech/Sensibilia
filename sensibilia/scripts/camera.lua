@@ -81,6 +81,34 @@ end
 
 vertex_shift_coroutine = coroutine.wrap(vertex_shift_instability_effect)
 	
+temporary_instability = 0
+
+random_instability_variation_coroutine = coroutine.wrap(
+function ()	
+	local last_mult = 0
+		
+	while true do
+		local transition_duration = randval(10, 300)
+		local target_instability = randval(0.01, 0.16)
+		
+		local my_val_animator = value_animator(last_mult, target_instability, transition_duration)
+		
+		if randval(0, 1) > 0.5 then
+			my_val_animator:set_exponential()
+		else
+			my_val_animator:set_quadratic()
+		end
+		
+		coroutine.wait(transition_duration, function()			
+			last_mult = my_val_animator:get_animated()
+			temporary_instability = last_mult
+		end, true)
+	end
+end
+)	
+
+
+	
 world_camera = create_entity (archetyped(camera_archetype, {
 	transform = {
 		pos = vec2(),
@@ -94,7 +122,7 @@ world_camera = create_entity (archetyped(camera_archetype, {
 		drawing_callback = function (subject, renderer, visible_area, drawn_transform, target_transform, mask)
 			scene_program:use()
 			
-			local player_pos = player.body.transform.current.pos
+			local player_pos = player.crosshair.transform.current.pos
 			GL.glUniform2f(player_pos_uniform, player_pos.x, player_pos.y)
 			vertex_shift_coroutine(instability)
 			
@@ -132,7 +160,10 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			-- postprocessing
 			
 			
-
+			random_instability_variation_coroutine()
+			local prev_instability = instability
+			instability = instability + temporary_instability
+			
 			if instability > 1 then instability = 1 end
 			if instability > 0 then
 				hblur_coroutine()
@@ -153,22 +184,10 @@ world_camera = create_entity (archetyped(camera_archetype, {
 				refresh_coroutines()
 			end
 			
-			--hblur_program:use()
-			--fullscreen_pass()
-			--
-			--vblur_program:use()
-			--fullscreen_pass()
-			
-			--chromatic_aberration_program:use()
-			--fullscreen_pass()
-			--
 			color_adjustment_program:use()
 			fullscreen_pass(true)
 			
-			
-			--framebuffer_object.use_default()
-			--GL.glBindTexture(GL.GL_TEXTURE_2D, postprocessing_fbos[0]:get_texture_id())
-			--fullscreen_quad()
+			instability = prev_instability
 		end
 	},
 	
