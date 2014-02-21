@@ -11,94 +11,61 @@ uniform int time;
 uniform float rotation;
 uniform float multiplier;
 
-vec3 ContrastSaturationBrightness(vec3 color, float brt, float sat, float con)
-{
-	// Increase or decrease theese values to adjust r, g and b color channels seperately
-	const float AvgLumR = 0.5;
-	const float AvgLumG = 0.5;
-	const float AvgLumB = 0.5;
-	
-	const vec3 LumCoeff = vec3(0.2125, 0.7154, 0.0721);
-	
-	vec3 AvgLumin = vec3(AvgLumR, AvgLumG, AvgLumB);
-	vec3 brtColor = color * brt;
-	vec3 intensity = vec3(dot(brtColor, LumCoeff));
-	vec3 satColor = mix(intensity, brtColor, sat);
-	vec3 conColor = mix(AvgLumin, satColor, con);
-	return conColor;
-}
-
-
-// A single iteration of Bob Jenkins' One-At-A-Time hashing algorithm.
-uint hash( uint x ) {
-    x += ( x << 10u );
-    x ^= ( x >>  6u );
-    x += ( x <<  3u );
-    x ^= ( x >> 11u );
-    x += ( x << 15u );
-    return x;
-}
-
-// Compound versions of the hashing algorithm I whipped together.
-uint hash( uvec2 v ) { return hash( v.x ^ hash(v.y)                         ); }
-uint hash( uvec3 v ) { return hash( v.x ^ hash(v.y) ^ hash(v.z)             ); }
-uint hash( uvec4 v ) { return hash( v.x ^ hash(v.y) ^ hash(v.z) ^ hash(v.w) ); }
-
-// Construct a float with half-open range [0:1] using low 23 bits.
-// All zeroes yields 0.0, all ones yields the next smallest representable value below 1.0.
-float floatConstruct( uint m ) {
-    const uint ieeeMantissa = 0x007FFFFFu; // binary32 mantissa bitmask
-    const uint ieeeOne      = 0x3F800000u; // 1.0 in IEEE binary32
-
-    m &= ieeeMantissa;                     // Keep only mantissa bits (fractional part)
-    m |= ieeeOne;                          // Add fractional part to 1.0
-
-    float  f = uintBitsToFloat( m );       // Range [1:2]
-    return f - 1.0;                        // Range [0:1]
-}
-
-
-
-// Pseudo-random value in half-open range [0:1].
-float random( float x ) { return floatConstruct(hash(floatBitsToUint(x))); }
-float random( vec2  v ) { return floatConstruct(hash(floatBitsToUint(v))); }
-float random( vec3  v ) { return floatConstruct(hash(floatBitsToUint(v))); }
-float random( vec4  v ) { return floatConstruct(hash(floatBitsToUint(v))); }
-
 void main() 
 {	
 	float ac = cos(rotation);
 	float as = sin(rotation);
 	
+	// rotate the texture coordinate
 	vec2 rotated_texcoord = vec2(theTexcoord.x * ac - theTexcoord.y * as, theTexcoord.x * as + theTexcoord.y * ac);
+	
+	// get the pixel from scene
 	vec4 pixel = texture(basic_texture, theTexcoord);
 	
-	//vec3  inputs = vec3( gl_FragCoord.xy, time ); // Spatial and temporal inputs
-    //float rand   = random( time );              // Random per-pixel value
+	// get temporal input and convert it to float, slow down it a little
+	float used_time = time;
+	used_time = used_time / 20;
 	
+	// take one more pixel from a coordinate randomly shifted in time
+	vec4 effect_pixel = texture(basic_texture, theTexcoord + vec2(sin(used_time/10+rotation)*0.01, tan(used_time/10+rotation)*0.01));
+	float effect_amount = 10;
+	
+	// shortcuts to simplify notation
 	float X = 100*multiplier;
 	float Y = 100*multiplier;
 	vec2 c = rotated_texcoord;
 	
-	float used_time = time;
-	used_time = used_time / 20;
+	// totally random calculations that produce interesting color effect
+	vec4 my_colors = 
 	
-	vec4 effect_pixel = texture(basic_texture, theTexcoord + vec2(sin(used_time/10+rotation)*0.01, tan(used_time/10+rotation)*0.01));
-	float effect_amount = 10;
-	
-	vec4 my_colors = vec4(cos(c.x*X+used_time+effect_pixel.r*effect_amount)+sin(c.y*Y+used_time*2.0+effect_pixel.r*effect_amount),
+	vec4(
+		cos(c.x*X+used_time+effect_pixel.r*effect_amount)+sin(c.y*Y+used_time*2.0+effect_pixel.r*effect_amount),	
 		sin(c.x*Y+effect_pixel.g*effect_amount)+cos(c.y*X+used_time+effect_pixel.g*effect_amount),
-		sin(c.x*c.y+used_time+effect_pixel.b*effect_amount)+cos(c.y*X+used_time+effect_pixel.b*effect_amount), 1.0);
-		
+		sin(c.x*c.y+used_time+effect_pixel.b*effect_amount)+cos(c.y*X+used_time+effect_pixel.b*effect_amount), 
+		1.0
+	);
+	
+	// clamp it
 	my_colors = clamp(my_colors, vec4(0.0), vec4(1.0));
-	//vec4 modified_pixel = texture(basic_texture, theTexcoord );
 	
-	float amount = 1-texture(intensity_texture, theTexcoord).r;// * ((my_colors.r + my_colors.g + my_colors.b)/3);
+	// get the corresponding pixel from intensity map
+	float intensity = texture(intensity_texture, theTexcoord).r;
 	
-	outputColor = mix(pixel, my_colors, amount); 
+	// interpolate between the actual pixel on scene and the calculated pixel
+	outputColor = mix(pixel, my_colors, intensity); 
 }
 
 ]])
+
+
+
+
+
+
+
+
+
+
 
 
 spatial_instability_program = GLSL_program()
