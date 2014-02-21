@@ -9,7 +9,7 @@ function fullscreen_quad()
 	GL.glEnd()
 end
 
---scene_fbo = framebuffer_object(config_table.resolution_w, config_table.resolution_h)
+intensity_fbo = framebuffer_object(config_table.resolution_w, config_table.resolution_h)
 
 postprocessing_fbos = {
 	[0] = framebuffer_object(config_table.resolution_w, config_table.resolution_h),
@@ -18,7 +18,7 @@ postprocessing_fbos = {
 
 current_postprocessing_fbo = 0
 
-function fullscreen_pass(is_finalizing)
+function fullscreen_pass(is_finalizing, finalizer_fbo)
 	if is_finalizing == nil then
 		is_finalizing = false
 	end
@@ -29,7 +29,11 @@ function fullscreen_pass(is_finalizing)
 	current_postprocessing_fbo = 1 - current_postprocessing_fbo
 	
 	if is_finalizing then
-		framebuffer_object.use_default()
+		if finalizer_fbo == nil then
+			framebuffer_object.use_default()
+		else
+			finalizer_fbo:use()
+		end
 	else
 		postprocessing_fbos[current_postprocessing_fbo]:use()
 	end

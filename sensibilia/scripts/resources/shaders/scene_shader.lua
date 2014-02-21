@@ -16,10 +16,6 @@ smooth out vec4 theColor;
 void main() 
 {
 	vec4 output_vert = vec4(position.xy + normalize(player_pos - position)*shift_amount, 0.0f, 1.0f);
-	//output_vert.x = position.x;		
-	//output_vert.y = position.y;				
-	//output_vert.z = 0.0f;						
-	//output_vert.w = 1.0f;
 	
 	gl_Position = projection_matrix*output_vert;
 	theColor = color;

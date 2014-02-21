@@ -19,6 +19,8 @@ end
 
 images = add_roots("sensibilia\\resources\\", {
 	blank = "blank.png"
+	,
+	instability_map = "instability_map.png"
 })
 
 --character_filenames = {

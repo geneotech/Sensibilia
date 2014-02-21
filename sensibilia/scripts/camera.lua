@@ -120,18 +120,26 @@ world_camera = create_entity (archetyped(camera_archetype, {
 		ortho = rect_ltrb(0, 0, config_table.resolution_w, config_table.resolution_h),
 		
 		drawing_callback = function (subject, renderer, visible_area, drawn_transform, target_transform, mask)
+			random_instability_variation_coroutine()
+			
+			if instability > 1 then instability = 1 end
+			
+			local prev_instability = instability
+			instability = instability + temporary_instability
+			
+			
 			scene_program:use()
 			
 			local player_pos = player.crosshair.transform.current.pos
 			GL.glUniform2f(player_pos_uniform, player_pos.x, player_pos.y)
 			vertex_shift_coroutine(instability)
 			
-			
 			--GL.glUniform1f(shift_amount_uniform, math.pow(700, instability))
 
 			my_atlas:bind()
 			
 			renderer:generate_triangles(visible_area, drawn_transform, mask)
+			player_ray_caster:generate_triangles(drawn_transform, renderer.triangles, visible_area)
 			
 			GL.glUniformMatrix4fv(
 			projection_matrix_uniform, 
@@ -144,11 +152,12 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
 		
 			renderer:call_triangles()
+			
 		
 			renderer:clear_triangles()
 			
 			GL.glDisable(GL.GL_TEXTURE_2D)
-			renderer:draw_debug_info(visible_area, drawn_transform)
+			renderer:draw_debug_info(visible_area, drawn_transform, images.blank.tex)
 			GL.glEnable(GL.GL_TEXTURE_2D)
 			
 			current_postprocessing_fbo = 0
@@ -160,11 +169,6 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			-- postprocessing
 			
 			
-			random_instability_variation_coroutine()
-			local prev_instability = instability
-			instability = instability + temporary_instability
-			
-			if instability > 1 then instability = 1 end
 			if instability > 0 then
 				hblur_coroutine()
 				vblur_coroutine()
