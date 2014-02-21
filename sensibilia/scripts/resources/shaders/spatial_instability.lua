@@ -8,6 +8,7 @@ uniform sampler2D basic_texture;
 uniform sampler2D intensity_texture;
 
 uniform int time;
+uniform float rotation;
 
 vec3 ContrastSaturationBrightness(vec3 color, float brt, float sat, float con)
 {
@@ -65,6 +66,10 @@ float random( vec4  v ) { return floatConstruct(hash(floatBitsToUint(v))); }
 
 void main() 
 {	
+	float ac = cos(rotation);
+	float as = sin(rotation);
+	
+	vec2 rotated_texcoord = vec2(theTexcoord.x * ac - theTexcoord.y * as, theTexcoord.x * as + theTexcoord.y * ac);
 	vec4 pixel = texture(basic_texture, theTexcoord);
 	
 	//vec3  inputs = vec3( gl_FragCoord.xy, time ); // Spatial and temporal inputs
@@ -72,7 +77,7 @@ void main()
 	
 	float X = 100;
 	float Y = 100;
-	vec2 c = theTexcoord;
+	vec2 c = rotated_texcoord;
 	
 	float used_time = time;
 	used_time = used_time / 50;
@@ -100,5 +105,8 @@ GL.glUniform1i(GL.glGetUniformLocation(spatial_instability_program.id, "intensit
 
 spatial_instability_time = GL.glGetUniformLocation(spatial_instability_program.id, "time")
 GL.glUniform1i(spatial_instability_time, 0)
+
+spatial_instability_rotation = GL.glGetUniformLocation(spatial_instability_program.id, "rotation")
+GL.glUniform1i(spatial_instability_rotation, 0)
 
 

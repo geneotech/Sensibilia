@@ -157,13 +157,6 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			
 			
 			
-			
-			
-			
-			
-			
-			
-			
 			current_postprocessing_fbo = 0
 			
 			postprocessing_fbos[0]:use()
@@ -173,9 +166,9 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			renderer:call_triangles()
 			renderer:clear_triangles()
 			
-			--GL.glDisable(GL.GL_TEXTURE_2D)
-			--renderer:draw_debug_info(visible_area, drawn_transform, images.blank.tex)
-			--GL.glEnable(GL.GL_TEXTURE_2D)
+			GL.glDisable(GL.GL_TEXTURE_2D)
+			renderer:draw_debug_info(visible_area, drawn_transform, images.blank.tex)
+			GL.glEnable(GL.GL_TEXTURE_2D)
 			
 			
 			
@@ -226,6 +219,7 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			spatial_instability_program:use()
 			
 			GL.glUniform1i(spatial_instability_time, my_timer:get_milliseconds())
+			GL.glUniform1f(spatial_instability_rotation, (player.crosshair.transform.current.pos - player.body.transform.current.pos):perpendicular_cw():get_radians() + 3.14159265)
 			
 			GL.glActiveTexture(GL.GL_TEXTURE1)
 			GL.glBindTexture(GL.GL_TEXTURE_2D, intensity_fbo:get_texture_id())

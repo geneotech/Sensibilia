@@ -46,7 +46,7 @@ function instability_ray_caster:generate_triangles(camera_transform, output_buff
 		my_draw_input.output = output_buffer
 		my_draw_input.visible_area = rect_ltrb(visible_area)
 		
-		v:draw(my_draw_input)
+		v.poly:draw(my_draw_input)
 	end
 	--coroutine.resume(self.rendering_routine)
 end
@@ -85,16 +85,15 @@ function instability_ray_caster:loop()
 	
 	for k, v in ipairs(self.polygon_traces) do
 		for i = 1, 4 do
-			local my_alpha = self.polygon_traces[k]:get_vertex(i-1).color.a
-			local final_alpha = my_alpha - delta_ms
+			local final_alpha = self.polygon_traces[k].alpha_animator:get_animated()
 			
 			--print (final_alpha)
-			if final_alpha < 0 then
+			if final_alpha <= 0 then
 				table.insert(to_delete, k)
 				break
 				--self.polygon_traces[k] = nil
 			else
-				self.polygon_traces[k]:get_vertex(i-1).color.a = final_alpha
+				self.polygon_traces[k].poly:get_vertex(i-1).color.a = final_alpha
 			end	
 		end
 	end
@@ -161,14 +160,19 @@ function instability_ray_caster:loop()
 		-- leave a trace 
 		print "leavin"
 		
-		table.insert(self.polygon_traces, 
-		create_polygon ({
-			{ pos = polygon_table[1], color = rgba(255, 255, 255, 255), texcoord = vec2(0, 0), image = images.blank },
-			{ pos = polygon_table[2], color = rgba(255, 255, 255, 255), texcoord = vec2(1, 0), image = images.blank },
-			{ pos = polygon_table[3], color = rgba(255, 255, 255, 255), texcoord = vec2(1, 1), image = images.blank },
-			{ pos = polygon_table[4], color = rgba(255, 255, 255, 255), texcoord = vec2(0, 1), image = images.blank }
+		local new_trace = {
+			poly = create_polygon ({
+				{ pos = polygon_table[1], color = rgba(255, 255, 255, 255), texcoord = vec2(0, 0), image = images.blank },
+				{ pos = polygon_table[2], color = rgba(255, 255, 255, 255), texcoord = vec2(1, 0), image = images.blank },
+				{ pos = polygon_table[3], color = rgba(255, 255, 255, 255), texcoord = vec2(1, 1), image = images.blank },
+				{ pos = polygon_table[4], color = rgba(255, 255, 255, 255), texcoord = vec2(0, 1), image = images.blank }
+			}),
+			alpha_animator = value_animator(255, -0.1, 250)
 		}
-		))
+		
+		new_trace.alpha_animator:set_exponential()
+		
+		table.insert(self.polygon_traces, new_trace)
 		
 		self.trace_timer:reset()
 	end
