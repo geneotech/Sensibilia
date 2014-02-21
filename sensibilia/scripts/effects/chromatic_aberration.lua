@@ -4,7 +4,7 @@ function aberration_instability_effect()
 			coroutine.wait(randval(500, 1000), nil, false)
 		end
 	
-		local transition_duration = randval(1, 50)
+		local transition_duration = randval(1, 500)
 		local aberration_offset = vec2.random_on_circle(randval(0.001, 0.09))
 		
 		coroutine.wait(transition_duration, function()

@@ -122,7 +122,7 @@ end
 )	
 
 
-	
+accumulated_camera_time = 0
 world_camera = create_entity (archetyped(camera_archetype, {
 	transform = {
 		pos = vec2(),
@@ -134,6 +134,10 @@ world_camera = create_entity (archetyped(camera_archetype, {
 		ortho = rect_ltrb(0, 0, config_table.resolution_w, config_table.resolution_h),
 		
 		drawing_callback = function (subject, renderer, visible_area, drawn_transform, target_transform, mask)
+		
+			local extracted_ms = my_timer:extract_milliseconds()
+			accumulated_camera_time = accumulated_camera_time + extracted_ms
+				
 			random_instability_variation_coroutine()
 			random_instability_ray_layer_order()
 			
@@ -203,9 +207,10 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			local instability_ray_fx = function()
 				spatial_instability_program:use()
 				
-				GL.glUniform1i(spatial_instability_time, my_timer:get_milliseconds()*1+(1-instability))
+				
+				GL.glUniform1i(spatial_instability_time, accumulated_camera_time - extracted_ms + extracted_ms * instability)
 				GL.glUniform1f(spatial_instability_rotation, (player.crosshair.transform.current.pos - player.body.transform.current.pos):perpendicular_cw():get_radians() + 3.14159265)
-				GL.glUniform1f(spatial_instability_multiplier, (1-instability))
+				GL.glUniform1f(spatial_instability_multiplier, instability)
 				
 				GL.glActiveTexture(GL.GL_TEXTURE1)
 				GL.glBindTexture(GL.GL_TEXTURE_2D, intensity_fbo:get_texture_id())
@@ -232,14 +237,14 @@ world_camera = create_entity (archetyped(camera_archetype, {
 				film_grain_program:use()
 				film_grain_variation_coroutine(instability)
 				--film_grain_program:use()
-				GL.glUniform1i(time_uniform, my_timer:get_milliseconds())
+				GL.glUniform1i(time_uniform, accumulated_camera_time)
 				fullscreen_quad()
 				aberration_coroutine(instability)
 				
 			else
 				film_grain_program:use()
 				GL.glUniform1f(film_grain_intensity, 0.1)
-				GL.glUniform1i(time_uniform, my_timer:get_milliseconds())
+				GL.glUniform1i(time_uniform, accumulated_camera_time)
 				fullscreen_quad()
 				refresh_coroutines()
 			end
