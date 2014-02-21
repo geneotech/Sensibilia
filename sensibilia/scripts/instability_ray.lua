@@ -14,7 +14,7 @@ function instability_ray_caster:constructor(entity)
 	self.delta_timer = timer()
 	
 	self.ray_quad_width = 20
-	self.ray_quad_end_width = 50
+	self.ray_quad_end_width = 30
 	
 	self.entity_owner = entity
 	self.current_ortho = vec2(0, 0)
@@ -106,10 +106,11 @@ function instability_ray_caster:loop()
 	
 	
 	if self.currently_casting then
-		self.ray_length = self.ray_length + delta_ms * 20
+		self.ray_length = self.ray_length + delta_ms * 10
 		self.instability_bonus = delta_ms/1000/10
 	else
-		self.ray_length = 0
+		self.ray_length = self.ray_length - delta_ms * 10
+		--self.ray_length = 0
 	end
 
 	if self.ray_length < 0 then

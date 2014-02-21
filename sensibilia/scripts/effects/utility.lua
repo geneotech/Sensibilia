@@ -18,12 +18,18 @@ postprocessing_fbos = {
 
 current_postprocessing_fbo = 0
 
-function fullscreen_pass(is_finalizing, finalizer_fbo)
+function fullscreen_pass(is_finalizing, finalizer_fbo, beginning_fbo)
 	if is_finalizing == nil then
 		is_finalizing = false
 	end
 	
-	local tex_id = postprocessing_fbos[current_postprocessing_fbo]:get_texture_id()
+	local tex_id = 0
+	
+	if beginning_fbo == nil then
+		tex_id = postprocessing_fbos[current_postprocessing_fbo]:get_texture_id()
+	else
+		tex_id = beginning_fbo:get_texture_id()
+	end
 	
 	-- switch fbos
 	current_postprocessing_fbo = 1 - current_postprocessing_fbo

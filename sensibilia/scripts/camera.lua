@@ -65,6 +65,7 @@ dofile (SHADERS_DIRECTORY .. "film_grain.lua")
 dofile (SHADERS_DIRECTORY .. "chromatic_aberration.lua")
 dofile (SHADERS_DIRECTORY .. "blur.lua")
 dofile (SHADERS_DIRECTORY .. "color_adjustment.lua")
+dofile (SHADERS_DIRECTORY .. "spatial_instability.lua")
 
 dofile (EFFECTS_DIRECTORY .. "utility.lua")
 dofile (EFFECTS_DIRECTORY .. "blur.lua")
@@ -128,18 +129,9 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			instability = instability + temporary_instability
 			
 			
+			-- right away update all the uniforms
 			scene_program:use()
-			
-			local player_pos = player.crosshair.transform.current.pos
-			GL.glUniform2f(player_pos_uniform, player_pos.x, player_pos.y)
-			vertex_shift_coroutine(instability)
-			
-			--GL.glUniform1f(shift_amount_uniform, math.pow(700, instability))
-
 			my_atlas:bind()
-			
-			renderer:generate_triangles(visible_area, drawn_transform, mask)
-			player_ray_caster:generate_triangles(drawn_transform, renderer.triangles, visible_area)
 			
 			GL.glUniformMatrix4fv(
 			projection_matrix_uniform, 
@@ -148,25 +140,67 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			orthographic_projection(visible_area.x, visible_area.r, visible_area.b, visible_area.y, 0, 1):data()
 			)
 			
-			postprocessing_fbos[0]:use()
-			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
-		
-			renderer:call_triangles()
+			local player_pos = player.crosshair.transform.current.pos
+			GL.glUniform2f(player_pos_uniform, player_pos.x, player_pos.y)
+			vertex_shift_coroutine(instability)
 			
-		
+			--GL.glUniform1f(shift_amount_uniform, math.pow(700, instability))
+
+			
+			
+			intensity_fbo:use()
+			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
+			
+			player_ray_caster:generate_triangles(drawn_transform, renderer.triangles, visible_area)
+			renderer:call_triangles()
 			renderer:clear_triangles()
 			
-			GL.glDisable(GL.GL_TEXTURE_2D)
-			renderer:draw_debug_info(visible_area, drawn_transform, images.blank.tex)
-			GL.glEnable(GL.GL_TEXTURE_2D)
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			current_postprocessing_fbo = 0
+			
+			postprocessing_fbos[0]:use()
+			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
+			
+			renderer:generate_triangles(visible_area, drawn_transform, mask)
+			renderer:call_triangles()
+			renderer:clear_triangles()
+			
+			--GL.glDisable(GL.GL_TEXTURE_2D)
+			--renderer:draw_debug_info(visible_area, drawn_transform, images.blank.tex)
+			--GL.glEnable(GL.GL_TEXTURE_2D)
+			
+			
+			
+			
+			
+			
+			-- postprocessing
+			
+			hblur_program:use()
+			GL.glUniform1f(h_offset_multiplier, 1.8)
+			fullscreen_pass(false, nil, intensity_fbo)
+			vblur_program:use()
+			GL.glUniform1f(v_offset_multiplier, 1.8)
+			fullscreen_pass(true, intensity_fbo)
+			
+			current_postprocessing_fbo = 0
+			
+			
+			current_postprocessing_fbo = 0
+			postprocessing_fbos[0]:use()
 			
 			
 			--print(instability)
 			
 			
-			-- postprocessing
 			
 			
 			if instability > 0 then
@@ -188,8 +222,19 @@ world_camera = create_entity (archetyped(camera_archetype, {
 				refresh_coroutines()
 			end
 			
-			color_adjustment_program:use()
+			
+			spatial_instability_program:use()
+			
+			GL.glUniform1i(spatial_instability_time, my_timer:get_milliseconds())
+			
+			GL.glActiveTexture(GL.GL_TEXTURE1)
+			GL.glBindTexture(GL.GL_TEXTURE_2D, intensity_fbo:get_texture_id())
+			GL.glActiveTexture(GL.GL_TEXTURE0)
+		
 			fullscreen_pass(true)
+			
+			--color_adjustment_program:use()
+			--fullscreen_pass(true)
 			
 			instability = prev_instability
 		end
