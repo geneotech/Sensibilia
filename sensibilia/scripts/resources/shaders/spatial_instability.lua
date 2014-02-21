@@ -9,6 +9,7 @@ uniform sampler2D intensity_texture;
 
 uniform int time;
 uniform float rotation;
+uniform float multiplier;
 
 vec3 ContrastSaturationBrightness(vec3 color, float brt, float sat, float con)
 {
@@ -75,22 +76,26 @@ void main()
 	//vec3  inputs = vec3( gl_FragCoord.xy, time ); // Spatial and temporal inputs
     //float rand   = random( time );              // Random per-pixel value
 	
-	float X = 100;
-	float Y = 100;
+	float X = 100*multiplier;
+	float Y = 100*multiplier;
 	vec2 c = rotated_texcoord;
 	
 	float used_time = time;
-	used_time = used_time / 50;
+	used_time = used_time / 20;
 	
+	vec4 effect_pixel = texture(basic_texture, theTexcoord + vec2(sin(used_time/10+rotation)*0.01, tan(used_time/10+rotation)*0.01));
+	float effect_amount = 10;
 	
-	vec4 modified_pixel = vec4(cos(c.x*X+used_time+pixel.r)+sin(c.y*Y+used_time*2.0+pixel.g),
-		sin(c.x*Y+pixel.g)+cos(c.y*X+used_time+pixel.r),
-		sin(c.x*c.y+used_time+pixel.b)+cos(c.y*X+used_time+pixel.r), 1.0);
+	vec4 my_colors = vec4(cos(c.x*X+used_time+effect_pixel.r*effect_amount)+sin(c.y*Y+used_time*2.0+effect_pixel.r*effect_amount),
+		sin(c.x*Y+effect_pixel.g*effect_amount)+cos(c.y*X+used_time+effect_pixel.g*effect_amount),
+		sin(c.x*c.y+used_time+effect_pixel.b*effect_amount)+cos(c.y*X+used_time+effect_pixel.b*effect_amount), 1.0);
 		
-	//vec4 modified_pixel = vec4(ContrastSaturationBrightness(pixel.rgb, 1.5, 1.5, 1.5), 1.0);
+	my_colors = clamp(my_colors, vec4(0.0), vec4(1.0));
+	//vec4 modified_pixel = texture(basic_texture, theTexcoord );
 	
+	float amount = 1-texture(intensity_texture, theTexcoord).r;// * ((my_colors.r + my_colors.g + my_colors.b)/3);
 	
-	outputColor = mix(pixel, modified_pixel, texture(intensity_texture, theTexcoord).r); 
+	outputColor = mix(pixel, my_colors, amount); 
 }
 
 ]])
@@ -108,5 +113,8 @@ GL.glUniform1i(spatial_instability_time, 0)
 
 spatial_instability_rotation = GL.glGetUniformLocation(spatial_instability_program.id, "rotation")
 GL.glUniform1i(spatial_instability_rotation, 0)
+
+spatial_instability_multiplier = GL.glGetUniformLocation(spatial_instability_program.id, "multiplier")
+GL.glUniform1i(spatial_instability_multiplier, 1)
 
 

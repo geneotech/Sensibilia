@@ -18,9 +18,10 @@ function add_roots(root_path, entries)
 end
 
 images = add_roots("sensibilia\\resources\\", {
-	blank = "blank.png"
-	--,
-	--instability_map = "instability_map.png"
+	blank = "blank.png",
+	metal = "metal.jpg"
+	,
+	instability_map = "instability_map.png"
 })
 
 --character_filenames = {

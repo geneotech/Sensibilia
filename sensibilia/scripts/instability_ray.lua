@@ -14,11 +14,11 @@ function instability_ray_caster:constructor(entity)
 	self.delta_timer = timer()
 	
 	self.ray_quad_width = 20
-	self.ray_quad_end_width = 30
+	self.ray_quad_end_width = 100
 	
 	self.entity_owner = entity
 	self.current_ortho = vec2(0, 0)
-	self.radius_of_effect = 4000
+	self.radius_of_effect = 8000
 	
 	self.trapezoid_height = 200
 
@@ -100,7 +100,6 @@ function instability_ray_caster:loop()
 	
 	for k, v in pairs(to_delete) do
 		table.remove(self.polygon_traces, v)
-		print "deletin"
 	end
 	
 	
@@ -156,9 +155,8 @@ function instability_ray_caster:loop()
 
 	
 	if --(self.ray_length - self.radius_of_effect) < 1 and 
-	self.trace_timer:get_milliseconds() > 16 then
+	self.trace_timer:get_milliseconds() > 5 then
 		-- leave a trace 
-		print "leavin"
 		
 		local new_trace = {
 			poly = create_polygon ({

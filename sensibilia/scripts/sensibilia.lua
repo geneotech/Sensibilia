@@ -18,7 +18,7 @@ dofile "sensibilia\\scripts\\input.lua"
 dofile "sensibilia\\scripts\\camera.lua"
 
 current_zoom_level = 0
---current_zoom_level = 10000
+current_zoom_level = 5000
 set_zoom_level(world_camera)
 
 function set_color(poly, col)
@@ -107,10 +107,10 @@ ground_poly2 = simple_create_polygon ( (
 	to_vec2_table(poly2)
 ))
 
-map_uv_square(ground_poly, images.blank)
-map_uv_square(ground_poly2, images.blank)
-set_color(ground_poly, rgba(0, 255, 0, 255))
-set_color(ground_poly2, rgba(0, 255, 0, 255))
+map_uv_square(ground_poly, images.metal)
+map_uv_square(ground_poly2, images.metal)
+set_color(ground_poly, rgba(255, 255, 225, 255))
+set_color(ground_poly2, rgba(255, 255, 225, 255))
 
 environment_entity = create_entity (archetyped(environment_archetype, {
 	transform = {
@@ -441,3 +441,5 @@ environment_entity.name = "environment_entity"
 						--player.body.physics.enable_angle_motor = true
 						--player.body.physics.target_angle = 90
 physics_system.b2world:SetGravity(b2Vec2(base_gravity.x, base_gravity.y))
+
+					my_basic_npc.body.pathfinding:start_exploring()

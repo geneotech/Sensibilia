@@ -81,7 +81,20 @@ function refresh_coroutines()
 end
 
 vertex_shift_coroutine = coroutine.wrap(vertex_shift_instability_effect)
-	
+
+is_instability_ray_over_postprocessing = true
+
+random_instability_ray_layer_order = coroutine.wrap(
+	function()
+		while true do
+			coroutine.wait(randval(50, 100), nil, false)
+			
+			is_instability_ray_over_postprocessing = true
+			print (is_instability_ray_over_postprocessing)
+		end
+	end
+)
+
 temporary_instability = 0
 
 random_instability_variation_coroutine = coroutine.wrap(
@@ -122,6 +135,7 @@ world_camera = create_entity (archetyped(camera_archetype, {
 		
 		drawing_callback = function (subject, renderer, visible_area, drawn_transform, target_transform, mask)
 			random_instability_variation_coroutine()
+			random_instability_ray_layer_order()
 			
 			if instability > 1 then instability = 1 end
 			
@@ -166,9 +180,9 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			renderer:call_triangles()
 			renderer:clear_triangles()
 			
-			GL.glDisable(GL.GL_TEXTURE_2D)
-			renderer:draw_debug_info(visible_area, drawn_transform, images.blank.tex)
-			GL.glEnable(GL.GL_TEXTURE_2D)
+			--GL.glDisable(GL.GL_TEXTURE_2D)
+			--renderer:draw_debug_info(visible_area, drawn_transform, images.blank.tex)
+			--GL.glEnable(GL.GL_TEXTURE_2D)
 			
 			
 			
@@ -178,18 +192,33 @@ world_camera = create_entity (archetyped(camera_archetype, {
 			-- postprocessing
 			
 			hblur_program:use()
-			GL.glUniform1f(h_offset_multiplier, 1.8)
+			GL.glUniform1f(h_offset_multiplier, instability*1.8)
 			fullscreen_pass(false, nil, intensity_fbo)
 			vblur_program:use()
-			GL.glUniform1f(v_offset_multiplier, 1.8)
+			GL.glUniform1f(v_offset_multiplier, instability*1.8)
 			fullscreen_pass(true, intensity_fbo)
 			
 			current_postprocessing_fbo = 0
 			
+			local instability_ray_fx = function()
+				spatial_instability_program:use()
+				
+				GL.glUniform1i(spatial_instability_time, my_timer:get_milliseconds()*1+(1-instability))
+				GL.glUniform1f(spatial_instability_rotation, (player.crosshair.transform.current.pos - player.body.transform.current.pos):perpendicular_cw():get_radians() + 3.14159265)
+				GL.glUniform1f(spatial_instability_multiplier, (1-instability))
+				
+				GL.glActiveTexture(GL.GL_TEXTURE1)
+				GL.glBindTexture(GL.GL_TEXTURE_2D, intensity_fbo:get_texture_id())
+				GL.glActiveTexture(GL.GL_TEXTURE0)
+			end
 			
 			current_postprocessing_fbo = 0
 			postprocessing_fbos[0]:use()
 			
+			if not is_instability_ray_over_postprocessing then
+				instability_ray_fx()
+				fullscreen_pass()
+			end
 			
 			--print(instability)
 			
@@ -215,20 +244,17 @@ world_camera = create_entity (archetyped(camera_archetype, {
 				refresh_coroutines()
 			end
 			
+			if is_instability_ray_over_postprocessing then
+				instability_ray_fx()
 			
-			spatial_instability_program:use()
+			else
+				color_adjustment_program:use()
+			end
 			
-			GL.glUniform1i(spatial_instability_time, my_timer:get_milliseconds())
-			GL.glUniform1f(spatial_instability_rotation, (player.crosshair.transform.current.pos - player.body.transform.current.pos):perpendicular_cw():get_radians() + 3.14159265)
-			
-			GL.glActiveTexture(GL.GL_TEXTURE1)
-			GL.glBindTexture(GL.GL_TEXTURE_2D, intensity_fbo:get_texture_id())
-			GL.glActiveTexture(GL.GL_TEXTURE0)
-		
 			fullscreen_pass(true)
 			
-			--color_adjustment_program:use()
-			--fullscreen_pass(true)
+		
+			
 			
 			instability = prev_instability
 		end
