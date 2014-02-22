@@ -1,5 +1,28 @@
 global_instability_rays = {}
 
+function loop_all_instability_rays()
+	local i = 1
+	
+	while i <= #global_instability_rays do
+		local self = global_instability_rays[i]
+		local was_removed = false
+		
+		if not self.owner_entity:exists() then
+			self.currently_casting = false
+			
+			if #self.polygon_traces < 1 then
+				table.remove(global_instability_rays, i)
+				was_removed = true
+			end
+		end
+		
+		if not was_removed then
+			global_instability_rays[i]:loop()
+			i = i + 1
+		end
+	end
+end
+
 instability_ray_caster = inherits_from {}
 
 function instability_ray_caster:constructor(entity, ray_filter)
@@ -65,25 +88,20 @@ function instability_ray_caster:loop()
 	self.instability_bonus = 0
 	local delta_ms = self.delta_timer:extract_milliseconds() * physics_system.timestep_multiplier
 	
-	local to_delete = {}
-	
-	for k, v in ipairs(self.polygon_traces) do
-		for i = 1, 4 do
-			local final_alpha = self.polygon_traces[k].alpha_animator:get_animated()
+	local i = 1
+	while i <= #self.polygon_traces do
+		local final_alpha = self.polygon_traces[i].alpha_animator:get_animated()
+		
+		if final_alpha <= 0 then
+			table.remove(self.polygon_traces, i)
+		else
+			for j = 1, 4 do
+				self.polygon_traces[i].poly:get_vertex(j-1).color.a = final_alpha
+			end
 			
-			if final_alpha <= 0 then
-				table.insert(to_delete, k)
-				break
-			else
-				self.polygon_traces[k].poly:get_vertex(i-1).color.a = final_alpha
-			end	
+			i = i + 1
 		end
 	end
-	
-	for k, v in pairs(to_delete) do
-		table.remove(self.polygon_traces, v)
-	end
-	
 	
 	if self.currently_casting then
 		self.ray_length = self.ray_length + delta_ms * 10
@@ -134,14 +152,14 @@ function instability_ray_caster:loop()
 		self.trace_timer:reset()
 	end
 
-	local hit_enemies_candidates = physics_system:query_polygon(world_polygon, create(b2Filter, self.instability_ray_filter), self.owner_entity)
+	local hit_enemies_candidates = physics_system:query_polygon(world_polygon, create(b2Filter, self.instability_ray_filter), self.owner_entity:get())
 	
 	for candidate in hit_enemies_candidates.bodies do
 		local enemy_entity = body_to_entity(candidate)
-		local p1 = self.owner_entity.transform.current.pos
+		local p1 = self.owner_entity:get().transform.current.pos
 		local p2 = enemy_entity.transform.current.pos
 		
-		ray_output = physics_system:ray_cast(p1, p2, create(b2Filter, filter_instability_ray_obstruction), self.owner_entity)
+		ray_output = physics_system:ray_cast(p1, p2, create(b2Filter, filter_instability_ray_obstruction), self.owner_entity:get())
 		
 		-- there are no obstructions on the way
 		if not ray_output.hit then
