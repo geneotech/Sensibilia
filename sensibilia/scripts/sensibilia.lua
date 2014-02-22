@@ -451,4 +451,4 @@ environment_entity.name = "environment_entity"
 						--player.body.physics.target_angle = 90
 physics_system.b2world:SetGravity(b2Vec2(base_gravity.x, base_gravity.y))
 
-my_basic_npc.body.pathfinding:start_exploring()
+my_npc.body.pathfinding:start_exploring()

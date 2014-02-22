@@ -1,12 +1,12 @@
-basic_npc_sprite = create_sprite {
+npc_sprite = create_sprite {
 	image = images.blank,
 	size = vec2(30, 30),
 	color = rgba(255, 0, 0, 200)
 }
 
-basic_npc_class = inherits_from (character_class)
+npc_class = inherits_from (character_class)
 
-function basic_npc_class:constructor(subject_entity)
+function npc_class:constructor(subject_entity)
 	character_class.constructor(self, subject_entity)
 	
 	self.steering_behaviours = {	
@@ -62,7 +62,7 @@ function basic_npc_class:constructor(subject_entity)
 	)
 end
 
-function basic_npc_class:set_movement_mode_flying(flag)
+function npc_class:set_movement_mode_flying(flag)
 	self.movement_mode_flying = flag
 	self.entity.movement.sidescroller_setup = not flag
 		
@@ -112,8 +112,8 @@ function basic_npc_class:set_movement_mode_flying(flag)
 	end
 end
 
-function basic_npc_class:death_callback()
-	-- first have to remove all occurences of my_basic_npc from scripts
+function npc_class:death_callback()
+	-- first have to remove all occurences of my_npc from scripts
 	-- and remove its reference in global npc table
 	
 	for k, v in ipairs(global_npc_table) do
@@ -128,13 +128,13 @@ function basic_npc_class:death_callback()
 	world:post_message(msg)
 end
 
-function basic_npc_class:set_all_behaviours_enabled(flag)
+function npc_class:set_all_behaviours_enabled(flag)
 	for k, v in pairs(self.steering_behaviours) do
 		v.enabled = flag
 	end
 end
 
-function basic_npc_class:refresh_behaviours() 
+function npc_class:refresh_behaviours() 
 	self.entity.steering:clear_behaviours()
 	
 	for k, v in pairs(self.steering_behaviours) do
@@ -142,12 +142,12 @@ function basic_npc_class:refresh_behaviours()
 	end
 end
 
-function basic_npc_class:angle_fits_in_threshold(angle, axis_angle, threshold)
+function npc_class:angle_fits_in_threshold(angle, axis_angle, threshold)
 	angle = angle - self.entity.movement.axis_rotation_degrees
 	return angle > axis_angle - threshold and angle < axis_angle + threshold
 end
 
-function basic_npc_class:map_vector_to_movement(real_vector)
+function npc_class:map_vector_to_movement(real_vector)
 	self.entity.movement.requested_movement = real_vector
 	local should_jump = self:angle_fits_in_threshold(real_vector:get_degrees(), -90, 20)
 	self:jump(should_jump)
@@ -155,7 +155,7 @@ function basic_npc_class:map_vector_to_movement(real_vector)
 	return should_jump
 end
 
-function basic_npc_class:determine_jumpability(queried_point, apply_upwards_forces)	
+function npc_class:determine_jumpability(queried_point, apply_upwards_forces)	
 	local vel = self.entity.physics.body:GetLinearVelocity()
 	local foot = self.entity.transform.current.pos + self.current_pathfinding_eye
 	
@@ -181,22 +181,22 @@ function basic_npc_class:determine_jumpability(queried_point, apply_upwards_forc
 	self.entity.physics.body:GetMass())
 end
 
-function basic_npc_class:pursue_target(target_entity)			
+function npc_class:pursue_target(target_entity)			
 	self.steering_behaviours.pursuit.target_from:set(target_entity)
 	self.steering_behaviours.pursuit.enabled = true
 	self.steering_behaviours.obstacle_avoidance.enabled = false
 end
 
-function basic_npc_class:stop_pursuit()	
+function npc_class:stop_pursuit()	
 	self.steering_behaviours.pursuit.enabled = false
 	self.steering_behaviours.obstacle_avoidance.enabled = true
 end
 
-function basic_npc_class:is_pathfinding()
+function npc_class:is_pathfinding()
 	return self.entity.pathfinding:is_still_pathfinding() or self.entity.pathfinding:is_still_exploring()
 end
 
-function basic_npc_class:handle_steering()
+function npc_class:handle_steering()
 	local entity = self.entity
 	local behaviours = self.steering_behaviours
 	local target_entities = self.target_entities
@@ -229,7 +229,7 @@ function basic_npc_class:handle_steering()
 	end
 end
 
-function basic_npc_class:handle_player_visibility()
+function npc_class:handle_player_visibility()
 	--if not player.body:exists() then 
 	--	self.is_seen = false
 	--else
@@ -254,7 +254,7 @@ function basic_npc_class:handle_player_visibility()
 	--end
 end
 
-function basic_npc_class:handle_visibility_offset()
+function npc_class:handle_visibility_offset()
 	if self.movement_mode_flying then
 		self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(0, 0)
 	else
@@ -273,18 +273,18 @@ function basic_npc_class:handle_visibility_offset()
 	end
 end
 
-function basic_npc_class:handle_flying_state()
+function npc_class:handle_flying_state()
 	coroutine.resume(self.flying_state_changer)
 end
 
-function basic_npc_class:substep()
+function npc_class:substep()
 	if not self.movement_mode_flying then
 		self:handle_jumping()
 		self:handle_variable_height_jump()
 	end
 end
 
-function basic_npc_class:loop()
+function npc_class:loop()
 	 if self:is_pathfinding() then
 		self.frozen_navpoint = self.entity.pathfinding:get_current_navigation_target()
 		self.entity.pathfinding.eye_offset = self.current_pathfinding_eye
@@ -340,7 +340,7 @@ function basic_npc_class:loop()
 	--end
 end
 
-my_basic_npc_archetype = {
+my_npc_archetype = {
 	body = {
 		physics = {
 			--body_type = Box2D.b2_staticBody,
@@ -351,7 +351,7 @@ my_basic_npc_archetype = {
 			}
 		},
 		render = {
-			model = basic_npc_sprite
+			model = npc_sprite
 		},
 		
 		transform = {
@@ -390,6 +390,6 @@ my_basic_npc_archetype = {
 	}
 }
 
-my_basic_npc = spawn_npc(my_basic_npc_archetype, basic_npc_class)
+my_npc = spawn_npc(my_npc_archetype, npc_class)
 
-get_self(my_basic_npc.body):set_foot_sensor_from_sprite(basic_npc_sprite, 3)
+get_self(my_npc.body):set_foot_sensor_from_sprite(npc_sprite, 3)

@@ -231,4 +231,4 @@ function spawn_npc(group_overrider, what_class)
 	return my_new_npc
 end
 
-dofile "sensibilia\\scripts\\basic_npc.lua"
+dofile "sensibilia\\scripts\\npc.lua"
