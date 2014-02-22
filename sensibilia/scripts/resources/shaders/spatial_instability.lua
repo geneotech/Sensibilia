@@ -13,8 +13,6 @@ uniform float multiplier;
 
 void main() 
 {	
-	
-	
 	// get the pixel from scene
 	vec4 pixel = texture(basic_texture, theTexcoord);
 	
@@ -67,8 +65,6 @@ void main()
 	
 	// clamp it
 	my_colors = clamp(my_colors, vec4(0.0), vec4(1.0));
-	
-
 	
 	// get the corresponding pixel from intensity map
 	float intensity = texture(intensity_texture, theTexcoord) * ((my_colors.r +my_colors.g +my_colors.b)/3);
