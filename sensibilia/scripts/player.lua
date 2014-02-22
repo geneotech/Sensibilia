@@ -12,6 +12,8 @@ debug_sensor = create_sprite {
 player_debug_circle = simple_create_polygon (reversed(gen_circle_vertices(60, 5)))
 map_uv_square(player_debug_circle, images.blank)
 
+is_reality_checking = false
+
 player_scriptable_info = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = function (message) 
@@ -23,7 +25,21 @@ player_scriptable_info = create_scriptable_info {
 				get_self(message.subject):jump(message.state_flag)
 				--get_self(message.subject):handle_jumping()
 			elseif message.intent == custom_intents.INSTABILITY_RAY then 
-				player_ray_caster:cast(message.state_flag)
+				if message.state_flag and not is_reality_checking then
+					player_ray_caster:cast(true)
+				else
+					player_ray_caster:cast(false)
+				end
+			elseif message.intent == custom_intents.REALITY_CHECK then
+				if message.state_flag and not player_ray_caster.currently_casting then
+					is_reality_checking = true
+					player.body.movement.input_acceleration.x = 2000
+					get_self(player.body).jump_force_multiplier = 0.4
+				else
+					player.body.movement.input_acceleration.x = 12000
+					get_self(player.body).jump_force_multiplier = 1
+					is_reality_checking = false
+				end
 			else
 				return true
 			end
@@ -84,7 +100,8 @@ player = spawn_npc {
 			intent_message.MOVE_LEFT,
 			intent_message.MOVE_RIGHT,
 			
-			custom_intents.INSTABILITY_RAY
+			custom_intents.INSTABILITY_RAY,
+			custom_intents.REALITY_CHECK
 		},
 		
 		scriptable = {

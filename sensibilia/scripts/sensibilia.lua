@@ -90,16 +90,7 @@ function to_vec2_table(xytable)
 end
 
 ground_poly = simple_create_polygon (
-
 	(to_vec2_table(poly1))
-
-	--(vec2(0, 10) + vec2(-800, 0)) 		* vec2(10, 25) ,
-	--(vec2(0, 10) + vec2(500, 0))		* vec2(10, 25) ,
-	--(vec2(0, 10) + vec2(900, -200))	* vec2(10, 25) ,
-	--(vec2(0, 10) + vec2(1400, -300))	* vec2(10, 25) ,
-	--(vec2(0, 10) + vec2(3000, -300))	* vec2(10, 25) ,
-	--(vec2(0, 10) + vec2(3000, 200))	* vec2(10, 25) ,
-	--(vec2(0, 10) + vec2(-800, 200))   *  vec2(10, 25) 
 )
 
 
@@ -137,6 +128,7 @@ dofile "sensibilia\\scripts\\player.lua"
 base_crosshair_rotation = 0
 
 instability_decreaser = timer()
+
 
 loop_only_info = create_scriptable_info {
 	scripted_events = {
@@ -192,11 +184,17 @@ loop_only_info = create_scriptable_info {
 			
 			if not player_ray_caster.currently_casting then
 				--print(instability_decreaser:extract_milliseconds() / 1000 / 10)
-				instability = instability - (instability_decreaser:get_seconds() / 5) 
+				local decrease_amount = (instability_decreaser:get_seconds() / 10)
+				
+				if is_reality_checking then decrease_amount = decrease_amount * 3 end
+				
+				instability = instability - decrease_amount
 			end
 			
 			if instability < 0 then instability = 0 end
 			instability_decreaser:reset()
+			
+			print (instability)
 		end
 	}
 }

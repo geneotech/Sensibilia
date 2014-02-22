@@ -18,6 +18,8 @@ function character_class:constructor(subject_entity)
 	
 	self.max_jetpack_steps = 15
 	self.still_holding_jetpack = false
+	self.jump_force_multiplier = 1
+	
 	self.jetpack_impulse = vec2(0, -10)
 	self.jump_impulse = vec2(0, -31)
 	
@@ -97,7 +99,7 @@ function character_class:handle_jumping()
 	-- perform jumping 
 	if self.wants_to_jump and self.jump_timer:get_steps() > 7 then
 		if self.something_under_foot then
-			local jump_impulse = self.jump_impulse:rotate(gravity_angle_offset, vec2(0, 0)) 
+			local jump_impulse = self.jump_impulse:rotate(gravity_angle_offset, vec2(0, 0)) * self.jump_force_multiplier
 			
 			body:SetGravityScale(1.0)
 			self.entity.movement.thrust_parallel_to_ground_length = 0
@@ -119,7 +121,7 @@ function character_class:handle_variable_height_jump()
 	if self.still_holding_jetpack and self.jetpack_timer:get_steps() < self.max_jetpack_steps then
 	--	print(self.still_holding_jetpack, self.jetpack_timer:get_steps(), self.max_jetpack_steps)
 	--print "JETPACKING"
-		local jetpack_force = self.jetpack_impulse:rotate(gravity_angle_offset, vec2(0, 0)) 
+		local jetpack_force = self.jetpack_impulse:rotate(gravity_angle_offset, vec2(0, 0)) * self.jump_force_multiplier
 		body:ApplyLinearImpulse(b2Vec2(jetpack_force.x, jetpack_force.y), body:GetWorldCenter(), true)
 		
 	end
@@ -191,7 +193,7 @@ npc_group_archetype = {
 			input_acceleration = vec2(12000, 0),
 			max_speed_animation = 2300,
 			air_resistance = 0.1,
-			inverse_thrust_brake = vec2(500, 0),
+			inverse_thrust_brake = vec2(1500, 0),
 			
 			ground_filter = filter_npc_feet,
 			

@@ -11,7 +11,8 @@ custom_intents = create_inverse_enum {
 	"GRAVITY_CHANGE",
 	"MY_INTENT",
 	
-	"INSTABILITY_RAY"
+	"INSTABILITY_RAY",
+	"REALITY_CHECK"
 }
 
 main_context = create_input_context {
@@ -22,7 +23,7 @@ main_context = create_input_context {
 		[keys.S] 				= intent_message.MOVE_BACKWARD,
 		[keys.A] 				= intent_message.MOVE_LEFT,
 		[keys.D] 				= intent_message.MOVE_RIGHT,
-		[keys.R] 				= custom_intents.RESTART,
+		[keys.R] 				= custom_intents.REALITY_CHECK,
 		[keys.V] 				= custom_intents.INSTANT_SLOWDOWN,
 		[keys.E] 				= custom_intents.MY_INTENT,
 		
@@ -65,6 +66,7 @@ function main_input_routine(message)
 		
 	elseif message.intent == custom_intents.RESTART then
 			set_world_reloading_script(reloader_script)
+			
 	elseif message.intent == intent_message.AIM then
 		if changing_gravity then
 			local added_angle = message.mouse_rel.y * 0.6

@@ -33,7 +33,6 @@ random_instability_ray_layer_order = coroutine.wrap(
 			coroutine.wait(randval(50, 100), nil, false)
 			
 			is_instability_ray_over_postprocessing = true
-			print (is_instability_ray_over_postprocessing)
 		end
 	end
 )
