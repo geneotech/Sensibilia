@@ -23,7 +23,8 @@ main_context = create_input_context {
 		[keys.S] 				= intent_message.MOVE_BACKWARD,
 		[keys.A] 				= intent_message.MOVE_LEFT,
 		[keys.D] 				= intent_message.MOVE_RIGHT,
-		[keys.R] 				= custom_intents.REALITY_CHECK,
+		[mouse.rdown] 			= custom_intents.REALITY_CHECK,
+		[mouse.rdoubleclick] 	= custom_intents.REALITY_CHECK,
 		[keys.V] 				= custom_intents.INSTANT_SLOWDOWN,
 		[keys.E] 				= custom_intents.MY_INTENT,
 		
@@ -32,8 +33,7 @@ main_context = create_input_context {
 		[mouse.ldown] 			= custom_intents.INSTABILITY_RAY,
 		
 		[keys.LSHIFT] 			= intent_message.SWITCH_LOOK,
-		[mouse.rdown] 			= custom_intents.GRAVITY_CHANGE,
-		[mouse.rdoubleclick] 	= custom_intents.GRAVITY_CHANGE,
+		[keys.G] 				= custom_intents.GRAVITY_CHANGE,
 		[mouse.wheel]			= custom_intents.ZOOM_CAMERA,
 		[keys.ADD] 				= custom_intents.SPEED_INCREASE,
 		[keys.SUBTRACT] 		= custom_intents.SPEED_DECREASE

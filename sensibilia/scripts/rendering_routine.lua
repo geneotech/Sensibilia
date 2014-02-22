@@ -90,7 +90,10 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			local player_pos = player.crosshair.transform.current.pos
 			GL.glUniform2f(player_pos_uniform, player_pos.x, player_pos.y)
+			
+			instability = instability - temporary_instability + temporary_instability/3
 			vertex_shift_coroutine(instability)
+			instability = prev_instability + temporary_instability
 			
 			--GL.glUniform1f(shift_amount_uniform, math.pow(700, instability))
 

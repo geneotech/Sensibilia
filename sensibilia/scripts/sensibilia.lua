@@ -182,7 +182,12 @@ loop_only_info = create_scriptable_info {
 			--	player.body.transform.current.pos + sensor + vec2(0, 10), rgba(255, 0, 0, 255)))
 			--end
 			
-			if not player_ray_caster.currently_casting then
+			if changing_gravity then
+				instability = instability + (instability_decreaser:get_seconds()/3)
+			end
+			
+			
+			if not player_ray_caster.currently_casting and not changing_gravity then
 				--print(instability_decreaser:extract_milliseconds() / 1000 / 10)
 				local decrease_amount = (instability_decreaser:get_seconds() / 10)
 				
