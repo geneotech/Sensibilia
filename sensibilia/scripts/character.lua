@@ -6,7 +6,7 @@ end
 
 character_class = inherits_from {}
 
-function character_class:constructor(subject_entity) 
+function character_class:constructor(subject_entity, base_movement_speed) 
 	self.jump_timer = stepped_timer(physics_system)
 	self.jetpack_timer = stepped_timer(physics_system)
 	self.entity = subject_entity
@@ -23,9 +23,37 @@ function character_class:constructor(subject_entity)
 	self.jetpack_impulse = vec2(0, -10)
 	self.jump_impulse = vec2(0, -31)
 	
+	self.base_movement_speed = base_movement_speed
+	self.movement_speed_multiplier = 1
+	
 	self.jump_height = (50 * calc_max_jump_height(base_gravity, 0.1, self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, self.entity.physics.body:GetMass())) - 2
 	
 	self.hp = 100
+	
+	self:update_movement_speeds()
+end
+
+function character_class:update_movement_speeds()
+	if self.entity.steering then
+		self.entity.steering.max_speed = self.base_movement_speed*1.4142135623730950488016887242097*self.movement_speed_multiplier
+	end
+
+	if self.entity.movement then
+		self.entity.movement.input_acceleration.x = self.base_movement_speed*self.movement_speed_multiplier
+		--print "WARNING: unset movement speed!!!"
+		--debugger_break()
+	end
+
+end
+
+function character_class:set_movement_speed_multiplier(multiplier)
+	self.movement_speed_multiplier = multiplier
+	self:update_movement_speeds()
+end
+
+function character_class:set_base_movement_speed(speed)
+	self.base_movement_speed = base_movement_speed
+	self:update_movement_speeds()
 end
 
 function character_class:take_damage(amount)
@@ -219,12 +247,12 @@ global_npc_table = {
 
 }
 
-function spawn_npc(group_overrider, what_class)
+function spawn_character(group_overrider, what_class, ...)
 	if what_class == nil then what_class = character_class end
 	
 	local my_new_npc = create_entity_group (archetyped(npc_group_archetype, group_overrider))
 	
-	local new_npc_scriptable = what_class:create(my_new_npc.body)
+	local new_npc_scriptable = what_class:create(my_new_npc.body, table.unpack({...}))
 	
 	my_new_npc.body.scriptable.script_data = new_npc_scriptable
 	

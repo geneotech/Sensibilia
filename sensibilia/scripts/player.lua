@@ -83,7 +83,7 @@ my_crosshair_sprite = create_sprite {
 	color = rgba(255, 0, 255, 255)
 }
 
-player = spawn_npc {
+player = spawn_character ({
 	body = {
 		render = {
 			model = player_sprite
@@ -153,7 +153,7 @@ player = spawn_npc {
 			intent_message.AIM
 		}
 	},
-}
+}, character_class, 12000)
 
 player_ray_caster = instability_ray_caster:create(player.body, filter_instability_ray_player)
 get_self(player.body):set_foot_sensor_from_sprite(player_sprite, 3, 1)

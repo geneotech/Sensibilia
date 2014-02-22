@@ -1,13 +1,13 @@
 npc_sprite = create_sprite {
 	image = images.blank,
-	size = vec2(30, 30),
+	size = vec2(60, 60),
 	color = rgba(255, 0, 0, 200)
 }
 
 npc_class = inherits_from (character_class)
 
-function npc_class:constructor(subject_entity)
-	character_class.constructor(self, subject_entity)
+function npc_class:constructor(subject_entity, base_movement_speed)
+	character_class.constructor(self, subject_entity, base_movement_speed)
 	
 	self.steering_behaviours = {	
 		target_seeking = behaviour_state(target_seek_steering),
@@ -60,18 +60,6 @@ function npc_class:constructor(subject_entity)
 			end
 		end
 	)
-end
-
-function npc_class:set_movement_speed_multiplier(multiplier)
-	self.movement_speed_multiplier = multiplier
-	
-	if self.entity.steering then
-		self.entity.steering.max_speed = 12000*1.4142135623730950488016887242097*multiplier
-	end
-
-	if self.entity.movement then
-		print "WARNING: unset movement speed!!!"
-	end
 end
 
 function npc_class:set_movement_mode_flying(flag)
@@ -403,7 +391,7 @@ my_npc_archetype = {
 	}
 }
 
-my_npc = spawn_npc(my_npc_archetype, npc_class)
-get_self(my_npc.body):set_movement_speed_multiplier(0.1)
+my_npc = spawn_character(my_npc_archetype, npc_class, 12000)
+get_self(my_npc.body):set_movement_speed_multiplier(1)
 
 get_self(my_npc.body):set_foot_sensor_from_sprite(npc_sprite, 3)
