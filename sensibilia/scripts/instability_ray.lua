@@ -1,6 +1,6 @@
 global_instability_rays = {}
 
-function loop_all_instability_rays()
+function handle_dying_instability_rays()
 	local i = 1
 	
 	while i <= #global_instability_rays do
@@ -8,16 +8,19 @@ function loop_all_instability_rays()
 		local was_removed = false
 		
 		if not self.owner_entity:exists() then
-			self.currently_casting = false
+			self:cast(false)
 			
 			if #self.polygon_traces < 1 then
 				table.remove(global_instability_rays, i)
 				was_removed = true
+			else
+				
+				-- this instability ray is slowly dying because no entity can call its loop routine
+				global_instability_rays[i]:loop()
 			end
 		end
 		
 		if not was_removed then
-			global_instability_rays[i]:loop()
 			i = i + 1
 		end
 	end
@@ -90,6 +93,7 @@ function instability_ray_caster:loop()
 	
 	local i = 1
 	while i <= #self.polygon_traces do
+		
 		local final_alpha = self.polygon_traces[i].alpha_animator:get_animated()
 		
 		if final_alpha <= 0 then
@@ -152,14 +156,21 @@ function instability_ray_caster:loop()
 		self.trace_timer:reset()
 	end
 
-	local hit_enemies_candidates = physics_system:query_polygon(world_polygon, create(b2Filter, self.instability_ray_filter), self.owner_entity:get())
+	
+	local ignored_entity = nil
+	
+	if self.owner_entity:exists() then
+		ignored_entity = self.owner_entity:get()
+	end
+	
+	local hit_enemies_candidates = physics_system:query_polygon(world_polygon, create(b2Filter, self.instability_ray_filter), ignored_entity)
 	
 	for candidate in hit_enemies_candidates.bodies do
 		local enemy_entity = body_to_entity(candidate)
-		local p1 = self.owner_entity:get().transform.current.pos
+		local p1 = self.position
 		local p2 = enemy_entity.transform.current.pos
 		
-		ray_output = physics_system:ray_cast(p1, p2, create(b2Filter, filter_instability_ray_obstruction), self.owner_entity:get())
+		ray_output = physics_system:ray_cast(p1, p2, create(b2Filter, filter_instability_ray_obstruction), ignored_entity)
 		
 		-- there are no obstructions on the way
 		if not ray_output.hit then

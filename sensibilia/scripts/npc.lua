@@ -9,6 +9,7 @@ npc_class = inherits_from (character_class)
 function npc_class:constructor(subject_entity, base_movement_speed)
 	character_class.constructor(self, subject_entity, base_movement_speed)
 	self.ray_caster = instability_ray_caster:create(subject_entity, filter_instability_ray_enemy)
+	self.ray_caster.ray_quad_end_width = 30
 	
 	self.steering_behaviours = {	
 		target_seeking = behaviour_state(target_seek_steering),
@@ -253,8 +254,7 @@ function npc_class:handle_player_visibility()
 			self.is_seen = false
 		end
 		
-		
-		
+		self.ray_caster:cast(self.is_seen)
 	--end
 end
 
@@ -335,6 +335,14 @@ function npc_class:loop()
 		self:handle_jumping()
 	end
 	
+	
+	local caster = self.ray_caster
+	
+	caster.position = self.entity.transform.current.pos
+	caster.direction = vec2.from_degrees(self.entity.lookat.last_value)
+	caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
+	caster:loop()
+	
 	--render_system:push_line(debug_line(self.entity.transform.current.pos, self.frozen_navpoint, rgba(255, 255, 0, 255)))
 	--render_system:push_line(debug_line(self.entity.transform.current.pos, self.entity.pathfinding:get_current_target(), rgba(255, 0, 0, 255)))
 	--print "\n\nBehaviours:\n\n"
@@ -363,6 +371,12 @@ my_npc_archetype = {
 				npc_alertness.behave,
 				enemy_movement_behaviour_tree.movement
 			}
+		},
+		
+		lookat = {
+			update_value = false,
+			easing_mode = lookat_component.EXPONENTIAL,
+			averages_per_sec = 10
 		},
 		
 		render = {

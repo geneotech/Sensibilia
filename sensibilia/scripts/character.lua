@@ -213,10 +213,6 @@ character_group_archetype = {
 			}	
 		},
 		
-		lookat = {
-			update_value = false
-		},
-		
 		render = {
 			layer = render_layers.OBJECTS
 		},

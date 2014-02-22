@@ -54,6 +54,18 @@ player_scriptable_info = create_scriptable_info {
 				my_self:substep()
 			else
 				my_self:loop()
+				
+				local caster = my_self.ray_caster
+				
+				caster.position = subject.transform.current.pos
+				caster.direction = (player.crosshair:get().transform.current.pos - subject.transform.current.pos):normalize()
+				
+				caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
+				
+				caster:loop()
+				
+				instability = instability + caster.instability_bonus
+			
 			end
 		end
 	}
@@ -138,6 +150,7 @@ player = spawn_character ({
 }, character_class, 12000)
 
 get_self(player.body:get()):set_foot_sensor_from_sprite(player_sprite, 3, 1)
+get_self(player.body:get()).hp = 30000
 --get_self(player.body:get()):set_foot_sensor_from_circle(60, 6)
 world_camera.chase:set_target(player.body:get())
 world_camera.camera.player:set(player.body:get())

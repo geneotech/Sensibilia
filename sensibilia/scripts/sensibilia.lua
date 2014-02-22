@@ -196,29 +196,9 @@ loop_only_info = create_scriptable_info {
 			
 			if instability < 0 then instability = 0 end
 			instability_decreaser:reset()
-			
-			
-			get_self(player.body:get()).ray_caster.position = player.body:get().transform.current.pos
-			get_self(player.body:get()).ray_caster.direction = (player.crosshair:get().transform.current.pos - player.body:get().transform.current.pos):normalize()
-			--get_self(player.body:get()).ray_caster.direction = vec2(-0.97090339660645, -0.23947174847126)
-			
-			--print "player"
-			--pv(player.body:get().transform.current.pos)
-			--print "crosshair"
-			--pv(player.crosshair.transform.current.pos)
-			--print "dir"
-			--pv  (player.crosshair.transform.current.pos - player.body:get().transform.current.pos)
-			--print "dirnorm"
-			--pv  ((player.crosshair.transform.current.pos - player.body:get().transform.current.pos):normalize())
-			
-			
-			get_self(player.body:get()).ray_caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
-			loop_all_instability_rays()
-			--get_self(player.body:get()).ray_caster:loop()
-			
-			instability = instability + get_self(player.body:get()).ray_caster.instability_bonus
 				
-			print (instability)
+			handle_dying_instability_rays()
+			--print (instability)
 		end
 	}
 }
