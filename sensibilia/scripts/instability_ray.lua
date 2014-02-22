@@ -2,7 +2,7 @@ global_instability_rays = {}
 
 instability_ray_caster = inherits_from {}
 
-function instability_ray_caster:constructor(entity)
+function instability_ray_caster:constructor(entity, ray_filter)
 	self.position = vec2(0, 0)
 	self.direction = vec2(0, 0)
 	
@@ -16,7 +16,7 @@ function instability_ray_caster:constructor(entity)
 	self.ray_quad_width = 20
 	self.ray_quad_end_width = 50
 	
-	self.entity_owner = entity
+	self.owner_entity = entity
 	self.current_ortho = vec2(0, 0)
 	self.radius_of_effect = 8000
 	
@@ -27,6 +27,8 @@ function instability_ray_caster:constructor(entity)
 	self.polygon_traces = {
 	
 	}
+	
+	self.instability_ray_filter = ray_filter
 	-- for rendering
 	table.insert(global_instability_rays, self)
 end
@@ -132,11 +134,20 @@ function instability_ray_caster:loop()
 		self.trace_timer:reset()
 	end
 
-	local hit_enemies_candidates = physics_system:query_polygon(world_polygon, create(b2Filter, filter_instability_ray), self.entity_owner)
+	local hit_enemies_candidates = physics_system:query_polygon(world_polygon, create(b2Filter, self.instability_ray_filter), self.owner_entity)
 	
 	for candidate in hit_enemies_candidates.bodies do
-		local enemy_self = get_self(body_to_entity(candidate))
-		enemy_self:take_damage(delta_ms)
+		local enemy_entity = body_to_entity(candidate)
+		local p1 = self.owner_entity.transform.current.pos
+		local p2 = enemy_entity.transform.current.pos
+		
+		ray_output = physics_system:ray_cast(p1, p2, create(b2Filter, filter_instability_ray_obstruction), self.owner_entity)
+		
+		-- there are no obstructions on the way
+		if not ray_output.hit then
+			local enemy_self = get_self(enemy_entity)
+			enemy_self:take_damage(delta_ms)
+		end
 	end
 	
 	render_system:push_line(debug_line(world_polygon:at(0), world_polygon:at(1), rgba(255, 255, 255, 255)))

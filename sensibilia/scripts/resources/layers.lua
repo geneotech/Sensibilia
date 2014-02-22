@@ -17,7 +17,8 @@ render_layers = {
 
 -- PHYSICS COLLISION LAYERS --
 create_options { 
-	"CHARACTERS", 
+	"CHARACTERS",
+	"ENEMIES",
 	"OBJECTS", 
 	"STATIC_OBJECTS",
 	"INSTABILITY_RAY"
@@ -30,24 +31,29 @@ filter_nothing = {
 }
 
 -- used only for query/raycast filters
-local mask_all = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY)
+local mask_all = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY)
 
 
 
 
 filter_static_objects = {
 	categoryBits = STATIC_OBJECTS,
-	maskBits = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS)
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS)
 }
 
 filter_objects = {
 	categoryBits = OBJECTS,
-	maskBits = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS)
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS)
 }
 
 filter_characters = {
 	categoryBits = CHARACTERS,
-	maskBits = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY)
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY)
+}
+
+filter_enemies = {
+	categoryBits = ENEMIES,
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY)
 }
 
 filter_pathfinding_visibility = {
@@ -57,17 +63,27 @@ filter_pathfinding_visibility = {
 
 filter_npc_feet = {
 	categoryBits = mask_all,
-	maskBits = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS)
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS)
 }
 
-filter_instability_ray = {
+filter_instability_ray_player = {
+	categoryBits = mask_all,
+	maskBits = bitor(ENEMIES)
+}
+
+filter_instability_ray_enemy = {
 	categoryBits = mask_all,
 	maskBits = bitor(CHARACTERS)
+}
+
+filter_instability_ray_obstruction = {
+	categoryBits = mask_all,
+	maskBits = bitor(STATIC_OBJECTS, OBJECTS)
 }
 
 filter_characters_separation = {
 	categoryBits = mask_all,
-	maskBits = bitor(CHARACTERS)
+	maskBits = bitor(ENEMIES)
 }
 
 filter_player_visibility = {
@@ -77,5 +93,5 @@ filter_player_visibility = {
 
 filter_obstacle_visibility = {
 	categoryBits = mask_all,
-	maskBits = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS)
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS)
 }

@@ -346,6 +346,7 @@ my_npc_archetype = {
 			--body_type = Box2D.b2_staticBody,
 			
 			body_info = {
+				filter = filter_enemies,
 				density = 3
 				--linear_damping = 18
 			}

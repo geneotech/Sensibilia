@@ -136,48 +136,6 @@ dofile "sensibilia\\scripts\\player.lua"
 
 base_crosshair_rotation = 0
 
-
---myseq = timed_sequence:create()
---
---	myseq:add_action {
---		on_enter = function() 
---			print "A"
---		end,
---		
---		min_duration_ms = 500,
---		max_duration_ms = 1000
---	}
---	
---	myseq:add_action {
---		on_enter = function() 
---			print "B"
---		end,
---		
---		min_duration_ms = 500,
---		max_duration_ms = 1000
---	}
-	
-
---function wait_yield(ms_wait)
---	local my_timer = stepped_timer(physics_system)
---	
---	while my_timer:get_milliseconds() <= ms_wait do
---		coroutine.yield()
---	end
---end
---	
---my_coroutine = coroutine.create(
---	function()
---		while true do
---			print "A"
---			wait_yield(randval(1000, 2000))
---			print "B"
---			wait_yield(randval(1000, 2000))
---		end
---	end
---)
-
-
 instability_decreaser = timer()
 
 loop_only_info = create_scriptable_info {
@@ -232,11 +190,7 @@ loop_only_info = create_scriptable_info {
 			--	player.body.transform.current.pos + sensor + vec2(0, 10), rgba(255, 0, 0, 255)))
 			--end
 			
-			--coroutine.resume(my_coroutine)
-	--		myseq:play()
-			
 			if not player_ray_caster.currently_casting then
-			
 				--print(instability_decreaser:extract_milliseconds() / 1000 / 10)
 				instability = instability - (instability_decreaser:get_seconds() / 5) 
 			end
