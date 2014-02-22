@@ -4,10 +4,10 @@ basic_npc_sprite = create_sprite {
 	color = rgba(255, 0, 0, 200)
 }
 
-basic_npc_class = inherits_from (npc_class)
+basic_npc_class = inherits_from (character_class)
 
 function basic_npc_class:constructor(subject_entity)
-	npc_class.constructor(self, subject_entity)
+	character_class.constructor(self, subject_entity)
 	
 	self.steering_behaviours = {	
 		target_seeking = behaviour_state(target_seek_steering),

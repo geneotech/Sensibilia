@@ -4,9 +4,9 @@ function get_self(entity)
 	return entity.scriptable.script_data
 end
 
-npc_class = inherits_from {}
+character_class = inherits_from {}
 
-function npc_class:constructor(subject_entity) 
+function character_class:constructor(subject_entity) 
 	self.jump_timer = stepped_timer(physics_system)
 	self.jetpack_timer = stepped_timer(physics_system)
 	self.entity = subject_entity
@@ -26,7 +26,7 @@ function npc_class:constructor(subject_entity)
 	self.hp = 100
 end
 
-function npc_class:take_damage(amount)
+function character_class:take_damage(amount)
 	self.hp = self.hp - amount
 	
 	if self.hp < 0 then
@@ -34,12 +34,12 @@ function npc_class:take_damage(amount)
 	end
 end
 
-function npc_class:jump(jump_flag)
+function character_class:jump(jump_flag)
 	self.wants_to_jump = jump_flag
 	if not jump_flag then self.still_holding_jetpack = false end
 end
 
-function npc_class:set_gravity_shift_state(enable)
+function character_class:set_gravity_shift_state(enable)
 	local entity = self.entity
 
 	if enable then
@@ -51,7 +51,7 @@ function npc_class:set_gravity_shift_state(enable)
 	end
 end
 
-function npc_class:handle_jumping()
+function character_class:handle_jumping()
 	-- determine if something is under foot 
 	local pos = self.entity.transform.current.pos
 	local body = self.entity.physics.body
@@ -114,7 +114,7 @@ function npc_class:handle_jumping()
 	end
 end
 
-function npc_class:handle_variable_height_jump()
+function character_class:handle_variable_height_jump()
 	local body = self.entity.physics.body
 	if self.still_holding_jetpack and self.jetpack_timer:get_steps() < self.max_jetpack_steps then
 	--	print(self.still_holding_jetpack, self.jetpack_timer:get_steps(), self.max_jetpack_steps)
@@ -125,16 +125,16 @@ function npc_class:handle_variable_height_jump()
 	end
 end
 
-function npc_class:loop()	
+function character_class:loop()	
 	--self:handle_jumping()
 end
 
-function npc_class:substep()
+function character_class:substep()
 	self:handle_jumping()
 	self:handle_variable_height_jump()
 end
 
-function npc_class:set_foot_sensor_from_sprite(subject_sprite, thickness, edge_threshold)
+function character_class:set_foot_sensor_from_sprite(subject_sprite, thickness, edge_threshold)
 	if edge_threshold == nil then
 		edge_threshold = 0
 	end
@@ -143,7 +143,7 @@ function npc_class:set_foot_sensor_from_sprite(subject_sprite, thickness, edge_t
 	self.foot_sensor_p2 = vec2( subject_sprite.size.x / 2 - edge_threshold, subject_sprite.size.y / 2 + thickness) 
 end
 
-function npc_class:set_foot_sensor_from_circle(radius, thickness) 
+function character_class:set_foot_sensor_from_circle(radius, thickness) 
 	self.foot_sensor_p1 = vec2(-radius, radius)
 	self.foot_sensor_p2 = vec2( radius, radius + thickness) 
 end
@@ -218,7 +218,7 @@ global_npc_table = {
 }
 
 function spawn_npc(group_overrider, what_class)
-	if what_class == nil then what_class = npc_class end
+	if what_class == nil then what_class = character_class end
 	
 	local my_new_npc = create_entity_group (archetyped(npc_group_archetype, group_overrider))
 	

@@ -131,7 +131,7 @@ environment_entity2 = create_entity (archetyped(environment_archetype, {
 	}
 }))
 
-dofile "sensibilia\\scripts\\npc.lua"
+dofile "sensibilia\\scripts\\character.lua"
 dofile "sensibilia\\scripts\\player.lua"
 
 base_crosshair_rotation = 0
