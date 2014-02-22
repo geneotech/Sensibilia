@@ -53,13 +53,25 @@ function npc_class:constructor(subject_entity)
 			while true do
 				print "lecimy"
 				self:set_movement_mode_flying(true)
-				coroutine.stepped_wait(randval(1000, 5000))
+				coroutine.stepped_wait(randval(1000/self.movement_speed_multiplier, 5000/self.movement_speed_multiplier))
 				print "idziemy"
 				self:set_movement_mode_flying(false)
 				coroutine.stepped_wait(randval(500, 4000))
 			end
 		end
 	)
+end
+
+function npc_class:set_movement_speed_multiplier(multiplier)
+	self.movement_speed_multiplier = multiplier
+	
+	if self.entity.steering then
+		self.entity.steering.max_speed = 12000*1.4142135623730950488016887242097*multiplier
+	end
+
+	if self.entity.movement then
+		print "WARNING: unset movement speed!!!"
+	end
 end
 
 function npc_class:set_movement_mode_flying(flag)
@@ -392,5 +404,6 @@ my_npc_archetype = {
 }
 
 my_npc = spawn_npc(my_npc_archetype, npc_class)
+get_self(my_npc.body):set_movement_speed_multiplier(0.1)
 
 get_self(my_npc.body):set_foot_sensor_from_sprite(npc_sprite, 3)
