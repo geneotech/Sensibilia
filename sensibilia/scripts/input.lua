@@ -23,6 +23,7 @@ main_context = create_input_context {
 		[keys.S] 				= intent_message.MOVE_BACKWARD,
 		[keys.A] 				= intent_message.MOVE_LEFT,
 		[keys.D] 				= intent_message.MOVE_RIGHT,
+		[keys.R] 				= custom_intents.RESTART,
 		[mouse.rdown] 			= custom_intents.REALITY_CHECK,
 		[mouse.rdoubleclick] 	= custom_intents.REALITY_CHECK,
 		[keys.V] 				= custom_intents.INSTANT_SLOWDOWN,
@@ -64,7 +65,7 @@ function main_input_routine(message)
 		
 	elseif message.intent == custom_intents.RESTART then
 			set_world_reloading_script(reloader_script)
-			
+			print "setting reloader script"
 	elseif message.intent == intent_message.AIM then
 		if changing_gravity then
 			local added_angle = message.mouse_rel.y * 0.6

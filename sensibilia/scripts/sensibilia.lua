@@ -1,3 +1,5 @@
+dofile "sensibilia\\scripts\\instability_ray.lua"
+
 debug_target_sprite = create_sprite {
 	image = images.blank,
 	size = vec2(50, 50),

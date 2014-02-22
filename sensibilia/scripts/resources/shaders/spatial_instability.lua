@@ -24,9 +24,12 @@ void main()
 	vec4 effect_pixel = texture(basic_texture, theTexcoord + vec2(sin(used_time/10+rotation)*0.01, tan(used_time/10+rotation)*0.007));
 	float effect_amount = 10;
 	
+	// get the corresponding pixel from intensity map
+	float intensity = texture(intensity_texture, theTexcoord);
+	
 	// shortcuts to simplify notation
-	float X = 70*(1-multiplier);
-	float Y = 70*(1-multiplier);
+	float X = 70*(1-multiplier) - 10*intensity;
+	float Y = 70*(1-multiplier) - 10*intensity;
 	
 	float ac = cos(rotation);
 	float as = sin(rotation);
@@ -66,11 +69,9 @@ void main()
 	// clamp it
 	my_colors = clamp(my_colors, vec4(0.0), vec4(1.0));
 	
-	// get the corresponding pixel from intensity map
-	float intensity = texture(intensity_texture, theTexcoord) * ((my_colors.r +my_colors.g +my_colors.b)/3);
 	
 	// interpolate between the actual pixel on scene and the calculated pixel
-	outputColor = mix(pixel, my_colors, intensity); 
+	outputColor = mix(pixel, my_colors, intensity* ((my_colors.r +my_colors.g +my_colors.b)/3)); 
 	//outputColor = vec4(vec3(fractal_amnt), 1.0);
 	//outputColor = texture(basic_texture, theTexcoord+vec2(fractal_amnt*0.02, -fractal_amnt*0.02));
 }

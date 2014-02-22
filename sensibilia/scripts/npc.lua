@@ -421,13 +421,13 @@ my_npc_archetype = {
 
 my_npc = spawn_character(my_npc_archetype, npc_class, 12000)
 my_npc2 = spawn_character(my_npc_archetype, npc_class, 12000)
-my_npc3 = spawn_character(my_npc_archetype, npc_class, 12000)
-
+--my_npc3 = spawn_character(my_npc_archetype, npc_class, 12000)
+--
 get_self(my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
 get_self(my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-
-
+--get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+--
+--
 my_npc.body:get().pathfinding:start_exploring()
 my_npc2.body:get().pathfinding:start_exploring()
-my_npc3.body:get().pathfinding:start_exploring()
+--my_npc3.body:get().pathfinding:start_exploring()
