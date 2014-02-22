@@ -32,15 +32,7 @@ function instability_ray_caster:constructor(entity)
 end
 
 function instability_ray_caster:generate_triangles(camera_transform, output_buffer, visible_area)
-	--self.direction = 
-    --
-	--local world_polygon = self:construct_world_polygon()
 	for k, v in ipairs(self.polygon_traces) do	
-	
-		--for i = 1, 4 do
-		--	pv(self.polygon_traces[k]:get_vertex(i-1).pos)
-		--end
-		
 		local my_draw_input = draw_input()
 		my_draw_input.camera_transform = camera_transform
 		my_draw_input.output = output_buffer
@@ -48,24 +40,15 @@ function instability_ray_caster:generate_triangles(camera_transform, output_buff
 		
 		v.poly:draw(my_draw_input)
 	end
-	--coroutine.resume(self.rendering_routine)
 end
 
 function instability_ray_caster:cast(flag)
 	self.currently_casting = flag
-	--if flag then
-	--	self.rendering_routine = coroutine.create( function () 
-	--	
-	--	
-	--	end)
-	--end
 end
 
 function instability_ray_caster:construct_world_polygon()
 	-- bind draw input
 	local perpendicular = self.direction:perpendicular_cw()
-	--pv(self.direction)
-	--print(self.ray_quad_width)
 	local width_at_end = self.ray_quad_width + (self.ray_quad_end_width - self.ray_quad_width) * (self.ray_length / self.trapezoid_height)
 	
 	return reversed ({ 
@@ -78,7 +61,6 @@ end
 
 function instability_ray_caster:loop()
 	self.instability_bonus = 0
-	--pv(self.direction)
 	local delta_ms = self.delta_timer:extract_milliseconds() * physics_system.timestep_multiplier
 	
 	local to_delete = {}
@@ -87,11 +69,9 @@ function instability_ray_caster:loop()
 		for i = 1, 4 do
 			local final_alpha = self.polygon_traces[k].alpha_animator:get_animated()
 			
-			--print (final_alpha)
 			if final_alpha <= 0 then
 				table.insert(to_delete, k)
 				break
-				--self.polygon_traces[k] = nil
 			else
 				self.polygon_traces[k].poly:get_vertex(i-1).color.a = final_alpha
 			end	
@@ -108,7 +88,6 @@ function instability_ray_caster:loop()
 		self.instability_bonus = delta_ms/1000/10
 	else
 		self.ray_length = self.ray_length - delta_ms * 10
-		--self.ray_length = 0
 	end
 
 	if self.ray_length < 0 then
@@ -119,43 +98,21 @@ function instability_ray_caster:loop()
 		return false
 	end
 	
-	--print "loopin"
-	--pv(self.direction)
-	--local direction_lengthened = 
-	--pv(self.direction)
 	
-	--pv(self.direction)
-	
-	--local length_clamped = direction_lengthened:clamp(self.current_ortho):length()
-	
-	-- if close enough to maximum allowed ray length, leave a polygon 
-	
-	--pv(self.direction)
 	if self.ray_length > self.radius_of_effect then
 		self.ray_length = self.radius_of_effect
 	end
 	
-	--pv(self.direction)
-	self.current_endpoint = self.position
-	--pv(self.direction)
-	self.current_endpoint = self.current_endpoint + self.direction * self.ray_length
-	--pv(self.direction)
-	--render_system:push_line(debug_line(self.position, self.current_endpoint, rgba(255, 255, 255, 255)))
+	self.current_endpoint = self.position + self.direction * self.ray_length
 
-	--pv(self.direction)
 	-- check for collisions with enemies
-	
 	local world_polygon = vec2_vector()
 	local polygon_table = self:construct_world_polygon()
 	
-	--pv(self.direction)
 	add_vals(world_polygon, polygon_table)
 	
-	
-
-	
-	if --(self.ray_length - self.radius_of_effect) < 1 and 
-	self.trace_timer:get_milliseconds() > 5 then
+	-- leave a polygon trace every some small interval
+	if self.trace_timer:get_milliseconds() > 5 then
 		-- leave a trace 
 		
 		local new_trace = {
@@ -174,29 +131,12 @@ function instability_ray_caster:loop()
 		
 		self.trace_timer:reset()
 	end
-	
-	
-	
-	--pv(self.direction)
-		
-		--print(debug.my_traceback())
-		--print(self.ray_length)
-		--pv(self.current_endpoint)
-		--pv(self.position)
-		--pv(self.direction)
-		--pv(world_polygon:at(0))
-		--pv(world_polygon:at(1))
-		--pv(world_polygon:at(2))
-		--pv(world_polygon:at(3))
-	--debugger_break()
+
 	local hit_enemies_candidates = physics_system:query_polygon(world_polygon, create(b2Filter, filter_instability_ray), self.entity_owner)
-	
-	--self.something_under_foot = false
 	
 	for candidate in hit_enemies_candidates.bodies do
 		local enemy_self = get_self(body_to_entity(candidate))
 		enemy_self:take_damage(delta_ms)
-		--print ("dealing" .. delta_ms)
 	end
 	
 	render_system:push_line(debug_line(world_polygon:at(0), world_polygon:at(1), rgba(255, 255, 255, 255)))
