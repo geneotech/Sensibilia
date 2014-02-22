@@ -116,9 +116,9 @@ function npc_class:death_callback()
 	-- first have to remove all occurences of my_npc from scripts
 	-- and remove its reference in global npc table
 	
-	for k, v in ipairs(global_npc_table) do
+	for k, v in ipairs(global_character_table) do
 		if v == self then
-			table.remove(global_npc_table, k)
+			table.remove(global_character_table, k)
 			break
 		end
 	end

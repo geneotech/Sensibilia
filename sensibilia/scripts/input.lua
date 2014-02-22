@@ -58,9 +58,7 @@ function main_input_routine(message)
 			world_camera.camera.crosshair_follows_interpolant = false
 		end
 		
-		get_self(player.body):set_gravity_shift_state(changing_gravity)
-		
-		for k, v in ipairs(global_npc_table) do
+		for k, v in ipairs(global_character_table) do
 			v:set_gravity_shift_state(changing_gravity)
 		end
 		
@@ -73,9 +71,7 @@ function main_input_routine(message)
 		
 			target_gravity_rotation = target_gravity_rotation + added_angle
 			
-			player.body.physics.target_angle = target_gravity_rotation
-			
-			for k, v in ipairs(global_npc_table) do
+			for k, v in ipairs(global_character_table) do
 				v.entity.physics.target_angle = target_gravity_rotation
 			end
 		end

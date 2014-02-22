@@ -103,7 +103,7 @@ function character_class:handle_jumping()
 	
 	add_vals(query_rect, query_coords)
 		
-	local under_foot_candidates = physics_system:query_polygon(query_rect, create(b2Filter, filter_npc_feet), self.entity)
+	local under_foot_candidates = physics_system:query_polygon(query_rect, create(b2Filter, filter_character_feet), self.entity)
 	
 	self.something_under_foot = false
 	
@@ -178,7 +178,7 @@ function character_class:set_foot_sensor_from_circle(radius, thickness)
 	self.foot_sensor_p2 = vec2( radius, radius + thickness) 
 end
 
-npc_basic_loop = create_scriptable_info {
+character_basic_loop = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.LOOP] = function (subject, is_substepping)
 			local my_self = get_self(subject)
@@ -192,7 +192,7 @@ npc_basic_loop = create_scriptable_info {
 	}
 }
 
-npc_group_archetype = {
+character_group_archetype = {
 	body = {
 		physics = {
 			body_type = Box2D.b2_dynamicBody,
@@ -223,7 +223,7 @@ npc_group_archetype = {
 			air_resistance = 0.1,
 			inverse_thrust_brake = vec2(1500, 0),
 			
-			ground_filter = filter_npc_feet,
+			ground_filter = filter_character_feet,
 			
 			receivers = {},
 			
@@ -238,27 +238,27 @@ npc_group_archetype = {
 		},
 		
 		scriptable = {
-			available_scripts = npc_basic_loop
+			available_scripts = character_basic_loop
 		}
 	}
 }
 
-global_npc_table = {
+global_character_table = {
 
 }
 
 function spawn_character(group_overrider, what_class, ...)
 	if what_class == nil then what_class = character_class end
 	
-	local my_new_npc = create_entity_group (archetyped(npc_group_archetype, group_overrider))
+	local my_new_character = create_entity_group (archetyped(character_group_archetype, group_overrider))
 	
-	local new_npc_scriptable = what_class:create(my_new_npc.body, table.unpack({...}))
+	local new_character_scriptable = what_class:create(my_new_character.body, table.unpack({...}))
 	
-	my_new_npc.body.scriptable.script_data = new_npc_scriptable
+	my_new_character.body.scriptable.script_data = new_character_scriptable
 	
-	table.insert(global_npc_table, new_npc_scriptable)
+	table.insert(global_character_table, new_character_scriptable)
 	
-	return my_new_npc
+	return my_new_character
 end
 
 dofile "sensibilia\\scripts\\npc.lua"

@@ -138,9 +138,7 @@ loop_only_info = create_scriptable_info {
 			gravity_angle_offset = player.body.physics.body:GetAngle() / 0.01745329251994329576923690768489
 			current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
 			
-			player.body.movement.axis_rotation_degrees = gravity_angle_offset
-			
-			for k, v in ipairs(global_npc_table) do
+			for k, v in ipairs(global_character_table) do
 				v.entity.movement.axis_rotation_degrees = gravity_angle_offset
 			end
 			

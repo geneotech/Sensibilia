@@ -64,6 +64,7 @@ end
 )	
 
 accumulated_camera_time = 0
+refresh_coroutines()
 
 function rendering_routine(subject, renderer, visible_area, drawn_transform, target_transform, mask)
 			local extracted_ms = my_timer:extract_milliseconds()

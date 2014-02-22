@@ -61,7 +61,7 @@ filter_pathfinding_visibility = {
 	maskBits = STATIC_OBJECTS
 }
 
-filter_npc_feet = {
+filter_character_feet = {
 	categoryBits = mask_all,
 	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS)
 }
