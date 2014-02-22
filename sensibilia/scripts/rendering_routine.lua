@@ -103,7 +103,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			intensity_fbo:use()
 			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
 			
-			player_ray_caster:generate_triangles(drawn_transform, renderer.triangles, visible_area)
+			get_self(player.body:get()).ray_caster:generate_triangles(drawn_transform, renderer.triangles, visible_area)
 			renderer:call_triangles()
 			renderer:clear_triangles()
 			

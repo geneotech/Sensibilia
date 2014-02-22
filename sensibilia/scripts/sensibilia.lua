@@ -185,7 +185,7 @@ loop_only_info = create_scriptable_info {
 			end
 			
 			
-			if not player_ray_caster.currently_casting and not changing_gravity then
+			if not get_self(player.body:get()).ray_caster.currently_casting and not changing_gravity then
 				--print(instability_decreaser:extract_milliseconds() / 1000 / 10)
 				local decrease_amount = (instability_decreaser:get_seconds() / 10)
 				
@@ -198,9 +198,9 @@ loop_only_info = create_scriptable_info {
 			instability_decreaser:reset()
 			
 			
-			player_ray_caster.position = player.body:get().transform.current.pos
-			player_ray_caster.direction = (player.crosshair:get().transform.current.pos - player.body:get().transform.current.pos):normalize()
-			--player_ray_caster.direction = vec2(-0.97090339660645, -0.23947174847126)
+			get_self(player.body:get()).ray_caster.position = player.body:get().transform.current.pos
+			get_self(player.body:get()).ray_caster.direction = (player.crosshair:get().transform.current.pos - player.body:get().transform.current.pos):normalize()
+			--get_self(player.body:get()).ray_caster.direction = vec2(-0.97090339660645, -0.23947174847126)
 			
 			--print "player"
 			--pv(player.body:get().transform.current.pos)
@@ -212,11 +212,11 @@ loop_only_info = create_scriptable_info {
 			--pv  ((player.crosshair.transform.current.pos - player.body:get().transform.current.pos):normalize())
 			
 			
-			player_ray_caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
+			get_self(player.body:get()).ray_caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
 			loop_all_instability_rays()
-			--player_ray_caster:loop()
+			--get_self(player.body:get()).ray_caster:loop()
 			
-			instability = instability + player_ray_caster.instability_bonus
+			instability = instability + get_self(player.body:get()).ray_caster.instability_bonus
 				
 			print (instability)
 		end

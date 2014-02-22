@@ -8,6 +8,7 @@ npc_class = inherits_from (character_class)
 
 function npc_class:constructor(subject_entity, base_movement_speed)
 	character_class.constructor(self, subject_entity, base_movement_speed)
+	self.ray_caster = instability_ray_caster:create(subject_entity, filter_instability_ray_enemy)
 	
 	self.steering_behaviours = {	
 		target_seeking = behaviour_state(target_seek_steering),

@@ -26,12 +26,12 @@ player_scriptable_info = create_scriptable_info {
 				--get_self(message.subject):handle_jumping()
 			elseif message.intent == custom_intents.INSTABILITY_RAY then 
 				if message.state_flag and not is_reality_checking then
-					player_ray_caster:cast(true)
+					get_self(message.subject).ray_caster:cast(true)
 				else
-					player_ray_caster:cast(false)
+					get_self(message.subject).ray_caster:cast(false)
 				end
 			elseif message.intent == custom_intents.REALITY_CHECK then
-				if message.state_flag and not player_ray_caster.currently_casting then
+				if message.state_flag and not get_self(message.subject).ray_caster.currently_casting then
 					is_reality_checking = true
 					player.body:get().movement.input_acceleration.x = 2000
 					get_self(player.body:get()).jump_force_multiplier = 0.4
@@ -137,7 +137,6 @@ player = spawn_character ({
 	},
 }, character_class, 12000)
 
-player_ray_caster = instability_ray_caster:create(player.body, filter_instability_ray_player)
 get_self(player.body:get()):set_foot_sensor_from_sprite(player_sprite, 3, 1)
 --get_self(player.body:get()):set_foot_sensor_from_circle(60, 6)
 world_camera.chase:set_target(player.body:get())

@@ -9,7 +9,7 @@ character_class = inherits_from {}
 function character_class:constructor(subject_entity, base_movement_speed) 
 	self.jump_timer = stepped_timer(physics_system)
 	self.jetpack_timer = stepped_timer(physics_system)
-	self.entity = subject_entity
+	self.entity = subject_entity:get()
 	self.foot_sensor_p1 = vec2(0, 0)
 	self.foot_sensor_p2 = vec2(0, 0)
 	
@@ -29,6 +29,8 @@ function character_class:constructor(subject_entity, base_movement_speed)
 	self.jump_height = (50 * calc_max_jump_height(base_gravity, 0.1, self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, self.entity.physics.body:GetMass())) - 2
 	
 	self.hp = 100
+	
+	self.ray_caster = instability_ray_caster:create(subject_entity, filter_instability_ray_player)
 	
 	self:update_movement_speeds()
 end
@@ -256,7 +258,7 @@ function spawn_character(group_overrider, what_class, ...)
 	
 	local my_new_character = ptr_create_entity_group (archetyped(character_group_archetype, group_overrider))
 	
-	local new_character_scriptable = what_class:create(my_new_character.body:get(), table.unpack({...}))
+	local new_character_scriptable = what_class:create(my_new_character.body, table.unpack({...}))
 	
 	my_new_character.body:get().scriptable.script_data = new_character_scriptable
 	
