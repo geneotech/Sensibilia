@@ -89,7 +89,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			orthographic_projection(visible_area.x, visible_area.r, visible_area.b, visible_area.y, 0, 1):data()
 			)
 			
-			local player_pos = player.crosshair.transform.current.pos
+			local player_pos = player.crosshair:get().transform.current.pos
 			GL.glUniform2f(player_pos_uniform, player_pos.x, player_pos.y)
 			
 			instability = instability - temporary_instability + temporary_instability/3
@@ -143,7 +143,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				
 				
 				GL.glUniform1i(spatial_instability_time, accumulated_camera_time - extracted_ms + extracted_ms * instability)
-				GL.glUniform1f(spatial_instability_rotation, (player.crosshair.transform.current.pos - player.body.transform.current.pos):perpendicular_cw():get_radians() + 3.14159265)
+				GL.glUniform1f(spatial_instability_rotation, (player.crosshair:get().transform.current.pos - player.body:get().transform.current.pos):perpendicular_cw():get_radians() + 3.14159265)
 				GL.glUniform1f(spatial_instability_multiplier, instability)
 				
 				GL.glActiveTexture(GL.GL_TEXTURE1)

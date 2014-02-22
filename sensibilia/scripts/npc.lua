@@ -230,27 +230,30 @@ function npc_class:handle_steering()
 end
 
 function npc_class:handle_player_visibility()
-	--if not player.body:exists() then 
+	--if not player.body:get():exists() then 
 	--	self.is_seen = false
 	--else
 		-- resolve player visibility no matter what we're doing 
 		local p1 = self.entity.transform.current.pos
-		local p2 = player.body.transform.current.pos
+		local p2 = player.body:get().transform.current.pos
 		
 		ray_output = physics_system:ray_cast(p1, p2, create(b2Filter, filter_player_visibility), self.entity)
 		
 		if not ray_output.hit then
-			self.target_entities.last_seen.transform.current.pos = player.body.transform.current.pos
+			self.target_entities.last_seen.transform.current.pos = player.body:get().transform.current.pos
 			
 			self.was_seen = true
 			self.is_seen = true
 			self.is_alert = true
 			
-			local player_vel = player.body.physics.body:GetLinearVelocity()
+			local player_vel = player.body:get().physics.body:GetLinearVelocity()
 			self.last_seen_velocity = vec2(player_vel.x, player_vel.y)
 		else
 			self.is_seen = false
 		end
+		
+		
+		
 	--end
 end
 
@@ -340,6 +343,8 @@ function npc_class:loop()
 	--end
 end
 
+dofile "sensibilia\\scripts\\enemy_ai.lua"
+
 my_npc_archetype = {
 	body = {
 		physics = {
@@ -351,6 +356,14 @@ my_npc_archetype = {
 				--linear_damping = 18
 			}
 		},
+		
+		behaviour_tree = {
+			trees = {
+				npc_alertness.behave,
+				enemy_movement_behaviour_tree.movement
+			}
+		},
+		
 		render = {
 			model = npc_sprite
 		},
@@ -392,6 +405,14 @@ my_npc_archetype = {
 }
 
 my_npc = spawn_character(my_npc_archetype, npc_class, 12000)
-get_self(my_npc.body):set_movement_speed_multiplier(1)
+my_npc2 = spawn_character(my_npc_archetype, npc_class, 12000)
+my_npc3 = spawn_character(my_npc_archetype, npc_class, 12000)
 
-get_self(my_npc.body):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+
+
+my_npc.body:get().pathfinding:start_exploring()
+my_npc2.body:get().pathfinding:start_exploring()
+my_npc3.body:get().pathfinding:start_exploring()

@@ -135,49 +135,49 @@ loop_only_info = create_scriptable_info {
 		[scriptable_component.INTENT_MESSAGE] = main_input_routine,
 				
 		[scriptable_component.LOOP] = function(subject)
-			gravity_angle_offset = player.body.physics.body:GetAngle() / 0.01745329251994329576923690768489
+			gravity_angle_offset = player.body:get().physics.body:GetAngle() / 0.01745329251994329576923690768489
 			current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
 			
 			for k, v in ipairs(global_character_table) do
 				v.entity.movement.axis_rotation_degrees = gravity_angle_offset
 			end
 			
-			player.crosshair.transform.current.pos:rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player.body.transform.current.pos)
+			player.crosshair:get().transform.current.pos:rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player.body:get().transform.current.pos)
 			base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
 			
-			player.crosshair.crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
-			player.crosshair.transform.current.rotation = -world_camera.camera.last_interpolant.rotation
+			player.crosshair:get().crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
+			player.crosshair:get().transform.current.rotation = -world_camera.camera.last_interpolant.rotation
 			
 			physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
 			
-			local vel = player.body.physics.body:GetLinearVelocity()
+			local vel = player.body:get().physics.body:GetLinearVelocity()
 			
 			local f = 1
 			
-			local sensor = vec2(get_self(player.body).foot_sensor_p1)
-			if player.body.transform.current.pos.x > 1000/50 then 
+			local sensor = vec2(get_self(player.body:get()).foot_sensor_p1)
+			if player.body:get().transform.current.pos.x > 1000/50 then 
 				f = -f 
-				sensor = get_self(player.body).foot_sensor_p1
+				sensor = get_self(player.body:get()).foot_sensor_p1
 			else
-				sensor.x = get_self(player.body).foot_sensor_p2.x
+				sensor.x = get_self(player.body:get()).foot_sensor_p2.x
 			end
 			
-			--should_debug_draw = get_self(player.body).something_under_foot
+			--should_debug_draw = get_self(player.body:get()).something_under_foot
 			if should_debug_draw then render_system:clear_non_cleared_lines() end
 			
-			local self = get_self(player.body)
+			local self = get_self(player.body:get())
 			
 			--can_point_be_reached_by_jump(base_gravity, self.entity.movement.input_acceleration/50, self.entity.movement.air_resistance, 
-			--vec2(1000, 1000)/50, player.body.transform.current.pos/50 + sensor/50, vec2(vel.x, vel.y), 
-			--self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, player.body.physics.body:GetMass())	
+			--vec2(1000, 1000)/50, player.body:get().transform.current.pos/50 + sensor/50, vec2(vel.x, vel.y), 
+			--self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, player.body:get().physics.body:GetMass())	
 			
 			--render_system:push_line(debug_line(
-			--	player.body.transform.current.pos + sensor, 
-			--	player.body.transform.current.pos  + sensor + vec2(0, -self.jump_height) , rgba(255, 0, 0, 255)))
+			--	player.body:get().transform.current.pos + sensor, 
+			--	player.body:get().transform.current.pos  + sensor + vec2(0, -self.jump_height) , rgba(255, 0, 0, 255)))
 			
 			--if not should_debug_draw then 
-			--	render_system:push_non_cleared_line(debug_line(player.body.transform.current.pos+ sensor , 
-			--	player.body.transform.current.pos + sensor + vec2(0, 10), rgba(255, 0, 0, 255)))
+			--	render_system:push_non_cleared_line(debug_line(player.body:get().transform.current.pos+ sensor , 
+			--	player.body:get().transform.current.pos + sensor + vec2(0, 10), rgba(255, 0, 0, 255)))
 			--end
 			
 			if changing_gravity then
@@ -197,6 +197,27 @@ loop_only_info = create_scriptable_info {
 			if instability < 0 then instability = 0 end
 			instability_decreaser:reset()
 			
+			
+			player_ray_caster.position = player.body:get().transform.current.pos
+			player_ray_caster.direction = (player.crosshair:get().transform.current.pos - player.body:get().transform.current.pos):normalize()
+			--player_ray_caster.direction = vec2(-0.97090339660645, -0.23947174847126)
+			
+			--print "player"
+			--pv(player.body:get().transform.current.pos)
+			--print "crosshair"
+			--pv(player.crosshair.transform.current.pos)
+			--print "dir"
+			--pv  (player.crosshair.transform.current.pos - player.body:get().transform.current.pos)
+			--print "dirnorm"
+			--pv  ((player.crosshair.transform.current.pos - player.body:get().transform.current.pos):normalize())
+			
+			
+			player_ray_caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
+			loop_all_instability_rays()
+			--player_ray_caster:loop()
+			
+			instability = instability + player_ray_caster.instability_bonus
+				
 			print (instability)
 		end
 	}
@@ -346,12 +367,10 @@ end
 
 
 
-player.body.name = "player_body"
+player.body:get().name = "player_body"
 environment_entity.name = "environment_entity"
 
-						--player.body.physics.body:SetFixedRotation(false)
-						--player.body.physics.enable_angle_motor = true
-						--player.body.physics.target_angle = 90
+						--player.body:get().physics.body:SetFixedRotation(false)
+						--player.body:get().physics.enable_angle_motor = true
+						--player.body:get().physics.target_angle = 90
 physics_system.b2world:SetGravity(b2Vec2(base_gravity.x, base_gravity.y))
-
-my_npc.body.pathfinding:start_exploring()

@@ -20,7 +20,7 @@ player_scriptable_info = create_scriptable_info {
 			if message.intent == custom_intents.JUMP then
 				should_debug_draw = not message.state_flag
 				
-				--if message.state_flag then player.body.physics.body:ApplyLinearImpulse(b2Vec2(0, -50), player.body.physics.body:GetWorldCenter(), true) end
+				--if message.state_flag then player.body:get().physics.body:ApplyLinearImpulse(b2Vec2(0, -50), player.body:get().physics.body:GetWorldCenter(), true) end
 			
 				get_self(message.subject):jump(message.state_flag)
 				--get_self(message.subject):handle_jumping()
@@ -33,11 +33,11 @@ player_scriptable_info = create_scriptable_info {
 			elseif message.intent == custom_intents.REALITY_CHECK then
 				if message.state_flag and not player_ray_caster.currently_casting then
 					is_reality_checking = true
-					player.body.movement.input_acceleration.x = 2000
-					get_self(player.body).jump_force_multiplier = 0.4
+					player.body:get().movement.input_acceleration.x = 2000
+					get_self(player.body:get()).jump_force_multiplier = 0.4
 				else
-					player.body.movement.input_acceleration.x = 12000
-					get_self(player.body).jump_force_multiplier = 1
+					player.body:get().movement.input_acceleration.x = 12000
+					get_self(player.body:get()).jump_force_multiplier = 1
 					is_reality_checking = false
 				end
 			else
@@ -54,24 +54,6 @@ player_scriptable_info = create_scriptable_info {
 				my_self:substep()
 			else
 				my_self:loop()
-				player_ray_caster.position = player.body.transform.current.pos
-				player_ray_caster.direction = (player.crosshair.transform.current.pos - player.body.transform.current.pos):normalize()
-				--player_ray_caster.direction = vec2(-0.97090339660645, -0.23947174847126)
-				
-				--print "player"
-				--pv(player.body.transform.current.pos)
-				--print "crosshair"
-				--pv(player.crosshair.transform.current.pos)
-				--print "dir"
-				--pv  (player.crosshair.transform.current.pos - player.body.transform.current.pos)
-				--print "dirnorm"
-				--pv  ((player.crosshair.transform.current.pos - player.body.transform.current.pos):normalize())
-				
-				
-				player_ray_caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
-				player_ray_caster:loop()
-				instability = instability + player_ray_caster.instability_bonus
-				
 			end
 		end
 	}
@@ -156,8 +138,8 @@ player = spawn_character ({
 }, character_class, 12000)
 
 player_ray_caster = instability_ray_caster:create(player.body, filter_instability_ray_player)
-get_self(player.body):set_foot_sensor_from_sprite(player_sprite, 3, 1)
---get_self(player.body):set_foot_sensor_from_circle(60, 6)
-world_camera.chase:set_target(player.body)
-world_camera.camera.player:set(player.body)
-world_camera.camera.crosshair:set(player.crosshair)
+get_self(player.body:get()):set_foot_sensor_from_sprite(player_sprite, 3, 1)
+--get_self(player.body:get()):set_foot_sensor_from_circle(60, 6)
+world_camera.chase:set_target(player.body:get())
+world_camera.camera.player:set(player.body:get())
+world_camera.camera.crosshair:set(player.crosshair:get())

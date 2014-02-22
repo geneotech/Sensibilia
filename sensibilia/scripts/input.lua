@@ -52,7 +52,7 @@ function main_input_routine(message)
 		if message.state_flag then
 			player.crosshair.crosshair.sensitivity.y = 0
 			base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
-			target_gravity_rotation = player.body.physics.body:GetAngle() / 0.01745329251994329576923690768489
+			target_gravity_rotation = player.body:get().physics.body:GetAngle() / 0.01745329251994329576923690768489
 		else
 			player.crosshair.crosshair.sensitivity = config_table.sensitivity
 			world_camera.camera.crosshair_follows_interpolant = false

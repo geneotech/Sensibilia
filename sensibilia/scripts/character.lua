@@ -211,6 +211,10 @@ character_group_archetype = {
 			}	
 		},
 		
+		lookat = {
+			update_value = false
+		},
+		
 		render = {
 			layer = render_layers.OBJECTS
 		},
@@ -250,11 +254,11 @@ global_character_table = {
 function spawn_character(group_overrider, what_class, ...)
 	if what_class == nil then what_class = character_class end
 	
-	local my_new_character = create_entity_group (archetyped(character_group_archetype, group_overrider))
+	local my_new_character = ptr_create_entity_group (archetyped(character_group_archetype, group_overrider))
 	
-	local new_character_scriptable = what_class:create(my_new_character.body, table.unpack({...}))
+	local new_character_scriptable = what_class:create(my_new_character.body:get(), table.unpack({...}))
 	
-	my_new_character.body.scriptable.script_data = new_character_scriptable
+	my_new_character.body:get().scriptable.script_data = new_character_scriptable
 	
 	table.insert(global_character_table, new_character_scriptable)
 	
