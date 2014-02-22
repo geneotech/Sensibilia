@@ -213,6 +213,10 @@ npc_group_archetype = {
 	}
 }
 
+global_npc_table = {
+
+}
+
 function spawn_npc(group_overrider, what_class)
 	if what_class == nil then what_class = npc_class end
 	
@@ -221,6 +225,8 @@ function spawn_npc(group_overrider, what_class)
 	local new_npc_scriptable = what_class:create(my_new_npc.body)
 	
 	my_new_npc.body.scriptable.script_data = new_npc_scriptable
+	
+	table.insert(global_npc_table, new_npc_scriptable)
 	
 	return my_new_npc
 end

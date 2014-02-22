@@ -116,9 +116,16 @@ function basic_npc_class:death_callback()
 	-- first have to remove all occurences of my_basic_npc from scripts
 	-- and remove its reference in global npc table
 	
-	--local msg = destroy_message()
-	--msg.subject = self.entity
-	--world:post_message(msg)
+	for k, v in ipairs(global_npc_table) do
+		if v == self then
+			table.remove(global_npc_table, k)
+			break
+		end
+	end
+	
+	local msg = destroy_message()
+	msg.subject = self.entity
+	world:post_message(msg)
 end
 
 function basic_npc_class:set_all_behaviours_enabled(flag)

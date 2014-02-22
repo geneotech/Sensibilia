@@ -199,7 +199,10 @@ loop_only_info = create_scriptable_info {
 					end
 					
 					get_self(player.body):set_gravity_shift_state(changing_gravity)
-					get_self(my_basic_npc.body):set_gravity_shift_state(changing_gravity)
+					
+					for k, v in ipairs(global_npc_table) do
+						v:set_gravity_shift_state(changing_gravity)
+					end
 					
 				elseif message.intent == custom_intents.RESTART then
 						set_world_reloading_script(reloader_script)
@@ -210,7 +213,10 @@ loop_only_info = create_scriptable_info {
 						target_gravity_rotation = target_gravity_rotation + added_angle
 						
 						player.body.physics.target_angle = target_gravity_rotation
-						my_basic_npc.body.physics.target_angle = target_gravity_rotation
+						
+						for k, v in ipairs(global_npc_table) do
+							v.entity.physics.target_angle = target_gravity_rotation
+						end
 					end
 				elseif message.intent == custom_intents.INSTANT_SLOWDOWN then
 					physics_system.timestep_multiplier = 0.00001
@@ -223,7 +229,7 @@ loop_only_info = create_scriptable_info {
 						physics_system.timestep_multiplier = 0.01
 					end
 				elseif message.intent == custom_intents.MY_INTENT then
-					my_basic_npc.body.pathfinding:start_exploring()
+				
 				end
 
 				
@@ -235,7 +241,10 @@ loop_only_info = create_scriptable_info {
 			current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
 			
 			player.body.movement.axis_rotation_degrees = gravity_angle_offset
-			my_basic_npc.body.movement.axis_rotation_degrees = gravity_angle_offset
+			
+			for k, v in ipairs(global_npc_table) do
+				v.entity.movement.axis_rotation_degrees = gravity_angle_offset
+			end
 			
 			player.crosshair.transform.current.pos:rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player.body.transform.current.pos)
 			base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
@@ -442,4 +451,4 @@ environment_entity.name = "environment_entity"
 						--player.body.physics.target_angle = 90
 physics_system.b2world:SetGravity(b2Vec2(base_gravity.x, base_gravity.y))
 
-					my_basic_npc.body.pathfinding:start_exploring()
+my_basic_npc.body.pathfinding:start_exploring()
