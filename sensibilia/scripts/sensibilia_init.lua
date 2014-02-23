@@ -1,5 +1,8 @@
 script_reloader:add_directory ("sensibilia\\scripts", true)
 
+CURRENT_LEVEL = "sensibilia/maps/example_map"
+
+
 textures = 						open_script "sensibilia\\scripts\\resources\\textures.lua"
 
 layers = 						open_script "sensibilia\\scripts\\resources\\layers.lua"

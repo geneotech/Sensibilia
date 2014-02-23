@@ -1,6 +1,7 @@
 dofile "sensibilia\\scripts\\instability_ray.lua"
 
-print (table.inspect(tiled_map_loader.get_all_textures("sensibilia/maps/example_map")))
+example_map = tiled_map_loader.load_map(CURRENT_LEVEL)
+
 
 debug_target_sprite = create_sprite {
 	image = images.blank,
@@ -82,21 +83,9 @@ poly2 = {
 	{ x = 0, y = 660 }
 }
 
-
-function to_vec2_table(xytable)
-	local newtable = {}
-	
-	for k, v in pairs(xytable) do
-		newtable[k] = vec2(v.x, v.y)*5
-	end
-	
-	return newtable
-end
-
 ground_poly = simple_create_polygon (
 	(to_vec2_table(poly1))
 )
-
 
 ground_poly2 = simple_create_polygon ( (
 	to_vec2_table(poly2)

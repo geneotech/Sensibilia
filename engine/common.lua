@@ -186,3 +186,12 @@ function orthographic_projection(left, right, bottom, top, near, far)
 	return new_vec
 end
 
+function to_vec2_table(xytable)
+	local newtable = {}
+	
+	for k, v in pairs(xytable) do
+		newtable[k] = vec2(v.x, v.y)
+	end
+	
+	return newtable
+end
