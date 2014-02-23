@@ -6,7 +6,7 @@ tiled_map_loader = {
 	
 	texture_property_name = "texture",
 	type_library = "sensibilia/maps/object_types",
-	map_scale = 1,
+	map_scale = 5,
 	
 	for_every_object = function(filename, callback)
 		local this = tiled_map_loader
@@ -94,6 +94,23 @@ tiled_map_loader = {
 		this.for_every_object(filename, function(object, this_type_table)
 			local shape = object.shape
 			local used_texture = textures_by_name[this_type_table.texture]
+			
+			-- handle object scale now, to simplify further calculations
+			
+			object.x = object.x * this.map_scale
+			object.y = object.y * this.map_scale
+			object.width = object.width * this.map_scale
+			object.height = object.height * this.map_scale
+			
+			if object.polygon ~= nil then
+				for k, v in ipairs(object.polygon) do
+					object.polygon[k].x = v.x * this.map_scale
+					object.polygon[k].y = v.y * this.map_scale
+				end
+			end
+			
+			-- begin processing
+			
 			local final_entity_table = {
 				transform = {
 					pos = vec2(object.x, object.y)
@@ -106,17 +123,21 @@ tiled_map_loader = {
 				local new_polygon = simple_create_polygon (to_vec2_table (object.polygon))
 				map_uv_square(new_polygon, used_texture)
 				
-				final_entity_table = archetyped(final_entity_table, { render = { model = new_polygon } })
+				final_entity_table.render = { model = new_polygon }
 				table.insert(map_object.all_polygons, new_polygon)
 			elseif shape == "rectangle" then
 				physics_body_type = physics_info.RECT
 				
+				local rect_size = vec2(object.width, object.height)
 				local new_rectangle = create_sprite { 
 					image = used_texture,
-					size = vec2(object.width, object.height)
+					size = rect_size
 				}
 				
-				final_entity_table = archetyped(final_entity_table, { render = { model = new_rectangle } })
+				final_entity_table.render = { model = new_rectangle }
+				
+				-- shift position by half of the rectangle size 
+				final_entity_table.transform.pos = final_entity_table.transform.pos + rect_size / 2
 				table.insert(map_object.all_sprites, new_rectangle)
 			else
 				err ("shape type unsupported!")
