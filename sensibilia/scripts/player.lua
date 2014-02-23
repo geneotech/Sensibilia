@@ -1,3 +1,12 @@
+
+player_class = inherits_from (character_class)
+
+function player_class:take_damage(amount_ms)
+	instability = instability + amount_ms / 4000
+end
+	
+	
+
 player_sprite = create_sprite {
 	image = images.blank,
 	size = vec2(30, 100)
@@ -147,7 +156,7 @@ player = spawn_character ({
 			intent_message.AIM
 		}
 	},
-}, character_class, 12000)
+}, player_class, 12000)
 
 get_self(player.body:get()):set_foot_sensor_from_sprite(player_sprite, 3, 1)
 get_self(player.body:get()).hp = 30000

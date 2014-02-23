@@ -9,7 +9,9 @@ npc_class = inherits_from (character_class)
 function npc_class:constructor(subject_entity, base_movement_speed)
 	character_class.constructor(self, subject_entity, base_movement_speed)
 	self.ray_caster = instability_ray_caster:create(subject_entity, filter_instability_ray_enemy)
-	self.ray_caster.ray_quad_end_width = 30
+	self.ray_caster.ray_quad_end_width = 160
+	self.ray_caster.polygon_color = rgba(255, 0, 0, 255)
+	self.ray_caster.radius_of_effect = 2000
 	
 	self.steering_behaviours = {	
 		target_seeking = behaviour_state(target_seek_steering),
@@ -384,7 +386,7 @@ my_npc_archetype = {
 		},
 		
 		transform = {
-			pos = vec2(1000, -5000)
+			pos = vec2(10000, -5000)
 		},
 		
 		visibility = {
@@ -419,15 +421,16 @@ my_npc_archetype = {
 	}
 }
 
-my_npc = spawn_character(my_npc_archetype, npc_class, 12000)
-my_npc2 = spawn_character(my_npc_archetype, npc_class, 12000)
---my_npc3 = spawn_character(my_npc_archetype, npc_class, 12000)
+my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = vec2(1000, -5000) } }}), npc_class, 12000)
+my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = vec2(4000, -5000) }} }), npc_class, 12000)
+my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = vec2(7000, -5000) }} }), npc_class, 12000)
+
 --
 get_self(my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
 get_self(my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
 --
 --
 my_npc.body:get().pathfinding:start_exploring()
 my_npc2.body:get().pathfinding:start_exploring()
---my_npc3.body:get().pathfinding:start_exploring()
+my_npc3.body:get().pathfinding:start_exploring()

@@ -200,7 +200,6 @@ loop_only_info = create_scriptable_info {
 			instability_decreaser:reset()
 				
 			handle_dying_instability_rays()
-			--print (instability)
 		end
 	}
 }

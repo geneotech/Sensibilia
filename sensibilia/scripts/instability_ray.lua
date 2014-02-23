@@ -57,6 +57,8 @@ function instability_ray_caster:constructor(entity, ray_filter)
 	self.instability_ray_filter = ray_filter
 	-- for rendering
 	table.insert(global_instability_rays, self)
+	
+	self.polygon_color = rgba(255, 255, 255, 255)
 end
 
 function instability_ray_caster:generate_triangles(camera_transform, output_buffer, visible_area)
@@ -141,10 +143,10 @@ function instability_ray_caster:loop()
 		
 		local new_trace = {
 			poly = create_polygon ({
-				{ pos = polygon_table[1], color = rgba(255, 255, 255, 255), texcoord = vec2(0, 0), image = images.blank },
-				{ pos = polygon_table[2], color = rgba(255, 255, 255, 255), texcoord = vec2(1, 0), image = images.blank },
-				{ pos = polygon_table[3], color = rgba(255, 255, 255, 255), texcoord = vec2(1, 1), image = images.blank },
-				{ pos = polygon_table[4], color = rgba(255, 255, 255, 255), texcoord = vec2(0, 1), image = images.blank }
+				{ pos = polygon_table[1], color = self.polygon_color, texcoord = vec2(0, 0), image = images.blank },
+				{ pos = polygon_table[2], color = self.polygon_color, texcoord = vec2(1, 0), image = images.blank },
+				{ pos = polygon_table[3], color = self.polygon_color, texcoord = vec2(1, 1), image = images.blank },
+				{ pos = polygon_table[4], color = self.polygon_color, texcoord = vec2(0, 1), image = images.blank }
 			}),
 			alpha_animator = value_animator(255, -0.1, 250)
 		}
