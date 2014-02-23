@@ -16,7 +16,6 @@ void main()
 	// get the pixel from scene
 	vec4 pixel = texture(basic_texture, theTexcoord);
 	
-	
 	// get the corresponding pixel from intensity map
 	vec4 intensity_pixel = texture(intensity_texture, theTexcoord); 
 	
@@ -35,8 +34,8 @@ void main()
 	
 	float used_multiplier = multiplier + (1-enemy_intensity)*1;
 	// shortcuts to simplify notation
-	float X = 70*(1-multiplier) - 10*basic_intensity;
-	float Y = 70*(1-multiplier) - 10*basic_intensity;
+	float X = 70*(1-multiplier) - 10*basic_intensity - 5*enemy_intensity;
+	float Y = 70*(1-multiplier) - 10*basic_intensity - 5*enemy_intensity;
 	
 	float ac = cos(rotation);
 	float as = sin(rotation);
@@ -64,6 +63,7 @@ void main()
 	float fractal_amnt = ((i == iterations ? 0.0 : float(i)) / iterations);
 	
 	effect_amount = 15 + (enemy_intensity)*2;
+	
 	// totally random calculations that produce interesting color effect
 	vec4 my_colors = 
 	
@@ -85,8 +85,6 @@ void main()
 	// interpolate between the actual pixel on scene and the calculated pixel
 	outputColor = mix(mix(pixel, vec4(avg_pixel, avg_pixel, avg_pixel, 1.0), multiplier*multiplier), my_colors, basic_intensity * ((my_colors.r +my_colors.g +my_colors.b)/3)
 	); 
-	//outputColor = vec4(vec3(fractal_amnt), 1.0);
-	//outputColor = texture(basic_texture, theTexcoord+vec2(fractal_amnt*0.02, -fractal_amnt*0.02));
 }
 
 ]])

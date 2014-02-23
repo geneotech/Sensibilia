@@ -1,5 +1,7 @@
 dofile "sensibilia\\scripts\\instability_ray.lua"
 
+print (table.inspect(tiled_map_loader.get_all_textures("sensibilia/maps/example_map")))
+
 debug_target_sprite = create_sprite {
 	image = images.blank,
 	size = vec2(50, 50),
