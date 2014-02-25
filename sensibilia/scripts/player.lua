@@ -93,7 +93,7 @@ player = spawn_character ({
 		},
 		
 		transform = {
-			pos = example_map.world_information["PLAYER_START"][1].pos
+			pos = world_information["PLAYER_START"][1].pos
 		},
 		
 		input = {

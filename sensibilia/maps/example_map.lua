@@ -517,12 +517,100 @@ return {
       objects = {
         {
           name = "",
-          type = "bg_object_1",
+          type = "bg_object_3",
           shape = "rectangle",
-          x = 0,
-          y = 0,
-          width = 2464,
-          height = 2528,
+          x = 64,
+          y = 64,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 864,
+          y = 64,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 1664,
+          y = 64,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 864,
+          y = 800,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 64,
+          y = 800,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 1664,
+          y = 800,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 864,
+          y = 1536,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 64,
+          y = 1536,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 1664,
+          y = 1536,
+          width = 800,
+          height = 736,
           visible = true,
           properties = {}
         }

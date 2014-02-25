@@ -67,6 +67,23 @@ tiled_map_loader = {
 						-- rest of the validations (after the properties have been overridden)
 					end
 					
+					-- handle object scale now, to simplify further calculations
+					
+					object.x = object.x * this.map_scale
+					object.y = object.y * this.map_scale
+					object.width = object.width * this.map_scale
+					object.height = object.height * this.map_scale
+					
+					if object.polygon ~= nil then
+						for k, v in ipairs(object.polygon) do
+							object.polygon[k].x = v.x * this.map_scale
+							object.polygon[k].y = v.y * this.map_scale
+						end
+					end
+					
+					-- convenience field
+					object.pos = vec2(object.x, object.y)
+			
 					-- callback
 					callback(object, output_type_table)
 				end
@@ -91,6 +108,27 @@ tiled_map_loader = {
 		
 		return needed_textures
 	end,
+		
+	load_world_properties = function (filename)
+		local this = tiled_map_loader
+		
+		local world_information = {}
+	
+		this.for_every_object(filename, function(object, this_type_table)
+			-- if type of this object matches with any requested world information string (e.g. PLAYER_POS, ENEMY_POS),
+			-- then insert this object into world information table for this map
+			if require(this.world_information_library)[object.type] == true then
+				if world_information[object.type] == nil then
+					world_information[object.type] = {}
+				end
+				
+				table.insert(world_information[object.type], object)
+			end
+		end)
+		
+		return world_information
+	end,
+
 	
 	load_map = function (filename)	
 		local this = tiled_map_loader
@@ -103,39 +141,20 @@ tiled_map_loader = {
 			},
 			
 			all_polygons = {},
-			all_sprites = {},
-			
-			world_information = {}
+			all_sprites = {}
 		}
 			
 		this.for_every_object(filename, function(object, this_type_table)
-			-- handle object scale now, to simplify further calculations
-			
-			object.x = object.x * this.map_scale
-			object.y = object.y * this.map_scale
-			object.width = object.width * this.map_scale
-			object.height = object.height * this.map_scale
-			
-			if object.polygon ~= nil then
-				for k, v in ipairs(object.polygon) do
-					object.polygon[k].x = v.x * this.map_scale
-					object.polygon[k].y = v.y * this.map_scale
-				end
-			end
-			
-			-- convenience field
-			object.pos = vec2(object.x, object.y)
-			
-			-- if type of this object matches with any requested world information string (e.g. PLAYER_POS, ENEMY_POS),
-			-- then insert this object into world information table for this map
-			if require(this.world_information_library)[object.type] == true then
-				if map_object.world_information[object.type] == nil then
-					map_object.world_information[object.type] = {}
+			-- do it only for non-property entities
+			if require(this.world_information_library)[object.type] == nil then
+				local final_entity_table = {}
+				
+				local final_color = rgba(255, 255, 255, 255)
+				
+				if this_type_table.color ~= nil then
+					final_color = this_type_table.color
 				end
 				
-				table.insert(map_object.world_information[object.type], object)
-			else
-				local final_entity_table = {}
 				-- begin processing the newly to be created entity
 				local shape = object.shape
 				local used_texture = textures_by_name[this_type_table.texture]
@@ -146,6 +165,7 @@ tiled_map_loader = {
 					physics_body_type = physics_info.POLYGON
 					local new_polygon = simple_create_polygon (reversed(to_vec2_table (object.polygon)))
 					map_uv_square(new_polygon, used_texture)
+					set_color(new_polygon, final_color)
 					
 					final_entity_table.render = { model = new_polygon }
 					table.insert(map_object.all_polygons, new_polygon)
@@ -155,7 +175,8 @@ tiled_map_loader = {
 					local rect_size = vec2(object.width, object.height)
 					local new_rectangle = create_sprite { 
 						image = used_texture,
-						size = rect_size
+						size = rect_size,
+						color = final_color
 					}
 					
 					final_entity_table.render = { model = new_rectangle }
@@ -179,6 +200,7 @@ tiled_map_loader = {
 					final_entity_table.chase = {
 						scrolling_speed = tonumber(this_type_table.scrolling_speed),
 						reference_position = object.pos,
+						target_reference_position = this.world_camera_entity.transform.current.pos,
 						
 						chase_type = chase_component.PARALLAX,
 						target = this.world_camera_entity,

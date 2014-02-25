@@ -57,7 +57,7 @@ dofile "sensibilia\\scripts\\rendering_routine.lua"
 
 world_camera = create_entity (archetyped(camera_archetype, {
 	transform = {
-		pos = vec2(),
+		pos = world_information["PLAYER_START"][1].pos,
 		rotation = 0
 	},
 

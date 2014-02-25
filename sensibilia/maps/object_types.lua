@@ -15,9 +15,7 @@ local environmental_archetype = {
 }
 
 return {
-	world_property_default_type = {
-	
-	},
+	world_property_default_type = {},
 
 	default_type = {
 		render_layer = "OBJECTS",
@@ -25,8 +23,9 @@ return {
 		entity_archetype = environmental_archetype
 	},
 	
-	bg_object_1 = {
-		render_layer = "BACKGROUND",
+	bg_object_3 = {
+		color = rgba(122, 122, 122, 255),
+		render_layer = "BACKGROUND_3",
 		scrolling_speed = 0.5,
 		texture = "my_type_1.jpg",
 		entity_archetype = {}

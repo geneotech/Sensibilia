@@ -18,6 +18,8 @@ changing_gravity = false
 current_gravity = vec2(0, 120)
 
 dofile "sensibilia\\scripts\\input.lua"
+
+world_information = tiled_map_loader.load_world_properties (CURRENT_LEVEL)
 dofile "sensibilia\\scripts\\camera.lua"
 
 tiled_map_loader.world_camera_entity = world_camera
