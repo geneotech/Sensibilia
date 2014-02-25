@@ -27,7 +27,7 @@ return {
 	
 	bg_object_1 = {
 		render_layer = "BACKGROUND",
-		scrolling_speed = 1,
+		scrolling_speed = 0.5,
 		texture = "my_type_1.jpg",
 		entity_archetype = {}
 	},

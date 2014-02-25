@@ -17,8 +17,9 @@ tiled_map_loader = {
 		local this = tiled_map_loader
 		local err = this.error_callback
 		
-		local map_table = require(filename)
-		local type_table = require(this.type_library)
+		-- get them by copy
+		local map_table = archetyped(require(filename), {})
+		local type_table = archetyped(require(this.type_library), {})
 		
 		if type_table == nil then 
 			err ("error loading type table " .. this.type_library)
