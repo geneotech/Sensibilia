@@ -135,25 +135,10 @@ tiled_map_loader = {
 				
 				table.insert(map_object.world_information[object.type], object)
 			else
+				local final_entity_table = {}
 				-- begin processing the newly to be created entity
 				local shape = object.shape
 				local used_texture = textures_by_name[this_type_table.texture]
-			
-				local final_entity_table = {
-					transform = {
-						pos = object.pos
-					}
-				}
-				
-				if this_type_table.scrolling_speed ~= nil then
-					final_entity_table.chase = {
-						scrolling_speed = tonumber(this_type_table.scrolling_speed),
-						reference_position = object.pos,
-						
-						chase_type = chase_component.PARALLAX,
-						target = this.world_camera_entity
-					}
-				end
 				
 				local physics_body_type = 0
 				
@@ -176,7 +161,7 @@ tiled_map_loader = {
 					final_entity_table.render = { model = new_rectangle }
 					
 					-- shift position by half of the rectangle size 
-					final_entity_table.transform.pos = final_entity_table.transform.pos + rect_size / 2
+					object.pos = object.pos + rect_size / 2
 					table.insert(map_object.all_sprites, new_rectangle)
 				else
 					err ("shape type unsupported!")
@@ -186,7 +171,22 @@ tiled_map_loader = {
 					final_entity_table.render.layer = render_layers[this_type_table.render_layer]
 				end
 				
-				-- handle physicsal body request
+				final_entity_table.transform = {
+					pos = object.pos
+				}
+				
+				if this_type_table.scrolling_speed ~= nil then
+					final_entity_table.chase = {
+						scrolling_speed = tonumber(this_type_table.scrolling_speed),
+						reference_position = object.pos,
+						
+						chase_type = chase_component.PARALLAX,
+						target = this.world_camera_entity,
+						subscribe_to_previous = true
+					}
+				end
+				
+				-- handle physical body request
 				if this_type_table.entity_archetype.physics ~= nil then
 					final_entity_table = archetyped(final_entity_table, { 
 						physics = { 
