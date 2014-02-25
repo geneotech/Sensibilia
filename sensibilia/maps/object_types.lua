@@ -1,5 +1,3 @@
-
-
 local environmental_archetype = {
 	physics = {
 		body_type = Box2D.b2_staticBody,
@@ -13,28 +11,35 @@ local environmental_archetype = {
 			linear_damping = 10,
 			angular_damping = 10
 		}
-	},
-	
-	render = {
-		layer = render_layers.BACKGROUND
 	}
 }
 
-
 return {
+	world_property_default_type = {
+	
+	},
+
 	default_type = {
-		czo = 2,
-		texture = "blank.png",
+		render_layer = "OBJECTS",
+		texture = "my_type_1.jpg",
 		entity_archetype = environmental_archetype
 	},
 	
+	bg_object_1 = {
+		render_layer = "BACKGROUND",
+		scrolling_speed = 1,
+		texture = "my_type_1.jpg",
+		entity_archetype = {}
+	},
+	
 	my_type_1 = {
-		jacie = 234234,
+		render_layer = "OBJECTS",
 		texture = "my_type_1.jpg",
 		entity_archetype = environmental_archetype
 	},
 	
 	my_type_2 = {
+		render_layer = "OBJECTS",
 		texture = "my_type_2.jpg",
 		entity_archetype = environmental_archetype
 	}

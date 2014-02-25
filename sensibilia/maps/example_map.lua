@@ -95,7 +95,7 @@ return {
     },
     {
       type = "objectgroup",
-      name = "Foreground",
+      name = "main",
       visible = true,
       opacity = 1,
       properties = {},
@@ -359,8 +359,82 @@ return {
             { x = 64, y = 160 }
           },
           properties = {}
+        },
+        {
+          name = "",
+          type = "PLAYER_START",
+          shape = "rectangle",
+          x = 1248,
+          y = 1376,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "ENEMY_START",
+          shape = "rectangle",
+          x = 160,
+          y = 64,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "ENEMY_START",
+          shape = "rectangle",
+          x = 1184,
+          y = 64,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "ENEMY_START",
+          shape = "rectangle",
+          x = 704,
+          y = 320,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
+    },
+    {
+      type = "objectgroup",
+      name = "Background",
+      visible = false,
+      opacity = 1,
+      properties = {
+        ["scrolling_speed"] = "0.1"
+      },
+      objects = {
+        {
+          name = "",
+          type = "bg_object_1",
+          shape = "rectangle",
+          x = 64,
+          y = 32,
+          width = 1504,
+          height = 1728,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Object Layer 3",
+      visible = false,
+      opacity = 1,
+      properties = {},
+      objects = {}
     }
   }
 }

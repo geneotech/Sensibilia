@@ -421,9 +421,9 @@ my_npc_archetype = {
 	}
 }
 
-my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = vec2(1000, -5000) } }}), npc_class, 12000)
-my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = vec2(4000, -5000) }} }), npc_class, 12000)
-my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = vec2(7000, -5000) }} }), npc_class, 12000)
+my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = example_map.world_information["ENEMY_START"][1].pos } }}), npc_class, 12000)
+my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = example_map.world_information["ENEMY_START"][2].pos }} }), npc_class, 12000)
+my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = example_map.world_information["ENEMY_START"][3].pos }} }), npc_class, 12000)
 
 --
 get_self(my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)

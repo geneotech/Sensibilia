@@ -32,7 +32,7 @@ random_instability_ray_layer_order = coroutine.wrap(
 		while true do
 			coroutine.wait(randval(50, 100), nil, false)
 			
-			is_instability_ray_over_postprocessing = true
+			--is_instability_ray_over_postprocessing = true
 		end
 	end
 )
@@ -74,6 +74,8 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			random_instability_ray_layer_order()
 			
 			if instability > 1 then instability = 1 end
+			
+			is_instability_ray_over_postprocessing = not (instability > 0.4)
 			
 			local prev_instability = instability
 			instability = instability + temporary_instability
@@ -145,7 +147,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				spatial_instability_program:use()
 				
 				
-				GL.glUniform1i(spatial_instability_time, accumulated_camera_time - extracted_ms + extracted_ms * instability)
+				GL.glUniform1i(spatial_instability_time, (accumulated_camera_time - extracted_ms + extracted_ms * instability) * physics_system.timestep_multiplier)
 				GL.glUniform1f(spatial_instability_rotation, (player.crosshair:get().transform.current.pos - player.body:get().transform.current.pos):perpendicular_cw():get_radians() + 3.14159265)
 				GL.glUniform1f(spatial_instability_multiplier, instability)
 				

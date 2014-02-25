@@ -68,9 +68,9 @@ void main()
 	vec4 my_colors = 
 	
 	vec4(
-		cos(fractal_amnt*used_multiplier*10+rt.x*X+used_time+effect_pixel.r*effect_amount+(enemy_intensity))+sin(rt.y*Y+used_time*2.0+effect_pixel.r*effect_amount),	
-		(sin(fractal_amnt*used_multiplier*10+rt.x*Y+effect_pixel.g*effect_amount)+cos(rt.y*X+used_time+effect_pixel.g*effect_amount)),
-		(sin(fractal_amnt*used_multiplier*10+rt.x*rt.y+used_time+effect_pixel.b*effect_amount)+cos(rt.y*X+used_time+effect_pixel.b*effect_amount+(enemy_intensity))), 
+		cos(fractal_amnt*10+rt.x*X+used_time+effect_pixel.r*effect_amount+(enemy_intensity))+sin(fractal_amnt*10+rt.y*Y+used_time*2.0+effect_pixel.r*effect_amount),	
+		(sin(fractal_amnt*10+rt.x*Y+effect_pixel.g*effect_amount)+cos(fractal_amnt*10+rt.y*X+used_time+effect_pixel.g*effect_amount)),
+		(sin(fractal_amnt*10+rt.x*rt.y+used_time+effect_pixel.b*effect_amount)+cos(fractal_amnt*10+rt.y*X+used_time+effect_pixel.b*effect_amount+(enemy_intensity))), 
 		1.0
 	);
 	
@@ -78,12 +78,12 @@ void main()
 	my_colors = clamp(my_colors, vec4(0.0), vec4(1.0));
 
 	float avg = (my_colors.r + my_colors.g + my_colors.b) / 3;
-	my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), enemy_intensity);
+	my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), 1);
 	
 	float avg_pixel = (pixel.r + pixel.g + pixel.b) / 3;
 	
 	// interpolate between the actual pixel on scene and the calculated pixel
-	outputColor = mix(mix(pixel, vec4(avg_pixel, avg_pixel, avg_pixel, 1.0), multiplier*multiplier), my_colors, basic_intensity * ((my_colors.r +my_colors.g +my_colors.b)/3)
+	outputColor = mix(mix(pixel, vec4(avg_pixel, avg_pixel, avg_pixel, 1.0), 0.8), my_colors, basic_intensity //* ((my_colors.r +my_colors.g +my_colors.b)/3)
 	); 
 }
 

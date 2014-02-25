@@ -1,7 +1,5 @@
 dofile "sensibilia\\scripts\\instability_ray.lua"
 
-example_map = tiled_map_loader.load_map(CURRENT_LEVEL)
-
 
 debug_target_sprite = create_sprite {
 	image = images.blank,
@@ -22,98 +20,12 @@ current_gravity = vec2(0, 120)
 dofile "sensibilia\\scripts\\input.lua"
 dofile "sensibilia\\scripts\\camera.lua"
 
+tiled_map_loader.world_camera_entity = world_camera
+example_map = tiled_map_loader.load_map(CURRENT_LEVEL)
+
 current_zoom_level = 0
 current_zoom_level = 5000
 set_zoom_level(world_camera)
-
-function set_color(poly, col)
-	for i = 0, poly:get_vertex_count()-1 do
-		poly:get_vertex(i).color = col
-	end
-end
-
-environment_archetype = {
-	physics = {
-		body_type = Box2D.b2_staticBody,
-		
-		body_info = {
-			shape_type = physics_info.POLYGON,
-			filter = filter_static_objects,
-			density = 1000,
-			friction = 0.1,
-			
-			linear_damping = 10,
-			angular_damping = 10
-		}
-	},
-	
-	render = {
-		layer = render_layers.BACKGROUND
-	},
-	
-	transform = {
-	
-	}
-}
-
-poly1 = {
-    { x = 0, y = 0 },
-    { x = 0, y = 340 },
-    { x = 640, y = 340 },
-    { x = 640, y = 280 },
-    { x = 60, y = 280 },
-    { x = 60, y = 180 },
-    { x = 240, y = 180 },
-    { x = 240, y = 120 },
-    { x = 60, y = 120 },
-    { x = 60, y = 0 }
-}
-
-poly2 = {
-	{ x = 0, y = 0 },
-	{ x = -80, y = 80 },
-	{ x = -80, y = 740 },
-	{ x = 720, y = 820 },
-	{ x = 1160, y = 760 },
-	{ x = 1180, y = 40 },
-	{ x = 960, y = -20 },
-	{ x = 1060, y = 120 },
-	{ x = 1040, y = 700 },
-	{ x = 720, y = 720 },
-	{ x = 0, y = 660 }
-}
-
-ground_poly = simple_create_polygon (
-	(to_vec2_table(poly1))
-)
-
-ground_poly2 = simple_create_polygon ( (
-	to_vec2_table(poly2)
-))
-
-map_uv_square(ground_poly, images.metal)
-map_uv_square(ground_poly2, images.metal)
-set_color(ground_poly, rgba(255, 255, 225, 255))
-set_color(ground_poly2, rgba(255, 255, 225, 255))
-
-environment_entity = create_entity (archetyped(environment_archetype, {
-	transform = {
-		pos = vec2(220, 140)*5
-	},
-	
-	render = {
-		model = ground_poly
-	}
-}))
-
-environment_entity2 = create_entity (archetyped(environment_archetype, {
-	transform = {
-		pos = vec2(140, 60)*5
-	},
-	render = {
-		model = ground_poly2
-	}
-}))
 
 dofile "sensibilia\\scripts\\character.lua"
 dofile "sensibilia\\scripts\\player.lua"
@@ -121,7 +33,6 @@ dofile "sensibilia\\scripts\\player.lua"
 base_crosshair_rotation = 0
 
 instability_decreaser = timer()
-
 
 loop_only_info = create_scriptable_info {
 	scripted_events = {
@@ -212,135 +123,7 @@ create_entity {
 	}	
 }
 
-global_sprites = {}
-
-swing_script = create_scriptable_info {
-	scripted_events = {
-		[scriptable_component.LOOP] = function(subject)
-			subject.physics.body:SetGravityScale(randval(-0.01, 0.01))
-			subject.physics.body:ApplyTorque(randval(-0.1, 0.1), true)
-		end
-	}
-}
-
-
-
-rects = {
-	{
-       x = 840,
-       y = 660,
-       width = 100,
-       height = 20
-	},
-    
-	{
-      x = 980,
-      y = 540,
-      width = 100,
-      height = 40
-    },
-    
-	{
-      x = 1040,
-      y = 220,
-      width = 100,
-      height = 40
-    },
-	
-    {
-      x = 680,
-      y = 280,
-      width = 100,
-      height = 60
-    }
-}
-
-for k, v in pairs(rects) do
-	local my_sprite = create_sprite {
-		image = images.blank,
-		color = rgba(0, 255, 0, 125),
-		size = vec2(v.width, v.height)*5
-	}
-	
-	table.insert(global_sprites, my_sprite)
-
-	local new_entity = create_entity(archetyped(environment_archetype, {
-		transform = {
-			pos = vec2(v.x, v.y)*5,
-			--pos = vec2(300, -200),
-			rotation = 0
-			--rotation = 0
-		},
-		
-		physics = {
-			body_type = Box2D.b2_staticBody,
-			
-			body_info = {
-				shape_type = physics_info.RECT,
-				density = 1000,
-				restitution = randval(0.00, 0.01)
-			}
-		},
-		
-		render = {
-			model = my_sprite
-		}
-		
-		--scriptable = {
-		--	available_scripts = swing_script
-		--}
-	}))
-	
-	new_entity.physics.body:SetGravityScale(0)
-end
-
-
-
---for i = 1, 50 do
---	local my_sprite = create_sprite {
---		image = images.blank,
---		color = rgba(0, 255, 0, 125),
---		size = vec2(randval(100, 3000), randval(100, 400))
---	}
---	
---	table.insert(global_sprites, my_sprite)
---
---	local new_entity = create_entity(archetyped(environment_archetype, {
---		transform = {
---			pos = vec2(randval(-8000, 16000), randval(-6000, -1000)),
---			--pos = vec2(300, -200),
---			rotation = randval(0, 360)
---			--rotation = 0
---		},
---		
---		physics = {
---			body_type = Box2D.b2_dynamicBody,
---			
---			body_info = {
---				shape_type = physics_info.RECT,
---				density = 1000,
---				restitution = randval(0.00, 0.01)
---			}
---		},
---		
---		render = {
---			model = my_sprite
---		}
---		
---		--scriptable = {
---		--	available_scripts = swing_script
---		--}
---	}))
---	
---	new_entity.physics.body:SetGravityScale(0)
---	
---
---end
-
-
-
 player.body:get().name = "player_body"
-environment_entity.name = "environment_entity"
 
 						--player.body:get().physics.body:SetFixedRotation(false)
 						--player.body:get().physics.enable_angle_motor = true
