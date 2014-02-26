@@ -21,6 +21,7 @@ void main()
 	
 	float enemy_intensity = intensity_pixel.r;
 	float player_intensity = intensity_pixel.g;
+	float light_intensity = intensity_pixel.b;
 	
 	float basic_intensity = max(enemy_intensity, player_intensity);
 	
@@ -34,8 +35,8 @@ void main()
 	
 	float used_multiplier = multiplier + (1-enemy_intensity)*1;
 	// shortcuts to simplify notation
-	float X = 70*(1-multiplier) - 10*basic_intensity - 5*enemy_intensity;
-	float Y = 70*(1-multiplier) - 10*basic_intensity - 5*enemy_intensity;
+	float X = 50*(1-multiplier) - 10*basic_intensity - 5*enemy_intensity;
+	float Y = 50*(1-multiplier) - 10*basic_intensity - 5*enemy_intensity;
 	
 	float ac = cos(rotation);
 	float as = sin(rotation);
@@ -49,7 +50,7 @@ void main()
 	- vec2(0.5+sin(used_time/50)*0.15 + 0.1*basic_intensity,0.5+sin(used_time/50)*0.15+ 0.1*basic_intensity)*1.2;
 	vec2 c = vec2(0.36+tan(used_time/20 + rotation )*0.007, 0.36+tan(used_time/20 - rotation)*0.007);
 
-	int iterations = 100;
+	int iterations = 0;
     int i;
     for(i=0; i<iterations; i++) {
         float x = (z.x * z.x - z.y * z.y) + c.x;
@@ -61,6 +62,7 @@ void main()
     }
 	
 	float fractal_amnt = ((i == iterations ? 0.0 : float(i)) / iterations);
+	fractal_amnt = 0.0;
 	
 	effect_amount = 15 + (enemy_intensity)*2;
 	
@@ -78,7 +80,9 @@ void main()
 	my_colors = clamp(my_colors, vec4(0.0), vec4(1.0));
 
 	float avg = (my_colors.r + my_colors.g + my_colors.b) / 3;
-	my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), 1);
+	my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), (enemy_intensity != 0) ? 1 : 0);
+	
+	pixel = mix(vec4(0.7) * (vec4(-0.1) + pixel), vec4(2.5) * (vec4(0.1) + pixel), (light_intensity*light_intensity) * (1+(tan(used_time/50*(1-multiplier))*0.07*multiplier))); 
 	
 	float avg_pixel = (pixel.r + pixel.g + pixel.b) / 3;
 	

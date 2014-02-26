@@ -32,6 +32,7 @@ function character_class:constructor(subject_entity, base_movement_speed)
 	
 	self.ray_caster = instability_ray_caster:create(subject_entity, filter_instability_ray_player)
 	self.ray_caster.polygon_color = rgba(0, 255, 0, 255);
+	self.ray_caster.radius_of_effect = 2000
 	
 	self:update_movement_speeds()
 end

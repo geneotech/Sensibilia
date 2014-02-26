@@ -94,7 +94,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			local player_pos = player.crosshair:get().transform.current.pos
 			GL.glUniform2f(player_pos_uniform, player_pos.x, player_pos.y)
 			
-			instability = instability - temporary_instability + temporary_instability/3
+			instability = instability - temporary_instability + temporary_instability/10
 			vertex_shift_coroutine(instability)
 			instability = prev_instability + temporary_instability
 			
@@ -108,6 +108,22 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			for k, v in ipairs(global_instability_rays) do
 				v:generate_triangles(drawn_transform, renderer.triangles, visible_area)
 			end
+			
+			
+			local my_draw_input = draw_input()
+			my_draw_input.camera_transform = drawn_transform
+			my_draw_input.transform = player.crosshair:get().transform.current
+			my_draw_input.output = renderer.triangles
+			my_draw_input.visible_area = rect_ltrb(visible_area)
+		
+			local my_sprite = 
+			(create_sprite {
+				image = images.crosshair_map,
+				color = rgba(0, 0, 255, 255),
+				size_multiplier = vec2(5, 5)
+			})
+			
+			my_sprite:draw(my_draw_input)
 			
 			renderer:call_triangles()
 			renderer:clear_triangles()
