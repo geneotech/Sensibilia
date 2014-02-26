@@ -139,7 +139,7 @@ player = spawn_character ({
 		
 		render = {
 			layer = render_layers.GUI_OBJECTS,
-			model = my_crosshair_sprite
+			model = nil
 		},
 		
 		crosshair = {
