@@ -179,6 +179,19 @@ function add_vals(target_vector, vals)
 	end
 end
 
+
+function vector_to_table(source_vector)
+	local output = {}
+	local vec_size = source_vector:size()
+	
+	for i=0, vec_size-1 do
+		table.insert(output, source_vector:at(i))
+	end
+	
+	return output
+end
+
+
 function orthographic_projection(left, right, bottom, top, near, far)
 	local new_vec = float_vector()
 	add_vals(new_vec, {

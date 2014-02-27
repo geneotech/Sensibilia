@@ -9,9 +9,10 @@ npc_class = inherits_from (character_class)
 function npc_class:constructor(subject_entity, base_movement_speed)
 	character_class.constructor(self, subject_entity, base_movement_speed)
 	self.ray_caster = instability_ray_caster:create(subject_entity, filter_instability_ray_enemy)
-	self.ray_caster.ray_quad_end_width = 800
+	self.ray_caster.ray_quad_width = randval(10, 10)
+	self.ray_caster.ray_quad_end_width = randval(50, 50)
 	self.ray_caster.polygon_color = rgba(255, 0, 0, 255)
-	self.ray_caster.radius_of_effect = 200
+	self.ray_caster.radius_of_effect = randval(20, 2500)
 	self.hp = 500
 	
 	self.steering_behaviours = {	

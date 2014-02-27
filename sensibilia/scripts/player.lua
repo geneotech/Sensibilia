@@ -112,16 +112,16 @@ player = spawn_character ({
 		},
 		
 			
-		--visibility = {
-		--	visibility_layers = {
-		--		[visibility_component.DYNAMIC_PATHFINDING] = {
-		--			square_side = 15000,
-		--			color = rgba(0, 255, 255, 120),
-		--			ignore_discontinuities_shorter_than = 500,
-		--			filter = filter_pathfinding_visibility
-		--		}
-		--	}
-		--},
+		visibility = {
+			visibility_layers = {
+				[visibility_component.DYNAMIC_PATHFINDING] = {
+					square_side = 15000,
+					color = rgba(0, 255, 255, 120),
+					ignore_discontinuities_shorter_than = 500,
+					filter = filter_pathfinding_visibility
+				}
+			}
+		}
 		--pathfinding = {
 		--	enable_backtracking = true,
 		--	target_offset = 100,

@@ -75,7 +75,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			if instability > 1 then instability = 1 end
 			
-			is_instability_ray_over_postprocessing = not (instability > 0.4)
+			is_instability_ray_over_postprocessing = not (instability > 0.8)
 			
 			local prev_instability = instability
 			instability = instability + temporary_instability
@@ -91,8 +91,10 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			orthographic_projection(visible_area.x, visible_area.r, visible_area.b, visible_area.y, 0, 1):data()
 			)
 			
-			local player_pos = player.crosshair:get().transform.current.pos
-			GL.glUniform2f(player_pos_uniform, player_pos.x, player_pos.y)
+			local crosshair_pos = player.crosshair:get().transform.current.pos
+			local player_pos = player.body:get().transform.current.pos
+			player.body:get().visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2.random_on_circle(randval(1,180))
+			GL.glUniform2f(player_pos_uniform, crosshair_pos.x, crosshair_pos.y)
 			
 			instability = instability - temporary_instability + temporary_instability/10
 			vertex_shift_coroutine(instability)
@@ -105,14 +107,20 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			intensity_fbo:use()
 			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
 			
+		--	GL.glColorMask(GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE)
+			
 			for k, v in ipairs(global_instability_rays) do
 				v:generate_triangles(drawn_transform, renderer.triangles, visible_area)
 			end
 			
+			renderer:call_triangles()
+			renderer:clear_triangles()
+			
+			GL.glColorMask(GL.GL_FALSE, GL.GL_FALSE, GL.GL_TRUE, GL.GL_TRUE)
 			
 			local my_draw_input = draw_input()
 			my_draw_input.camera_transform = drawn_transform
-			my_draw_input.transform = player.crosshair:get().transform.current
+			my_draw_input.transform.pos = crosshair_pos
 			my_draw_input.output = renderer.triangles
 			my_draw_input.visible_area = rect_ltrb(visible_area)
 		
@@ -125,9 +133,24 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			my_sprite:draw(my_draw_input)
 			
+			local visibility_points = vector_to_table(player.body:get().visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING):get_polygon(1))
+			
+			-- expand these points a little
+			--for k, v in ipairs(visibility_points) do
+			--	--visibility_points[k] = visibility_points[k] + 1/(vec2(visibility_points[k] - player_pos):length()+0.01)
+			--end
+			
+			local my_light_poly = simple_create_polygon(visibility_points)
+			map_uv_square(my_light_poly, images.blank)
+			set_color(my_light_poly, rgba(0, 0, 255, 255))
+			
+			my_draw_input.transform.pos = vec2(0, 0)
+			my_light_poly:draw(my_draw_input)
+			
 			renderer:call_triangles()
 			renderer:clear_triangles()
 			
+			GL.glColorMask(GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE)
 			
 			
 			current_postprocessing_fbo = 0
@@ -163,8 +186,23 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				spatial_instability_program:use()
 				
 				
+				local visibility_vec = vec2(visible_area.w, visible_area.h)
+				local screen_space_player = (player_pos - (drawn_transform.pos - visibility_vec/2)) / current_zoom_multiplier
+				local screen_space_crosshair = (crosshair_pos - (drawn_transform.pos - visibility_vec/2))  / current_zoom_multiplier
+				--print "screen"
+				--print (screen_space.x, screen_space.y)
+				--print "player"
+				--print (player_pos.x, player_pos.y)
+				----print "screen space"
+				----print ((player_pos.x - screen_space.x)/visible_area.w, (player_pos.y-screen_space.y)/visible_area.h)
+				--print "screen_space_player"
+				--print (screen_space_player.x, screen_space_player.y)
+				
 				GL.glUniform1i(spatial_instability_time, (accumulated_camera_time - extracted_ms + extracted_ms * instability) * physics_system.timestep_multiplier)
-				GL.glUniform1f(spatial_instability_rotation, (player.crosshair:get().transform.current.pos - player.body:get().transform.current.pos):perpendicular_cw():get_radians() + 3.14159265)
+				GL.glUniform1f(spatial_instability_rotation, (crosshair_pos - player_pos):perpendicular_cw():get_radians() + 3.14159265)
+				GL.glUniform2f(spatial_instability_player_pos, screen_space_player.x, config_table.resolution_h-screen_space_player.y)
+				GL.glUniform2f(spatial_instability_crosshair_pos, screen_space_crosshair.x, config_table.resolution_h-screen_space_crosshair.y)
+				GL.glUniform1f(spatial_instability_zoom, current_zoom_multiplier)
 				GL.glUniform1f(spatial_instability_multiplier, instability)
 				
 				GL.glActiveTexture(GL.GL_TEXTURE1)

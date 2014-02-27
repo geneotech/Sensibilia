@@ -1,9 +1,11 @@
 current_zoom_level = 0
+current_zoom_multiplier = 1
 
 function set_zoom_level(camera)
 	local mult = 1 + (current_zoom_level / 1000)
 	local new_w = config_table.resolution_w*mult
 	local new_h = config_table.resolution_h*mult
+	current_zoom_multiplier = mult
 	camera.camera.ortho = rect_ltrb(rect_xywh(0, 0, new_w, new_h))
 	camera.camera.max_look_expand = vec2(new_w, new_h)/2
 	

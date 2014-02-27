@@ -10,7 +10,7 @@ function handle_dying_instability_rays()
 		if not self.owner_entity:exists() then
 			self:cast(false)
 			
-			if #self.polygon_traces < 1 then
+			if #self.polygon_fader.traces < 1 then
 				table.remove(global_instability_rays, i)
 				was_removed = true
 			else
@@ -50,9 +50,7 @@ function instability_ray_caster:constructor(entity, ray_filter)
 
 	self.trace_timer = timer()
 	
-	self.polygon_traces = {
-	
-	}
+	self.polygon_fader = polygon_fader:create()
 	
 	self.instability_ray_filter = ray_filter
 	-- for rendering
@@ -62,14 +60,7 @@ function instability_ray_caster:constructor(entity, ray_filter)
 end
 
 function instability_ray_caster:generate_triangles(camera_transform, output_buffer, visible_area)
-	for k, v in ipairs(self.polygon_traces) do	
-		local my_draw_input = draw_input()
-		my_draw_input.camera_transform = camera_transform
-		my_draw_input.output = output_buffer
-		my_draw_input.visible_area = rect_ltrb(visible_area)
-		
-		v.poly:draw(my_draw_input)
-	end
+	self.polygon_fader:generate_triangles(camera_transform, output_buffer, visible_area)
 end
 
 function instability_ray_caster:cast(flag)
@@ -93,21 +84,7 @@ function instability_ray_caster:loop()
 	self.instability_bonus = 0
 	local delta_ms = self.delta_timer:extract_milliseconds() * physics_system.timestep_multiplier
 	
-	local i = 1
-	while i <= #self.polygon_traces do
-		
-		local final_alpha = self.polygon_traces[i].alpha_animator:get_animated()
-		
-		if final_alpha <= 0 then
-			table.remove(self.polygon_traces, i)
-		else
-			for j = 1, 4 do
-				self.polygon_traces[i].poly:get_vertex(j-1).color.a = final_alpha
-			end
-			
-			i = i + 1
-		end
-	end
+	self.polygon_fader:loop()
 	
 	if self.currently_casting then
 		self.ray_length = self.ray_length + delta_ms * 10
@@ -141,19 +118,15 @@ function instability_ray_caster:loop()
 	if self.trace_timer:get_milliseconds() > 5 then
 		-- leave a trace 
 		
-		local new_trace = {
-			poly = create_polygon ({
+		local alpha_animator = value_animator(255, -0.1, 250)
+		alpha_animator:set_exponential()
+		
+		self.polygon_fader:add_trace( create_polygon ({
 				{ pos = polygon_table[1], color = self.polygon_color, texcoord = vec2(0, 0), image = images.blank },
 				{ pos = polygon_table[2], color = self.polygon_color, texcoord = vec2(1, 0), image = images.blank },
 				{ pos = polygon_table[3], color = self.polygon_color, texcoord = vec2(1, 1), image = images.blank },
 				{ pos = polygon_table[4], color = self.polygon_color, texcoord = vec2(0, 1), image = images.blank }
-			}),
-			alpha_animator = value_animator(255, -0.1, 250)
-		}
-		
-		new_trace.alpha_animator:set_exponential()
-		
-		table.insert(self.polygon_traces, new_trace)
+			}), alpha_animator)
 		
 		self.trace_timer:reset()
 	end
