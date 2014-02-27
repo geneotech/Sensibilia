@@ -9,7 +9,12 @@ uniform sampler2D intensity_texture;
 
 uniform int time;
 uniform float rotation;
+uniform float zoom;
 uniform float multiplier;
+uniform vec2 player_pos;
+uniform vec2 crosshair_pos;
+
+uniform vec3 light_attenuation;
 
 void main() 
 {	
@@ -82,13 +87,31 @@ void main()
 	float avg = (my_colors.r + my_colors.g + my_colors.b) / 3;
 	my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), (enemy_intensity != 0) ? 1 : 0);
 	
-	pixel = mix(vec4(0.7) * (vec4(-0.1) + pixel), vec4(2.5) * (vec4(0.1) + pixel), (light_intensity*light_intensity) * (1+(tan(used_time/50*(1-multiplier))*0.07*multiplier))); 
+	float light_distance = length(gl_FragCoord.xy - player_pos) * zoom;
+	float crosshair_light_distance = length(gl_FragCoord.xy - crosshair_pos) * zoom;
+	
+	float aux = (crosshair_light_distance/500 + 1.0);
+	float crosshair_light_factor = 1.0/(aux*aux);
+	vec3 used_attenuation = light_attenuation; //* (1-multiplier);
+	//used_attenuation.x += 0.1;
+	
+	
+	pixel = mix(vec4(0.7) * (vec4(-0.2) + pixel), vec4(2.5) * (vec4(0.1) + pixel), //(light_intensity*light_intensity) 
+	(light_intensity+0.1)* (
+	//1.0/((light_distance/1500 + 1.0)*(light_distance/1500 + 1.0))
+	1.0/(used_attenuation.x+used_attenuation.y*light_distance+used_attenuation.z*light_distance*light_distance)
+	
+	+ 
+	crosshair_light_factor)
+	
+	* (1+(tan(used_time/50*(1-multiplier))*0.07*multiplier))); 
 	
 	float avg_pixel = (pixel.r + pixel.g + pixel.b) / 3;
 	
 	// interpolate between the actual pixel on scene and the calculated pixel
 	outputColor = mix(mix(pixel, vec4(avg_pixel, avg_pixel, avg_pixel, 1.0), 0.8), my_colors, basic_intensity //* ((my_colors.r +my_colors.g +my_colors.b)/3)
-	); 
+	);
+//outputColor = vec4(vec3(light_intensity), 1.0);	
 }
 
 ]])
@@ -120,4 +143,15 @@ GL.glUniform1i(spatial_instability_rotation, 0)
 spatial_instability_multiplier = GL.glGetUniformLocation(spatial_instability_program.id, "multiplier")
 GL.glUniform1i(spatial_instability_multiplier, 1)
 
+spatial_instability_player_pos = GL.glGetUniformLocation(spatial_instability_program.id, "player_pos")
+GL.glUniform2f(spatial_instability_player_pos, 0, 0)
+
+spatial_instability_crosshair_pos = GL.glGetUniformLocation(spatial_instability_program.id, "crosshair_pos")
+GL.glUniform2f(spatial_instability_crosshair_pos, 0, 0)
+
+spatial_instability_light_attenuation = GL.glGetUniformLocation(spatial_instability_program.id, "light_attenuation")
+GL.glUniform3f(spatial_instability_light_attenuation, 0.61166, 0.001001, 0.000002)
+
+spatial_instability_zoom = GL.glGetUniformLocation(spatial_instability_program.id, "zoom")
+GL.glUniform1f(spatial_instability_zoom, 1)
 
