@@ -11,7 +11,7 @@ tiled_map_loader = {
 	type_library = "sensibilia/maps/object_types",
 	world_information_library = "sensibilia/maps/world_properties",
 	
-	map_scale = 5,
+	map_scale = 2.5,
 	
 	for_every_object = function(filename, callback)
 		local this = tiled_map_loader

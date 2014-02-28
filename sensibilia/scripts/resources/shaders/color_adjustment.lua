@@ -26,7 +26,7 @@ vec3 ContrastSaturationBrightness(vec3 color, float brt, float sat, float con)
 void main() 
 {	
 	vec4 pixel = texture(basic_texture, theTexcoord);
-	outputColor = vec4(ContrastSaturationBrightness(pixel.rgb, 1.0, 1.0, 1.0), 1.0);
+	outputColor = vec4(ContrastSaturationBrightness(pixel.rgb, 1.2, 1.0, 2.0), 1.0);
 }
 
 ]])

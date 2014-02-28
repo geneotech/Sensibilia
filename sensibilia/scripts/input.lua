@@ -29,9 +29,9 @@ main_context = create_input_context {
 		[keys.V] 				= custom_intents.INSTANT_SLOWDOWN,
 		[keys.E] 				= custom_intents.MY_INTENT,
 		
-		[mouse.ldoubleclick] 	= custom_intents.INSTABILITY_RAY,
-		[mouse.ltripleclick] 	= custom_intents.INSTABILITY_RAY,
-		[mouse.ldown] 			= custom_intents.INSTABILITY_RAY,
+		[mouse.ldoubleclick] 	= intent_message.SHOOT,
+		[mouse.ltripleclick] 	= intent_message.SHOOT,
+		[mouse.ldown] 			= intent_message.SHOOT,
 		
 		[keys.LSHIFT] 			= intent_message.SWITCH_LOOK,
 		[keys.G] 				= custom_intents.GRAVITY_CHANGE,

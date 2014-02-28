@@ -8,13 +8,19 @@ render_layers = {
 	BACKGROUND_3 = 6
 }
 
+render_masks = {
+	WORLD = 0,
+	EFFECTS = 1
+}
+
 -- PHYSICS COLLISION LAYERS --
 create_options { 
 	"CHARACTERS",
 	"ENEMIES",
 	"OBJECTS", 
 	"STATIC_OBJECTS",
-	"INSTABILITY_RAY"
+	"INSTABILITY_RAY",
+	"BULLETS"
 }
 
 -- VISIBILITY LAYERS --
@@ -29,10 +35,14 @@ filter_nothing = {
 }
 
 -- used only for query/raycast filters
-local mask_all = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY)
+local mask_all = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY, BULLETS)
 
 
 
+filter_bullets = {
+	categoryBits = BULLETS,
+	maskBits = bitor(ENEMIES, OBJECTS, STATIC_OBJECTS)
+}
 
 filter_static_objects = {
 	categoryBits = STATIC_OBJECTS,

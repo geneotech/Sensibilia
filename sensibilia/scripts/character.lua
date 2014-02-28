@@ -20,8 +20,8 @@ function character_class:constructor(subject_entity, base_movement_speed)
 	self.still_holding_jetpack = false
 	self.jump_force_multiplier = 1
 	
-	self.jetpack_impulse = vec2(0, -10)
-	self.jump_impulse = vec2(0, -31)
+	self.jetpack_impulse = vec2(0, -3)
+	self.jump_impulse = vec2(0, -13)
 	
 	self.base_movement_speed = base_movement_speed
 	self.movement_speed_multiplier = 1
@@ -33,6 +33,7 @@ function character_class:constructor(subject_entity, base_movement_speed)
 	self.ray_caster = instability_ray_caster:create(subject_entity, filter_instability_ray_player)
 	self.ray_caster.polygon_color = rgba(0, 255, 0, 255);
 	self.ray_caster.radius_of_effect = 5000
+	self.ray_caster.ray_quad_end_width = 30
 	
 	self:update_movement_speeds()
 end
@@ -196,6 +197,11 @@ character_basic_loop = create_scriptable_info {
 	}
 }
 
+bullet_sprite = create_sprite {
+	image = images.blank,
+	size = vec2(120, 50)
+}
+
 character_group_archetype = {
 	body = {
 		physics = {
@@ -222,7 +228,7 @@ character_group_archetype = {
 		transform = {},
 		
 		movement = {
-			input_acceleration = vec2(12000, 0),
+			input_acceleration = vec2(6000, 0),
 			max_speed_animation = 2300,
 			air_resistance = 0.1,
 			inverse_thrust_brake = vec2(1500, 0),

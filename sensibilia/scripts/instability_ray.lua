@@ -87,10 +87,10 @@ function instability_ray_caster:loop()
 	self.polygon_fader:loop()
 	
 	if self.currently_casting then
-		self.ray_length = self.ray_length + delta_ms * 40
+		self.ray_length = self.ray_length + delta_ms * 1140
 		self.instability_bonus = delta_ms/1000/10
 	else
-		self.ray_length = self.ray_length - delta_ms * 40
+		self.ray_length = 0--self.ray_length - delta_ms * 10
 	end
 
 	if self.ray_length < 0 then
@@ -118,15 +118,14 @@ function instability_ray_caster:loop()
 	if self.trace_timer:get_milliseconds() > 5 then
 		-- leave a trace 
 		
-		local alpha_animator = value_animator(255, -0.1, 250)
+		local alpha_animator = value_animator(255, -0.1, 450)
 		alpha_animator:set_exponential()
 		
-		self.polygon_fader:add_trace( create_polygon ({
-				{ pos = polygon_table[1], color = self.polygon_color, texcoord = vec2(0, 0), image = images.blank },
-				{ pos = polygon_table[2], color = self.polygon_color, texcoord = vec2(1, 0), image = images.blank },
-				{ pos = polygon_table[3], color = self.polygon_color, texcoord = vec2(1, 1), image = images.blank },
-				{ pos = polygon_table[4], color = self.polygon_color, texcoord = vec2(0, 1), image = images.blank }
-			}), alpha_animator)
+		local new_trace_poly = simple_create_polygon (polygon_table)
+		set_color(new_trace_poly, self.polygon_color)
+		map_uv_square(new_trace_poly, images.blank)
+		
+		self.polygon_fader:add_trace(new_trace_poly, alpha_animator)
 		
 		self.trace_timer:reset()
 	end

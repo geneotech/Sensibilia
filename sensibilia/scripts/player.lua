@@ -9,7 +9,7 @@ end
 
 player_sprite = create_sprite {
 	image = images.blank,
-	size = vec2(30, 100)
+	size = vec2(15, 50)
 }
 
 debug_sensor = create_sprite {
@@ -42,10 +42,10 @@ player_scriptable_info = create_scriptable_info {
 			elseif message.intent == custom_intents.REALITY_CHECK then
 				if message.state_flag and not get_self(message.subject).ray_caster.currently_casting then
 					is_reality_checking = true
-					player.body:get().movement.input_acceleration.x = 2000
+					player.body:get().movement.input_acceleration.x = 1000
 					get_self(player.body:get()).jump_force_multiplier = 0.4
 				else
-					player.body:get().movement.input_acceleration.x = 12000
+					player.body:get().movement.input_acceleration.x = 9000
 					get_self(player.body:get()).jump_force_multiplier = 1
 					is_reality_checking = false
 				end
@@ -87,6 +87,52 @@ my_crosshair_sprite = create_sprite {
 }
 
 player = spawn_character ({
+	gun_entity = {
+		gun = {
+			bullets_once = 5,
+			bullet_distance_offset = vec2(170, 10),
+			bullet_damage = minmax(80, 110),
+			bullet_speed = minmax(5000, 27000),
+			bullet_render = { model = bullet_sprite, mask = render_masks.EFFECTS },
+			is_automatic = true,
+			max_rounds = 3000,
+			shooting_interval_ms = 8,
+			spread_degrees = 10.5,
+			shake_radius = 19.5,
+			shake_spread_degrees = 45,
+			
+			bullet_body = {
+				filter = filter_nothing,
+				shape_type = physics_info.RECT,
+				rect_size = bullet_sprite.size,
+				fixed_rotation = false,
+				density = 0.1,
+				air_resistance = 0,
+				gravity_scale = 0
+			},
+			
+			max_bullet_distance = 5000,
+			current_rounds = 3000,
+			
+			target_camera_to_shake = world_camera 
+		},
+		
+		transform = {},
+		
+		input = {
+			intent_message.SHOOT
+		},
+		
+		lookat = {
+			target = "crosshair"
+		},
+		
+		chase = {
+			target = "body",
+			chase_rotation = false
+		}
+	},
+	
 	body = {
 		render = {
 			model = player_sprite
@@ -103,7 +149,7 @@ player = spawn_character ({
 			intent_message.MOVE_LEFT,
 			intent_message.MOVE_RIGHT,
 			
-			custom_intents.INSTABILITY_RAY,
+			--custom_intents.INSTABILITY_RAY,
 			custom_intents.REALITY_CHECK
 		},
 		

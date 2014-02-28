@@ -35,7 +35,7 @@ camera_archetype = {
 		enabled = true,
 		
 		layer = 0, -- 0 = topmost
-		mask = render_component.WORLD,
+		mask = render_masks.WORLD,
 		
 		enable_smoothing = true,
 		smoothing_average_factor = 0.5,
