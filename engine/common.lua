@@ -184,6 +184,8 @@ function vector_to_table(source_vector)
 	local output = {}
 	local vec_size = source_vector:size()
 	
+	if vec_size < 1 then return {} end
+	
 	for i=0, vec_size-1 do
 		table.insert(output, source_vector:at(i))
 	end
