@@ -26,7 +26,7 @@ tiled_map_loader.world_camera_entity = world_camera
 example_map = tiled_map_loader.load_map(CURRENT_LEVEL)
 
 current_zoom_level = 0
-current_zoom_level = 5000
+current_zoom_level = 1000
 set_zoom_level(world_camera)
 
 dofile "sensibilia\\scripts\\character.lua"
@@ -34,7 +34,7 @@ dofile "sensibilia\\scripts\\player.lua"
 
 base_crosshair_rotation = 0
 
-instability_decreaser = timer()
+main_delta_timer = timer()
 
 loop_only_info = create_scriptable_info {
 	scripted_events = {
@@ -87,13 +87,15 @@ loop_only_info = create_scriptable_info {
 			--end
 			
 			if changing_gravity then
-				instability = instability + (instability_decreaser:get_seconds()/3)
+				instability = instability + (main_delta_timer:get_seconds()/3)
 			end
 			
+			if is_player_raycasting() then
+				instability = instability + main_delta_timer:get_milliseconds()/10000
+			end
 			
-			if not get_self(player.body:get()).ray_caster.currently_casting and not changing_gravity then
-				--print(instability_decreaser:extract_milliseconds() / 1000 / 10)
-				local decrease_amount = (instability_decreaser:get_seconds() / 10)
+			if not is_player_raycasting() and not changing_gravity then
+				local decrease_amount = (main_delta_timer:get_seconds() / 10)
 				
 				if is_reality_checking then decrease_amount = decrease_amount * 3 end
 				
@@ -101,7 +103,7 @@ loop_only_info = create_scriptable_info {
 			end
 			
 			if instability < 0 then instability = 0 end
-			instability_decreaser:reset()
+			main_delta_timer:reset()
 				
 			handle_dying_instability_rays()
 		end

@@ -199,7 +199,7 @@ character_basic_loop = create_scriptable_info {
 
 bullet_sprite = create_sprite {
 	image = images.blank,
-	size = vec2(120, 50)
+	size = vec2(60, 65)
 }
 
 character_group_archetype = {

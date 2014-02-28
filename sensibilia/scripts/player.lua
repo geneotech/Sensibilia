@@ -23,6 +23,10 @@ map_uv_square(player_debug_circle, images.blank)
 
 is_reality_checking = false
 
+function is_player_raycasting()
+	return player.gun_entity:get().gun.trigger_mode == gun_component.SHOOT
+end
+
 player_scriptable_info = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = function (message) 
@@ -33,14 +37,14 @@ player_scriptable_info = create_scriptable_info {
 			
 				get_self(message.subject):jump(message.state_flag)
 				--get_self(message.subject):handle_jumping()
-			elseif message.intent == custom_intents.INSTABILITY_RAY then 
+			elseif message.intent == intent_message.SHOOT then 
 				if message.state_flag and not is_reality_checking then
 					get_self(message.subject).ray_caster:cast(true)
 				else
 					get_self(message.subject).ray_caster:cast(false)
 				end
 			elseif message.intent == custom_intents.REALITY_CHECK then
-				if message.state_flag and not get_self(message.subject).ray_caster.currently_casting then
+				if message.state_flag and not is_player_raycasting() then
 					is_reality_checking = true
 					player.body:get().movement.input_acceleration.x = 1000
 					get_self(player.body:get()).jump_force_multiplier = 0.4
@@ -63,18 +67,6 @@ player_scriptable_info = create_scriptable_info {
 				my_self:substep()
 			else
 				my_self:loop()
-				
-				local caster = my_self.ray_caster
-				
-				caster.position = subject.transform.current.pos
-				caster.direction = (player.crosshair:get().transform.current.pos - subject.transform.current.pos):normalize()
-				
-				caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
-				
-				caster:loop()
-				
-				instability = instability + caster.instability_bonus
-			
 			end
 		end
 	}
@@ -89,15 +81,15 @@ my_crosshair_sprite = create_sprite {
 player = spawn_character ({
 	gun_entity = {
 		gun = {
-			bullets_once = 5,
+			bullets_once = 15,
 			bullet_distance_offset = vec2(170, 10),
 			bullet_damage = minmax(80, 110),
-			bullet_speed = minmax(5000, 27000),
+			bullet_speed = minmax(5000, 6000),
 			bullet_render = { model = bullet_sprite, mask = render_masks.EFFECTS },
 			is_automatic = true,
 			max_rounds = 3000,
 			shooting_interval_ms = 8,
-			spread_degrees = 10.5,
+			spread_degrees = 3.5,
 			shake_radius = 19.5,
 			shake_spread_degrees = 45,
 			
