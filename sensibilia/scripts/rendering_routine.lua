@@ -156,8 +156,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			local my_light_poly = simple_create_polygon(visibility_points)
 			map_uv_square(my_light_poly, images.blank)
 			set_color(my_light_poly, rgba(0, 0, 255, 255))
-			
-			
+		
 			local my_bounced_light_poly = simple_create_polygon(vector_to_table(bounce_layer:get_polygon(1)))
 			map_uv_square(my_bounced_light_poly, images.blank)
 			set_color(my_bounced_light_poly, rgba(0, 0, 255, 255))
@@ -170,11 +169,11 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			new_light_animator:set_quadratic()
 			
 			local used_attenuation = {
-				x = 0.61166, y = 0.001001, z = 0.000002
+				0.091166, 0.00002501, 0.000000002
 			}
 			
 			local bounced_light_distance = prev_bounce_distance:length()
-			local attenuation_mult = 0.2/(used_attenuation.x+used_attenuation.y*bounced_light_distance+used_attenuation.z*bounced_light_distance*bounced_light_distance)
+			local attenuation_mult = 1.0/(used_attenuation[1]+used_attenuation[2]*bounced_light_distance+used_attenuation[2]*bounced_light_distance*bounced_light_distance)
 			
 			local new_bounced_light_animator = value_animator(255*attenuation_mult, 254*attenuation_mult, 950)
 			
@@ -280,7 +279,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			
 			
-			lighting_layer.offset = vec2.random_on_circle(randval(1,50)*instability)
+			lighting_layer.offset = vec2.random_on_circle(randval(1,25)*instability)
 			
 			local random_discontinuity_end = function(source_layer)
 				local randomized_num = 0
@@ -294,7 +293,8 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 					end
 					
 					local random_discontinuity = source_layer:get_discontinuity(randomized_num)
-					return random_discontinuity.points.second + (random_discontinuity.points.first - random_discontinuity.points.second):set_length(randval(3, 5))
+					
+					return random_discontinuity.points.second + (random_discontinuity.points.first - random_discontinuity.points.second):set_length(randval(1, 2))
 				end
 			end
 			

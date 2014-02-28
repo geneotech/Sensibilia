@@ -85,19 +85,19 @@ void main()
 	my_colors = clamp(my_colors, vec4(0.0), vec4(1.0));
 
 	float avg = (my_colors.r + my_colors.g + my_colors.b) / 3;
-	my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), (enemy_intensity != 0) ? 1 : 1);
+	my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), (enemy_intensity != 0) ? 1 : 0);
 	
 	float light_distance = length(gl_FragCoord.xy - player_pos) * zoom;
 	float crosshair_light_distance = length(gl_FragCoord.xy - crosshair_pos) * zoom;
 	
-	float aux = (crosshair_light_distance/100 + 0.4);
-	float crosshair_light_factor = 1.0/(aux*aux);
+	float aux = (crosshair_light_distance/0.02 + 0.01);
+	float crosshair_light_factor = 1.0/(3+3*crosshair_light_distance+3*crosshair_light_distance*crosshair_light_distance);
 	vec3 used_attenuation = light_attenuation; //* (1-multiplier);
 	//used_attenuation.x += 0.1;
 	
 	
 	pixel = mix(vec4(0.7) * (vec4(-0.2) + pixel), vec4(2.5) * (vec4(0.1) + pixel), //(light_intensity*light_intensity) 
-	(light_intensity+0.1)* (
+	(light_intensity)* (
 	//1.0/((light_distance/1500 + 1.0)*(light_distance/1500 + 1.0))
 	1.0/(used_attenuation.x+used_attenuation.y*light_distance+used_attenuation.z*light_distance*light_distance)
 	
@@ -150,7 +150,7 @@ spatial_instability_crosshair_pos = GL.glGetUniformLocation(spatial_instability_
 GL.glUniform2f(spatial_instability_crosshair_pos, 0, 0)
 
 spatial_instability_light_attenuation = GL.glGetUniformLocation(spatial_instability_program.id, "light_attenuation")
-GL.glUniform3f(spatial_instability_light_attenuation, 0.61166, 0.001001, 0.00000002)
+GL.glUniform3f(spatial_instability_light_attenuation, 0.51166, 0.002001, 0.0000002)
 
 spatial_instability_zoom = GL.glGetUniformLocation(spatial_instability_program.id, "zoom")
 GL.glUniform1f(spatial_instability_zoom, 1)

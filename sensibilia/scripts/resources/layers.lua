@@ -46,12 +46,12 @@ filter_bullets = {
 
 filter_static_objects = {
 	categoryBits = STATIC_OBJECTS,
-	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS)
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, BULLETS)
 }
 
 filter_objects = {
 	categoryBits = OBJECTS,
-	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS)
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, BULLETS)
 }
 
 filter_characters = {
@@ -61,7 +61,7 @@ filter_characters = {
 
 filter_enemies = {
 	categoryBits = ENEMIES,
-	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY)
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY, BULLETS)
 }
 
 filter_pathfinding_visibility = {
