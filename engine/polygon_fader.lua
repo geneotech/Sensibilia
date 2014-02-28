@@ -4,6 +4,8 @@ function polygon_fader:constructor()
 	self.trace_timer = timer()
 	
 	self.traces = {}
+	
+	self.interval_timer = timer()
 end
 
 function polygon_fader:generate_triangles(camera_transform, output_buffer, visible_area)
@@ -17,11 +19,16 @@ function polygon_fader:generate_triangles(camera_transform, output_buffer, visib
 	end
 end
 
-function polygon_fader:add_trace(my_poly, my_animator)
-	table.insert(self.traces, {
-		poly = my_poly,
-		alpha_animator = my_animator
-	})
+function polygon_fader:add_trace(my_poly, my_animator, every_once_ms)
+print(self.interval_timer:get_milliseconds())
+	if every_once_ms == nil or self.interval_timer:get_milliseconds() > every_once_ms then
+		table.insert(self.traces, {
+			poly = my_poly,
+			alpha_animator = my_animator
+		})
+		
+		self.interval_timer:reset()
+	end
 end
 
 function polygon_fader:loop()
@@ -30,7 +37,7 @@ function polygon_fader:loop()
 		
 		local final_alpha = self.traces[i].alpha_animator:get_animated()
 		
-		if final_alpha <= 0 then
+		if self.traces[i].alpha_animator:has_finished() then
 			table.remove(self.traces, i)
 		else
 			for j = 1, self.traces[i].poly:get_vertex_count() do
