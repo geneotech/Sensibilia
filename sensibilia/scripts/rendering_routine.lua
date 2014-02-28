@@ -97,28 +97,6 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			local crosshair_pos = player.crosshair:get().transform.current.pos
 			local player_pos = player.body:get().transform.current.pos
-			local lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
-			local bounce_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE)
-			
-			lighting_layer.offset = vec2.random_on_circle(randval(1,50)*instability)
-			
-			local randomized_num = 0
-			
-			local num_discontinuities = lighting_layer:get_num_discontinuities()
-			local random_offseted_position = vec2(0, 0)
-				
-		
-			if num_discontinuities ~= 0 then
-				if num_discontinuities > 1 then
-					randomized_num = randval_i(0, lighting_layer:get_num_discontinuities()-1)
-				end
-				--print(randomized_num)
-				
-				local random_discontinuity = lighting_layer:get_discontinuity(randomized_num)
-				random_offseted_position = random_discontinuity.points.second + (random_discontinuity.points.first - random_discontinuity.points.second):set_length(randval(3, 5))
-				bounce_layer.offset = random_offseted_position-player_pos
-			end
-			
 			
 			GL.glUniform2f(player_pos_uniform, crosshair_pos.x, crosshair_pos.y)
 			
@@ -133,8 +111,9 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 		--	GL.glColorMask(GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE)
 			
+			renderer:generate_triangles(visible_area, drawn_transform, render_masks.EFFECTS)
 			for k, v in ipairs(global_instability_rays) do
-				v:generate_triangles(drawn_transform, renderer.triangles, visible_area)
+				--v:generate_triangles(drawn_transform, renderer.triangles, visible_area)
 			end
 			
 			renderer:call_triangles()
@@ -156,6 +135,15 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			})
 			
 			my_sprite:draw(my_draw_input)
+			
+			
+			
+			
+			-- handle point lights and bounces
+			
+			local lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
+			local bounce_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE)
+			
 			
 			local visibility_points = vector_to_table(lighting_layer:get_polygon(1))
 			
@@ -239,14 +227,6 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				local visibility_vec = vec2(visible_area.w, visible_area.h)
 				local screen_space_player = (player_pos - (drawn_transform.pos - visibility_vec/2)) / current_zoom_multiplier
 				local screen_space_crosshair = (crosshair_pos - (drawn_transform.pos - visibility_vec/2))  / current_zoom_multiplier
-				--print "screen"
-				--print (screen_space.x, screen_space.y)
-				--print "player"
-				--print (player_pos.x, player_pos.y)
-				----print "screen space"
-				----print ((player_pos.x - screen_space.x)/visible_area.w, (player_pos.y-screen_space.y)/visible_area.h)
-				--print "screen_space_player"
-				--print (screen_space_player.x, screen_space_player.y)
 				
 				GL.glUniform1i(spatial_instability_time, (accumulated_camera_time - extracted_ms + extracted_ms * instability) * physics_system.timestep_multiplier)
 				GL.glUniform1f(spatial_instability_rotation, (crosshair_pos - player_pos):perpendicular_cw():get_radians() + 3.14159265)
@@ -267,10 +247,6 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				instability_ray_fx()
 				fullscreen_pass()
 			end
-			
-			--print(instability)
-			
-			
 			
 			if instability > 0 then
 				hblur_coroutine()
@@ -293,7 +269,6 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			if is_instability_ray_over_postprocessing then
 				instability_ray_fx()
-			
 			else
 				color_adjustment_program:use()
 			end
@@ -303,6 +278,29 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				
 			instability = prev_instability
 			
+			
+			
+			lighting_layer.offset = vec2.random_on_circle(randval(1,50)*instability)
+			
+			local random_discontinuity_end = function(source_layer)
+				local randomized_num = 0
+			
+				local num_discontinuities = source_layer:get_num_discontinuities()
+				local random_offseted_position = vec2(0, 0)
+					
+				if num_discontinuities ~= 0 then
+					if num_discontinuities > 1 then
+						randomized_num = randval_i(0, source_layer:get_num_discontinuities()-1)
+					end
+					
+					local random_discontinuity = source_layer:get_discontinuity(randomized_num)
+					return random_discontinuity.points.second + (random_discontinuity.points.first - random_discontinuity.points.second):set_length(randval(3, 5))
+				end
+			end
+			
+			local random_offseted_position = random_discontinuity_end(lighting_layer)
+			
+			bounce_layer.offset = random_offseted_position - player_pos
 			prev_bounce_distance = random_offseted_position - player_pos
 end
 
