@@ -26,7 +26,7 @@ tiled_map_loader.world_camera_entity = world_camera
 example_map = tiled_map_loader.load_map(CURRENT_LEVEL)
 
 current_zoom_level = 0
-current_zoom_level = 1000
+current_zoom_level = 0
 set_zoom_level(world_camera)
 
 dofile "sensibilia\\scripts\\character.lua"

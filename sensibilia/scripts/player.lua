@@ -67,6 +67,10 @@ player_scriptable_info = create_scriptable_info {
 				my_self:substep()
 			else
 				my_self:loop()
+				local gun_info = player.gun_entity:get().gun
+				
+				gun_info.bullet_render.model = random_bullet_models[randval_i(1,#random_bullet_models)]
+				--gun_info.bullet_speed = minmax(2000+7000*instability, 5000+7000*instability) 
 			end
 		end
 	}
@@ -81,26 +85,28 @@ my_crosshair_sprite = create_sprite {
 player = spawn_character ({
 	gun_entity = {
 		gun = {
-			bullets_once = 15,
-			bullet_distance_offset = vec2(170, 10),
+			bullets_once = 40,
+			bullet_distance_offset = vec2(130, 0),
 			bullet_damage = minmax(80, 110),
-			bullet_speed = minmax(5000, 6000),
+			bullet_speed = minmax(2000, 5000),
 			bullet_render = { model = bullet_sprite, mask = render_masks.EFFECTS },
 			is_automatic = true,
 			max_rounds = 3000,
-			shooting_interval_ms = 8,
-			spread_degrees = 3.5,
-			shake_radius = 19.5,
+			shooting_interval_ms = 50,
+			spread_degrees = 5.5,
+			shake_radius = 39.5,
 			shake_spread_degrees = 45,
 			
 			bullet_body = {
 				filter = filter_nothing,
 				shape_type = physics_info.RECT,
 				rect_size = bullet_sprite.size,
-				fixed_rotation = false,
-				density = 0.1,
+				fixed_rotation = true,
+				density = 1,
 				air_resistance = 0,
-				gravity_scale = 0
+				gravity_scale = 0,
+				linear_damping = 0,
+				angular_damping = 0
 			},
 			
 			max_bullet_distance = 5000,
