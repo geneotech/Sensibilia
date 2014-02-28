@@ -17,6 +17,11 @@ create_options {
 	"INSTABILITY_RAY"
 }
 
+-- VISIBILITY LAYERS --
+visibility_layers = {
+	BASIC_LIGHTING = 998,
+	LIGHT_BOUNCE = 999
+}
 
 filter_nothing = {
 	categoryBits = 0,

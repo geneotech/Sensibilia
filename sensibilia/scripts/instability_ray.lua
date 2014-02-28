@@ -87,10 +87,10 @@ function instability_ray_caster:loop()
 	self.polygon_fader:loop()
 	
 	if self.currently_casting then
-		self.ray_length = self.ray_length + delta_ms * 10
+		self.ray_length = self.ray_length + delta_ms * 40
 		self.instability_bonus = delta_ms/1000/10
 	else
-		self.ray_length = self.ray_length - delta_ms * 10
+		self.ray_length = self.ray_length - delta_ms * 40
 	end
 
 	if self.ray_length < 0 then

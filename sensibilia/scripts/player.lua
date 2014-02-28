@@ -114,10 +114,17 @@ player = spawn_character ({
 			
 		visibility = {
 			visibility_layers = {
-				[visibility_component.DYNAMIC_PATHFINDING] = {
+				[visibility_layers.BASIC_LIGHTING] = {
 					square_side = 15000,
 					color = rgba(0, 255, 255, 120),
-					ignore_discontinuities_shorter_than = 500,
+					ignore_discontinuities_shorter_than = -1,
+					filter = filter_pathfinding_visibility
+				},
+				
+				[visibility_layers.LIGHT_BOUNCE] = {
+					square_side = 15000,
+					color = rgba(0, 255, 255, 120),
+					ignore_discontinuities_shorter_than = -1,
 					filter = filter_pathfinding_visibility
 				}
 			}

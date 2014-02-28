@@ -90,7 +90,7 @@ void main()
 	float light_distance = length(gl_FragCoord.xy - player_pos) * zoom;
 	float crosshair_light_distance = length(gl_FragCoord.xy - crosshair_pos) * zoom;
 	
-	float aux = (crosshair_light_distance/500 + 1.0);
+	float aux = (crosshair_light_distance/100 + 0.4);
 	float crosshair_light_factor = 1.0/(aux*aux);
 	vec3 used_attenuation = light_attenuation; //* (1-multiplier);
 	//used_attenuation.x += 0.1;
@@ -150,7 +150,7 @@ spatial_instability_crosshair_pos = GL.glGetUniformLocation(spatial_instability_
 GL.glUniform2f(spatial_instability_crosshair_pos, 0, 0)
 
 spatial_instability_light_attenuation = GL.glGetUniformLocation(spatial_instability_program.id, "light_attenuation")
-GL.glUniform3f(spatial_instability_light_attenuation, 0.61166, 0.001001, 0.000002)
+GL.glUniform3f(spatial_instability_light_attenuation, 0.61166, 0.001001, 0.00000002)
 
 spatial_instability_zoom = GL.glGetUniformLocation(spatial_instability_program.id, "zoom")
 GL.glUniform1f(spatial_instability_zoom, 1)

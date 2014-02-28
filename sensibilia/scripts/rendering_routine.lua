@@ -66,6 +66,10 @@ end
 accumulated_camera_time = 0
 refresh_coroutines()
 
+player_light_fader = polygon_fader:create()
+
+prev_bounce_distance = vec2(0, 0)
+
 function rendering_routine(subject, renderer, visible_area, drawn_transform, target_transform, mask)
 			local extracted_ms = my_timer:extract_milliseconds()
 			accumulated_camera_time = accumulated_camera_time + extracted_ms
@@ -75,7 +79,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			if instability > 1 then instability = 1 end
 			
-			is_instability_ray_over_postprocessing = not (instability > 0.8)
+			is_instability_ray_over_postprocessing = not (instability > 0.9)
 			
 			local prev_instability = instability
 			instability = instability + temporary_instability
@@ -93,7 +97,29 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			local crosshair_pos = player.crosshair:get().transform.current.pos
 			local player_pos = player.body:get().transform.current.pos
-			player.body:get().visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2.random_on_circle(randval(1,180))
+			local lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
+			local bounce_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE)
+			
+			lighting_layer.offset = vec2.random_on_circle(randval(1,50)*instability)
+			
+			local randomized_num = 0
+			
+			local num_discontinuities = lighting_layer:get_num_discontinuities()
+			local random_offseted_position = vec2(0, 0)
+				
+		
+			if num_discontinuities ~= 0 then
+				if num_discontinuities > 1 then
+					randomized_num = randval_i(0, lighting_layer:get_num_discontinuities()-1)
+				end
+				--print(randomized_num)
+				
+				local random_discontinuity = lighting_layer:get_discontinuity(randomized_num)
+				random_offseted_position = random_discontinuity.points.second + (random_discontinuity.points.first - random_discontinuity.points.second):set_length(randval(3, 5))
+				bounce_layer.offset = random_offseted_position-player_pos
+			end
+			
+			
 			GL.glUniform2f(player_pos_uniform, crosshair_pos.x, crosshair_pos.y)
 			
 			instability = instability - temporary_instability + temporary_instability/10
@@ -102,8 +128,6 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			--GL.glUniform1f(shift_amount_uniform, math.pow(700, instability))
 
-			
-			
 			intensity_fbo:use()
 			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
 			
@@ -133,19 +157,45 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			my_sprite:draw(my_draw_input)
 			
-			local visibility_points = vector_to_table(player.body:get().visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING):get_polygon(1))
+			local visibility_points = vector_to_table(lighting_layer:get_polygon(1))
 			
 			-- expand these points a little
-			--for k, v in ipairs(visibility_points) do
-			--	--visibility_points[k] = visibility_points[k] + 1/(vec2(visibility_points[k] - player_pos):length()+0.01)
-			--end
+			for k, v in ipairs(visibility_points) do
+				visibility_points[k] = visibility_points[k] + (vec2(visibility_points[k] - player_pos)*0.01)
+			end
+			
 			
 			local my_light_poly = simple_create_polygon(visibility_points)
 			map_uv_square(my_light_poly, images.blank)
 			set_color(my_light_poly, rgba(0, 0, 255, 255))
 			
-			my_draw_input.transform.pos = vec2(0, 0)
-			my_light_poly:draw(my_draw_input)
+			
+			local my_bounced_light_poly = simple_create_polygon(vector_to_table(bounce_layer:get_polygon(1)))
+			map_uv_square(my_bounced_light_poly, images.blank)
+			set_color(my_bounced_light_poly, rgba(0, 0, 255, 255))
+			
+			
+			--my_draw_input.transform.pos = vec2(0, 0)
+			--my_light_poly:draw(my_draw_input)
+			
+			local new_light_animator = value_animator(255, -0.1, 150)
+			new_light_animator:set_quadratic()
+			
+			local used_attenuation = {
+				x = 0.61166, y = 0.001001, z = 0.000002
+			}
+			
+			local bounced_light_distance = prev_bounce_distance:length()
+			local attenuation_mult = 0.2/(used_attenuation.x+used_attenuation.y*bounced_light_distance+used_attenuation.z*bounced_light_distance*bounced_light_distance)
+			
+			local new_bounced_light_animator = value_animator(255*attenuation_mult, 254*attenuation_mult, 950)
+			
+			new_bounced_light_animator:set_quadratic()
+			
+			player_light_fader:add_trace(my_light_poly, new_light_animator)
+			player_light_fader:add_trace(my_bounced_light_poly, new_bounced_light_animator)
+			player_light_fader:loop()
+			player_light_fader:generate_triangles(drawn_transform, renderer.triangles, visible_area)
 			
 			renderer:call_triangles()
 			renderer:clear_triangles()
@@ -252,5 +302,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 				
 			instability = prev_instability
+			
+			prev_bounce_distance = random_offseted_position - player_pos
 end
 

@@ -423,25 +423,25 @@ my_npc_archetype = {
 	}
 }
 
-my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 12000)
-my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 12000)
-my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 12000)
-_my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 12000)
-_my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 12000)
-_my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 12000)
-
+--my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 12000)
+--my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 12000)
+--my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 12000)
+--_my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 12000)
+--_my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 12000)
+--_my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 12000)
 --
-get_self(my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-get_self(my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-get_self(_my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-get_self(_my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-get_self(_my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---
---
-my_npc.body:get().pathfinding:start_exploring()
-my_npc2.body:get().pathfinding:start_exploring()
-my_npc3.body:get().pathfinding:start_exploring()
-_my_npc.body:get().pathfinding:start_exploring()
-_my_npc2.body:get().pathfinding:start_exploring()
-_my_npc3.body:get().pathfinding:start_exploring()
+----
+--get_self(my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+--get_self(my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+--get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+--get_self(_my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+--get_self(_my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+--get_self(_my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+----
+----
+--my_npc.body:get().pathfinding:start_exploring()
+--my_npc2.body:get().pathfinding:start_exploring()
+--my_npc3.body:get().pathfinding:start_exploring()
+--_my_npc.body:get().pathfinding:start_exploring()
+--_my_npc2.body:get().pathfinding:start_exploring()
+--_my_npc3.body:get().pathfinding:start_exploring()
