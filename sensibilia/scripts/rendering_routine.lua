@@ -171,7 +171,8 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			new_light_animator:set_quadratic()
 			
 			local used_attenuation = {
-				0.091166, 0.00002501, 0.00005
+				--0.091166, 0.00002501, 0.00005
+				0.51166, 0.03501, 0.00000005
 			}
 			
 			local bounced_light_distance = prev_bounce_distance:length()
