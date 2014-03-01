@@ -87,10 +87,10 @@ function instability_ray_caster:loop()
 	self.polygon_fader:loop()
 	
 	if self.currently_casting then
-		self.ray_length = self.ray_length + delta_ms * 1140
+		self.ray_length = self.ray_length + delta_ms * 5
 		self.instability_bonus = delta_ms/1000/10
 	else
-		self.ray_length = 0--self.ray_length - delta_ms * 10
+		self.ray_length = self.ray_length - delta_ms * 5
 	end
 
 	if self.ray_length < 0 then
@@ -115,10 +115,10 @@ function instability_ray_caster:loop()
 	add_vals(world_polygon, polygon_table)
 	
 	-- leave a polygon trace every some small interval
-	if self.trace_timer:get_milliseconds() > 5 then
+	if self.trace_timer:get_milliseconds() > 5 and #self.polygon_fader.traces < 50 then
 		-- leave a trace 
 		
-		local alpha_animator = value_animator(255, -0.1, 450)
+		local alpha_animator = value_animator(255, -0.1, 250)
 		alpha_animator:set_exponential()
 		
 		local new_trace_poly = simple_create_polygon (polygon_table)

@@ -9,10 +9,10 @@ npc_class = inherits_from (character_class)
 function npc_class:constructor(subject_entity, base_movement_speed)
 	character_class.constructor(self, subject_entity, base_movement_speed)
 	self.ray_caster = instability_ray_caster:create(subject_entity, filter_instability_ray_enemy)
-	self.ray_caster.ray_quad_width = randval(10, 10)
-	self.ray_caster.ray_quad_end_width = randval(50, 50)
-	self.ray_caster.polygon_color = rgba(255, 0, 0, 255)
-	self.ray_caster.radius_of_effect = randval(20, 2500)
+	self.ray_caster.ray_quad_width = randval(15, 20)
+	self.ray_caster.ray_quad_end_width = randval(70, 280)
+	self.ray_caster.polygon_color = rgba(255, 0, 0, 50)
+	self.ray_caster.radius_of_effect = randval(20, 50)
 	self.hp = 500
 	
 	self.steering_behaviours = {	
@@ -173,18 +173,18 @@ function npc_class:determine_jumpability(queried_point, apply_upwards_forces)
 			return queried_point.y > foot.y
 		end
 	end
-	
-	return can_point_be_reached_by_jump(
-	base_gravity, 
-	self.entity.movement.input_acceleration/50, 
-	self.entity.movement.air_resistance, 
-	queried_point/50, 
-	foot/50, 
-	vec2(vel.x, vel.y),
-	self.jump_impulse*upward_force_multiplier, 
-	self.jetpack_impulse, 
-	self.max_jetpack_steps*upward_force_multiplier, 
-	self.entity.physics.body:GetMass())
+	return true
+	--return can_point_be_reached_by_jump(
+	--base_gravity, 
+	--self.entity.movement.input_acceleration/50, 
+	--self.entity.movement.air_resistance, 
+	--queried_point/50, 
+	--foot/50, 
+	--vec2(vel.x, vel.y),
+	--self.jump_impulse*upward_force_multiplier, 
+	--self.jetpack_impulse, 
+	--self.max_jetpack_steps*upward_force_multiplier, 
+	--self.entity.physics.body:GetMass())
 end
 
 function npc_class:pursue_target(target_entity)			
@@ -394,7 +394,7 @@ my_npc_archetype = {
 		visibility = {
 			visibility_layers = {
 				[visibility_component.DYNAMIC_PATHFINDING] = {
-					square_side = 15000,
+					square_side = 2000,
 					color = rgba(0, 255, 255, 120),
 					ignore_discontinuities_shorter_than = 150,
 					filter = filter_pathfinding_visibility
@@ -423,25 +423,25 @@ my_npc_archetype = {
 	}
 }
 
---my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 12000)
---my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 12000)
---my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 12000)
---_my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 12000)
---_my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 12000)
---_my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 12000)
+my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 3000)
+my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 3000)
+my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 3000)
+_my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 3000)
+_my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 3000)
+_my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 3000)
+
 --
-----
---get_self(my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---get_self(my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---get_self(_my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---get_self(_my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---get_self(_my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-----
-----
---my_npc.body:get().pathfinding:start_exploring()
---my_npc2.body:get().pathfinding:start_exploring()
---my_npc3.body:get().pathfinding:start_exploring()
---_my_npc.body:get().pathfinding:start_exploring()
---_my_npc2.body:get().pathfinding:start_exploring()
---_my_npc3.body:get().pathfinding:start_exploring()
+get_self(my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(_my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(_my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(_my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+--
+--
+my_npc.body:get().pathfinding:start_exploring()
+my_npc2.body:get().pathfinding:start_exploring()
+my_npc3.body:get().pathfinding:start_exploring()
+_my_npc.body:get().pathfinding:start_exploring()
+_my_npc2.body:get().pathfinding:start_exploring()
+_my_npc3.body:get().pathfinding:start_exploring()

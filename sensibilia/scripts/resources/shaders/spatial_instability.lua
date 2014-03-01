@@ -104,7 +104,7 @@ void main()
 	+ 
 	crosshair_light_factor)
 	
-	* (1+(tan(used_time/50*(1-multiplier))*0.07*multiplier))); 
+	* (1+(tan(used_time/50000*(1-multiplier))*0.07*multiplier))); 
 	
 	float avg_pixel = (pixel.r + pixel.g + pixel.b) / 3;
 	

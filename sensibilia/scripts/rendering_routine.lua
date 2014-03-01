@@ -113,7 +113,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			renderer:generate_triangles(visible_area, drawn_transform, render_masks.EFFECTS)
 			for k, v in ipairs(global_instability_rays) do
-				--v:generate_triangles(drawn_transform, renderer.triangles, visible_area)
+				v:generate_triangles(drawn_transform, renderer.triangles, visible_area)
 			end
 			
 			renderer:call_triangles()
@@ -171,11 +171,11 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			new_light_animator:set_quadratic()
 			
 			local used_attenuation = {
-				0.091166, 0.00002501, 0.000000002
+				0.091166, 0.00002501, 0.00005
 			}
 			
 			local bounced_light_distance = prev_bounce_distance:length()
-			local attenuation_mult = 1.0/(used_attenuation[1]+used_attenuation[2]*bounced_light_distance+used_attenuation[2]*bounced_light_distance*bounced_light_distance)
+			local attenuation_mult = 1.0/(used_attenuation[1]+used_attenuation[2]*bounced_light_distance+used_attenuation[3]*bounced_light_distance*bounced_light_distance)
 			
 			local new_bounced_light_animator = value_animator(255*attenuation_mult, 254*attenuation_mult, 950)
 			
@@ -281,7 +281,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			
 			
-			lighting_layer.offset = vec2.random_on_circle(randval(1,25)*instability)
+			lighting_layer.offset = vec2.random_on_circle(randval(1,59)*instability)
 			
 			local random_discontinuity_end = function(source_layer)
 				local randomized_num = 0

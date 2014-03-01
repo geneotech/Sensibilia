@@ -1,6 +1,6 @@
 config_table = {
 	window_name = "example",
-	fullscreen = 1,
+	fullscreen = 0,
 	window_border = 0,
 	window_x = 0,
 	window_y = 0,
@@ -9,7 +9,7 @@ config_table = {
 	resolution_h = 1050,
 	doublebuffer = 1,
 	
-	sensitivity = vec2(15.5, 15.5)
+	sensitivity = vec2(5.5, 5.5)
 }
 
 if config_table.fullscreen == 1 then

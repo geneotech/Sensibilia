@@ -214,7 +214,7 @@ for i=1, 1000 do
 		current_angle = current_angle + randval(20, 110)
 		if current_angle >= 350 then break end
 		
-		table.insert(vertices, vec2(2.0, 0.5) * vec2.from_degrees(current_angle):set_length(randval(50, 100)))
+		table.insert(vertices, vec2(2.0, 0.5) * vec2.from_degrees(current_angle):set_length(randval(10, 150)))
 	end
 	
 	local new_bullet_poly = simple_create_polygon(vertices)
