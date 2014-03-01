@@ -85,7 +85,7 @@ void main()
 	my_colors = clamp(my_colors, vec4(0.0), vec4(1.0));
 
 	float avg = (my_colors.r + my_colors.g + my_colors.b) / 3;
-	my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), (enemy_intensity != 0) ? 1 : 0);
+	my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), (enemy_intensity != 0) ? (enemy_intensity+0.3)*2 : 0);
 	
 	float light_distance = length(gl_FragCoord.xy - player_pos) * zoom;
 	float crosshair_light_distance = length(gl_FragCoord.xy - crosshair_pos) * zoom;

@@ -1,10 +1,10 @@
 local environmental_archetype = {
 	physics = {
-		body_type = Box2D.b2_staticBody,
+		body_type = Box2D.b2_dynamicBody,
 		
 		body_info = {
 			shape_type = physics_info.POLYGON,
-			filter = filter_static_objects,
+			filter = filter_objects,
 			density = 1000,
 			friction = 0.1,
 			

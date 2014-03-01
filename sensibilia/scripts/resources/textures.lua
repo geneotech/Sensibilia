@@ -32,7 +32,8 @@ end
 images = {
 	blank = "blank.png",
 	metal = "metal.jpg",
-	crosshair_map = "crosshair_map.png"
+	crosshair_map = "crosshair_map.png",
+	bullet_map = "bullet_map.png"
 }
 
 for k, filename in pairs(images) do

@@ -151,7 +151,7 @@ npc_alertness = create_behaviour_tree {
 	decorators = {
 		temporary_alertness = {
 			decorator_type = behaviour_timer_decorator,
-			maximum_running_time_ms = 5000
+			maximum_running_time_ms = 8000
 		}
 	},
 	

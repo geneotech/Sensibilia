@@ -40,7 +40,10 @@ filter_nothing = {
 -- used only for query/raycast filters
 local mask_all = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY, BULLETS)
 
-
+filter_light_visibility = {
+	categoryBits = mask_all,
+	maskBits = bitor(STATIC_OBJECTS, OBJECTS, ENEMIES)
+}
 
 filter_bullets = {
 	categoryBits = BULLETS,
@@ -68,8 +71,8 @@ filter_enemies = {
 }
 
 filter_pathfinding_visibility = {
-	categoryBits = STATIC_OBJECTS,
-	maskBits = STATIC_OBJECTS
+	categoryBits = mask_all,
+	maskBits = bitor(STATIC_OBJECTS, OBJECTS)
 }
 
 filter_character_feet = {
@@ -99,7 +102,7 @@ filter_characters_separation = {
 
 filter_player_visibility = {
 	categoryBits = mask_all,
-	maskBits = bitor(STATIC_OBJECTS)
+	maskBits = bitor(STATIC_OBJECTS, OBJECTS)
 }
 
 filter_obstacle_visibility = {

@@ -11,8 +11,8 @@ function npc_class:constructor(subject_entity, base_movement_speed)
 	self.ray_caster = instability_ray_caster:create(subject_entity, filter_instability_ray_enemy)
 	self.ray_caster.ray_quad_width = randval(15, 20)
 	self.ray_caster.ray_quad_end_width = randval(70, 280)
-	self.ray_caster.polygon_color = rgba(255, 0, 0, 50)
-	self.ray_caster.radius_of_effect = randval(20, 50)
+	self.ray_caster.polygon_color = rgba(50, 0, 0, 1)
+	self.ray_caster.radius_of_effect = randval(20, 150)
 	self.hp = 500
 	
 	self.steering_behaviours = {	
@@ -59,7 +59,7 @@ function npc_class:constructor(subject_entity, base_movement_speed)
 			while true do
 				print "lecimy"
 				self:set_movement_mode_flying(true)
-				coroutine.stepped_wait(randval(1000/self.movement_speed_multiplier, 5000/self.movement_speed_multiplier))
+				coroutine.stepped_wait(randval(1000/self.movement_speed_multiplier, 9000/self.movement_speed_multiplier))
 				print "idziemy"
 				self:set_movement_mode_flying(false)
 				coroutine.stepped_wait(randval(500, 4000))
@@ -423,25 +423,25 @@ my_npc_archetype = {
 	}
 }
 
---my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 3000)
---my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 3000)
---my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 3000)
---_my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 3000)
---_my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 3000)
---_my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 3000)
+my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 4000)
+my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 4000)
+my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 4000)
+_my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 4000)
+_my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 4000)
+_my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 4000)
+
 --
-----
---get_self(my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---get_self(my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---get_self(_my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---get_self(_my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---get_self(_my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-----
-----
---my_npc.body:get().pathfinding:start_exploring()
---my_npc2.body:get().pathfinding:start_exploring()
---my_npc3.body:get().pathfinding:start_exploring()
---_my_npc.body:get().pathfinding:start_exploring()
---_my_npc2.body:get().pathfinding:start_exploring()
---_my_npc3.body:get().pathfinding:start_exploring()
+get_self(my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(_my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(_my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+get_self(_my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
+--
+--
+my_npc.body:get().pathfinding:start_exploring()
+my_npc2.body:get().pathfinding:start_exploring()
+my_npc3.body:get().pathfinding:start_exploring()
+_my_npc.body:get().pathfinding:start_exploring()
+_my_npc2.body:get().pathfinding:start_exploring()
+_my_npc3.body:get().pathfinding:start_exploring()

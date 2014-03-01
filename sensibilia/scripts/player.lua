@@ -27,6 +27,8 @@ function is_player_raycasting()
 	return player.gun_entity:get().gun.trigger_mode == gun_component.SHOOT
 end
 
+all_player_bullets = {}
+
 player_scriptable_info = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = function (message) 
@@ -70,9 +72,34 @@ player_scriptable_info = create_scriptable_info {
 				local gun_info = player.gun_entity:get().gun
 				
 				gun_info.bullet_render.model = random_bullet_models[randval_i(1,#random_bullet_models)]
-				gun_info.spread_degrees = 1 + 30*instability
+				gun_info.spread_degrees = 3 + 30*instability
 				gun_info.shake_radius = 20+20*instability
 				--gun_info.bullet_speed = minmax(2000+7000*instability, 5000+7000*instability) 
+				
+				local i = 1
+				while i <= #all_player_bullets do
+					local v = all_player_bullets[i]
+					
+					if not v:exists() then
+						table.remove(all_player_bullets, i)
+					else
+						v = v:get()
+						local body = v.physics.body
+						local vel = vec2(body:GetLinearVelocity().x, body:GetLinearVelocity().y)
+						local dist_from_start = v.damage.lifetime:get_milliseconds()--(v.damage.starting_point - v.transform.current.pos):length()
+						vel:set_length( dist_from_start) 
+						
+						--vel = vel
+						
+						body:ApplyForce(b2Vec2(vel.x, vel.y), body:GetWorldCenter(), true)  
+						--body:ApplyAngularImpulse(randval(0, 0.01), true)
+						
+						local alpha_mult = (1 - (dist_from_start/v.damage.max_lifetime_ms))
+						set_color(v.render.model, rgba(0, 255, 0, alpha_mult * alpha_mult * 255))
+						
+						i = i + 1
+					end
+				end
 			end
 		end
 	}
@@ -84,13 +111,30 @@ my_crosshair_sprite = create_sprite {
 	color = rgba(255, 0, 255, 255)
 }
 
+
 player = spawn_character ({
 	gun_entity = {
 		gun = {
+			bullet_callback = function(subject, new_bullet)
+				new_bullet.render.model = random_bullet_models[randval_i(1,#random_bullet_models)]
+				new_bullet.damage.max_lifetime_ms = 300
+				new_bullet.damage.destroy_upon_hit = false
+				local new_entity_ptr = entity_ptr()
+				new_entity_ptr:set(new_bullet)
+				table.insert(all_player_bullets, new_entity_ptr)
+				
+				if randval(0, 1) > 0.95 then
+					local body = new_bullet.physics.body
+					local rand_vec = (vec2.from_degrees(new_bullet.transform.current.rotation + randval(-15, 15)) * randval(50, 10000))*2/50
+					
+					body:ApplyLinearImpulse(b2Vec2(rand_vec.x, rand_vec.y), body:GetWorldCenter(), true)
+				end
+			end,
+			
 			bullets_once = 40,
 			bullet_distance_offset = vec2(130, 0),
-			bullet_damage = minmax(80, 110),
-			bullet_speed = minmax(500, 6000),
+			bullet_damage = minmax(1, 10),
+			bullet_speed = minmax(1, 6000),
 			bullet_render = { model = bullet_sprite, mask = render_masks.EFFECTS },
 			is_automatic = true,
 			max_rounds = 3000,
@@ -103,7 +147,7 @@ player = spawn_character ({
 				filter = filter_nothing,
 				shape_type = physics_info.RECT,
 				rect_size = bullet_sprite.size,
-				fixed_rotation = true,
+				fixed_rotation = false,
 				density = 1,
 				air_resistance = 0,
 				gravity_scale = 0,
@@ -111,7 +155,7 @@ player = spawn_character ({
 				angular_damping = 0
 			},
 			
-			max_bullet_distance = 5000,
+			max_bullet_distance = 4000,
 			current_rounds = 3000,
 			
 			target_camera_to_shake = world_camera 
@@ -164,21 +208,21 @@ player = spawn_character ({
 					square_side = 15000,
 					color = rgba(0, 255, 255, 120),
 					ignore_discontinuities_shorter_than = -1,
-					filter = filter_pathfinding_visibility
+					filter = filter_light_visibility
 				},
 				
 				[visibility_layers.LIGHT_BOUNCE] = {
 					square_side = 15000,
 					color = rgba(0, 255, 255, 120),
 					ignore_discontinuities_shorter_than = -1,
-					filter = filter_pathfinding_visibility
+					filter = filter_light_visibility
 				},
 				
 				[visibility_layers.LIGHT_BOUNCE + 1] = {
 					square_side = 15000,
 					color = rgba(255, 0, 0, 120),
 					ignore_discontinuities_shorter_than = -1,
-					filter = filter_pathfinding_visibility
+					filter = filter_light_visibility
 				}
 			}
 		}
