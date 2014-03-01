@@ -26,7 +26,7 @@ void main()
 	
 	float enemy_intensity = intensity_pixel.r;
 	float player_intensity = intensity_pixel.g;
-	float light_intensity = intensity_pixel.b;
+	float light_intensity = intensity_pixel.b + intensity_pixel.g;
 	
 	float basic_intensity = max(enemy_intensity, player_intensity);
 	
@@ -40,8 +40,8 @@ void main()
 	
 	float used_multiplier = multiplier + (1-enemy_intensity)*1;
 	// shortcuts to simplify notation
-	float X = 50*(1-multiplier) - 10*basic_intensity - 5*enemy_intensity;
-	float Y = 50*(1-multiplier) - 10*basic_intensity - 5*enemy_intensity;
+	float X = 50 - 10*basic_intensity - 5*enemy_intensity;
+	float Y = 50 - 10*basic_intensity - 5*enemy_intensity;
 	
 	float ac = cos(rotation);
 	float as = sin(rotation);
@@ -85,7 +85,7 @@ void main()
 	my_colors = clamp(my_colors, vec4(0.0), vec4(1.0));
 
 	float avg = (my_colors.r + my_colors.g + my_colors.b) / 3;
-	my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), (enemy_intensity != 0) ? (enemy_intensity+0.3)*2 : 0);
+	my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), (enemy_intensity != 0) ? 1 : 0.0);
 	
 	float light_distance = length(gl_FragCoord.xy - player_pos) * zoom;
 	float crosshair_light_distance = length(gl_FragCoord.xy - crosshair_pos) * zoom;
@@ -96,8 +96,8 @@ void main()
 	//used_attenuation.x += 0.1;
 	
 	
-	pixel = mix(vec4(0.7) * (vec4(-0.2) + pixel), vec4(2.5) * (vec4(0.1) + pixel), //(light_intensity*light_intensity) 
-	(light_intensity)* (
+	pixel = mix(vec4(0.7) * (vec4(-0.2) + effect_pixel), vec4(2.5) * (vec4(0.1) + pixel), //(light_intensity*light_intensity) 
+	(light_intensity*((1-enemy_intensity)+0.01))* (
 	//1.0/((light_distance/1500 + 1.0)*(light_distance/1500 + 1.0))
 	1.0/(used_attenuation.x+used_attenuation.y*light_distance+used_attenuation.z*light_distance*light_distance)
 	
@@ -109,7 +109,7 @@ void main()
 	float avg_pixel = (pixel.r + pixel.g + pixel.b) / 3;
 	
 	// interpolate between the actual pixel on scene and the calculated pixel
-	outputColor = mix(mix(pixel, vec4(avg_pixel, avg_pixel, avg_pixel, 1.0), 0.8), my_colors, basic_intensity //* ((my_colors.r +my_colors.g +my_colors.b)/3)
+	outputColor = mix(mix(pixel, vec4(avg_pixel, avg_pixel, avg_pixel, 1.0), 0.9), my_colors, basic_intensity //* ((my_colors.r +my_colors.g +my_colors.b)/3)
 	);
 //outputColor = vec4(vec3(light_intensity), 1.0);	
 }

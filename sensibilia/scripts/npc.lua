@@ -1,7 +1,7 @@
 npc_sprite = create_sprite {
-	image = images.blank,
+	image = images.bullet_map,
 	size = vec2(60, 60),
-	color = rgba(255, 0, 0, 0)
+	color = rgba(255, 0, 0, 30)
 }
 
 npc_class = inherits_from (character_class)
@@ -13,7 +13,7 @@ function npc_class:constructor(subject_entity, base_movement_speed)
 	self.ray_caster.ray_quad_end_width = randval(70, 280)
 	self.ray_caster.polygon_color = rgba(50, 0, 0, 1)
 	self.ray_caster.radius_of_effect = randval(20, 150)
-	self.hp = 500
+	self.hp = 1000
 	
 	self.steering_behaviours = {	
 		target_seeking = behaviour_state(target_seek_steering),
@@ -360,12 +360,16 @@ dofile "sensibilia\\scripts\\enemy_ai.lua"
 
 my_npc_archetype = {
 	body = {
+		particle_emitter = {
+			available_particle_effects = npc_effects
+		},
+		
 		physics = {
 			--body_type = Box2D.b2_staticBody,
 			
 			body_info = {
 				filter = filter_enemies,
-				density = 3
+				density = 100
 				--linear_damping = 18
 			}
 		},
@@ -384,7 +388,8 @@ my_npc_archetype = {
 		},
 		
 		render = {
-			model = npc_sprite
+			model = npc_sprite,
+			mask = render_masks.EFFECTS
 		},
 		
 		transform = {

@@ -73,7 +73,7 @@ player_scriptable_info = create_scriptable_info {
 				
 				gun_info.bullet_render.model = random_bullet_models[randval_i(1,#random_bullet_models)]
 				gun_info.spread_degrees = 3 + 30*instability
-				gun_info.shake_radius = 20+20*instability
+				gun_info.shake_radius = 5+20*instability
 				--gun_info.bullet_speed = minmax(2000+7000*instability, 5000+7000*instability) 
 				
 				local i = 1
@@ -87,7 +87,7 @@ player_scriptable_info = create_scriptable_info {
 						local body = v.physics.body
 						local vel = vec2(body:GetLinearVelocity().x, body:GetLinearVelocity().y)
 						local dist_from_start = v.damage.lifetime:get_milliseconds()--(v.damage.starting_point - v.transform.current.pos):length()
-						vel:set_length( dist_from_start) 
+						vel:set_length(0.005 * dist_from_start) 
 						
 						--vel = vel
 						
@@ -117,11 +117,17 @@ player = spawn_character ({
 		gun = {
 			bullet_callback = function(subject, new_bullet)
 				new_bullet.render.model = random_bullet_models[randval_i(1,#random_bullet_models)]
-				new_bullet.damage.max_lifetime_ms = 300
-				new_bullet.damage.destroy_upon_hit = false
+				new_bullet.damage.max_lifetime_ms = 400
+				new_bullet.damage.destroy_upon_hit = true
 				local new_entity_ptr = entity_ptr()
 				new_entity_ptr:set(new_bullet)
 				table.insert(all_player_bullets, new_entity_ptr)
+				
+				
+				--SetDensity(new_bullet.physics.body, 0.01)
+				if randval(0, 1) > 0.5 then
+					SetFilter(new_bullet.physics.body, create(b2Filter, filter_bullets_passed_wall))
+				end
 				
 				if randval(0, 1) > 0.95 then
 					local body = new_bullet.physics.body
@@ -133,7 +139,7 @@ player = spawn_character ({
 			
 			bullets_once = 40,
 			bullet_distance_offset = vec2(130, 0),
-			bullet_damage = minmax(1, 10),
+			bullet_damage = minmax(0.1, 1),
 			bullet_speed = minmax(1, 6000),
 			bullet_render = { model = bullet_sprite, mask = render_masks.EFFECTS },
 			is_automatic = true,
@@ -144,15 +150,16 @@ player = spawn_character ({
 			shake_spread_degrees = 45,
 			
 			bullet_body = {
-				filter = filter_nothing,
+				filter = filter_bullets,
 				shape_type = physics_info.RECT,
 				rect_size = bullet_sprite.size,
 				fixed_rotation = false,
-				density = 1,
+				density = 0.1,
 				air_resistance = 0,
 				gravity_scale = 0,
 				linear_damping = 0,
-				angular_damping = 0
+				angular_damping = 0,
+				restitution = 0
 			},
 			
 			max_bullet_distance = 4000,

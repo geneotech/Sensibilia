@@ -50,6 +50,11 @@ filter_bullets = {
 	maskBits = bitor(ENEMIES, OBJECTS, STATIC_OBJECTS)
 }
 
+filter_bullets_passed_wall = {
+	categoryBits = BULLETS,
+	maskBits = bitor(ENEMIES)
+}
+
 filter_static_objects = {
 	categoryBits = STATIC_OBJECTS,
 	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, BULLETS)

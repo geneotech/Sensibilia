@@ -124,11 +124,18 @@ function create_input_context(entries)
 	return my_input_context
 end
 
+polygon_particle_userdatas_saved = {}
 function create_particle(entries)
 	local my_particle = particle()
 	rewrite(my_particle, entries, { model = true })
 	
-	my_particle.model = create_sprite( entries.model ) 
+	if type(entries.model) ~= "userdata" then
+		entries.model = create_sprite( entries.model )
+	end
+	
+	table.insert(polygon_particle_userdatas_saved, entries.model)
+	my_particle.model = entries.model
+	
 	return my_particle
 end
 

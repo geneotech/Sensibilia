@@ -193,6 +193,12 @@ character_basic_loop = create_scriptable_info {
 			else
 				my_self:loop()
 			end
+		end,
+		
+		[scriptable_component.DAMAGE_MESSAGE] = function (message)
+			get_self(message.subject):take_damage(message.amount)
+			
+			return true
 		end
 	}
 }
@@ -205,25 +211,7 @@ bullet_sprite = create_sprite {
 random_bullet_models = {}
 
 for i=1, 1000 do
-	local current_angle = 0
-	local vertices = {}
-	
-	local vertex_amnt = randval_i(5, 10)
-	local scale = randval(0.1, 1.4)
-	
-	for i = 1, vertex_amnt do
-		current_angle = current_angle + randval(20, 80)
-		if current_angle >= 350 then break end
-		
-		table.insert(vertices, vec2(2.0, 0.5) * vec2.from_degrees(current_angle):set_length(randval(10, 130)) * scale)
-	end
-	
-	local new_bullet_poly = simple_create_polygon(vertices)
-	map_uv_square(new_bullet_poly, images.bullet_map)
-	
-	set_color(new_bullet_poly, rgba(0, 255, 0, 29))
-	
-	table.insert(random_bullet_models, new_bullet_poly)
+	table.insert(random_bullet_models, random_polygon())
 end
 
 character_group_archetype = {

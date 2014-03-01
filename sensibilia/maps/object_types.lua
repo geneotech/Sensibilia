@@ -5,11 +5,11 @@ local environmental_archetype = {
 		body_info = {
 			shape_type = physics_info.POLYGON,
 			filter = filter_objects,
-			density = 1000,
+			density = 100000000,
 			friction = 0.1,
 			
-			linear_damping = 10,
-			angular_damping = 10
+			linear_damping = 1000,
+			angular_damping = 1000
 		}
 	}
 }
