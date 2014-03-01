@@ -68,8 +68,6 @@ refresh_coroutines()
 
 player_light_fader = polygon_fader:create()
 
-prev_bounce_distance = vec2(0, 0)
-
 function rendering_routine(subject, renderer, visible_area, drawn_transform, target_transform, mask)
 			local extracted_ms = my_timer:extract_milliseconds()
 			accumulated_camera_time = accumulated_camera_time + extracted_ms
@@ -143,8 +141,9 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			local lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
 			local bounce_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE)
+			local bounce1_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE + 1)
 			
-			handle_point_light = function(poly_vector, ms_fade, target_fade, initial_distance, used_attenuation)
+			handle_point_light = function(poly_vector, ms_fade, target_fade, light_distance, used_attenuation)
 				local visibility_points = vector_to_table(poly_vector)
 				
 				-- expand these points a little
@@ -159,8 +158,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				
 				local attenuation_mult = 1
 			
-				if initial_distance ~= nil then
-					local light_distance = initial_distance:length()
+				if light_distance ~= nil then
 					attenuation_mult = 1.0/(used_attenuation[1]+used_attenuation[2]*light_distance+used_attenuation[3]*light_distance*light_distance)
 				end
 			
@@ -171,7 +169,8 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			end
 			
 			handle_point_light(lighting_layer:get_polygon(1), 150, -0.1)
-			handle_point_light(bounce_layer:get_polygon(1), 950, 254, prev_bounce_distance, { 0.51166, 0.03501, 0.00000005 } )
+			if bounce_number >= 0.0 then handle_point_light(bounce_layer:get_polygon(1), 950, 254, bounce_layer.offset:length(), { 32.81166, 0.03501, 0.0000000 } ) end 
+			if bounce_number > 1.5 then print "handlin" handle_point_light(bounce1_layer:get_polygon(1), 2950, 254, bounce_layer.offset:length() + bounce1_layer.offset:length(), { 0, 0.020100, 0.000000000 } ) end
 			
 			player_light_fader:loop()
 			player_light_fader:generate_triangles(drawn_transform, renderer.triangles, visible_area)
@@ -288,11 +287,11 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 					
 					return random_discontinuity.points.second + (random_discontinuity.points.first - random_discontinuity.points.second):set_length(randval(1, 2))
 				end
+				
+				return vec2(0, 0)
 			end
 			
-			local random_offseted_position = random_discontinuity_end(lighting_layer)
-			
-			bounce_layer.offset = random_offseted_position - player_pos
-			prev_bounce_distance = random_offseted_position - player_pos
+			bounce_layer.offset = random_discontinuity_end(lighting_layer) - player_pos
+			bounce1_layer.offset = random_discontinuity_end(bounce_layer) - player_pos
 end
 

@@ -44,6 +44,7 @@ main_context = create_input_context {
 input_system:clear_contexts()
 input_system:add_context(main_context)
 
+bounce_number = 2
 function main_input_routine(message)
 	if message.intent == custom_intents.QUIT then
 		input_system.quit_flag = 1
@@ -87,7 +88,11 @@ function main_input_routine(message)
 			physics_system.timestep_multiplier = 0.01
 		end
 	elseif message.intent == custom_intents.MY_INTENT then
-	
+		if not message.state_flag then 
+			bounce_number = bounce_number + 1 
+			bounce_number = bounce_number - math.floor(bounce_number/3)*3
+			print(bounce_number)
+		end 
 	end
 
 	

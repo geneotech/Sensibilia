@@ -220,7 +220,7 @@ for i=1, 1000 do
 	local new_bullet_poly = simple_create_polygon(vertices)
 	map_uv_square(new_bullet_poly, images.blank)
 	
-	set_color(new_bullet_poly, rgba(0, 255, 0, 59))
+	set_color(new_bullet_poly, rgba(255, 0, 0, 59))
 	
 	table.insert(random_bullet_models, new_bullet_poly)
 end

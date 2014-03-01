@@ -90,7 +90,7 @@ player = spawn_character ({
 			bullets_once = 40,
 			bullet_distance_offset = vec2(130, 0),
 			bullet_damage = minmax(80, 110),
-			bullet_speed = minmax(2000, 5000),
+			bullet_speed = minmax(500, 6000),
 			bullet_render = { model = bullet_sprite, mask = render_masks.EFFECTS },
 			is_automatic = true,
 			max_rounds = 3000,
@@ -176,7 +176,7 @@ player = spawn_character ({
 				
 				[visibility_layers.LIGHT_BOUNCE + 1] = {
 					square_side = 15000,
-					color = rgba(0, 255, 255, 120),
+					color = rgba(255, 0, 0, 120),
 					ignore_discontinuities_shorter_than = -1,
 					filter = filter_pathfinding_visibility
 				}
