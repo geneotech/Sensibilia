@@ -131,7 +131,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			(create_sprite {
 				image = images.crosshair_map,
 				color = rgba(0, 0, 255, 255),
-				size_multiplier = vec2(5, 5)
+				size_multiplier = vec2(0.5, 0.5)
 			})
 			
 			my_sprite:draw(my_draw_input)
@@ -157,7 +157,9 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			map_uv_square(my_light_poly, images.blank)
 			set_color(my_light_poly, rgba(0, 0, 255, 255))
 		
-			local my_bounced_light_poly = simple_create_polygon(vector_to_table(bounce_layer:get_polygon(1)))
+			local my_bounced_light_poly = simple_create_polygon(
+				vector_to_table(bounce_layer:get_polygon(1))
+			)
 			map_uv_square(my_bounced_light_poly, images.blank)
 			set_color(my_bounced_light_poly, rgba(0, 0, 255, 255))
 			

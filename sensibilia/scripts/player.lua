@@ -70,6 +70,8 @@ player_scriptable_info = create_scriptable_info {
 				local gun_info = player.gun_entity:get().gun
 				
 				gun_info.bullet_render.model = random_bullet_models[randval_i(1,#random_bullet_models)]
+				gun_info.spread_degrees = 1 + 30*instability
+				gun_info.shake_radius = 20+20*instability
 				--gun_info.bullet_speed = minmax(2000+7000*instability, 5000+7000*instability) 
 			end
 		end

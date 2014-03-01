@@ -20,14 +20,15 @@ function polygon_fader:generate_triangles(camera_transform, output_buffer, visib
 end
 
 function polygon_fader:add_trace(my_poly, my_animator, every_once_ms)
-print(self.interval_timer:get_milliseconds())
-	if every_once_ms == nil or self.interval_timer:get_milliseconds() > every_once_ms then
-		table.insert(self.traces, {
-			poly = my_poly,
-			alpha_animator = my_animator
-		})
-		
-		self.interval_timer:reset()
+	if my_poly:get_vertex_count() >= 1 then
+		if every_once_ms == nil or self.interval_timer:get_milliseconds() > every_once_ms then
+			table.insert(self.traces, {
+				poly = my_poly,
+				alpha_animator = my_animator
+			})
+			
+			self.interval_timer:reset()
+		end
 	end
 end
 

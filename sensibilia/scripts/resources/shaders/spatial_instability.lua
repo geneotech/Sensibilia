@@ -90,8 +90,8 @@ void main()
 	float light_distance = length(gl_FragCoord.xy - player_pos) * zoom;
 	float crosshair_light_distance = length(gl_FragCoord.xy - crosshair_pos) * zoom;
 	
-	float aux = (crosshair_light_distance/0.02 + 0.01);
-	float crosshair_light_factor = 1.0/(3+3*crosshair_light_distance+3*crosshair_light_distance*crosshair_light_distance);
+	float aux = (crosshair_light_distance/352 + 0.01);
+	float crosshair_light_factor = 1.0/(0.00001+0.0001*crosshair_light_distance+0.01*crosshair_light_distance*crosshair_light_distance);
 	vec3 used_attenuation = light_attenuation; //* (1-multiplier);
 	//used_attenuation.x += 0.1;
 	
