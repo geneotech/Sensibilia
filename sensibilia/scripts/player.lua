@@ -172,6 +172,13 @@ player = spawn_character ({
 					color = rgba(0, 255, 255, 120),
 					ignore_discontinuities_shorter_than = -1,
 					filter = filter_pathfinding_visibility
+				},
+				
+				[visibility_layers.LIGHT_BOUNCE + 1] = {
+					square_side = 15000,
+					color = rgba(0, 255, 255, 120),
+					ignore_discontinuities_shorter_than = -1,
+					filter = filter_pathfinding_visibility
 				}
 			}
 		}

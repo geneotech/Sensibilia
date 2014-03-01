@@ -26,7 +26,10 @@ create_options {
 -- VISIBILITY LAYERS --
 visibility_layers = {
 	BASIC_LIGHTING = 998,
+	
+	
 	LIGHT_BOUNCE = 999
+	-- do not add anything below as these values are used by another light bounces
 }
 
 filter_nothing = {

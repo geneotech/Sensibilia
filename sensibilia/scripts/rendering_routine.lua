@@ -144,46 +144,35 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			local lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
 			local bounce_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE)
 			
+			handle_point_light = function(poly_vector, ms_fade, target_fade, initial_distance, used_attenuation)
+				local visibility_points = vector_to_table(poly_vector)
+				
+				-- expand these points a little
+				for k, v in ipairs(visibility_points) do
+					visibility_points[k] = visibility_points[k] + (vec2(visibility_points[k] - player_pos)*0.01)
+				end
 			
-			local visibility_points = vector_to_table(lighting_layer:get_polygon(1))
+				local my_light_poly = simple_create_polygon(visibility_points)
+				map_uv_square(my_light_poly, images.blank)
+				set_color(my_light_poly, rgba(0, 0, 255, 255))
+				
+				
+				local attenuation_mult = 1
 			
-			-- expand these points a little
-			for k, v in ipairs(visibility_points) do
-				visibility_points[k] = visibility_points[k] + (vec2(visibility_points[k] - player_pos)*0.01)
+				if initial_distance ~= nil then
+					local light_distance = initial_distance:length()
+					attenuation_mult = 1.0/(used_attenuation[1]+used_attenuation[2]*light_distance+used_attenuation[3]*light_distance*light_distance)
+				end
+			
+				local new_light_animator = value_animator(255*attenuation_mult, target_fade*attenuation_mult, ms_fade)
+				new_light_animator:set_quadratic()
+				
+				player_light_fader:add_trace(my_light_poly, new_light_animator)
 			end
 			
+			handle_point_light(lighting_layer:get_polygon(1), 150, -0.1)
+			handle_point_light(bounce_layer:get_polygon(1), 950, 254, prev_bounce_distance, { 0.51166, 0.03501, 0.00000005 } )
 			
-			local my_light_poly = simple_create_polygon(visibility_points)
-			map_uv_square(my_light_poly, images.blank)
-			set_color(my_light_poly, rgba(0, 0, 255, 255))
-		
-			local my_bounced_light_poly = simple_create_polygon(
-				vector_to_table(bounce_layer:get_polygon(1))
-			)
-			map_uv_square(my_bounced_light_poly, images.blank)
-			set_color(my_bounced_light_poly, rgba(0, 0, 255, 255))
-			
-			
-			--my_draw_input.transform.pos = vec2(0, 0)
-			--my_light_poly:draw(my_draw_input)
-			
-			local new_light_animator = value_animator(255, -0.1, 150)
-			new_light_animator:set_quadratic()
-			
-			local used_attenuation = {
-				--0.091166, 0.00002501, 0.00005
-				0.51166, 0.03501, 0.00000005
-			}
-			
-			local bounced_light_distance = prev_bounce_distance:length()
-			local attenuation_mult = 1.0/(used_attenuation[1]+used_attenuation[2]*bounced_light_distance+used_attenuation[3]*bounced_light_distance*bounced_light_distance)
-			
-			local new_bounced_light_animator = value_animator(255*attenuation_mult, 254*attenuation_mult, 950)
-			
-			new_bounced_light_animator:set_quadratic()
-			
-			player_light_fader:add_trace(my_light_poly, new_light_animator)
-			player_light_fader:add_trace(my_bounced_light_poly, new_bounced_light_animator)
 			player_light_fader:loop()
 			player_light_fader:generate_triangles(drawn_transform, renderer.triangles, visible_area)
 			
