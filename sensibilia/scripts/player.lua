@@ -72,7 +72,7 @@ player_scriptable_info = create_scriptable_info {
 				local gun_info = player.gun_entity:get().gun
 				
 				gun_info.bullet_render.model = random_bullet_models[randval_i(1,#random_bullet_models)]
-				gun_info.spread_degrees = 3 + 30*instability
+				gun_info.spread_degrees = 1 + 30*instability
 				gun_info.shake_radius = 5+20*instability
 				--gun_info.bullet_speed = minmax(2000+7000*instability, 5000+7000*instability) 
 				
@@ -86,8 +86,10 @@ player_scriptable_info = create_scriptable_info {
 						v = v:get()
 						local body = v.physics.body
 						local vel = vec2(body:GetLinearVelocity().x, body:GetLinearVelocity().y)
-						local dist_from_start = v.damage.lifetime:get_milliseconds()--(v.damage.starting_point - v.transform.current.pos):length()
+						local dist_from_start = v.damage.lifetime:get_milliseconds()
+						local dist_from_starting_point = (v.damage.starting_point - v.transform.current.pos):length()
 						vel:set_length(0.005 * dist_from_start) 
+						--vel = vel + base_gravity/10*(dist_from_starting_point/700)
 						
 						--vel = vel
 						
@@ -95,7 +97,7 @@ player_scriptable_info = create_scriptable_info {
 						--body:ApplyAngularImpulse(randval(0, 0.01), true)
 						
 						local alpha_mult = (1 - (dist_from_start/v.damage.max_lifetime_ms))
-						set_color(v.render.model, rgba(0, 255, 0, alpha_mult * alpha_mult * 255))
+						set_color(v.render.model, rgba(0, 255, 0, alpha_mult * alpha_mult * alpha_mult* 255  + (dist_from_starting_point/5000) * 90 ))
 						
 						i = i + 1
 					end
@@ -117,8 +119,8 @@ player = spawn_character ({
 		gun = {
 			bullet_callback = function(subject, new_bullet)
 				new_bullet.render.model = random_bullet_models[randval_i(1,#random_bullet_models)]
-				new_bullet.damage.max_lifetime_ms = 400
-				new_bullet.damage.destroy_upon_hit = true
+				new_bullet.damage.max_lifetime_ms = 500+300*instability
+				new_bullet.damage.destroy_upon_hit = false
 				local new_entity_ptr = entity_ptr()
 				new_entity_ptr:set(new_bullet)
 				table.insert(all_player_bullets, new_entity_ptr)
@@ -140,7 +142,7 @@ player = spawn_character ({
 			bullets_once = 40,
 			bullet_distance_offset = vec2(130, 0),
 			bullet_damage = minmax(0.1, 1),
-			bullet_speed = minmax(1, 6000),
+			bullet_speed = minmax(100, 6000),
 			bullet_render = { model = bullet_sprite, mask = render_masks.EFFECTS },
 			is_automatic = true,
 			max_rounds = 3000,
@@ -158,8 +160,9 @@ player = spawn_character ({
 				air_resistance = 0,
 				gravity_scale = 0,
 				linear_damping = 0,
-				angular_damping = 0,
-				restitution = 0
+				angular_damping = 16,
+				restitution = 0,
+				friction = 100
 			},
 			
 			max_bullet_distance = 4000,

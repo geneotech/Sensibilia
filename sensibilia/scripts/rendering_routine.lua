@@ -77,7 +77,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			if instability > 1 then instability = 1 end
 			
-			is_instability_ray_over_postprocessing = not (instability > 0.9)
+			is_instability_ray_over_postprocessing = not (instability > 0.7)
 			
 			local prev_instability = instability
 			instability = instability + temporary_instability
@@ -202,10 +202,10 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			-- postprocessing
 			
 			hblur_program:use()
-			GL.glUniform1f(h_offset_multiplier, instability*1.8)
+			GL.glUniform1f(h_offset_multiplier, instability*1.2)
 			fullscreen_pass(false, nil, intensity_fbo)
 			vblur_program:use()
-			GL.glUniform1f(v_offset_multiplier, instability*1.8)
+			GL.glUniform1f(v_offset_multiplier, instability*1.2)
 			fullscreen_pass(true, intensity_fbo)
 			
 			current_postprocessing_fbo = 0

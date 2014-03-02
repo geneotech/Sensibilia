@@ -35,16 +35,16 @@ blood_piece = {
 
 
 blood_templates = {
-	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 4000, 	model = { image = images.crosshair_map, size = vec2(50, 50), color = rgba(255, 0, 0, 255) 		}  }),
-	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 4000, 	model = { image = images.bullet_map, size = vec2(50, 50), color = rgba(0, 255, 0, 255) 			}  }),
-	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 9000, 	model = { image = images.bullet_map, size = vec2(50, 50), color = rgba(0, 255, 0, 255) 			}  }),
-	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 4000, 	model = { image = images.bullet_map, size = vec2(50, 50), color = rgba(255, 0, 255, 255) 		}  }),
+	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 4000, 	model = { image = images.blank, size = vec2(50, 50), color = rgba(255, 0, 0, 255) 		}  }),
+	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 4000, 	model = { image = images.blank, size = vec2(50, 50), color = rgba(0, 0, 0, 255) 			}  }),
+	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 9000, 	model = { image = images.blank, size = vec2(50, 50), color = rgba(0, 0, 0, 255) 			}  }),
+	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 4000, 	model = { image = images.bullet_map, size = vec2(50, 50), color = rgba(255, 0, 0, 255) 		}  }),
 	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 9000, 	model = { image = images.bullet_map, size = vec2(50, 50), color = rgba(255, 0, 0, 255) 			}  }),
-	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 4000, 	model = { image = images.crosshair_map, size = vec2(50, 50), color = rgba(255, 255, 255, 255) 	}  }),
+	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 4000, 	model = { image = images.blank, size = vec2(50, 50), color = rgba(255, 0, 0, 255) 	}  }),
 	archetyped(blood_piece, { acc = vec2.from_degrees(-180) * 4000, model = { image = images.crosshair_map, size = vec2(50, 50), color = rgba(255, 0, 0, 255) 		}  }),
-	archetyped(blood_piece, { acc = vec2.from_degrees(-180) * 9000, model = { image = images.bullet_map, size = vec2(50, 50), color = rgba(255, 0, 0, 255) 			}  }),
+	archetyped(blood_piece, { acc = vec2.from_degrees(-180) * 9000, model = { image = images.blank, size = vec2(50, 50), color = rgba(255, 0, 0, 0) 			}  }),
 	archetyped(blood_piece, { acc = vec2.from_degrees(170) * 4000,	model = { image = images.crosshair_map, size = vec2(50, 50), color = rgba(255, 0, 0, 255) 		}  }),
-	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 9000, 	model = { image = images.crosshair_map, size = vec2(50, 50), color = rgba(255, 0, 0, 255) 		}  })
+	archetyped(blood_piece, { acc = vec2.from_degrees(90) * 9000, 	model = { image = images.blank, size = vec2(50, 50), color = rgba(255, 0, 0, 255) 		}  })
 --	archetyped(blood_piece, { model = { image = images.blood_2 } } ),
 --	archetyped(blood_piece, { model = { image = images.blood_3 } } ),
 --	archetyped(blood_piece, { model = { image = images.blood_4 } } ),

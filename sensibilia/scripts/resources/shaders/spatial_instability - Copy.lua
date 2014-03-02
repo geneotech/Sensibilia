@@ -47,7 +47,7 @@ void main()
 
 	// get temporal input and convert it to float, slow down it a little
 	float used_time = time;
-	used_time = used_time / 20 ;
+	used_time = used_time / 2000 ;
 	
 	
 	// get the pixel from scene
@@ -58,6 +58,7 @@ void main()
 	
 	float enemy_intensity = intensity_pixel.r;
 	float player_intensity = intensity_pixel.g;
+	
 	
 	float[3] intensities;
 	{
@@ -72,19 +73,22 @@ void main()
 		 
 		intensities[0] = //int(abs(
 		
-		1-smoothstep(0.0, 0.0010*(sin(used_time/40)+1.1)+0.06*multiplier, abs((1+cos(uv.x*0.2-used_time)/cos(uv.x*2-used_time/20)/3-(1-ppos.y)) - uv.y));
+		1-smoothstep(0.0, 200*0.0010*(sin(used_time/40)+1.1)+0.06*multiplier, abs((1+cos(uv.x*2-used_time)/cos(uv.x*2-used_time/20)/3-(1-ppos.y)) - uv.y));
 		
 		//) - uv.y) < 0.017*(sin(used_time/40)+1.01)+0.06*multiplier );
-		intensities[1] = int(abs(
+		intensities[1] = 
+		1-smoothstep(0.0, 200*0.006*multiplier+ 0.010*(cos(used_time/70)+1.01),
+
+		abs(
 		
 		(1+sin(uv.x*0.2-used_time)/cos(uv.x*2-used_time/20)/2-(1-ppos.y)
 		
-		) - uv.y) < 0.006*multiplier+ 0.010*(cos(used_time/70)+1.01));
-		intensities[2]	=	int(abs(
+		) - uv.y));
+		intensities[2]	=	1-smoothstep(0.0,  200*0.006*multiplier+ 0.010*(sin(used_time/50)+1.01), abs(
 		
 		(1+cos(uv.x*0.2-used_time)/sin(uv.x*2-used_time/20)/3-(1-ppos.y)
 		
-		) - uv.y) < 0.006*multiplier+ 0.010*(sin(used_time/50)+1.01));	
+		) - uv.y) );	
 	}
 		
 	float earlier = player_intensity;
@@ -127,7 +131,7 @@ void main()
 	//float avg_pixel = (pixel.r + pixel.g + pixel.b) / 3;
 	
 	vec4 desat = desaturated(pixel);
-	vec4 final_pixel = mix(pixel, desat, 0.7+sin(used_time/280)*0.3);
+	vec4 final_pixel = mix(pixel, desat, 0.9+sin(used_time/500)*0.1);
 	final_pixel = mix(final_pixel, vec4(vec3(153*sin(used_time), 85*cos(used_time), 187*tan(used_time))/255.0, 1.0), (player_intensity+enemy_intensity)*(intensities[0] + intensities[1] + intensities[2]));
 	
 	
