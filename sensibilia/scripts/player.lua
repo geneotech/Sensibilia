@@ -42,20 +42,16 @@ player_scriptable_info = create_scriptable_info {
 				get_self(message.subject):jump(message.state_flag)
 				--get_self(message.subject):handle_jumping()
 			elseif message.intent == intent_message.SHOOT then 
-				if message.state_flag and not is_reality_checking then
-					get_self(message.subject).ray_caster:cast(true)
-				else
-					get_self(message.subject).ray_caster:cast(false)
-				end
+				get_self(message.subject).ray_caster:cast(message.state_flag)
 			elseif message.intent == custom_intents.REALITY_CHECK then
-				if message.state_flag and not is_player_raycasting() then
+				if message.state_flag then
 					is_reality_checking = true
 					player.body:get().movement.input_acceleration.x = 1000
 					get_self(player.body:get()).jump_force_multiplier = 0.4
 				else
+					is_reality_checking = false
 					player.body:get().movement.input_acceleration.x = 9000
 					get_self(player.body:get()).jump_force_multiplier = 1
-					is_reality_checking = false
 				end
 			elseif message.intent == custom_intents.SPEED_CHANGE then
 				physics_system.timestep_multiplier = physics_system.timestep_multiplier + message.wheel_amount/60.0 * 0.05
@@ -293,6 +289,12 @@ player = spawn_character ({
 
 get_self(player.body:get()):set_foot_sensor_from_sprite(player_sprite, 3, 1)
 get_self(player.body:get()).hp = 30000
+get_self(player.body:get()).max_after_jetpack_steps = 125
+get_self(player.body:get()).after_jetpack_force_mult = 0.5
+get_self(player.body:get()).pre_after_jetpack_steps = 17
+
+
+
 --get_self(player.body:get()):set_foot_sensor_from_circle(60, 6)
 world_camera.chase:set_target(player.body:get())
 world_camera.camera.player:set(player.body:get())

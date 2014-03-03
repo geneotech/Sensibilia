@@ -94,9 +94,16 @@ loop_only_info = create_scriptable_info {
 				instability = instability + main_delta_timer:get_milliseconds()/10000
 			end
 			
-			instability = instability + (1-physics_system.timestep_multiplier) * main_delta_timer:get_milliseconds()/4000
+			if get_self(player.body:get()).is_currently_post_jetpacking then
+				instability = instability + main_delta_timer:get_milliseconds()/3000
+			end
 			
-			if not is_player_raycasting() and not changing_gravity then
+			instability = instability + (1-physics_system.timestep_multiplier) * main_delta_timer:get_milliseconds()/5000
+			
+			if not is_player_raycasting() and not changing_gravity and not 
+			get_self(player.body:get()).is_currently_post_jetpacking and math.abs(physics_system.timestep_multiplier-1) < 0.1
+			
+			then
 				local decrease_amount = (main_delta_timer:get_seconds() / 10)
 				
 				if is_reality_checking then decrease_amount = decrease_amount * 3 end

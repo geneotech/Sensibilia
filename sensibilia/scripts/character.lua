@@ -17,6 +17,12 @@ function character_class:constructor(subject_entity, base_movement_speed)
 	self.something_under_foot = false
 	
 	self.max_jetpack_steps = 15
+	
+	self.max_after_jetpack_steps = 0
+	self.after_jetpack_force_mult = 0.5
+	self.pre_after_jetpack_steps = 5
+	self.is_currently_post_jetpacking = false
+	
 	self.still_holding_jetpack = false
 	self.jump_force_multiplier = 1
 	
@@ -151,12 +157,22 @@ end
 
 function character_class:handle_variable_height_jump()
 	local body = self.entity.physics.body
-	if self.still_holding_jetpack and self.jetpack_timer:get_steps() < self.max_jetpack_steps then
-	--	print(self.still_holding_jetpack, self.jetpack_timer:get_steps(), self.max_jetpack_steps)
-	--print "JETPACKING"
+	self.is_currently_post_jetpacking = false
+	if self.still_holding_jetpack then
+		local jetpack_steps = self.jetpack_timer:get_steps()
 		local jetpack_force = self.jetpack_impulse:rotate(gravity_angle_offset, vec2(0, 0)) * self.jump_force_multiplier
-		body:ApplyLinearImpulse(b2Vec2(jetpack_force.x, jetpack_force.y), body:GetWorldCenter(), true)
-		
+			
+		if jetpack_steps < self.max_jetpack_steps then
+		--	print(self.still_holding_jetpack, self.jetpack_timer:get_steps(), self.max_jetpack_steps)
+		--print "JETPACKING"
+			body:ApplyLinearImpulse(b2Vec2(jetpack_force.x, jetpack_force.y), body:GetWorldCenter(), true)
+		elseif (jetpack_steps-self.max_jetpack_steps > self.pre_after_jetpack_steps) and
+			(jetpack_steps < self.max_jetpack_steps + self.pre_after_jetpack_steps + self.max_after_jetpack_steps) then
+			
+			self.is_currently_post_jetpacking = true
+			jetpack_force = jetpack_force * self.after_jetpack_force_mult
+			body:ApplyLinearImpulse(b2Vec2(jetpack_force.x, jetpack_force.y), body:GetWorldCenter(), true)
+		end
 	end
 end
 
