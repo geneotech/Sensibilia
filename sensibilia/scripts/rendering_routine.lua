@@ -61,7 +61,35 @@ function ()
 		end, true)
 	end
 end
-)	
+)
+
+
+time_speed_variation = 0
+random_time_speed_variation_coroutine = coroutine.wrap(
+function ()	
+	local last_mult = 0
+		
+	while true do
+		local transition_duration = randval(1, 400)
+		local target_variation = randval(0.0, 20.0)
+		
+		local my_val_animator = value_animator(last_mult, target_variation, transition_duration)
+		
+		if randval(0, 1) > 0.5 then
+			my_val_animator:set_exponential()
+		else
+			my_val_animator:set_quadratic()
+		end
+		
+		coroutine.wait(transition_duration, function()			
+			last_mult = my_val_animator:get_animated()
+			time_speed_variation = last_mult
+		end, true)
+	end
+end
+)
+
+
 
 accumulated_camera_time = 0
 refresh_coroutines()
@@ -70,20 +98,26 @@ player_light_fader = polygon_fader:create()
 
 function rendering_routine(subject, renderer, visible_area, drawn_transform, target_transform, mask)
 			local extracted_ms = my_timer:extract_milliseconds()
-			accumulated_camera_time = accumulated_camera_time + extracted_ms
+			
+			local sent_time = (accumulated_camera_time + (extracted_ms*time_speed_variation) * (1+instability*instability*instability*instability*2) * physics_system.timestep_multiplier) 
+			accumulated_camera_time = sent_time
 				
+			random_time_speed_variation_coroutine()
 			random_instability_variation_coroutine()
 			random_instability_ray_layer_order()
 			
 			if instability > 1 then instability = 1 end
 			
-			is_instability_ray_over_postprocessing = not (instability > 0.7)
+			is_instability_ray_over_postprocessing = not (instability > 0.85)
 			
 			local prev_instability = instability
 			instability = instability + temporary_instability
 			
 			-- right away update all the uniforms
 			scene_program:use()
+			
+			GL.glUniform1i(scene_shader_time_uniform, sent_time)
+				
 			my_atlas:bind()
 			
 			GL.glUniformMatrix4fv(
@@ -98,7 +132,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			GL.glUniform2f(player_pos_uniform, crosshair_pos.x, crosshair_pos.y)
 			
-			instability = instability - temporary_instability + temporary_instability/10
+			instability = instability - temporary_instability + temporary_instability/2
 			vertex_shift_coroutine(instability)
 			instability = prev_instability + temporary_instability
 			
@@ -202,10 +236,10 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			-- postprocessing
 			
 			hblur_program:use()
-			GL.glUniform1f(h_offset_multiplier, instability*1.2)
+			GL.glUniform1f(h_offset_multiplier, instability*instability*instability*instability*instability*instability*instability*instability*1.8)
 			fullscreen_pass(false, nil, intensity_fbo)
 			vblur_program:use()
-			GL.glUniform1f(v_offset_multiplier, instability*1.2)
+			GL.glUniform1f(v_offset_multiplier, instability*instability*instability*instability*instability*instability*instability*instability*1.8)
 			fullscreen_pass(true, intensity_fbo)
 			
 			current_postprocessing_fbo = 0
@@ -218,7 +252,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				local screen_space_player = (player_pos - (drawn_transform.pos - visibility_vec/2)) / current_zoom_multiplier
 				local screen_space_crosshair = (crosshair_pos - (drawn_transform.pos - visibility_vec/2))  / current_zoom_multiplier
 				
-				GL.glUniform1i(spatial_instability_time, (accumulated_camera_time - extracted_ms + extracted_ms * instability) * physics_system.timestep_multiplier)
+				GL.glUniform1i(spatial_instability_time, sent_time)
 				GL.glUniform1f(spatial_instability_rotation, (crosshair_pos - player_pos):perpendicular_cw():get_radians() + 3.14159265)
 				GL.glUniform2f(spatial_instability_player_pos, screen_space_player.x, config_table.resolution_h-screen_space_player.y)
 				GL.glUniform2f(spatial_instability_crosshair_pos, screen_space_crosshair.x, config_table.resolution_h-screen_space_crosshair.y)
@@ -245,14 +279,14 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				film_grain_program:use()
 				film_grain_variation_coroutine(instability)
 				--film_grain_program:use()
-				GL.glUniform1i(time_uniform, accumulated_camera_time)
+				GL.glUniform1i(time_uniform, sent_time)
 				fullscreen_quad()
 				aberration_coroutine(instability)
 				
 			else
 				film_grain_program:use()
 				GL.glUniform1f(film_grain_intensity, 0.1)
-				GL.glUniform1i(time_uniform, accumulated_camera_time)
+				GL.glUniform1i(time_uniform, sent_time)
 				fullscreen_quad()
 				refresh_coroutines()
 			end

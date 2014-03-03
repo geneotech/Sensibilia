@@ -13,7 +13,7 @@ function npc_class:constructor(subject_entity, base_movement_speed)
 	self.ray_caster.ray_quad_end_width = randval(70, 280)
 	self.ray_caster.polygon_color = rgba(50, 0, 0, 1)
 	self.ray_caster.radius_of_effect = randval(20, 150)
-	self.hp = 1000
+	self.hp = 2000
 	
 	self.steering_behaviours = {	
 		target_seeking = behaviour_state(target_seek_steering),

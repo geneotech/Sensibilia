@@ -3,7 +3,7 @@ function vertex_shift_instability_effect()
 		
 	while true do
 		local transition_duration = randval(800, 1500)
-		local target_mult = randval(10, 300)
+		local target_mult = randval(10, 50)
 		
 		local my_val_animator = value_animator(last_mult, target_mult, transition_duration)
 		
@@ -15,10 +15,10 @@ function vertex_shift_instability_effect()
 		
 		local shift_multiplier = 1
 		
-		if randval(0, 1) > 0.1 then
+		if randval(0, 1) > 0.5 then
 			shift_multiplier = -1
 		else
-			shift_multiplier = -1
+			shift_multiplier = 1
 		end
 		
 		coroutine.wait(transition_duration, function()

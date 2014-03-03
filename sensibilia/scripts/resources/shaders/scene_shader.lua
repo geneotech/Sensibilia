@@ -9,15 +9,23 @@ layout(location = 2) in vec4 color;
 
 uniform vec2 player_pos;
 uniform float shift_amount;
+uniform int time;
 
 smooth out vec4 theColor;
  out vec2 theTexcoord;
 
 void main() 
 {
-	vec4 output_vert = vec4(position.xy + normalize(player_pos - position)*shift_amount, 0.0f, 1.0f);
+	float used_time = time;
+	vec4 normal_vert = projection_matrix*vec4(position.xy, 0.0f, 1.0f);
 	
-	gl_Position = projection_matrix*output_vert;
+	vec4 output_vert = vec4(normal_vert.xy + normalize(player_pos - position) * (-1.1) * sin(time/2000.0+shift_amount/3000*position.x)*(shift_amount/850)
+	//+ (cos(normal_vert.x/300 + used_time/800.0) + sin(used_time/800.0 + normal_vert.x/800.0 + player_pos.x/100.0 + player_pos.y/100.0))*shift_amount/300.0
+	,
+
+	0.0f, 1.0f);
+	
+	gl_Position = output_vert;
 	theColor = color;
 	theTexcoord = texcoord;
 }
@@ -50,9 +58,11 @@ projection_matrix_uniform = GL.glGetUniformLocation(scene_program.id, "projectio
 
 player_pos_uniform = GL.glGetUniformLocation(scene_program.id, "player_pos")
 shift_amount_uniform = GL.glGetUniformLocation(scene_program.id, "shift_amount")
+scene_shader_time_uniform = GL.glGetUniformLocation(scene_program.id, "time")
 
 
 GL.glUniform1i(GL.glGetUniformLocation(scene_program.id, "basic_texture"), 0)
 
 GL.glUniform2f(player_pos_uniform, 0, 0)
 GL.glUniform1f(shift_amount_uniform, 0)
+GL.glUniform1i(scene_shader_time_uniform, 0)

@@ -131,12 +131,12 @@ player = spawn_character ({
 					SetFilter(new_bullet.physics.body, create(b2Filter, filter_bullets_passed_wall))
 				end
 				
-				if randval(0, 1) > 0.95 then
-					local body = new_bullet.physics.body
-					local rand_vec = (vec2.from_degrees(new_bullet.transform.current.rotation + randval(-15, 15)) * randval(50, 10000))*2/50
-					
-					body:ApplyLinearImpulse(b2Vec2(rand_vec.x, rand_vec.y), body:GetWorldCenter(), true)
-				end
+				--if randval(0, 1) > 0.95 then
+				--	local body = new_bullet.physics.body
+				--	local rand_vec = (vec2.from_degrees(new_bullet.transform.current.rotation + randval(-15, 15)) * randval(50, 10000))*2/50
+				--	
+				--	body:ApplyLinearImpulse(b2Vec2(rand_vec.x, rand_vec.y), body:GetWorldCenter(), true)
+				--end
 			end,
 			
 			bullets_once = 40,
@@ -160,7 +160,7 @@ player = spawn_character ({
 				air_resistance = 0,
 				gravity_scale = 0,
 				linear_damping = 0,
-				angular_damping = 16,
+				angular_damping = 160,
 				restitution = 0,
 				friction = 100
 			},
