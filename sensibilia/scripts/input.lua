@@ -3,8 +3,9 @@ custom_intents = create_inverse_enum {
 	"STEERING_REQUEST",
 	"RESTART",
 	"INSTANT_SLOWDOWN",
-	"SPEED_INCREASE",
-	"SPEED_DECREASE",
+	"ZOOM_IN",
+	"ZOOM_OUT",
+	"SPEED_CHANGE",
 	"QUIT",
 	"DROP_WEAPON",
 	"JUMP",
@@ -35,10 +36,20 @@ main_context = create_input_context {
 		
 		[keys.LSHIFT] 			= intent_message.SWITCH_LOOK,
 		[keys.G] 				= custom_intents.GRAVITY_CHANGE,
-		[mouse.wheel]			= custom_intents.ZOOM_CAMERA,
-		[keys.ADD] 				= custom_intents.SPEED_INCREASE,
-		[keys.SUBTRACT] 		= custom_intents.SPEED_DECREASE
+		[mouse.wheel]			= custom_intents.SPEED_CHANGE,
+		[keys.ADD] 				= custom_intents.ZOOM_IN,
+		[keys.SUBTRACT] 		= custom_intents.ZOOM_OUT
 	}
+}
+
+main_input_component = {
+	custom_intents.INSTANT_SLOWDOWN,
+	custom_intents.QUIT,
+	custom_intents.RESTART,
+	custom_intents.GRAVITY_CHANGE,
+	custom_intents.MY_INTENT,
+	intent_message.AIM,
+	custom_intents.ZOOM_OUT
 }
 
 input_system:clear_contexts()
@@ -79,14 +90,6 @@ function main_input_routine(message)
 		end
 	elseif message.intent == custom_intents.INSTANT_SLOWDOWN then
 		physics_system.timestep_multiplier = 0.00001
-	elseif message.intent == custom_intents.SPEED_INCREASE then
-		physics_system.timestep_multiplier = physics_system.timestep_multiplier + 0.05
-	elseif message.intent == custom_intents.SPEED_DECREASE then
-		physics_system.timestep_multiplier = physics_system.timestep_multiplier - 0.05
-		
-		if physics_system.timestep_multiplier < 0.01 then
-			physics_system.timestep_multiplier = 0.01
-		end
 	elseif message.intent == custom_intents.MY_INTENT then
 		if not message.state_flag then 
 			bounce_number = bounce_number + 1 

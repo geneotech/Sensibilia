@@ -94,6 +94,8 @@ loop_only_info = create_scriptable_info {
 				instability = instability + main_delta_timer:get_milliseconds()/10000
 			end
 			
+			instability = instability + (1-physics_system.timestep_multiplier) * main_delta_timer:get_milliseconds()/4000
+			
 			if not is_player_raycasting() and not changing_gravity then
 				local decrease_amount = (main_delta_timer:get_seconds() / 10)
 				
@@ -111,16 +113,7 @@ loop_only_info = create_scriptable_info {
 }
 
 create_entity {
-	input = {
-			custom_intents.SPEED_INCREASE,
-			custom_intents.SPEED_DECREASE,
-			custom_intents.INSTANT_SLOWDOWN,
-			custom_intents.QUIT,
-			custom_intents.RESTART,
-			custom_intents.GRAVITY_CHANGE,
-			custom_intents.MY_INTENT,
-			intent_message.AIM
-	},
+	input = main_input_component,
 		
 	scriptable = {
 		available_scripts = loop_only_info

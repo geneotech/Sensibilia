@@ -16,8 +16,11 @@ end
 scriptable_zoom = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = function(message)
-				if message.intent == custom_intents.ZOOM_CAMERA then
-					current_zoom_level = current_zoom_level-message.wheel_amount
+				if message.intent == custom_intents.ZOOM_IN then
+					current_zoom_level = current_zoom_level-120
+					set_zoom_level(message.subject)
+				elseif message.intent == custom_intents.ZOOM_OUT then
+					current_zoom_level = current_zoom_level+120
 					set_zoom_level(message.subject)
 				end
 			return false
@@ -71,7 +74,8 @@ world_camera = create_entity (archetyped(camera_archetype, {
 	
 	input = {
 		intent_message.SWITCH_LOOK,
-		custom_intents.ZOOM_CAMERA
+		custom_intents.ZOOM_IN,
+		custom_intents.ZOOM_OUT
 	},
 	
 	chase = {

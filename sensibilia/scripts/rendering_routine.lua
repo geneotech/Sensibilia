@@ -204,7 +204,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			handle_point_light(lighting_layer:get_polygon(1), 150, -0.1)
 			if bounce_number >= 0.0 then handle_point_light(bounce_layer:get_polygon(1), 950, 254, bounce_layer.offset:length(), { 32.81166, 0.03501, 0.0000000 } ) end 
-			if bounce_number > 1.5 then print "handlin" handle_point_light(bounce1_layer:get_polygon(1), 2950, 254, bounce_layer.offset:length() + bounce1_layer.offset:length(), { 0, 0.020100, 0.000000000 } ) end
+			if bounce_number > 1.5 then handle_point_light(bounce1_layer:get_polygon(1), 2950, 254, bounce_layer.offset:length() + bounce1_layer.offset:length(), { 0, 0.020100, 0.000000000 } ) end
 			
 			player_light_fader:loop()
 			player_light_fader:generate_triangles(drawn_transform, renderer.triangles, visible_area)

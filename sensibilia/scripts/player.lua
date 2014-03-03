@@ -29,6 +29,8 @@ end
 
 all_player_bullets = {}
 
+timestep_corrector = value_animator(physics_system.timestep_multiplier, 1, 3500)
+
 player_scriptable_info = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.INTENT_MESSAGE] = function (message) 
@@ -55,6 +57,19 @@ player_scriptable_info = create_scriptable_info {
 					get_self(player.body:get()).jump_force_multiplier = 1
 					is_reality_checking = false
 				end
+			elseif message.intent == custom_intents.SPEED_CHANGE then
+				physics_system.timestep_multiplier = physics_system.timestep_multiplier + message.wheel_amount/60.0 * 0.05
+				
+				if physics_system.timestep_multiplier < 0.01 then
+					physics_system.timestep_multiplier = 0.01
+				end
+				
+				if physics_system.timestep_multiplier > 1 then
+					physics_system.timestep_multiplier = 1
+				end
+				
+				timestep_corrector = value_animator(physics_system.timestep_multiplier, 1, 5500)
+				timestep_corrector:set_linear()
 			else
 				return true
 			end
@@ -69,6 +84,8 @@ player_scriptable_info = create_scriptable_info {
 				my_self:substep()
 			else
 				my_self:loop()
+				physics_system.timestep_multiplier = timestep_corrector:get_animated()
+				
 				local gun_info = player.gun_entity:get().gun
 				
 				gun_info.bullet_render.model = random_bullet_models[randval_i(1,#random_bullet_models)]
@@ -84,6 +101,7 @@ player_scriptable_info = create_scriptable_info {
 						table.remove(all_player_bullets, i)
 					else
 						v = v:get()
+						v.damage.max_lifetime_ms = (500+300*instability)/physics_system.timestep_multiplier
 						local body = v.physics.body
 						local vel = vec2(body:GetLinearVelocity().x, body:GetLinearVelocity().y)
 						local dist_from_start = v.damage.lifetime:get_milliseconds()
@@ -204,7 +222,8 @@ player = spawn_character ({
 			intent_message.MOVE_RIGHT,
 			
 			--custom_intents.INSTABILITY_RAY,
-			custom_intents.REALITY_CHECK
+			custom_intents.REALITY_CHECK,
+			custom_intents.SPEED_CHANGE
 		},
 		
 		scriptable = {
