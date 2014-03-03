@@ -143,11 +143,40 @@ function create_entity(entry)
 	return new_entity
 end
 
+group_by_entity = {}
+
+function flush_dead_entities_in_group_by_entity()
+	for k, v in pairs(group_by_entity) do
+		if not k:exists() then
+			group_by_entity[k] = nil
+		end
+	end
+end
+
+function get_group_by_entity(entity_entry)
+	flush_dead_entities_in_group_by_entity()
+	
+	for k, v in pairs(group_by_entity) do
+		if k:get() == entity_entry then
+			return v
+		end
+	end
+	
+	return nil
+end
+
 function create_entity_group(entries)
+	flush_dead_entities_in_group_by_entity()
+	
 	local entities_lookup = {}
 	
 	for name, entry in pairs(entries) do
-		entities_lookup[name] = world:create_entity() 
+		local new_entity_ptr = entity_ptr()
+		local new_entity = world:create_entity()
+		new_entity_ptr:set(new_entity)
+		
+		entities_lookup[name] = new_entity
+		group_by_entity[new_entity_ptr] = entities_lookup
 	end
 	
 	for name, entry in pairs(entities_lookup) do
