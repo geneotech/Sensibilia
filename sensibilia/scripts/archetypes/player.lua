@@ -22,7 +22,11 @@ map_uv_square(player_debug_circle, images.blank)
 
 player_group_archetype = archetyped(character_group_archetype, {
 	gun_entity = {
-		gun = instability_gun,
+		gun = archetyped(instability_gun, {
+			bullet_callback = function(subject, new_bullet)
+				instability_gun_bullet_callback(subject, new_bullet, random_player_bullet_models, filter_bullets_passed_wall)
+			end
+		}),
 		
 		transform = {},
 		
@@ -183,7 +187,7 @@ end
 function player_class:loop()
 	physics_system.timestep_multiplier = self.timestep_corrector:get_animated()
 	
-	loop_instability_gun_bullets(player)
+	loop_instability_gun_bullets(player, 5+20*instability, rgba(0, 255, 0, 255))
 end
 
 function spawn_player(position)

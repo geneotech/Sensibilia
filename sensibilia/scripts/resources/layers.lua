@@ -20,7 +20,8 @@ create_options {
 	"OBJECTS", 
 	"STATIC_OBJECTS",
 	"INSTABILITY_RAY",
-	"BULLETS"
+	"BULLETS",
+	"ENEMY_BULLETS"
 }
 
 -- VISIBILITY LAYERS --
@@ -38,7 +39,7 @@ filter_nothing = {
 }
 
 -- used only for query/raycast filters
-local mask_all = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY, BULLETS)
+local mask_all = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY, BULLETS, ENEMY_BULLETS)
 
 filter_light_visibility = {
 	categoryBits = mask_all,
@@ -47,33 +48,56 @@ filter_light_visibility = {
 
 filter_bullets = {
 	categoryBits = BULLETS,
-	maskBits = bitor(ENEMIES, OBJECTS, STATIC_OBJECTS)
+	maskBits = bitor(ENEMIES, OBJECTS, STATIC_OBJECTS, ENEMY_BULLETS)
+}
+
+filter_enemy_bullets = {
+	categoryBits = ENEMY_BULLETS,
+	maskBits = bitor(CHARACTERS, OBJECTS, STATIC_OBJECTS, BULLETS)
 }
 
 filter_bullets_passed_wall = {
 	categoryBits = BULLETS,
-	maskBits = bitor(ENEMIES)
+	maskBits = bitor(ENEMIES, ENEMY_BULLETS)
+}
+
+filter_enemy_bullets_passed_wall = {
+	categoryBits = ENEMY_BULLETS,
+	maskBits = bitor(CHARACTERS, ENEMY_BULLETS)
 }
 
 filter_static_objects = {
 	categoryBits = STATIC_OBJECTS,
-	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, BULLETS)
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, BULLETS, ENEMY_BULLETS)
 }
 
 filter_objects = {
 	categoryBits = OBJECTS,
-	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, BULLETS)
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, BULLETS, ENEMY_BULLETS)
 }
 
 filter_characters = {
 	categoryBits = CHARACTERS,
-	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY)
+	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY, ENEMY_BULLETS)
 }
 
 filter_enemies = {
 	categoryBits = ENEMIES,
 	maskBits = bitor(CHARACTERS, ENEMIES, OBJECTS, STATIC_OBJECTS, INSTABILITY_RAY, BULLETS)
 }
+
+
+
+
+
+
+
+
+
+
+-- QUERIES
+
+
 
 filter_pathfinding_visibility = {
 	categoryBits = mask_all,

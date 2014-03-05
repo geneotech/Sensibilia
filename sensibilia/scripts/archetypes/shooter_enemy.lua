@@ -1,16 +1,21 @@
-shooter_npc_class = inherits_from (entity_class)
+shooter_sprite = create_sprite {
+	image = images.bullet_map,
+	size = vec2(120, 120),
+	color = rgba(255, 0, 0, 0)
+}
 
--- set it manually in spawn function
---function shooter_npc_class:set_movement_mode_flying(flag)
---	-- always set to true
---	--npc_class:set_movement_mode_flying(self, true)
---end
-
-shooter_npc_archetype = archetyped(pusher_archetype, {
+shooter_archetype = archetyped(pusher_archetype, {
 	gun_entity = {
 		gun = archetyped(instability_gun, {
+			bullet_callback = function(subject, new_bullet)
+				instability_gun_bullet_callback(subject, new_bullet, random_enemy_bullet_models, filter_enemy_bullets_passed_wall)
+			end,
 			
-		
+			bullets_once = 5,
+			bullet_damage = minmax(1, 20),
+			bullet_body = {
+				filter = filter_enemy_bullets	
+			}
 		}),
 		
 		transform = {},
@@ -27,74 +32,44 @@ shooter_npc_archetype = archetyped(pusher_archetype, {
 	},
 	
 	body = {
+		render = {
+			model = shooter_sprite
+		},
+		
 		children = {
 			"gun_entity"
 		},
 		
-		particle_emitter = {
-			available_particle_effects = npc_effects
-		},
-		
-		physics = {
-			--body_type = Box2D.b2_staticBody,
-			
-			body_info = {
-				filter = filter_enemies,
-				density = 100
-				--linear_damping = 18
-			}
-		},
-		
-		behaviour_tree = {
-			trees = {
-				npc_alertness.behave,
-				enemy_movement_behaviour_tree.movement
-			}
-		},
-		
-		lookat = {
-			update_value = false,
-			easing_mode = lookat_component.EXPONENTIAL,
-			averages_per_sec = 10
-		},
-		
-		render = {
-			model = npc_sprite,
-			mask = render_masks.WORLD
-		},
-		
-		transform = {
-			pos = vec2(10000, -5000)
-		},
-		
-		visibility = {
-			visibility_layers = {
-				[visibility_component.DYNAMIC_PATHFINDING] = {
-					square_side = 2000,
-					color = rgba(0, 255, 255, 120),
-					ignore_discontinuities_shorter_than = 150,
-					filter = filter_pathfinding_visibility
-				}
-			}
-		},
-		
-		pathfinding = {
-			enable_backtracking = true,
-			target_offset = 3,
-			rotate_navpoints = 10,
-			distance_navpoint_hit = 2,
-			favor_velocity_parallellness = false,
-			force_persistent_navpoints = true,
-			force_touch_sensors = true
-		},
-		
-		steering = {
-			max_resultant_force = -1, -- -1 = no force clamping
-			max_speed = 12000*1.4142135623730950488016887242097
-		},
-		
 		movement = {
-			inverse_thrust_brake = vec2(15000, 0)
+			inverse_thrust_brake = vec2(25000, 0)
 		}
 	}
 })
+
+function spawn_shooter(position)
+	local new_group = spawn_entity(archetyped(shooter_archetype, { body = { transform = { pos = position } } } ))
+	local gun_entity = new_group.gun_entity:get()
+	local this = get_self(new_group.body:get())
+	
+	this.all_player_bullets = {}
+	this.character = character_module:create(new_group.body:get(), 4000)
+	this.character.hp = 1000
+	
+	this.coordination = coordination_module:create(new_group.body:get())
+	
+	this.loop = function()
+		if this.coordination.is_seen then
+			gun_entity.gun.trigger_mode = gun_component.SHOOT
+		else
+			gun_entity.gun.trigger_mode = gun_component.NONE
+		end
+	
+		loop_instability_gun_bullets(new_group, 10+10*instability, rgba(255, 0, 0, 255))	
+	end
+	
+	return new_group
+end
+
+_my_npc = spawn_shooter(world_information["ENEMY_START"][1].pos)
+_my_npc2 = spawn_shooter(world_information["ENEMY_START"][2].pos)
+_my_npc3 = spawn_shooter(world_information["ENEMY_START"][3].pos)

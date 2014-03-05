@@ -1,3 +1,9 @@
+npc_sprite = create_sprite {
+	image = images.bullet_map,
+	size = vec2(60, 60),
+	color = rgba(255, 0, 0, 0)
+}
+
 pusher_archetype = archetyped(character_group_archetype, {
 	body = {
 		particle_emitter = {
@@ -103,6 +109,3 @@ end
 my_npc = spawn_pusher(world_information["ENEMY_START"][1].pos)
 my_npc2 = spawn_pusher(world_information["ENEMY_START"][2].pos)
 my_npc3 = spawn_pusher(world_information["ENEMY_START"][3].pos)
-_my_npc = spawn_pusher(world_information["ENEMY_START"][1].pos)
-_my_npc2 = spawn_pusher(world_information["ENEMY_START"][2].pos)
-_my_npc3 = spawn_pusher(world_information["ENEMY_START"][3].pos)

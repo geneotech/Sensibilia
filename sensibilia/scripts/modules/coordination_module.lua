@@ -1,10 +1,6 @@
 dofile "sensibilia\\scripts\\steering.lua"
 
-npc_sprite = create_sprite {
-	image = images.bullet_map,
-	size = vec2(60, 60),
-	color = rgba(255, 0, 0, 255)
-}
+
 
 coordination_module = inherits_from {}
 
@@ -55,16 +51,22 @@ function coordination_module:constructor(subject_entity)
 			while true do
 				print "lecimy"
 				self:set_movement_mode_flying(true)
-				coroutine.stepped_wait(randval(1000/self.movement_speed_multiplier, 9000/self.movement_speed_multiplier))
+				local mov_speed_mult = get_self(self.entity).character.movement_speed_multiplier
+				coroutine.stepped_wait(randval(1000/mov_speed_mult, 3000/mov_speed_mult))
 				print "idziemy"
 				self:set_movement_mode_flying(false)
-				coroutine.stepped_wait(randval(500, 4000))
+				coroutine.stepped_wait(randval(200, 1000))
 			end
 		end
 	)
 end
 
 function coordination_module:set_movement_mode_flying(flag)
+	-- no jumping available; always set the flag to true
+	if get_self(self.entity).jumping == nil then
+		flag = true	
+	end
+	
 	self.movement_mode_flying = flag
 	self.entity.movement.sidescroller_setup = not flag
 		
@@ -90,7 +92,7 @@ function coordination_module:set_movement_mode_flying(flag)
 		SetFriction(self.entity.physics.body, 2)
 
 		local height_callback = function(entity, pos, target)
-			return (pos.y - target.y) <= self.jump_height 
+			return (pos.y - target.y) <= get_self(entity).jumping.jump_height 
 		end
 		
 		self.entity.pathfinding.first_priority_navpoint_check = height_callback
@@ -248,14 +250,15 @@ function coordination_module:handle_visibility_offset()
 		self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(0, 0)
 	else
 		self.target_entities.navigation.transform.current.pos = self.frozen_navpoint
+		local jumping = get_self(self.entity).jumping
 		
 		-- handle visibility offset for feet
-		self.current_pathfinding_eye = vec2(0, self.foot_sensor_p1.y)
+		self.current_pathfinding_eye = vec2(0, jumping.foot_sensor_p1.y)
 		
 		if to_vec2(self.entity.physics.body:GetLinearVelocity()):rotate(-self.entity.movement.axis_rotation_degrees, vec2(0, 0)).x < 0 then
-			self.current_pathfinding_eye.x = self.foot_sensor_p1.x
+			self.current_pathfinding_eye.x = jumping.foot_sensor_p1.x
 		else
-			self.current_pathfinding_eye.x = self.foot_sensor_p2.x
+			self.current_pathfinding_eye.x = jumping.foot_sensor_p2.x
 		end
 		
 		self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(self.current_pathfinding_eye):rotate(self.entity.movement.axis_rotation_degrees, vec2(0, 0))
@@ -264,13 +267,6 @@ end
 
 function coordination_module:handle_flying_state()
 	coroutine.resume(self.flying_state_changer)
-end
-
-function coordination_module:substep()
-	if not self.movement_mode_flying then
-		self:handle_jumping()
-		self:handle_variable_height_jump()
-	end
 end
 
 function coordination_module:loop()

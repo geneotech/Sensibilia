@@ -70,11 +70,16 @@ void main()
 		
 		 
 		 
-		intensities[0] = //int(abs(
+		intensities[0] = int(abs(
 		
-		1-smoothstep(0.0, 0.0010*(sin(used_time/40)+1.1)+0.06*multiplier, abs((1+cos(uv.x*0.2-used_time)/cos(uv.x*2-used_time/20)/3-(1-ppos.y)) - uv.y));
+		//1-smoothstep(0.0, 0.0010*(sin(used_time/40)+1.1)+0.06*multiplier, abs(
 		
-		//) - uv.y) < 0.0017*(sin(used_time/40)+1.01)+0.06*multiplier );
+		(1+cos(uv.x*0.2-used_time)/cos(uv.x*2-used_time/20)/3-(1-ppos.y)
+		
+		
+		//) - uv.y));
+		
+		) - uv.y) < 0.0008*(sin(used_time/40)+1.01)+0.06*multiplier );
 		intensities[1] = int(abs(
 		
 		(1+sin(uv.x*0.2-used_time)/cos(uv.x*2-used_time/20)/2-(1-ppos.y)

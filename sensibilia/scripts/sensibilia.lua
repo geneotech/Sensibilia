@@ -153,7 +153,7 @@ loop_only_info = create_scriptable_info {
 				instability = instability + main_delta_timer:get_milliseconds()/3000
 			end
 			
-			instability = instability + (1-physics_system.timestep_multiplier) * main_delta_timer:get_milliseconds()/5000
+			instability = instability + (1-physics_system.timestep_multiplier) * main_delta_timer:get_milliseconds()/11000
 			
 			if not is_player_raycasting() and not changing_gravity and not 
 			player_self.jumping.is_currently_post_jetpacking and math.abs(physics_system.timestep_multiplier-1) < 0.1
