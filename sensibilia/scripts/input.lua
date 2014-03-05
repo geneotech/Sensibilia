@@ -71,8 +71,8 @@ function main_input_routine(message)
 			world_camera.camera.crosshair_follows_interpolant = false
 		end
 		
-		for k, v in ipairs(global_character_table) do
-			v:set_gravity_shift_state(changing_gravity)
+		for k, v in ipairs(global_entity_table) do
+			v.character:set_gravity_shift_state(changing_gravity)
 		end
 		
 	elseif message.intent == custom_intents.RESTART then
@@ -84,8 +84,8 @@ function main_input_routine(message)
 		
 			target_gravity_rotation = target_gravity_rotation + added_angle
 			
-			for k, v in ipairs(global_character_table) do
-				v.entity.physics.target_angle = target_gravity_rotation
+			for k, v in ipairs(global_entity_table) do
+				v.parent_group.body:get().physics.target_angle = target_gravity_rotation
 			end
 		end
 	elseif message.intent == custom_intents.INSTANT_SLOWDOWN then

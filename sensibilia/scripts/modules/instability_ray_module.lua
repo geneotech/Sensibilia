@@ -26,9 +26,9 @@ function handle_dying_instability_rays()
 	end
 end
 
-instability_ray_caster = inherits_from {}
+instability_ray_module = inherits_from {}
 
-function instability_ray_caster:constructor(entity, ray_filter)
+function instability_ray_module:constructor(entity, ray_filter)
 	self.position = vec2(0, 0)
 	self.direction = vec2(0, 0)
 	
@@ -59,15 +59,15 @@ function instability_ray_caster:constructor(entity, ray_filter)
 	self.polygon_color = rgba(255, 255, 255, 255)
 end
 
-function instability_ray_caster:generate_triangles(camera_transform, output_buffer, visible_area)
+function instability_ray_module:generate_triangles(camera_transform, output_buffer, visible_area)
 	self.polygon_fader:generate_triangles(camera_transform, output_buffer, visible_area)
 end
 
-function instability_ray_caster:cast(flag)
+function instability_ray_module:cast(flag)
 	self.currently_casting = flag
 end
 
-function instability_ray_caster:construct_world_polygon()
+function instability_ray_module:construct_world_polygon()
 	-- bind draw input
 	local perpendicular = self.direction:perpendicular_cw()
 	local width_at_end = self.ray_quad_width + (self.ray_quad_end_width - self.ray_quad_width) * (self.ray_length / self.trapezoid_height)
@@ -80,7 +80,7 @@ function instability_ray_caster:construct_world_polygon()
 	})
 end
 
-function instability_ray_caster:loop()
+function instability_ray_module:loop()
 	self.instability_bonus = 0
 	local delta_ms = self.delta_timer:extract_milliseconds() * physics_system.timestep_multiplier
 	
@@ -149,7 +149,12 @@ function instability_ray_caster:loop()
 		-- there are no obstructions on the way
 		if not ray_output.hit then
 			local enemy_self = get_self(enemy_entity)
-			enemy_self:take_damage(delta_ms)
+			
+			if enemy_self then
+				if enemy_self.character then 
+					enemy_self.character:damage_message({ amount = delta_ms }) 
+				end
+			end
 		end
 	end
 	

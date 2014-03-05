@@ -14,7 +14,7 @@ enemy_movement_behaviour_tree = create_behaviour_tree {
 		player_visible = {
 			node_type = behaviour_node.SELECTOR,
 			on_update = function(entity) 
-				if player.body:get() and get_self(entity).is_seen then 
+				if player.body:get() and get_self(entity).coordination.is_seen then 
 					entity.lookat.target:set(player.body:get())
 					entity.lookat.look_mode = lookat_component.POSITION
 					return behaviour_node.SUCCESS
@@ -29,23 +29,23 @@ enemy_movement_behaviour_tree = create_behaviour_tree {
 		stand_still = {
 			on_update = function(entity)
 				if player.body:get() then
-					get_self(entity):set_movement_speed_multiplier(0.4)
-					get_self(entity):pursue_target(player.body:get())	
+					get_self(entity).character:set_movement_speed_multiplier(0.4)
+					get_self(entity).coordination:pursue_target(player.body:get())	
 					return behaviour_node.RUNNING
 				end
 				return behaviour_node.FAILURE
 			end,
 			
 			on_exit = function(entity, code)
-				get_self(entity):stop_pursuit()
+				get_self(entity).coordination:stop_pursuit()
 			end
 		},
 		
 		is_alert = {
 			node_type = behaviour_node.SELECTOR,
 			on_update = function(entity)
-				if get_self(entity).is_alert then
-					get_self(entity):set_movement_speed_multiplier(1)
+				if get_self(entity).coordination.is_alert then
+					get_self(entity).character:set_movement_speed_multiplier(1)
 					return behaviour_node.SUCCESS 
 				end
 				return behaviour_node.FAILURE
@@ -55,7 +55,7 @@ enemy_movement_behaviour_tree = create_behaviour_tree {
 		go_to_last_seen = {
 			on_enter = function(entity, current_task)		
 				current_task:interrupt_runner(behaviour_node.FAILURE)
-				local npc_info = get_self(entity)
+				local npc_info = get_self(entity).coordination
 				
 				local temporary_copy = vec2(npc_info.target_entities.last_seen.transform.current.pos.x, npc_info.target_entities.last_seen.transform.current.pos.y)
 				local target_point_pushed_away = physics_system:push_away_from_walls(temporary_copy, 100, 10, create(b2Filter, filter_pathfinding_visibility), entity)
@@ -69,10 +69,10 @@ enemy_movement_behaviour_tree = create_behaviour_tree {
 			on_update = function(entity)
 				local npc_info = get_self(entity)
 			
-				entity.pathfinding.custom_exploration_hint.origin = npc_info.target_entities.last_seen.transform.current.pos
-				entity.pathfinding.custom_exploration_hint.target = npc_info.target_entities.last_seen.transform.current.pos + (npc_info.last_seen_velocity * 50)
+				entity.pathfinding.custom_exploration_hint.origin = npc_info.coordination.target_entities.last_seen.transform.current.pos
+				entity.pathfinding.custom_exploration_hint.target = npc_info.coordination.target_entities.last_seen.transform.current.pos + (npc_info.coordination.last_seen_velocity * 50)
 				
-				render_system:push_line(debug_line(entity.transform.current.pos, get_self(entity).target_entities.last_seen.transform.current.pos, rgba(255, 0, 0, 255)))
+				render_system:push_line(debug_line(entity.transform.current.pos, get_self(entity).coordination.target_entities.last_seen.transform.current.pos, rgba(255, 0, 0, 255)))
 				render_system:push_line(debug_line(entity.pathfinding.custom_exploration_hint.origin, entity.pathfinding.custom_exploration_hint.target, rgba(255, 0, 255, 255)))
 				
 				if entity.pathfinding:is_still_pathfinding() then return behaviour_node.RUNNING end
@@ -116,7 +116,7 @@ enemy_movement_behaviour_tree = create_behaviour_tree {
 			on_enter = function(entity, current_task)
 				current_task:interrupt_runner(behaviour_node.FAILURE)
 				--npc_behaviour_tree.delay_chase.maximum_running_time_ms = 400
-				get_self(entity):set_movement_speed_multiplier(0.2)
+				get_self(entity).character:set_movement_speed_multiplier(0.2)
 				entity.pathfinding:clear_pathfinding_info()
 				entity.pathfinding:start_exploring()
 				entity.pathfinding.favor_velocity_parallellness = false
@@ -164,14 +164,14 @@ npc_alertness = create_behaviour_tree {
 			decorator_chain = "temporary_alertness",
 			
 			on_update = function(entity)
-				if get_self(entity).is_alert and not get_self(entity).is_seen then 
+				if get_self(entity).coordination.is_alert and not get_self(entity).coordination.is_seen then 
 					return behaviour_node.RUNNING 
 				end
 				return behaviour_node.FAILURE
 			end,
 			
 			on_exit = function(entity, code)
-				if code == behaviour_node.SUCCESS then get_self(entity).is_alert = false end
+				if code == behaviour_node.SUCCESS then get_self(entity).coordination.is_alert = false end
 			end
 		}
 	},

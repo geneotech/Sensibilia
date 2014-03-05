@@ -1,19 +1,15 @@
+dofile "sensibilia\\scripts\\steering.lua"
+
 npc_sprite = create_sprite {
 	image = images.bullet_map,
 	size = vec2(60, 60),
-	color = rgba(255, 0, 0, 30)
+	color = rgba(255, 0, 0, 255)
 }
 
-npc_class = inherits_from (character_class)
+coordination_module = inherits_from {}
 
-function npc_class:constructor(subject_entity, base_movement_speed)
-	character_class.constructor(self, subject_entity, base_movement_speed)
-	self.ray_caster = instability_ray_caster:create(subject_entity, filter_instability_ray_enemy)
-	self.ray_caster.ray_quad_width = randval(15, 20)
-	self.ray_caster.ray_quad_end_width = randval(70, 280)
-	self.ray_caster.polygon_color = rgba(50, 0, 0, 1)
-	self.ray_caster.radius_of_effect = randval(20, 150)
-	self.hp = 2000
+function coordination_module:constructor(subject_entity)
+	self.entity = subject_entity
 	
 	self.steering_behaviours = {	
 		target_seeking = behaviour_state(target_seek_steering),
@@ -68,7 +64,7 @@ function npc_class:constructor(subject_entity, base_movement_speed)
 	)
 end
 
-function npc_class:set_movement_mode_flying(flag)
+function coordination_module:set_movement_mode_flying(flag)
 	self.movement_mode_flying = flag
 	self.entity.movement.sidescroller_setup = not flag
 		
@@ -118,29 +114,16 @@ function npc_class:set_movement_mode_flying(flag)
 	end
 end
 
-function npc_class:death_callback()
-	-- first have to remove all occurences of my_npc from scripts
-	-- and remove its reference in global npc table
-	
-	for k, v in ipairs(global_character_table) do
-		if v == self then
-			table.remove(global_character_table, k)
-			break
-		end
-	end
-	
-	local msg = destroy_message()
-	msg.subject = self.entity
-	world:post_message(msg)
+function coordination_module:death_callback()
 end
 
-function npc_class:set_all_behaviours_enabled(flag)
+function coordination_module:set_all_behaviours_enabled(flag)
 	for k, v in pairs(self.steering_behaviours) do
 		v.enabled = flag
 	end
 end
 
-function npc_class:refresh_behaviours() 
+function coordination_module:refresh_behaviours() 
 	self.entity.steering:clear_behaviours()
 	
 	for k, v in pairs(self.steering_behaviours) do
@@ -148,12 +131,12 @@ function npc_class:refresh_behaviours()
 	end
 end
 
-function npc_class:angle_fits_in_threshold(angle, axis_angle, threshold)
+function coordination_module:angle_fits_in_threshold(angle, axis_angle, threshold)
 	angle = angle - self.entity.movement.axis_rotation_degrees
 	return angle > axis_angle - threshold and angle < axis_angle + threshold
 end
 
-function npc_class:map_vector_to_movement(real_vector)
+function coordination_module:map_vector_to_movement(real_vector)
 	self.entity.movement.requested_movement = real_vector
 	local should_jump = self:angle_fits_in_threshold(real_vector:get_degrees(), -90, 20)
 	self:jump(should_jump)
@@ -161,7 +144,7 @@ function npc_class:map_vector_to_movement(real_vector)
 	return should_jump
 end
 
-function npc_class:determine_jumpability(queried_point, apply_upwards_forces)	
+function coordination_module:determine_jumpability(queried_point, apply_upwards_forces)	
 	local vel = self.entity.physics.body:GetLinearVelocity()
 	local foot = self.entity.transform.current.pos + self.current_pathfinding_eye
 	
@@ -187,22 +170,22 @@ function npc_class:determine_jumpability(queried_point, apply_upwards_forces)
 	--self.entity.physics.body:GetMass())
 end
 
-function npc_class:pursue_target(target_entity)			
+function coordination_module:pursue_target(target_entity)			
 	self.steering_behaviours.pursuit.target_from:set(target_entity)
 	self.steering_behaviours.pursuit.enabled = true
 	self.steering_behaviours.obstacle_avoidance.enabled = false
 end
 
-function npc_class:stop_pursuit()	
+function coordination_module:stop_pursuit()	
 	self.steering_behaviours.pursuit.enabled = false
 	self.steering_behaviours.obstacle_avoidance.enabled = true
 end
 
-function npc_class:is_pathfinding()
+function coordination_module:is_pathfinding()
 	return self.entity.pathfinding:is_still_pathfinding() or self.entity.pathfinding:is_still_exploring()
 end
 
-function npc_class:handle_steering()
+function coordination_module:handle_steering()
 	local entity = self.entity
 	local behaviours = self.steering_behaviours
 	local target_entities = self.target_entities
@@ -235,7 +218,7 @@ function npc_class:handle_steering()
 	end
 end
 
-function npc_class:handle_player_visibility()
+function coordination_module:handle_player_visibility()
 	--if not player.body:get():exists() then 
 	--	self.is_seen = false
 	--else
@@ -257,12 +240,10 @@ function npc_class:handle_player_visibility()
 		else
 			self.is_seen = false
 		end
-		
-		self.ray_caster:cast(self.is_seen)
 	--end
 end
 
-function npc_class:handle_visibility_offset()
+function coordination_module:handle_visibility_offset()
 	if self.movement_mode_flying then
 		self.entity.visibility:get_layer(visibility_component.DYNAMIC_PATHFINDING).offset = vec2(0, 0)
 	else
@@ -281,18 +262,26 @@ function npc_class:handle_visibility_offset()
 	end
 end
 
-function npc_class:handle_flying_state()
+function coordination_module:handle_flying_state()
 	coroutine.resume(self.flying_state_changer)
 end
 
-function npc_class:substep()
+function coordination_module:substep()
 	if not self.movement_mode_flying then
 		self:handle_jumping()
 		self:handle_variable_height_jump()
 	end
 end
 
-function npc_class:loop()
+function coordination_module:loop()
+	-- get the entity object to extract jumping module
+	local jumping = get_self(self.entity).jumping
+	
+	if jumping ~= nil then
+		-- it will only be enabled later on demand
+		jumping.enabled = false
+	end
+
 	 if self:is_pathfinding() then
 		self.frozen_navpoint = self.entity.pathfinding:get_current_navigation_target()
 		self.entity.pathfinding.eye_offset = self.current_pathfinding_eye
@@ -313,39 +302,35 @@ function npc_class:loop()
 	
 		local real_vector = self.steering_behaviours.target_seeking.last_output_force
 		
-		-- if we can get there without applying more upward forces, then cancel out the jump behaviour (also stops holding the jetpack)
-		if self:determine_jumpability(self.frozen_navpoint, false) then
-			--print "stopping jump because we can get there"
-			self:jump(false)
-		-- maybe we can get there by taking the jump now; let's do this then
-		elseif self:determine_jumpability(self.frozen_navpoint, true) then
-			--print "starting jump; target reachable only this way"
-			self:jump(true)
-		-- else let the simple movement mapper decide whether to jump or not
-		else
-			local should_jump = self:angle_fits_in_threshold(real_vector:get_degrees(), -90, 20)
-			
-			if should_jump then 
-			--print 
-			--	"jumping as target is higher up" 
+		-- operations below can't be processed without accompanying jumping module
+		if jumping ~= nil then
+			-- if we can get there without applying more upward forces, then cancel out the jump behaviour (also stops holding the jetpack)
+			if self:determine_jumpability(self.frozen_navpoint, false) then
+				--print "stopping jump because we can get there"
+				jumping:jump(false)
+			-- maybe we can get there by taking the jump now; let's do this then
+			elseif self:determine_jumpability(self.frozen_navpoint, true) then
+				--print "starting jump; target reachable only in this way"
+				jumping:jump(true)
+			-- else let the simple movement mapper decide whether to jump or not
+			else
+				local should_jump = self:angle_fits_in_threshold(real_vector:get_degrees(), -90, 20)
 				
-				self:jump(true)
+				if should_jump then 
+				--print 
+				--	"jumping as target is higher up" 
+					
+					jumping:jump(true)
+				end
 			end
 		end
 		
-			self.entity.movement.requested_movement = real_vector + self.steering_behaviours.wandering.last_output_force * 0.1
-	
 		
-		self:handle_jumping()
+		self.entity.movement.requested_movement = real_vector + self.steering_behaviours.wandering.last_output_force * 0.1
+		
+		-- we have disabled flying mode so we need to enable jumping module
+		jumping.enabled = true
 	end
-	
-	
-	local caster = self.ray_caster
-	
-	caster.position = self.entity.transform.current.pos
-	caster.direction = vec2.from_degrees(self.entity.lookat.last_value)
-	caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
-	caster:loop()
 	
 	--render_system:push_line(debug_line(self.entity.transform.current.pos, self.frozen_navpoint, rgba(255, 255, 0, 255)))
 	--render_system:push_line(debug_line(self.entity.transform.current.pos, self.entity.pathfinding:get_current_target(), rgba(255, 0, 0, 255)))
@@ -355,98 +340,3 @@ function npc_class:loop()
 	--	else print (k, type(v)) end
 	--end
 end
-
-dofile "sensibilia\\scripts\\enemy_ai.lua"
-
-my_npc_archetype = {
-	body = {
-		particle_emitter = {
-			available_particle_effects = npc_effects
-		},
-		
-		physics = {
-			--body_type = Box2D.b2_staticBody,
-			
-			body_info = {
-				filter = filter_enemies,
-				density = 100
-				--linear_damping = 18
-			}
-		},
-		
-		behaviour_tree = {
-			trees = {
-				npc_alertness.behave,
-				enemy_movement_behaviour_tree.movement
-			}
-		},
-		
-		lookat = {
-			update_value = false,
-			easing_mode = lookat_component.EXPONENTIAL,
-			averages_per_sec = 10
-		},
-		
-		render = {
-			model = npc_sprite,
-			mask = render_masks.EFFECTS
-		},
-		
-		transform = {
-			pos = vec2(10000, -5000)
-		},
-		
-		visibility = {
-			visibility_layers = {
-				[visibility_component.DYNAMIC_PATHFINDING] = {
-					square_side = 2000,
-					color = rgba(0, 255, 255, 120),
-					ignore_discontinuities_shorter_than = 150,
-					filter = filter_pathfinding_visibility
-				}
-			}
-		},
-		
-		pathfinding = {
-			enable_backtracking = true,
-			target_offset = 3,
-			rotate_navpoints = 10,
-			distance_navpoint_hit = 2,
-			favor_velocity_parallellness = false,
-			force_persistent_navpoints = true,
-			force_touch_sensors = true
-		},
-		
-		steering = {
-			max_resultant_force = -1, -- -1 = no force clamping
-			max_speed = 12000*1.4142135623730950488016887242097
-		},
-		
-		movement = {
-			inverse_thrust_brake = vec2(15000, 0)
-		}
-	}
-}
-
-my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 4000)
-my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 4000)
-my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 4000)
-_my_npc = spawn_character(archetyped(my_npc_archetype, { body = { transform = { pos = world_information["ENEMY_START"][1].pos } }}), npc_class, 4000)
-_my_npc2 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][2].pos }} }), npc_class, 4000)
-_my_npc3 = spawn_character(archetyped(my_npc_archetype,{ body =  { transform = { pos = world_information["ENEMY_START"][3].pos }} }), npc_class, 4000)
-
---
-get_self(my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-get_self(my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-get_self(my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-get_self(_my_npc.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-get_self(_my_npc2.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
-get_self(_my_npc3.body:get()):set_foot_sensor_from_sprite(npc_sprite, 3)
---
---
-my_npc.body:get().pathfinding:start_exploring()
-my_npc2.body:get().pathfinding:start_exploring()
-my_npc3.body:get().pathfinding:start_exploring()
-_my_npc.body:get().pathfinding:start_exploring()
-_my_npc2.body:get().pathfinding:start_exploring()
-_my_npc3.body:get().pathfinding:start_exploring()

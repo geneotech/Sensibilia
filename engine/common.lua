@@ -220,26 +220,3 @@ function to_vec2_table(xytable)
 	
 	return newtable
 end
-
-
-function random_polygon()
-	local current_angle = 0
-	local vertices = {}
-	
-	local vertex_amnt = randval_i(5, 13)
-	local scale = randval(0.01, 1)
-	
-	for i = 1, vertex_amnt do
-		current_angle = current_angle + randval(10, 40)
-		if current_angle >= 350 then break end
-		
-		table.insert(vertices, vec2(2, 1) * vec2.from_degrees(current_angle):set_length(randval(10, 130)) * scale)
-	end
-	
-	local new_bullet_poly = simple_create_polygon(vertices)
-	map_uv_square(new_bullet_poly, images.bullet_map)
-	
-	set_color(new_bullet_poly, rgba(0, 255, 0, 29))
-	
-	return new_bullet_poly
-end
