@@ -12,6 +12,7 @@ tiled_map_loader = {
 	world_information_library = "sensibilia/maps/world_properties",
 	
 	map_scale = 1.2,
+	unknown_types_to_default = true,
 	
 	for_every_object = function(filename, callback)
 		local this = tiled_map_loader
@@ -44,15 +45,21 @@ tiled_map_loader = {
 					
 					-- perform type operations only for non-information entities
 					if require(this.world_information_library)[object.type] == nil then
+						if this.unknown_types_to_default and type_table[object.type] == nil then
+							object.type = "default_type"
+						end
+					
 						local this_type_table = type_table[object.type]
 						
 						if this_type_table == nil then
 							err ("couldn't find type " .. object.type .. " for object \"" .. object.name .. "\" in layer \"" .. layer.name .. "\"")
+							--print ("couldn't find type " .. object.type .. " for object \"" .. object.name .. "\" in layer \"" .. layer.name .. "\"")
 						end
 						
 						-- validation
 						if this_type_table.entity_archetype == nil then
-							err("unspecified entity archetype for type " .. object.type)
+							--err("unspecified entity archetype for type " .. object.type)
+							print("unspecified entity archetype for type " .. object.type)
 						end
 					
 						-- property priority (lowest to biggest):
@@ -96,6 +103,7 @@ tiled_map_loader = {
 	get_all_objects_by_type = function(filename)
 		local this = tiled_map_loader
 		local all_objects_by_type = {}
+		local type_tables_by_object = {}
 	
 		this.for_every_object(filename, function(object, this_type_table)
 			if all_objects_by_type[object.type] == nil then
@@ -103,9 +111,10 @@ tiled_map_loader = {
 			end
 			
 			table.insert(all_objects_by_type[object.type], object)
+			type_tables_by_object[object] = this_type_table
 		end)
 		
-		return all_objects_by_type
+		return all_objects_by_type, type_tables_by_object
 	end,
 	
 	get_all_textures = function (filename)

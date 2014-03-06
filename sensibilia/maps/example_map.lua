@@ -396,7 +396,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "czo1",
           shape = "polygon",
           x = 4544,
           y = 3584,

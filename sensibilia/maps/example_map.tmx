@@ -31,7 +31,7 @@
   <object x="1120" y="1440" width="192" height="96"/>
   <object x="1376" y="1664" width="96" height="32"/>
   <object x="992" y="1696" width="64" height="32"/>
-  <object x="4544" y="3584">
+  <object type="czo1" x="4544" y="3584">
    <polygon points="0,0 -992,-128 -960,128 64,160"/>
   </object>
   <object type="PLAYER_START" x="4544" y="3264"/>
