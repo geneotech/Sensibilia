@@ -201,7 +201,8 @@ function spawn_player(position)
 	this.jumping.pre_after_jetpack_steps = 17
 	
 	this.character = character_module:create(new_group.body:get(), 12000)
-	this.character.hp = 30000
+	this.character:init_hp(30000)
+	this.character.is_enemy = false
 	
 	this.character.damage_message = function(self, message)
 		instability = instability + message.amount / 4000

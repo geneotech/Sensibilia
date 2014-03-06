@@ -3,7 +3,7 @@ function vertex_shift_instability_effect()
 		
 	while true do
 		local transition_duration = randval(800, 1500)
-		local target_mult = randval(1, 30)
+		local target_mult = randval(1, 10)
 		
 		local my_val_animator = value_animator(last_mult, target_mult, transition_duration)
 		

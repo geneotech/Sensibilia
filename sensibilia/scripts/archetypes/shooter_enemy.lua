@@ -53,7 +53,7 @@ function spawn_shooter(position)
 	
 	this.all_player_bullets = {}
 	this.character = character_module:create(new_group.body:get(), 4000)
-	this.character.hp = 1000
+	this.character:init_hp(1000)
 	
 	this.coordination = coordination_module:create(new_group.body:get())
 	

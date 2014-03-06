@@ -5,7 +5,10 @@ function character_module:constructor(subject_entity, base_movement)
 	self.movement_speed_multiplier = 1
 	self.base_movement_speed = base_movement
 	
+	
+	self.is_enemy = true
 	self.hp = 100
+	self.max_hp = 100
 	self:update_movement_speeds()
 end
 
@@ -19,6 +22,11 @@ function character_module:update_movement_speeds()
 		--print "WARNING: unset movement speed!!!"
 		--debugger_break()
 	end
+end
+
+function character_module:init_hp(hp_amount)
+	self.hp = hp_amount
+	self.max_hp = hp_amount
 end
 
 function character_module:set_movement_speed_multiplier(multiplier)

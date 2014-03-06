@@ -92,13 +92,38 @@ end
 
 
 accumulated_camera_time = 0
+clock_hand_time = 0
+
 refresh_coroutines()
 
 player_light_fader = polygon_fader:create()
 
+
+
+
+--clock_entity = create_entity {
+--	transform = {},
+--	
+--	render = {
+--		model = clock_sprite,
+--		mask = render_masks.WORLD,
+--		layer = render_layers.GUI_OBJECTS
+--	}
+--}
+
+
 function rendering_routine(subject, renderer, visible_area, drawn_transform, target_transform, mask)
+			local clock_center = vec2(0, 0)--vec2(config_table.resolution_w/2, config_table.resolution_h/2)*(-1) + vec2(clock_sprite.size.x/2, clock_sprite.size.y/2) + vec2(20, 10)
+
+			local clock_draw_input = draw_input()
+			clock_draw_input.camera_transform.pos = vec2(0, 0)
+			clock_draw_input.transform.pos = clock_center
+			clock_draw_input.output = renderer.triangles
+			clock_draw_input.visible_area = rect_ltrb(visible_area)
+			
 			local extracted_ms = my_timer:extract_milliseconds()
 			
+			clock_hand_time = clock_hand_time + extracted_ms * physics_system.timestep_multiplier
 			local sent_time = (accumulated_camera_time + (extracted_ms*time_speed_variation) * (1+instability*instability*instability*instability*2) * physics_system.timestep_multiplier) 
 			accumulated_camera_time = sent_time
 				
@@ -169,8 +194,6 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			my_sprite:draw(my_draw_input)
 			
 			
-			
-			
 			-- handle point lights and bounces
 			
 			local lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
@@ -221,6 +244,70 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
 			
 			renderer:generate_triangles(visible_area, drawn_transform, mask)
+			
+			
+			local clock_alpha = 1
+			
+			if not showing_clock then
+				clock_alpha = clock_alpha_animator:get_animated()
+			end
+			
+			local clock_sprite = create_sprite {
+				image = images.blue_clock,
+				color = rgba(255, 255, 255, 255*clock_alpha),
+				size_multiplier = vec2(1.5, 1.5)
+			}
+			
+			local second_hand_sprite = create_sprite {
+				image = images.hand_3,
+				color = rgba(255, 0, 0, 50*clock_alpha),
+				size_multiplier = vec2(0.12, 0.12)
+			}
+			
+			local minute_hand_sprite = create_sprite {
+				image = images.hand_1,
+				color = rgba(0, 0, 0, 255*clock_alpha),
+				size_multiplier = vec2(0.10, 0.10)
+			}
+			
+			local hour_hand_sprite = create_sprite {
+				image = images.hand_2,
+				color = rgba(0, 0, 0, 255*clock_alpha),
+				size_multiplier = vec2(0.12, 0.12)
+			}
+			
+			clock_sprite:draw(clock_draw_input)
+			
+			
+			clock_draw_input.transform.pos = clock_center + vec2.from_degrees(clock_hand_time/6) * ( (second_hand_sprite.size.x/2) - 5)
+			clock_draw_input.transform.rotation = clock_hand_time/6
+			second_hand_sprite:draw(clock_draw_input)
+			
+			local minute_hand_rotation = -90 + (20 + (prev_instability + temporary_instability/10) * 340)
+			clock_draw_input.transform.pos = clock_center + vec2.from_degrees(minute_hand_rotation) * ( (minute_hand_sprite.size.x/2) - 5)
+			clock_draw_input.transform.rotation = minute_hand_rotation
+			minute_hand_sprite:draw(clock_draw_input)
+			
+			
+			
+			current_sum_of_all_healths = 0 
+			
+			for k, v in pairs(global_entity_table) do
+				if v.character ~= nil then
+					if v.character.is_enemy then
+						current_sum_of_all_healths = current_sum_of_all_healths + v.character.hp
+					end
+				end
+			end
+
+
+			local hour_hand_rotation = -90 + (20 + (1-(current_sum_of_all_healths/all_enemies_max_health_points)) * 340)
+			clock_draw_input.transform.pos = clock_center + vec2.from_degrees(hour_hand_rotation) * ( (hour_hand_sprite.size.x/2) - 5)
+			clock_draw_input.transform.rotation = hour_hand_rotation
+			hour_hand_sprite:draw(clock_draw_input)
+			
+			--hour_hand_sprite:draw(clock_draw_input)
+			
 			renderer:call_triangles()
 			renderer:clear_triangles()
 			
@@ -299,12 +386,10 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			fullscreen_pass(true)
 			
-				
-			instability = prev_instability
-			
-			
 			
 			lighting_layer.offset = vec2.random_on_circle(randval(1,59)*instability)
+			
+			instability = prev_instability
 			
 			local random_discontinuity_end = function(source_layer)
 				local randomized_num = 0

@@ -42,6 +42,17 @@ dofile "sensibilia\\scripts\\archetypes\\pusher_enemy.lua"
 dofile "sensibilia\\scripts\\archetypes\\shooter_enemy.lua"
 dofile "sensibilia\\scripts\\archetypes\\player.lua"
 
+
+all_enemies_max_health_points = 0
+
+for k, v in pairs(global_entity_table) do
+	if v.character ~= nil then
+		if v.character.is_enemy then
+			all_enemies_max_health_points = all_enemies_max_health_points + v.character.max_hp
+		end
+	end
+end
+
 base_crosshair_rotation = 0
 
 main_delta_timer = timer()
@@ -161,7 +172,7 @@ loop_only_info = create_scriptable_info {
 			then
 				local decrease_amount = (main_delta_timer:get_seconds() / 10)
 				
-				if is_reality_checking then decrease_amount = decrease_amount * 3 end
+				if get_self(player.body:get()).is_reality_checking then decrease_amount = decrease_amount * 3 end
 				
 				instability = instability - decrease_amount
 			end

@@ -6,12 +6,12 @@ bullet_sprite = create_sprite {
 random_player_bullet_models = {}
 random_enemy_bullet_models = {}
 
-function random_polygon(color)
+function random_polygon(color, scalar)
 	local current_angle = 0
 	local vertices = {}
 	
 	local vertex_amnt = randval_i(5, 13)
-	local scale = randval(0.01, 1)
+	local scale = randval(0.01, 1) * scalar
 	
 	for i = 1, vertex_amnt do
 		current_angle = current_angle + randval(10, 40)
@@ -30,11 +30,11 @@ end
 
 
 for i=1, 1000 do
-	table.insert(random_player_bullet_models, random_polygon(rgba(0, 255, 0, 29)))
+	table.insert(random_player_bullet_models, random_polygon(rgba(0, 255, 0, 29), 1))
 end
 
 for i=1, 1000 do
-	table.insert(random_enemy_bullet_models, random_polygon(rgba(255, 0, 0, 29)))
+	table.insert(random_enemy_bullet_models, random_polygon(rgba(255, 0, 0, 29), 1))
 end
 
 function loop_instability_gun_bullets(subject_group, shake_radius, init_color)

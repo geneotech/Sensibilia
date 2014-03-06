@@ -89,7 +89,7 @@ function spawn_pusher(position)
 	this.instability_ray.ray_quad_end_width = randval(70, 280)
 	this.instability_ray.polygon_color = rgba(50, 0, 0, 1)
 	this.instability_ray.radius_of_effect = randval(20, 150)
-	this.character.hp = 2000
+	this.character:init_hp(2000)
 	
 	this.loop = function()
 		local caster = this.instability_ray

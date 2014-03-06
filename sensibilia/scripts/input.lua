@@ -11,6 +11,7 @@ custom_intents = create_inverse_enum {
 	"JUMP",
 	"GRAVITY_CHANGE",
 	"MY_INTENT",
+	"SHOW_CLOCK",
 	
 	"INSTABILITY_RAY",
 	"REALITY_CHECK"
@@ -28,7 +29,8 @@ main_context = create_input_context {
 		[mouse.rdown] 			= custom_intents.REALITY_CHECK,
 		[mouse.rdoubleclick] 	= custom_intents.REALITY_CHECK,
 		[keys.V] 				= custom_intents.INSTANT_SLOWDOWN,
-		[keys.E] 				= custom_intents.MY_INTENT,
+		[keys.E] 				= custom_intents.SHOW_CLOCK,
+		--[keys.C] 				= custom_intents.SHOW_CLOCK,
 		
 		[mouse.ldoubleclick] 	= intent_message.SHOOT,
 		[mouse.ltripleclick] 	= intent_message.SHOOT,
@@ -49,13 +51,19 @@ main_input_component = {
 	custom_intents.GRAVITY_CHANGE,
 	custom_intents.MY_INTENT,
 	intent_message.AIM,
-	custom_intents.ZOOM_OUT
+	custom_intents.ZOOM_OUT,
+	custom_intents.SHOW_CLOCK
 }
 
 input_system:clear_contexts()
 input_system:add_context(main_context)
 
 bounce_number = 2
+
+showing_clock = false
+clock_alpha_multiplier = 1
+clock_alpha_animator = value_animator(0, 0, 1)
+
 function main_input_routine(message)
 	if message.intent == custom_intents.QUIT then
 		input_system.quit_flag = 1
@@ -90,6 +98,14 @@ function main_input_routine(message)
 		end
 	elseif message.intent == custom_intents.INSTANT_SLOWDOWN then
 		physics_system.timestep_multiplier = 0.00001
+	elseif message.intent == custom_intents.SHOW_CLOCK then
+		showing_clock = message.state_flag
+		
+		if not showing_clock then
+			clock_alpha_animator = value_animator(1, 0, 600)
+			clock_alpha_animator:set_logarithmic()
+		end
+		
 	elseif message.intent == custom_intents.MY_INTENT then
 		if not message.state_flag then 
 			bounce_number = bounce_number + 1 
