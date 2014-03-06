@@ -94,14 +94,15 @@ tiled_map_loader = {
 	end,
 	
 	get_all_objects_by_type = function(filename)
+		local this = tiled_map_loader
 		local all_objects_by_type = {}
 	
 		this.for_every_object(filename, function(object, this_type_table)
-			if all_objects_by_type[objects.type] == nil then
-				all_objects_by_type[objects.type] = {}
+			if all_objects_by_type[object.type] == nil then
+				all_objects_by_type[object.type] = {}
 			end
 			
-			table.insert(all_objects_by_type[objects.type], object)
+			table.insert(all_objects_by_type[object.type], object)
 		end)
 		
 		return all_objects_by_type
@@ -142,6 +143,82 @@ tiled_map_loader = {
 		return world_information
 	end,
 
+	basic_entity_table = function(object, this_type_table, out_polygons, out_rects)
+		local this = tiled_map_loader
+		local final_entity_table = {}
+			
+		local final_color = rgba(255, 255, 255, 255)
+		
+		if this_type_table.color ~= nil then
+			final_color = this_type_table.color
+		end
+		
+		-- begin processing the newly to be created entity
+		local shape = object.shape
+		local used_texture = textures_by_name[this_type_table.texture]
+		
+		local physics_body_type = 0
+		
+		if shape == "polygon" then
+			physics_body_type = physics_info.POLYGON
+			local new_polygon = simple_create_polygon (reversed((object.polygon)))
+			map_uv_square(new_polygon, used_texture)
+			set_color(new_polygon, final_color)
+			
+			final_entity_table.render = { model = new_polygon }
+			table.insert(out_polygons, new_polygon)
+		elseif shape == "rectangle" then
+			physics_body_type = physics_info.RECT
+			
+			local rect_size = vec2(object.width, object.height)
+			local new_rectangle = create_sprite { 
+				image = used_texture,
+				size = rect_size,
+				color = final_color
+			}
+			
+			final_entity_table.render = { model = new_rectangle }
+			
+			-- shift position by half of the rectangle size 
+			object.pos = object.pos + rect_size / 2
+			table.insert(out_rects, new_rectangle)
+		else
+			err ("shape type unsupported!")
+		end
+		
+		if this_type_table.render_layer ~= nil then
+			final_entity_table.render.layer = render_layers[this_type_table.render_layer]
+		end
+		
+		final_entity_table.transform = {
+			pos = object.pos
+		}
+		
+		if this_type_table.scrolling_speed ~= nil then
+			final_entity_table.chase = {
+				scrolling_speed = tonumber(this_type_table.scrolling_speed),
+				reference_position = object.pos,
+				target_reference_position = this.world_camera_entity.transform.current.pos,
+				
+				chase_type = chase_component.PARALLAX,
+				target = this.world_camera_entity,
+				subscribe_to_previous = true
+			}
+		end
+		
+		-- handle physical body request
+		if this_type_table.entity_archetype.physics ~= nil then
+			final_entity_table = archetyped(final_entity_table, { 
+				physics = { 
+					body_info = {
+						shape_type = physics_body_type
+					} 
+				} 
+			})
+		end
+		
+		return final_entity_table
+	end,
 	
 	create_entities_from_map = function (filename)	
 		local this = tiled_map_loader
@@ -160,80 +237,9 @@ tiled_map_loader = {
 		this.for_every_object(filename, function(object, this_type_table)
 			-- do it only for non-property entities
 			if require(this.world_information_library)[object.type] == nil then
-				local final_entity_table = {}
-				
-				local final_color = rgba(255, 255, 255, 255)
-				
-				if this_type_table.color ~= nil then
-					final_color = this_type_table.color
-				end
-				
-				-- begin processing the newly to be created entity
-				local shape = object.shape
-				local used_texture = textures_by_name[this_type_table.texture]
-				
-				local physics_body_type = 0
-				
-				if shape == "polygon" then
-					physics_body_type = physics_info.POLYGON
-					local new_polygon = simple_create_polygon (reversed((object.polygon)))
-					map_uv_square(new_polygon, used_texture)
-					set_color(new_polygon, final_color)
-					
-					final_entity_table.render = { model = new_polygon }
-					table.insert(map_object.all_polygons, new_polygon)
-				elseif shape == "rectangle" then
-					physics_body_type = physics_info.RECT
-					
-					local rect_size = vec2(object.width, object.height)
-					local new_rectangle = create_sprite { 
-						image = used_texture,
-						size = rect_size,
-						color = final_color
-					}
-					
-					final_entity_table.render = { model = new_rectangle }
-					
-					-- shift position by half of the rectangle size 
-					object.pos = object.pos + rect_size / 2
-					table.insert(map_object.all_sprites, new_rectangle)
-				else
-					err ("shape type unsupported!")
-				end
-				
-				if this_type_table.render_layer ~= nil then
-					final_entity_table.render.layer = render_layers[this_type_table.render_layer]
-				end
-				
-				final_entity_table.transform = {
-					pos = object.pos
-				}
-				
-				if this_type_table.scrolling_speed ~= nil then
-					final_entity_table.chase = {
-						scrolling_speed = tonumber(this_type_table.scrolling_speed),
-						reference_position = object.pos,
-						target_reference_position = this.world_camera_entity.transform.current.pos,
-						
-						chase_type = chase_component.PARALLAX,
-						target = this.world_camera_entity,
-						subscribe_to_previous = true
-					}
-				end
-				
-				-- handle physical body request
-				if this_type_table.entity_archetype.physics ~= nil then
-					final_entity_table = archetyped(final_entity_table, { 
-						physics = { 
-							body_info = {
-								shape_type = physics_body_type
-							} 
-						} 
-					})
-				end
 				
 				-- create the entity
-				local new_entity = create_entity (archetyped(this_type_table.entity_archetype, final_entity_table))
+				local new_entity = create_entity (archetyped(this_type_table.entity_archetype, this.basic_entity_table(object, this_type_table, map_object.all_polygons, map_object.all_sprites)))
 				
 				-- and save it in map table
 				if object.name == "" then 
