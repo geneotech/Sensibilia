@@ -75,21 +75,21 @@ player_group_archetype = archetyped(character_group_archetype, {
 		visibility = {
 			visibility_layers = {
 				[visibility_layers.BASIC_LIGHTING] = {
-					square_side = 15000,
+					square_side = 6000,
 					color = rgba(0, 255, 255, 120),
 					ignore_discontinuities_shorter_than = -1,
 					filter = filter_light_visibility
 				},
 				
 				[visibility_layers.LIGHT_BOUNCE] = {
-					square_side = 15000,
+					square_side = 6000,
 					color = rgba(0, 255, 255, 120),
 					ignore_discontinuities_shorter_than = -1,
 					filter = filter_light_visibility
 				},
 				
 				[visibility_layers.LIGHT_BOUNCE + 1] = {
-					square_side = 15000,
+					square_side = 6000,
 					color = rgba(255, 0, 0, 120),
 					ignore_discontinuities_shorter_than = -1,
 					filter = filter_light_visibility

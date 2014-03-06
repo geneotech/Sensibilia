@@ -102,7 +102,7 @@ function main_input_routine(message)
 		showing_clock = message.state_flag
 		
 		if not showing_clock then
-			clock_alpha_animator = value_animator(1, 0, 600)
+			clock_alpha_animator = value_animator(1, 0, 1500)
 			clock_alpha_animator:set_logarithmic()
 		end
 		

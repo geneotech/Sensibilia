@@ -24,7 +24,7 @@ return {
 	},
 	
 	bg_object_3 = {
-		color = rgba(12, 12, 12, 255),
+		color = rgba(82, 52, 52, 255),
 		render_layer = "BACKGROUND_3",
 		scrolling_speed = 0.3,
 		texture = "my_type_1.jpg",

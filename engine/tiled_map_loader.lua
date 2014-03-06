@@ -11,7 +11,7 @@ tiled_map_loader = {
 	type_library = "sensibilia/maps/object_types",
 	world_information_library = "sensibilia/maps/world_properties",
 	
-	map_scale = 2.5,
+	map_scale = 1.2,
 	
 	for_every_object = function(filename, callback)
 		local this = tiled_map_loader
@@ -76,8 +76,7 @@ tiled_map_loader = {
 					
 					if object.polygon ~= nil then
 						for k, v in ipairs(object.polygon) do
-							object.polygon[k].x = v.x * this.map_scale
-							object.polygon[k].y = v.y * this.map_scale
+							object.polygon[k] = vec2(v.x * this.map_scale, v.y * this.map_scale)
 						end
 					end
 					
@@ -92,6 +91,20 @@ tiled_map_loader = {
 		
 		return needed_textures
 	
+	end,
+	
+	get_all_objects_by_type = function(filename)
+		local all_objects_by_type = {}
+	
+		this.for_every_object(filename, function(object, this_type_table)
+			if all_objects_by_type[objects.type] == nil then
+				all_objects_by_type[objects.type] = {}
+			end
+			
+			table.insert(all_objects_by_type[objects.type], object)
+		end)
+		
+		return all_objects_by_type
 	end,
 	
 	get_all_textures = function (filename)
@@ -130,7 +143,7 @@ tiled_map_loader = {
 	end,
 
 	
-	load_map = function (filename)	
+	create_entities_from_map = function (filename)	
 		local this = tiled_map_loader
 		local err = this.error_callback
 		
@@ -163,7 +176,7 @@ tiled_map_loader = {
 				
 				if shape == "polygon" then
 					physics_body_type = physics_info.POLYGON
-					local new_polygon = simple_create_polygon (reversed(to_vec2_table (object.polygon)))
+					local new_polygon = simple_create_polygon (reversed((object.polygon)))
 					map_uv_square(new_polygon, used_texture)
 					set_color(new_polygon, final_color)
 					

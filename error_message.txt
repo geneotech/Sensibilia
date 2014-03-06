@@ -22,117 +22,170 @@ level 2: {
   }
 }
 level 3: {
-  ["(*temporary)"] = "attempt to index global 'render_mask' (a nil value)"
+  ["(*temporary)"] = "sensibilia\\scripts\\maps\\loader.lua"
 }
-level 4: {
-  ["(*temporary)"] = "sensibilia\\scripts\\rendering_routine.lua"
-}
-level 5: {}
-level 6: {
-  ["(*temporary)"] = "sensibilia\\scripts\\camera.lua"
-}
-level 7: {}
-level 8: {
+level 4: {}
+level 5: {
   ["(*temporary)"] = "sensibilia\\scripts\\sensibilia.lua"
 }
-level 9: {}
-level 10: {
+level 6: {}
+level 7: {
   ["(*temporary)"] = "sensibilia\\scripts\\sensibilia_init.lua"
 }
-level 11: {
+level 8: {
   CURRENT_SCENE = "sensibilia\\scripts\\sensibilia_init.lua"
 }
 
 stack traceback:
 	[string "METERS_TO_PIXELS = 50..."]:44: in function <[string "METERS_TO_PIXELS = 50..."]:11>
-	[C]: in function '__index'
-	sensibilia\scripts\rendering_routine.lua:110: in main chunk
+	[C]: in ?
 	[C]: in function 'dofile'
-	sensibilia\scripts\camera.lua:61: in main chunk
-	[C]: in function 'dofile'
-	sensibilia\scripts\sensibilia.lua:20: in main chunk
+	sensibilia\scripts\sensibilia.lua:22: in main chunk
 	[C]: in function 'dofile'
 	sensibilia\scripts\sensibilia_init.lua:51: in main chunk
 	[C]: in function 'dofile'
 	[string "METERS_TO_PIXELS = 50..."]:93: in main chunk
 Globals:
-debug:
-{
-  debug = <function 1>,
-  gethook = <function 2>,
-  getinfo = <function 3>,
-  getlocal = <function 4>,
-  getmetatable = <function 5>,
-  getregistry = <function 6>,
-  getupvalue = <function 7>,
-  getuservalue = <function 8>,
-  my_breakpoint = <function 9>,
-  my_traceback = <function 10>,
-  sethook = <function 11>,
-  setlocal = <function 12>,
-  setmetatable = <function 13>,
-  setupvalue = <function 14>,
-  setuservalue = <function 15>,
-  traceback = <function 16>,
-  upvalueid = <function 17>,
-  upvaluejoin = <function 18>
-}
-
-super:
+create_entity_group:
 <function 1>
 
-render_layers:
-{
-  BACKGROUND_1 = 4,
-  BACKGROUND_2 = 5,
-  BACKGROUND_3 = 6,
-  CHARACTERS = 3,
-  FOREGROUND = 1,
-  GUI_OBJECTS = 0,
-  OBJECTS = 2
-}
-
-ENGINE_DIRECTORY:
-"engine\\"
-
-float_ptr:
+sfMusic:
 <userdata 1>
 
-vector_to_table:
-<function 1>
+particle_emitter_info:
+<userdata 1>
 
 behaviour_timer_decorator:
 <userdata 1>
 
-b2Vec2:
-<userdata 1>
+filter_instability_ray_enemy:
+{
+  categoryBits = 127,
+  maskBits = 1
+}
 
-PIXELS_TO_METERS:
-0.02
-
-entity_ptr:
-<userdata 1>
-
-target_info:
-<userdata 1>
-
-navigation_hint:
-<userdata 1>
-
-get_display:
+xpcall:
 <function 1>
 
-create_physics_component:
+message:
+<userdata 1>
+
+create_particle_effect:
 <function 1>
 
-shift_amount_uniform:
-3
+render_masks:
+{
+  EFFECTS = 1,
+  WORLD = 0
+}
+
+EFFECTS_DIRECTORY:
+"sensibilia\\scripts\\effects\\"
+
+simple_create_polygon:
+<function 1>
+
+main_context:
+<userdata 1>
+
+particle_emitter_component:
+<userdata 1>
+
+scene_fragment_shader:
+<userdata 1>
+
+OBJECTS:
+4
+
+filter_instability_ray_obstruction:
+{
+  categoryBits = 127,
+  maskBits = 12
+}
+
+b2Shape:
+<userdata 1>
+
+destroy_message:
+<userdata 1>
+
+input_system:
+<userdata 1>
+
+current_postprocessing_fbo:
+0
+
+behaviour_node:
+<userdata 1>
+
+random_time_speed_variation_coroutine:
+<function 1>
+
+images:
+{
+  blank = <userdata 1>,
+  blue_clock = <userdata 2>,
+  bullet_map = <userdata 3>,
+  crosshair_map = <userdata 4>,
+  hand_1 = <userdata 5>,
+  hand_2 = <userdata 6>,
+  hand_3 = <userdata 7>,
+  metal = <userdata 8>
+}
+
+bounce_number:
+2
+
+require:
+<function 1>
+
+rawget:
+<function 1>
+
+SetFilter:
+<function 1>
+
+GLSL_shader:
+<userdata 1>
+
+create_textures:
+<function 1>
+
+debug_line:
+<userdata 1>
+
+physics_info:
+<userdata 1>
 
 h_offset_multiplier:
 1
 
+debug_draw:
+<function 1>
+
+steering_behaviour:
+<userdata 1>
+
+float_ptr:
+<userdata 1>
+
+spatial_instability_multiplier:
+4
+
 window:
 <userdata 1>
+
+_entity:
+<userdata 1>
+
+tonumber:
+<function 1>
+
+player_pos_uniform:
+1
+
+main_input_component:
+{ 999999996, 999999992, 999999997, 999999989, 999999988, 5, 999999994, 999999987 }
 
 table:
 {
@@ -154,114 +207,13 @@ table:
   unpack = <function 8>
 }
 
-postprocessing_fbos:
-{ <userdata 1>,
-  [0] = <userdata 2>
-}
-
-sfMusic:
+rect_xywh:
 <userdata 1>
-
-require:
-<function 1>
-
-film_grain_variation_coroutine:
-<function 1>
-
-children_component:
-<userdata 1>
-
-animate_info:
-<userdata 1>
-
-property:
-<function 1>
-
-scriptable_zoom:
-<userdata 1>
-
-gen_circle_vertices:
-<function 1>
-
-chromatic_aberration_fragment_shader:
-<userdata 1>
-
-map_uv_square:
-<function 1>
-
-script_reloader:
-<userdata 1>
-
-raycast_output:
-<userdata 1>
-
-b2RevoluteJointDef:
-<userdata 1>
-
-render_masks:
-{
-  EFFECTS = 1,
-  WORLD = 0
-}
-
-recursive_write:
-<function 1>
-
-filter_characters_separation:
-{
-  categoryBits = 127,
-  maskBits = 2
-}
-
-mouse:
-<userdata 1>
-
-render_system:
-<userdata 1>
-
-vertex_shift_instability_effect:
-<function 1>
-
-settings:
-<userdata 1>
-
-debug_target_sprite:
-<userdata 1>
-
-physics_info:
-<userdata 1>
-
-changing_gravity:
-false
-
-INSTABILITY_RAY:
-16
-
-particle:
-<userdata 1>
-
-camera_component:
-<userdata 1>
-
-calc_air_resistance:
-<function 1>
 
 create_sprite:
 <function 1>
 
-images:
-{
-  blank = <userdata 1>,
-  blue_clock = <userdata 2>,
-  bullet_map = <userdata 3>,
-  crosshair_map = <userdata 4>,
-  hand_1 = <userdata 5>,
-  hand_2 = <userdata 6>,
-  hand_3 = <userdata 7>,
-  metal = <userdata 8>
-}
-
-vertex:
+navigation_hint:
 <userdata 1>
 
 blood_droplets:
@@ -342,151 +294,95 @@ blood_droplets:
   velocity = <userdata 26>
 }
 
-debugger_break:
+pv:
 <function 1>
 
-_script_reloader:
+entries_from_archetypes:
+<function 1>
+
+scriptable_info:
 <userdata 1>
 
-visibility_system:
-<userdata 1>
-
-layers:
-<userdata 1>
-
-obstacle_avoidance_behaviour:
-<userdata 1>
-
-message:
-<userdata 1>
-
-filter_objects:
+debug:
 {
-  categoryBits = 4,
-  maskBits = 111
+  debug = <function 1>,
+  gethook = <function 2>,
+  getinfo = <function 3>,
+  getlocal = <function 4>,
+  getmetatable = <function 5>,
+  getregistry = <function 6>,
+  getupvalue = <function 7>,
+  getuservalue = <function 8>,
+  my_breakpoint = <function 9>,
+  my_traceback = <function 10>,
+  sethook = <function 11>,
+  setlocal = <function 12>,
+  setmetatable = <function 13>,
+  setupvalue = <function 14>,
+  setuservalue = <function 15>,
+  traceback = <function 16>,
+  upvalueid = <function 17>,
+  upvaluejoin = <function 18>
 }
 
-behaviour_tree_component:
+entities:
 <userdata 1>
 
-main_context:
-<userdata 1>
-
-behaviour_tree_task:
-<userdata 1>
-
-steering_component:
-<userdata 1>
-
-spatial_instability_zoom:
-8
-
-pcall:
+film_grain_variation_coroutine:
 <function 1>
 
-visibility_edge:
+containment_behaviour:
 <userdata 1>
 
-create_joint:
+rgba:
+<userdata 1>
+
+world:
+<userdata 1>
+
+to_vec2_table:
 <function 1>
 
-polygon:
-<userdata 1>
-
-randomize_properties_vector:
+map_uv_square:
 <function 1>
 
-_world:
-<userdata 1>
-
-string:
-{
-  byte = <function 1>,
-  char = <function 2>,
-  dump = <function 3>,
-  find = <function 4>,
-  format = <function 5>,
-  gmatch = <function 6>,
-  gsub = <function 7>,
-  len = <function 8>,
-  lower = <function 9>,
-  match = <function 10>,
-  rep = <function 11>,
-  reverse = <function 12>,
-  sub = <function 13>,
-  upper = <function 14>
-}
-
-simple_integration:
+set_color:
 <function 1>
 
-visibility_layer:
+film_grain_fragment_shader:
 <userdata 1>
 
-draw_input:
+ENEMIES:
+2
+
+_VERSION:
+"Lua 5.2"
+
+scriptable_component:
 <userdata 1>
 
-textures:
+_pathfinding_system:
 <userdata 1>
 
-create_particle_effect:
-<function 1>
+sfSoundBuffer:
+<userdata 1>
 
-input_system:
+b2RevoluteJoint:
+<userdata 1>
+
+wander_behaviour:
 <userdata 1>
 
 b2Filter:
 <userdata 1>
 
-particle_emitter_info:
-<userdata 1>
-
-select:
+refresh_coroutines:
 <function 1>
 
-create_animation:
-<function 1>
-
-behaviour_node:
+debug_target_sprite:
 <userdata 1>
 
-minmax_u:
-<userdata 1>
-
-body_to_entity:
-<function 1>
-
-global_sound_table:
-{}
-
-assert:
-<function 1>
-
-npc_effects:
-<userdata 1>
-
-hblur_vertex_shader:
-<userdata 1>
-
-_physics_system:
-<userdata 1>
-
-GL:
-<userdata 1>
-
-transform_component:
-<userdata 1>
-
-spatial_instability_fragment_shader:
-<userdata 1>
-
-steering_behaviour:
-<userdata 1>
-
-sprite:
-<userdata 1>
-
-class:
+set_world_reloading_script:
 <function 1>
 
 package:
@@ -693,7 +589,9 @@ package:
       chromatic_aberration_vertex_shader = <userdata 72>,
       clamp = <function 29>,
       class = <function 30>,
-      clock_sprite = <userdata 73>,
+      clock_alpha_animator = <userdata 73>,
+      clock_alpha_multiplier = 1,
+      clock_hand_time = 0,
       collectgarbage = <function 31>,
       collision_message = <userdata 74>,
       color_adjustment_fragment_shader = <userdata 75>,
@@ -703,9 +601,9 @@ package:
       config_table = {
         bpp = 24,
         doublebuffer = 1,
-        fullscreen = 1,
-        resolution_h = 1080,
-        resolution_w = 1920,
+        fullscreen = 0,
+        resolution_h = 1050,
+        resolution_w = 1300,
         sensitivity = <userdata 79>,
         window_border = 0,
         window_name = "example",
@@ -753,13 +651,14 @@ package:
       custom_intents = {
         DROP_WEAPON = 999999991,
         GRAVITY_CHANGE = 999999989,
-        INSTABILITY_RAY = 999999987,
+        INSTABILITY_RAY = 999999986,
         INSTANT_SLOWDOWN = 999999996,
         JUMP = 999999990,
         MY_INTENT = 999999988,
         QUIT = 999999992,
-        REALITY_CHECK = 999999986,
+        REALITY_CHECK = 999999985,
         RESTART = 999999997,
+        SHOW_CLOCK = 999999987,
         SPEED_CHANGE = 999999993,
         STEERING_REQUEST = 999999998,
         ZOOM_CAMERA = 999999999,
@@ -792,22 +691,24 @@ package:
       debug_line = <userdata 85>,
       debug_target_sprite = <userdata 86>,
       debugger_break = <function 81>,
+      def = <function 82>,
+      def_ptr = <function 83>,
       destroy_message = <userdata 87>,
       directed_behaviour = <userdata 88>,
-      dofile = <function 82>,
+      dofile = <function 84>,
       draw_input = <userdata 89>,
       drawable_concave = <userdata 90>,
       emission = <userdata 91>,
       entities = <userdata 92>,
       entity_creation_util = <userdata 93>,
       entity_ptr = <userdata 94>,
-      entries_from_archetypes = <function 83>,
-      error = <function 84>,
+      entries_from_archetypes = <function 85>,
+      error = <function 86>,
       film_grain_fragment_shader = <userdata 95>,
       film_grain_intensity = 0,
       film_grain_program = <userdata 96>,
-      film_grain_variation_coroutine = <function 85>,
-      film_grain_variation_instability_effect = <function 86>,
+      film_grain_variation_coroutine = <function 87>,
+      film_grain_variation_instability_effect = <function 88>,
       film_grain_vertex_shader = <userdata 97>,
       filter_bullets = {
         categoryBits = 32,
@@ -885,24 +786,24 @@ package:
       float_ptr = <userdata 99>,
       float_vector = <userdata 100>,
       flocking_behaviour = <userdata 101>,
-      flush_dead_entities_in_group_by_entity = <function 87>,
+      flush_dead_entities_in_group_by_entity = <function 89>,
       framebuffer_object = <userdata 102>,
-      fullscreen_pass = <function 88>,
-      fullscreen_quad = <function 89>,
+      fullscreen_pass = <function 90>,
+      fullscreen_quad = <function 91>,
       fullscreen_vertex_shader = "#version 330\\nlayout(location = 0) in vec2 position;\\n\\nout vec2 theTexcoord;\\n\\nvoid main() \\n{\\n\\tvec4 output_vert;\\n\\toutput_vert.x = position.x * 2.0 - 1.0;\\t\\t\\n\\toutput_vert.y = position.y * 2.0 - 1.0;\\t\\t\\t\\t\\n\\toutput_vert.z = 0.0f;\\t\\t\\t\\t\\t\\t\\n\\toutput_vert.w = 1.0f;\\n\\t\\n\\tgl_Position = output_vert;\\n\\ttheTexcoord = position;\\n}\\n",
-      gen_circle_vertices = <function 90>,
-      get_display = <function 91>,
-      get_group_by_entity = <function 92>,
-      getmetatable = <function 93>,
+      gen_circle_vertices = <function 92>,
+      get_display = <function 93>,
+      get_group_by_entity = <function 94>,
+      getmetatable = <function 95>,
       global_sound_table = {},
       glwindow = <userdata 103>,
       gravity_angle_offset = 0,
       group_by_entity = {},
       gun_component = <userdata 104>,
       h_offset_multiplier = 1,
-      hblur_coroutine = <function 94>,
+      hblur_coroutine = <function 96>,
       hblur_fragment_shader = <userdata 105>,
-      hblur_instability_effect = <function 95>,
+      hblur_instability_effect = <function 97>,
       hblur_program = <userdata 106>,
       hblur_vertex_shader = <userdata 107>,
       images = {
@@ -915,7 +816,7 @@ package:
         hand_3 = <userdata 114>,
         metal = <userdata 115>
       },
-      inherits_from = <function 96>,
+      inherits_from = <function 98>,
       input_component = <userdata 116>,
       input_context = <userdata 117>,
       input_system = <userdata 118>,
@@ -923,62 +824,62 @@ package:
       intensity_fbo = <userdata 119>,
       intent_message = <userdata 120>,
       io = <9>{
-        close = <function 97>,
-        flush = <function 98>,
-        input = <function 99>,
-        lines = <function 100>,
-        open = <function 101>,
-        output = <function 102>,
-        popen = <function 103>,
-        read = <function 104>,
+        close = <function 99>,
+        flush = <function 100>,
+        input = <function 101>,
+        lines = <function 102>,
+        open = <function 103>,
+        output = <function 104>,
+        popen = <function 105>,
+        read = <function 106>,
         stderr = <userdata 121>,
         stdin = <userdata 122>,
         stdout = <userdata 123>,
-        tmpfile = <function 105>,
-        type = <function 106>,
-        write = <function 107>
+        tmpfile = <function 107>,
+        type = <function 108>,
+        write = <function 109>
       },
-      ipairs = <function 108>,
+      ipairs = <function 110>,
       is_instability_ray_over_postprocessing = true,
       keys = <userdata 124>,
       layers = <userdata 125>,
-      load = <function 109>,
-      loadfile = <function 110>,
+      load = <function 111>,
+      loadfile = <function 112>,
       lookat_component = <userdata 126>,
       main_context = <userdata 127>,
-      main_input_component = { 999999996, 999999992, 999999997, 999999989, 999999988, 5, 999999994 },
-      main_input_routine = <function 111>,
-      map_uv_square = <function 112>,
+      main_input_component = { 999999996, 999999992, 999999997, 999999989, 999999988, 5, 999999994, 999999987 },
+      main_input_routine = <function 113>,
+      map_uv_square = <function 114>,
       math = <10>{
-        abs = <function 113>,
-        acos = <function 114>,
-        asin = <function 115>,
-        atan = <function 116>,
-        atan2 = <function 117>,
-        ceil = <function 118>,
-        cos = <function 119>,
-        cosh = <function 120>,
-        deg = <function 121>,
-        exp = <function 122>,
-        floor = <function 123>,
-        fmod = <function 124>,
-        frexp = <function 125>,
+        abs = <function 115>,
+        acos = <function 116>,
+        asin = <function 117>,
+        atan = <function 118>,
+        atan2 = <function 119>,
+        ceil = <function 120>,
+        cos = <function 121>,
+        cosh = <function 122>,
+        deg = <function 123>,
+        exp = <function 124>,
+        floor = <function 125>,
+        fmod = <function 126>,
+        frexp = <function 127>,
         huge = 1.#INF,
-        ldexp = <function 126>,
-        log = <function 127>,
-        max = <function 128>,
-        min = <function 129>,
-        modf = <function 130>,
+        ldexp = <function 128>,
+        log = <function 129>,
+        max = <function 130>,
+        min = <function 131>,
+        modf = <function 132>,
         pi = 3.1415926535898,
-        pow = <function 131>,
-        rad = <function 132>,
-        random = <function 133>,
-        randomseed = <function 134>,
-        sin = <function 135>,
-        sinh = <function 136>,
-        sqrt = <function 137>,
-        tan = <function 138>,
-        tanh = <function 139>
+        pow = <function 133>,
+        rad = <function 134>,
+        random = <function 135>,
+        randomseed = <function 136>,
+        sin = <function 137>,
+        sinh = <function 138>,
+        sqrt = <function 139>,
+        tan = <function 140>,
+        tanh = <function 141>
       },
       message = <userdata 128>,
       minmax = <userdata 129>,
@@ -988,26 +889,26 @@ package:
       my_atlas = <userdata 133>,
       my_timer = <userdata 134>,
       navigation_hint = <userdata 135>,
-      next = <function 140>,
+      next = <function 142>,
       npc_effects = <userdata 136>,
       obstacle_avoidance_behaviour = <userdata 137>,
-      open_script = <function 141>,
-      orthographic_projection = <function 142>,
+      open_script = <function 143>,
+      orthographic_projection = <function 144>,
       os = <11>{
-        clock = <function 143>,
-        date = <function 144>,
-        difftime = <function 145>,
-        execute = <function 146>,
-        exit = <function 147>,
-        getenv = <function 148>,
-        remove = <function 149>,
-        rename = <function 150>,
-        setlocale = <function 151>,
-        time = <function 152>,
-        tmpname = <function 153>
+        clock = <function 145>,
+        date = <function 146>,
+        difftime = <function 147>,
+        execute = <function 148>,
+        exit = <function 149>,
+        getenv = <function 150>,
+        remove = <function 151>,
+        rename = <function 152>,
+        setlocale = <function 153>,
+        time = <function 154>,
+        tmpname = <function 155>
       },
       package = <table 1>,
-      pairs = <function 154>,
+      pairs = <function 156>,
       particle = <userdata 138>,
       particle_burst_message = <userdata 139>,
       particle_effect = <userdata 140>,
@@ -1015,7 +916,7 @@ package:
       particle_emitter_info = <userdata 142>,
       pathfinding_component = <userdata 143>,
       pathfinding_system = <userdata 144>,
-      pcall = <function 155>,
+      pcall = <function 157>,
       physics_component = <userdata 145>,
       physics_info = <userdata 146>,
       physics_system = <userdata 147>,
@@ -1025,11 +926,11 @@ package:
         traces = {},
         <metatable> = {
           __index = <12>{
-            add_trace = <function 156>,
-            constructor = <function 157>,
-            create = <function 158>,
-            generate_triangles = <function 159>,
-            loop = <function 160>,
+            add_trace = <function 158>,
+            constructor = <function 159>,
+            create = <function 160>,
+            generate_triangles = <function 161>,
+            loop = <function 162>,
             <metatable> = {
               __index = {}
             }
@@ -1037,39 +938,39 @@ package:
         }
       },
       player_pos_uniform = 1,
-      point_below_segment = <function 161>,
+      point_below_segment = <function 163>,
       polygon = <userdata 150>,
       polygon_fader = <table 12>,
       polygon_particle_userdatas_saved = { <userdata 42>, <userdata 44>, <userdata 46>, <userdata 48>, <userdata 50>, <userdata 52>, <userdata 54>, <userdata 56>, <userdata 58>, <userdata 60> },
-      post_destroy = <function 162>,
+      post_destroy = <function 164>,
       postprocessing_fbos = { <userdata 151>,
         [0] = <userdata 152>
       },
-      print = <function 163>,
+      print = <function 165>,
       projection_matrix_uniform = 2,
-      property = <function 164>,
-      ptr_create_entity = <function 165>,
-      ptr_create_entity_group = <function 166>,
-      ptr_lookup = <function 167>,
-      pv = <function 168>,
+      property = <function 166>,
+      ptr_create_entity = <function 167>,
+      ptr_create_entity_group = <function 168>,
+      ptr_lookup = <function 169>,
+      pv = <function 170>,
       query_output = <userdata 153>,
-      random_instability_ray_layer_order = <function 169>,
-      random_instability_variation_coroutine = <function 170>,
-      random_time_speed_variation_coroutine = <function 171>,
-      randomize_properties = <function 172>,
-      randomize_properties_vector = <function 173>,
-      randval = <function 174>,
-      randval_i = <function 175>,
+      random_instability_ray_layer_order = <function 171>,
+      random_instability_variation_coroutine = <function 172>,
+      random_time_speed_variation_coroutine = <function 173>,
+      randomize_properties = <function 174>,
+      randomize_properties_vector = <function 175>,
+      randval = <function 176>,
+      randval_i = <function 177>,
       raw_texture = <userdata 154>,
-      rawequal = <function 176>,
-      rawget = <function 177>,
-      rawlen = <function 178>,
-      rawset = <function 179>,
+      rawequal = <function 178>,
+      rawget = <function 179>,
+      rawlen = <function 180>,
+      rawset = <function 181>,
       raycast_output = <userdata 155>,
       rect_ltrb = <userdata 156>,
       rect_xywh = <userdata 157>,
-      recursive_write = <function 180>,
-      refresh_coroutines = <function 181>,
+      recursive_write = <function 182>,
+      refresh_coroutines = <function 183>,
       reloader_script = <userdata 158>,
       render_component = <userdata 159>,
       render_layers = {
@@ -1087,11 +988,12 @@ package:
       },
       render_system = <userdata 160>,
       renderable = <userdata 161>,
-      require = <function 182>,
+      rendering_routine = <function 184>,
+      require = <function 185>,
       resource_creation_util = <userdata 162>,
-      reversed = <function 183>,
-      rewrite = <function 184>,
-      rewrite_ptr = <function 185>,
+      reversed = <function 186>,
+      rewrite = <function 187>,
+      rewrite_ptr = <function 188>,
       rgba = <userdata 163>,
       scene_fragment_shader = <userdata 164>,
       scene_program = <userdata 165>,
@@ -1103,14 +1005,14 @@ package:
       scriptable_info = <userdata 170>,
       scriptable_zoom = <userdata 171>,
       seek_behaviour = <userdata 172>,
-      select = <function 186>,
+      select = <function 189>,
       separation_behaviour = <userdata 173>,
-      set_color = <function 187>,
-      set_components_from_entry = <function 188>,
-      set_physics_info = <function 189>,
-      set_world_reloading_script = <function 190>,
-      set_zoom_level = <function 191>,
-      setmetatable = <function 192>,
+      set_color = <function 190>,
+      set_components_from_entry = <function 191>,
+      set_physics_info = <function 192>,
+      set_world_reloading_script = <function 193>,
+      set_zoom_level = <function 194>,
+      setmetatable = <function 195>,
       settings = <userdata 174>,
       sfMusic = <userdata 175>,
       sfSound = <userdata 176>,
@@ -1118,8 +1020,9 @@ package:
       shift_amount_uniform = 3,
       shot_message = <userdata 178>,
       should_debug_draw = false,
-      simple_create_polygon = <function 193>,
-      simple_integration = <function 194>,
+      showing_clock = false,
+      simple_create_polygon = <function 196>,
+      simple_integration = <function 197>,
       spatial_instability_crosshair_pos = 1,
       spatial_instability_fragment_shader = <userdata 179>,
       spatial_instability_light_attenuation = 3,
@@ -1135,41 +1038,41 @@ package:
       steering_component = <userdata 184>,
       stepped_timer = <userdata 185>,
       string = <13>{
-        byte = <function 195>,
-        char = <function 196>,
-        dump = <function 197>,
-        find = <function 198>,
-        format = <function 199>,
-        gmatch = <function 200>,
-        gsub = <function 201>,
-        len = <function 202>,
-        lower = <function 203>,
-        match = <function 204>,
-        rep = <function 205>,
-        reverse = <function 206>,
-        sub = <function 207>,
-        upper = <function 208>
+        byte = <function 198>,
+        char = <function 199>,
+        dump = <function 200>,
+        find = <function 201>,
+        format = <function 202>,
+        gmatch = <function 203>,
+        gsub = <function 204>,
+        len = <function 205>,
+        lower = <function 206>,
+        match = <function 207>,
+        rep = <function 208>,
+        reverse = <function 209>,
+        sub = <function 210>,
+        upper = <function 211>
       },
-      super = <function 209>,
+      super = <function 212>,
       table = <14>{
-        concat = <function 210>,
-        insert = <function 211>,
+        concat = <function 213>,
+        insert = <function 214>,
         inspect = <15>{
           _DESCRIPTION = "human-readable representations of tables",
           _LICENSE = '    MIT LICENSE\n\n    Copyright (c) 2013 Enrique García Cota\n\n    Permission is hereby granted, free of charge, to any person obtaining a\n    copy of this software and associated documentation files (the\n    "Software"), to deal in the Software without restriction, including\n    without limitation the rights to use, copy, modify, merge, publish,\n    distribute, sublicense, and/or sell copies of the Software, and to\n    permit persons to whom the Software is furnished to do so, subject to\n    the following conditions:\n\n    The above copyright notice and this permission notice shall be included\n    in all copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS\n    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\n    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\n    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n  ',
           _URL = "http://github.com/kikito/inspect.lua",
           _VERSION = "inspect.lua 2.0.0",
-          inspect = <function 212>,
+          inspect = <function 215>,
           <metatable> = {
-            __call = <function 213>
+            __call = <function 216>
           }
         },
-        pack = <function 214>,
-        remove = <function 215>,
-        sort = <function 216>,
-        unpack = <function 217>
+        pack = <function 217>,
+        remove = <function 218>,
+        sort = <function 219>,
+        unpack = <function 220>
       },
-      table_of_tables = <function 218>,
+      table_of_tables = <function 221>,
       target_gravity_rotation = 0,
       target_info = <userdata 186>,
       temporary_instability = 0,
@@ -1188,12 +1091,13 @@ package:
         ["my_type_2.jpg"] = <userdata 190>
       },
       tiled_map_loader = {
-        error_callback = <function 219>,
-        for_every_object = <function 220>,
-        get_all_textures = <function 221>,
-        load_map = <function 222>,
-        load_world_properties = <function 223>,
-        map_scale = 2.5,
+        create_entities_from_map = <function 222>,
+        error_callback = <function 223>,
+        for_every_object = <function 224>,
+        get_all_objects_by_type = <function 225>,
+        get_all_textures = <function 226>,
+        load_world_properties = <function 227>,
+        map_scale = 1.2,
         texture_property_name = "texture",
         type_library = "sensibilia/maps/object_types",
         world_camera_entity = 0,
@@ -1202,41 +1106,41 @@ package:
       time_speed_variation = 0,
       time_uniform = 1,
       timed_sequence = {
-        add_action = <function 224>,
-        constructor = <function 225>,
-        create = <function 226>,
-        now_action = <function 227>,
-        play = <function 228>,
-        set_current_action = <function 229>,
-        should_loop = <function 230>,
-        start = <function 231>,
-        validate_action = <function 232>,
+        add_action = <function 228>,
+        constructor = <function 229>,
+        create = <function 230>,
+        now_action = <function 231>,
+        play = <function 232>,
+        set_current_action = <function 233>,
+        should_loop = <function 234>,
+        start = <function 235>,
+        validate_action = <function 236>,
         <metatable> = {
           __index = {}
         }
       },
       timer = <userdata 191>,
-      to_vec2 = <function 233>,
-      to_vec2_table = <function 234>,
-      tonumber = <function 235>,
-      tostring = <function 236>,
+      to_vec2 = <function 237>,
+      to_vec2_table = <function 238>,
+      tonumber = <function 239>,
+      tostring = <function 240>,
       transform_component = <userdata 192>,
       transform_state = <userdata 193>,
       triangle_buffer = <userdata 194>,
-      type = <function 237>,
+      type = <function 241>,
       v_offset_multiplier = 1,
       value_animator = <userdata 195>,
-      vblur_coroutine = <function 238>,
+      vblur_coroutine = <function 242>,
       vblur_fragment_shader = <userdata 196>,
-      vblur_instability_effect = <function 239>,
+      vblur_instability_effect = <function 243>,
       vblur_program = <userdata 197>,
       vblur_vertex_shader = <userdata 198>,
       vec2 = <userdata 199>,
       vec2_vector = <userdata 200>,
-      vector_to_table = <function 240>,
+      vector_to_table = <function 244>,
       vertex = <userdata 201>,
-      vertex_shift_coroutine = <function 241>,
-      vertex_shift_instability_effect = <function 242>,
+      vertex_shift_coroutine = <function 245>,
+      vertex_shift_instability_effect = <function 246>,
       vertex_triangle = <userdata 202>,
       visibility_component = <userdata 203>,
       visibility_discontinuity = <userdata 204>,
@@ -1250,19 +1154,9 @@ package:
       wander_behaviour = <userdata 208>,
       window = <userdata 209>,
       world = <userdata 210>,
+      world_camera = <userdata 211>,
       world_information = {
         ENEMY_START = { {
-            height = 0,
-            name = "",
-            pos = <userdata 211>,
-            properties = {},
-            shape = "rectangle",
-            type = "ENEMY_START",
-            visible = true,
-            width = 0,
-            x = 1440,
-            y = 1200
-          }, {
             height = 0,
             name = "",
             pos = <userdata 212>,
@@ -1271,8 +1165,8 @@ package:
             type = "ENEMY_START",
             visible = true,
             width = 0,
-            x = 4000,
-            y = 1200
+            x = 691.2,
+            y = 576
           }, {
             height = 0,
             name = "",
@@ -1282,23 +1176,34 @@ package:
             type = "ENEMY_START",
             visible = true,
             width = 0,
-            x = 2800,
-            y = 1840
-          } },
-        PLAYER_START = { {
+            x = 2496,
+            y = 499.2
+          }, {
             height = 0,
             name = "",
             pos = <userdata 214>,
             properties = {},
             shape = "rectangle",
+            type = "ENEMY_START",
+            visible = true,
+            width = 0,
+            x = 3370.8,
+            y = 1099.2
+          } },
+        PLAYER_START = { {
+            height = 0,
+            name = "",
+            pos = <userdata 215>,
+            properties = {},
+            shape = "rectangle",
             type = "PLAYER_START",
             visible = true,
             width = 0,
-            x = 4160,
-            y = 4480
+            x = 5452.8,
+            y = 3916.8
           } }
       },
-      xpcall = <function 243>
+      xpcall = <function 247>
     },
     bit32 = <table 3>,
     coroutine = <table 6>,
@@ -1345,31 +1250,8 @@ package:
               type = "my_type_1",
               visible = true,
               width = 0,
-              x = 608,
-              y = 640
-            }, {
-              height = 0,
-              name = "",
-              polygon = { {
-                  x = 0,
-                  y = 0
-                }, {
-                  x = -384,
-                  y = -32
-                }, {
-                  x = -608,
-                  y = 32
-                }, {
-                  x = -224,
-                  y = 160
-                } },
-              properties = {},
-              shape = "polygon",
-              type = "my_type_2",
-              visible = true,
-              width = 0,
-              x = 1600,
-              y = 832
+              x = 480,
+              y = 2208
             }, {
               height = 0,
               name = "",
@@ -1391,8 +1273,8 @@ package:
               type = "",
               visible = true,
               width = 0,
-              x = 608,
-              y = 960
+              x = 1600,
+              y = 1760
             }, {
               height = 0,
               name = "",
@@ -1414,8 +1296,8 @@ package:
               type = "",
               visible = true,
               width = 0,
-              x = 512,
-              y = 1280
+              x = 2368,
+              y = 3520
             }, {
               height = 32,
               name = "",
@@ -1424,8 +1306,8 @@ package:
               type = "",
               visible = true,
               width = 96,
-              x = 992,
-              y = 1216
+              x = 1184,
+              y = 1792
             }, {
               height = 64,
               name = "",
@@ -1434,8 +1316,8 @@ package:
               type = "",
               visible = true,
               width = 128,
-              x = 1312,
-              y = 1056
+              x = 2496,
+              y = 864
             }, {
               height = 32,
               name = "",
@@ -1444,8 +1326,8 @@ package:
               type = "",
               visible = true,
               width = 32,
-              x = 1120,
-              y = 1024
+              x = 3648,
+              y = 2720
             }, {
               height = 64,
               name = "",
@@ -1454,8 +1336,8 @@ package:
               type = "",
               visible = true,
               width = 32,
-              x = 1056,
-              y = 512
+              x = 3936,
+              y = 2528
             }, {
               height = 64,
               name = "",
@@ -1464,8 +1346,8 @@ package:
               type = "my_type_2",
               visible = true,
               width = 192,
-              x = 1344,
-              y = 480
+              x = 800,
+              y = 1856
             }, {
               height = 0,
               name = "p2",
@@ -1487,8 +1369,8 @@ package:
               type = "my_type_1",
               visible = true,
               width = 0,
-              x = 1504,
-              y = 2016
+              x = 2976,
+              y = 3520
             }, {
               height = 32,
               name = "",
@@ -1497,8 +1379,8 @@ package:
               type = "",
               visible = true,
               width = 64,
-              x = 864,
-              y = 1248
+              x = 3680,
+              y = 2592
             }, {
               height = 64,
               name = "",
@@ -1507,8 +1389,8 @@ package:
               type = "",
               visible = true,
               width = 64,
-              x = 896,
-              y = 736
+              x = 4032,
+              y = 2688
             }, {
               height = 0,
               name = "",
@@ -1527,18 +1409,8 @@ package:
               type = "",
               visible = true,
               width = 0,
-              x = 1504,
-              y = 608
-            }, {
-              height = 384,
-              name = "",
-              properties = {},
-              shape = "rectangle",
-              type = "",
-              visible = true,
-              width = 96,
-              x = 1632,
-              y = 1024
+              x = 1568,
+              y = 1312
             }, {
               height = 96,
               name = "",
@@ -1547,8 +1419,8 @@ package:
               type = "",
               visible = true,
               width = 192,
-              x = 608,
-              y = 800
+              x = 1120,
+              y = 1440
             }, {
               height = 32,
               name = "",
@@ -1557,43 +1429,8 @@ package:
               type = "",
               visible = true,
               width = 96,
-              x = 1120,
-              y = 1472
-            }, {
-              height = 0,
-              name = "",
-              polygon = { {
-                  x = 0,
-                  y = 0
-                }, {
-                  x = -32,
-                  y = -224
-                }, {
-                  x = -352,
-                  y = -288
-                }, {
-                  x = -512,
-                  y = -352
-                }, {
-                  x = -512,
-                  y = -128
-                }, {
-                  x = -352,
-                  y = -224
-                }, {
-                  x = -256,
-                  y = -64
-                }, {
-                  x = 64,
-                  y = 160
-                } },
-              properties = {},
-              shape = "polygon",
-              type = "",
-              visible = true,
-              width = 0,
-              x = 1600,
-              y = 1504
+              x = 1376,
+              y = 1664
             }, {
               height = 32,
               name = "",
@@ -1602,8 +1439,8 @@ package:
               type = "",
               visible = true,
               width = 64,
-              x = 928,
-              y = 1376
+              x = 992,
+              y = 1696
             }, {
               height = 0,
               name = "",
@@ -1625,8 +1462,8 @@ package:
               type = "",
               visible = true,
               width = 0,
-              x = 1440,
-              y = 1632
+              x = 4544,
+              y = 3584
             }, {
               height = 0,
               name = "",
@@ -1635,8 +1472,8 @@ package:
               type = "PLAYER_START",
               visible = true,
               width = 0,
-              x = 1664,
-              y = 1792
+              x = 4544,
+              y = 3264
             }, {
               height = 0,
               name = "",
@@ -1655,8 +1492,8 @@ package:
               type = "ENEMY_START",
               visible = true,
               width = 0,
-              x = 1600,
-              y = 480
+              x = 2080,
+              y = 416
             }, {
               height = 0,
               name = "",
@@ -1665,8 +1502,340 @@ package:
               type = "ENEMY_START",
               visible = true,
               width = 0,
+              x = 2809,
+              y = 916
+            }, {
+              height = 96,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 896,
+              x = 1952,
+              y = 1440
+            }, {
+              height = 384,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 96,
+              x = 2752,
+              y = 1056
+            }, {
+              height = 96,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 1440,
+              x = 2016,
+              y = 608
+            }, {
+              height = 1152,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 96,
+              x = 3232,
+              y = 928
+            }, {
+              height = 96,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 928,
+              x = 2240,
+              y = 1728
+            }, {
+              height = 96,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 1088,
+              x = 2240,
+              y = 2080
+            }, {
+              height = 1472,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 96,
+              x = 3584,
+              y = 288
+            }, {
+              height = 224,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 64,
+              x = 2752,
+              y = 288
+            }, {
+              height = 1536,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 96,
+              x = 1760,
+              y = 96
+            }, {
+              height = 1408,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 96,
+              x = 3872,
+              y = 448
+            }, {
+              height = 96,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 2080,
+              x = 2144,
+              y = 2368
+            }, {
+              height = 96,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 704,
+              x = 3584,
+              y = 2080
+            }, {
+              height = 96,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 960,
               x = 1120,
-              y = 736
+              y = 2080
+            }, {
+              height = 0,
+              name = "",
+              polygon = { {
+                  x = 0,
+                  y = 0
+                }, {
+                  x = 384,
+                  y = 224
+                }, {
+                  x = 128,
+                  y = 256
+                } },
+              properties = {},
+              shape = "polygon",
+              type = "",
+              visible = true,
+              width = 0,
+              x = 2208,
+              y = 1088
+            }, {
+              height = 0,
+              name = "",
+              polygon = { {
+                  x = 0,
+                  y = 0
+                }, {
+                  x = 128,
+                  y = -96
+                }, {
+                  x = 128,
+                  y = 0
+                } },
+              properties = {},
+              shape = "polygon",
+              type = "",
+              visible = true,
+              width = 0,
+              x = 3008,
+              y = 1632
+            }, {
+              height = 0,
+              name = "",
+              polygon = { {
+                  x = 0,
+                  y = 0
+                }, {
+                  x = 0,
+                  y = 128
+                }, {
+                  x = 96,
+                  y = 128
+                } },
+              properties = {},
+              shape = "polygon",
+              type = "",
+              visible = true,
+              width = 0,
+              x = 2912,
+              y = 1312
+            }, {
+              height = 0,
+              name = "",
+              polygon = { {
+                  x = 0,
+                  y = 0
+                }, {
+                  x = 224,
+                  y = 256
+                }, {
+                  x = -192,
+                  y = 224
+                } },
+              properties = {},
+              shape = "polygon",
+              type = "",
+              visible = true,
+              width = 0,
+              x = 1824,
+              y = 2240
+            }, {
+              height = 0,
+              name = "",
+              polygon = { {
+                  x = 0,
+                  y = 0
+                }, {
+                  x = 2272,
+                  y = 96
+                }, {
+                  x = 2112,
+                  y = 288
+                }, {
+                  x = -224,
+                  y = 288
+                } },
+              properties = {},
+              shape = "polygon",
+              type = "",
+              visible = true,
+              width = 0,
+              x = 1248,
+              y = 2688
+            }, {
+              height = 0,
+              name = "",
+              polygon = { {
+                  x = 0,
+                  y = 0
+                }, {
+                  x = -160,
+                  y = 288
+                }, {
+                  x = 192,
+                  y = 288
+                }, {
+                  x = 192,
+                  y = -256
+                }, {
+                  x = 32,
+                  y = -288
+                } },
+              properties = {},
+              shape = "polygon",
+              type = "",
+              visible = true,
+              width = 0,
+              x = 4256,
+              y = 1664
+            }, {
+              height = 320,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 64,
+              x = 4320,
+              y = 3008
+            }, {
+              height = 96,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 448,
+              x = 4320,
+              y = 2848
+            }, {
+              height = 800,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "",
+              visible = true,
+              width = 96,
+              x = 4672,
+              y = 3040
+            }, {
+              height = 0,
+              name = "",
+              polygon = { {
+                  x = 0,
+                  y = 0
+                }, {
+                  x = -704,
+                  y = 160
+                }, {
+                  x = -384,
+                  y = 352
+                }, {
+                  x = -32,
+                  y = 352
+                } },
+              properties = {},
+              shape = "polygon",
+              type = "",
+              visible = true,
+              width = 0,
+              x = 2144,
+              y = 3392
+            }, {
+              height = 0,
+              name = "",
+              polygon = { {
+                  x = 0,
+                  y = 0
+                }, {
+                  x = -928,
+                  y = -2400
+                }, {
+                  x = -768,
+                  y = 224
+                } },
+              properties = {},
+              shape = "polygon",
+              type = "",
+              visible = true,
+              width = 0,
+              x = 992,
+              y = 3904
             } },
           opacity = 1,
           properties = {},
@@ -1682,8 +1851,8 @@ package:
               type = "bg_object_3",
               visible = true,
               width = 800,
-              x = 64,
-              y = 64
+              x = 224,
+              y = 224
             }, {
               height = 736,
               name = "",
@@ -1692,8 +1861,8 @@ package:
               type = "bg_object_3",
               visible = true,
               width = 800,
-              x = 864,
-              y = 64
+              x = 1024,
+              y = 224
             }, {
               height = 736,
               name = "",
@@ -1702,8 +1871,8 @@ package:
               type = "bg_object_3",
               visible = true,
               width = 800,
-              x = 1664,
-              y = 64
+              x = 1824,
+              y = 224
             }, {
               height = 736,
               name = "",
@@ -1712,8 +1881,8 @@ package:
               type = "bg_object_3",
               visible = true,
               width = 800,
-              x = 864,
-              y = 800
+              x = 1024,
+              y = 960
             }, {
               height = 736,
               name = "",
@@ -1722,8 +1891,8 @@ package:
               type = "bg_object_3",
               visible = true,
               width = 800,
-              x = 64,
-              y = 800
+              x = 224,
+              y = 960
             }, {
               height = 736,
               name = "",
@@ -1732,8 +1901,8 @@ package:
               type = "bg_object_3",
               visible = true,
               width = 800,
-              x = 1664,
-              y = 800
+              x = 1824,
+              y = 960
             }, {
               height = 736,
               name = "",
@@ -1742,8 +1911,8 @@ package:
               type = "bg_object_3",
               visible = true,
               width = 800,
-              x = 864,
-              y = 1536
+              x = 1024,
+              y = 1696
             }, {
               height = 736,
               name = "",
@@ -1752,8 +1921,8 @@ package:
               type = "bg_object_3",
               visible = true,
               width = 800,
-              x = 64,
-              y = 1536
+              x = 224,
+              y = 1696
             }, {
               height = 736,
               name = "",
@@ -1762,8 +1931,168 @@ package:
               type = "bg_object_3",
               visible = true,
               width = 800,
-              x = 1664,
-              y = 1536
+              x = 1824,
+              y = 1696
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 1824,
+              y = 3168
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 1024,
+              y = 3168
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 224,
+              y = 3168
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 1824,
+              y = 2432
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 224,
+              y = 2432
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 1024,
+              y = 2432
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 2624,
+              y = 3168
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 2624,
+              y = 2432
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 2624,
+              y = 960
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 2624,
+              y = 1696
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 2624,
+              y = 224
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 3424,
+              y = 3168
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 3424,
+              y = 2432
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 3424,
+              y = 960
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 3424,
+              y = 1696
+            }, {
+              height = 736,
+              name = "",
+              properties = {},
+              shape = "rectangle",
+              type = "bg_object_3",
+              visible = true,
+              width = 800,
+              x = 3424,
+              y = 224
             } },
           opacity = 1,
           properties = {
@@ -1790,7 +2119,7 @@ package:
     },
     ["sensibilia/maps/object_types"] = {
       bg_object_3 = {
-        color = <userdata 215>,
+        color = <userdata 216>,
         entity_archetype = {},
         render_layer = "BACKGROUND_3",
         scrolling_speed = 0.3,
@@ -1832,72 +2161,123 @@ package:
     string = <table 13>,
     table = <table 14>
   },
-  loadlib = <function 244>,
+  loadlib = <function 248>,
   path = "C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?\\init.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?\\init.lua;.\\?.lua",
   preload = {},
-  searchers = { <function 245>, <function 246>, <function 247>, <function 248> },
-  searchpath = <function 249>
+  searchers = { <function 249>, <function 250>, <function 251>, <function 252> },
+  searchpath = <function 253>
 }
 
+clock_alpha_animator:
+<userdata 1>
+
+spatial_instability_crosshair_pos:
+1
+
+archetyped:
+<function 1>
+
+ptr_lookup:
+<function 1>
+
+body_to_entity:
+<function 1>
+
+vec2:
+<userdata 1>
+
 create_scriptable_info:
+<function 1>
+
+calc_max_jump_height:
+<function 1>
+
+pathfinding_component:
+<userdata 1>
+
+intent_message:
+<userdata 1>
+
+transform_component:
+<userdata 1>
+
+b2JointDef:
+<userdata 1>
+
+drawable_concave:
+<userdata 1>
+
+create_steering:
+<function 1>
+
+randval:
 <function 1>
 
 temporary_instability:
 0
 
-_pathfinding_system:
+input_context:
 <userdata 1>
 
-b2WeldJointDef:
-<userdata 1>
-
-is_instability_ray_over_postprocessing:
-true
-
-create_inverse_enum:
-<function 1>
-
-raw_texture:
-<userdata 1>
-
-separation_behaviour:
-<userdata 1>
-
-archetyped:
-<function 1>
-
-custom_intents:
+filter_obstacle_visibility:
 {
-  DROP_WEAPON = 999999991,
-  GRAVITY_CHANGE = 999999989,
-  INSTABILITY_RAY = 999999987,
-  INSTANT_SLOWDOWN = 999999996,
-  JUMP = 999999990,
-  MY_INTENT = 999999988,
-  QUIT = 999999992,
-  REALITY_CHECK = 999999986,
-  RESTART = 999999997,
-  SPEED_CHANGE = 999999993,
-  STEERING_REQUEST = 999999998,
-  ZOOM_CAMERA = 999999999,
-  ZOOM_IN = 999999995,
-  ZOOM_OUT = 999999994
+  categoryBits = 127,
+  maskBits = 15
 }
 
-pv:
+set_zoom_level:
 <function 1>
 
-entities:
+inherits_from:
+<function 1>
+
+pairs:
+<function 1>
+
+target_gravity_rotation:
+0
+
+tostring:
+<function 1>
+
+filter_characters:
+{
+  categoryBits = 1,
+  maskBits = 95
+}
+
+_world:
 <userdata 1>
 
-projection_matrix_uniform:
-2
+property:
+<function 1>
 
 film_grain_variation_instability_effect:
 <function 1>
 
-gun_component:
+debugger_break:
+<function 1>
+
+randval_i:
+<function 1>
+
+raycast_output:
 <userdata 1>
+
+physics_system:
+<userdata 1>
+
+create_animation_set:
+<function 1>
+
+float_vector:
+<userdata 1>
+
+post_destroy:
+<function 1>
+
+create_particle_emitter_info:
+<function 1>
 
 _G:
 <1>{
@@ -2099,7 +2479,9 @@ _G:
   chromatic_aberration_vertex_shader = <userdata 72>,
   clamp = <function 29>,
   class = <function 30>,
-  clock_sprite = <userdata 73>,
+  clock_alpha_animator = <userdata 73>,
+  clock_alpha_multiplier = 1,
+  clock_hand_time = 0,
   collectgarbage = <function 31>,
   collision_message = <userdata 74>,
   color_adjustment_fragment_shader = <userdata 75>,
@@ -2109,9 +2491,9 @@ _G:
   config_table = {
     bpp = 24,
     doublebuffer = 1,
-    fullscreen = 1,
-    resolution_h = 1080,
-    resolution_w = 1920,
+    fullscreen = 0,
+    resolution_h = 1050,
+    resolution_w = 1300,
     sensitivity = <userdata 79>,
     window_border = 0,
     window_name = "example",
@@ -2159,13 +2541,14 @@ _G:
   custom_intents = {
     DROP_WEAPON = 999999991,
     GRAVITY_CHANGE = 999999989,
-    INSTABILITY_RAY = 999999987,
+    INSTABILITY_RAY = 999999986,
     INSTANT_SLOWDOWN = 999999996,
     JUMP = 999999990,
     MY_INTENT = 999999988,
     QUIT = 999999992,
-    REALITY_CHECK = 999999986,
+    REALITY_CHECK = 999999985,
     RESTART = 999999997,
+    SHOW_CLOCK = 999999987,
     SPEED_CHANGE = 999999993,
     STEERING_REQUEST = 999999998,
     ZOOM_CAMERA = 999999999,
@@ -2198,22 +2581,24 @@ _G:
   debug_line = <userdata 85>,
   debug_target_sprite = <userdata 86>,
   debugger_break = <function 81>,
+  def = <function 82>,
+  def_ptr = <function 83>,
   destroy_message = <userdata 87>,
   directed_behaviour = <userdata 88>,
-  dofile = <function 82>,
+  dofile = <function 84>,
   draw_input = <userdata 89>,
   drawable_concave = <userdata 90>,
   emission = <userdata 91>,
   entities = <userdata 92>,
   entity_creation_util = <userdata 93>,
   entity_ptr = <userdata 94>,
-  entries_from_archetypes = <function 83>,
-  error = <function 84>,
+  entries_from_archetypes = <function 85>,
+  error = <function 86>,
   film_grain_fragment_shader = <userdata 95>,
   film_grain_intensity = 0,
   film_grain_program = <userdata 96>,
-  film_grain_variation_coroutine = <function 85>,
-  film_grain_variation_instability_effect = <function 86>,
+  film_grain_variation_coroutine = <function 87>,
+  film_grain_variation_instability_effect = <function 88>,
   film_grain_vertex_shader = <userdata 97>,
   filter_bullets = {
     categoryBits = 32,
@@ -2291,24 +2676,24 @@ _G:
   float_ptr = <userdata 99>,
   float_vector = <userdata 100>,
   flocking_behaviour = <userdata 101>,
-  flush_dead_entities_in_group_by_entity = <function 87>,
+  flush_dead_entities_in_group_by_entity = <function 89>,
   framebuffer_object = <userdata 102>,
-  fullscreen_pass = <function 88>,
-  fullscreen_quad = <function 89>,
+  fullscreen_pass = <function 90>,
+  fullscreen_quad = <function 91>,
   fullscreen_vertex_shader = "#version 330\\nlayout(location = 0) in vec2 position;\\n\\nout vec2 theTexcoord;\\n\\nvoid main() \\n{\\n\\tvec4 output_vert;\\n\\toutput_vert.x = position.x * 2.0 - 1.0;\\t\\t\\n\\toutput_vert.y = position.y * 2.0 - 1.0;\\t\\t\\t\\t\\n\\toutput_vert.z = 0.0f;\\t\\t\\t\\t\\t\\t\\n\\toutput_vert.w = 1.0f;\\n\\t\\n\\tgl_Position = output_vert;\\n\\ttheTexcoord = position;\\n}\\n",
-  gen_circle_vertices = <function 90>,
-  get_display = <function 91>,
-  get_group_by_entity = <function 92>,
-  getmetatable = <function 93>,
+  gen_circle_vertices = <function 92>,
+  get_display = <function 93>,
+  get_group_by_entity = <function 94>,
+  getmetatable = <function 95>,
   global_sound_table = {},
   glwindow = <userdata 103>,
   gravity_angle_offset = 0,
   group_by_entity = {},
   gun_component = <userdata 104>,
   h_offset_multiplier = 1,
-  hblur_coroutine = <function 94>,
+  hblur_coroutine = <function 96>,
   hblur_fragment_shader = <userdata 105>,
-  hblur_instability_effect = <function 95>,
+  hblur_instability_effect = <function 97>,
   hblur_program = <userdata 106>,
   hblur_vertex_shader = <userdata 107>,
   images = {
@@ -2321,7 +2706,7 @@ _G:
     hand_3 = <userdata 114>,
     metal = <userdata 115>
   },
-  inherits_from = <function 96>,
+  inherits_from = <function 98>,
   input_component = <userdata 116>,
   input_context = <userdata 117>,
   input_system = <userdata 118>,
@@ -2329,62 +2714,62 @@ _G:
   intensity_fbo = <userdata 119>,
   intent_message = <userdata 120>,
   io = <8>{
-    close = <function 97>,
-    flush = <function 98>,
-    input = <function 99>,
-    lines = <function 100>,
-    open = <function 101>,
-    output = <function 102>,
-    popen = <function 103>,
-    read = <function 104>,
+    close = <function 99>,
+    flush = <function 100>,
+    input = <function 101>,
+    lines = <function 102>,
+    open = <function 103>,
+    output = <function 104>,
+    popen = <function 105>,
+    read = <function 106>,
     stderr = <userdata 121>,
     stdin = <userdata 122>,
     stdout = <userdata 123>,
-    tmpfile = <function 105>,
-    type = <function 106>,
-    write = <function 107>
+    tmpfile = <function 107>,
+    type = <function 108>,
+    write = <function 109>
   },
-  ipairs = <function 108>,
+  ipairs = <function 110>,
   is_instability_ray_over_postprocessing = true,
   keys = <userdata 124>,
   layers = <userdata 125>,
-  load = <function 109>,
-  loadfile = <function 110>,
+  load = <function 111>,
+  loadfile = <function 112>,
   lookat_component = <userdata 126>,
   main_context = <userdata 127>,
-  main_input_component = { 999999996, 999999992, 999999997, 999999989, 999999988, 5, 999999994 },
-  main_input_routine = <function 111>,
-  map_uv_square = <function 112>,
+  main_input_component = { 999999996, 999999992, 999999997, 999999989, 999999988, 5, 999999994, 999999987 },
+  main_input_routine = <function 113>,
+  map_uv_square = <function 114>,
   math = <9>{
-    abs = <function 113>,
-    acos = <function 114>,
-    asin = <function 115>,
-    atan = <function 116>,
-    atan2 = <function 117>,
-    ceil = <function 118>,
-    cos = <function 119>,
-    cosh = <function 120>,
-    deg = <function 121>,
-    exp = <function 122>,
-    floor = <function 123>,
-    fmod = <function 124>,
-    frexp = <function 125>,
+    abs = <function 115>,
+    acos = <function 116>,
+    asin = <function 117>,
+    atan = <function 118>,
+    atan2 = <function 119>,
+    ceil = <function 120>,
+    cos = <function 121>,
+    cosh = <function 122>,
+    deg = <function 123>,
+    exp = <function 124>,
+    floor = <function 125>,
+    fmod = <function 126>,
+    frexp = <function 127>,
     huge = 1.#INF,
-    ldexp = <function 126>,
-    log = <function 127>,
-    max = <function 128>,
-    min = <function 129>,
-    modf = <function 130>,
+    ldexp = <function 128>,
+    log = <function 129>,
+    max = <function 130>,
+    min = <function 131>,
+    modf = <function 132>,
     pi = 3.1415926535898,
-    pow = <function 131>,
-    rad = <function 132>,
-    random = <function 133>,
-    randomseed = <function 134>,
-    sin = <function 135>,
-    sinh = <function 136>,
-    sqrt = <function 137>,
-    tan = <function 138>,
-    tanh = <function 139>
+    pow = <function 133>,
+    rad = <function 134>,
+    random = <function 135>,
+    randomseed = <function 136>,
+    sin = <function 137>,
+    sinh = <function 138>,
+    sqrt = <function 139>,
+    tan = <function 140>,
+    tanh = <function 141>
   },
   message = <userdata 128>,
   minmax = <userdata 129>,
@@ -2394,23 +2779,23 @@ _G:
   my_atlas = <userdata 133>,
   my_timer = <userdata 134>,
   navigation_hint = <userdata 135>,
-  next = <function 140>,
+  next = <function 142>,
   npc_effects = <userdata 136>,
   obstacle_avoidance_behaviour = <userdata 137>,
-  open_script = <function 141>,
-  orthographic_projection = <function 142>,
+  open_script = <function 143>,
+  orthographic_projection = <function 144>,
   os = <10>{
-    clock = <function 143>,
-    date = <function 144>,
-    difftime = <function 145>,
-    execute = <function 146>,
-    exit = <function 147>,
-    getenv = <function 148>,
-    remove = <function 149>,
-    rename = <function 150>,
-    setlocale = <function 151>,
-    time = <function 152>,
-    tmpname = <function 153>
+    clock = <function 145>,
+    date = <function 146>,
+    difftime = <function 147>,
+    execute = <function 148>,
+    exit = <function 149>,
+    getenv = <function 150>,
+    remove = <function 151>,
+    rename = <function 152>,
+    setlocale = <function 153>,
+    time = <function 154>,
+    tmpname = <function 155>
   },
   package = <11>{
     config = "\\\\n;\\n?\\n!\\n-\\n",
@@ -2425,9 +2810,9 @@ _G:
         _LICENSE = '    MIT LICENSE\n\n    Copyright (c) 2013 Enrique García Cota\n\n    Permission is hereby granted, free of charge, to any person obtaining a\n    copy of this software and associated documentation files (the\n    "Software"), to deal in the Software without restriction, including\n    without limitation the rights to use, copy, modify, merge, publish,\n    distribute, sublicense, and/or sell copies of the Software, and to\n    permit persons to whom the Software is furnished to do so, subject to\n    the following conditions:\n\n    The above copyright notice and this permission notice shall be included\n    in all copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS\n    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\n    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\n    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n  ',
         _URL = "http://github.com/kikito/inspect.lua",
         _VERSION = "inspect.lua 2.0.0",
-        inspect = <function 154>,
+        inspect = <function 156>,
         <metatable> = {
-          __call = <function 155>
+          __call = <function 157>
         }
       },
       io = <table 8>,
@@ -2471,31 +2856,8 @@ _G:
                 type = "my_type_1",
                 visible = true,
                 width = 0,
-                x = 608,
-                y = 640
-              }, {
-                height = 0,
-                name = "",
-                polygon = { {
-                    x = 0,
-                    y = 0
-                  }, {
-                    x = -384,
-                    y = -32
-                  }, {
-                    x = -608,
-                    y = 32
-                  }, {
-                    x = -224,
-                    y = 160
-                  } },
-                properties = {},
-                shape = "polygon",
-                type = "my_type_2",
-                visible = true,
-                width = 0,
-                x = 1600,
-                y = 832
+                x = 480,
+                y = 2208
               }, {
                 height = 0,
                 name = "",
@@ -2517,8 +2879,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 0,
-                x = 608,
-                y = 960
+                x = 1600,
+                y = 1760
               }, {
                 height = 0,
                 name = "",
@@ -2540,8 +2902,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 0,
-                x = 512,
-                y = 1280
+                x = 2368,
+                y = 3520
               }, {
                 height = 32,
                 name = "",
@@ -2550,8 +2912,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 96,
-                x = 992,
-                y = 1216
+                x = 1184,
+                y = 1792
               }, {
                 height = 64,
                 name = "",
@@ -2560,8 +2922,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 128,
-                x = 1312,
-                y = 1056
+                x = 2496,
+                y = 864
               }, {
                 height = 32,
                 name = "",
@@ -2570,8 +2932,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 32,
-                x = 1120,
-                y = 1024
+                x = 3648,
+                y = 2720
               }, {
                 height = 64,
                 name = "",
@@ -2580,8 +2942,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 32,
-                x = 1056,
-                y = 512
+                x = 3936,
+                y = 2528
               }, {
                 height = 64,
                 name = "",
@@ -2590,8 +2952,8 @@ _G:
                 type = "my_type_2",
                 visible = true,
                 width = 192,
-                x = 1344,
-                y = 480
+                x = 800,
+                y = 1856
               }, {
                 height = 0,
                 name = "p2",
@@ -2613,8 +2975,8 @@ _G:
                 type = "my_type_1",
                 visible = true,
                 width = 0,
-                x = 1504,
-                y = 2016
+                x = 2976,
+                y = 3520
               }, {
                 height = 32,
                 name = "",
@@ -2623,8 +2985,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 64,
-                x = 864,
-                y = 1248
+                x = 3680,
+                y = 2592
               }, {
                 height = 64,
                 name = "",
@@ -2633,8 +2995,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 64,
-                x = 896,
-                y = 736
+                x = 4032,
+                y = 2688
               }, {
                 height = 0,
                 name = "",
@@ -2653,18 +3015,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 0,
-                x = 1504,
-                y = 608
-              }, {
-                height = 384,
-                name = "",
-                properties = {},
-                shape = "rectangle",
-                type = "",
-                visible = true,
-                width = 96,
-                x = 1632,
-                y = 1024
+                x = 1568,
+                y = 1312
               }, {
                 height = 96,
                 name = "",
@@ -2673,8 +3025,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 192,
-                x = 608,
-                y = 800
+                x = 1120,
+                y = 1440
               }, {
                 height = 32,
                 name = "",
@@ -2683,43 +3035,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 96,
-                x = 1120,
-                y = 1472
-              }, {
-                height = 0,
-                name = "",
-                polygon = { {
-                    x = 0,
-                    y = 0
-                  }, {
-                    x = -32,
-                    y = -224
-                  }, {
-                    x = -352,
-                    y = -288
-                  }, {
-                    x = -512,
-                    y = -352
-                  }, {
-                    x = -512,
-                    y = -128
-                  }, {
-                    x = -352,
-                    y = -224
-                  }, {
-                    x = -256,
-                    y = -64
-                  }, {
-                    x = 64,
-                    y = 160
-                  } },
-                properties = {},
-                shape = "polygon",
-                type = "",
-                visible = true,
-                width = 0,
-                x = 1600,
-                y = 1504
+                x = 1376,
+                y = 1664
               }, {
                 height = 32,
                 name = "",
@@ -2728,8 +3045,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 64,
-                x = 928,
-                y = 1376
+                x = 992,
+                y = 1696
               }, {
                 height = 0,
                 name = "",
@@ -2751,8 +3068,8 @@ _G:
                 type = "",
                 visible = true,
                 width = 0,
-                x = 1440,
-                y = 1632
+                x = 4544,
+                y = 3584
               }, {
                 height = 0,
                 name = "",
@@ -2761,8 +3078,8 @@ _G:
                 type = "PLAYER_START",
                 visible = true,
                 width = 0,
-                x = 1664,
-                y = 1792
+                x = 4544,
+                y = 3264
               }, {
                 height = 0,
                 name = "",
@@ -2781,8 +3098,8 @@ _G:
                 type = "ENEMY_START",
                 visible = true,
                 width = 0,
-                x = 1600,
-                y = 480
+                x = 2080,
+                y = 416
               }, {
                 height = 0,
                 name = "",
@@ -2791,8 +3108,340 @@ _G:
                 type = "ENEMY_START",
                 visible = true,
                 width = 0,
+                x = 2809,
+                y = 916
+              }, {
+                height = 96,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 896,
+                x = 1952,
+                y = 1440
+              }, {
+                height = 384,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 96,
+                x = 2752,
+                y = 1056
+              }, {
+                height = 96,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 1440,
+                x = 2016,
+                y = 608
+              }, {
+                height = 1152,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 96,
+                x = 3232,
+                y = 928
+              }, {
+                height = 96,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 928,
+                x = 2240,
+                y = 1728
+              }, {
+                height = 96,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 1088,
+                x = 2240,
+                y = 2080
+              }, {
+                height = 1472,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 96,
+                x = 3584,
+                y = 288
+              }, {
+                height = 224,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 64,
+                x = 2752,
+                y = 288
+              }, {
+                height = 1536,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 96,
+                x = 1760,
+                y = 96
+              }, {
+                height = 1408,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 96,
+                x = 3872,
+                y = 448
+              }, {
+                height = 96,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 2080,
+                x = 2144,
+                y = 2368
+              }, {
+                height = 96,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 704,
+                x = 3584,
+                y = 2080
+              }, {
+                height = 96,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 960,
                 x = 1120,
-                y = 736
+                y = 2080
+              }, {
+                height = 0,
+                name = "",
+                polygon = { {
+                    x = 0,
+                    y = 0
+                  }, {
+                    x = 384,
+                    y = 224
+                  }, {
+                    x = 128,
+                    y = 256
+                  } },
+                properties = {},
+                shape = "polygon",
+                type = "",
+                visible = true,
+                width = 0,
+                x = 2208,
+                y = 1088
+              }, {
+                height = 0,
+                name = "",
+                polygon = { {
+                    x = 0,
+                    y = 0
+                  }, {
+                    x = 128,
+                    y = -96
+                  }, {
+                    x = 128,
+                    y = 0
+                  } },
+                properties = {},
+                shape = "polygon",
+                type = "",
+                visible = true,
+                width = 0,
+                x = 3008,
+                y = 1632
+              }, {
+                height = 0,
+                name = "",
+                polygon = { {
+                    x = 0,
+                    y = 0
+                  }, {
+                    x = 0,
+                    y = 128
+                  }, {
+                    x = 96,
+                    y = 128
+                  } },
+                properties = {},
+                shape = "polygon",
+                type = "",
+                visible = true,
+                width = 0,
+                x = 2912,
+                y = 1312
+              }, {
+                height = 0,
+                name = "",
+                polygon = { {
+                    x = 0,
+                    y = 0
+                  }, {
+                    x = 224,
+                    y = 256
+                  }, {
+                    x = -192,
+                    y = 224
+                  } },
+                properties = {},
+                shape = "polygon",
+                type = "",
+                visible = true,
+                width = 0,
+                x = 1824,
+                y = 2240
+              }, {
+                height = 0,
+                name = "",
+                polygon = { {
+                    x = 0,
+                    y = 0
+                  }, {
+                    x = 2272,
+                    y = 96
+                  }, {
+                    x = 2112,
+                    y = 288
+                  }, {
+                    x = -224,
+                    y = 288
+                  } },
+                properties = {},
+                shape = "polygon",
+                type = "",
+                visible = true,
+                width = 0,
+                x = 1248,
+                y = 2688
+              }, {
+                height = 0,
+                name = "",
+                polygon = { {
+                    x = 0,
+                    y = 0
+                  }, {
+                    x = -160,
+                    y = 288
+                  }, {
+                    x = 192,
+                    y = 288
+                  }, {
+                    x = 192,
+                    y = -256
+                  }, {
+                    x = 32,
+                    y = -288
+                  } },
+                properties = {},
+                shape = "polygon",
+                type = "",
+                visible = true,
+                width = 0,
+                x = 4256,
+                y = 1664
+              }, {
+                height = 320,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 64,
+                x = 4320,
+                y = 3008
+              }, {
+                height = 96,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 448,
+                x = 4320,
+                y = 2848
+              }, {
+                height = 800,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "",
+                visible = true,
+                width = 96,
+                x = 4672,
+                y = 3040
+              }, {
+                height = 0,
+                name = "",
+                polygon = { {
+                    x = 0,
+                    y = 0
+                  }, {
+                    x = -704,
+                    y = 160
+                  }, {
+                    x = -384,
+                    y = 352
+                  }, {
+                    x = -32,
+                    y = 352
+                  } },
+                properties = {},
+                shape = "polygon",
+                type = "",
+                visible = true,
+                width = 0,
+                x = 2144,
+                y = 3392
+              }, {
+                height = 0,
+                name = "",
+                polygon = { {
+                    x = 0,
+                    y = 0
+                  }, {
+                    x = -928,
+                    y = -2400
+                  }, {
+                    x = -768,
+                    y = 224
+                  } },
+                properties = {},
+                shape = "polygon",
+                type = "",
+                visible = true,
+                width = 0,
+                x = 992,
+                y = 3904
               } },
             opacity = 1,
             properties = {},
@@ -2808,8 +3457,8 @@ _G:
                 type = "bg_object_3",
                 visible = true,
                 width = 800,
-                x = 64,
-                y = 64
+                x = 224,
+                y = 224
               }, {
                 height = 736,
                 name = "",
@@ -2818,8 +3467,8 @@ _G:
                 type = "bg_object_3",
                 visible = true,
                 width = 800,
-                x = 864,
-                y = 64
+                x = 1024,
+                y = 224
               }, {
                 height = 736,
                 name = "",
@@ -2828,8 +3477,8 @@ _G:
                 type = "bg_object_3",
                 visible = true,
                 width = 800,
-                x = 1664,
-                y = 64
+                x = 1824,
+                y = 224
               }, {
                 height = 736,
                 name = "",
@@ -2838,8 +3487,8 @@ _G:
                 type = "bg_object_3",
                 visible = true,
                 width = 800,
-                x = 864,
-                y = 800
+                x = 1024,
+                y = 960
               }, {
                 height = 736,
                 name = "",
@@ -2848,8 +3497,8 @@ _G:
                 type = "bg_object_3",
                 visible = true,
                 width = 800,
-                x = 64,
-                y = 800
+                x = 224,
+                y = 960
               }, {
                 height = 736,
                 name = "",
@@ -2858,8 +3507,8 @@ _G:
                 type = "bg_object_3",
                 visible = true,
                 width = 800,
-                x = 1664,
-                y = 800
+                x = 1824,
+                y = 960
               }, {
                 height = 736,
                 name = "",
@@ -2868,8 +3517,8 @@ _G:
                 type = "bg_object_3",
                 visible = true,
                 width = 800,
-                x = 864,
-                y = 1536
+                x = 1024,
+                y = 1696
               }, {
                 height = 736,
                 name = "",
@@ -2878,8 +3527,8 @@ _G:
                 type = "bg_object_3",
                 visible = true,
                 width = 800,
-                x = 64,
-                y = 1536
+                x = 224,
+                y = 1696
               }, {
                 height = 736,
                 name = "",
@@ -2888,8 +3537,168 @@ _G:
                 type = "bg_object_3",
                 visible = true,
                 width = 800,
-                x = 1664,
-                y = 1536
+                x = 1824,
+                y = 1696
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 1824,
+                y = 3168
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 1024,
+                y = 3168
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 224,
+                y = 3168
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 1824,
+                y = 2432
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 224,
+                y = 2432
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 1024,
+                y = 2432
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 2624,
+                y = 3168
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 2624,
+                y = 2432
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 2624,
+                y = 960
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 2624,
+                y = 1696
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 2624,
+                y = 224
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 3424,
+                y = 3168
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 3424,
+                y = 2432
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 3424,
+                y = 960
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 3424,
+                y = 1696
+              }, {
+                height = 736,
+                name = "",
+                properties = {},
+                shape = "rectangle",
+                type = "bg_object_3",
+                visible = true,
+                width = 800,
+                x = 3424,
+                y = 224
               } },
             opacity = 1,
             properties = {
@@ -2956,38 +3765,38 @@ _G:
         PLAYER_START = true
       },
       string = <14>{
-        byte = <function 156>,
-        char = <function 157>,
-        dump = <function 158>,
-        find = <function 159>,
-        format = <function 160>,
-        gmatch = <function 161>,
-        gsub = <function 162>,
-        len = <function 163>,
-        lower = <function 164>,
-        match = <function 165>,
-        rep = <function 166>,
-        reverse = <function 167>,
-        sub = <function 168>,
-        upper = <function 169>
+        byte = <function 158>,
+        char = <function 159>,
+        dump = <function 160>,
+        find = <function 161>,
+        format = <function 162>,
+        gmatch = <function 163>,
+        gsub = <function 164>,
+        len = <function 165>,
+        lower = <function 166>,
+        match = <function 167>,
+        rep = <function 168>,
+        reverse = <function 169>,
+        sub = <function 170>,
+        upper = <function 171>
       },
       table = <15>{
-        concat = <function 170>,
-        insert = <function 171>,
+        concat = <function 172>,
+        insert = <function 173>,
         inspect = <table 12>,
-        pack = <function 172>,
-        remove = <function 173>,
-        sort = <function 174>,
-        unpack = <function 175>
+        pack = <function 174>,
+        remove = <function 175>,
+        sort = <function 176>,
+        unpack = <function 177>
       }
     },
-    loadlib = <function 176>,
+    loadlib = <function 178>,
     path = "C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?\\init.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?\\init.lua;.\\?.lua",
     preload = {},
-    searchers = { <function 177>, <function 178>, <function 179>, <function 180> },
-    searchpath = <function 181>
+    searchers = { <function 179>, <function 180>, <function 181>, <function 182> },
+    searchpath = <function 183>
   },
-  pairs = <function 182>,
+  pairs = <function 184>,
   particle = <userdata 139>,
   particle_burst_message = <userdata 140>,
   particle_effect = <userdata 141>,
@@ -2995,7 +3804,7 @@ _G:
   particle_emitter_info = <userdata 143>,
   pathfinding_component = <userdata 144>,
   pathfinding_system = <userdata 145>,
-  pcall = <function 183>,
+  pcall = <function 185>,
   physics_component = <userdata 146>,
   physics_info = <userdata 147>,
   physics_system = <userdata 148>,
@@ -3005,11 +3814,11 @@ _G:
     traces = {},
     <metatable> = {
       __index = <16>{
-        add_trace = <function 184>,
-        constructor = <function 185>,
-        create = <function 186>,
-        generate_triangles = <function 187>,
-        loop = <function 188>,
+        add_trace = <function 186>,
+        constructor = <function 187>,
+        create = <function 188>,
+        generate_triangles = <function 189>,
+        loop = <function 190>,
         <metatable> = {
           __index = {}
         }
@@ -3017,39 +3826,39 @@ _G:
     }
   },
   player_pos_uniform = 1,
-  point_below_segment = <function 189>,
+  point_below_segment = <function 191>,
   polygon = <userdata 151>,
   polygon_fader = <table 16>,
   polygon_particle_userdatas_saved = { <userdata 42>, <userdata 44>, <userdata 46>, <userdata 48>, <userdata 50>, <userdata 52>, <userdata 54>, <userdata 56>, <userdata 58>, <userdata 60> },
-  post_destroy = <function 190>,
+  post_destroy = <function 192>,
   postprocessing_fbos = { <userdata 152>,
     [0] = <userdata 153>
   },
-  print = <function 191>,
+  print = <function 193>,
   projection_matrix_uniform = 2,
-  property = <function 192>,
-  ptr_create_entity = <function 193>,
-  ptr_create_entity_group = <function 194>,
-  ptr_lookup = <function 195>,
-  pv = <function 196>,
+  property = <function 194>,
+  ptr_create_entity = <function 195>,
+  ptr_create_entity_group = <function 196>,
+  ptr_lookup = <function 197>,
+  pv = <function 198>,
   query_output = <userdata 154>,
-  random_instability_ray_layer_order = <function 197>,
-  random_instability_variation_coroutine = <function 198>,
-  random_time_speed_variation_coroutine = <function 199>,
-  randomize_properties = <function 200>,
-  randomize_properties_vector = <function 201>,
-  randval = <function 202>,
-  randval_i = <function 203>,
+  random_instability_ray_layer_order = <function 199>,
+  random_instability_variation_coroutine = <function 200>,
+  random_time_speed_variation_coroutine = <function 201>,
+  randomize_properties = <function 202>,
+  randomize_properties_vector = <function 203>,
+  randval = <function 204>,
+  randval_i = <function 205>,
   raw_texture = <userdata 155>,
-  rawequal = <function 204>,
-  rawget = <function 205>,
-  rawlen = <function 206>,
-  rawset = <function 207>,
+  rawequal = <function 206>,
+  rawget = <function 207>,
+  rawlen = <function 208>,
+  rawset = <function 209>,
   raycast_output = <userdata 156>,
   rect_ltrb = <userdata 157>,
   rect_xywh = <userdata 158>,
-  recursive_write = <function 208>,
-  refresh_coroutines = <function 209>,
+  recursive_write = <function 210>,
+  refresh_coroutines = <function 211>,
   reloader_script = <userdata 159>,
   render_component = <userdata 160>,
   render_layers = {
@@ -3067,11 +3876,12 @@ _G:
   },
   render_system = <userdata 161>,
   renderable = <userdata 162>,
-  require = <function 210>,
+  rendering_routine = <function 212>,
+  require = <function 213>,
   resource_creation_util = <userdata 163>,
-  reversed = <function 211>,
-  rewrite = <function 212>,
-  rewrite_ptr = <function 213>,
+  reversed = <function 214>,
+  rewrite = <function 215>,
+  rewrite_ptr = <function 216>,
   rgba = <userdata 164>,
   scene_fragment_shader = <userdata 165>,
   scene_program = <userdata 166>,
@@ -3083,14 +3893,14 @@ _G:
   scriptable_info = <userdata 171>,
   scriptable_zoom = <userdata 172>,
   seek_behaviour = <userdata 173>,
-  select = <function 214>,
+  select = <function 217>,
   separation_behaviour = <userdata 174>,
-  set_color = <function 215>,
-  set_components_from_entry = <function 216>,
-  set_physics_info = <function 217>,
-  set_world_reloading_script = <function 218>,
-  set_zoom_level = <function 219>,
-  setmetatable = <function 220>,
+  set_color = <function 218>,
+  set_components_from_entry = <function 219>,
+  set_physics_info = <function 220>,
+  set_world_reloading_script = <function 221>,
+  set_zoom_level = <function 222>,
+  setmetatable = <function 223>,
   settings = <userdata 175>,
   sfMusic = <userdata 176>,
   sfSound = <userdata 177>,
@@ -3098,8 +3908,9 @@ _G:
   shift_amount_uniform = 3,
   shot_message = <userdata 179>,
   should_debug_draw = false,
-  simple_create_polygon = <function 221>,
-  simple_integration = <function 222>,
+  showing_clock = false,
+  simple_create_polygon = <function 224>,
+  simple_integration = <function 225>,
   spatial_instability_crosshair_pos = 1,
   spatial_instability_fragment_shader = <userdata 180>,
   spatial_instability_light_attenuation = 3,
@@ -3115,9 +3926,9 @@ _G:
   steering_component = <userdata 185>,
   stepped_timer = <userdata 186>,
   string = <table 14>,
-  super = <function 223>,
+  super = <function 226>,
   table = <table 15>,
-  table_of_tables = <function 224>,
+  table_of_tables = <function 227>,
   target_gravity_rotation = 0,
   target_info = <userdata 187>,
   temporary_instability = 0,
@@ -3136,12 +3947,13 @@ _G:
     ["my_type_2.jpg"] = <userdata 191>
   },
   tiled_map_loader = {
-    error_callback = <function 225>,
-    for_every_object = <function 226>,
-    get_all_textures = <function 227>,
-    load_map = <function 228>,
-    load_world_properties = <function 229>,
-    map_scale = 2.5,
+    create_entities_from_map = <function 228>,
+    error_callback = <function 229>,
+    for_every_object = <function 230>,
+    get_all_objects_by_type = <function 231>,
+    get_all_textures = <function 232>,
+    load_world_properties = <function 233>,
+    map_scale = 1.2,
     texture_property_name = "texture",
     type_library = "sensibilia/maps/object_types",
     world_camera_entity = 0,
@@ -3150,41 +3962,41 @@ _G:
   time_speed_variation = 0,
   time_uniform = 1,
   timed_sequence = {
-    add_action = <function 230>,
-    constructor = <function 231>,
-    create = <function 232>,
-    now_action = <function 233>,
-    play = <function 234>,
-    set_current_action = <function 235>,
-    should_loop = <function 236>,
-    start = <function 237>,
-    validate_action = <function 238>,
+    add_action = <function 234>,
+    constructor = <function 235>,
+    create = <function 236>,
+    now_action = <function 237>,
+    play = <function 238>,
+    set_current_action = <function 239>,
+    should_loop = <function 240>,
+    start = <function 241>,
+    validate_action = <function 242>,
     <metatable> = {
       __index = {}
     }
   },
   timer = <userdata 192>,
-  to_vec2 = <function 239>,
-  to_vec2_table = <function 240>,
-  tonumber = <function 241>,
-  tostring = <function 242>,
+  to_vec2 = <function 243>,
+  to_vec2_table = <function 244>,
+  tonumber = <function 245>,
+  tostring = <function 246>,
   transform_component = <userdata 193>,
   transform_state = <userdata 194>,
   triangle_buffer = <userdata 195>,
-  type = <function 243>,
+  type = <function 247>,
   v_offset_multiplier = 1,
   value_animator = <userdata 196>,
-  vblur_coroutine = <function 244>,
+  vblur_coroutine = <function 248>,
   vblur_fragment_shader = <userdata 197>,
-  vblur_instability_effect = <function 245>,
+  vblur_instability_effect = <function 249>,
   vblur_program = <userdata 198>,
   vblur_vertex_shader = <userdata 199>,
   vec2 = <userdata 200>,
   vec2_vector = <userdata 201>,
-  vector_to_table = <function 246>,
+  vector_to_table = <function 250>,
   vertex = <userdata 202>,
-  vertex_shift_coroutine = <function 247>,
-  vertex_shift_instability_effect = <function 248>,
+  vertex_shift_coroutine = <function 251>,
+  vertex_shift_instability_effect = <function 252>,
   vertex_triangle = <userdata 203>,
   visibility_component = <userdata 204>,
   visibility_discontinuity = <userdata 205>,
@@ -3198,19 +4010,9 @@ _G:
   wander_behaviour = <userdata 209>,
   window = <userdata 210>,
   world = <userdata 211>,
+  world_camera = <userdata 212>,
   world_information = {
     ENEMY_START = { {
-        height = 0,
-        name = "",
-        pos = <userdata 212>,
-        properties = {},
-        shape = "rectangle",
-        type = "ENEMY_START",
-        visible = true,
-        width = 0,
-        x = 1440,
-        y = 1200
-      }, {
         height = 0,
         name = "",
         pos = <userdata 213>,
@@ -3219,8 +4021,8 @@ _G:
         type = "ENEMY_START",
         visible = true,
         width = 0,
-        x = 4000,
-        y = 1200
+        x = 691.2,
+        y = 576
       }, {
         height = 0,
         name = "",
@@ -3230,30 +4032,78 @@ _G:
         type = "ENEMY_START",
         visible = true,
         width = 0,
-        x = 2800,
-        y = 1840
-      } },
-    PLAYER_START = { {
+        x = 2496,
+        y = 499.2
+      }, {
         height = 0,
         name = "",
         pos = <userdata 215>,
         properties = {},
         shape = "rectangle",
+        type = "ENEMY_START",
+        visible = true,
+        width = 0,
+        x = 3370.8,
+        y = 1099.2
+      } },
+    PLAYER_START = { {
+        height = 0,
+        name = "",
+        pos = <userdata 216>,
+        properties = {},
+        shape = "rectangle",
         type = "PLAYER_START",
         visible = true,
         width = 0,
-        x = 4160,
-        y = 4480
+        x = 5452.8,
+        y = 3916.8
       } }
   },
-  xpcall = <function 249>
+  xpcall = <function 253>
 }
 
-value_animator:
+spatial_instability_rotation:
+6
+
+tiled_map_loader:
+{
+  create_entities_from_map = <function 1>,
+  error_callback = <function 2>,
+  for_every_object = <function 3>,
+  get_all_objects_by_type = <function 4>,
+  get_all_textures = <function 5>,
+  load_world_properties = <function 6>,
+  map_scale = 1.2,
+  texture_property_name = "texture",
+  type_library = "sensibilia/maps/object_types",
+  world_camera_entity = 0,
+  world_information_library = "sensibilia/maps/world_properties"
+}
+
+draw_input:
 <userdata 1>
 
-load:
-<function 1>
+coroutine:
+{
+  create = <function 1>,
+  resume = <function 2>,
+  running = <function 3>,
+  status = <function 4>,
+  stepped_wait = <function 5>,
+  wait = <function 6>,
+  wait_routine = <function 7>,
+  wrap = <function 8>,
+  yield = <function 9>
+}
+
+sprite:
+<userdata 1>
+
+visibility_edge:
+<userdata 1>
+
+_visibility_system:
+<userdata 1>
 
 filter_player_visibility:
 {
@@ -3261,360 +4111,163 @@ filter_player_visibility:
   maskBits = 12
 }
 
-randval_i:
-<function 1>
-
-input_context:
+settings:
 <userdata 1>
 
-create_textures:
+pcall:
 <function 1>
 
-reloader_script:
-<userdata 1>
+CURRENT_LEVEL:
+"sensibilia/maps/example_map"
 
-filter_characters:
+ptr_create_entity_group:
+<function 1>
+
+randomize_properties:
+<function 1>
+
+filter_bullets_passed_wall:
 {
-  categoryBits = 1,
-  maskBits = 95
+  categoryBits = 32,
+  maskBits = 66
 }
 
-_VERSION:
-"Lua 5.2"
+filter_nothing:
+{
+  categoryBits = 0,
+  maskBits = 0
+}
 
-METERS_TO_PIXELS:
-50
+spatial_instability_light_attenuation:
+3
 
-set_color:
-<function 1>
-
-animate_component:
+color_adjustment_fragment_shader:
 <userdata 1>
 
-create_gun:
-<function 1>
-
-common:
+animate_message:
 <userdata 1>
 
-flocking_behaviour:
+world_camera:
 <userdata 1>
 
-pathfinding_system:
+def_ptr:
+<function 1>
+
+def:
+<function 1>
+
+spatial_instability_vertex_shader:
 <userdata 1>
 
-can_point_be_reached_by_jump:
-<function 1>
+chromatic_aberration_fragment_shader:
+<userdata 1>
 
-SetFriction:
-<function 1>
-
-create:
-<function 1>
+obstacle_avoidance_behaviour:
+<userdata 1>
 
 particle_burst_message:
 <userdata 1>
 
-main_input_routine:
+film_grain_intensity:
+0
+
+clock_hand_time:
+0
+
+get_display:
 <function 1>
 
-renderable:
+behaviour_tree_task:
 <userdata 1>
-
-time_uniform:
-1
-
-b2Shape:
-<userdata 1>
-
-chromatic_aberration_offset:
-0
 
 aberration_coroutine:
 <function 1>
 
-seek_behaviour:
-<userdata 1>
+instability:
+0
 
-minmax:
-<userdata 1>
-
-open_script:
-<function 1>
-
-base_gravity:
-<userdata 1>
-
-fullscreen_pass:
-<function 1>
-
-vblur_instability_effect:
-<function 1>
-
-aberration_instability_effect:
-<function 1>
-
-error:
-<function 1>
-
-physics_system:
-<userdata 1>
-
-b2WeldJoint:
-<userdata 1>
-
-hblur_instability_effect:
-<function 1>
-
-print:
-<function 1>
-
-camera_archetype:
-{
-  camera = {
-    angled_look_length = 100,
-    averages_per_sec = 15,
-    enable_smoothing = true,
-    enabled = true,
-    layer = 0,
-    mask = 0,
-    max_look_expand = <userdata 1>,
-    orbit_mode = 2,
-    smoothing_average_factor = 0.5
-  },
-  chase = {
-    relative = false
-  },
-  transform = {
-    pos = <userdata 2>,
-    rotation = 0
-  }
-}
-
-rewrite_ptr:
-<function 1>
-
-animation:
-<userdata 1>
-
-create_polygon:
-<function 1>
-
-flush_dead_entities_in_group_by_entity:
-<function 1>
-
-movement_component:
-<userdata 1>
-
-behaviour_decorator:
-<userdata 1>
-
-directed_behaviour:
-<userdata 1>
-
-animation_events:
-<userdata 1>
-
-create_input_context:
-<function 1>
-
-triangle_buffer:
-<userdata 1>
-
-visibility_discontinuity:
-<userdata 1>
-
-vec2_vector:
-<userdata 1>
-
-behaviour_state:
-<userdata 1>
-
-vertex_triangle:
-<userdata 1>
-
-sfSoundBuffer:
-<userdata 1>
-
-clock_sprite:
-<userdata 1>
-
-player_light_fader:
-{
-  interval_timer = <userdata 1>,
-  trace_timer = <userdata 2>,
-  traces = {},
-  <metatable> = {
-    __index = {
-      add_trace = <function 1>,
-      constructor = <function 2>,
-      create = <function 3>,
-      generate_triangles = <function 4>,
-      loop = <function 5>,
-      <metatable> = {
-        __index = {}
-      }
-    }
-  }
-}
-
-scriptable_info:
-<userdata 1>
-
-STATIC_OBJECTS:
-8
-
-ENEMIES:
-2
-
-bounce_number:
-2
-
-rawequal:
+hblur_coroutine:
 <function 1>
 
 accumulated_camera_time:
 0
 
-random_time_speed_variation_coroutine:
+main_input_routine:
 <function 1>
 
-time_speed_variation:
-0
-
-vblur_vertex_shader:
+_script_reloader:
 <userdata 1>
 
-add_vals:
+random_instability_variation_coroutine:
 <function 1>
-
-destroy_message:
-<userdata 1>
-
-world_information:
-{
-  ENEMY_START = { {
-      height = 0,
-      name = "",
-      pos = <userdata 1>,
-      properties = {},
-      shape = "rectangle",
-      type = "ENEMY_START",
-      visible = true,
-      width = 0,
-      x = 1440,
-      y = 1200
-    }, {
-      height = 0,
-      name = "",
-      pos = <userdata 2>,
-      properties = {},
-      shape = "rectangle",
-      type = "ENEMY_START",
-      visible = true,
-      width = 0,
-      x = 4000,
-      y = 1200
-    }, {
-      height = 0,
-      name = "",
-      pos = <userdata 3>,
-      properties = {},
-      shape = "rectangle",
-      type = "ENEMY_START",
-      visible = true,
-      width = 0,
-      x = 2800,
-      y = 1840
-    } },
-  PLAYER_START = { {
-      height = 0,
-      name = "",
-      pos = <userdata 4>,
-      properties = {},
-      shape = "rectangle",
-      type = "PLAYER_START",
-      visible = true,
-      width = 0,
-      x = 4160,
-      y = 4480
-    } }
-}
 
 random_instability_ray_layer_order:
 <function 1>
 
-b2World:
-<userdata 1>
-
-vertex_shift_coroutine:
-<function 1>
-
-flee_behaviour:
-<userdata 1>
-
-randomize_properties:
-<function 1>
-
-ptr_lookup:
-<function 1>
-
-polygon_fader:
-{
-  add_trace = <function 1>,
-  constructor = <function 2>,
-  create = <function 3>,
-  generate_triangles = <function 4>,
-  loop = <function 5>,
-  <metatable> = {
-    __index = {}
-  }
-}
-
-film_grain_intensity:
-0
-
-spatial_instability_crosshair_pos:
-1
-
-hblur_fragment_shader:
-<userdata 1>
-
-type:
-<function 1>
+is_instability_ray_over_postprocessing:
+true
 
 lookat_component:
 <userdata 1>
 
-current_postprocessing_fbo:
-0
+table_of_tables:
+<function 1>
 
-my_atlas:
+vertex_shift_coroutine:
+<function 1>
+
+spatial_instability_time:
+7
+
+seek_behaviour:
 <userdata 1>
 
-spatial_instability_multiplier:
-4
+aberration_instability_effect:
+<function 1>
+
+directed_behaviour:
+<userdata 1>
+
+GL:
+<userdata 1>
+
+global_sound_table:
+{}
+
+hblur_instability_effect:
+<function 1>
+
+randomize_properties_vector:
+<function 1>
+
+fullscreen_pass:
+<function 1>
+
+scene_program:
+<userdata 1>
+
+postprocessing_fbos:
+{ <userdata 1>,
+  [0] = <userdata 2>
+}
+
+animate_component:
+<userdata 1>
+
+clock_alpha_multiplier:
+1
+
+gen_circle_vertices:
+<function 1>
+
+minmax_u:
+<userdata 1>
 
 intensity_fbo:
 <userdata 1>
 
-chromatic_aberration_program:
+rect_ltrb:
 <userdata 1>
-
-os:
-{
-  clock = <function 1>,
-  date = <function 2>,
-  difftime = <function 3>,
-  execute = <function 4>,
-  exit = <function 5>,
-  getenv = <function 6>,
-  remove = <function 7>,
-  rename = <function 8>,
-  setlocale = <function 9>,
-  time = <function 10>,
-  tmpname = <function 11>
-}
 
 fullscreen_quad:
 <function 1>
@@ -3622,208 +4275,38 @@ fullscreen_quad:
 my_timer:
 <userdata 1>
 
-current_gravity:
-<userdata 1>
+spatial_instability_zoom:
+8
 
-spatial_instability_light_attenuation:
-3
+spatial_instability_player_pos:
+5
 
-script:
-<userdata 1>
-
-create_entity_group:
+vertex_shift_instability_effect:
 <function 1>
 
-table_of_tables:
+create_emission:
 <function 1>
-
-particle_effect:
-<userdata 1>
-
-inherits_from:
-<function 1>
-
-GLSL_program:
-<userdata 1>
-
-spatial_instability_rotation:
-6
-
-spatial_instability_time:
-7
-
-dofile:
-<function 1>
-
-spatial_instability_program:
-<userdata 1>
-
-spatial_instability_vertex_shader:
-<userdata 1>
-
-Box2D:
-<userdata 1>
-
-emission:
-<userdata 1>
-
-pairs:
-<function 1>
-
-color_adjustment_fragment_shader:
-<userdata 1>
-
-blood_piece:
-{
-  acc = <userdata 1>,
-  angular_damping = 1000,
-  linear_damping = 25000,
-  should_disappear = true
-}
-
-color_adjustment_vertex_shader:
-<userdata 1>
-
-physics_component:
-<userdata 1>
-
-v_offset_multiplier:
-1
-
-SHADERS_DIRECTORY:
-"sensibilia\\scripts\\resources\\shaders\\"
-
-world:
-<userdata 1>
-
-hblur_program:
-<userdata 1>
-
-timer:
-<userdata 1>
-
-scene_fragment_shader:
-<userdata 1>
-
-scene_program:
-<userdata 1>
-
-random_instability_variation_coroutine:
-<function 1>
-
-chromatic_aberration_vertex_shader:
-<userdata 1>
-
-refresh_coroutines:
-<function 1>
-
-filter_character_feet:
-{
-  categoryBits = 127,
-  maskBits = 15
-}
-
-sfSound:
-<userdata 1>
-
-film_grain_fragment_shader:
-<userdata 1>
 
 create_particle:
 <function 1>
 
-point_below_segment:
-<function 1>
-
-set_world_reloading_script:
-<function 1>
-
-randval:
-<function 1>
-
-SetFilter:
-<function 1>
-
-create_options:
-<function 1>
-
-film_grain_vertex_shader:
-<userdata 1>
-
-scene_shader_time_uniform:
-4
-
-b2Body:
-<userdata 1>
-
-collectgarbage:
-<function 1>
-
-vblur_fragment_shader:
-<userdata 1>
-
-scene_vertex_shader:
-<userdata 1>
-
-fullscreen_vertex_shader:
-"#version 330\\nlayout(location = 0) in vec2 position;\\n\\nout vec2 theTexcoord;\\n\\nvoid main() \\n{\\n\\tvec4 output_vert;\\n\\toutput_vert.x = position.x * 2.0 - 1.0;\\t\\t\\n\\toutput_vert.y = position.y * 2.0 - 1.0;\\t\\t\\t\\t\\n\\toutput_vert.z = 0.0f;\\t\\t\\t\\t\\t\\t\\n\\toutput_vert.w = 1.0f;\\n\\t\\n\\tgl_Position = output_vert;\\n\\ttheTexcoord = position;\\n}\\n"
-
-resource_creation_util:
-<userdata 1>
-
-BULLETS:
-32
-
-CURRENT_LEVEL:
-"sensibilia/maps/example_map"
-
-b2PolygonShape:
-<userdata 1>
-
-tostring:
-<function 1>
-
-vblur_program:
-<userdata 1>
-
-set_zoom_level:
-<function 1>
-
-current_zoom_multiplier:
-1
-
-filter_static_objects:
+filter_instability_ray_player:
 {
-  categoryBits = 8,
-  maskBits = 111
+  categoryBits = 127,
+  maskBits = 2
 }
 
-ptr_create_entity:
-<function 1>
-
-current_zoom_level:
-0
-
-hblur_coroutine:
-<function 1>
-
-query_output:
+vertex:
 <userdata 1>
 
-main_input_component:
-{ 999999996, 999999992, 999999997, 999999989, 999999988, 5, 999999994 }
-
-_visibility_system:
-<userdata 1>
-
-gravity_angle_offset:
-0
-
-loadfile:
+recursive_write:
 <function 1>
 
-instability:
-0
+changing_gravity:
+false
+
+entity_ptr:
+<userdata 1>
 
 blood_effect:
 { {
@@ -3903,10 +4386,346 @@ blood_effect:
     velocity = <userdata 26>
   } }
 
-bitor:
+v_offset_multiplier:
+1
+
+create_joint:
 <function 1>
 
-render_component:
+open_script:
+<function 1>
+
+vblur_program:
+<userdata 1>
+
+hblur_program:
+<userdata 1>
+
+setmetatable:
+<function 1>
+
+BULLETS:
+32
+
+vblur_fragment_shader:
+<userdata 1>
+
+hblur_fragment_shader:
+<userdata 1>
+
+vblur_vertex_shader:
+<userdata 1>
+
+polygon_fader:
+{
+  add_trace = <function 1>,
+  constructor = <function 2>,
+  create = <function 3>,
+  generate_triangles = <function 4>,
+  loop = <function 5>,
+  <metatable> = {
+    __index = {}
+  }
+}
+
+hblur_vertex_shader:
+<userdata 1>
+
+chromatic_aberration_offset:
+0
+
+chromatic_aberration_program:
+<userdata 1>
+
+rendering_routine:
+<function 1>
+
+b2World:
+<userdata 1>
+
+target_info:
+<userdata 1>
+
+scriptable_zoom:
+<userdata 1>
+
+create_polygon:
+<function 1>
+
+gun_component:
+<userdata 1>
+
+point_below_segment:
+<function 1>
+
+Box2D:
+<userdata 1>
+
+_input_system:
+<userdata 1>
+
+orthographic_projection:
+<function 1>
+
+dofile:
+<function 1>
+
+get_group_by_entity:
+<function 1>
+
+player_light_fader:
+{
+  interval_timer = <userdata 1>,
+  trace_timer = <userdata 2>,
+  traces = {},
+  <metatable> = {
+    __index = {
+      add_trace = <function 1>,
+      constructor = <function 2>,
+      create = <function 3>,
+      generate_triangles = <function 4>,
+      loop = <function 5>,
+      <metatable> = {
+        __index = {}
+      }
+    }
+  }
+}
+
+time_uniform:
+1
+
+film_grain_program:
+<userdata 1>
+
+type:
+<function 1>
+
+rewrite:
+<function 1>
+
+GLSL_program:
+<userdata 1>
+
+current_zoom_level:
+0
+
+ENEMY_BULLETS:
+64
+
+visibility_system:
+<userdata 1>
+
+film_grain_vertex_shader:
+<userdata 1>
+
+b2WeldJointDef:
+<userdata 1>
+
+scene_shader_time_uniform:
+4
+
+super:
+<function 1>
+
+PIXELS_TO_METERS:
+0.02
+
+b2WeldJoint:
+<userdata 1>
+
+flocking_behaviour:
+<userdata 1>
+
+SetDensity:
+<function 1>
+
+scene_vertex_shader:
+<userdata 1>
+
+shift_amount_uniform:
+3
+
+SHADERS_DIRECTORY:
+"sensibilia\\scripts\\resources\\shaders\\"
+
+string:
+{
+  byte = <function 1>,
+  char = <function 2>,
+  dump = <function 3>,
+  find = <function 4>,
+  format = <function 5>,
+  gmatch = <function 6>,
+  gsub = <function 7>,
+  len = <function 8>,
+  lower = <function 9>,
+  match = <function 10>,
+  rep = <function 11>,
+  reverse = <function 12>,
+  sub = <function 13>,
+  upper = <function 14>
+}
+
+current_zoom_multiplier:
+1
+
+visibility_layers:
+{
+  BASIC_LIGHTING = 998,
+  LIGHT_BOUNCE = 999
+}
+
+world_information:
+{
+  ENEMY_START = { {
+      height = 0,
+      name = "",
+      pos = <userdata 1>,
+      properties = {},
+      shape = "rectangle",
+      type = "ENEMY_START",
+      visible = true,
+      width = 0,
+      x = 691.2,
+      y = 576
+    }, {
+      height = 0,
+      name = "",
+      pos = <userdata 2>,
+      properties = {},
+      shape = "rectangle",
+      type = "ENEMY_START",
+      visible = true,
+      width = 0,
+      x = 2496,
+      y = 499.2
+    }, {
+      height = 0,
+      name = "",
+      pos = <userdata 3>,
+      properties = {},
+      shape = "rectangle",
+      type = "ENEMY_START",
+      visible = true,
+      width = 0,
+      x = 3370.8,
+      y = 1099.2
+    } },
+  PLAYER_START = { {
+      height = 0,
+      name = "",
+      pos = <userdata 4>,
+      properties = {},
+      shape = "rectangle",
+      type = "PLAYER_START",
+      visible = true,
+      width = 0,
+      x = 5452.8,
+      y = 3916.8
+    } }
+}
+
+resource_creation_util:
+<userdata 1>
+
+framebuffer_object:
+<userdata 1>
+
+b2PolygonShape:
+<userdata 1>
+
+layers:
+<userdata 1>
+
+ptr_create_entity:
+<function 1>
+
+custom_intents:
+{
+  DROP_WEAPON = 999999991,
+  GRAVITY_CHANGE = 999999989,
+  INSTABILITY_RAY = 999999986,
+  INSTANT_SLOWDOWN = 999999996,
+  JUMP = 999999990,
+  MY_INTENT = 999999988,
+  QUIT = 999999992,
+  REALITY_CHECK = 999999985,
+  RESTART = 999999997,
+  SHOW_CLOCK = 999999987,
+  SPEED_CHANGE = 999999993,
+  STEERING_REQUEST = 999999998,
+  ZOOM_CAMERA = 999999999,
+  ZOOM_IN = 999999995,
+  ZOOM_OUT = 999999994
+}
+
+fullscreen_vertex_shader:
+"#version 330\\nlayout(location = 0) in vec2 position;\\n\\nout vec2 theTexcoord;\\n\\nvoid main() \\n{\\n\\tvec4 output_vert;\\n\\toutput_vert.x = position.x * 2.0 - 1.0;\\t\\t\\n\\toutput_vert.y = position.y * 2.0 - 1.0;\\t\\t\\t\\t\\n\\toutput_vert.z = 0.0f;\\t\\t\\t\\t\\t\\t\\n\\toutput_vert.w = 1.0f;\\n\\t\\n\\tgl_Position = output_vert;\\n\\ttheTexcoord = position;\\n}\\n"
+
+print:
+<function 1>
+
+reversed:
+<function 1>
+
+particle:
+<userdata 1>
+
+vertex_triangle:
+<userdata 1>
+
+my_atlas:
+<userdata 1>
+
+color_adjustment_program:
+<userdata 1>
+
+input_component:
+<userdata 1>
+
+chromatic_aberration_vertex_shader:
+<userdata 1>
+
+separation_behaviour:
+<userdata 1>
+
+config_table:
+{
+  bpp = 24,
+  doublebuffer = 1,
+  fullscreen = 0,
+  resolution_h = 1050,
+  resolution_w = 1300,
+  sensitivity = <userdata 1>,
+  window_border = 0,
+  window_name = "example",
+  window_x = 0,
+  window_y = 0
+}
+
+base_gravity:
+<userdata 1>
+
+vblur_coroutine:
+<function 1>
+
+collision_message:
+<userdata 1>
+
+npc_effects:
+<userdata 1>
+
+filter_static_objects:
+{
+  categoryBits = 8,
+  maskBits = 111
+}
+
+visibility_layer:
+<userdata 1>
+
+color_adjustment_vertex_shader:
 <userdata 1>
 
 blood_templates:
@@ -3972,23 +4791,21 @@ blood_templates:
     should_disappear = true
   } }
 
-bit32:
+behaviour_decorator:
+<userdata 1>
+
+blood_piece:
 {
-  arshift = <function 1>,
-  band = <function 2>,
-  bnot = <function 3>,
-  bor = <function 4>,
-  btest = <function 5>,
-  bxor = <function 6>,
-  extract = <function 7>,
-  lrotate = <function 8>,
-  lshift = <function 9>,
-  replace = <function 10>,
-  rrotate = <function 11>,
-  rshift = <function 12>
+  acc = <userdata 1>,
+  angular_damping = 1000,
+  linear_damping = 25000,
+  should_disappear = true
 }
 
-next:
+renderable:
+<userdata 1>
+
+call_on_modification:
 <function 1>
 
 textures_by_name:
@@ -4005,67 +4822,51 @@ textures_by_name:
   ["my_type_2.jpg"] = <userdata 10>
 }
 
-create_particle_emitter_info:
-<function 1>
+timed_sequence:
+{
+  add_action = <function 1>,
+  constructor = <function 2>,
+  create = <function 3>,
+  now_action = <function 4>,
+  play = <function 5>,
+  set_current_action = <function 6>,
+  should_loop = <function 7>,
+  start = <function 8>,
+  validate_action = <function 9>,
+  <metatable> = {
+    __index = {}
+  }
+}
 
 add_roots:
 <function 1>
 
-visibility_component:
+minmax:
 <userdata 1>
 
-simple_create_polygon:
-<function 1>
-
-filter_instability_ray_obstruction:
-{
-  categoryBits = 127,
-  maskBits = 12
-}
-
-filter_instability_ray_enemy:
-{
-  categoryBits = 127,
-  maskBits = 1
-}
-
-crosshair_component:
-<userdata 1>
-
-filter_instability_ray_player:
+filter_characters_separation:
 {
   categoryBits = 127,
   maskBits = 2
 }
 
-post_destroy:
-<function 1>
-
-setmetatable:
-<function 1>
-
-film_grain_program:
-<userdata 1>
-
-config_table:
+filter_character_feet:
 {
-  bpp = 24,
-  doublebuffer = 1,
-  fullscreen = 1,
-  resolution_h = 1080,
-  resolution_w = 1920,
-  sensitivity = <userdata 1>,
-  window_border = 0,
-  window_name = "example",
-  window_x = 0,
-  window_y = 0
+  categoryBits = 127,
+  maskBits = 15
 }
 
-intent_message:
-<userdata 1>
+flush_dead_entities_in_group_by_entity:
+<function 1>
 
-keys:
-<userdata 1>
+create_inverse_enum:
+<function 1>
+
+filter_pathfinding_visibility:
+{
+  categoryBits = 127,
+  maskBits = 12
+}
 
 filter_enemies:
 {
@@ -4073,17 +4874,14 @@ filter_enemies:
   maskBits = 63
 }
 
-reversed:
-<function 1>
-
-filter_bullets_passed_wall:
-{
-  categoryBits = 32,
-  maskBits = 66
-}
-
-pathfinding_component:
+b2RevoluteJointDef:
 <userdata 1>
+
+filter_light_visibility:
+{
+  categoryBits = 127,
+  maskBits = 14
+}
 
 filter_enemy_bullets_passed_wall:
 {
@@ -4097,172 +4895,98 @@ filter_enemy_bullets:
   maskBits = 45
 }
 
+visibility_discontinuity:
+<userdata 1>
+
 filter_bullets:
 {
   categoryBits = 32,
   maskBits = 78
 }
 
-filter_light_visibility:
+filter_objects:
 {
-  categoryBits = 127,
-  maskBits = 14
+  categoryBits = 4,
+  maskBits = 111
 }
-
-filter_nothing:
-{
-  categoryBits = 0,
-  maskBits = 0
-}
-
-rawlen:
-<function 1>
-
-b2JointDef:
-<userdata 1>
-
-damage_component:
-<userdata 1>
-
-visibility_layers:
-{
-  BASIC_LIGHTING = 998,
-  LIGHT_BOUNCE = 999
-}
-
-rawget:
-<function 1>
-
-ENEMY_BULLETS:
-64
-
-getmetatable:
-<function 1>
-
-b2RevoluteJoint:
-<userdata 1>
-
-OBJECTS:
-4
-
-vblur_coroutine:
-<function 1>
 
 chase_component:
 <userdata 1>
 
-create_behaviour_tree:
+rawlen:
 <function 1>
+
+class:
+<function 1>
+
+timer:
+<userdata 1>
+
+to_vec2:
+<function 1>
+
+collectgarbage:
+<function 1>
+
+common:
+<userdata 1>
+
+STATIC_OBJECTS:
+8
 
 CHARACTERS:
 1
 
-rect_ltrb:
+children_component:
 <userdata 1>
 
-stepped_timer:
+reloader_script:
 <userdata 1>
 
-EFFECTS_DIRECTORY:
-"sensibilia\\scripts\\effects\\"
-
-tiled_map_loader:
-{
-  error_callback = <function 1>,
-  for_every_object = <function 2>,
-  get_all_textures = <function 3>,
-  load_map = <function 4>,
-  load_world_properties = <function 5>,
-  map_scale = 2.5,
-  texture_property_name = "texture",
-  type_library = "sensibilia/maps/object_types",
-  world_camera_entity = 0,
-  world_information_library = "sensibilia/maps/world_properties"
-}
-
-damage_message:
+textures:
 <userdata 1>
 
-group_by_entity:
-{}
-
-color_adjustment_program:
-<userdata 1>
-
-create_steering:
+create_options:
 <function 1>
 
-texture:
+emission:
 <userdata 1>
 
-set_components_from_entry:
+polygon:
+<userdata 1>
+
+bitor:
 <function 1>
 
-vec2:
+mouse:
 <userdata 1>
+
+avoidance_behaviour:
+<userdata 1>
+
+create_gun:
+<function 1>
+
+create_behaviour_tree:
+<function 1>
+
+time_speed_variation:
+0
+
+ipairs:
+<function 1>
 
 set_physics_info:
 <function 1>
 
-entity_creation_util:
-<userdata 1>
+ENGINE_DIRECTORY:
+"engine\\"
 
-transform_state:
-<userdata 1>
-
-tonumber:
+select:
 <function 1>
 
-call_on_modification:
-<function 1>
-
-create_emission:
-<function 1>
-
-polygon_particle_userdatas_saved:
-{ <userdata 1>, <userdata 2>, <userdata 3>, <userdata 4>, <userdata 5>, <userdata 6>, <userdata 7>, <userdata 8>, <userdata 9>, <userdata 10> }
-
-glwindow:
-<userdata 1>
-
-rewrite:
-<function 1>
-
-filter_obstacle_visibility:
-{
-  categoryBits = 127,
-  maskBits = 15
-}
-
-_entity:
-<userdata 1>
-
-clamp:
-<function 1>
-
-entries_from_archetypes:
-<function 1>
-
-animate_message:
-<userdata 1>
-
-float_vector:
-<userdata 1>
-
-framebuffer_object:
-<userdata 1>
-
-ptr_create_entity_group:
-<function 1>
-
-get_group_by_entity:
-<function 1>
-
-target_gravity_rotation:
+gravity_angle_offset:
 0
-
-create_animation_set:
-<function 1>
 
 io:
 {
@@ -4282,57 +5006,199 @@ io:
   write = <function 11>
 }
 
-create_entity:
-<function 1>
-
-rawset:
-<function 1>
-
-rect_xywh:
+spatial_instability_program:
 <userdata 1>
 
-atlas:
+spatial_instability_fragment_shader:
 <userdata 1>
 
-drawable_concave:
-<userdata 1>
+polygon_particle_userdatas_saved:
+{ <userdata 1>, <userdata 2>, <userdata 3>, <userdata 4>, <userdata 5>, <userdata 6>, <userdata 7>, <userdata 8>, <userdata 9>, <userdata 10> }
 
-bitflag:
+create_input_context:
 <function 1>
 
-timed_sequence:
+render_layers:
 {
-  add_action = <function 1>,
-  constructor = <function 2>,
-  create = <function 3>,
-  now_action = <function 4>,
-  play = <function 5>,
-  set_current_action = <function 6>,
-  should_loop = <function 7>,
-  start = <function 8>,
-  validate_action = <function 9>,
-  <metatable> = {
-    __index = {}
-  }
+  BACKGROUND_1 = 4,
+  BACKGROUND_2 = 5,
+  BACKGROUND_3 = 6,
+  CHARACTERS = 3,
+  FOREGROUND = 1,
+  GUI_OBJECTS = 0,
+  OBJECTS = 2
 }
 
-calc_max_jump_height:
-<function 1>
-
-containment_behaviour:
+triangle_buffer:
 <userdata 1>
 
-debug_draw:
+crosshair_component:
+<userdata 1>
+
+create:
 <function 1>
 
-_render_system:
+animation:
+<userdata 1>
+
+script:
+<userdata 1>
+
+raw_texture:
+<userdata 1>
+
+glwindow:
+<userdata 1>
+
+script_reloader:
+<userdata 1>
+
+simple_integration:
+<function 1>
+
+vec2_vector:
+<userdata 1>
+
+assert:
+<function 1>
+
+showing_clock:
+false
+
+error:
+<function 1>
+
+os:
+{
+  clock = <function 1>,
+  date = <function 2>,
+  difftime = <function 3>,
+  execute = <function 4>,
+  exit = <function 5>,
+  getenv = <function 6>,
+  remove = <function 7>,
+  rename = <function 8>,
+  setlocale = <function 9>,
+  time = <function 10>,
+  tmpname = <function 11>
+}
+
+pathfinding_system:
+<userdata 1>
+
+group_by_entity:
+{}
+
+animate_info:
+<userdata 1>
+
+SetFriction:
+<function 1>
+
+stepped_timer:
 <userdata 1>
 
 should_debug_draw:
 false
 
-to_vec2_table:
+create_entity:
 <function 1>
+
+set_components_from_entry:
+<function 1>
+
+rawset:
+<function 1>
+
+bitflag:
+<function 1>
+
+create_animation:
+<function 1>
+
+texture:
+<userdata 1>
+
+can_point_be_reached_by_jump:
+<function 1>
+
+atlas:
+<userdata 1>
+
+damage_message:
+<userdata 1>
+
+current_gravity:
+<userdata 1>
+
+calc_air_resistance:
+<function 1>
+
+camera_component:
+<userdata 1>
+
+damage_component:
+<userdata 1>
+
+visibility_component:
+<userdata 1>
+
+transform_state:
+<userdata 1>
+
+shot_message:
+<userdata 1>
+
+loadfile:
+<function 1>
+
+query_output:
+<userdata 1>
+
+b2Vec2:
+<userdata 1>
+
+next:
+<function 1>
+
+vector_to_table:
+<function 1>
+
+load:
+<function 1>
+
+rawequal:
+<function 1>
+
+steering_component:
+<userdata 1>
+
+vblur_instability_effect:
+<function 1>
+
+physics_component:
+<userdata 1>
+
+rewrite_ptr:
+<function 1>
+
+create_physics_component:
+<function 1>
+
+entity_creation_util:
+<userdata 1>
+
+flee_behaviour:
+<userdata 1>
+
+getmetatable:
+<function 1>
+
+METERS_TO_PIXELS:
+50
+
+movement_component:
+<userdata 1>
 
 math:
 {
@@ -4367,76 +5233,89 @@ math:
   tanh = <function 27>
 }
 
-orthographic_projection:
+add_vals:
 <function 1>
 
-input_component:
+render_system:
 <userdata 1>
 
-ipairs:
-<function 1>
-
-particle_emitter_component:
+render_component:
 <userdata 1>
 
-to_vec2:
-<function 1>
-
-collision_message:
+_physics_system:
 <userdata 1>
 
-spatial_instability_player_pos:
-5
+behaviour_tree_component:
+<userdata 1>
 
-coroutine:
+projection_matrix_uniform:
+2
+
+behaviour_state:
+<userdata 1>
+
+b2Body:
+<userdata 1>
+
+_render_system:
+<userdata 1>
+
+keys:
+<userdata 1>
+
+bit32:
 {
-  create = <function 1>,
-  resume = <function 2>,
-  running = <function 3>,
-  status = <function 4>,
-  stepped_wait = <function 5>,
-  wait = <function 6>,
-  wait_routine = <function 7>,
-  wrap = <function 8>,
-  yield = <function 9>
+  arshift = <function 1>,
+  band = <function 2>,
+  bnot = <function 3>,
+  bor = <function 4>,
+  btest = <function 5>,
+  bxor = <function 6>,
+  extract = <function 7>,
+  lrotate = <function 8>,
+  lshift = <function 9>,
+  replace = <function 10>,
+  rrotate = <function 11>,
+  rshift = <function 12>
 }
 
-debug_line:
+sfSound:
 <userdata 1>
 
-player_pos_uniform:
-1
+INSTABILITY_RAY:
+16
 
-filter_pathfinding_visibility:
+particle_effect:
+<userdata 1>
+
+camera_archetype:
 {
-  categoryBits = 127,
-  maskBits = 12
+  camera = {
+    angled_look_length = 100,
+    averages_per_sec = 15,
+    enable_smoothing = true,
+    enabled = true,
+    layer = 0,
+    mask = 0,
+    max_look_expand = <userdata 1>,
+    orbit_mode = 2,
+    smoothing_average_factor = 0.5
+  },
+  chase = {
+    relative = false
+  },
+  transform = {
+    pos = <userdata 2>,
+    rotation = 0
+  }
 }
 
-_input_system:
+value_animator:
 <userdata 1>
 
-scriptable_component:
-<userdata 1>
-
-xpcall:
+clamp:
 <function 1>
 
-GLSL_shader:
-<userdata 1>
-
-wander_behaviour:
-<userdata 1>
-
-avoidance_behaviour:
-<userdata 1>
-
-SetDensity:
-<function 1>
-
-rgba:
-<userdata 1>
-
-shot_message:
+animation_events:
 <userdata 1>
 
