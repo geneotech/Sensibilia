@@ -60,6 +60,7 @@ tiled_map_loader = {
 						if this_type_table.entity_archetype == nil then
 							--err("unspecified entity archetype for type " .. object.type)
 							print("unspecified entity archetype for type " .. object.type)
+							this_type_table.entity_archetype = {}
 						end
 					
 						-- property priority (lowest to biggest):
@@ -226,7 +227,7 @@ tiled_map_loader = {
 			})
 		end
 		
-		return final_entity_table
+		return archetyped(this_type_table.entity_archetype, final_entity_table)
 	end,
 	
 	create_entities_from_map = function (filename)	
@@ -248,7 +249,7 @@ tiled_map_loader = {
 			if require(this.world_information_library)[object.type] == nil then
 				
 				-- create the entity
-				local new_entity = create_entity (archetyped(this_type_table.entity_archetype, this.basic_entity_table(object, this_type_table, map_object.all_polygons, map_object.all_sprites)))
+				local new_entity = create_entity (this.basic_entity_table(object, this_type_table, map_object.all_polygons, map_object.all_sprites))
 				
 				-- and save it in map table
 				if object.name == "" then 

@@ -220,3 +220,15 @@ function to_vec2_table(xytable)
 	
 	return newtable
 end
+
+function table.concatenate(all_tables)
+	local sum_of_all = {}
+	
+	for	index, source_table in ipairs(all_tables) do
+		for key, val in ipairs(source_table) do
+			table.insert(sum_of_all, val)
+		end
+	end
+	
+	return sum_of_all
+end
