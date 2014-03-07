@@ -23,7 +23,7 @@ function random_polygon(color, scalar)
 	local new_bullet_poly = simple_create_polygon(vertices)
 	map_uv_square(new_bullet_poly, images.bullet_map)
 	
-	set_color(new_bullet_poly, color)
+	set_polygon_color(new_bullet_poly, color)
 	
 	return new_bullet_poly
 end
@@ -59,15 +59,15 @@ function loop_instability_gun_bullets(subject_group, shake_radius, init_color)
 			local dist_from_start = v.damage.lifetime:get_milliseconds()
 			local dist_from_starting_point = (v.damage.starting_point - v.transform.current.pos):length()
 			vel:set_length(0.005 * dist_from_start) 
-			--vel = vel + base_gravity/10*(dist_from_starting_point/700)
+			vel = vel + base_gravity/10*(dist_from_starting_point/700)
 			
-			--vel = vel
+			vel = vel
 			
 			body:ApplyForce(b2Vec2(vel.x, vel.y), body:GetWorldCenter(), true)  
-			--body:ApplyAngularImpulse(randval(0, 0.01), true)
+			body:ApplyAngularImpulse(randval(0, 0.01), true)
 			
 			local alpha_mult = (1 - (dist_from_start/v.damage.max_lifetime_ms))
-			set_color(v.render.model, rgba(init_color.r, init_color.g, init_color.b, alpha_mult * alpha_mult * alpha_mult* 255  + (dist_from_starting_point/5000) * 90 ))
+			set_polygon_color(v.render.model, rgba(init_color.r, init_color.g, init_color.b, alpha_mult * alpha_mult * alpha_mult* 255  + (dist_from_starting_point/5000) * 90 ))
 			
 			i = i + 1
 		end

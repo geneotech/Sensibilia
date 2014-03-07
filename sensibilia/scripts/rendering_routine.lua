@@ -96,7 +96,7 @@ clock_hand_time = 0
 
 refresh_coroutines()
 
-player_light_fader = polygon_fader:create()
+player_light_fader = polygon_fader()
 
 
 
@@ -186,23 +186,23 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			handle_point_light = function(poly_vector, ms_fade, target_fade, light_distance, used_attenuation)
 				local visibility_points = vector_to_table(poly_vector)
-				
-				-- expand these points a little
+				--
+				---- expand these points a little
 				for k, v in ipairs(visibility_points) do
 					visibility_points[k] = visibility_points[k] + (vec2(visibility_points[k] - player_pos)*0.01)
 				end
 			
 				local my_light_poly = simple_create_polygon(visibility_points)
 				map_uv_square(my_light_poly, images.blank)
-				set_color(my_light_poly, rgba(0, 0, 255, 255))
+				set_polygon_color(my_light_poly, rgba(0, 0, 255, 255))
 				
 				
 				local attenuation_mult = 1
-			
+			    
 				if light_distance ~= nil then
 					attenuation_mult = 1.0/(used_attenuation[1]+used_attenuation[2]*light_distance+used_attenuation[3]*light_distance*light_distance)
 				end
-			
+			    
 				local new_light_animator = value_animator(255*attenuation_mult, target_fade*attenuation_mult, ms_fade)
 				new_light_animator:set_quadratic()
 				

@@ -10,7 +10,7 @@ function handle_dying_instability_rays()
 		if not self.owner_entity:exists() then
 			self:cast(false)
 			
-			if #self.polygon_fader.traces < 1 then
+			if self.polygon_fader:get_num_traces() < 1 then
 				table.remove(global_instability_rays, i)
 				was_removed = true
 			else
@@ -50,7 +50,7 @@ function instability_ray_module:constructor(entity, ray_filter)
 
 	self.trace_timer = timer()
 	
-	self.polygon_fader = polygon_fader:create()
+	self.polygon_fader = polygon_fader()
 	
 	self.instability_ray_filter = ray_filter
 	-- for rendering
@@ -115,14 +115,14 @@ function instability_ray_module:loop()
 	add_vals(world_polygon, polygon_table)
 	
 	-- leave a polygon trace every some small interval
-	if self.trace_timer:get_milliseconds() > 5 and #self.polygon_fader.traces < 50 then
+	if self.trace_timer:get_milliseconds() > 5 and self.polygon_fader:get_num_traces() < 50 then
 		-- leave a trace 
 		
 		local alpha_animator = value_animator(255, -0.1, 250)
 		alpha_animator:set_exponential()
 		
 		local new_trace_poly = simple_create_polygon (polygon_table)
-		set_color(new_trace_poly, self.polygon_color)
+		set_polygon_color(new_trace_poly, self.polygon_color)
 		map_uv_square(new_trace_poly, images.blank)
 		
 		self.polygon_fader:add_trace(new_trace_poly, alpha_animator)

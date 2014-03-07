@@ -89,7 +89,6 @@ dofile (ENGINE_DIRECTORY .. "entity_creation_util.lua" )
 dofile (ENGINE_DIRECTORY .. "resource_creation_util.lua")
 dofile (ENGINE_DIRECTORY .. "settings.lua")
 dofile (ENGINE_DIRECTORY .. "tiled_map_loader.lua")
-dofile (ENGINE_DIRECTORY .. "polygon_fader.lua")
 dofile (CURRENT_SCENE)
 
 commands = script()

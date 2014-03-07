@@ -186,8 +186,10 @@ end
 
 function player_class:loop()
 	physics_system.timestep_multiplier = self.timestep_corrector:get_animated()
-	
 	loop_instability_gun_bullets(player, 5+20*instability, rgba(0, 255, 0, 255))
+end
+
+function player_class:substep()
 end
 
 function spawn_player(position)

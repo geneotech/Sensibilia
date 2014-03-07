@@ -70,6 +70,28 @@ world_camera = create_entity (archetyped(camera_archetype, {
 		screen_rect = rect_xywh(0, 0, config_table.resolution_w, config_table.resolution_h),
 		ortho = rect_ltrb(0, 0, config_table.resolution_w, config_table.resolution_h),
 		drawing_callback = rendering_routine
+		
+		--function (subject, renderer, visible_area, drawn_transform, target_transform, mask)
+		--	scene_program:use()
+		--	framebuffer_object.use_default()
+		--	
+		--	--GL.glUniform1i(scene_shader_time_uniform, sent_time)
+		--		
+		--	my_atlas:bind()
+		--	
+		--	GL.glUniformMatrix4fv(
+		--	projection_matrix_uniform, 
+		--	1, 
+		--	GL.GL_FALSE, 
+		--	orthographic_projection(visible_area.x, visible_area.r, visible_area.b, visible_area.y, 0, 1):data()
+		--	)
+		--
+		--	GL.glColorMask(GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE)
+		--	GL.glClear(GL.GL_COLOR_BUFFER_BIT)
+		--	--renderer:generate_triangles(visible_area, drawn_transform, render_masks.EFFECTS)
+		--	--renderer:call_triangles()
+		--	--renderer:clear_triangles()
+		--end
 	},
 	
 	input = {

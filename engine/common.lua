@@ -156,14 +156,6 @@ function map_uv_square(texcoords_to_map, texture_to_map)
 	end
 end
 
-function set_color(poly, col)
-	if poly:get_vertex_count() > 0 then
-		for i = 0, poly:get_vertex_count()-1 do
-			poly:get_vertex(i).color = col
-		end
-	end
-end
-
 global_sound_table = {}
 
 function reversed(input_table)
