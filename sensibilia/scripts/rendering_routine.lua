@@ -71,7 +71,7 @@ function ()
 		
 	while true do
 		local transition_duration = randval(1, 400)
-		local target_variation = randval(0.0, 20.0)
+		local target_variation = randval(0.01, 20.0)
 		
 		local my_val_animator = value_animator(last_mult, target_variation, transition_duration)
 		
@@ -103,8 +103,6 @@ player_light_fader = polygon_fader:create()
 
 
 function rendering_routine(subject, renderer, visible_area, drawn_transform, target_transform, mask)
-
-			
 			local extracted_ms = my_timer:extract_milliseconds()
 			
 			clock_hand_time = clock_hand_time + extracted_ms * physics_system.timestep_multiplier

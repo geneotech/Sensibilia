@@ -14,7 +14,7 @@ function waywardness_module:constructor(subject_entity, force_multiplier)
 	self.initial_rotation = subject_entity.transform.current.rotation
 	
 	local coord_variation_archetype = {
-		min_value = -800, max_value = 800, min_transition_ms = 50, max_transition_ms = 100, wait_probability = 0.01, min_wait_ms = 100, max_wait_ms = 500, constant_transition_delta = false, 
+		min_value = -1100, max_value = 1100, min_transition_ms = 50, max_transition_ms = 100, wait_probability = 0.01, min_wait_ms = 100, max_wait_ms = 500, constant_transition_delta = false, 
 		value_additive = false
 	}
 	
@@ -76,7 +76,7 @@ function waywardness_module:substep()
 		
 		local resultant_vector = vec2(0, 0)
 		local radius_of_effect = 400
-		local max_speed = 500
+		local max_speed = 800
 		local distance = (self.initial_position - current_pos):length()
 		local direction = (self.initial_position - current_pos):normalize()
 		local velocity = vec2(body:GetLinearVelocity().x, body:GetLinearVelocity().y) * 50
