@@ -71,45 +71,7 @@ loop_only_info = create_scriptable_info {
 		[scriptable_component.INTENT_MESSAGE] = main_input_routine,
 				
 		[scriptable_component.LOOP] = function(subject, is_substepping)
-			-- process entities
-			
-			local method_name = "loop"
-			
-			if is_substepping then
-				method_name = "substep"
-			end
-			
-			process_all_entity_modules("character", method_name)
-			process_all_entity_modules("jumping", method_name)
-			process_all_entity_modules("coordination", method_name)
-			process_all_entity_modules("instability_ray", method_name)
-			process_all_entity_modules("clock_renderer", method_name)
-			process_all_entity_modules("waywardness", method_name)
-			
-			local name_map = {
-				[scriptable_component.DAMAGE_MESSAGE] = "damage_message",
-				[scriptable_component.INTENT_MESSAGE] = "intent_message"
-			}
-			
-			-- send all events to entities globally
-			for msg_key, msg_table in pairs(global_message_table) do
-				for k, msg in pairs(global_message_table[msg_key]) do
-					local entity_self = get_self(msg.subject)
-					
-					-- callback
-					local callback = entity_self[name_map[msg_key]]
-					
-					if callback ~= nil then
-						callback(entity_self, msg)
-					end
-					
-					-- by the way, send every single event to all interested modules of this entity respectively
-					entity_self:all_modules(name_map[msg_key], msg)
-				end
-			end
-			
-			-- messages processed, clear tables
-			flush_message_tables()
+
 		
 		
 			-- rest of the basic loop
@@ -188,7 +150,20 @@ loop_only_info = create_scriptable_info {
 				instability = instability - decrease_amount
 			end
 			
-			if instability < 0 then instability = 0 end
+			
+			local should_return = false
+			if instability < 0 then 
+				if is_substepping and get_self(player.body:get()).is_reality_checking then
+					-- all wayward objects try to reach their initial position
+					should_return = true
+				end
+				
+				instability = 0 
+			end
+			
+			process_all_entity_modules("waywardness", "return_to_initial_transform", should_return)
+			
+			
 			main_delta_timer:reset()
 				
 			handle_dying_instability_rays()
@@ -204,6 +179,49 @@ loop_only_info = create_scriptable_info {
 			--print(showing_clock, clock_alpha)
 			gui_clock_self.clock_renderer.clock_center = vec2(world_camera.transform.previous.pos)
 			gui_clock_self.clock_renderer.clock_alpha = clock_alpha
+			
+			
+			
+			
+			-- process entities
+			
+			local method_name = "loop"
+			
+			if is_substepping then
+				method_name = "substep"
+			end
+			
+			process_all_entity_modules("character", method_name)
+			process_all_entity_modules("jumping", method_name)
+			process_all_entity_modules("coordination", method_name)
+			process_all_entity_modules("instability_ray", method_name)
+			process_all_entity_modules("clock_renderer", method_name)
+			process_all_entity_modules("waywardness", method_name)
+			
+			local name_map = {
+				[scriptable_component.DAMAGE_MESSAGE] = "damage_message",
+				[scriptable_component.INTENT_MESSAGE] = "intent_message"
+			}
+			
+			-- send all events to entities globally
+			for msg_key, msg_table in pairs(global_message_table) do
+				for k, msg in pairs(global_message_table[msg_key]) do
+					local entity_self = get_self(msg.subject)
+					
+					-- callback
+					local callback = entity_self[name_map[msg_key]]
+					
+					if callback ~= nil then
+						callback(entity_self, msg)
+					end
+					
+					-- by the way, send every single event to all interested modules of this entity respectively
+					entity_self:all_modules(name_map[msg_key], msg)
+				end
+			end
+			
+			-- messages processed, clear tables
+			flush_message_tables()
 		end
 	}
 }
