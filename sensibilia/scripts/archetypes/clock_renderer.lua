@@ -19,7 +19,7 @@ function spawn_clock(position, body_override, ...)
 	
 	new_group.body:get().transform.pos = position
 	
-	this.clock_renderer = clock_renderer_module:create(new_group, table.unpack({...}))
+	this.clock_renderer = clock_renderer_module:create(new_group, ...)
 	
 	return new_group
 end

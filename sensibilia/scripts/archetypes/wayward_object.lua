@@ -8,7 +8,7 @@ function spawn_wayward(position, body_override, ...)
 	
 	new_group.body:get().transform.pos = position
 	
-	this.waywardness = waywardness_module:create(new_group.body:get(), table.unpack({...}))
+	this.waywardness = waywardness_module:create(new_group.body:get(), ...)
 	
 	return new_group
 end

@@ -103,6 +103,8 @@ player_light_fader = polygon_fader:create()
 
 
 function rendering_routine(subject, renderer, visible_area, drawn_transform, target_transform, mask)
+
+			
 			local extracted_ms = my_timer:extract_milliseconds()
 			
 			clock_hand_time = clock_hand_time + extracted_ms * physics_system.timestep_multiplier

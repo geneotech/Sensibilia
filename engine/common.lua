@@ -54,7 +54,7 @@ function inherits_from(baseClass)
         local newinst = {}
         setmetatable( newinst, class_mt )
 		
-		newinst:constructor(table.unpack({...}))
+		newinst:constructor(...)
         return newinst
     end
 

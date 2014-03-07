@@ -26,7 +26,7 @@ end
 function entity_class:all_modules(method, ...)
 	for k, v in pairs(self) do
 		if type(self[k]) == "table" and type(self[k][method]) == "function" then
-			self[k][method](self[k], table.unpack({...}))
+			self[k][method](self[k], ...)
 		end
 	end
 end
@@ -83,7 +83,7 @@ function process_all_entity_modules(module_name, method_name, ...)
 		(v[module_name].enabled == nil or v[module_name].enabled == true) 
 			then
 		-- call method
-			v[module_name][method_name](v[module_name], table.unpack({...}))
+			v[module_name][method_name](v[module_name], ...)
 		end
 	end
 end
@@ -96,7 +96,7 @@ function spawn_entity(group_table, what_class, ...)
 	--print (table.inspect(group_table))
 	
 	local my_new_entity_group = ptr_create_entity_group (group_table)
-	local new_entity_script_data = what_class:create(my_new_entity_group, table.unpack({...}))
+	local new_entity_script_data = what_class:create(my_new_entity_group, ...)
 	-- there is no need to override the basic scriptable info as it provides entities with all needed functionality
 	-- and in fact should not be modified
 	--local new_scriptable_info = create_scriptable_info (scriptable_table)

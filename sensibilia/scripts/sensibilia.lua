@@ -220,8 +220,8 @@ loop_only_info = create_scriptable_info {
 				end
 			end
 			
-			player.gun_entity:get().gun.trigger_mode = gun_component.SHOOT
-			physics_system.timestep_multiplier = 0.01
+			--player.gun_entity:get().gun.trigger_mode = gun_component.SHOOT
+			--physics_system.timestep_multiplier = 0.01
 			-- messages processed, clear tables
 			flush_message_tables()
 		end
