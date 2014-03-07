@@ -28,7 +28,7 @@ loader_1.create_entities_from_map = function(filename)
 		new_clock_self.clock_renderer.overwrite_position = false
 		new_clock_self.clock_renderer.randomized_hands_values = randomized_vals
 		new_clock_self.clock_renderer.rotate_body = randomized_vals
-		new_clock_self.clock_renderer.logarithmic_blinks = true
+		new_clock_self.clock_renderer.logarithmic_blinks = randomized_vals
 	end
 	
 	return { polygons, rectangles }

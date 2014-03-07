@@ -84,7 +84,7 @@ function clock_renderer_module:constructor(subject_group, clock_image, size_scal
 	self.clock_alpha = 1
 	
 	self.logarithmic_blink_params = {
-		min_wait_ms = 100, max_wait_ms = 3000
+		min_wait_ms = 100, max_wait_ms = 5000
 	}
 	
 	self.logarithmic_blinks = false
@@ -95,7 +95,7 @@ function clock_renderer_module:constructor(subject_group, clock_image, size_scal
 		while true do
 			coroutine.wait(randval(args.min_wait_ms, args.max_wait_ms), nil, false)
 			
-			local transition_duration =  randval(1500, 3000)
+			local transition_duration =  randval(100, 3000)
 			local my_val_animator = value_animator(2, 1, transition_duration)
 			my_val_animator:set_logarithmic()
 				
@@ -127,7 +127,6 @@ function clock_renderer_module:loop()
 	
 	if self.logarithmic_blinks then
 		self.logarithmic_blink_coroutine(1 + instability*10)
-		print (self.logarithmic_blink_mult)
 	end
 	
 	local actual_clock_center = self.group.body:get().transform.current.pos

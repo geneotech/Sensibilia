@@ -12,7 +12,7 @@ clock_renderer_archetype = {
 
 function spawn_clock(position, body_override, ...)
 	local final_group = archetyped(clock_renderer_archetype, { body = body_override })
-	print(table.inspect(final_group))
+	--print(table.inspect(final_group))
 	
 	local new_group = spawn_entity(final_group)
 	local this = get_self(new_group.body:get())

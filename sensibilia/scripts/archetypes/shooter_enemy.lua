@@ -58,6 +58,10 @@ function spawn_shooter(position)
 	
 	this.coordination = coordination_module:create(new_group.body:get())
 	
+	this.damage_message = function(msg)
+		this.coordination:handle_player_visibility(true)
+	end
+	
 	this.loop = function()
 		if this.coordination.is_seen then
 			gun_entity.gun.trigger_mode = gun_component.SHOOT

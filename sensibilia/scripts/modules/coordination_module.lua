@@ -220,7 +220,8 @@ function coordination_module:handle_steering()
 	end
 end
 
-function coordination_module:handle_player_visibility()
+function coordination_module:handle_player_visibility(force_seen)
+	if force_seen == nil then force_seen = false end
 	--if not player.body:get():exists() then 
 	--	self.is_seen = false
 	--else
@@ -228,9 +229,14 @@ function coordination_module:handle_player_visibility()
 		local p1 = self.entity.transform.current.pos
 		local p2 = player.body:get().transform.current.pos
 		
-		ray_output = physics_system:ray_cast(p1, p2, create(b2Filter, filter_player_visibility), self.entity)
+		local line_of_sight = force_seen
 		
-		if not ray_output.hit then
+		if not force_seen then
+			-- is the line of sight unobscured?
+			line_of_sight = not physics_system:ray_cast(p1, p2, create(b2Filter, filter_player_visibility), self.entity).hit
+		end
+		
+		if line_of_sight then
 			self.target_entities.last_seen.transform.current.pos = player.body:get().transform.current.pos
 			
 			self.was_seen = true

@@ -91,6 +91,10 @@ function spawn_pusher(position)
 	this.instability_ray.radius_of_effect = randval(20, 150)
 	this.character:init_hp(2000)
 	
+	this.damage_message = function(msg)
+		this.coordination:handle_player_visibility(true)
+	end
+	
 	this.loop = function()
 		local caster = this.instability_ray
 	
