@@ -36,11 +36,13 @@ dofile "sensibilia\\scripts\\modules\\character_module.lua"
 dofile "sensibilia\\scripts\\modules\\jumping_module.lua"
 dofile "sensibilia\\scripts\\modules\\coordination_module.lua"
 dofile "sensibilia\\scripts\\modules\\instability_ray_module.lua"
+dofile "sensibilia\\scripts\\modules\\waywardness_module.lua"
 
 dofile "sensibilia\\scripts\\archetypes\\clock_renderer.lua"
 dofile "sensibilia\\scripts\\archetypes\\pusher_enemy.lua"
 dofile "sensibilia\\scripts\\archetypes\\shooter_enemy.lua"
 dofile "sensibilia\\scripts\\archetypes\\player.lua"
+dofile "sensibilia\\scripts\\archetypes\\wayward_object.lua"
 
 dofile "sensibilia\\maps\\loader.lua"
 tiled_map_loader.world_camera_entity = world_camera
@@ -82,6 +84,7 @@ loop_only_info = create_scriptable_info {
 			process_all_entity_modules("coordination", method_name)
 			process_all_entity_modules("instability_ray", method_name)
 			process_all_entity_modules("clock_renderer", method_name)
+			process_all_entity_modules("waywardness", method_name)
 			
 			local name_map = {
 				[scriptable_component.DAMAGE_MESSAGE] = "damage_message",
