@@ -7,5 +7,5 @@ loader_1.create_entities_from_map = function(filename)
 		local new_entity = create_entity (tiled_map_loader.basic_entity_table(v, types[v], polygons, rectangles))
 	end
 
-	return { polygons, rectangles } 
+	return { polygons, rectangles }
 end

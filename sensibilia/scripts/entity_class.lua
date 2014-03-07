@@ -93,7 +93,7 @@ function spawn_entity(group_table, what_class, ...)
 	
 	group_table = archetyped( { body = { scriptable = { } } }, group_table )
 	
-	print (table.inspect(group_table))
+	--print (table.inspect(group_table))
 	
 	local my_new_entity_group = ptr_create_entity_group (group_table)
 	local new_entity_script_data = what_class:create(my_new_entity_group, table.unpack({...}))

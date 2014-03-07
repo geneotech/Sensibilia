@@ -34,11 +34,13 @@ dofile "sensibilia\\scripts\\instability_gun.lua"
 
 dofile "sensibilia\\scripts\\enemy_ai.lua"
 
+dofile "sensibilia\\scripts\\modules\\clock_renderer_module.lua"
 dofile "sensibilia\\scripts\\modules\\character_module.lua"
 dofile "sensibilia\\scripts\\modules\\jumping_module.lua"
 dofile "sensibilia\\scripts\\modules\\coordination_module.lua"
 dofile "sensibilia\\scripts\\modules\\instability_ray_module.lua"
 
+dofile "sensibilia\\scripts\\archetypes\\clock_renderer.lua"
 dofile "sensibilia\\scripts\\archetypes\\pusher_enemy.lua"
 dofile "sensibilia\\scripts\\archetypes\\shooter_enemy.lua"
 dofile "sensibilia\\scripts\\archetypes\\player.lua"
@@ -58,56 +60,7 @@ base_crosshair_rotation = 0
 
 main_delta_timer = timer()
 
-clock_sprite = create_sprite {
-	image = images.blue_clock,
-	color = rgba(255, 255, 255, 255),
-	size_multiplier = vec2(1.5, 1.5)
-}
-
-second_hand_sprite = create_sprite {
-	image = images.hand_3,
-	color = rgba(255, 0, 0, 50),
-	size_multiplier = vec2(0.12, 0.12)
-}
-
-minute_hand_sprite = create_sprite {
-	image = images.hand_1,
-	color = rgba(0, 0, 0, 255),
-	size_multiplier = vec2(0.10, 0.10)
-}
-
-hour_hand_sprite = create_sprite {
-	image = images.hand_2,
-	color = rgba(0, 0, 0, 255),
-	size_multiplier = vec2(0.12, 0.12)
-}
-
-clock_render_component = {
-	model = clock_sprite,
-	mask = render_masks.WORLD,
-	layer = render_layers.GUI_OBJECTS
-}
-
-clock_group = {}
-clock_group.body = create_entity {
-		transform = {},
-		render = clock_render_component
-}
-
-clock_group.second_hand = create_entity {
-	transform = {},
-	render = archetyped(clock_render_component, { model = second_hand_sprite })
-}
-
-clock_group.minute_hand = create_entity {
-	transform = {},
-	render = archetyped(clock_render_component, { model = minute_hand_sprite })
-}
-
-clock_group.hour_hand = create_entity {
-	transform = {},
-	render = archetyped(clock_render_component, { model = hour_hand_sprite })
-}
+main_gui_clock = spawn_clock(vec2(0,0), { }, images.blue_clock, 1)
 
 loop_only_info = create_scriptable_info {
 	scripted_events = {
@@ -126,6 +79,7 @@ loop_only_info = create_scriptable_info {
 			process_all_entity_modules("jumping", method_name)
 			process_all_entity_modules("coordination", method_name)
 			process_all_entity_modules("instability_ray", method_name)
+			process_all_entity_modules("clock_renderer", method_name)
 			
 			local name_map = {
 				[scriptable_component.DAMAGE_MESSAGE] = "damage_message",
@@ -236,50 +190,16 @@ loop_only_info = create_scriptable_info {
 			
 			
 			
-						
+			local gui_clock_self = get_self(main_gui_clock.body:get())
 			local clock_alpha = 1
 			
 			if not showing_clock then
 				clock_alpha = clock_alpha_animator:get_animated()
 				--clock_alpha = prev_instability*prev_instability*prev_instability*prev_instability*prev_instability*prev_instability
 			end
-			
-
-			local clock_center = vec2(world_camera.transform.previous.pos)--vec2(0, 0)--vec2(config_table.resolution_w/2, config_table.resolution_h/2)*(-1) + vec2(clock_sprite.size.x/2, clock_sprite.size.y/2) + vec2(20, 10)
-			
-			clock_sprite.color = rgba(255, 255, 255, 255*clock_alpha)
-			second_hand_sprite.color = rgba(0, 0, 0, 50*clock_alpha)
-			minute_hand_sprite.color = rgba(0, 0, 0, 255*clock_alpha)
-			hour_hand_sprite.color = rgba(0, 0, 0, 255*clock_alpha)
-			
-			--clock_sprite:draw(clock_draw_input)
-			
-			current_sum_of_all_healths = 0 
-			
-			for k, v in pairs(global_entity_table) do
-				if v.character ~= nil then
-					if v.character.is_enemy then
-						current_sum_of_all_healths = current_sum_of_all_healths + v.character.hp
-					end
-				end
-			end
-
-			
-			clock_group.body.transform.current.pos = clock_center
-			
-			clock_group.second_hand.transform.current.pos = clock_center + vec2.from_degrees(clock_hand_time/6) * ( (second_hand_sprite.size.x/2) - 5)
-			clock_group.second_hand.transform.current.rotation = clock_hand_time/6
-			--second_hand_sprite:draw(clock_draw_input)
-			
-			local minute_hand_rotation = -90 + (20 + (instability + temporary_instability/10) * 340)
-			clock_group.minute_hand.transform.current.pos = clock_center + vec2.from_degrees(minute_hand_rotation) * ( (minute_hand_sprite.size.x/2) - 5)
-			clock_group.minute_hand.transform.current.rotation = minute_hand_rotation
-			--minute_hand_sprite:draw(clock_draw_input)
-			
-			local hour_hand_rotation = -90 + (20 + (1-(current_sum_of_all_healths/all_enemies_max_health_points)) * 340)
-			clock_group.hour_hand.transform.current.pos = clock_center + vec2.from_degrees(hour_hand_rotation) * ( (hour_hand_sprite.size.x/2) - 5)
-			clock_group.hour_hand.transform.current.rotation = hour_hand_rotation
-			
+			print(showing_clock, clock_alpha)
+			gui_clock_self.clock_renderer.clock_center = vec2(world_camera.transform.previous.pos)
+			gui_clock_self.clock_renderer.clock_alpha = clock_alpha
 		end
 	}
 }
