@@ -5,7 +5,7 @@ local environmental_archetype = {
 		body_info = {
 			shape_type = physics_info.POLYGON,
 			filter = filter_objects,
-			density = 100000000,
+			density = 1.0,
 			friction = 0.1,
 			
 			linear_damping = 1000,
@@ -17,6 +17,14 @@ local environmental_archetype = {
 return {
 	world_property_default_type = {},
 
+	clock1_pos = {
+		texture = "blue_clock.png"
+	},
+	
+	clock2_pos = {
+		texture = "brown_clock.png"
+	},
+	
 	default_type = {
 		render_layer = "OBJECTS",
 		texture = "my_type_1.jpg",
@@ -24,7 +32,7 @@ return {
 	},
 	
 	bg_object_3 = {
-		color = rgba(82, 52, 52, 255),
+		color = rgba(82, 82, 82, 255),
 		render_layer = "BACKGROUND_3",
 		scrolling_speed = 0.3,
 		texture = "my_type_1.jpg",

@@ -44,6 +44,9 @@ function character_module:damage_message(message)
 	
 	if self.hp < 0 then
 		-- remove its reference in global entity table
+		if self.is_enemy then
+			instability = instability - 0.3
+		end
 		
 		for k, v in ipairs(global_entity_table) do
 			if v.character ~= nil and v.character == self then

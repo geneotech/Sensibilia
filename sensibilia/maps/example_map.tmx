@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="150" height="170" tilewidth="32" tileheight="32">
- <layer name="Tile Layer 1" width="150" height="170">
+<map version="1.0" orientation="orthogonal" width="170" height="170" tilewidth="32" tileheight="32">
+ <layer name="Tile Layer 1" width="170" height="170">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20KP6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICXAY5/AAE=
+   eJztwTEBAAAAwqD1T+1tB6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3gDDnwAB
   </data>
  </layer>
- <objectgroup name="main" width="150" height="170">
+ <objectgroup name="main" width="170" height="170">
   <object name="p1" type="my_type_1" x="480" y="2208">
    <polygon points="0,0 192,-128 352,-64 416,64"/>
   </object>
@@ -35,7 +35,7 @@
    <polygon points="0,0 -992,-128 -960,128 64,160"/>
   </object>
   <object type="PLAYER_START" x="4544" y="3264"/>
-  <object type="ENEMY_START" x="576" y="480"/>
+  <object type="ENEMY_START" x="1664" y="1280"/>
   <object type="ENEMY_START" x="2080" y="416"/>
   <object type="ENEMY_START" x="2809" y="916"/>
   <object x="1952" y="1440" width="896" height="96"/>
@@ -79,7 +79,7 @@
    <polygon points="0,0 -928,-2400 -768,224"/>
   </object>
  </objectgroup>
- <objectgroup name="Background" width="150" height="170">
+ <objectgroup name="Background" width="170" height="170" visible="0">
   <properties>
    <property name="scrolling_speed" value="0.1"/>
   </properties>
@@ -108,9 +108,20 @@
   <object type="bg_object_3" x="3424" y="960" width="800" height="736"/>
   <object type="bg_object_3" x="3424" y="1696" width="800" height="736"/>
   <object type="bg_object_3" x="3424" y="224" width="800" height="736"/>
+  <object type="bg_object_3" x="4224" y="1696" width="800" height="736"/>
+  <object type="bg_object_3" x="4224" y="224" width="800" height="736"/>
+  <object type="bg_object_3" x="4224" y="960" width="800" height="736"/>
+  <object type="bg_object_3" x="4224" y="2432" width="800" height="736"/>
+  <object type="bg_object_3" x="4224" y="3168" width="800" height="736"/>
+  <object type="bg_object_3" x="1824" y="3904" width="800" height="736"/>
+  <object type="bg_object_3" x="2624" y="3904" width="800" height="736"/>
+  <object type="bg_object_3" x="1024" y="3904" width="800" height="736"/>
+  <object type="bg_object_3" x="224" y="3904" width="800" height="736"/>
+  <object type="bg_object_3" x="4224" y="3904" width="800" height="736"/>
+  <object type="bg_object_3" x="3424" y="3904" width="800" height="736"/>
  </objectgroup>
- <objectgroup name="Object Layer 3" width="150" height="170" visible="0"/>
- <objectgroup name="clocks" width="150" height="170">
+ <objectgroup name="Object Layer 3" width="170" height="170" visible="0"/>
+ <objectgroup name="clocks" width="170" height="170" visible="0">
   <object type="clock1_pos" x="2976" y="2592" width="96" height="96">
    <properties>
     <property name="max_size" value="1.2"/>

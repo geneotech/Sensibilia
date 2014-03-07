@@ -85,7 +85,7 @@ function coordination_module:set_movement_mode_flying(flag)
 		self.entity.pathfinding.braking_damping = 20
 		self.entity.pathfinding.target_offset = 100
 		self.entity.pathfinding.distance_navpoint_hit = 2
-		self.entity.pathfinding.mark_touched_as_discovered = false
+		self.entity.pathfinding.mark_touched_as_discovered = true
 			
 		self.steering_behaviours.wandering.weight_multiplier = 1
 	else

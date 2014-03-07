@@ -41,7 +41,8 @@ shooter_archetype = archetyped(pusher_archetype, {
 		},
 		
 		movement = {
-			inverse_thrust_brake = vec2(25000, 0)
+			inverse_thrust_brake = vec2(25000, 0),
+			braking_damping = 1
 		}
 	}
 })
