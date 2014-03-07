@@ -12,16 +12,16 @@ function coroutine.wait_routine(my_timer, ms_wait, loop_func, constant_delta)
 		if not constant_delta then extracted_ms = extracted_ms * delta_multiplier end
 		
 		accumulated_time = accumulated_time + extracted_ms
-		
-		if accumulated_time <= ms_wait then
-			if loop_func ~= nil then
-				loop_func(accumulated_time)
-			end
-				
-			local new_multiplier = coroutine.yield()
+	
+		if loop_func ~= nil then
+			loop_func(accumulated_time)
+		end
 			
-			if new_multiplier ~= nil then delta_multiplier = new_multiplier end	
-		else 
+		local new_multiplier = coroutine.yield()
+		
+		if new_multiplier ~= nil then delta_multiplier = new_multiplier end	
+			
+		if accumulated_time >= ms_wait then
 			break
 		end
 	end
@@ -254,4 +254,34 @@ function spairs(t, order)
             return keys[i], t[keys[i]]
         end
     end
+end
+
+
+function coroutine.get_value_variator(args)  
+	return coroutine.wrap(function() 
+		local last_value = 0
+			
+		while true do
+			if randval(0, 1) < args.wait_probability then
+				coroutine.wait(randval(args.min_wait_ms, args.max_wait_ms), nil, false)
+			end
+		
+			local transition_duration = randval(args.min_transition_ms, args.max_transition_ms)
+			local target_value = randval(args.min_value, args.max_value)
+			if args.value_additive then target_value = target_value + last_value end
+			
+			local my_val_animator = value_animator(last_value, target_value, transition_duration)
+			
+			if randval(0, 1) > 0.5 then
+				my_val_animator:set_exponential()
+			else
+				my_val_animator:set_linear()
+			end
+			
+			coroutine.wait(transition_duration, function()
+				last_value = my_val_animator:get_animated()
+				args.callback(last_value)
+			end, args.constant_transition_delta)
+		end
+	end)
 end
