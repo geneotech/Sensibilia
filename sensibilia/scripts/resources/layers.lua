@@ -3,9 +3,10 @@ render_layers = {
 	FOREGROUND = 1,
 	OBJECTS = 2,
 	CHARACTERS = 3,
-	BACKGROUND_1 = 4,
-	BACKGROUND_2 = 5,
-	BACKGROUND_3 = 6
+	CLOCKS = 4,
+	BACKGROUND_1 = 5,
+	BACKGROUND_2 = 6,
+	BACKGROUND_3 = 7
 }
 
 render_masks = {

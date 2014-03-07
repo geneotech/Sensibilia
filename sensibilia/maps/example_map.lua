@@ -396,7 +396,7 @@ return {
         },
         {
           name = "",
-          type = "czo1",
+          type = "",
           shape = "polygon",
           x = 4544,
           y = 3584,
@@ -1058,6 +1058,390 @@ return {
       opacity = 1,
       properties = {},
       objects = {}
+    },
+    {
+      type = "objectgroup",
+      name = "clocks",
+      visible = true,
+      opacity = 1,
+      properties = {},
+      objects = {
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 2976,
+          y = 2592,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 3360,
+          y = 3072,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 1760,
+          y = 2144,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 1248,
+          y = 2976,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 1696,
+          y = 1152,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 2864,
+          y = 1712,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 1984,
+          y = 3424,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 3984,
+          y = 1424,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 4048,
+          y = 2448,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 2368,
+          y = 2560,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 416,
+          y = 1568,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 576,
+          y = 2688,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock1_pos",
+          shape = "rectangle",
+          x = 992,
+          y = 1888,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 2368,
+          y = 1344,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 2528,
+          y = 2208,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 1696,
+          y = 1632,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 1632,
+          y = 3136,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 2912,
+          y = 3680,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 2304,
+          y = 3104,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 4096,
+          y = 3264,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 3904,
+          y = 3648,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 3648,
+          y = 2656,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 3536,
+          y = 1872,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 3264,
+          y = 1152,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        },
+        {
+          name = "",
+          type = "clock2_pos",
+          shape = "rectangle",
+          x = 2624,
+          y = 928,
+          width = 96,
+          height = 96,
+          visible = true,
+          properties = {
+            ["max_size"] = "1.2",
+            ["min_size"] = "0.2",
+            ["randomized_pos"] = "1"
+          }
+        }
+      }
     }
   }
 }

@@ -31,7 +31,7 @@
   <object x="1120" y="1440" width="192" height="96"/>
   <object x="1376" y="1664" width="96" height="32"/>
   <object x="992" y="1696" width="64" height="32"/>
-  <object type="czo1" x="4544" y="3584">
+  <object x="4544" y="3584">
    <polygon points="0,0 -992,-128 -960,128 64,160"/>
   </object>
   <object type="PLAYER_START" x="4544" y="3264"/>
@@ -110,4 +110,181 @@
   <object type="bg_object_3" x="3424" y="224" width="800" height="736"/>
  </objectgroup>
  <objectgroup name="Object Layer 3" width="150" height="170" visible="0"/>
+ <objectgroup name="clocks" width="150" height="170">
+  <object type="clock1_pos" x="2976" y="2592" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="3360" y="3072" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="1760" y="2144" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="1248" y="2976" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="1696" y="1152" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="2864" y="1712" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="1984" y="3424" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="3984" y="1424" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="4048" y="2448" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="2368" y="2560" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="416" y="1568" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="576" y="2688" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="992" y="1888" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="2368" y="1344" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="2528" y="2208" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="1696" y="1632" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="1632" y="3136" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="2912" y="3680" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="2304" y="3104" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="4096" y="3264" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="3904" y="3648" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="3648" y="2656" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="3536" y="1872" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="3264" y="1152" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="2624" y="928" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

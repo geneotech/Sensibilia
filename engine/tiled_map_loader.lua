@@ -12,7 +12,7 @@ tiled_map_loader = {
 	world_information_library = "sensibilia/maps/world_properties",
 	
 	map_scale = 1.2,
-	unknown_types_to_default = true,
+	allow_unknown_types = true,
 	
 	for_every_object = function(filename, callback)
 		local this = tiled_map_loader
@@ -45,8 +45,8 @@ tiled_map_loader = {
 					
 					-- perform type operations only for non-information entities
 					if require(this.world_information_library)[object.type] == nil then
-						if this.unknown_types_to_default and type_table[object.type] == nil then
-							object.type = "default_type"
+						if this.allow_unknown_types and type_table[object.type] == nil then
+							type_table[object.type] = {}
 						end
 					
 						local this_type_table = type_table[object.type]
@@ -205,15 +205,7 @@ tiled_map_loader = {
 		}
 		
 		if this_type_table.scrolling_speed ~= nil then
-			final_entity_table.chase = {
-				scrolling_speed = tonumber(this_type_table.scrolling_speed),
-				reference_position = object.pos,
-				target_reference_position = this.world_camera_entity.transform.current.pos,
-				
-				chase_type = chase_component.PARALLAX,
-				target = this.world_camera_entity,
-				subscribe_to_previous = true
-			}
+			final_entity_table.chase = component_helpers.parallax_chase (tonumber(this_type_table.scrolling_speed), object.pos, this.world_camera_entity)
 		end
 		
 		-- handle physical body request

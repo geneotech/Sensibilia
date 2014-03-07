@@ -206,3 +206,16 @@ function ptr_create_entity_group(entries)
 	return results
 end
 
+component_helpers = {}
+component_helpers.parallax_chase = function(_scrolling_speed, init_pos, camera_entity)
+	return {
+			scrolling_speed = _scrolling_speed,
+			reference_position = init_pos,
+			target_reference_position = camera_entity.transform.current.pos,
+			
+			chase_type = chase_component.PARALLAX,
+			target = camera_entity,
+			subscribe_to_previous = true
+		}
+end
+
