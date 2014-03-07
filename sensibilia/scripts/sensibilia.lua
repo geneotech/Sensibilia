@@ -19,9 +19,6 @@ dofile "sensibilia\\scripts\\input.lua"
 world_information = tiled_map_loader.load_world_properties (CURRENT_LEVEL)
 dofile "sensibilia\\scripts\\camera.lua"
 
-dofile "sensibilia\\maps\\loader.lua"
-tiled_map_loader.world_camera_entity = world_camera
-example_map = loader_1.create_entities_from_map(CURRENT_LEVEL)
 
 current_zoom_level = 0
 current_zoom_level = 0
@@ -45,6 +42,9 @@ dofile "sensibilia\\scripts\\archetypes\\pusher_enemy.lua"
 dofile "sensibilia\\scripts\\archetypes\\shooter_enemy.lua"
 dofile "sensibilia\\scripts\\archetypes\\player.lua"
 
+dofile "sensibilia\\maps\\loader.lua"
+tiled_map_loader.world_camera_entity = world_camera
+example_map = loader_1.create_entities_from_map(CURRENT_LEVEL)
 
 all_enemies_max_health_points = 0
 
@@ -197,7 +197,7 @@ loop_only_info = create_scriptable_info {
 				clock_alpha = clock_alpha_animator:get_animated()
 				--clock_alpha = prev_instability*prev_instability*prev_instability*prev_instability*prev_instability*prev_instability
 			end
-			print(showing_clock, clock_alpha)
+			--print(showing_clock, clock_alpha)
 			gui_clock_self.clock_renderer.clock_center = vec2(world_camera.transform.previous.pos)
 			gui_clock_self.clock_renderer.clock_alpha = clock_alpha
 		end

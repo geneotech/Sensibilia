@@ -1,33 +1,32 @@
 clock_renderer_module = inherits_from {}
 
-function clock_renderer_module:constructor(subject_group, clock_image, size_scalar)
+function clock_renderer_module:constructor(subject_group, clock_image, size_scalar, alpha_scalar)
+	if alpha_scalar == nil then alpha_scalar = 1 end
+
 	self.group = subject_group
 	self.gravity_rotation_multiplier = 1
 	self.size_scalar = size_scalar
+	self.alpha_scalar = alpha_scalar
 	
 	self.randomized_hands_values = false
 	
 	self.clock_sprite = create_sprite {
 		image = clock_image,
-		color = rgba(255, 255, 255, 255),
 		size_multiplier = vec2(1.5, 1.5)*size_scalar
 	}
 	
 	self.second_hand_sprite = create_sprite {
 		image = images.hand_3,
-		color = rgba(255, 0, 0, 50),
 		size_multiplier = vec2(0.12, 0.12)*size_scalar
 	}
 	
 	self.minute_hand_sprite = create_sprite {
 		image = images.hand_1,
-		color = rgba(0, 0, 0, 255),
 		size_multiplier = vec2(0.10, 0.10)*size_scalar
 	}
 	
 	self.hour_hand_sprite = create_sprite {
 		image = images.hand_2,
-		color = rgba(0, 0, 0, 255),
 		size_multiplier = vec2(0.12, 0.12)*size_scalar
 	}
 	
@@ -60,12 +59,13 @@ function clock_renderer_module:loop()
 	
 	local actual_clock_center = self.group.body:get().transform.current.pos
 	
+	--print(actual_clock_center.x, actual_clock_center.y)
 	--vec2(0, 0)--vec2(config_table.resolution_w/2, config_table.resolution_h/2)*(-1) + vec2(clock_sprite.size.x/2, clock_sprite.size.y/2) + vec2(20, 10)
 	
-	self.clock_sprite.color = rgba(255, 255, 255, 255*self.clock_alpha)
-	self.second_hand_sprite.color = rgba(0, 0, 0, 50*self.clock_alpha)
-	self.minute_hand_sprite.color = rgba(0, 0, 0, 255*self.clock_alpha)
-	self.hour_hand_sprite.color = rgba(0, 0, 0, 255*self.clock_alpha)
+	self.clock_sprite.color = rgba(255, 255, 255, 255*self.clock_alpha*self.alpha_scalar)
+	self.second_hand_sprite.color = rgba(0, 0, 0, 50*self.clock_alpha*self.alpha_scalar)
+	self.minute_hand_sprite.color = rgba(0, 0, 0, 255*self.clock_alpha*self.alpha_scalar)
+	self.hour_hand_sprite.color = rgba(0, 0, 0, 255*self.clock_alpha*self.alpha_scalar)
 	
 	--print(self.clock_alpha)
 	
