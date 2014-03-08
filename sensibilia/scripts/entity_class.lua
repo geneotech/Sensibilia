@@ -68,22 +68,22 @@ entity_basic_scriptable_info = create_scriptable_info {
 
 
 function process_all_entity_modules(module_name, method_name, ...)
-	for k, v in ipairs(global_entity_table) do
+	for i=1, #global_entity_table do
 		-- do not process only if it is explicitly disabled,
 		-- i.e. if no "enabled" flag was set for this module, or if it was set to true, then process it
 		
 		if 
 		-- this module exists
-		v[module_name] ~= nil
+		global_entity_table[i][module_name] ~= nil
 			and 
 		-- this function in this module exists
-		v[module_name][method_name] ~= nil 
+		global_entity_table[i][module_name][method_name] ~= nil 
 			and
 		-- module not explicitly disabled
-		(v[module_name].enabled == nil or v[module_name].enabled == true) 
+		(global_entity_table[i][module_name].enabled == nil or global_entity_table[i][module_name].enabled == true) 
 			then
 		-- call method
-			v[module_name][method_name](v[module_name], ...)
+			global_entity_table[i][module_name][method_name](global_entity_table[i][module_name], ...)
 		end
 	end
 end

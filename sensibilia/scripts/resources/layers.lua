@@ -64,7 +64,7 @@ filter_bullets_passed_wall = {
 
 filter_enemy_bullets_passed_wall = {
 	categoryBits = ENEMY_BULLETS,
-	maskBits = bitor(CHARACTERS, ENEMY_BULLETS)
+	maskBits = bitor(CHARACTERS, BULLETS)
 }
 
 filter_static_objects = {

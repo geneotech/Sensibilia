@@ -69,6 +69,7 @@ function waywardness_module:substep()
 	body:ApplyForce(b2Vec2(force.x, force.y), b2Vec2(body:GetWorldCenter().x + center.x, body:GetWorldCenter().y + center.y), true)
 	
 	self.entity.physics.enable_angle_motor = self.should_return
+	self.entity.physics.angle_motor_force_multiplier = 0.5
 	
 	if self.should_return then
 		self.entity.physics.target_angle = self.initial_rotation

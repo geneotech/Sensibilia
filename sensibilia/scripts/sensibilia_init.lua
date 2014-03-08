@@ -44,8 +44,5 @@ call_on_modification( layers, { layers, reloader_script  } )
 call_on_modification( reloader_script, { reloader_script } )
 
 
-dofile "sensibilia\\scripts\\resources\\layers.lua"
-dofile "sensibilia\\scripts\\resources\\textures.lua"
-dofile "sensibilia\\scripts\\resources\\particle_effects.lua"
 
 dofile "sensibilia\\scripts\\sensibilia.lua"

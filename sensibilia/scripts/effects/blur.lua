@@ -3,7 +3,7 @@ function hblur_instability_effect()
 		
 	while true do
 		local transition_duration = randval(10, 300)
-		local target_mult = randval(0.1, 0.6)
+		local target_mult = randval(0.1, 0.3)
 		
 		local my_val_animator = value_animator(last_mult, target_mult, transition_duration)
 		
@@ -29,7 +29,7 @@ function vblur_instability_effect()
 		
 	while true do
 		local transition_duration = randval(10, 300)
-		local target_mult = randval(0.1, 0.6)
+		local target_mult = randval(0.1, 0.3)
 		
 		local my_val_animator = value_animator(last_mult, target_mult, transition_duration)
 		

@@ -43,6 +43,8 @@ pusher_archetype = archetyped(character_group_archetype, {
 		},
 		
 		visibility = {
+			interval_ms = 16,
+			
 			visibility_layers = {
 				[visibility_component.DYNAMIC_PATHFINDING] = {
 					square_side = 2000,
@@ -113,3 +115,7 @@ end
 my_npc = spawn_pusher(world_information["ENEMY_START"][1].pos)
 my_npc2 = spawn_pusher(world_information["ENEMY_START"][2].pos)
 my_npc3 = spawn_pusher(world_information["ENEMY_START"][3].pos)
+
+spawn_pusher(world_information["ENEMY_START"][1].pos)
+ spawn_pusher(world_information["ENEMY_START"][2].pos)
+ spawn_pusher(world_information["ENEMY_START"][3].pos)

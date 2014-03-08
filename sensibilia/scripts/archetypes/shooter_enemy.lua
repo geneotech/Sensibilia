@@ -84,6 +84,10 @@ function spawn_shooter(position)
 	return new_group
 end
 
-_my_npc = spawn_shooter(world_information["ENEMY_START"][1].pos)
+_my_npc =  spawn_shooter(world_information["ENEMY_START"][1].pos)
 _my_npc2 = spawn_shooter(world_information["ENEMY_START"][2].pos)
 _my_npc3 = spawn_shooter(world_information["ENEMY_START"][3].pos)
+
+spawn_shooter(world_information["ENEMY_START"][1].pos)
+spawn_shooter(world_information["ENEMY_START"][2].pos)
+spawn_shooter(world_information["ENEMY_START"][3].pos)

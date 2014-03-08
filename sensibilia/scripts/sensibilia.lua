@@ -1,3 +1,8 @@
+
+dofile "sensibilia\\scripts\\resources\\layers.lua"
+dofile "sensibilia\\scripts\\resources\\textures.lua"
+dofile "sensibilia\\scripts\\resources\\particle_effects.lua"
+
 debug_target_sprite = create_sprite {
 	image = images.blank,
 	size = vec2(50, 50),
@@ -81,8 +86,8 @@ loop_only_info = create_scriptable_info {
 			gravity_angle_offset = player.body:get().physics.body:GetAngle() / 0.01745329251994329576923690768489
 			current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
 			
-			for k, v in ipairs(global_entity_table) do
-				local maybe_movement = v.parent_group.body:get().movement
+			for i=1, #global_entity_table do
+				local maybe_movement = global_entity_table[i].parent_group.body:get().movement
 				
 				if maybe_movement ~= nil then
 					maybe_movement.axis_rotation_degrees = gravity_angle_offset

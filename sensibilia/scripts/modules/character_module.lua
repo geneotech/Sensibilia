@@ -48,9 +48,9 @@ function character_module:damage_message(message)
 			instability = instability - 0.3
 		end
 		
-		for k, v in ipairs(global_entity_table) do
-			if v.character ~= nil and v.character == self then
-				table.remove(global_entity_table, k)
+		for i=1, #global_entity_table do
+			if global_entity_table[i].character ~= nil and global_entity_table[i].character == self then
+				table.remove(global_entity_table, i)
 				print "removing"
 				break
 			end

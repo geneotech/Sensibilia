@@ -170,8 +170,8 @@ end
 
 
 function add_vals(target_vector, vals)
-	for k, v in ipairs(vals) do
-		target_vector:add(v)
+	for i=1, #vals do
+		target_vector:add(vals[i])
 	end
 end
 

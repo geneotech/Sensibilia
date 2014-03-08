@@ -97,7 +97,7 @@ clock_hand_time = 0
 refresh_coroutines()
 
 player_light_fader = polygon_fader()
-
+player_light_fader.max_traces = -1
 
 
 
@@ -107,7 +107,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			local extracted_ms = my_timer:extract_milliseconds()
 			
-			clock_hand_time = clock_hand_time + extracted_ms * physics_system.timestep_multiplier
+			clock_hand_time = clock_hand_time + extracted_ms
 			local sent_time = (accumulated_camera_time + (extracted_ms*time_speed_variation) * (1+instability*instability*instability*instability*2) * physics_system.timestep_multiplier) 
 			accumulated_camera_time = sent_time
 				
@@ -210,8 +210,8 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			end
 			
 			handle_point_light(lighting_layer:get_polygon(1), 150, -0.1)
-			if bounce_number >= 0.0 then handle_point_light(bounce_layer:get_polygon(1), 950, 254, bounce_layer.offset:length(), { 32.81166, 0.03501, 0.0000000 } ) end 
-			if bounce_number > 1.5 then handle_point_light(bounce1_layer:get_polygon(1), 2950, 254, bounce_layer.offset:length() + bounce1_layer.offset:length(), { 0, 0.020100, 0.000000000 } ) end
+			if bounce_number >= 0.0 then handle_point_light(bounce_layer:get_polygon(1), 550, 254, bounce_layer.offset:length(), { 32.81166, 0.03501, 0.0000000 } ) end 
+			if bounce_number > 1.5 then handle_point_light(bounce1_layer:get_polygon(1), 1950, 254, bounce_layer.offset:length() + bounce1_layer.offset:length(), { 0, 0.020100, 0.000000000 } ) end
 			
 			player_light_fader:loop()
 			player_light_fader:generate_triangles(drawn_transform, renderer.triangles, visible_area)
@@ -296,14 +296,14 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				film_grain_program:use()
 				film_grain_variation_coroutine(instability)
 				--film_grain_program:use()
-				GL.glUniform1i(time_uniform, sent_time)
+				GL.glUniform1i(time_uniform, clock_hand_time)
 				fullscreen_quad()
 				aberration_coroutine(instability)
 				
 			else
 				film_grain_program:use()
 				GL.glUniform1f(film_grain_intensity, 0.1)
-				GL.glUniform1i(time_uniform, sent_time)
+				GL.glUniform1i(time_uniform, clock_hand_time)
 				fullscreen_quad()
 				refresh_coroutines()
 			end
@@ -342,5 +342,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			bounce_layer.offset = random_discontinuity_end(lighting_layer) - player_pos
 			bounce1_layer.offset = random_discontinuity_end(bounce_layer) - player_pos
+			
+	
 end
 
