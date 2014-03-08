@@ -76,8 +76,8 @@ function simple_create_polygon(entries)
 	local my_polygon = polygon()
 	local my_concave = drawable_concave()
 	
-	for k, vert in pairs(entries) do
-		my_concave:add_vertex(vertex(vert))
+	for i=1, #entries do
+		my_concave:add_vertex(vertex(entries[i]))
 	end
 	
 	my_polygon:add_concave(my_concave)

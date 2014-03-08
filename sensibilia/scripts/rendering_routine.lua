@@ -99,11 +99,12 @@ refresh_coroutines()
 player_light_fader = polygon_fader()
 player_light_fader.max_traces = -1
 
-
-
-
-function rendering_routine(subject, renderer, visible_area, drawn_transform, target_transform, mask)
-
+function rendering_routine(subject, 
+			--visible_area, drawn_transform, 
+			camera_draw_input,
+			mask)
+			local renderer = camera_draw_input.output
+			local visible_area = camera_draw_input.visible_area
 			
 			local extracted_ms = my_timer:extract_milliseconds()
 			
@@ -134,6 +135,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			1, 
 			GL.GL_FALSE, 
 			orthographic_projection(0, visible_area.x, visible_area.y, 0, 0, 1):data()
+			--orthographic_projection(-visible_area.x*2, visible_area.x*2, visible_area.y*2, -visible_area.y*2, 0, 1):data()
 			)
 			
 			local crosshair_pos = player.crosshair:get().transform.current.pos
@@ -152,9 +154,9 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 		--	GL.glColorMask(GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE)
 			
-			renderer:generate_triangles(visible_area, drawn_transform, render_masks.EFFECTS)
+			renderer:generate_triangles(camera_draw_input, render_masks.EFFECTS)
 			for k, v in ipairs(global_instability_rays) do
-				v:generate_triangles(drawn_transform, renderer.triangles, visible_area)
+				v:generate_triangles(camera_draw_input)
 			end
 			
 			renderer:call_triangles()
@@ -162,11 +164,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			GL.glColorMask(GL.GL_FALSE, GL.GL_FALSE, GL.GL_TRUE, GL.GL_TRUE)
 			
-			local my_draw_input = draw_input()
-			my_draw_input.camera_transform = drawn_transform
-			my_draw_input.transform.pos = crosshair_pos
-			my_draw_input.output = renderer.triangles
-			my_draw_input.visible_area = visible_area
+			camera_draw_input.transform.pos = crosshair_pos
 		
 			local my_sprite = 
 			(create_sprite {
@@ -175,8 +173,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				size_multiplier = vec2(0.5, 0.5)
 			})
 			
-			my_sprite:draw(my_draw_input)
-			
+			my_sprite:draw(camera_draw_input)
 			
 			-- handle point lights and bounces
 			
@@ -186,16 +183,10 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			
 			handle_point_light = function(poly_vector, ms_fade, target_fade, light_distance, used_attenuation)
 				local visibility_points = vector_to_table(poly_vector)
-				--
-				---- expand these points a little
-				for k, v in ipairs(visibility_points) do
-					visibility_points[k] = visibility_points[k] + (vec2(visibility_points[k] - player_pos)*0.01)
-				end
 			
 				local my_light_poly = simple_create_polygon(visibility_points)
 				map_uv_square(my_light_poly, images.blank)
 				set_polygon_color(my_light_poly, rgba(0, 0, 255, 255))
-				
 				
 				local attenuation_mult = 1
 			    
@@ -209,12 +200,12 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 				player_light_fader:add_trace(my_light_poly, new_light_animator)
 			end
 			
-			handle_point_light(lighting_layer:get_polygon(1), 150, -0.1)
-			if bounce_number >= 0.0 then handle_point_light(bounce_layer:get_polygon(1), 550, 254, bounce_layer.offset:length(), { 32.81166, 0.03501, 0.0000000 } ) end 
-			if bounce_number > 1.5 then handle_point_light(bounce1_layer:get_polygon(1), 1950, 254, bounce_layer.offset:length() + bounce1_layer.offset:length(), { 0, 0.020100, 0.000000000 } ) end
+			handle_point_light(lighting_layer:get_polygon(1, player_pos, 0.01), 150, -0.1)
+			if bounce_number >= 0.0 then handle_point_light(bounce_layer:get_polygon(1, player_pos, 0.01), 550, 254, bounce_layer.offset:length(), { 32.81166, 0.03501, 0.0000000 } ) end 
+			if bounce_number > 1.5 then handle_point_light(bounce1_layer:get_polygon(1, player_pos, 0.01), 950, 254, bounce_layer.offset:length() + bounce1_layer.offset:length(), { 0, 0.020100, 0.000000000 } ) end
 			
 			player_light_fader:loop()
-			player_light_fader:generate_triangles(drawn_transform, renderer.triangles, visible_area)
+			player_light_fader:generate_triangles(camera_draw_input)
 			
 			renderer:call_triangles()
 			renderer:clear_triangles()
@@ -227,16 +218,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			postprocessing_fbos[0]:use()
 			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
 			
-			renderer:generate_triangles(visible_area, drawn_transform, mask)
-			
-
-			
-			
-	
-
-			--hour_hand_sprite:draw(clock_draw_input)
-			
-			--hour_hand_sprite:draw(clock_draw_input)
+			renderer:generate_triangles(camera_draw_input, mask)
 			
 			renderer:call_triangles()
 			renderer:clear_triangles()
@@ -244,11 +226,6 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			--GL.glDisable(GL.GL_TEXTURE_2D)
 			--renderer:draw_debug_info(visible_area, drawn_transform, images.blank.tex)
 			--GL.glEnable(GL.GL_TEXTURE_2D)
-			
-			
-			
-			
-			
 			
 			-- postprocessing
 			
@@ -264,8 +241,8 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			local instability_ray_fx = function()
 				spatial_instability_program:use()
 				
-				local screen_space_player = (player_pos - (drawn_transform.pos - visible_area/2)) / current_zoom_multiplier
-				local screen_space_crosshair = (crosshair_pos - (drawn_transform.pos - visible_area/2))  / current_zoom_multiplier
+				local screen_space_player = (player_pos - (camera_draw_input.camera_transform.pos - visible_area/2)) / current_zoom_multiplier
+				local screen_space_crosshair = (crosshair_pos - (camera_draw_input.camera_transform.pos - visible_area/2))  / current_zoom_multiplier
 				
 				GL.glUniform1i(spatial_instability_time, sent_time)
 				GL.glUniform1f(spatial_instability_rotation, (crosshair_pos - player_pos):perpendicular_cw():get_radians() + 3.14159265)

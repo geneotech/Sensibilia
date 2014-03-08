@@ -130,32 +130,6 @@ function archetyped(archetype, entries)
 	return final_entries
 end
 
-function map_uv_square(texcoords_to_map, texture_to_map)
-	if texcoords_to_map:get_vertex_count() > 0 then
-		local lefttop = vec2(texcoords_to_map:get_vertex(0).pos.x, texcoords_to_map:get_vertex(0).pos.y)
-		local bottomright = vec2(texcoords_to_map:get_vertex(0).pos.x, texcoords_to_map:get_vertex(0).pos.y)
-		
-		for i = 0, texcoords_to_map:get_vertex_count()-1 do
-			local v = texcoords_to_map:get_vertex(i).pos
-			if v.x < lefttop.x then lefttop.x = v.x end
-			if v.y < lefttop.y then lefttop.y = v.y end
-			if v.x > bottomright.x then bottomright.x = v.x end
-			if v.y > bottomright.y then bottomright.y = v.y end
-		end
-		
-		for i = 0, texcoords_to_map:get_vertex_count()-1 do
-			local v = texcoords_to_map:get_vertex(i)
-			
-			v:set_texcoord (vec2(
-			(v.pos.x - lefttop.x) / (bottomright.x-lefttop.x),
-			(v.pos.y - lefttop.y) / (bottomright.y-lefttop.y)
-			), texture_to_map)
-			
-			
-		end
-	end
-end
-
 global_sound_table = {}
 
 function reversed(input_table)

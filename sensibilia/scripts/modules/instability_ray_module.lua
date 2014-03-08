@@ -59,8 +59,8 @@ function instability_ray_module:constructor(entity, ray_filter)
 	self.polygon_color = rgba(255, 255, 255, 255)
 end
 
-function instability_ray_module:generate_triangles(camera_transform, output_buffer, visible_area)
-	self.polygon_fader:generate_triangles(camera_transform, output_buffer, visible_area)
+function instability_ray_module:generate_triangles(camera_draw_input)
+	self.polygon_fader:generate_triangles(camera_draw_input)
 end
 
 function instability_ray_module:cast(flag)

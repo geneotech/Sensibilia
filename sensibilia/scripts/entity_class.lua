@@ -31,6 +31,26 @@ function entity_class:all_modules(method, ...)
 	end
 end
 
+function entity_class:try_module_method(module_name, method_name, ...)
+	-- do not process only if it is explicitly disabled,
+	-- i.e. if no "enabled" flag was set for this module, or if it was set to true, then process it
+	local m = self[module_name]
+	
+	if 
+	-- this module exists
+	m ~= nil
+		and 
+	-- this function in this module exists
+	m[method_name] ~= nil 
+		and
+	-- module not explicitly disabled
+	(m.enabled == nil or m.enabled == true) 
+		then
+	-- call method
+		m[method_name](m, ...)
+	end
+end
+
 global_entity_table = {}
 global_scriptables_table = {}
 global_message_table = {}
@@ -67,24 +87,15 @@ entity_basic_scriptable_info = create_scriptable_info {
 }
 
 
+function process_all_entities(callback)
+	for i=1, #global_entity_table do
+		callback(global_entity_table[i])
+	end
+end
+
 function process_all_entity_modules(module_name, method_name, ...)
 	for i=1, #global_entity_table do
-		-- do not process only if it is explicitly disabled,
-		-- i.e. if no "enabled" flag was set for this module, or if it was set to true, then process it
-		
-		if 
-		-- this module exists
-		global_entity_table[i][module_name] ~= nil
-			and 
-		-- this function in this module exists
-		global_entity_table[i][module_name][method_name] ~= nil 
-			and
-		-- module not explicitly disabled
-		(global_entity_table[i][module_name].enabled == nil or global_entity_table[i][module_name].enabled == true) 
-			then
-		-- call method
-			global_entity_table[i][module_name][method_name](global_entity_table[i][module_name], ...)
-		end
+		global_entity_table[i]:try_module_method(module_name, method_name, ...)
 	end
 end
 

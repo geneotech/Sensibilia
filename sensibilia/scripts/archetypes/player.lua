@@ -73,6 +73,7 @@ player_group_archetype = archetyped(character_group_archetype, {
 		},
 			
 		visibility = {
+			interval_ms = 16,
 			visibility_layers = {
 				[visibility_layers.BASIC_LIGHTING] = {
 					square_side = 6000,

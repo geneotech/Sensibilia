@@ -196,12 +196,16 @@ loop_only_info = create_scriptable_info {
 				method_name = "substep"
 			end
 			
-			process_all_entity_modules("character", method_name)
-			process_all_entity_modules("jumping", method_name)
-			process_all_entity_modules("coordination", method_name)
-			process_all_entity_modules("instability_ray", method_name)
-			process_all_entity_modules("clock_renderer", method_name)
-			process_all_entity_modules("waywardness", method_name)
+			process_all_entities(
+			function(e)
+				e:try_module_method("character", method_name)
+				e:try_module_method("jumping", method_name)
+				e:try_module_method("coordination", method_name)
+				e:try_module_method("instability_ray", method_name)
+				e:try_module_method("clock_renderer", method_name)
+				e:try_module_method("waywardness", method_name)
+			end
+			)
 			
 			local name_map = {
 				[scriptable_component.DAMAGE_MESSAGE] = "damage_message",

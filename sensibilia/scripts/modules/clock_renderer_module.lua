@@ -27,7 +27,6 @@ function clock_renderer_module:constructor(subject_group, clock_image, size_scal
 	
 	self.body_rotation_variation = coroutine.get_value_variator(self.body_rotation_variation_table)
 	
-	
 	self.rotation_variation_tables = {
 		{
 			min_value = -100, max_value = 160, min_transition_ms = 100, max_transition_ms = 400, wait_probability = 0.01, min_wait_ms = 100, max_wait_ms = 1500, constant_transition_delta = false, 
