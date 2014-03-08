@@ -133,7 +133,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			projection_matrix_uniform, 
 			1, 
 			GL.GL_FALSE, 
-			orthographic_projection(visible_area.x, visible_area.r, visible_area.b, visible_area.y, 0, 1):data()
+			orthographic_projection(0, visible_area.x, visible_area.y, 0, 0, 1):data()
 			)
 			
 			local crosshair_pos = player.crosshair:get().transform.current.pos
@@ -166,7 +166,7 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			my_draw_input.camera_transform = drawn_transform
 			my_draw_input.transform.pos = crosshair_pos
 			my_draw_input.output = renderer.triangles
-			my_draw_input.visible_area = rect_ltrb(visible_area)
+			my_draw_input.visible_area = visible_area
 		
 			local my_sprite = 
 			(create_sprite {
@@ -264,10 +264,8 @@ function rendering_routine(subject, renderer, visible_area, drawn_transform, tar
 			local instability_ray_fx = function()
 				spatial_instability_program:use()
 				
-				
-				local visibility_vec = vec2(visible_area.w, visible_area.h)
-				local screen_space_player = (player_pos - (drawn_transform.pos - visibility_vec/2)) / current_zoom_multiplier
-				local screen_space_crosshair = (crosshair_pos - (drawn_transform.pos - visibility_vec/2))  / current_zoom_multiplier
+				local screen_space_player = (player_pos - (drawn_transform.pos - visible_area/2)) / current_zoom_multiplier
+				local screen_space_crosshair = (crosshair_pos - (drawn_transform.pos - visible_area/2))  / current_zoom_multiplier
 				
 				GL.glUniform1i(spatial_instability_time, sent_time)
 				GL.glUniform1f(spatial_instability_rotation, (crosshair_pos - player_pos):perpendicular_cw():get_radians() + 3.14159265)

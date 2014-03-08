@@ -102,7 +102,7 @@ function spawn_pusher(position)
 	
 		caster.position = this.parent_group.body:get().transform.current.pos
 		caster.direction = vec2.from_degrees(this.parent_group.body:get().lookat.last_value)
-		caster.current_ortho = vec2(world_camera.camera.ortho.r, world_camera.camera.ortho.b)
+		caster.current_ortho = vec2(world_camera.camera.size.x, world_camera.camera.size.y)
 	
 		caster:cast(this.coordination.is_seen)
 	end

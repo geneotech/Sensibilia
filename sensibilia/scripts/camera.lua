@@ -6,7 +6,7 @@ function set_zoom_level(camera)
 	local new_w = config_table.resolution_w*mult
 	local new_h = config_table.resolution_h*mult
 	current_zoom_multiplier = mult
-	camera.camera.ortho = rect_ltrb(rect_xywh(0, 0, new_w, new_h))
+	camera.camera.size = vec2(new_w, new_h)
 	camera.camera.max_look_expand = vec2(new_w, new_h)/2
 	
 	--player.crosshair:get().crosshair.size_multiplier = vec2(mult, mult)
@@ -68,7 +68,7 @@ world_camera = create_entity (archetyped(camera_archetype, {
 
 	camera = {
 		screen_rect = rect_xywh(0, 0, config_table.resolution_w, config_table.resolution_h),
-		ortho = rect_ltrb(0, 0, config_table.resolution_w, config_table.resolution_h),
+		size = vec2(config_table.resolution_w, config_table.resolution_h),
 		drawing_callback = rendering_routine
 		
 		--function (subject, renderer, visible_area, drawn_transform, target_transform, mask)
