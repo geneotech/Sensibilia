@@ -139,7 +139,7 @@ function player_class:constructor(parent_group)
 	entity_class.constructor(self, parent_group)
 	
 	self.is_reality_checking = false
-	self.all_player_bullets = {}
+	self.all_player_bullets = entity_ptr_vector()
 	
 	self.timestep_corrector = value_animator(physics_system.timestep_multiplier, 1, 3500)
 end
@@ -186,7 +186,12 @@ end
 
 function player_class:loop()
 	physics_system.timestep_multiplier = self.timestep_corrector:get_animated()
-	loop_instability_gun_bullets(player, 5+20*instability, rgba(0, 255, 0, 255))
+	
+	local gun_info = player.gun_entity:get().gun
+	gun_info.spread_degrees = 5 + 30 * instability
+	gun_info.shake_radius = 5+20*instability
+		
+	loop_instability_gun_bullets(rgba(0, 255, 0, 255), self.all_player_bullets, instability, physics_system.timestep_multiplier, base_gravity)
 end
 
 function player_class:substep()

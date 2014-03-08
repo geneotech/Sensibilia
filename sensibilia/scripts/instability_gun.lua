@@ -37,43 +37,6 @@ for i=1, 1000 do
 	table.insert(random_enemy_bullet_models, random_polygon(rgba(255, 0, 0, 29), 1))
 end
 
-function loop_instability_gun_bullets(subject_group, shake_radius, init_color)
-	local gun_info = subject_group.gun_entity:get().gun
-	local self = get_self(subject_group.body:get())
-	
-	gun_info.spread_degrees = 5 + 30*instability
-	gun_info.shake_radius = shake_radius
-	--gun_info.bullet_speed = minmax(2000+7000*instability, 5000+7000*instability) 
-	
-	local i = 1
-	while i <= #self.all_player_bullets do
-		local v = self.all_player_bullets[i]
-		
-		if not v:exists() then
-			table.remove(self.all_player_bullets, i)
-		else
-			v = v:get()
-			v.damage.max_lifetime_ms = (500+300*instability)/physics_system.timestep_multiplier
-			local body = v.physics.body
-			local vel = vec2(body:GetLinearVelocity().x, body:GetLinearVelocity().y)
-			local dist_from_start = v.damage.lifetime:get_milliseconds()
-			local dist_from_starting_point = (v.damage.starting_point - v.transform.current.pos):length()
-			vel:set_length(0.005 * dist_from_start) 
-			vel = vel + base_gravity/10*(dist_from_starting_point/700)
-			
-			vel = vel
-			
-			body:ApplyForce(b2Vec2(vel.x, vel.y), body:GetWorldCenter(), true)  
-			body:ApplyAngularImpulse(randval(0, 0.01), true)
-			
-			local alpha_mult = (1 - (dist_from_start/v.damage.max_lifetime_ms))
-			set_polygon_color(v.render.model, rgba(init_color.r, init_color.g, init_color.b, alpha_mult * alpha_mult * alpha_mult* 255  + (dist_from_starting_point/5000) * 90 ))
-			
-			i = i + 1
-		end
-	end
-end
-
 function instability_gun_bullet_callback(subject, new_bullet, bullet_models, wall_passed_filter)
 	new_bullet.render.model = bullet_models[randval_i(1,#bullet_models)]
 	new_bullet.damage.max_lifetime_ms = 500+300*instability
@@ -81,7 +44,7 @@ function instability_gun_bullet_callback(subject, new_bullet, bullet_models, wal
 	local new_entity_ptr = entity_ptr()
 	new_entity_ptr:set(new_bullet)
 	
-	table.insert(get_self(get_group_by_entity(subject).body:get()).all_player_bullets, new_entity_ptr)
+	get_self(get_group_by_entity(subject).body:get()).all_player_bullets:add(new_entity_ptr)
 	
 	--SetDensity(new_bullet.physics.body, 0.01)
 	if randval(0, 1) > 0.5 then

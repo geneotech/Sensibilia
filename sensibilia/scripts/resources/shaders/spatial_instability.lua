@@ -121,7 +121,7 @@ void main()
 	+ 
 	crosshair_light_factor)
 	
-	* (1+(tan(used_time/50000*(1-multiplier))*0.07*multiplier)));
+	* (1+(tan(used_time/5000000*(1-multiplier))*0.07*multiplier)));
 	
 	pixel = mix(vec4(0.7) * (vec4(-0.2) + pixel), vec4(2.5) * (vec4(0.1) + pixel), 
 	light_factor

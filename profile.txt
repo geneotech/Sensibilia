@@ -1,0 +1,3708 @@
+Lua Profile output created by profiler.lua. Copyright Pepperfish 2002+
+
+------------------- L:<function: 0x0a2e1ec8>@@sensibilia\scripts\modules\clock_renderer_module.lua:113 -------------------
+Sample count:          129
+Time spend total:       3.240s
+Time spent in children: 0.000s
+Time spent in self:     3.240s
+Time spent per sample:  0.02512s/sample
+Time spent in self per sample: 0.02512s/sample
+
+-------------------- L:map_uv_square@@engine\common.lua:133 --------------------
+Sample count:           85
+Time spend total:       2.088s
+Time spent in children: 0.000s
+Time spent in self:     2.088s
+Time spent per sample:  0.02456s/sample
+Time spent in self per sample: 0.02456s/sample
+
+--------------------- L:wait_routine@@engine\common.lua:4 ----------------------
+Sample count:          121
+Time spend total:       3.338s
+Time spent in children: 1.541s
+Time spent in self:     1.797s
+Time spent per sample:  0.02759s/sample
+Time spent in self per sample: 0.01485s/sample
+
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.04s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@sensibilia\scripts\modules\clock_renderer_module.lua:102 sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.02s
+Child L:loop_func@@sensibilia\scripts\effects\blur.lua:42 sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@sensibilia\scripts\effects\chromatic_aberration.lua:10 sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.02s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.02s
+Child L:loop_func@@sensibilia\scripts\effects\blur.lua:16 sampled      1 times. Took 0.02s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.02s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.02s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@sensibilia\scripts\effects\blur.lua:42 sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.02s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.02s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@sensibilia\scripts\modules\clock_renderer_module.lua:102 sampled      1 times. Took 0.02s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@sensibilia\scripts\modules\clock_renderer_module.lua:102 sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@sensibilia\scripts\effects\blur.lua:42 sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.01s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.03s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.02s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.02s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.02s
+Child L:loop_func@@engine\common.lua:273        sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x056d9d28>@@sensibilia\scripts\modules\waywardness_module.lua:45 -------------------
+Sample count:           33
+Time spend total:       0.940s
+Time spent in children: 0.000s
+Time spent in self:     0.940s
+Time spent per sample:  0.02848s/sample
+Time spent in self per sample: 0.02848s/sample
+
+------------------- L:<function: 0x07ac4fb0>@@sensibilia\scripts\sensibilia.lua:73 -------------------
+Sample count:          261
+Time spend total:       7.007s
+Time spent in children: 6.092s
+Time spent in self:     0.915s
+Time spent per sample:  0.02685s/sample
+Time spent in self per sample: 0.00351s/sample
+
+Child L:process_all_entity_modules@@sensibilia\scripts\entity_class.lua:70 sampled    229 times. Took 6.04s
+Child L:is_player_raycasting@@sensibilia\scripts\archetypes\player.lua:147 sampled      1 times. Took 0.02s
+Child L:handle_dying_instability_rays@@sensibilia\scripts\modules\instability_ray_module.lua:3 sampled      1 times. Took 0.03s
+
+------------------- L:process_all_entity_modules@@sensibilia\scripts\entity_class.lua:70 -------------------
+Sample count:          229
+Time spend total:       6.042s
+Time spent in children: 5.170s
+Time spent in self:     0.872s
+Time spent per sample:  0.02638s/sample
+Time spent in self per sample: 0.00381s/sample
+
+Child L:<function: 0x0a28c140>@@sensibilia\scripts\modules\jumping_module.lua:121 sampled      2 times. Took 0.06s
+Child L:<function: 0x056d9d28>@@sensibilia\scripts\modules\waywardness_module.lua:45 sampled     33 times. Took 0.94s
+Child L:<function: 0x0a30c398>@@sensibilia\scripts\modules\instability_ray_module.lua:83 sampled      3 times. Took 0.09s
+Child L:<function: 0x0a308c58>@@sensibilia\scripts\modules\waywardness_module.lua:107 sampled      1 times. Took 0.04s
+Child L:<function: 0x0a34fe50>@@sensibilia\scripts\modules\coordination_module.lua:278 sampled     28 times. Took 0.80s
+Child L:<function: 0x0a2e1ec8>@@sensibilia\scripts\modules\clock_renderer_module.lua:113 sampled    129 times. Took 3.24s
+
+------------------- L:<function: 0x07adf668>@@sensibilia\scripts\entity_class.lua:49 -------------------
+Sample count:           37
+Time spend total:       1.143s
+Time spent in children: 0.471s
+Time spent in self:     0.672s
+Time spent per sample:  0.03089s/sample
+Time spent in self per sample: 0.01816s/sample
+
+Child L:loop@@sensibilia\scripts\archetypes\pusher_enemy.lua:98 sampled      3 times. Took 0.09s
+Child L:loop@@sensibilia\scripts\archetypes\player.lua:187 sampled      1 times. Took 0.03s
+Child L:loop@@sensibilia\scripts\archetypes\shooter_enemy.lua:65 sampled      1 times. Took 0.03s
+Child L:substep@@sensibilia\scripts\entity_class.lua:17 sampled      1 times. Took 0.03s
+Child L:loop@@sensibilia\scripts\entity_class.lua:13 sampled      1 times. Took 0.03s
+Child L:get_self@@sensibilia\scripts\entity_class.lua:7 sampled      8 times. Took 0.26s
+
+------------------- L:simple_create_polygon@@engine\resource_creation_util.lua:75 -------------------
+Sample count:           15
+Time spend total:       0.332s
+Time spent in children: 0.000s
+Time spent in self:     0.332s
+Time spent per sample:  0.02213s/sample
+Time spent in self per sample: 0.02213s/sample
+
+------------------- L:<function: 0x0a34fe50>@@sensibilia\scripts\modules\coordination_module.lua:278 -------------------
+Sample count:           28
+Time spend total:       0.804s
+Time spent in children: 0.490s
+Time spent in self:     0.314s
+Time spent per sample:  0.02871s/sample
+Time spent in self per sample: 0.01121s/sample
+
+Child L:handle_player_visibility@@sensibilia\scripts\modules\coordination_module.lua:223 sampled      7 times. Took 0.21s
+Child L:handle_steering@@sensibilia\scripts\modules\coordination_module.lua:190 sampled     10 times. Took 0.28s
+
+------------------- L:get_self@@sensibilia\scripts\entity_class.lua:7 -------------------
+Sample count:            9
+Time spend total:       0.278s
+Time spent in children: 0.000s
+Time spent in self:     0.278s
+Time spent per sample:  0.03089s/sample
+Time spent in self per sample: 0.03089s/sample
+
+------------------- L:handle_steering@@sensibilia\scripts\modules\coordination_module.lua:190 -------------------
+Sample count:           10
+Time spend total:       0.282s
+Time spent in children: 0.026s
+Time spent in self:     0.256s
+Time spent per sample:  0.02820s/sample
+Time spent in self per sample: 0.02560s/sample
+
+Child L:is_pathfinding@@sensibilia\scripts\modules\coordination_module.lua:186 sampled      1 times. Took 0.03s
+
+------------------- L:vector_to_table@@engine\common.lua:179 -------------------
+Sample count:            9
+Time spend total:       0.238s
+Time spent in children: 0.000s
+Time spent in self:     0.238s
+Time spent per sample:  0.02644s/sample
+Time spent in self per sample: 0.02644s/sample
+
+------------------- L:handle_player_visibility@@sensibilia\scripts\modules\coordination_module.lua:223 -------------------
+Sample count:            7
+Time spend total:       0.208s
+Time spent in children: 0.031s
+Time spent in self:     0.177s
+Time spent per sample:  0.02971s/sample
+Time spent in self per sample: 0.02529s/sample
+
+Child L:create@@engine\resource_creation_util.lua:1 sampled      1 times. Took 0.03s
+
+------------------- L:fullscreen_quad@@sensibilia\scripts\effects\utility.lua:3 -------------------
+Sample count:            6
+Time spend total:       0.171s
+Time spent in children: 0.000s
+Time spent in self:     0.171s
+Time spent per sample:  0.02850s/sample
+Time spent in self per sample: 0.02850s/sample
+
+------------------- L:<function: 0x0927d640>@@sensibilia\scripts\rendering_routine.lua:109 -------------------
+Sample count:          140
+Time spend total:       3.684s
+Time spent in children: 3.549s
+Time spent in self:     0.135s
+Time spent per sample:  0.02631s/sample
+Time spent in self per sample: 0.00096s/sample
+
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.04s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:generate_triangles@@sensibilia\scripts\modules\instability_ray_module.lua:62 sampled      2 times. Took 0.04s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:instability_ray_fx@@sensibilia\scripts\rendering_routine.lua:268 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:fullscreen_pass@@sensibilia\scripts\effects\utility.lua:21 sampled      6 times. Took 0.17s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:instability_ray_fx@@sensibilia\scripts\rendering_routine.lua:268 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.04s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:instability_ray_fx@@sensibilia\scripts\rendering_routine.lua:268 sampled      1 times. Took 0.02s
+Child L:orthographic_projection@@engine\common.lua:193 sampled      2 times. Took 0.05s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:fullscreen_quad@@sensibilia\scripts\effects\utility.lua:3 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:random_discontinuity_end@@sensibilia\scripts\rendering_routine.lua:328 sampled      1 times. Took 0.04s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.01s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:create_sprite@@engine\resource_creation_util.lua:29 sampled      2 times. Took 0.05s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.02s
+Child L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x07add398>@@sensibilia\scripts\enemy_ai.lua:16 -------------------
+Sample count:            5
+Time spend total:       0.146s
+Time spent in children: 0.022s
+Time spent in self:     0.124s
+Time spent per sample:  0.02920s/sample
+Time spent in self per sample: 0.02480s/sample
+
+Child L:get_self@@sensibilia\scripts\entity_class.lua:7 sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a26c1a8>@@sensibilia\scripts\enemy_ai.lua:173 -------------------
+Sample count:            3
+Time spend total:       0.097s
+Time spent in children: 0.000s
+Time spent in self:     0.097s
+Time spent per sample:  0.03233s/sample
+Time spent in self per sample: 0.03233s/sample
+
+------------------- L:<function: 0x07ae0680>@@sensibilia\scripts\enemy_ai.lua:46 -------------------
+Sample count:            3
+Time spend total:       0.096s
+Time spent in children: 0.000s
+Time spent in self:     0.096s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.03200s/sample
+
+------------------- L:loop@@sensibilia\scripts\archetypes\pusher_enemy.lua:98 -------------------
+Sample count:            3
+Time spend total:       0.095s
+Time spent in children: 0.000s
+Time spent in self:     0.095s
+Time spent per sample:  0.03167s/sample
+Time spent in self per sample: 0.03167s/sample
+
+------------------- L:fullscreen_pass@@sensibilia\scripts\effects\utility.lua:21 -------------------
+Sample count:            8
+Time spend total:       0.225s
+Time spent in children: 0.145s
+Time spent in self:     0.080s
+Time spent per sample:  0.02813s/sample
+Time spent in self per sample: 0.01000s/sample
+
+Child L:fullscreen_quad@@sensibilia\scripts\effects\utility.lua:3 sampled      5 times. Took 0.15s
+
+------------------- L:handle_jumping@@sensibilia\scripts\modules\jumping_module.lua:37 -------------------
+Sample count:            2
+Time spend total:       0.063s
+Time spent in children: 0.000s
+Time spent in self:     0.063s
+Time spent per sample:  0.03150s/sample
+Time spent in self per sample: 0.03150s/sample
+
+------------------- L:<function: 0x0a30c398>@@sensibilia\scripts\modules\instability_ray_module.lua:83 -------------------
+Sample count:            3
+Time spend total:       0.088s
+Time spent in children: 0.029s
+Time spent in self:     0.059s
+Time spent per sample:  0.02933s/sample
+Time spent in self per sample: 0.01967s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a2e7330>@@engine\common.lua:253 -------------------
+Sample count:            4
+Time spend total:       0.113s
+Time spent in children: 0.059s
+Time spent in self:     0.054s
+Time spent per sample:  0.02825s/sample
+Time spent in self per sample: 0.01350s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.06s
+
+------------------- L:create_sprite@@engine\resource_creation_util.lua:29 -------------------
+Sample count:            2
+Time spend total:       0.051s
+Time spent in children: 0.000s
+Time spent in self:     0.051s
+Time spent per sample:  0.02550s/sample
+Time spent in self per sample: 0.02550s/sample
+
+------------------- L:random_polygon@@sensibilia\scripts\instability_gun.lua:9 -------------------
+Sample count:           17
+Time spend total:       0.209s
+Time spent in children: 0.158s
+Time spent in self:     0.051s
+Time spent per sample:  0.01229s/sample
+Time spent in self per sample: 0.00300s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      4 times. Took 0.05s
+Child L:map_uv_square@@engine\common.lua:133    sampled      9 times. Took 0.11s
+
+------------------- L:generate_triangles@@sensibilia\scripts\modules\instability_ray_module.lua:62 -------------------
+Sample count:            2
+Time spend total:       0.045s
+Time spent in children: 0.000s
+Time spent in self:     0.045s
+Time spent per sample:  0.02250s/sample
+Time spent in self per sample: 0.02250s/sample
+
+------------------- L:random_discontinuity_end@@sensibilia\scripts\rendering_routine.lua:328 -------------------
+Sample count:            1
+Time spend total:       0.039s
+Time spent in children: 0.000s
+Time spent in self:     0.039s
+Time spent per sample:  0.03900s/sample
+Time spent in self per sample: 0.03900s/sample
+
+------------------- L:<function: 0x0a2a1f90>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.036s
+Time spent in children: 0.000s
+Time spent in self:     0.036s
+Time spent per sample:  0.03600s/sample
+Time spent in self per sample: 0.03600s/sample
+
+------------------- L:<function: 0x0a308c58>@@sensibilia\scripts\modules\waywardness_module.lua:107 -------------------
+Sample count:            1
+Time spend total:       0.035s
+Time spent in children: 0.000s
+Time spent in self:     0.035s
+Time spent per sample:  0.03500s/sample
+Time spent in self per sample: 0.03500s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.035s
+Time spent in children: 0.000s
+Time spent in self:     0.035s
+Time spent per sample:  0.03500s/sample
+Time spent in self per sample: 0.03500s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.035s
+Time spent in children: 0.000s
+Time spent in self:     0.035s
+Time spent per sample:  0.03500s/sample
+Time spent in self per sample: 0.03500s/sample
+
+------------------- L:callback@@sensibilia\scripts\modules\waywardness_module.lua:28 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.000s
+Time spent in self:     0.034s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.03400s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.000s
+Time spent in self:     0.034s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.03400s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.000s
+Time spent in self:     0.034s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.03400s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.000s
+Time spent in self:     0.034s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.03400s/sample
+
+------------------- L:<function: 0x0a332780>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.000s
+Time spent in self:     0.034s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.03400s/sample
+
+------------------- L:loop_func@@sensibilia\scripts\effects\chromatic_aberration.lua:10 -------------------
+Sample count:            1
+Time spend total:       0.033s
+Time spent in children: 0.000s
+Time spent in self:     0.033s
+Time spent per sample:  0.03300s/sample
+Time spent in self per sample: 0.03300s/sample
+
+------------------- L:<function: 0x0a281aa8>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.033s
+Time spent in children: 0.000s
+Time spent in self:     0.033s
+Time spent per sample:  0.03300s/sample
+Time spent in self per sample: 0.03300s/sample
+
+----------------------- L:add_vals@@engine\common.lua:172 ----------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.000s
+Time spent in self:     0.032s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.03200s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.000s
+Time spent in self:     0.032s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.03200s/sample
+
+------------------- L:instability_ray_fx@@sensibilia\scripts\rendering_routine.lua:268 -------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.000s
+Time spent in self:     0.032s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.03200s/sample
+
+------------------- L:callback@@sensibilia\scripts\modules\waywardness_module.lua:25 -------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.000s
+Time spent in self:     0.032s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.03200s/sample
+
+------------------- L:<function: 0x0584fcb0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.000s
+Time spent in self:     0.032s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.03200s/sample
+
+------------------- L:<function: 0x09273338>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.060s
+Time spent in children: 0.028s
+Time spent in self:     0.032s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.01600s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a3742e0>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.054s
+Time spent in children: 0.022s
+Time spent in self:     0.032s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.01600s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:loop@@sensibilia\scripts\archetypes\player.lua:187 -------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.000s
+Time spent in self:     0.032s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.03200s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.000s
+Time spent in self:     0.031s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.03100s/sample
+
+------------------- L:create@@engine\resource_creation_util.lua:1 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.000s
+Time spent in self:     0.031s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.03100s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.000s
+Time spent in self:     0.031s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.03100s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.000s
+Time spent in self:     0.031s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.03100s/sample
+
+------------------- L:<function: 0x0a337590>@@engine\common.lua:253 -------------------
+Sample count:            3
+Time spend total:       0.094s
+Time spent in children: 0.063s
+Time spent in self:     0.031s
+Time spent per sample:  0.03133s/sample
+Time spent in self per sample: 0.01033s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.06s
+
+------------------- L:callback@@sensibilia\scripts\modules\waywardness_module.lua:27 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.000s
+Time spent in self:     0.031s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.03100s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.000s
+Time spent in self:     0.031s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.03100s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.000s
+Time spent in self:     0.031s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.03100s/sample
+
+------------------- L:loop_func@@sensibilia\scripts\modules\clock_renderer_module.lua:102 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.000s
+Time spent in self:     0.031s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.03100s/sample
+
+------------------- L:handle_dying_instability_rays@@sensibilia\scripts\modules\instability_ray_module.lua:3 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+------------------- L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+------------------- L:<function: 0x0a26f4b0>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.054s
+Time spent in children: 0.024s
+Time spent in self:     0.030s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.01500s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0568cd80>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+------------------- L:<function: 0x0a2a4ba8>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+------------------- L:loop@@sensibilia\scripts\archetypes\shooter_enemy.lua:65 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+------------------- L:callback@@sensibilia\scripts\modules\waywardness_module.lua:27 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.000s
+Time spent in self:     0.030s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.03000s/sample
+
+------------------- L:<function: 0x0a3898d0>@@engine\common.lua:253 -------------------
+Sample count:            4
+Time spend total:       0.106s
+Time spent in children: 0.076s
+Time spent in self:     0.030s
+Time spent per sample:  0.02650s/sample
+Time spent in self per sample: 0.00750s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      3 times. Took 0.08s
+
+------------------- L:<function: 0x0a3896c0>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.058s
+Time spent in children: 0.029s
+Time spent in self:     0.029s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.01450s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:substep@@sensibilia\scripts\entity_class.lua:17 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.000s
+Time spent in self:     0.029s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.02900s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.000s
+Time spent in self:     0.029s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.02900s/sample
+
+------------------- L:callback@@sensibilia\scripts\modules\waywardness_module.lua:26 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.000s
+Time spent in self:     0.029s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.02900s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.000s
+Time spent in self:     0.029s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.02900s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.000s
+Time spent in self:     0.029s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.02900s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.000s
+Time spent in self:     0.029s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.02900s/sample
+
+------------------- L:loop@@sensibilia\scripts\entity_class.lua:13 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.000s
+Time spent in self:     0.029s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.02900s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.000s
+Time spent in self:     0.029s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.02900s/sample
+
+------------------- L:callback@@sensibilia\scripts\modules\waywardness_module.lua:27 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.000s
+Time spent in self:     0.029s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.02900s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.000s
+Time spent in self:     0.028s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.02800s/sample
+
+------------------- L:instability_ray_fx@@sensibilia\scripts\rendering_routine.lua:268 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.000s
+Time spent in self:     0.028s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.02800s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.000s
+Time spent in self:     0.028s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.02800s/sample
+
+------------------------- L:wait@@engine\common.lua:34 -------------------------
+Sample count:          119
+Time spend total:       3.276s
+Time spent in children: 3.248s
+Time spent in self:     0.028s
+Time spent per sample:  0.02753s/sample
+Time spent in self per sample: 0.00024s/sample
+
+Child L:wait_routine@@engine\common.lua:4       sampled    118 times. Took 3.25s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.000s
+Time spent in self:     0.028s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.02800s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.000s
+Time spent in self:     0.027s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.02700s/sample
+
+------------------- L:<function: 0x07ad76a8>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.000s
+Time spent in self:     0.027s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.02700s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.000s
+Time spent in self:     0.027s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.02700s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.000s
+Time spent in self:     0.027s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.02700s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.000s
+Time spent in self:     0.027s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.02700s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.000s
+Time spent in self:     0.027s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.02700s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+------------------- L:loop_func@@sensibilia\scripts\modules\clock_renderer_module.lua:102 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+------------------- L:loop_func@@sensibilia\scripts\effects\blur.lua:42 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+------------------- L:<function: 0x0a3538b0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+------------------- L:is_pathfinding@@sensibilia\scripts\modules\coordination_module.lua:186 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.000s
+Time spent in self:     0.026s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.02600s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.000s
+Time spent in self:     0.025s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.02500s/sample
+
+------------------- L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.000s
+Time spent in self:     0.025s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.02500s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.000s
+Time spent in self:     0.025s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.02500s/sample
+
+------------------- L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.000s
+Time spent in self:     0.025s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.02500s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.024s
+Time spent in children: 0.000s
+Time spent in self:     0.024s
+Time spent per sample:  0.02400s/sample
+Time spent in self per sample: 0.02400s/sample
+
+------------------- L:<function: 0x0a32a698>@@sensibilia\scripts\enemy_ai.lua:166 -------------------
+Sample count:            1
+Time spend total:       0.024s
+Time spent in children: 0.000s
+Time spent in self:     0.024s
+Time spent per sample:  0.02400s/sample
+Time spent in self per sample: 0.02400s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.024s
+Time spent in children: 0.000s
+Time spent in self:     0.024s
+Time spent per sample:  0.02400s/sample
+Time spent in self per sample: 0.02400s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.023s
+Time spent in children: 0.000s
+Time spent in self:     0.023s
+Time spent per sample:  0.02300s/sample
+Time spent in self per sample: 0.02300s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.023s
+Time spent in children: 0.000s
+Time spent in self:     0.023s
+Time spent per sample:  0.02300s/sample
+Time spent in self per sample: 0.02300s/sample
+
+------------------- L:instability_ray_fx@@sensibilia\scripts\rendering_routine.lua:268 -------------------
+Sample count:            1
+Time spend total:       0.023s
+Time spent in children: 0.000s
+Time spent in self:     0.023s
+Time spent per sample:  0.02300s/sample
+Time spent in self per sample: 0.02300s/sample
+
+------------------- L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 -------------------
+Sample count:            1
+Time spend total:       0.023s
+Time spent in children: 0.000s
+Time spent in self:     0.023s
+Time spent per sample:  0.02300s/sample
+Time spent in self per sample: 0.02300s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.023s
+Time spent in children: 0.000s
+Time spent in self:     0.023s
+Time spent per sample:  0.02300s/sample
+Time spent in self per sample: 0.02300s/sample
+
+------------------- L:<function: 0x0a3411e0>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.049s
+Time spent in children: 0.026s
+Time spent in self:     0.023s
+Time spent per sample:  0.02450s/sample
+Time spent in self per sample: 0.01150s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.022s
+Time spent in children: 0.000s
+Time spent in self:     0.022s
+Time spent per sample:  0.02200s/sample
+Time spent in self per sample: 0.02200s/sample
+
+------------------- L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 -------------------
+Sample count:            1
+Time spend total:       0.022s
+Time spent in children: 0.000s
+Time spent in self:     0.022s
+Time spent per sample:  0.02200s/sample
+Time spent in self per sample: 0.02200s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.022s
+Time spent in children: 0.000s
+Time spent in self:     0.022s
+Time spent per sample:  0.02200s/sample
+Time spent in self per sample: 0.02200s/sample
+
+------------------- L:loop_func@@sensibilia\scripts\modules\clock_renderer_module.lua:102 -------------------
+Sample count:            1
+Time spend total:       0.022s
+Time spent in children: 0.000s
+Time spent in self:     0.022s
+Time spent per sample:  0.02200s/sample
+Time spent in self per sample: 0.02200s/sample
+
+------------------- L:loop_func@@sensibilia\scripts\effects\blur.lua:16 -------------------
+Sample count:            1
+Time spend total:       0.021s
+Time spent in children: 0.000s
+Time spent in self:     0.021s
+Time spent per sample:  0.02100s/sample
+Time spent in self per sample: 0.02100s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.021s
+Time spent in children: 0.000s
+Time spent in self:     0.021s
+Time spent per sample:  0.02100s/sample
+Time spent in self per sample: 0.02100s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.021s
+Time spent in children: 0.000s
+Time spent in self:     0.021s
+Time spent per sample:  0.02100s/sample
+Time spent in self per sample: 0.02100s/sample
+
+------------------- L:is_player_raycasting@@sensibilia\scripts\archetypes\player.lua:147 -------------------
+Sample count:            1
+Time spend total:       0.020s
+Time spent in children: 0.000s
+Time spent in self:     0.020s
+Time spent per sample:  0.02000s/sample
+Time spent in self per sample: 0.02000s/sample
+
+------------------- L:<function: 0x0a3379b0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.019s
+Time spent in children: 0.000s
+Time spent in self:     0.019s
+Time spent per sample:  0.01900s/sample
+Time spent in self per sample: 0.01900s/sample
+
+------------------- L:<function: 0x0a394c08>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.044s
+Time spent in children: 0.025s
+Time spent in self:     0.019s
+Time spent per sample:  0.02200s/sample
+Time spent in self per sample: 0.00950s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.018s
+Time spent in children: 0.000s
+Time spent in self:     0.018s
+Time spent per sample:  0.01800s/sample
+Time spent in self per sample: 0.01800s/sample
+
+------------------- L:<function: 0x0a25b4d0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.018s
+Time spent in children: 0.000s
+Time spent in self:     0.018s
+Time spent per sample:  0.01800s/sample
+Time spent in self per sample: 0.01800s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.017s
+Time spent in children: 0.000s
+Time spent in self:     0.017s
+Time spent per sample:  0.01700s/sample
+Time spent in self per sample: 0.01700s/sample
+
+------------------- L:orthographic_projection@@engine\common.lua:193 -------------------
+Sample count:            2
+Time spend total:       0.048s
+Time spent in children: 0.032s
+Time spent in self:     0.016s
+Time spent per sample:  0.02400s/sample
+Time spent in self per sample: 0.00800s/sample
+
+Child L:add_vals@@engine\common.lua:172         sampled      1 times. Took 0.03s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.015s
+Time spent in children: 0.000s
+Time spent in self:     0.015s
+Time spent per sample:  0.01500s/sample
+Time spent in self per sample: 0.01500s/sample
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.015s
+Time spent in children: 0.000s
+Time spent in self:     0.015s
+Time spent per sample:  0.01500s/sample
+Time spent in self per sample: 0.01500s/sample
+
+------------------- L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 -------------------
+Sample count:            1
+Time spend total:       0.014s
+Time spent in children: 0.000s
+Time spent in self:     0.014s
+Time spent per sample:  0.01400s/sample
+Time spent in self per sample: 0.01400s/sample
+
+------------------- L:recursive_write@@engine\common.lua:107 -------------------
+Sample count:           17
+Time spend total:       0.053s
+Time spent in children: 0.040s
+Time spent in self:     0.013s
+Time spent per sample:  0.00312s/sample
+Time spent in self per sample: 0.00076s/sample
+
+Child L:recursive_write@@engine\common.lua:107  sampled     13 times. Took 0.04s
+
+------------------- L:set_components_from_entry@@engine\entity_creation_util.lua:1 -------------------
+Sample count:            1
+Time spend total:       0.004s
+Time spent in children: 0.000s
+Time spent in self:     0.004s
+Time spent per sample:  0.00400s/sample
+Time spent in self per sample: 0.00400s/sample
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.022s
+Time spent in children: 0.022s
+Time spent in self:     0.000s
+Time spent per sample:  0.02200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.024s
+Time spent in children: 0.024s
+Time spent in self:     0.000s
+Time spent per sample:  0.02400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a352d78>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.017s
+Time spent in children: 0.017s
+Time spent in self:     0.000s
+Time spent per sample:  0.01700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.033s
+Time spent in children: 0.033s
+Time spent in self:     0.000s
+Time spent per sample:  0.03300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:entries_from_archetypes@@engine\common.lua:122 -------------------
+Sample count:            4
+Time spend total:       0.013s
+Time spent in children: 0.013s
+Time spent in self:     0.000s
+Time spent per sample:  0.00325s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:recursive_write@@engine\common.lua:107  sampled      4 times. Took 0.01s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.019s
+Time spent in children: 0.019s
+Time spent in self:     0.000s
+Time spent per sample:  0.01900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x06564808>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.033s
+Time spent in children: 0.033s
+Time spent in self:     0.000s
+Time spent per sample:  0.03300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a305a00>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.060s
+Time spent in children: 0.060s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.06s
+
+------------------- L:<function: 0x0a28c140>@@sensibilia\scripts\modules\jumping_module.lua:121 -------------------
+Sample count:            2
+Time spend total:       0.063s
+Time spent in children: 0.063s
+Time spent in self:     0.000s
+Time spent per sample:  0.03150s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:handle_jumping@@sensibilia\scripts\modules\jumping_module.lua:37 sampled      2 times. Took 0.06s
+
+------------------- L:<function: 0x0a33cbe0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.020s
+Time spent in children: 0.020s
+Time spent in self:     0.000s
+Time spent per sample:  0.02000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a358a60>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+--------------------- L:stepped_wait@@engine\common.lua:30 ---------------------
+Sample count:            3
+Time spend total:       0.090s
+Time spent in children: 0.090s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait_routine@@engine\common.lua:4       sampled      3 times. Took 0.09s
+
+------------------- L:<function: 0x07ae3988>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:vector_to_table@@engine\common.lua:179  sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x07ae5178>@@sensibilia\scripts\effects\blur.lua:1 -------------------
+Sample count:            1
+Time spend total:       0.021s
+Time spent in children: 0.021s
+Time spent in self:     0.000s
+Time spent per sample:  0.02100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a2ddaa0>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.063s
+Time spent in children: 0.063s
+Time spent in self:     0.000s
+Time spent per sample:  0.03150s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.06s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.021s
+Time spent in children: 0.021s
+Time spent in self:     0.000s
+Time spent per sample:  0.02100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.032s
+Time spent in self:     0.000s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a28baa8>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.060s
+Time spent in children: 0.060s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.06s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.022s
+Time spent in children: 0.022s
+Time spent in self:     0.000s
+Time spent per sample:  0.02200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+-------------------  :<function: 0x056da918>@@sensibilia\scripts\instability_gun.lua:0 -------------------
+Sample count:           17
+Time spend total:       0.209s
+Time spent in children: 0.209s
+Time spent in self:     0.000s
+Time spent per sample:  0.01229s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:random_polygon@@sensibilia\scripts\instability_gun.lua:9 sampled     17 times. Took 0.21s
+
+------------------- L:<function: 0x0a398278>@@sensibilia\scripts\modules\clock_renderer_module.lua:92 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0656dbd0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.014s
+Time spent in children: 0.014s
+Time spent in self:     0.000s
+Time spent per sample:  0.01400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.01s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a389ae0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.033s
+Time spent in children: 0.033s
+Time spent in self:     0.000s
+Time spent per sample:  0.03300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:create_entity@@engine\entity_creation_util.lua:129 -------------------
+Sample count:            1
+Time spend total:       0.004s
+Time spent in children: 0.004s
+Time spent in self:     0.000s
+Time spent per sample:  0.00400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:set_components_from_entry@@engine\entity_creation_util.lua:1 sampled      1 times. Took 0.00s
+
+------------------- L:create_entities_from_map@@sensibilia\maps\loader.lua:2 -------------------
+Sample count:            5
+Time spend total:       0.017s
+Time spent in children: 0.017s
+Time spent in self:     0.000s
+Time spent per sample:  0.00340s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:spawn_wayward@@sensibilia\scripts\archetypes\wayward_object.lua:3 sampled      1 times. Took 0.00s
+Child L:get_all_objects_by_type@@engine\tiled_map_loader.lua:104 sampled      3 times. Took 0.01s
+Child L:spawn_clock@@sensibilia\scripts\archetypes\clock_renderer.lua:13 sampled      1 times. Took 0.00s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.022s
+Time spent in children: 0.022s
+Time spent in self:     0.000s
+Time spent per sample:  0.02200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x058515d0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.030s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x07af4160>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a296420>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.022s
+Time spent in children: 0.022s
+Time spent in self:     0.000s
+Time spent per sample:  0.02200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x09273f68>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a39fcb0>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.049s
+Time spent in children: 0.049s
+Time spent in self:     0.000s
+Time spent per sample:  0.02450s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.05s
+
+------------------- L:loop_func@@sensibilia\scripts\effects\blur.lua:42 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:fullscreen_pass@@sensibilia\scripts\effects\utility.lua:21 sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.032s
+Time spent in self:     0.000s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\waywardness_module.lua:25 sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x092837c8>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\waywardness_module.lua:27 sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x05859038>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a395b60>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.036s
+Time spent in children: 0.036s
+Time spent in self:     0.000s
+Time spent per sample:  0.03600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.04s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.021s
+Time spent in children: 0.021s
+Time spent in self:     0.000s
+Time spent per sample:  0.02100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a347040>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.050s
+Time spent in children: 0.050s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.05s
+
+------------------- L:<function: 0x07af54a0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.020s
+Time spent in children: 0.020s
+Time spent in self:     0.000s
+Time spent per sample:  0.02000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x056e5200>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.030s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a2933e8>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a374e18>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.032s
+Time spent in self:     0.000s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x056ad1a8>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.023s
+Time spent in children: 0.023s
+Time spent in self:     0.000s
+Time spent per sample:  0.02300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.035s
+Time spent in children: 0.035s
+Time spent in self:     0.000s
+Time spent per sample:  0.03500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.04s
+
+------------------- L:<function: 0x0a2d1c90>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.033s
+Time spent in children: 0.033s
+Time spent in self:     0.000s
+Time spent per sample:  0.03300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a2b5a90>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.030s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.019s
+Time spent in children: 0.019s
+Time spent in self:     0.000s
+Time spent per sample:  0.01900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x07aecb80>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x06564d50>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.030s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\waywardness_module.lua:27 sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a3a25d8>@@sensibilia\scripts\modules\clock_renderer_module.lua:92 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x05859248>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.015s
+Time spent in children: 0.015s
+Time spent in self:     0.000s
+Time spent per sample:  0.01500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a375028>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a399db8>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.059s
+Time spent in children: 0.059s
+Time spent in self:     0.000s
+Time spent per sample:  0.02950s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.06s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a299220>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.024s
+Time spent in children: 0.024s
+Time spent in self:     0.000s
+Time spent per sample:  0.02400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+-------------------  :<function: 0x056a2538>@METERS_TO_PIXELS = 50
+PIXELS_TO_METERS = 1/METERS_TO_PIXELS
+
+table.inspect = require("inspect")
+
+function debug.my_breakpoint()
+	print(debug.my_traceback())
+	debugger_break()
+end
+
+function debug.my_traceback() 
+	local outstr = "\n"
+	
+	local globals_str = "\n"
+	
+	globals_str = globals_str .. "Globals:\n"
+	
+	for k,v in pairs(_G) do
+		globals_str = globals_str .. k .. ":\n" .. table.inspect(v) .. "\n\n"
+	end
+	
+	local level_idx = 2
+	while true do
+		outstr = outstr .. "level " .. level_idx .. ": "
+		
+		local variables = {}
+		local idx = 1
+		while true do
+			local ln, lv = debug.getlocal(level_idx, idx)
+			if ln ~= nil then
+			variables[ln] = lv
+			else
+			break
+			end
+			idx = 1 + idx
+		end
+		
+		outstr = outstr .. table.inspect(variables) .. "\n"
+		
+		level_idx = level_idx + 1
+		if debug.getinfo(level_idx) == nil then break end
+	end
+	
+	outstr = outstr .. "\n" .. debug.traceback() 
+	
+	
+	local file = io.open("error_message.txt", "w")
+	file:write(outstr .. globals_str)
+	file:close()
+	
+	return outstr
+end
+
+function call_on_modification(thescript, entries) 
+	for i = 1, #entries do
+		thescript:add_reload_dependant(entries[i])
+	end
+end
+
+function open_script(filename) 
+	local my_script = script()
+	my_script:associate_filename(filename)
+	return my_script
+end
+
+ENGINE_DIRECTORY = "engine\\"
+
+script_reloader:add_directory ("engine", true)
+
+settings = 						open_script (ENGINE_DIRECTORY .. "settings.lua")
+common = 						open_script (ENGINE_DIRECTORY .. "common.lua" )
+resource_creation_util = 		open_script (ENGINE_DIRECTORY .. "resource_creation_util.lua")
+entity_creation_util = 			open_script (ENGINE_DIRECTORY .. "entity_creation_util.lua" )
+
+local CURRENT_SCENE = "sensibilia\\scripts\\sensibilia_init.lua"
+entities = 						open_script (CURRENT_SCENE)
+
+call_on_modification(common, 				{ common, layers, entity_creation_util, resource_creation_util, textures, animations, particle_effects, entities }) 
+call_on_modification(resource_creation_util,{ resource_creation_util, entity_creation_util, textures, animations, particle_effects, entities })
+call_on_modification(entity_creation_util, 	{ entity_creation_util, entities } )
+
+call_on_modification(entities, 				{ entities })
+call_on_modification(settings, 				{ settings })
+
+dofile (ENGINE_DIRECTORY .. "common.lua")
+dofile (ENGINE_DIRECTORY .. "integrator.lua")
+dofile (ENGINE_DIRECTORY .. "sequence.lua")
+dofile (ENGINE_DIRECTORY .. "entity_creation_util.lua" )
+dofile (ENGINE_DIRECTORY .. "resource_creation_util.lua")
+dofile (ENGINE_DIRECTORY .. "settings.lua")
+dofile (ENGINE_DIRECTORY .. "tiled_map_loader.lua")
+dofile (CURRENT_SCENE)
+
+commands = script()
+commands:associate_filename(ENGINE_DIRECTORY .. "commands.lua")
+commands.reload_scene_when_modified = false
+settings.reload_scene_when_modified = false
+
+call_on_modification(commands, {commands})
+
+function count_all(f)
+	local seen = {}
+	local count_table
+	count_table = function(t)
+		if seen[t] then return end
+		f(t)
+		seen[t] = true
+		for k,v in pairs(t) do
+			if type(v) == "table" then
+				count_table(v)
+			elseif type(v) == "userdata" then
+				f(v)
+			end
+		end
+	end
+	count_table(_G)
+end
+
+function all_num()
+	local cnt = 0
+	
+	count_all(function() cnt = cnt + 1 end)
+	
+	print(cnt)
+end:0 -------------------
+Sample count:           22
+Time spend total:       0.226s
+Time spent in children: 0.226s
+Time spent in self:     0.000s
+Time spent per sample:  0.01027s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child C:dofile@=[C]:?                           sampled     22 times. Took 0.23s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a2529a8>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.032s
+Time spent in self:     0.000s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a395950>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.030s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a33bfb0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0655f660>@@sensibilia\scripts\modules\clock_renderer_module.lua:92 -------------------
+Sample count:            1
+Time spend total:       0.021s
+Time spent in children: 0.021s
+Time spent in self:     0.000s
+Time spent per sample:  0.02100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a266238>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a318e38>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.020s
+Time spent in children: 0.020s
+Time spent in self:     0.000s
+Time spent per sample:  0.02000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a357f28>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x056e24e0>@@sensibilia\scripts\rendering_routine.lua:31 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a375238>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.059s
+Time spent in children: 0.059s
+Time spent in self:     0.000s
+Time spent per sample:  0.02950s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.06s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.021s
+Time spent in children: 0.021s
+Time spent in self:     0.000s
+Time spent per sample:  0.02100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a2d6b78>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.021s
+Time spent in children: 0.021s
+Time spent in self:     0.000s
+Time spent per sample:  0.02100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a2b3138>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.030s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a38df18>@@sensibilia\scripts\modules\clock_renderer_module.lua:92 -------------------
+Sample count:            1
+Time spend total:       0.022s
+Time spent in children: 0.022s
+Time spent in self:     0.000s
+Time spent per sample:  0.02200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a2e6f70>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.023s
+Time spent in children: 0.023s
+Time spent in self:     0.000s
+Time spent per sample:  0.02300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a3907a0>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.053s
+Time spent in children: 0.053s
+Time spent in self:     0.000s
+Time spent per sample:  0.02650s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.05s
+
+-------------------  :<function: 0x07ac6e00>@@sensibilia\scripts\sensibilia.lua:0 -------------------
+Sample count:           22
+Time spend total:       0.226s
+Time spent in children: 0.226s
+Time spent in self:     0.000s
+Time spent per sample:  0.01027s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:create_entities_from_map@@sensibilia\maps\loader.lua:2 sampled      5 times. Took 0.02s
+Child C:dofile@=[C]:?                           sampled     17 times. Took 0.21s
+
+------------------- L:<function: 0x0a3837f0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.020s
+Time spent in children: 0.020s
+Time spent in self:     0.000s
+Time spent per sample:  0.02000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.018s
+Time spent in children: 0.018s
+Time spent in self:     0.000s
+Time spent per sample:  0.01800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:vector_to_table@@engine\common.lua:179  sampled      1 times. Took 0.03s
+
+------------------- L:for_every_object@@engine\tiled_map_loader.lua:17 -------------------
+Sample count:            3
+Time spend total:       0.010s
+Time spent in children: 0.010s
+Time spent in self:     0.000s
+Time spent per sample:  0.00333s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:archetyped@@engine\common.lua:127       sampled      3 times. Took 0.01s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.015s
+Time spent in children: 0.015s
+Time spent in self:     0.000s
+Time spent per sample:  0.01500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.032s
+Time spent in self:     0.000s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\waywardness_module.lua:26 sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a384748>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.033s
+Time spent in children: 0.033s
+Time spent in self:     0.000s
+Time spent per sample:  0.03300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a30aea0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.035s
+Time spent in children: 0.035s
+Time spent in self:     0.000s
+Time spent per sample:  0.03500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.04s
+
+------------------- L:<function: 0x0a269550>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a336d80>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.023s
+Time spent in children: 0.023s
+Time spent in self:     0.000s
+Time spent per sample:  0.02300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x06561590>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.040s
+Time spent in children: 0.040s
+Time spent in self:     0.000s
+Time spent per sample:  0.02000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.04s
+
+------------------- L:<function: 0x0a305960>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a3a7788>@@sensibilia\scripts\modules\clock_renderer_module.lua:92 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.030s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.020s
+Time spent in children: 0.020s
+Time spent in self:     0.000s
+Time spent per sample:  0.02000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a36fe78>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      1 times. Took 0.03s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.014s
+Time spent in children: 0.014s
+Time spent in self:     0.000s
+Time spent per sample:  0.01400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 sampled      1 times. Took 0.01s
+
+------------------- L:<function: 0x0a34f908>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.061s
+Time spent in children: 0.061s
+Time spent in self:     0.000s
+Time spent per sample:  0.03050s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.06s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:loop_func@@sensibilia\scripts\effects\blur.lua:42 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:fullscreen_pass@@sensibilia\scripts\effects\utility.lua:21 sampled      1 times. Took 0.03s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\waywardness_module.lua:27 sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a2b5e70>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a271570>@@sensibilia\scripts\modules\coordination_module.lua:50 -------------------
+Sample count:            2
+Time spend total:       0.064s
+Time spent in children: 0.064s
+Time spent in self:     0.000s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:stepped_wait@@engine\common.lua:30      sampled      2 times. Took 0.06s
+
+------------------- L:<function: 0x0a344650>@@sensibilia\scripts\modules\clock_renderer_module.lua:92 -------------------
+Sample count:            2
+Time spend total:       0.046s
+Time spent in children: 0.046s
+Time spent in self:     0.000s
+Time spent per sample:  0.02300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.05s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x09285b90>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.018s
+Time spent in children: 0.018s
+Time spent in self:     0.000s
+Time spent per sample:  0.01800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:vector_to_table@@engine\common.lua:179  sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:vector_to_table@@engine\common.lua:179  sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x06566358>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.032s
+Time spent in self:     0.000s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:get_all_objects_by_type@@engine\tiled_map_loader.lua:104 -------------------
+Sample count:            3
+Time spend total:       0.010s
+Time spent in children: 0.010s
+Time spent in self:     0.000s
+Time spent per sample:  0.00333s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:for_every_object@@engine\tiled_map_loader.lua:17 sampled      3 times. Took 0.01s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\waywardness_module.lua:28 sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x07ae4ec0>@@sensibilia\scripts\effects\blur.lua:27 -------------------
+Sample count:            3
+Time spend total:       0.083s
+Time spent in children: 0.083s
+Time spent in self:     0.000s
+Time spent per sample:  0.02767s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      3 times. Took 0.08s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a3500e8>@@sensibilia\scripts\modules\coordination_module.lua:50 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:stepped_wait@@engine\common.lua:30      sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a3563e8>@@sensibilia\scripts\modules\clock_renderer_module.lua:92 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a327218>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.017s
+Time spent in children: 0.017s
+Time spent in self:     0.000s
+Time spent per sample:  0.01700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.020s
+Time spent in children: 0.020s
+Time spent in self:     0.000s
+Time spent per sample:  0.02000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x07ae3d80>@@sensibilia\scripts\effects\chromatic_aberration.lua:1 -------------------
+Sample count:            1
+Time spend total:       0.033s
+Time spent in children: 0.033s
+Time spent in self:     0.000s
+Time spent per sample:  0.03300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a332360>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a36f130>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x07af4ad0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.015s
+Time spent in children: 0.015s
+Time spent in self:     0.000s
+Time spent per sample:  0.01500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x05850a08>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x07ad0a88>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.023s
+Time spent in children: 0.023s
+Time spent in self:     0.000s
+Time spent per sample:  0.02300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a297c98>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x09273b48>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.023s
+Time spent in children: 0.023s
+Time spent in self:     0.000s
+Time spent per sample:  0.02300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a35de20>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.030s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------------------- C:dofile@=[C]:? --------------------------------
+Sample count:           61
+Time spend total:       0.661s
+Time spent in children: 0.661s
+Time spent in self:     0.000s
+Time spent per sample:  0.01084s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child  :<function: 0x056da918>@@sensibilia\scripts\instability_gun.lua:0 sampled     17 times. Took 0.21s
+Child  :<function: 0x05848940>@@sensibilia\scripts\sensibilia_init.lua:0 sampled     22 times. Took 0.23s
+Child  :<function: 0x07ac6e00>@@sensibilia\scripts\sensibilia.lua:0 sampled     22 times. Took 0.23s
+
+------------------- L:<function: 0x0a3a92c8>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.024s
+Time spent in children: 0.024s
+Time spent in self:     0.000s
+Time spent per sample:  0.02400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.022s
+Time spent in children: 0.022s
+Time spent in self:     0.000s
+Time spent per sample:  0.02200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      1 times. Took 0.02s
+
+---------------------- L:loop_func@@engine\common.lua:273 ----------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:callback@@sensibilia\scripts\modules\clock_renderer_module.lua:25 sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.021s
+Time spent in children: 0.021s
+Time spent in self:     0.000s
+Time spent per sample:  0.02100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a33c7c0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:constructor@@sensibilia\scripts\modules\clock_renderer_module.lua:3 -------------------
+Sample count:            1
+Time spend total:       0.004s
+Time spent in children: 0.004s
+Time spent in self:     0.000s
+Time spent per sample:  0.00400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:create_entity@@engine\entity_creation_util.lua:129 sampled      1 times. Took 0.00s
+
+--------------------- L:archetyped@@engine\common.lua:127 ----------------------
+Sample count:            4
+Time spend total:       0.013s
+Time spent in children: 0.013s
+Time spent in self:     0.000s
+Time spent per sample:  0.00325s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:entries_from_archetypes@@engine\common.lua:122 sampled      4 times. Took 0.01s
+
+------------------- L:spawn_entity@@sensibilia\scripts\entity_class.lua:91 -------------------
+Sample count:            1
+Time spend total:       0.003s
+Time spent in children: 0.003s
+Time spent in self:     0.000s
+Time spent per sample:  0.00300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:archetyped@@engine\common.lua:127       sampled      1 times. Took 0.00s
+
+------------------- L:<function: 0x0a334fc0>@@sensibilia\scripts\modules\clock_renderer_module.lua:92 -------------------
+Sample count:            1
+Time spend total:       0.020s
+Time spent in children: 0.020s
+Time spent in self:     0.000s
+Time spent per sample:  0.02000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a353ac0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.030s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+-------------------  :<function: 0x05848940>@@sensibilia\scripts\sensibilia_init.lua:0 -------------------
+Sample count:           22
+Time spend total:       0.226s
+Time spent in children: 0.226s
+Time spent in self:     0.000s
+Time spent per sample:  0.01027s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child C:dofile@=[C]:?                           sampled     22 times. Took 0.23s
+
+------------------- L:<function: 0x0a26f550>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.021s
+Time spent in children: 0.021s
+Time spent in self:     0.000s
+Time spent per sample:  0.02100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      1 times. Took 0.02s
+
+------------------- L:<function: 0x0a35d0d8>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.051s
+Time spent in children: 0.051s
+Time spent in self:     0.000s
+Time spent per sample:  0.02550s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.05s
+
+------------------- L:<function: 0x0a331b50>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.014s
+Time spent in children: 0.014s
+Time spent in self:     0.000s
+Time spent per sample:  0.01400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.01s
+
+------------------- L:<function: 0x065621c0>@@engine\common.lua:253 -------------------
+Sample count:            2
+Time spend total:       0.053s
+Time spent in children: 0.053s
+Time spent in self:     0.000s
+Time spent per sample:  0.02650s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      2 times. Took 0.05s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x056e2f18>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.032s
+Time spent in children: 0.032s
+Time spent in self:     0.000s
+Time spent per sample:  0.03200s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x07aff188>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.028s
+Time spent in children: 0.028s
+Time spent in self:     0.000s
+Time spent per sample:  0.02800s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x07afee30>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:vector_to_table@@engine\common.lua:179  sampled      1 times. Took 0.02s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      1 times. Took 0.03s
+
+------------------------ L:create@@engine\common.lua:53 ------------------------
+Sample count:            1
+Time spend total:       0.004s
+Time spent in children: 0.004s
+Time spent in self:     0.000s
+Time spent per sample:  0.00400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:constructor@@sensibilia\scripts\modules\clock_renderer_module.lua:3 sampled      1 times. Took 0.00s
+
+------------------- L:<function: 0x0a353cd0>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.030s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:spawn_clock@@sensibilia\scripts\archetypes\clock_renderer.lua:13 -------------------
+Sample count:            1
+Time spend total:       0.004s
+Time spent in children: 0.004s
+Time spent in self:     0.000s
+Time spent per sample:  0.00400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:create@@engine\common.lua:53            sampled      1 times. Took 0.00s
+
+------------------- L:<function: 0x0656dc70>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.031s
+Time spent in children: 0.031s
+Time spent in self:     0.000s
+Time spent per sample:  0.03100s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:vector_to_table@@engine\common.lua:179  sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:vector_to_table@@engine\common.lua:179  sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a25b570>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:spawn_wayward@@sensibilia\scripts\archetypes\wayward_object.lua:3 -------------------
+Sample count:            1
+Time spend total:       0.003s
+Time spent in children: 0.003s
+Time spent in self:     0.000s
+Time spent per sample:  0.00300s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:spawn_entity@@sensibilia\scripts\entity_class.lua:91 sampled      1 times. Took 0.00s
+
+------------------- L:<function: 0x0a27aa68>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.034s
+Time spent in children: 0.034s
+Time spent in self:     0.000s
+Time spent per sample:  0.03400s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:<function: 0x0a38fa58>@@engine\common.lua:253 -------------------
+Sample count:            1
+Time spend total:       0.029s
+Time spent in children: 0.029s
+Time spent in self:     0.000s
+Time spent per sample:  0.02900s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:wait@@engine\common.lua:34              sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.026s
+Time spent in children: 0.026s
+Time spent in self:     0.000s
+Time spent per sample:  0.02600s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:vector_to_table@@engine\common.lua:179  sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.030s
+Time spent in children: 0.030s
+Time spent in self:     0.000s
+Time spent per sample:  0.03000s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:vector_to_table@@engine\common.lua:179  sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.027s
+Time spent in children: 0.027s
+Time spent in self:     0.000s
+Time spent per sample:  0.02700s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:simple_create_polygon@@engine\resource_creation_util.lua:75 sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+------------------- L:handle_point_light@@sensibilia\scripts\rendering_routine.lua:191 -------------------
+Sample count:            1
+Time spend total:       0.025s
+Time spent in children: 0.025s
+Time spent in self:     0.000s
+Time spent per sample:  0.02500s/sample
+Time spent in self per sample: 0.00000s/sample
+
+Child L:map_uv_square@@engine\common.lua:133    sampled      1 times. Took 0.03s
+
+
+
+Total time spent in profiled functions:  16.4s
+
+END

@@ -52,7 +52,7 @@ function spawn_shooter(position)
 	local gun_entity = new_group.gun_entity:get()
 	local this = get_self(new_group.body:get())
 	
-	this.all_player_bullets = {}
+	this.all_player_bullets = entity_ptr_vector()
 	this.character = character_module:create(new_group.body:get(), 4000)
 	this.character:init_hp(1000)
 	
@@ -69,7 +69,16 @@ function spawn_shooter(position)
 			gun_entity.gun.trigger_mode = gun_component.NONE
 		end
 	
-		loop_instability_gun_bullets(new_group, 10+10*instability, rgba(255, 0, 0, 255))	
+		local gun_info = new_group.gun_entity:get().gun
+		gun_info.spread_degrees = 5 + 30 * instability
+		gun_info.shake_radius = 10+10*instability
+			
+		loop_instability_gun_bullets(
+			rgba(255, 0, 0, 255), 
+			this.all_player_bullets, 
+			instability, 
+			physics_system.timestep_multiplier, 
+			base_gravity)	
 	end
 	
 	return new_group
