@@ -75,12 +75,12 @@ entity_creation_util = 			open_script (ENGINE_DIRECTORY .. "entity_creation_util
 local CURRENT_SCENE = "sensibilia\\scripts\\sensibilia_init.lua"
 entities = 						open_script (CURRENT_SCENE)
 
-call_on_modification(common, 				{ common, layers, entity_creation_util, resource_creation_util, textures, animations, particle_effects, entities }) 
-call_on_modification(resource_creation_util,{ resource_creation_util, entity_creation_util, textures, animations, particle_effects, entities })
-call_on_modification(entity_creation_util, 	{ entity_creation_util, entities } )
-
-call_on_modification(entities, 				{ entities })
-call_on_modification(settings, 				{ settings })
+--call_on_modification(common, 				{ common, layers, entity_creation_util, resource_creation_util, textures, animations, particle_effects, entities }) 
+--call_on_modification(resource_creation_util,{ resource_creation_util, entity_creation_util, textures, animations, particle_effects, entities })
+--call_on_modification(entity_creation_util, 	{ entity_creation_util, entities } )
+--
+--call_on_modification(entities, 				{ entities })
+--call_on_modification(settings, 				{ settings })
 
 dofile (ENGINE_DIRECTORY .. "common.lua")
 dofile (ENGINE_DIRECTORY .. "integrator.lua")

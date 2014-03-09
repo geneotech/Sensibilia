@@ -77,7 +77,7 @@ function spawn_shooter(position)
 			rgba(255, 0, 0, 255), 
 			this.all_player_bullets, 
 			instability, 
-			physics_system.timestep_multiplier, 
+			1, 
 			base_gravity)	
 	end
 	

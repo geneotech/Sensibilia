@@ -84,8 +84,8 @@ function main_input_routine(message)
 		end
 		
 	elseif message.intent == custom_intents.RESTART then
-			set_world_reloading_script(reloader_script)
-			print "setting reloader script"
+			should_world_be_reloaded = true
+			print "reloading world"
 	elseif message.intent == intent_message.AIM then
 		if changing_gravity then
 			local added_angle = message.mouse_rel.y * 0.6

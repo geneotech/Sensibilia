@@ -105,7 +105,7 @@ function rewrite_ptr(component, entry, properties, entities_lookup)
 end
 
 function recursive_write(final_entries, entries, omit_names)
-	omit_names = omit_names or {}
+	if omit_names == nil then omit_names = {} end
 	
 	for key, entry in pairs(entries) do
 		if omit_names[key] == nil then

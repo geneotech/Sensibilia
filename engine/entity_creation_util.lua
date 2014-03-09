@@ -45,7 +45,7 @@ function set_components_from_entry(entity, entry, entities_lookup)
 		if(entry[property_name] ~= nil) then
 			local component = entity:add(module_name())
 			
-			omit_properties = omit_properties or {}
+			if omit_properties == nil then omit_properties = {} end
 			for k, v in pairs(ptr_variables) do
 				omit_properties[k] = v
 			end
@@ -88,7 +88,7 @@ function set_components_from_entry(entity, entry, entities_lookup)
 	
 	if entry.physics ~= nil then
 		local my_body_data = physics_info()
-		entry.physics.body_info = entry.physics.body_info or {}
+		if entry.physics.body_info == nil then entry.physics.body_info = {} end
 		
 		if entry.physics.body_info.shape_type == physics_info.RECT then
 			if entry.physics.body_info.rect_size == nil then
@@ -110,8 +110,8 @@ function set_components_from_entry(entity, entry, entities_lookup)
 	if entry.gun ~= nil then
 		local gun = entity.gun
 		--print(inspect(entry.gun))
-		entry.gun.bullet_body = entry.gun.bullet_body or {}
-		entry.gun.bullet_render = entry.gun.bullet_render or {} 
+		if entry.gun.bullet_body == nil then entry.gun.bullet_body = {} end
+		if entry.gun.bullet_render == nil then entry.gun.bullet_render = {} end
 		
 		set_physics_info(gun.bullet_body, entry.gun.bullet_body)
 		rewrite(gun.bullet_render, entry.gun.bullet_render)

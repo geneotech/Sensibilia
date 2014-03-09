@@ -1,4 +1,3 @@
-
 dofile "sensibilia\\scripts\\resources\\layers.lua"
 dofile "sensibilia\\scripts\\resources\\textures.lua"
 dofile "sensibilia\\scripts\\resources\\particle_effects.lua"

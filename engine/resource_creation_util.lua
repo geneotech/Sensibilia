@@ -8,7 +8,7 @@ function create(module, entries)
 end
 
 function create_options(entries, output)
-	output = output or _G
+	if output == nil then output = _G end
 	for k, v in pairs(entries) do
 		output[v] = bitflag(k-1)
 	end
