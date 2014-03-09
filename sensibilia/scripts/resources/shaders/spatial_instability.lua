@@ -123,22 +123,25 @@ void main()
 	
 	* (1+(tan(used_time/5000000*(1-multiplier))*0.07*multiplier)));
 	
-	pixel = mix(vec4(0.7) * (vec4(-0.2) + pixel), vec4(2.5) * (vec4(0.1) + pixel), 
-	light_factor
-	
-	); 
+
 	
 	
 	//float avg_pixel = (pixel.r + pixel.g + pixel.b) / 3;
 	
 	vec4 desat = desaturated(pixel);
 	vec4 final_pixel = mix(pixel, desat, 0.7+sin(used_time/280)*0.3);
-	final_pixel = mix(final_pixel, vec4(vec3(153*sin(used_time), 85*cos(used_time), 187*tan(used_time))/255.0, 1.0), (enemy_intensity + player_intensity)*(intensities[0] + intensities[1] + intensities[2]));
+		
 	
+	
+	final_pixel = mix(final_pixel, vec4(vec3(153*sin(used_time), 85*cos(used_time), 187*tan(used_time))/255.0, 1.0), (enemy_intensity + player_intensity)*(intensities[0] + intensities[1] + intensities[2]));
+	final_pixel = mix(vec4(0.7) * (vec4(-0.2) + final_pixel), vec4(2.5) * (vec4(0.1) + final_pixel), 
+	light_factor
+	
+	); 
 	
 	outputColor = final_pixel;
-	
-	
+	//outputColor = pixel;
+	outputColor.a = 1 - player_intensity * enemy_intensity;
 	
 	//{
 	//	vec2 res = vec2(1920, 1080);

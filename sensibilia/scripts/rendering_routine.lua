@@ -30,9 +30,10 @@ is_instability_ray_over_postprocessing = true
 random_instability_ray_layer_order = coroutine.wrap(
 	function()
 		while true do
-			coroutine.wait(randval(50, 100), nil, false)
-			
-			--is_instability_ray_over_postprocessing = true
+			coroutine.wait(randval(1000, 7000), nil, false)
+			is_instability_ray_over_postprocessing = false
+			coroutine.wait(randval(100, 600), nil, true)
+			is_instability_ray_over_postprocessing = true
 		end
 	end
 )
@@ -114,11 +115,11 @@ function rendering_routine(subject,
 				
 			random_time_speed_variation_coroutine()
 			random_instability_variation_coroutine()
-			random_instability_ray_layer_order()
+			random_instability_ray_layer_order(1 + instability*5)
 			
 			if instability > 1 then instability = 1 end
 			
-			is_instability_ray_over_postprocessing = not (instability > 0.85)
+			--is_instability_ray_over_postprocessing = true--not (instability > 0.85)
 			
 			local prev_instability = instability
 			instability = instability + temporary_instability
