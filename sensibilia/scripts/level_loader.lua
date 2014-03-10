@@ -63,34 +63,12 @@ function reload_default_level_resources(
 		end
 	end
 	
-	
-	
 	loop_only_info = create_scriptable_info {
 		scripted_events = {
 			[scriptable_component.INTENT_MESSAGE] = main_input_routine,
 					
-			[scriptable_component.LOOP] = function(subject, is_substepping)
-	
-			
-			
-				-- rest of the basic loop
-			
-
-
-
-				
-
-
-				
-					
+			[scriptable_component.LOOP] = function(subject, is_substepping)			
 				handle_dying_instability_rays()
-				
-				
-				
-
-				
-				
-				
 				-- process entities
 				
 				local method_name = "loop"
@@ -147,10 +125,6 @@ function reload_default_level_resources(
 			available_scripts = loop_only_info
 		}	
 	}
-	
-	player.body:get().name = "player_body"
-	player.crosshair:get().name = "player_crosshair"
-	player.gun_entity:get().name = "player_gun"
 	
 							--player.body:get().physics.body:SetFixedRotation(false)
 							--player.body:get().physics.enable_angle_motor = true

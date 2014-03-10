@@ -351,5 +351,9 @@ function spawn_player(position)
 		instability = instability + message.amount / 4000
 	end
 	
+	new_group.body:get().name = "player_body"
+	new_group.crosshair:get().name = "player_crosshair"
+	new_group.gun_entity:get().name = "player_gun"
+	
 	return new_group
 end
