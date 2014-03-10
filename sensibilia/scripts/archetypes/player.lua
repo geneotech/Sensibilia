@@ -60,7 +60,11 @@ player_group_archetype = archetyped(character_group_archetype, {
 			
 			--custom_intents.INSTABILITY_RAY,
 			custom_intents.REALITY_CHECK,
-			custom_intents.SPEED_CHANGE
+			custom_intents.SPEED_CHANGE,
+			custom_intents.GRAVITY_CHANGE,
+			custom_intents.SHOW_CLOCK,
+			
+			intent_message.AIM
 		},
 		
 		scriptable = {
@@ -169,6 +173,39 @@ function player_class:intent_message(message)
 			player.body:get().movement.input_acceleration.x = 9000
 			get_self(player.body:get()).jumping.jump_force_multiplier = 1
 		end
+	elseif message.intent == custom_intents.SHOW_CLOCK then
+		showing_clock = message.state_flag
+		
+		if not showing_clock then
+			clock_alpha_animator = value_animator(1, 0, 1500)
+			clock_alpha_animator:set_logarithmic()
+		end	
+	elseif message.intent == intent_message.AIM then
+		if changing_gravity then
+			local added_angle = message.mouse_rel.y * 0.6
+		
+			target_gravity_rotation = target_gravity_rotation + added_angle
+			
+			for i=1, #global_entity_table do
+				if global_entity_table[i].character ~= nil then global_entity_table[i].parent_group.body:get().physics.target_angle = target_gravity_rotation end
+			end
+		end
+	elseif message.intent == custom_intents.GRAVITY_CHANGE then
+		changing_gravity = message.state_flag
+		
+		if message.state_flag then
+			player.crosshair:get().crosshair.sensitivity.y = 0
+			base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
+			target_gravity_rotation = player.body:get().physics.body:GetAngle() / 0.01745329251994329576923690768489
+		else
+			player.crosshair:get().crosshair.sensitivity = config_table.sensitivity
+			world_camera.camera.crosshair_follows_interpolant = false
+		end
+		
+		for i=1, #global_entity_table do
+			if global_entity_table[i].character ~= nil then global_entity_table[i].character:set_gravity_shift_state(changing_gravity) end
+		end
+		
 	elseif message.intent == custom_intents.SPEED_CHANGE then
 		physics_system.timestep_multiplier = physics_system.timestep_multiplier + message.wheel_amount/60.0 * 0.05
 		
