@@ -15,6 +15,7 @@ function reload_default_level_resources(
 	
 	-- 1 - max
 	instability = 0
+	player = nil
 	
 	base_gravity = vec2(0, 120)
 	gravity_angle_offset = 0
@@ -113,6 +114,7 @@ function reload_default_level_resources(
 				--player.gun_entity:get().gun.trigger_mode = gun_component.SHOOT
 				--physics_system.timestep_multiplier = 0.01
 				-- messages processed, clear tables
+				print (instability)
 				flush_message_tables()
 			end
 		}

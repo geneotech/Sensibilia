@@ -259,7 +259,6 @@ function player_class:loop()
 	loop_instability_gun_bullets(rgba(0, 255, 0, 255), self.all_player_bullets, instability, physics_system.timestep_multiplier, base_gravity)
 	
 	
-	
 	-- handle variable gravity
 	gravity_angle_offset = self.parent_group.body:get().physics.body:GetAngle() / 0.01745329251994329576923690768489
 	current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
@@ -279,8 +278,7 @@ function player_class:loop()
 	self.parent_group.crosshair:get().transform.current.rotation = -world_camera.camera.last_interpolant.rotation
 	
 	physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
-	
-	
+
 	
 	
 	
@@ -314,13 +312,8 @@ function player_class:loop()
 	self.delta_timer:reset()
 				
 	
-					
-
-	
 				
-				
-	
-	
+	-- handle clock gui
 	local clock_alpha = 1
 				
 	if not self.showing_clock then

@@ -139,8 +139,13 @@ function rendering_routine(subject,
 			--orthographic_projection(-visible_area.x*2, visible_area.x*2, visible_area.y*2, -visible_area.y*2, 0, 1):data()
 			)
 			
-			local crosshair_pos = player.crosshair:get().transform.current.pos
-			local player_pos = player.body:get().transform.current.pos
+			local crosshair_pos = vec2(0, 0)
+			local player_pos = vec2(0, 0)
+			
+			if player ~= nil then
+				crosshair_pos = player.crosshair:get().transform.current.pos
+				player_pos = player.body:get().transform.current.pos
+			end
 			
 			GL.glUniform2f(player_pos_uniform, crosshair_pos.x, crosshair_pos.y)
 			
@@ -178,35 +183,39 @@ function rendering_routine(subject,
 			
 			-- handle point lights and bounces
 			
-			local lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
-			local bounce_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE)
-			local bounce1_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE + 1)
-			
-			handle_point_light = function(poly_vector, ms_fade, target_fade, light_distance, used_attenuation)
-				local visibility_points = vector_to_table(poly_vector)
-			
-				local my_light_poly = simple_create_polygon(visibility_points)
-				map_uv_square(my_light_poly, images.blank)
-				set_polygon_color(my_light_poly, rgba(0, 0, 255, 255))
+			if player ~= nil then
+				local lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
+				local bounce_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE)
+				local bounce1_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE + 1)
 				
-				local attenuation_mult = 1
-			    
-				if light_distance ~= nil then
-					attenuation_mult = 1.0/(used_attenuation[1]+used_attenuation[2]*light_distance+used_attenuation[3]*light_distance*light_distance)
+				handle_point_light = function(poly_vector, ms_fade, target_fade, light_distance, used_attenuation)
+					local visibility_points = vector_to_table(poly_vector)
+				
+					local my_light_poly = simple_create_polygon(visibility_points)
+					map_uv_square(my_light_poly, images.blank)
+					set_polygon_color(my_light_poly, rgba(0, 0, 255, 255))
+					
+					local attenuation_mult = 1
+					
+					if light_distance ~= nil then
+						attenuation_mult = 1.0/(used_attenuation[1]+used_attenuation[2]*light_distance+used_attenuation[3]*light_distance*light_distance)
+					end
+					
+					local new_light_animator = value_animator(255*attenuation_mult, target_fade*attenuation_mult, ms_fade)
+					new_light_animator:set_quadratic()
+					
+					player_light_fader:add_trace(my_light_poly, new_light_animator)
 				end
-			    
-				local new_light_animator = value_animator(255*attenuation_mult, target_fade*attenuation_mult, ms_fade)
-				new_light_animator:set_quadratic()
 				
-				player_light_fader:add_trace(my_light_poly, new_light_animator)
+				handle_point_light(lighting_layer:get_polygon(1, player_pos, 0.01), 150, -0.1)
+				if bounce_number >= 0.0 then handle_point_light(bounce_layer:get_polygon(1, player_pos, 0.01), 550, 254, bounce_layer.offset:length(), { 32.81166, 0.03501, 0.0000000 } ) end 
+				if bounce_number > 1.5 then handle_point_light(bounce1_layer:get_polygon(1, player_pos, 0.01), 950, 254, bounce_layer.offset:length() + bounce1_layer.offset:length(), { 0, 0.020100, 0.000000000 } ) end
+				
+				player_light_fader:loop()
+				player_light_fader:generate_triangles(camera_draw_input)
 			end
 			
-			handle_point_light(lighting_layer:get_polygon(1, player_pos, 0.01), 150, -0.1)
-			if bounce_number >= 0.0 then handle_point_light(bounce_layer:get_polygon(1, player_pos, 0.01), 550, 254, bounce_layer.offset:length(), { 32.81166, 0.03501, 0.0000000 } ) end 
-			if bounce_number > 1.5 then handle_point_light(bounce1_layer:get_polygon(1, player_pos, 0.01), 950, 254, bounce_layer.offset:length() + bounce1_layer.offset:length(), { 0, 0.020100, 0.000000000 } ) end
-			
-			player_light_fader:loop()
-			player_light_fader:generate_triangles(camera_draw_input)
+
 			
 			renderer:call_triangles()
 			renderer:clear_triangles()
@@ -292,33 +301,32 @@ function rendering_routine(subject,
 			
 			fullscreen_pass(true)
 			
-			
-			lighting_layer.offset = vec2.random_on_circle(randval(1,59)*instability)
-			
 			instability = prev_instability
 			
-			local random_discontinuity_end = function(source_layer)
-				local randomized_num = 0
-			
-				local num_discontinuities = source_layer:get_num_discontinuities()
-				local random_offseted_position = vec2(0, 0)
+			if player ~= nil then
+				lighting_layer.offset = vec2.random_on_circle(randval(1,59)*instability)
 					
-				if num_discontinuities ~= 0 then
-					if num_discontinuities > 1 then
-						randomized_num = randval_i(0, source_layer:get_num_discontinuities()-1)
+				local random_discontinuity_end = function(source_layer)
+					local randomized_num = 0
+				
+					local num_discontinuities = source_layer:get_num_discontinuities()
+					local random_offseted_position = vec2(0, 0)
+						
+					if num_discontinuities ~= 0 then
+						if num_discontinuities > 1 then
+							randomized_num = randval_i(0, source_layer:get_num_discontinuities()-1)
+						end
+						
+						local random_discontinuity = source_layer:get_discontinuity(randomized_num)
+						
+						return random_discontinuity.points.second + (random_discontinuity.points.first - random_discontinuity.points.second):set_length(randval(1, 2))
 					end
 					
-					local random_discontinuity = source_layer:get_discontinuity(randomized_num)
-					
-					return random_discontinuity.points.second + (random_discontinuity.points.first - random_discontinuity.points.second):set_length(randval(1, 2))
+					return vec2(0, 0)
 				end
 				
-				return vec2(0, 0)
+				bounce_layer.offset = random_discontinuity_end(lighting_layer) - player_pos
+				bounce1_layer.offset = random_discontinuity_end(bounce_layer) - player_pos
 			end
-			
-			bounce_layer.offset = random_discontinuity_end(lighting_layer) - player_pos
-			bounce1_layer.offset = random_discontinuity_end(bounce_layer) - player_pos
-			
-	
 end
 
