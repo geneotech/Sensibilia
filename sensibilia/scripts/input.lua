@@ -56,9 +56,6 @@ input_system:add_context(main_context)
 
 bounce_number = 2
 
-showing_clock = false
-clock_alpha_multiplier = 1
-clock_alpha_animator = value_animator(0, 0, 1)
 
 function main_input_routine(message)
 	if message.intent == custom_intents.QUIT then

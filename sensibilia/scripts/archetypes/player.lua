@@ -146,7 +146,16 @@ function player_class:constructor(parent_group)
 	self.is_reality_checking = false
 	self.all_player_bullets = entity_ptr_vector()
 	
+
+	self.showing_clock = false
+	self.clock_alpha_animator = value_animator(0, 0, 1)
+	
 	self.timestep_corrector = value_animator(physics_system.timestep_multiplier, 1, 3500)
+	
+	
+	self.main_gui_clock = spawn_clock(vec2(0,0), { }, images.blue_clock )
+	self.gui_clock_self = get_self(self.main_gui_clock.body:get())
+	self.gui_clock_self.clock_renderer.randomized_hands_values = false
 end
 
 function is_player_raycasting()
@@ -174,11 +183,11 @@ function player_class:intent_message(message)
 			get_self(player.body:get()).jumping.jump_force_multiplier = 1
 		end
 	elseif message.intent == custom_intents.SHOW_CLOCK then
-		showing_clock = message.state_flag
+		self.showing_clock = message.state_flag
 		
 		if not showing_clock then
-			clock_alpha_animator = value_animator(1, 0, 1500)
-			clock_alpha_animator:set_logarithmic()
+			self.clock_alpha_animator = value_animator(1, 0, 1500)
+			self.clock_alpha_animator:set_logarithmic()
 		end	
 	elseif message.intent == intent_message.AIM then
 		if changing_gravity then
@@ -230,6 +239,19 @@ function player_class:loop()
 	gun_info.shake_radius = 5+20*instability
 		
 	loop_instability_gun_bullets(rgba(0, 255, 0, 255), self.all_player_bullets, instability, physics_system.timestep_multiplier, base_gravity)
+	
+	
+	
+	local clock_alpha = 1
+				
+	if not self.showing_clock then
+		clock_alpha = self.clock_alpha_animator:get_animated()
+		--clock_alpha = prev_instability*prev_instability*prev_instability*prev_instability*prev_instability*prev_instability
+	end
+	--print(showing_clock, clock_alpha)
+	self.gui_clock_self.clock_renderer.clock_center = vec2(world_camera.transform.previous.pos)
+	self.gui_clock_self.clock_renderer.clock_alpha = clock_alpha
+				
 end
 
 function player_class:substep()

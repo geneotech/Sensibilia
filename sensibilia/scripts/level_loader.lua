@@ -68,9 +68,6 @@ function reload_default_level_resources(
 	
 	main_delta_timer = timer()
 	
-	main_gui_clock = spawn_clock(vec2(0,0), { }, images.blue_clock )
-	gui_clock_self = get_self(main_gui_clock.body:get())
-	gui_clock_self.clock_renderer.randomized_hands_values = false
 	
 	loop_only_info = create_scriptable_info {
 		scripted_events = {
@@ -176,16 +173,7 @@ function reload_default_level_resources(
 				
 				
 				
-				local clock_alpha = 1
-				
-				if not showing_clock then
-					clock_alpha = clock_alpha_animator:get_animated()
-					--clock_alpha = prev_instability*prev_instability*prev_instability*prev_instability*prev_instability*prev_instability
-				end
-				--print(showing_clock, clock_alpha)
-				gui_clock_self.clock_renderer.clock_center = vec2(world_camera.transform.previous.pos)
-				gui_clock_self.clock_renderer.clock_alpha = clock_alpha
-				
+
 				
 				
 				
