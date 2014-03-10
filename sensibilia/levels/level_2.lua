@@ -1,4 +1,5 @@
 should_world_be_reloaded = false
+changing_gravity = false
 
 level_world = world_class:create()
 collectgarbage("collect")
