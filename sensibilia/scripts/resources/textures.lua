@@ -1,13 +1,3 @@
-
-	print (MAP_FILENAME)
-print (MAP_FILENAME)
-print (MAP_FILENAME)
-print (MAP_FILENAME)
-print (MAP_FILENAME)
-print (MAP_FILENAME)
-print (MAP_FILENAME)
-print (MAP_FILENAME)
-
 function create_textures(atl, entries)
 	for k,v in pairs(entries) do
 		entries[k] = texture("sensibilia\\resources\\" .. k, atl)
@@ -60,6 +50,14 @@ for k, filename in pairs(images) do
 	textures_by_name[filename] = true
 end
 	
+	
+new_font_file = font_file()
+new_font_file:open("sensibilia\\resources\\font.ttf", 120, "sensibilia")
+
+new_font_object = font_instance()
+new_font_object:build(new_font_file)
+new_font_object:add_to_atlas(my_atlas)	
+
 create_textures(my_atlas, textures_by_name)
 
 my_atlas:build()
