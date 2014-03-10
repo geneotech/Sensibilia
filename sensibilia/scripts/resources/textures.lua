@@ -1,3 +1,13 @@
+
+	print (MAP_FILENAME)
+print (MAP_FILENAME)
+print (MAP_FILENAME)
+print (MAP_FILENAME)
+print (MAP_FILENAME)
+print (MAP_FILENAME)
+print (MAP_FILENAME)
+print (MAP_FILENAME)
+
 function create_textures(atl, entries)
 	for k,v in pairs(entries) do
 		entries[k] = texture("sensibilia\\resources\\" .. k, atl)
@@ -21,15 +31,14 @@ end
 textures_by_name = {}
 
 -- concatenate essential textures with level textures
-local level_textures = tiled_map_loader.get_all_textures(CURRENT_LEVEL)
+local level_textures = tiled_map_loader.get_all_textures(MAP_FILENAME)
 print (table.inspect(level_textures))
 
 for filename, v in pairs(level_textures) do
 	textures_by_name[filename] = true
 end
 
--- prepare essential textures
-images = {
+DEFAULT_GAMEPLAY_TEXTURES = {
 	blank = "blank.png",
 	metal = "metal.jpg",
 	crosshair_map = "crosshair_map.png",
@@ -40,8 +49,11 @@ images = {
 	hand_1 = "hand_1.png",
 	hand_2 = "hand_2.png",
 	hand_3 = "hand_3.png"
-	--protagonist = "protagonist.png"
 }
+
+if GAMEPLAY_TEXTURES == nil then GAMEPLAY_TEXTURES = DEFAULT_GAMEPLAY_TEXTURES end
+-- prepare gameplay textures
+images = GAMEPLAY_TEXTURES
 
 for k, filename in pairs(images) do
 	print (filename)

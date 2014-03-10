@@ -1,10 +1,3 @@
-bullet_sprite = create_sprite {
-	image = images.blank,
-	size = vec2(60, 65)
-}
-
-random_player_bullet_models = {}
-random_enemy_bullet_models = {}
 
 function random_polygon(color, scalar)
 	local current_angle = 0
@@ -28,6 +21,8 @@ function random_polygon(color, scalar)
 	return new_bullet_poly
 end
 
+random_player_bullet_models = {}
+random_enemy_bullet_models = {}
 
 for i=1, 1000 do
 	table.insert(random_player_bullet_models, random_polygon(rgba(0, 255, 0, 29), 1))
@@ -81,7 +76,7 @@ instability_gun = {
 	bullet_body = {
 		filter = filter_bullets,
 		shape_type = physics_info.RECT,
-		rect_size = bullet_sprite.size,
+		rect_size = vec2(60, 60),
 		fixed_rotation = false,
 		density = 0.1,
 		air_resistance = 0,

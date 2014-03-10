@@ -61,3 +61,5 @@ loader_1.create_entities_from_map = function(filename)
 
 	return { polygons, rectangles }
 end
+
+example_map = loader_1.create_entities_from_map(MAP_FILENAME)
