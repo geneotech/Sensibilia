@@ -1,4 +1,4 @@
 return {
-	PLAYER_START = true,
-	ENEMY_START = true
+	--PLAYER_START = true,
+	--ENEMY_START = true
 }

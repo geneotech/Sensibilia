@@ -424,39 +424,6 @@ return {
         },
         {
           name = "",
-          type = "ENEMY_START",
-          shape = "rectangle",
-          x = 1664,
-          y = 1280,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "ENEMY_START",
-          shape = "rectangle",
-          x = 2080,
-          y = 416,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
-          type = "ENEMY_START",
-          shape = "rectangle",
-          x = 2809,
-          y = 916,
-          width = 0,
-          height = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          name = "",
           type = "",
           shape = "rectangle",
           x = 1952,
@@ -1561,6 +1528,81 @@ return {
             ["min_size"] = "0.2",
             ["randomized_pos"] = "1"
           }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "enemies",
+      visible = true,
+      opacity = 1,
+      properties = {},
+      objects = {
+        {
+          name = "",
+          type = "SHOOTER_START",
+          shape = "rectangle",
+          x = 1664,
+          y = 1280,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "SHOOTER_START",
+          shape = "rectangle",
+          x = 2080,
+          y = 416,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "SHOOTER_START",
+          shape = "rectangle",
+          x = 2809,
+          y = 916,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "PUSHER_START",
+          shape = "rectangle",
+          x = 3424,
+          y = 3072,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "PUSHER_START",
+          shape = "rectangle",
+          x = 4480,
+          y = 2656,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "PUSHER_START",
+          shape = "rectangle",
+          x = 5120,
+          y = 3360,
+          width = 0,
+          height = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

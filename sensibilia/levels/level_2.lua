@@ -9,7 +9,7 @@ level_world.loop = function(self)
 	if instability > 0.1 then
 		call_once_after_loop = function()
 			collectgarbage("collect")
-			dofile "sensibilia\\levels\\level_2.lua"
+			dofile "sensibilia\\levels\\level_1.lua"
 			collectgarbage("collect")
 		end
 	end
@@ -18,4 +18,4 @@ level_world.loop = function(self)
 end
 
 level_world:set_current()
-reload_default_level_resources("map_1", "loader.lua", nil)
+reload_default_level_resources("map_2", "loader.lua", nil)

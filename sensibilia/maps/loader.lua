@@ -3,7 +3,7 @@ loader_1.create_entities_from_map = function(filename)
 	local objects, types = tiled_map_loader.get_all_objects_by_type(filename)
 	local polygons, rectangles = {}, {}
 	
-	for k, v in ipairs(table.concatenate { 	objects["my_type_1"], objects["my_type_2"], objects["default_type"] }) do
+	for k, v in ipairs(table.concatenate { 	objects["default_type"] }) do
 		local new_object_group = spawn_wayward (v.pos, tiled_map_loader.basic_entity_table(v, types[v], polygons, rectangles), 500)
 	end
 	
@@ -35,30 +35,22 @@ loader_1.create_entities_from_map = function(filename)
 		new_clock_self.clock_renderer.logarithmic_blinks = randomized_vals
 	end
 
-	_my_npc =  spawn_shooter(world_information["ENEMY_START"][1].pos)
-	_my_npc2 = spawn_shooter(world_information["ENEMY_START"][2].pos)
-	_my_npc3 = spawn_shooter(world_information["ENEMY_START"][3].pos)
+	for k, v in ipairs(objects["SHOOTER_START"]) do
+		spawn_shooter(v.pos)
+	end
 	
-	spawn_shooter(world_information["ENEMY_START"][1].pos)
-	spawn_shooter(world_information["ENEMY_START"][2].pos)
-	spawn_shooter(world_information["ENEMY_START"][3].pos)
+	for k, v in ipairs(objects["PUSHER_START"]) do
+		spawn_pusher(v.pos)
+	end
 	
-	my_npc = spawn_pusher(world_information["ENEMY_START"][1].pos)
-	my_npc2 = spawn_pusher(world_information["ENEMY_START"][2].pos)
-	my_npc3 = spawn_pusher(world_information["ENEMY_START"][3].pos)
-	
-	spawn_pusher(world_information["ENEMY_START"][1].pos)
-	spawn_pusher(world_information["ENEMY_START"][2].pos)
-	spawn_pusher(world_information["ENEMY_START"][3].pos)
-	
-	
-	player = spawn_player(world_information["PLAYER_START"][1].pos)
+	player = spawn_player(objects["PLAYER_START"][1].pos)
 	
 	--get_self(player.body:get()):set_foot_sensor_from_circle(60, 6)
 	world_camera.chase:set_target(player.body:get())
 	world_camera.camera.player:set(player.body:get())
 	world_camera.camera.crosshair:set(player.crosshair:get())
-
+	world_camera.transform.pos = objects["PLAYER_START"][1].pos
+	
 	return { polygons, rectangles }
 end
 
