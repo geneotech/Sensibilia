@@ -80,19 +80,7 @@ function reload_default_level_resources(
 
 				
 
-				
-				local should_return = false
-				if instability < 0 then 
-					if is_substepping and get_self(player.body:get()).is_reality_checking then
-						-- all wayward objects try to reach their initial position
-						should_return = true
-					end
-					
-					instability = 0 
-				end
-				
-				process_all_entity_modules("waywardness", "return_to_initial_transform", should_return)
-				
+
 				
 					
 				handle_dying_instability_rays()

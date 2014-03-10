@@ -233,6 +233,22 @@ function player_class:intent_message(message)
 	end
 end
 
+function player_class:substep()
+	local should_return = false
+	
+	if instability < 0 then 
+		if self.is_reality_checking then
+			-- all wayward objects try to reach their initial position
+			should_return = true
+		end
+		
+		instability = 0 
+	end
+	
+	process_all_entity_modules("waywardness", "return_to_initial_transform", should_return)
+	print(should_return)
+end
+
 function player_class:loop()
 	physics_system.timestep_multiplier = self.timestep_corrector:get_animated()
 	
@@ -297,6 +313,11 @@ function player_class:loop()
 	
 	self.delta_timer:reset()
 				
+	
+					
+
+	
+				
 				
 	
 	
@@ -310,9 +331,6 @@ function player_class:loop()
 	self.gui_clock_self.clock_renderer.clock_center = vec2(world_camera.transform.previous.pos)
 	self.gui_clock_self.clock_renderer.clock_alpha = clock_alpha
 				
-end
-
-function player_class:substep()
 end
 
 function spawn_player(position)
