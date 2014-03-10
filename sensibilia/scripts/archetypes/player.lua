@@ -156,12 +156,14 @@ function player_class:constructor(parent_group)
 	self.main_gui_clock = spawn_clock(vec2(0,0), { }, images.blue_clock )
 	self.gui_clock_self = get_self(self.main_gui_clock.body:get())
 	self.gui_clock_self.clock_renderer.randomized_hands_values = false
+
+	self.changing_gravity = false
+	self.delta_timer = timer()
 end
 
-function is_player_raycasting()
-	return player.gun_entity:get().gun.trigger_mode == gun_component.SHOOT
+function player_class:is_shooting()
+	return self.parent_group.gun_entity:get().gun.trigger_mode == gun_component.SHOOT
 end
-
 
 function player_class:intent_message(message)
 	--print "handling intent"
@@ -190,7 +192,7 @@ function player_class:intent_message(message)
 			self.clock_alpha_animator:set_logarithmic()
 		end	
 	elseif message.intent == intent_message.AIM then
-		if changing_gravity then
+		if self.changing_gravity then
 			local added_angle = message.mouse_rel.y * 0.6
 		
 			target_gravity_rotation = target_gravity_rotation + added_angle
@@ -200,7 +202,7 @@ function player_class:intent_message(message)
 			end
 		end
 	elseif message.intent == custom_intents.GRAVITY_CHANGE then
-		changing_gravity = message.state_flag
+		self.changing_gravity = message.state_flag
 		
 		if message.state_flag then
 			self.parent_group.crosshair:get().crosshair.sensitivity.y = 0
@@ -212,7 +214,7 @@ function player_class:intent_message(message)
 		end
 		
 		for i=1, #global_entity_table do
-			if global_entity_table[i].character ~= nil then global_entity_table[i].character:set_gravity_shift_state(changing_gravity) end
+			if global_entity_table[i].character ~= nil then global_entity_table[i].character:set_gravity_shift_state(self.changing_gravity) end
 		end
 		
 	elseif message.intent == custom_intents.SPEED_CHANGE then
@@ -262,6 +264,38 @@ function player_class:loop()
 	
 	physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
 	
+	
+	
+	
+	
+	-- handle increasing/decreasing instability
+	
+	if self.changing_gravity then
+		instability = instability + (self.delta_timer:get_seconds()/3)
+	end
+	
+	if self:is_shooting() then
+		instability = instability + self.delta_timer:get_milliseconds()/10000
+	end
+	
+	if self.jumping.is_currently_post_jetpacking then
+		instability = instability + self.delta_timer:get_milliseconds()/3000
+	end
+	
+	instability = instability + (1-physics_system.timestep_multiplier) * self.delta_timer:get_milliseconds()/16000
+	
+	if not self:is_shooting() and not self.changing_gravity and not 
+	self.jumping.is_currently_post_jetpacking and math.abs(physics_system.timestep_multiplier-1) < 0.1
+	
+	then
+		local decrease_amount = (self.delta_timer:get_seconds() / 10)
+		
+		if get_self(player.body:get()).is_reality_checking then decrease_amount = decrease_amount * 3 end
+		
+		instability = instability - decrease_amount
+	end
+	
+	self.delta_timer:reset()
 				
 				
 	

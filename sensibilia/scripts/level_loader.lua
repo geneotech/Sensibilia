@@ -19,7 +19,6 @@ function reload_default_level_resources(
 	base_gravity = vec2(0, 120)
 	gravity_angle_offset = 0
 	target_gravity_rotation = 0
-	changing_gravity = false
 	
 	current_gravity = vec2(0, 120)
 	
@@ -64,7 +63,6 @@ function reload_default_level_resources(
 		end
 	end
 	
-	main_delta_timer = timer()
 	
 	
 	loop_only_info = create_scriptable_info {
@@ -77,38 +75,11 @@ function reload_default_level_resources(
 			
 				-- rest of the basic loop
 			
-				local player_self = get_self(player.body:get())
-			
 
 
 
 				
-				if changing_gravity then
-					instability = instability + (main_delta_timer:get_seconds()/3)
-				end
-				
-				if is_player_raycasting() then
-					instability = instability + main_delta_timer:get_milliseconds()/10000
-				end
-				
-				if player_self.jumping.is_currently_post_jetpacking then
-					instability = instability + main_delta_timer:get_milliseconds()/3000
-				end
-				
-				instability = instability + (1-physics_system.timestep_multiplier) * main_delta_timer:get_milliseconds()/16000
-				
-				if not is_player_raycasting() and not changing_gravity and not 
-				player_self.jumping.is_currently_post_jetpacking and math.abs(physics_system.timestep_multiplier-1) < 0.1
-				
-				then
-					local decrease_amount = (main_delta_timer:get_seconds() / 10)
-					
-					if get_self(player.body:get()).is_reality_checking then decrease_amount = decrease_amount * 3 end
-					
-					instability = instability - decrease_amount
-				end
-				
-				main_delta_timer:reset()
+
 				
 				local should_return = false
 				if instability < 0 then 
