@@ -111,11 +111,3 @@ function spawn_pusher(position)
 	
 	return new_group
 end
-
-my_npc = spawn_pusher(world_information["ENEMY_START"][1].pos)
-my_npc2 = spawn_pusher(world_information["ENEMY_START"][2].pos)
-my_npc3 = spawn_pusher(world_information["ENEMY_START"][3].pos)
-
-spawn_pusher(world_information["ENEMY_START"][1].pos)
- spawn_pusher(world_information["ENEMY_START"][2].pos)
- spawn_pusher(world_information["ENEMY_START"][3].pos)

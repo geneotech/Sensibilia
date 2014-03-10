@@ -34,6 +34,30 @@ loader_1.create_entities_from_map = function(filename)
 		new_clock_self.clock_renderer.rotate_body = randomized_vals
 		new_clock_self.clock_renderer.logarithmic_blinks = randomized_vals
 	end
+
+	_my_npc =  spawn_shooter(world_information["ENEMY_START"][1].pos)
+	_my_npc2 = spawn_shooter(world_information["ENEMY_START"][2].pos)
+	_my_npc3 = spawn_shooter(world_information["ENEMY_START"][3].pos)
 	
+	spawn_shooter(world_information["ENEMY_START"][1].pos)
+	spawn_shooter(world_information["ENEMY_START"][2].pos)
+	spawn_shooter(world_information["ENEMY_START"][3].pos)
+	
+	my_npc = spawn_pusher(world_information["ENEMY_START"][1].pos)
+	my_npc2 = spawn_pusher(world_information["ENEMY_START"][2].pos)
+	my_npc3 = spawn_pusher(world_information["ENEMY_START"][3].pos)
+	
+	spawn_pusher(world_information["ENEMY_START"][1].pos)
+	spawn_pusher(world_information["ENEMY_START"][2].pos)
+	spawn_pusher(world_information["ENEMY_START"][3].pos)
+	
+	
+	player = spawn_player(world_information["PLAYER_START"][1].pos)
+	
+	--get_self(player.body:get()):set_foot_sensor_from_circle(60, 6)
+	world_camera.chase:set_target(player.body:get())
+	world_camera.camera.player:set(player.body:get())
+	world_camera.camera.crosshair:set(player.crosshair:get())
+
 	return { polygons, rectangles }
 end

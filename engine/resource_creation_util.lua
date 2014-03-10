@@ -124,7 +124,6 @@ function create_input_context(entries)
 	return my_input_context
 end
 
-polygon_particle_userdatas_saved = {}
 function create_particle(entries)
 	local my_particle = particle()
 	rewrite(my_particle, entries, { model = true })

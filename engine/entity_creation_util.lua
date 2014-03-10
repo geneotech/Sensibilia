@@ -143,8 +143,6 @@ function create_entity(entry)
 	return new_entity
 end
 
-group_by_entity = {}
-
 function flush_dead_entities_in_group_by_entity()
 	for k, v in pairs(group_by_entity) do
 		if not k:exists() then

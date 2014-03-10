@@ -218,10 +218,3 @@ function spawn_player(position)
 	
 	return new_group
 end
-
-player = spawn_player(world_information["PLAYER_START"][1].pos)
-
---get_self(player.body:get()):set_foot_sensor_from_circle(60, 6)
-world_camera.chase:set_target(player.body:get())
-world_camera.camera.player:set(player.body:get())
-world_camera.camera.crosshair:set(player.crosshair:get())
