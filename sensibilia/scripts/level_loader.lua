@@ -64,8 +64,6 @@ function reload_default_level_resources(
 		end
 	end
 	
-	base_crosshair_rotation = 0
-	
 	main_delta_timer = timer()
 	
 	

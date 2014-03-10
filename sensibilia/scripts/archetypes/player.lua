@@ -151,7 +151,7 @@ function player_class:constructor(parent_group)
 	self.clock_alpha_animator = value_animator(0, 0, 1)
 	
 	self.timestep_corrector = value_animator(physics_system.timestep_multiplier, 1, 3500)
-	
+	self.base_crosshair_rotation = 0
 	
 	self.main_gui_clock = spawn_clock(vec2(0,0), { }, images.blue_clock )
 	self.gui_clock_self = get_self(self.main_gui_clock.body:get())
@@ -168,19 +168,19 @@ function player_class:intent_message(message)
 	if message.intent == custom_intents.JUMP then
 		should_debug_draw = not message.state_flag
 		
-		--if message.state_flag then player.body:get().physics.body:ApplyLinearImpulse(b2Vec2(0, -50), player.body:get().physics.body:GetWorldCenter(), true) end
+		--if message.state_flag then self.parent_group.body:get().physics.body:ApplyLinearImpulse(b2Vec2(0, -50), self.parent_group.body:get().physics.body:GetWorldCenter(), true) end
 	
 		get_self(message.subject).jumping:jump(message.state_flag)
 		--get_self(message.subject):handle_jumping()
 	elseif message.intent == custom_intents.REALITY_CHECK then
 		if message.state_flag then
 			self.is_reality_checking = true
-			player.body:get().movement.input_acceleration.x = 1000
-			get_self(player.body:get()).jumping.jump_force_multiplier = 0.4
+			self.parent_group.body:get().movement.input_acceleration.x = 1000
+			self.jumping.jump_force_multiplier = 0.4
 		else
 			self.is_reality_checking = false
-			player.body:get().movement.input_acceleration.x = 9000
-			get_self(player.body:get()).jumping.jump_force_multiplier = 1
+			self.parent_group.body:get().movement.input_acceleration.x = 9000
+			self.jumping.jump_force_multiplier = 1
 		end
 	elseif message.intent == custom_intents.SHOW_CLOCK then
 		self.showing_clock = message.state_flag
@@ -203,11 +203,11 @@ function player_class:intent_message(message)
 		changing_gravity = message.state_flag
 		
 		if message.state_flag then
-			player.crosshair:get().crosshair.sensitivity.y = 0
-			base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
-			target_gravity_rotation = player.body:get().physics.body:GetAngle() / 0.01745329251994329576923690768489
+			self.parent_group.crosshair:get().crosshair.sensitivity.y = 0
+			self.base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
+			target_gravity_rotation = self.parent_group.body:get().physics.body:GetAngle() / 0.01745329251994329576923690768489
 		else
-			player.crosshair:get().crosshair.sensitivity = config_table.sensitivity
+			self.parent_group.crosshair:get().crosshair.sensitivity = config_table.sensitivity
 			world_camera.camera.crosshair_follows_interpolant = false
 		end
 		
@@ -234,7 +234,7 @@ end
 function player_class:loop()
 	physics_system.timestep_multiplier = self.timestep_corrector:get_animated()
 	
-	local gun_info = player.gun_entity:get().gun
+	local gun_info = self.parent_group.gun_entity:get().gun
 	gun_info.spread_degrees = 5 + 30 * instability
 	gun_info.shake_radius = 5+20*instability
 		
@@ -254,8 +254,8 @@ function player_class:loop()
 		end
 	end
 	
-	self.parent_group.crosshair:get().transform.current.pos:rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, self.parent_group.body:get().transform.current.pos)
-	base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
+	self.parent_group.crosshair:get().transform.current.pos:rotate(self.base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, self.parent_group.body:get().transform.current.pos)
+	self.base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
 	
 	self.parent_group.crosshair:get().crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
 	self.parent_group.crosshair:get().transform.current.rotation = -world_camera.camera.last_interpolant.rotation
