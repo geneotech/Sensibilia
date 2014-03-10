@@ -183,10 +183,14 @@ function rendering_routine(subject,
 			
 			-- handle point lights and bounces
 			
+			local lighting_layer; 
+			local bounce_layer;
+			local bounce1_layer; 
+			
 			if player ~= nil then
-				local lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
-				local bounce_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE)
-				local bounce1_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE + 1)
+				lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
+				bounce_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE)
+				bounce1_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE + 1)
 				
 				handle_point_light = function(poly_vector, ms_fade, target_fade, light_distance, used_attenuation)
 					local visibility_points = vector_to_table(poly_vector)
