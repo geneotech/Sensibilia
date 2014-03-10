@@ -60,7 +60,11 @@ player_group_archetype = archetyped(character_group_archetype, {
 			
 			--custom_intents.INSTABILITY_RAY,
 			custom_intents.REALITY_CHECK,
-			custom_intents.SPEED_CHANGE
+			custom_intents.SPEED_CHANGE,
+			intent_message.AIM,
+			custom_intents.ZOOM_OUT,
+			custom_intents.SHOW_CLOCK,
+			custom_intents.GRAVITY_CHANGE
 		},
 		
 		scriptable = {
@@ -140,9 +144,21 @@ function player_class:constructor(parent_group)
 	entity_class.constructor(self, parent_group)
 	
 	self.is_reality_checking = false
+	self.changing_gravity = false
 	self.all_player_bullets = entity_ptr_vector()
 	
+	
+	self.delta_timer = timer()
+	
 	self.timestep_corrector = value_animator(physics_system.timestep_multiplier, 1, 3500)
+	
+	self.base_crosshair_rotation = 0
+	self.main_gui_clock = spawn_clock(vec2(0,0), { }, images.blue_clock)
+	self.gui_clock_self = get_self(self.main_gui_clock.body:get())
+	self.gui_clock_self.clock_renderer.randomized_hands_values = false
+	
+	self.showing_clock = false
+	self.clock_alpha_animator = value_animator(0, 0, 1)
 end
 
 function is_player_raycasting()
@@ -159,15 +175,51 @@ function player_class:intent_message(message)
 	
 		get_self(message.subject).jumping:jump(message.state_flag)
 		--get_self(message.subject):handle_jumping()
+	
+	elseif message.intent == custom_intents.GRAVITY_CHANGE then
+		self.changing_gravity = message.state_flag
+		
+		if message.state_flag then
+			self.parent_group.crosshair:get().crosshair.sensitivity.y = 0
+			self.base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
+			target_gravity_rotation = self.parent_group.body:get().physics.body:GetAngle() / 0.01745329251994329576923690768489
+		else
+			self.parent_group.crosshair:get().crosshair.sensitivity = config_table.sensitivity
+			world_camera.camera.crosshair_follows_interpolant = false
+		end
+		
+		for i=1, #global_entity_table do
+			if global_entity_table[i].character ~= nil then global_entity_table[i].character:set_gravity_shift_state(changing_gravity) end
+		end
+		
+	elseif message.intent == intent_message.AIM then
+		if self.changing_gravity then
+			local added_angle = message.mouse_rel.y * 0.6
+		
+			target_gravity_rotation = target_gravity_rotation + added_angle
+			
+			for i=1, #global_entity_table do
+				if global_entity_table[i].character ~= nil then global_entity_table[i].parent_group.body:get().physics.target_angle = target_gravity_rotation end
+			end
+		end
+		
+	elseif message.intent == custom_intents.SHOW_CLOCK then
+		self.showing_clock = message.state_flag
+		
+		if not self.showing_clock then
+			self.clock_alpha_animator = value_animator(1, 0, 1500)
+			self.clock_alpha_animator:set_logarithmic()
+		end
+		
 	elseif message.intent == custom_intents.REALITY_CHECK then
 		if message.state_flag then
 			self.is_reality_checking = true
-			player.body:get().movement.input_acceleration.x = 1000
-			get_self(player.body:get()).jumping.jump_force_multiplier = 0.4
+			self.parent_group.body:get().movement.input_acceleration.x = 1000
+			self.jumping.jump_force_multiplier = 0.4
 		else
 			self.is_reality_checking = false
-			player.body:get().movement.input_acceleration.x = 9000
-			get_self(player.body:get()).jumping.jump_force_multiplier = 1
+			self.parent_group.body:get().movement.input_acceleration.x = 9000
+			self.jumping.jump_force_multiplier = 1
 		end
 	elseif message.intent == custom_intents.SPEED_CHANGE then
 		physics_system.timestep_multiplier = physics_system.timestep_multiplier + message.wheel_amount/60.0 * 0.05
@@ -188,11 +240,94 @@ end
 function player_class:loop()
 	physics_system.timestep_multiplier = self.timestep_corrector:get_animated()
 	
+	local body = player.body:get()
+	local crosshair = player.crosshair:get()
+	
 	local gun_info = player.gun_entity:get().gun
 	gun_info.spread_degrees = 5 + 30 * instability
 	gun_info.shake_radius = 5+20*instability
 		
 	loop_instability_gun_bullets(rgba(0, 255, 0, 255), self.all_player_bullets, instability, physics_system.timestep_multiplier, base_gravity)
+	
+	
+	-- handle variable gravity
+	gravity_angle_offset = body.physics.body:GetAngle() / 0.01745329251994329576923690768489
+	current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
+	
+	for i=1, #global_entity_table do
+		local maybe_movement = global_entity_table[i].parent_group.body:get().movement
+		
+		if maybe_movement ~= nil then
+			maybe_movement.axis_rotation_degrees = gravity_angle_offset
+		end
+	end
+	
+	crosshair.transform.current.pos:rotate(self.base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, body.transform.current.pos)
+	self.base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
+	
+	crosshair.crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
+	crosshair.transform.current.rotation = -world_camera.camera.last_interpolant.rotation
+	
+	physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
+
+	
+	
+	-- handle instability increasing/decreasing
+	if self.changing_gravity then
+		instability = instability + (self.delta_timer:get_seconds()/3)
+	end
+	
+	if is_player_raycasting() then
+		instability = instability + self.delta_timer:get_milliseconds()/10000
+	end
+	
+	if self.jumping.is_currently_post_jetpacking then
+		instability = instability + self.delta_timer:get_milliseconds()/3000
+	end
+	
+	instability = instability + (1-physics_system.timestep_multiplier) * self.delta_timer:get_milliseconds()/16000
+	
+	if not is_player_raycasting() and not changing_gravity and not 
+	self.jumping.is_currently_post_jetpacking and math.abs(physics_system.timestep_multiplier-1) < 0.1
+	
+	then
+		local decrease_amount = (self.delta_timer:get_seconds() / 10)
+		
+		if self.is_reality_checking then decrease_amount = decrease_amount * 3 end
+		
+		instability = instability - decrease_amount
+	end
+	
+	
+	-- handle wayward objects returning to place
+	local should_return = false
+	if instability < 0 then 
+		if is_substepping and self.is_reality_checking then
+			-- all wayward objects try to reach their initial position
+			should_return = true
+		end
+		
+		instability = 0 
+	end
+	
+	process_all_entity_modules("waywardness", "return_to_initial_transform", should_return)
+	
+
+	
+	-- handle clock gui
+	local clock_alpha = 1
+	
+	if not showing_clock then
+		clock_alpha = self.clock_alpha_animator:get_animated()
+		--clock_alpha = prev_instability*prev_instability*prev_instability*prev_instability*prev_instability*prev_instability
+	end
+	--print(showing_clock, clock_alpha)
+	self.gui_clock_self.clock_renderer.clock_center = vec2(world_camera.transform.previous.pos)
+	self.gui_clock_self.clock_renderer.clock_alpha = clock_alpha
+	
+	-- reset delta
+	self.delta_timer:reset()
+				
 end
 
 function player_class:substep()
@@ -215,6 +350,21 @@ function spawn_player(position)
 	this.character.damage_message = function(self, message)
 		instability = instability + message.amount / 4000
 	end
+	
+	
+		--get_self(player.body:get()):set_foot_sensor_from_circle(60, 6)
+		world_camera.chase:set_target(new_group.body:get())
+		world_camera.camera.player:set(new_group.body:get())
+		world_camera.camera.crosshair:set(new_group.crosshair:get())
+		
+		
+		new_group.body:get().name = "player_body"
+		new_group.crosshair:get().name = "player_crosshair"
+		new_group.gun_entity:get().name = "player_gun"
+		
+		--player.body:get().physics.body:SetFixedRotation(false)
+		--player.body:get().physics.enable_angle_motor = true
+		--player.body:get().physics.target_angle = 90
 	
 	return new_group
 end
