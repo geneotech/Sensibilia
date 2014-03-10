@@ -242,6 +242,30 @@ function player_class:loop()
 	
 	
 	
+	-- handle variable gravity
+	gravity_angle_offset = self.parent_group.body:get().physics.body:GetAngle() / 0.01745329251994329576923690768489
+	current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
+	
+	for i=1, #global_entity_table do
+		local maybe_movement = global_entity_table[i].parent_group.body:get().movement
+		
+		if maybe_movement ~= nil then
+			maybe_movement.axis_rotation_degrees = gravity_angle_offset
+		end
+	end
+	
+	self.parent_group.crosshair:get().transform.current.pos:rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, self.parent_group.body:get().transform.current.pos)
+	base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
+	
+	self.parent_group.crosshair:get().crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
+	self.parent_group.crosshair:get().transform.current.rotation = -world_camera.camera.last_interpolant.rotation
+	
+	physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
+	
+				
+				
+	
+	
 	local clock_alpha = 1
 				
 	if not self.showing_clock then

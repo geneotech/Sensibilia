@@ -81,52 +81,9 @@ function reload_default_level_resources(
 			
 				local player_self = get_self(player.body:get())
 			
-				gravity_angle_offset = player.body:get().physics.body:GetAngle() / 0.01745329251994329576923690768489
-				current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
-				
-				for i=1, #global_entity_table do
-					local maybe_movement = global_entity_table[i].parent_group.body:get().movement
-					
-					if maybe_movement ~= nil then
-						maybe_movement.axis_rotation_degrees = gravity_angle_offset
-					end
-				end
-				
-				player.crosshair:get().transform.current.pos:rotate(base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player.body:get().transform.current.pos)
-				base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
-				
-				player.crosshair:get().crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
-				player.crosshair:get().transform.current.rotation = -world_camera.camera.last_interpolant.rotation
-				
-				physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
-				
-				local vel = player.body:get().physics.body:GetLinearVelocity()
-				
-				local f = 1
-				
-				local sensor = vec2(player_self.jumping.foot_sensor_p1)
-				if player.body:get().transform.current.pos.x > 1000/50 then 
-					f = -f 
-					sensor = player_self.jumping.foot_sensor_p1
-				else
-					sensor.x = player_self.jumping.foot_sensor_p2.x
-				end
-				
-				--should_debug_draw = get_self(player.body:get()).something_under_foot
-				if should_debug_draw then render_system:clear_non_cleared_lines() end
-				
-				--can_point_be_reached_by_jump(base_gravity, self.entity.movement.input_acceleration/50, self.entity.movement.air_resistance, 
-				--vec2(1000, 1000)/50, player.body:get().transform.current.pos/50 + sensor/50, vec2(vel.x, vel.y), 
-				--self.jump_impulse, self.jetpack_impulse, self.max_jetpack_steps, player.body:get().physics.body:GetMass())	
-				
-				--render_system:push_line(debug_line(
-				--	player.body:get().transform.current.pos + sensor, 
-				--	player.body:get().transform.current.pos  + sensor + vec2(0, -self.jump_height) , rgba(255, 0, 0, 255)))
-				
-				--if not should_debug_draw then 
-				--	render_system:push_non_cleared_line(debug_line(player.body:get().transform.current.pos+ sensor , 
-				--	player.body:get().transform.current.pos + sensor + vec2(0, 10), rgba(255, 0, 0, 255)))
-				--end
+
+
+
 				
 				if changing_gravity then
 					instability = instability + (main_delta_timer:get_seconds()/3)
@@ -153,6 +110,7 @@ function reload_default_level_resources(
 					instability = instability - decrease_amount
 				end
 				
+				main_delta_timer:reset()
 				
 				local should_return = false
 				if instability < 0 then 
@@ -167,7 +125,6 @@ function reload_default_level_resources(
 				process_all_entity_modules("waywardness", "return_to_initial_transform", should_return)
 				
 				
-				main_delta_timer:reset()
 					
 				handle_dying_instability_rays()
 				
