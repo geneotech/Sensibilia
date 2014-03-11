@@ -40,7 +40,7 @@ level_resources.rendered_crosshair_entity = crosshair_group.crosshair
 world_camera.chase:set_target(crosshair_group.body)
 world_camera.camera.player:set(crosshair_group.body)
 world_camera.camera.crosshair:set(crosshair_group.crosshair)
-world_camera.camera.max_look_expand = vec2(0, 0)
+world_camera.camera.max_look_expand = vec2(40, 40)
 
 input_system:clear_contexts()
 input_system:add_context(gui_context)
@@ -54,7 +54,7 @@ menu_button_archetype = {
 	in_max_interval = 120, 
 	out_min_interval = 2000, 
 	out_max_interval = 7000,
-	text_size_mult = 0.8,
+	text_size_mult = 0.5,
 	callbacks = {},
 	text_pos = vec2(0, 0),
 	
@@ -68,9 +68,23 @@ menu_button_archetype = {
 }
 
 menu_buttons = {
+	text_button:create(archetyped(menu_button_archetype, { text_size_mult = 1, text_pos = vec2(0, -config_table.resolution_h/2+100), animated_text_input = { str = "sensibilia" } } )), 
+	
 	text_button:create(archetyped(menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+430), animated_text_input = { str = "new_game" } } )), 
 	text_button:create(archetyped(menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+630), animated_text_input = { str = "options" } } )), 
-	text_button:create(archetyped(menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+830), animated_text_input = { str = "quit" } } )) 
+	
+	
+	
+	text_button:create(archetyped(menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+830), 
+	
+	callbacks = {
+	
+		mouseclick = function() 
+			input_system.quit_flag = 1
+		end
+	},
+	
+	animated_text_input = { str = "quit" } } )) 
 }
 
 level_resources.main_input_callback = function(message)
