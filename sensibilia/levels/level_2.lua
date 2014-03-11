@@ -5,10 +5,10 @@ collectgarbage("collect")
 level_world.loop = function(self)
 	self:process_all_systems()
 	
-	if instability > 0.1 then
+	if should_world_be_reloaded then
 		call_once_after_loop = function()
 			collectgarbage("collect")
-			dofile "sensibilia\\levels\\level_1.lua"
+			dofile "sensibilia\\levels\\level_2.lua"
 			collectgarbage("collect")
 		end
 	end

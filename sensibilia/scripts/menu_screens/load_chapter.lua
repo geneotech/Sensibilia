@@ -9,10 +9,28 @@ menu.load_chapter_screen.buttons = {
 	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -330-config_table.resolution_h/2+430+120*0), text_size_mult = 0.2, animated_text_input = { 
 			str = "prelude" 
 	} } )), 
-	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -330-config_table.resolution_h/2+430+120*1-30), animated_text_input = { str = "homecoming" } } )), 
+	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -330-config_table.resolution_h/2+430+120*1-30), 
+		callbacks = {
+			mouseclick = function() 
+				call_once_after_loop = function()
+					dofile "sensibilia\\levels\\level_1.lua"
+				end
+			end
+		},
+	
+	animated_text_input = { str = "homecoming" } } )), 
 	
 	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -330-config_table.resolution_h/2+430+120*2), text_size_mult = 0.2, animated_text_input = { str = "interval first" } } )), 
-	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -330-config_table.resolution_h/2+430+120*3-30), animated_text_input = { str = "in crisis" } } )), 
+	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -330-config_table.resolution_h/2+430+120*3-30), 
+		callbacks = {
+			mouseclick = function() 
+				call_once_after_loop = function()
+					dofile "sensibilia\\levels\\level_2.lua"
+				end
+			end
+		},
+	
+	animated_text_input = { str = "in crisis" } } )), 
 	
 	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -330-config_table.resolution_h/2+430+120*4), text_size_mult = 0.2, animated_text_input = { str = "interval second" } } )), 
 	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -330-config_table.resolution_h/2+430+120*5-30), animated_text_input = { str = "immersion" } } )), 
