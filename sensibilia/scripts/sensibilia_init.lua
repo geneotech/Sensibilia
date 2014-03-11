@@ -8,7 +8,8 @@ end
 level_world:set_current()
 reload_default_level_resources("menu_map", "loader.lua", nil)
 
-level_resources.crosshair_group = create_entity_group {
+local menu = level_resources
+menu.crosshair_group = create_entity_group {
 	body = {
 		transform = { pos = vec2(0, 0) }
 	},
@@ -35,17 +36,17 @@ level_resources.crosshair_group = create_entity_group {
 	}
 }
 
-level_resources.rendered_crosshair_entity = level_resources.crosshair_group.crosshair
+menu.rendered_crosshair_entity = menu.crosshair_group.crosshair
 
-world_camera.chase:set_target(level_resources.crosshair_group.body)
-world_camera.camera.player:set(level_resources.crosshair_group.body)
-world_camera.camera.crosshair:set(level_resources.crosshair_group.crosshair)
+world_camera.chase:set_target(menu.crosshair_group.body)
+world_camera.camera.player:set(menu.crosshair_group.body)
+world_camera.camera.crosshair:set(menu.crosshair_group.crosshair)
 world_camera.camera.max_look_expand = vec2(40, 40)
 
 input_system:clear_contexts()
 input_system:add_context(gui_context)
 
-level_resources.menu_button_archetype = { 
+menu.menu_button_archetype = { 
 	bbox_callback = function(bbox, entry) 
 		entry.text_pos.x = entry.text_pos.x - bbox.x/2 
 	end,
@@ -67,16 +68,16 @@ level_resources.menu_button_archetype = {
 	}
 }
 
-level_resources.menu_buttons = {
-	text_button:create(archetyped(level_resources.menu_button_archetype, { text_size_mult = 1, text_pos = vec2(0, -config_table.resolution_h/2+100), animated_text_input = { str = "sensibilia" } } )), 
+menu.menu_buttons = {
+	text_button:create(archetyped(menu.menu_button_archetype, { text_size_mult = 1, text_pos = vec2(0, -config_table.resolution_h/2+100), animated_text_input = { str = "sensibilia" } } )), 
 	
-	text_button:create(archetyped(level_resources.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+430), animated_text_input = { str = "new_game" } } )), 
-	text_button:create(archetyped(level_resources.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+580), animated_text_input = { str = "load chapter" } } )), 
-	text_button:create(archetyped(level_resources.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+730), animated_text_input = { str = "options" } } )), 
+	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+430), animated_text_input = { str = "new_game" } } )), 
+	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+580), animated_text_input = { str = "load chapter" } } )), 
+	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+730), animated_text_input = { str = "options" } } )), 
 	
 	
 	
-	text_button:create(archetyped(level_resources.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+880), 
+	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+880), 
 	
 	callbacks = {
 	
@@ -88,43 +89,23 @@ level_resources.menu_buttons = {
 	animated_text_input = { str = "quit" } } )) 
 }
 
-level_resources.main_input_callback = function(message)
-	for i=1, #level_resources.menu_buttons do
-		level_resources.menu_buttons[i]:handle_events(message, level_resources.crosshair_group.crosshair.transform.current.pos)
+menu.main_input_callback = function(message)
+	for i=1, #menu.menu_buttons do
+		menu.menu_buttons[i]:handle_events(message, menu.crosshair_group.crosshair.transform.current.pos)
 	end
-	
-	--print "czo"
 	return true
 end
 
-
---animated_menu_text = animated_text:create()
---animated_menu_text:set("sensibilia", { font1, font2, font3 }, rgba(255, 255, 255, 255), 100, 120)
-
-level_resources.basic_geometry_callback = function(camera_draw_input)
+menu.basic_geometry_callback = function(camera_draw_input)
 	local my_text_draw_input = draw_input(camera_draw_input)
 	my_text_draw_input.transform.rotation = 0
 	
-	--my_text_draw_input.camera_transform.pos = vec2(0, 0)
-	--my_text_draw_input.camera_transform.rotation = 0
 	my_text_draw_input.additional_info = nil
 	my_text_draw_input.always_visible = true
 	
-	--local my_fstr = animated_menu_text:get_formatted_text()--format_text({ { str = "sensibilia", col = rgba(255, 255, 255, 255), font = font1 }})
-	--
-	--local bbox_vec = get_text_bbox(my_fstr, 0)
-	--
-	--my_text_draw_input.transform.pos.x = -bbox_vec.x/2
-	--my_text_draw_input.transform.pos.y = -config_table.resolution_h/2+30
-	--
-	--quick_print_text(my_text_draw_input, my_fstr, vec2_i(0, 0), 0)
-	
-	
-	for i=1, #level_resources.menu_buttons do
-		level_resources.menu_buttons[i]:draw(my_text_draw_input)
+	for i=1, #menu.menu_buttons do
+		menu.menu_buttons[i]:draw(my_text_draw_input)
 	end
 end
-
-
 
 --dofile "sensibilia\\levels\\level_1.lua"
