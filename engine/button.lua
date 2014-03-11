@@ -25,23 +25,15 @@ end
 
 function button_class:check_mouse_events(message, crosshair_pos, mousemove_intent, mouseclick_intent)
 	local is_hovering = self:construct_xywh():hover(crosshair_pos)
-	--print(is_hovering)
-	--pv(crosshair_pos)
-	--print "xywh: \n" 
-	--print(self:construct_xywh().x, self:construct_xywh().y, self:construct_xywh().w, self:construct_xywh().h)
-	
 	
 	if message.intent == mousemove_intent then
 		if is_hovering and not self.was_hovered then
 			if self.callbacks.mousein ~= nil then self.callbacks.mousein() end
-				print "in"
 			self.was_hovered = true
 		end
 		
 		if not is_hovering and self.was_hovered then
 			if self.callbacks.mouseout ~= nil then self.callbacks.mouseout() end
-			
-				print "out"
 			self.was_hovered = false
 		end
 	end
