@@ -21,8 +21,14 @@ loader_1.create_entities_from_map = function(filename)
 		local chosen_image = textures_by_name[types[v].texture]
 	
 		local body_size = randval(0.6, 1)
+		local alpha_scalars = { randval(0.1, 0.5), randval(0.2, 0.5), randval(0.8, 1), randval(0.8, 1) }
+		
+		if tonumber(types[v].dont_randomize_alpha) == 1 then
+			alpha_scalars = { types[v].color.a/255, types[v].color.a/255, types[v].color.a/255, types[v].color.a/255 }
+		end
+		
 		local new_clock_group = spawn_clock(v.pos, { render = { layer = render_layers.CLOCKS }, chase = component_helpers.parallax_chase(types[v].scrolling_speed, v.pos, world_camera) },
-			chosen_image, { body_size, body_size+randval(-0.1, 0.5), body_size+randval(-0.1, 0.5), body_size+randval(-0.1, 0.5) }, { randval(0.1, 0.5), randval(0.2, 0.5), randval(0.8, 1), randval(0.8, 1) },
+			chosen_image, { body_size, body_size+randval(-0.1, 0.5), body_size+randval(-0.1, 0.5), body_size+randval(-0.1, 0.5) }, alpha_scalars,
 			randval(0.7, 5)
 			)
 		

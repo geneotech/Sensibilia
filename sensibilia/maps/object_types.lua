@@ -27,7 +27,8 @@ return {
 	
 	clock3_pos = {
 		texture = "blue_clock.png",
-		color = rgba(50, 50, 50, 255)
+		color = rgba(50, 50, 50, 50),
+		dont_randomize_alpha = "1"
 	},
 	
 	default_type = {

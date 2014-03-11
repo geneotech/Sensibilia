@@ -78,7 +78,6 @@ function main_input_routine(message)
 
 	if level_resources.main_input_callback ~= nil then
 		continue_input = level_resources.main_input_callback(message)
-		print (continue_input)
 	end
 	
 	if continue_input then

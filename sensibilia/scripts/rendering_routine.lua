@@ -287,7 +287,7 @@ function rendering_routine(subject,
 				vblur_coroutine()
 				
 				film_grain_program:use()
-				film_grain_variation_coroutine(instability)
+				film_grain_variation_coroutine(1+ instability)
 				--film_grain_program:use()
 				GL.glUniform1i(time_uniform, clock_hand_time)
 				fullscreen_quad()
