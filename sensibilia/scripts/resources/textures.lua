@@ -56,7 +56,7 @@ collectgarbage("collect")
 
 function get_font(filename, size, letters)
 	local new_font_file = font_file()
-	new_font_file:open("sensibilia\\resources\\" .. filename, 120, "sensibilia")
+	new_font_file:open("sensibilia\\resources\\" .. filename, size, letters)
 	
 	local new_font_object = font_instance()
 	new_font_object:build(new_font_file)
@@ -67,9 +67,9 @@ function get_font(filename, size, letters)
 	return new_font_object
 end
 
-font1 = get_font("font.ttf", 120, "sensibilia")
-font2 = get_font("font2.ttf", 120, "sensibilia")
-font3 = get_font("font3.ttf", 120, "sensibilia")
+font1 = get_font("font.ttf", 100, "abcdefghijklmnoprstuvwxyzq ")
+font2 = get_font("font2.ttf", 100, "abcdefghijklmnoprstuvwxyzq ")
+font3 = get_font("font3.ttf", 100, "abcdefghijklmnoprstuvwxyzq ")
 
 create_textures(my_atlas, textures_by_name)
 

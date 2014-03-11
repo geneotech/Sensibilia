@@ -1,18 +1,26 @@
 button_class = inherits_from {}
 
-function button_class:constructor(pos, size, mousein_callback, mouseout_callback, click_callback)
+function button_class:constructor()
+end
+
+function button_class:set(pos, size, callbacks)
 	self.pos = pos
 	self.size = size
 	
+	self.callbacks = callbacks
 	self.was_hovered = false
+end
+
+function button_class:set_from_xywh(rect, callbacks)
+	self.size = vec2(rect.w, rect.h)
+	self.pos = vec2(rect.x + rect.w / 2, rect.y + rect.h / 2)
 	
-	self.mousein_callback = mousein_callback
-	self.mouseout_callback = mouseout_callback
-	self.click_callback = click_callback
+	self.callbacks = callbacks
+	self.was_hovered = false
 end
 
 function button_class:construct_xywh()
-	return rect_xywh(self.pos.x - size.x/2, self.pos.y - size.y/2, self.pos.x + size.x/2, self.pos.y + size.y/2)
+	return rect_xywh(self.pos.x - self.size.x/2, self.pos.y - self.size.y/2, self.pos.x + self.size.x/2, self.pos.y + self.size.y/2)
 end
 
 function button_class:check_mouse_events(message, crosshair_pos, mousemove_intent, mouseclick_intent)
@@ -20,19 +28,19 @@ function button_class:check_mouse_events(message, crosshair_pos, mousemove_inten
 	
 	if message.intent == mousemove_intent then
 		if is_hovering and not self.was_hovered then
-			if self.mousein_callback ~= nil then self.mousein_callback() end
+			if self.callbacks.mousein ~= nil then self.callbacks.mousein() end
 			self.was_hovered = true
 		end
 		
 		if not is_hovering and self.was_hovered then
-			if self.mouseout_callback ~= nil then self.mouseout_callback() end
+			if self.callbacks.mouseout ~= nil then self.callbacks.mouseout() end
 			self.was_hovered = false
 		end
 	end
 	
 	if message.intent == mouseclick_intent then
 		if is_hovering then
-			if self.click_callback ~= nil then self.click_callback() end
+			if self.callbacks.mouseclick ~= nil then self.callbacks.mouseclick() end
 		end
 	end
 end

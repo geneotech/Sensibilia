@@ -1,18 +1,22 @@
 animated_text = inherits_from {}
 
-function animated_text:constructor()
+function animated_text:constructor(initial_table)
 	self.main_timer = timer()
+	
+	if initial_table ~= nil then
+		self:set(initial_table)
+	end
 end
 
-function animated_text:set(str, font_table, color, min_interval_ms, max_interval_ms)
-	self.color = color
-	self.str = str
-	self.wstr = towchar_vec(str)
-	self.font_table = font_table
-	self.change_interval_ms = change_interval_ms
+function animated_text:set(entry)
+	self.color = entry.color
+	self.str = entry.str
+	self.wstr = towchar_vec(entry.str)
+	self.font_table = entry.font_table
+	self.change_interval_ms = entry.change_interval_ms
 	
-	self.min_interval_ms = min_interval_ms
-	self.max_interval_ms = max_interval_ms
+	self.min_interval_ms = entry.min_interval_ms
+	self.max_interval_ms = entry.max_interval_ms
 	
 	self.characters = {}
 	
