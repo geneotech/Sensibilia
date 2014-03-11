@@ -33,6 +33,8 @@ tiled_map_loader = {
 		if type_table.default_type == nil then 
 			type_table.default_type = {}
 		end
+		
+		local map_center_translation = vec2(map_table.width*map_table.tilewidth, map_table.height*map_table.tileheight) / 2
 					
 		for a, layer in ipairs(map_table.layers) do
 			if layer.type == "objectgroup" then
@@ -77,8 +79,8 @@ tiled_map_loader = {
 					
 					-- handle object scale now, to simplify further calculations
 					
-					object.x = object.x * this.map_scale
-					object.y = object.y * this.map_scale
+					object.x = (object.x - map_center_translation.x) * this.map_scale
+					object.y = (object.y - map_center_translation.y) * this.map_scale
 					object.width = object.width * this.map_scale
 					object.height = object.height * this.map_scale
 					

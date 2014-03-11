@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+  </data>
+ </layer>
+ <objectgroup name="Background" width="50" height="50">
+  <properties>
+   <property name="scrolling_speed" value="0.1"/>
+  </properties>
+  <object type="bg_object_3" x="0" y="0" width="800" height="864"/>
+  <object type="bg_object_3" x="800" y="0" width="800" height="864"/>
+  <object type="bg_object_3" x="800" y="864" width="800" height="736"/>
+  <object type="bg_object_3" x="0" y="864" width="800" height="736"/>
+ </objectgroup>
+</map>

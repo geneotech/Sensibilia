@@ -4,6 +4,10 @@ function reload_default_level_resources(
 		gameplay_textures -- optional, if not provided then switching to default gameplay textures
 		)
 		
+	-- destruct previous level data
+	level_resources = {}
+	collectgarbage("collect")
+	
 	MAP_FILENAME = "sensibilia\\maps\\" .. map_filename
 	MAP_LOADER_FILENAME = "sensibilia\\maps\\" .. map_loader_filename
 	GAMEPLAY_TEXTURES = gameplay_textures
@@ -12,6 +16,7 @@ function reload_default_level_resources(
 	dofile "sensibilia\\scripts\\resources\\textures.lua"
 	dofile "sensibilia\\scripts\\resources\\particle_effects.lua"
 	dofile "sensibilia\\scripts\\settings.lua"
+	
 	
 	-- 1 - max
 	instability = 0
@@ -31,6 +36,7 @@ function reload_default_level_resources(
 	current_zoom_level = 0
 	current_zoom_level = 0
 	set_zoom_level(world_camera)
+	
 	
 	dofile "sensibilia\\scripts\\entity_class.lua"
 	
@@ -114,7 +120,7 @@ function reload_default_level_resources(
 				--player.gun_entity:get().gun.trigger_mode = gun_component.SHOOT
 				--physics_system.timestep_multiplier = 0.01
 				-- messages processed, clear tables
-
+				print(player.body:get().transform.current.pos.x)
 				flush_message_tables()
 			end
 		}

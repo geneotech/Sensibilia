@@ -35,12 +35,16 @@ loader_1.create_entities_from_map = function(filename)
 		new_clock_self.clock_renderer.logarithmic_blinks = randomized_vals
 	end
 
-	for k, v in ipairs(objects["SHOOTER_START"]) do
-		spawn_shooter(v.pos)
+	if objects["SHOOTER_START"] ~= nil then
+		for k, v in ipairs(objects["SHOOTER_START"]) do
+			spawn_shooter(v.pos)
+		end
 	end
 	
-	for k, v in ipairs(objects["PUSHER_START"]) do
-		spawn_pusher(v.pos)
+	if objects["PUSHER_START"] ~= nil then
+		for k, v in ipairs(objects["PUSHER_START"]) do
+			spawn_pusher(v.pos)
+		end
 	end
 	
 	if objects["PLAYER_START"] ~= nil then
