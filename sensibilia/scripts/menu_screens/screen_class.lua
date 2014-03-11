@@ -104,6 +104,7 @@ menu.current_screen = menu.main_menu
 
 dofile "sensibilia\\scripts\\menu_screens\\credits.lua"
 dofile "sensibilia\\scripts\\menu_screens\\help.lua"
+dofile "sensibilia\\scripts\\menu_screens\\load_chapter.lua"
 
 
 

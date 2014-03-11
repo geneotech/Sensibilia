@@ -5,7 +5,16 @@ menu.main_menu.buttons = {
 	text_button:create(archetyped(menu.menu_button_archetype, { text_size_mult = 1, text_pos = vec2(0, -130-config_table.resolution_h/2+100), animated_text_input = { str = "sensibilia" } } )), 
 	
 	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -130-config_table.resolution_h/2+430+150*0), animated_text_input = { str = "new_game" } } )), 
-	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -130-config_table.resolution_h/2+430+150*1), animated_text_input = { str = "load chapter" } } )), 
+	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -130-config_table.resolution_h/2+430+150*1), 
+		callbacks = {
+			mouseclick = function()
+				bigger_expand(100)
+				menu.crosshair_group.crosshair.transform.current.pos.y = menu.crosshair_group.crosshair.transform.current.pos.y - 700
+				menu.current_screen = menu.load_chapter_screen
+			end
+		},
+	
+	animated_text_input = { str = "load chapter" } } )), 
 	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -130-config_table.resolution_h/2+430+150*2), animated_text_input = { str = "options" } } )), 
 	
 	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -130-config_table.resolution_h/2+430+150*3), 
