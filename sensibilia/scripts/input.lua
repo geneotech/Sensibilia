@@ -14,7 +14,9 @@ custom_intents = create_inverse_enum {
 	"SHOW_CLOCK",
 	
 	"INSTABILITY_RAY",
-	"REALITY_CHECK"
+	"REALITY_CHECK",
+	
+	"GUI_MOUSECLICK"
 }
 
 main_context = create_input_context {
@@ -44,11 +46,26 @@ main_context = create_input_context {
 	}
 }
 
+gui_context = create_input_context {
+	intents = { 
+		[mouse.raw_motion] 		= intent_message.AIM,
+		
+		[mouse.ldoubleclick] 	= custom_intents.GUI_MOUSECLICK,
+		[mouse.ltripleclick] 	= custom_intents.GUI_MOUSECLICK,
+		[mouse.ldown] 			= custom_intents.GUI_MOUSECLICK,
+		
+		[keys.ESC] 				= custom_intents.QUIT
+	}
+}
+
 main_input_component = {
 	custom_intents.INSTANT_SLOWDOWN,
 	custom_intents.QUIT,
 	custom_intents.RESTART,
-	custom_intents.MY_INTENT
+	custom_intents.MY_INTENT,
+
+	intent_message.AIM,
+	custom_intents.GUI_MOUSECLICK
 }
 
 input_system:clear_contexts()
@@ -56,22 +73,30 @@ input_system:add_context(main_context)
 
 bounce_number = 2
 
-
 function main_input_routine(message)
-	if message.intent == custom_intents.QUIT then
-		input_system.quit_flag = 1
-	elseif message.intent == custom_intents.RESTART then
-			should_world_be_reloaded = true
-			print "reloading world"
+	local continue_input = true
 
-	elseif message.intent == custom_intents.INSTANT_SLOWDOWN then
-		physics_system.timestep_multiplier = 0.00001
-
-	elseif message.intent == custom_intents.MY_INTENT then
-		if not message.state_flag then 
-			bounce_number = bounce_number + 1 
-			bounce_number = bounce_number - math.floor(bounce_number/3)*3
-			print(bounce_number)
-		end 
+	if level_resources.main_input_callback ~= nil then
+		continue_input = level_resources.main_input_callback(message)
+		print (continue_input)
+	end
+	
+	if continue_input then
+		if message.intent == custom_intents.QUIT then
+			input_system.quit_flag = 1
+		elseif message.intent == custom_intents.RESTART then
+				should_world_be_reloaded = true
+				print "reloading world"
+	
+		elseif message.intent == custom_intents.INSTANT_SLOWDOWN then
+			physics_system.timestep_multiplier = 0.00001
+	
+		elseif message.intent == custom_intents.MY_INTENT then
+			if not message.state_flag then 
+				bounce_number = bounce_number + 1 
+				bounce_number = bounce_number - math.floor(bounce_number/3)*3
+				print(bounce_number)
+			end 
+		end
 	end
 end

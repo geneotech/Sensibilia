@@ -9,6 +9,8 @@ dofile (ENGINE_DIRECTORY .. "debugging.lua")
 dofile (ENGINE_DIRECTORY .. "common.lua")
 
 dofile (ENGINE_DIRECTORY .. "text_util.lua")
+dofile (ENGINE_DIRECTORY .. "button.lua")
+
 dofile (ENGINE_DIRECTORY .. "world_class.lua")
 dofile (ENGINE_DIRECTORY .. "integrator.lua")
 --dofile (ENGINE_DIRECTORY .. "sequence.lua")
