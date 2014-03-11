@@ -58,7 +58,19 @@ menu.rendered_crosshair_entity = menu.crosshair_group.crosshair
 world_camera.chase:set_target(menu.crosshair_group.body)
 world_camera.camera.player:set(menu.crosshair_group.body)
 world_camera.camera.crosshair:set(menu.crosshair_group.crosshair)
-world_camera.camera.max_look_expand = vec2(40, 220)
+
+
+
+function bigger_expand(units)
+	local add_expand = 0
+	if config_table.resolution_h < 1080 then
+		add_expand = 1080 - config_table.resolution_h
+	end
+	
+	world_camera.camera.max_look_expand = vec2(40, units + 220+add_expand*2)
+end
+
+bigger_expand(0)
 
 input_system:clear_contexts()
 input_system:add_context(gui_context)
@@ -89,6 +101,9 @@ menu.menu_button_archetype = {
 
 dofile "sensibilia\\scripts\\menu_screens\\main_menu.lua"
 menu.current_screen = menu.main_menu
+
+dofile "sensibilia\\scripts\\menu_screens\\credits.lua"
+dofile "sensibilia\\scripts\\menu_screens\\help.lua"
 
 
 

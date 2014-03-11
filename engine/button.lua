@@ -38,7 +38,7 @@ function button_class:check_mouse_events(message, crosshair_pos, mousemove_inten
 		end
 	end
 	
-	if message.intent == mouseclick_intent then
+	if message.intent == mouseclick_intent and message.state_flag then
 		if is_hovering then
 			if self.callbacks.mouseclick ~= nil then self.callbacks.mouseclick() end
 		end

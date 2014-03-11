@@ -6,7 +6,7 @@ config_table = {
 	window_y = 0,
 	bpp = 24,
 	resolution_w = 1300,
-	resolution_h = 1050,
+	resolution_h = 1000,
 	doublebuffer = 1,
 	
 	sensitivity = vec2(2.5, 2.5)
