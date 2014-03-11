@@ -12,7 +12,8 @@ function text_button:set(entry)
 	
 	-- sample formatted text to position the event button
 	local my_fstr = self.text:get_formatted_text()
-	local bbox_vec = get_text_bbox(my_fstr, 0)
+	local bbox_i = get_text_bbox(my_fstr, 0)
+	local bbox_vec = vec2(bbox_i.x, bbox_i.y) * entry.text_size_mult
 	
 	-- user may want to change the position after bbox is calculated
 	if entry.bbox_callback ~= nil then entry.bbox_callback(bbox_vec, entry) end
@@ -58,5 +59,5 @@ function text_button:draw(my_draw_input)
 	
 	my_draw_input.transform.pos = self.text_pos
 	
-	quick_print_text(my_draw_input, myfstr, vec2_i(0, 0), 0)	
+	quick_print_text(my_draw_input, myfstr, vec2_i(0, 0), self.text_size_mult, 0)	
 end

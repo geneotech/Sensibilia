@@ -40,7 +40,7 @@ level_resources.rendered_crosshair_entity = crosshair_group.crosshair
 world_camera.chase:set_target(crosshair_group.body)
 world_camera.camera.player:set(crosshair_group.body)
 world_camera.camera.crosshair:set(crosshair_group.crosshair)
-world_camera.camera.max_look_expand = vec2(40, 40)
+world_camera.camera.max_look_expand = vec2(0, 0)
 
 input_system:clear_contexts()
 input_system:add_context(gui_context)
