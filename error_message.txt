@@ -22,44 +22,41 @@ level 2: {
   }
 }
 level 3: {
-  ["(*temporary)"] = "table expected, got nil"
+  ["(*temporary)"] = "attempt to index global 'menu' (a nil value)"
 }
 level 4: {
-  final_entries = {},
-  omit_names = {}
+  ["(*temporary)"] = "sensibilia\\scripts\\menu_screens\\main_menu.lua"
 }
 level 5: {
-  entries = {
-    animated_text_input = {
-      str = "sensibilia"
+  menu = {
+    crosshair_group = {
+      body = <userdata 1>,
+      crosshair = <userdata 2>
     },
-    text_pos = <userdata 1>,
-    text_size_mult = 1
-  },
-  final_entries = {}
-}
-level 6: {
-  entries = {
-    animated_text_input = {
-      str = "sensibilia"
+    menu_button_archetype = {
+      animated_text_input = {
+        color = <userdata 3>,
+        font_table = { <userdata 4>, <userdata 5>, <userdata 6> },
+        max_interval_ms = 120,
+        min_interval_ms = 100,
+        str = "new game"
+      },
+      bbox_callback = <function 1>,
+      callbacks = {},
+      in_max_interval = 120,
+      in_min_interval = 100,
+      out_max_interval = 7000,
+      out_min_interval = 2000,
+      text_pos = <userdata 7>,
+      text_size_mult = 0.5
     },
-    text_pos = <userdata 1>,
-    text_size_mult = 1
-  },
-  final_entries = {}
-}
-level 7: {
-  ["(*temporary)"] = {
-    constructor = <function 1>,
-    create = <function 2>,
-    draw = <function 3>,
-    handle_events = <function 4>,
-    set = <function 5>,
-    <metatable> = {
-      __index = {}
-    }
+    rendered_crosshair_entity = <userdata 2>
   }
 }
+level 6: {
+  ["(*temporary)"] = "sensibilia\\scripts\\menu_screens\\screen_class.lua"
+}
+level 7: {}
 level 8: {
   ["(*temporary)"] = "sensibilia\\scripts\\sensibilia_init.lua"
 }
@@ -67,653 +64,79 @@ level 9: {}
 
 stack traceback:
 	engine\debugging.lua:41: in function <engine\debugging.lua:8>
-	[C]: in ?
-	[C]: in function 'pairs'
-	engine\common.lua:119: in function 'recursive_write'
-	engine\common.lua:132: in function 'entries_from_archetypes'
-	engine\common.lua:138: in function 'archetyped'
-	sensibilia\scripts\sensibilia_init.lua:71: in main chunk
+	[C]: in function '__newindex'
+	sensibilia\scripts\menu_screens\main_menu.lua:1: in main chunk
+	[C]: in function 'dofile'
+	sensibilia\scripts\menu_screens\screen_class.lua:90: in main chunk
+	[C]: in function 'dofile'
+	sensibilia\scripts\sensibilia_init.lua:12: in main chunk
 	[C]: in function 'dofile'
 	[string "METERS_TO_PIXELS = 50..."]:24: in main chunk
 Globals:
-particle:
+atlas:
 <userdata 1>
-
-calc_max_jump_height:
-<function 1>
-
-vblur_vertex_shader:
-<userdata 1>
-
-error:
-<function 1>
-
-hblur_instability_effect:
-<function 1>
-
-_pathfinding_system:
-<userdata 1>
-
-spatial_instability_player_pos:
-5
-
-framebuffer_object:
-<userdata 1>
-
-reversed:
-<function 1>
-
-_script_reloader:
-<userdata 1>
-
-rawequal:
-<function 1>
-
-dofile:
-<function 1>
-
-coordination_module:
-{
-  angle_fits_in_threshold = <function 1>,
-  constructor = <function 2>,
-  create = <function 3>,
-  death_callback = <function 4>,
-  determine_jumpability = <function 5>,
-  handle_flying_state = <function 6>,
-  handle_player_visibility = <function 7>,
-  handle_steering = <function 8>,
-  handle_visibility_offset = <function 9>,
-  is_pathfinding = <function 10>,
-  loop = <function 11>,
-  map_vector_to_movement = <function 12>,
-  pursue_target = <function 13>,
-  refresh_behaviours = <function 14>,
-  set_all_behaviours_enabled = <function 15>,
-  set_movement_mode_flying = <function 16>,
-  stop_pursuit = <function 17>,
-  <metatable> = {
-    __index = {}
-  }
-}
-
-renderable:
-<userdata 1>
-
-filter_light_visibility:
-{
-  categoryBits = 127,
-  maskBits = 14
-}
-
-collectgarbage:
-<function 1>
-
-def_ptr:
-<function 1>
-
-animation_events:
-<userdata 1>
-
-spatial_instability_light_attenuation:
-3
 
 pathfinding_system:
 <userdata 1>
 
-enemy_movement_behaviour_tree:
+wchar_t:
+<userdata 1>
+
+float_vector:
+<userdata 1>
+
+xpcall:
+<function 1>
+
+filter_enemy_bullets_passed_wall:
 {
-  follow_hint = <userdata 1>,
-  go_to_last_seen = <userdata 2>,
-  is_alert = <userdata 3>,
-  movement = <userdata 4>,
-  player_visible = <userdata 5>,
-  stand_still = <userdata 6>,
-  walk_around = <userdata 7>
+  categoryBits = 64,
+  maskBits = 33
 }
 
-debug:
-{
-  debug = <function 1>,
-  gethook = <function 2>,
-  getinfo = <function 3>,
-  getlocal = <function 4>,
-  getmetatable = <function 5>,
-  getregistry = <function 6>,
-  getupvalue = <function 7>,
-  getuservalue = <function 8>,
-  my_breakpoint = <function 9>,
-  my_traceback = <function 10>,
-  sethook = <function 11>,
-  setlocal = <function 12>,
-  setmetatable = <function 13>,
-  setupvalue = <function 14>,
-  setuservalue = <function 15>,
-  traceback = <function 16>,
-  upvalueid = <function 17>,
-  upvaluejoin = <function 18>
-}
-
-render_system:
-<userdata 1>
-
-target_seek_steering:
-<userdata 1>
-
-table_of_tables:
+add_vals:
 <function 1>
 
-my_atlas:
-<userdata 1>
-
-SetFilter:
-<function 1>
-
-post_destroy:
-<function 1>
-
-tonumber:
-<function 1>
-
-script:
-<userdata 1>
-
-get_font:
-<function 1>
-
-fullscreen_quad:
-<function 1>
-
-b2World:
-<userdata 1>
-
-_destroy_system:
-<userdata 1>
-
-timer:
-<userdata 1>
-
-tiled_map_loader:
-{
-  allow_unknown_types = true,
-  basic_entity_table = <function 1>,
-  create_entities_from_map = <function 2>,
-  error_callback = <function 3>,
-  for_every_object = <function 4>,
-  get_all_objects_by_type = <function 5>,
-  get_all_textures = <function 6>,
-  load_world_properties = <function 7>,
-  map_scale = 1.2,
-  texture_property_name = "texture",
-  type_library = "sensibilia/maps/object_types",
-  world_camera_entity = <userdata 1>,
-  world_information_library = "sensibilia/maps/world_properties"
-}
-
-is_instability_ray_over_postprocessing:
-true
-
-rect_xywh_i:
-<userdata 1>
-
-SetDensity:
-<function 1>
-
-debug_draw:
-<function 1>
-
-hblur_program:
-<userdata 1>
-
-ENGINE_DIRECTORY:
-"engine\\"
-
-intent_message:
-<userdata 1>
-
-font2:
-<userdata 1>
-
-particle_emitter_info:
-<userdata 1>
-
-all_num:
-<function 1>
-
-forward_seek_steering:
-<userdata 1>
-
-world:
-<userdata 1>
-
-set_components_from_entry:
-<function 1>
-
-particle_burst_message:
-<userdata 1>
-
-_camera_system:
-<userdata 1>
-
-loop_only_info:
-<userdata 1>
-
-vertex:
-<userdata 1>
-
-visibility_component:
-<userdata 1>
-
-spawn_entity:
-<function 1>
-
-rewrite_ptr:
-<function 1>
-
-film_grain_fragment_shader:
-<userdata 1>
-
-clock_hand_time:
-0
-
-example_map:
-{ {}, { <userdata 1>, <userdata 2>, <userdata 3>, <userdata 4> } }
-
-vec2:
-<userdata 1>
-
-loader_1:
-{
-  create_entities_from_map = <function 1>
-}
-
-behaviour_decorator:
-<userdata 1>
-
-spawn_wayward:
-<function 1>
-
-pv:
-<function 1>
-
-wayward_archetype:
-{}
-
-spawn_player:
-<function 1>
-
-v_offset_multiplier:
-1
-
-input_context:
-<userdata 1>
-
-player_class:
+animated_text:
 {
   constructor = <function 1>,
   create = <function 2>,
-  intent_message = <function 3>,
-  is_shooting = <function 4>,
-  loop = <function 5>,
-  substep = <function 6>,
-  <metatable> = {
-    __index = {
-      all_modules = <function 7>,
-      constructor = <function 8>,
-      create = <function 9>,
-      loop = <function 10>,
-      substep = <function 11>,
-      try_module_method = <function 12>,
-      <metatable> = {
-        __index = {}
-      }
-    }
-  }
-}
-
-player_group_archetype:
-{
-  body = {
-    children = { "crosshair", "gun_entity" },
-    input = { 999999990, 2, 3, 999999985, 999999993, 999999989, 999999987, 5 },
-    movement = {
-      air_resistance = 0.1,
-      ground_filter = {
-        categoryBits = 127,
-        maskBits = 15
-      },
-      input_acceleration = <userdata 1>,
-      inverse_thrust_brake = <userdata 2>,
-      max_speed_animation = 2300,
-      receivers = {},
-      sidescroller_setup = true
-    },
-    physics = {
-      body_info = {
-        angled_damping = true,
-        bullet = true,
-        density = 1,
-        filter = {
-          categoryBits = 1,
-          maskBits = 95
-        },
-        fixed_rotation = true,
-        friction = 2,
-        radius = 60,
-        shape_type = 0
-      },
-      body_type = 2
-    },
-    render = {
-      layer = 2,
-      model = <userdata 3>
-    },
-    scriptable = {},
-    transform = {},
-    visibility = {
-      interval_ms = 16,
-      visibility_layers = {
-        [998] = {
-          color = <userdata 4>,
-          filter = {
-            categoryBits = 127,
-            maskBits = 14
-          },
-          ignore_discontinuities_shorter_than = -1,
-          square_side = 6000
-        },
-        [999] = {
-          color = <userdata 5>,
-          filter = {
-            categoryBits = 127,
-            maskBits = 14
-          },
-          ignore_discontinuities_shorter_than = -1,
-          square_side = 6000
-        },
-        [1000] = {
-          color = <userdata 6>,
-          filter = {
-            categoryBits = 127,
-            maskBits = 14
-          },
-          ignore_discontinuities_shorter_than = -1,
-          square_side = 6000
-        }
-      }
-    }
-  },
-  crosshair = {
-    chase = {
-      relative = true,
-      target = "body"
-    },
-    crosshair = {
-      sensitivity = <userdata 7>,
-      size_multiplier = <userdata 8>
-    },
-    input = { 5 },
-    render = {
-      layer = 0
-    },
-    transform = {
-      pos = <userdata 9>,
-      rotation = 0
-    }
-  },
-  gun_entity = {
-    chase = {
-      chase_rotation = false,
-      target = "body"
-    },
-    gun = {
-      bullet_body = {
-        air_resistance = 0,
-        angular_damping = 160,
-        density = 0.1,
-        filter = {
-          categoryBits = 32,
-          maskBits = 78
-        },
-        fixed_rotation = false,
-        friction = 100,
-        gravity_scale = 0,
-        linear_damping = 0,
-        rect_size = <userdata 10>,
-        restitution = 0,
-        shape_type = 0
-      },
-      bullet_callback = <function 1>,
-      bullet_damage = <userdata 11>,
-      bullet_distance_offset = <userdata 12>,
-      bullet_render = {
-        mask = 1
-      },
-      bullet_speed = <userdata 13>,
-      bullets_once = 20,
-      current_rounds = 3000,
-      is_automatic = true,
-      max_bullet_distance = 4000,
-      max_rounds = 3000,
-      shake_radius = 39.5,
-      shake_spread_degrees = 45,
-      shooting_interval_ms = 50,
-      spread_degrees = 5.5,
-      target_camera_to_shake = <userdata 14>
-    },
-    input = { 4 },
-    lookat = {
-      target = "crosshair"
-    },
-    transform = {}
-  }
-}
-
-player_debug_circle:
-<userdata 1>
-
-film_grain_vertex_shader:
-<userdata 1>
-
-my_crosshair_sprite:
-<userdata 1>
-
-debug_sensor:
-<userdata 1>
-
-player_sprite:
-<userdata 1>
-
-spawn_shooter:
-<function 1>
-
-create_inverse_enum:
-<function 1>
-
-rgba:
-<userdata 1>
-
-current_world:
-{
-  globals = {
-    group_by_entity = {
-      [<userdata 1>] = <1>{
-        body = <userdata 2>,
-        crosshair = <userdata 3>
-      },
-      [<userdata 4>] = {
-        body = <userdata 5>,
-        hour_hand = <userdata 6>,
-        minute_hand = <userdata 7>,
-        second_hand = <userdata 8>
-      },
-      [<userdata 9>] = <table 1>
-    },
-    input_system = <userdata 10>,
-    pathfinding_system = <userdata 11>,
-    physics_system = <userdata 12>,
-    polygon_particle_userdatas_saved = { <userdata 13>, <userdata 14>, <userdata 15>, <userdata 16>, <userdata 17>, <userdata 18>, <userdata 19>, <userdata 20>, <userdata 21>, <userdata 22> },
-    render_system = <userdata 23>,
-    visibility_system = <userdata 24>,
-    world = <userdata 25>
-  },
-  loop = <function 1>,
-  world_inst = <userdata 26>,
-  <metatable> = {
-    __index = {
-      constructor = <function 2>,
-      create = <function 3>,
-      loop = <function 4>,
-      process_all_systems = <function 5>,
-      set_current = <function 6>,
-      <metatable> = {
-        __index = {}
-      }
-    }
-  }
-}
-
-hblur_vertex_shader:
-<userdata 1>
-
-vblur_program:
-<userdata 1>
-
-entity_basic_scriptable_info:
-<userdata 1>
-
-DEFAULT_GAMEPLAY_TEXTURES:
-{
-  blank = <userdata 1>,
-  blue_clock = <userdata 2>,
-  brown_clock = <userdata 3>,
-  bullet_map = <userdata 4>,
-  crosshair_map = <userdata 5>,
-  hand_1 = <userdata 6>,
-  hand_2 = <userdata 7>,
-  hand_3 = <userdata 8>,
-  metal = <userdata 9>
-}
-
-spawn_pusher:
-<function 1>
-
-polygon_particle_userdatas_saved:
-{ <userdata 1>, <userdata 2>, <userdata 3>, <userdata 4>, <userdata 5>, <userdata 6>, <userdata 7>, <userdata 8>, <userdata 9>, <userdata 10> }
-
-atlas:
-<userdata 1>
-
-bitor:
-<function 1>
-
-filter_characters:
-{
-  categoryBits = 1,
-  maskBits = 95
-}
-
-npc_sprite:
-<userdata 1>
-
-visibility_edge:
-<userdata 1>
-
-spawn_clock:
-<function 1>
-
-main_input_component:
-{ 999999996, 999999992, 999999997, 999999988, 5, 999999984 }
-
-filter_bullets_passed_wall:
-{
-  categoryBits = 32,
-  maskBits = 66
-}
-
-clock_renderer_archetype:
-{
-  body = {
-    render = {
-      layer = 0,
-      mask = 0
-    },
-    transform = {}
-  }
-}
-
-waywardness_module:
-{
-  constructor = <function 1>,
-  create = <function 2>,
-  damage_message = <function 3>,
-  return_to_initial_transform = <function 4>,
-  substep = <function 5>,
+  get_formatted_text = <function 3>,
+  randomize_duration = <function 4>,
+  refresh_characters = <function 5>,
+  reset_character = <function 6>,
+  set = <function 7>,
   <metatable> = {
     __index = {}
   }
 }
 
-triangle_buffer:
-<userdata 1>
-
-transform_component:
-<userdata 1>
-
-b2RevoluteJoint:
-<userdata 1>
-
-instability_ray_module:
+filter_instability_ray_obstruction:
 {
-  cast = <function 1>,
-  construct_world_polygon = <function 2>,
-  constructor = <function 3>,
-  create = <function 4>,
-  generate_triangles = <function 5>,
-  loop = <function 6>,
-  <metatable> = {
-    __index = {}
-  }
+  categoryBits = 127,
+  maskBits = 12
 }
 
-towchar:
+aberration_coroutine:
 <function 1>
 
-handle_dying_instability_rays:
+class:
 <function 1>
 
-point_below_segment:
-<function 1>
-
-time_speed_variation:
-0
-
-create_joint:
-<function 1>
-
-GAMEPLAY_TEXTURES:
-{
-  blank = <userdata 1>,
-  blue_clock = <userdata 2>,
-  brown_clock = <userdata 3>,
-  bullet_map = <userdata 4>,
-  crosshair_map = <userdata 5>,
-  hand_1 = <userdata 6>,
-  hand_2 = <userdata 7>,
-  hand_3 = <userdata 8>,
-  metal = <userdata 9>
-}
-
-separation_steering:
+_visibility_system:
 <userdata 1>
 
-sensor_avoidance_steering:
+behaviour_state:
 <userdata 1>
 
-rendering_routine:
+_script_system:
+<userdata 1>
+
+texture:
+<userdata 1>
+
+quick_print_text:
 <function 1>
-
-wander_steering:
-<userdata 1>
 
 obstacle_avoidance_archetype:
 {
@@ -726,39 +149,136 @@ obstacle_avoidance_archetype:
   weight = 1
 }
 
-os:
+chase_component:
+<userdata 1>
+
+navigation_hint:
+<userdata 1>
+
+target_entity_archetype:
 {
-  clock = <function 1>,
-  date = <function 2>,
-  difftime = <function 3>,
-  execute = <function 4>,
-  exit = <function 5>,
-  getenv = <function 6>,
-  remove = <function 7>,
-  rename = <function 8>,
-  setlocale = <function 9>,
-  time = <function 10>,
-  tmpname = <function 11>
+  render = {
+    layer = 0
+  },
+  transform = {}
 }
 
-_VERSION:
-"Lua 5.2"
-
-jumping_module:
+entity_class:
 {
-  constructor = <function 1>,
-  create = <function 2>,
-  handle_jumping = <function 3>,
-  handle_variable_height_jump = <function 4>,
-  jump = <function 5>,
-  loop = <function 6>,
-  set_foot_sensor_from_circle = <function 7>,
-  set_foot_sensor_from_sprite = <function 8>,
-  substep = <function 9>,
+  all_modules = <function 1>,
+  constructor = <function 2>,
+  create = <function 3>,
+  loop = <function 4>,
+  substep = <function 5>,
+  try_module_method = <function 6>,
   <metatable> = {
     __index = {}
   }
 }
+
+MAP_LOADER_FILENAME:
+"sensibilia\\maps\\loader.lua"
+
+sensor_avoidance_steering:
+<userdata 1>
+
+should_debug_draw:
+false
+
+SetDensity:
+<function 1>
+
+rewrite_ptr:
+<function 1>
+
+behaviour_timer_decorator:
+<userdata 1>
+
+towchar:
+<function 1>
+
+vec2_i:
+<userdata 1>
+
+assert:
+<function 1>
+
+simple_integration:
+<function 1>
+
+vblur_vertex_shader:
+<userdata 1>
+
+ptr_create_entity:
+<function 1>
+
+_chase_system:
+<userdata 1>
+
+recursive_write:
+<function 1>
+
+setmetatable:
+<function 1>
+
+forward_seek_steering:
+<userdata 1>
+
+target_info:
+<userdata 1>
+
+tonumber:
+<function 1>
+
+random_player_bullet_models:
+{ <userdata 1>, <userdata 2>, <userdata 3>, <userdata 4>, <userdata 5>, <userdata 6>, <userdata 7>, <userdata 8>, <userdata 9>, <userdata 10>, <userdata 11>, <userdata 12>, <userdata 13>, <userdata 14>, <userdata 15>, <userdata 16>, <userdata 17>, <userdata 18>, <userdata 19>, <userdata 20>, <userdata 21>, <userdata 22>, <userdata 23>, <userdata 24>, <userdata 25>, <userdata 26>, <userdata 27>, <userdata 28>, <userdata 29>, <userdata 30>, <userdata 31>, <userdata 32>, <userdata 33>, <userdata 34>, <userdata 35>, <userdata 36>, <userdata 37>, <userdata 38>, <userdata 39>, <userdata 40>, <userdata 41>, <userdata 42>, <userdata 43>, <userdata 44>, <userdata 45>, <userdata 46>, <userdata 47>, <userdata 48>, <userdata 49>, <userdata 50>, <userdata 51>, <userdata 52>, <userdata 53>, <userdata 54>, <userdata 55>, <userdata 56>, <userdata 57>, <userdata 58>, <userdata 59>, <userdata 60>, <userdata 61>, <userdata 62>, <userdata 63>, <userdata 64>, <userdata 65>, <userdata 66>, <userdata 67>, <userdata 68>, <userdata 69>, <userdata 70>, <userdata 71>, <userdata 72>, <userdata 73>, <userdata 74>, <userdata 75>, <userdata 76>, <userdata 77>, <userdata 78>, <userdata 79>, <userdata 80>, <userdata 81>, <userdata 82>, <userdata 83>, <userdata 84>, <userdata 85>, <userdata 86>, <userdata 87>, <userdata 88>, <userdata 89>, <userdata 90>, <userdata 91>, <userdata 92>, <userdata 93>, <userdata 94>, <userdata 95>, <userdata 96>, <userdata 97>, <userdata 98>, <userdata 99>, <userdata 100>, <userdata 101>, <userdata 102>, <userdata 103>, <userdata 104>, <userdata 105>, <userdata 106>, <userdata 107>, <userdata 108>, <userdata 109>, <userdata 110>, <userdata 111>, <userdata 112>, <userdata 113>, <userdata 114>, <userdata 115>, <userdata 116>, <userdata 117>, <userdata 118>, <userdata 119>, <userdata 120>, <userdata 121>, <userdata 122>, <userdata 123>, <userdata 124>, <userdata 125>, <userdata 126>, <userdata 127>, <userdata 128>, <userdata 129>, <userdata 130>, <userdata 131>, <userdata 132>, <userdata 133>, <userdata 134>, <userdata 135>, <userdata 136>, <userdata 137>, <userdata 138>, <userdata 139>, <userdata 140>, <userdata 141>, <userdata 142>, <userdata 143>, <userdata 144>, <userdata 145>, <userdata 146>, <userdata 147>, <userdata 148>, <userdata 149>, <userdata 150>, <userdata 151>, <userdata 152>, <userdata 153>, <userdata 154>, <userdata 155>, <userdata 156>, <userdata 157>, <userdata 158>, <userdata 159>, <userdata 160>, <userdata 161>, <userdata 162>, <userdata 163>, <userdata 164>, <userdata 165>, <userdata 166>, <userdata 167>, <userdata 168>, <userdata 169>, <userdata 170>, <userdata 171>, <userdata 172>, <userdata 173>, <userdata 174>, <userdata 175>, <userdata 176>, <userdata 177>, <userdata 178>, <userdata 179>, <userdata 180>, <userdata 181>, <userdata 182>, <userdata 183>, <userdata 184>, <userdata 185>, <userdata 186>, <userdata 187>, <userdata 188>, <userdata 189>, <userdata 190>, <userdata 191>, <userdata 192>, <userdata 193>, <userdata 194>, <userdata 195>, <userdata 196>, <userdata 197>, <userdata 198>, <userdata 199>, <userdata 200>, <userdata 201>, <userdata 202>, <userdata 203>, <userdata 204>, <userdata 205>, <userdata 206>, <userdata 207>, <userdata 208>, <userdata 209>, <userdata 210>, <userdata 211>, <userdata 212>, <userdata 213>, <userdata 214>, <userdata 215>, <userdata 216>, <userdata 217>, <userdata 218>, <userdata 219>, <userdata 220>, <userdata 221>, <userdata 222>, <userdata 223>, <userdata 224>, <userdata 225>, <userdata 226>, <userdata 227>, <userdata 228>, <userdata 229>, <userdata 230>, <userdata 231>, <userdata 232>, <userdata 233>, <userdata 234>, <userdata 235>, <userdata 236>, <userdata 237>, <userdata 238>, <userdata 239>, <userdata 240>, <userdata 241>, <userdata 242>, <userdata 243>, <userdata 244>, <userdata 245>, <userdata 246>, <userdata 247>, <userdata 248>, <userdata 249>, <userdata 250>, <userdata 251>, <userdata 252>, <userdata 253>, <userdata 254>, <userdata 255>, <userdata 256>, <userdata 257>, <userdata 258>, <userdata 259>, <userdata 260>, <userdata 261>, <userdata 262>, <userdata 263>, <userdata 264>, <userdata 265>, <userdata 266>, <userdata 267>, <userdata 268>, <userdata 269>, <userdata 270>, <userdata 271>, <userdata 272>, <userdata 273>, <userdata 274>, <userdata 275>, <userdata 276>, <userdata 277>, <userdata 278>, <userdata 279>, <userdata 280>, <userdata 281>, <userdata 282>, <userdata 283>, <userdata 284>, <userdata 285>, <userdata 286>, <userdata 287>, <userdata 288>, <userdata 289>, <userdata 290>, <userdata 291>, <userdata 292>, <userdata 293>, <userdata 294>, <userdata 295>, <userdata 296>, <userdata 297>, <userdata 298>, <userdata 299>, <userdata 300>, <userdata 301>, <userdata 302>, <userdata 303>, <userdata 304>, <userdata 305>, <userdata 306>, <userdata 307>, <userdata 308>, <userdata 309>, <userdata 310>, <userdata 311>, <userdata 312>, <userdata 313>, <userdata 314>, <userdata 315>, <userdata 316>, <userdata 317>, <userdata 318>, <userdata 319>, <userdata 320>, <userdata 321>, <userdata 322>, <userdata 323>, <userdata 324>, <userdata 325>, <userdata 326>, <userdata 327>, <userdata 328>, <userdata 329>, <userdata 330>, <userdata 331>, <userdata 332>, <userdata 333>, <userdata 334>, <userdata 335>, <userdata 336>, <userdata 337>, <userdata 338>, <userdata 339>, <userdata 340>, <userdata 341>, <userdata 342>, <userdata 343>, <userdata 344>, <userdata 345>, <userdata 346>, <userdata 347>, <userdata 348>, <userdata 349>, <userdata 350>, <userdata 351>, <userdata 352>, <userdata 353>, <userdata 354>, <userdata 355>, <userdata 356>, <userdata 357>, <userdata 358>, <userdata 359>, <userdata 360>, <userdata 361>, <userdata 362>, <userdata 363>, <userdata 364>, <userdata 365>, <userdata 366>, <userdata 367>, <userdata 368>, <userdata 369>, <userdata 370>, <userdata 371>, <userdata 372>, <userdata 373>, <userdata 374>, <userdata 375>, <userdata 376>, <userdata 377>, <userdata 378>, <userdata 379>, <userdata 380>, <userdata 381>, <userdata 382>, <userdata 383>, <userdata 384>, <userdata 385>, <userdata 386>, <userdata 387>, <userdata 388>, <userdata 389>, <userdata 390>, <userdata 391>, <userdata 392>, <userdata 393>, <userdata 394>, <userdata 395>, <userdata 396>, <userdata 397>, <userdata 398>, <userdata 399>, <userdata 400>, <userdata 401>, <userdata 402>, <userdata 403>, <userdata 404>, <userdata 405>, <userdata 406>, <userdata 407>, <userdata 408>, <userdata 409>, <userdata 410>, <userdata 411>, <userdata 412>, <userdata 413>, <userdata 414>, <userdata 415>, <userdata 416>, <userdata 417>, <userdata 418>, <userdata 419>, <userdata 420>, <userdata 421>, <userdata 422>, <userdata 423>, <userdata 424>, <userdata 425>, <userdata 426>, <userdata 427>, <userdata 428>, <userdata 429>, <userdata 430>, <userdata 431>, <userdata 432>, <userdata 433>, <userdata 434>, <userdata 435>, <userdata 436>, <userdata 437>, <userdata 438>, <userdata 439>, <userdata 440>, <userdata 441>, <userdata 442>, <userdata 443>, <userdata 444>, <userdata 445>, <userdata 446>, <userdata 447>, <userdata 448>, <userdata 449>, <userdata 450>, <userdata 451>, <userdata 452>, <userdata 453>, <userdata 454>, <userdata 455>, <userdata 456>, <userdata 457>, <userdata 458>, <userdata 459>, <userdata 460>, <userdata 461>, <userdata 462>, <userdata 463>, <userdata 464>, <userdata 465>, <userdata 466>, <userdata 467>, <userdata 468>, <userdata 469>, <userdata 470>, <userdata 471>, <userdata 472>, <userdata 473>, <userdata 474>, <userdata 475>, <userdata 476>, <userdata 477>, <userdata 478>, <userdata 479>, <userdata 480>, <userdata 481>, <userdata 482>, <userdata 483>, <userdata 484>, <userdata 485>, <userdata 486>, <userdata 487>, <userdata 488>, <userdata 489>, <userdata 490>, <userdata 491>, <userdata 492>, <userdata 493>, <userdata 494>, <userdata 495>, <userdata 496>, <userdata 497>, <userdata 498>, <userdata 499>, <userdata 500>, <userdata 501>, <userdata 502>, <userdata 503>, <userdata 504>, <userdata 505>, <userdata 506>, <userdata 507>, <userdata 508>, <userdata 509>, <userdata 510>, <userdata 511>, <userdata 512>, <userdata 513>, <userdata 514>, <userdata 515>, <userdata 516>, <userdata 517>, <userdata 518>, <userdata 519>, <userdata 520>, <userdata 521>, <userdata 522>, <userdata 523>, <userdata 524>, <userdata 525>, <userdata 526>, <userdata 527>, <userdata 528>, <userdata 529>, <userdata 530>, <userdata 531>, <userdata 532>, <userdata 533>, <userdata 534>, <userdata 535>, <userdata 536>, <userdata 537>, <userdata 538>, <userdata 539>, <userdata 540>, <userdata 541>, <userdata 542>, <userdata 543>, <userdata 544>, <userdata 545>, <userdata 546>, <userdata 547>, <userdata 548>, <userdata 549>, <userdata 550>, <userdata 551>, <userdata 552>, <userdata 553>, <userdata 554>, <userdata 555>, <userdata 556>, <userdata 557>, <userdata 558>, <userdata 559>, <userdata 560>, <userdata 561>, <userdata 562>, <userdata 563>, <userdata 564>, <userdata 565>, <userdata 566>, <userdata 567>, <userdata 568>, <userdata 569>, <userdata 570>, <userdata 571>, <userdata 572>, <userdata 573>, <userdata 574>, <userdata 575>, <userdata 576>, <userdata 577>, <userdata 578>, <userdata 579>, <userdata 580>, <userdata 581>, <userdata 582>, <userdata 583>, <userdata 584>, <userdata 585>, <userdata 586>, <userdata 587>, <userdata 588>, <userdata 589>, <userdata 590>, <userdata 591>, <userdata 592>, <userdata 593>, <userdata 594>, <userdata 595>, <userdata 596>, <userdata 597>, <userdata 598>, <userdata 599>, <userdata 600>, <userdata 601>, <userdata 602>, <userdata 603>, <userdata 604>, <userdata 605>, <userdata 606>, <userdata 607>, <userdata 608>, <userdata 609>, <userdata 610>, <userdata 611>, <userdata 612>, <userdata 613>, <userdata 614>, <userdata 615>, <userdata 616>, <userdata 617>, <userdata 618>, <userdata 619>, <userdata 620>, <userdata 621>, <userdata 622>, <userdata 623>, <userdata 624>, <userdata 625>, <userdata 626>, <userdata 627>, <userdata 628>, <userdata 629>, <userdata 630>, <userdata 631>, <userdata 632>, <userdata 633>, <userdata 634>, <userdata 635>, <userdata 636>, <userdata 637>, <userdata 638>, <userdata 639>, <userdata 640>, <userdata 641>, <userdata 642>, <userdata 643>, <userdata 644>, <userdata 645>, <userdata 646>, <userdata 647>, <userdata 648>, <userdata 649>, <userdata 650>, <userdata 651>, <userdata 652>, <userdata 653>, <userdata 654>, <userdata 655>, <userdata 656>, <userdata 657>, <userdata 658>, <userdata 659>, <userdata 660>, <userdata 661>, <userdata 662>, <userdata 663>, <userdata 664>, <userdata 665>, <userdata 666>, <userdata 667>, <userdata 668>, <userdata 669>, <userdata 670>, <userdata 671>, <userdata 672>, <userdata 673>, <userdata 674>, <userdata 675>, <userdata 676>, <userdata 677>, <userdata 678>, <userdata 679>, <userdata 680>, <userdata 681>, <userdata 682>, <userdata 683>, <userdata 684>, <userdata 685>, <userdata 686>, <userdata 687>, <userdata 688>, <userdata 689>, <userdata 690>, <userdata 691>, <userdata 692>, <userdata 693>, <userdata 694>, <userdata 695>, <userdata 696>, <userdata 697>, <userdata 698>, <userdata 699>, <userdata 700>, <userdata 701>, <userdata 702>, <userdata 703>, <userdata 704>, <userdata 705>, <userdata 706>, <userdata 707>, <userdata 708>, <userdata 709>, <userdata 710>, <userdata 711>, <userdata 712>, <userdata 713>, <userdata 714>, <userdata 715>, <userdata 716>, <userdata 717>, <userdata 718>, <userdata 719>, <userdata 720>, <userdata 721>, <userdata 722>, <userdata 723>, <userdata 724>, <userdata 725>, <userdata 726>, <userdata 727>, <userdata 728>, <userdata 729>, <userdata 730>, <userdata 731>, <userdata 732>, <userdata 733>, <userdata 734>, <userdata 735>, <userdata 736>, <userdata 737>, <userdata 738>, <userdata 739>, <userdata 740>, <userdata 741>, <userdata 742>, <userdata 743>, <userdata 744>, <userdata 745>, <userdata 746>, <userdata 747>, <userdata 748>, <userdata 749>, <userdata 750>, <userdata 751>, <userdata 752>, <userdata 753>, <userdata 754>, <userdata 755>, <userdata 756>, <userdata 757>, <userdata 758>, <userdata 759>, <userdata 760>, <userdata 761>, <userdata 762>, <userdata 763>, <userdata 764>, <userdata 765>, <userdata 766>, <userdata 767>, <userdata 768>, <userdata 769>, <userdata 770>, <userdata 771>, <userdata 772>, <userdata 773>, <userdata 774>, <userdata 775>, <userdata 776>, <userdata 777>, <userdata 778>, <userdata 779>, <userdata 780>, <userdata 781>, <userdata 782>, <userdata 783>, <userdata 784>, <userdata 785>, <userdata 786>, <userdata 787>, <userdata 788>, <userdata 789>, <userdata 790>, <userdata 791>, <userdata 792>, <userdata 793>, <userdata 794>, <userdata 795>, <userdata 796>, <userdata 797>, <userdata 798>, <userdata 799>, <userdata 800>, <userdata 801>, <userdata 802>, <userdata 803>, <userdata 804>, <userdata 805>, <userdata 806>, <userdata 807>, <userdata 808>, <userdata 809>, <userdata 810>, <userdata 811>, <userdata 812>, <userdata 813>, <userdata 814>, <userdata 815>, <userdata 816>, <userdata 817>, <userdata 818>, <userdata 819>, <userdata 820>, <userdata 821>, <userdata 822>, <userdata 823>, <userdata 824>, <userdata 825>, <userdata 826>, <userdata 827>, <userdata 828>, <userdata 829>, <userdata 830>, <userdata 831>, <userdata 832>, <userdata 833>, <userdata 834>, <userdata 835>, <userdata 836>, <userdata 837>, <userdata 838>, <userdata 839>, <userdata 840>, <userdata 841>, <userdata 842>, <userdata 843>, <userdata 844>, <userdata 845>, <userdata 846>, <userdata 847>, <userdata 848>, <userdata 849>, <userdata 850>, <userdata 851>, <userdata 852>, <userdata 853>, <userdata 854>, <userdata 855>, <userdata 856>, <userdata 857>, <userdata 858>, <userdata 859>, <userdata 860>, <userdata 861>, <userdata 862>, <userdata 863>, <userdata 864>, <userdata 865>, <userdata 866>, <userdata 867>, <userdata 868>, <userdata 869>, <userdata 870>, <userdata 871>, <userdata 872>, <userdata 873>, <userdata 874>, <userdata 875>, <userdata 876>, <userdata 877>, <userdata 878>, <userdata 879>, <userdata 880>, <userdata 881>, <userdata 882>, <userdata 883>, <userdata 884>, <userdata 885>, <userdata 886>, <userdata 887>, <userdata 888>, <userdata 889>, <userdata 890>, <userdata 891>, <userdata 892>, <userdata 893>, <userdata 894>, <userdata 895>, <userdata 896>, <userdata 897>, <userdata 898>, <userdata 899>, <userdata 900>, <userdata 901>, <userdata 902>, <userdata 903>, <userdata 904>, <userdata 905>, <userdata 906>, <userdata 907>, <userdata 908>, <userdata 909>, <userdata 910>, <userdata 911>, <userdata 912>, <userdata 913>, <userdata 914>, <userdata 915>, <userdata 916>, <userdata 917>, <userdata 918>, <userdata 919>, <userdata 920>, <userdata 921>, <userdata 922>, <userdata 923>, <userdata 924>, <userdata 925>, <userdata 926>, <userdata 927>, <userdata 928>, <userdata 929>, <userdata 930>, <userdata 931>, <userdata 932>, <userdata 933>, <userdata 934>, <userdata 935>, <userdata 936>, <userdata 937>, <userdata 938>, <userdata 939>, <userdata 940>, <userdata 941>, <userdata 942>, <userdata 943>, <userdata 944>, <userdata 945>, <userdata 946>, <userdata 947>, <userdata 948>, <userdata 949>, <userdata 950>, <userdata 951>, <userdata 952>, <userdata 953>, <userdata 954>, <userdata 955>, <userdata 956>, <userdata 957>, <userdata 958>, <userdata 959>, <userdata 960>, <userdata 961>, <userdata 962>, <userdata 963>, <userdata 964>, <userdata 965>, <userdata 966>, <userdata 967>, <userdata 968>, <userdata 969>, <userdata 970>, <userdata 971>, <userdata 972>, <userdata 973>, <userdata 974>, <userdata 975>, <userdata 976>, <userdata 977>, <userdata 978>, <userdata 979>, <userdata 980>, <userdata 981>, <userdata 982>, <userdata 983>, <userdata 984>, <userdata 985>, <userdata 986>, <userdata 987>, <userdata 988>, <userdata 989>, <userdata 990>, <userdata 991>, <userdata 992>, <userdata 993>, <userdata 994>, <userdata 995>, <userdata 996>, <userdata 997>, <userdata 998>, <userdata 999>, <userdata 1000> }
+
+b2RevoluteJoint:
+<userdata 1>
+
+create_physics_component:
+<function 1>
+
+randomize_properties_vector:
+<function 1>
+
+reload_default_level_resources:
+<function 1>
+
+input_component:
+<userdata 1>
+
+SetFilter:
+<function 1>
+
+renderable:
+<userdata 1>
+
+world_camera:
+<userdata 1>
+
+formatted_char:
+<userdata 1>
+
+_lookat_system:
+<userdata 1>
+
+_world:
+<userdata 1>
+
+screen_class:
+{
+  constructor = <function 1>,
+  create = <function 2>,
+  draw = <function 3>,
+  handle_events = <function 4>,
+  <metatable> = {
+    __index = {}
+  }
+}
+
+loop_only_info:
+<userdata 1>
 
 _G:
 <1>{
@@ -1182,13 +702,13 @@ _G:
           body = <userdata 110>,
           crosshair = <userdata 111>
         },
-        [<userdata 112>] = <14>{
-          body = <userdata 113>,
-          hour_hand = <userdata 114>,
-          minute_hand = <userdata 115>,
-          second_hand = <userdata 116>
-        },
-        [<userdata 117>] = <table 13>
+        [<userdata 112>] = <table 13>,
+        [<userdata 113>] = <14>{
+          body = <userdata 114>,
+          hour_hand = <userdata 115>,
+          minute_hand = <userdata 116>,
+          second_hand = <userdata 117>
+        }
       },
       input_system = <userdata 118>,
       pathfinding_system = <userdata 119>,
@@ -1424,7 +944,7 @@ _G:
         minute_hand_sprite = <userdata 171>,
         minute_rotation = 0,
         overwrite_position = false,
-        randomization_speed_mult = 3.307147026062,
+        randomization_speed_mult = 3.5440661907196,
         randomized_hands_values = true,
         rotate_body = true,
         rotation_variation_tables = { {
@@ -1464,7 +984,7 @@ _G:
         rotation_variations = { <function 164>, <function 165>, <function 166> },
         second_hand_sprite = <userdata 172>,
         second_rotation = 0,
-        size_scalars = { 0.85679531097412, 0.82758847624063, 1.3336471617222, 1.0367512702942 },
+        size_scalars = { 0.91922378540039, 1.0971004664898, 1.0652065575123, 1.1956587135792 },
         <metatable> = {
           __index = <table 8>
         }
@@ -2190,6 +1710,15 @@ _G:
   scene_program = <userdata 2251>,
   scene_shader_time_uniform = 4,
   scene_vertex_shader = <userdata 2252>,
+  screen_class = {
+    constructor = <function 318>,
+    create = <function 319>,
+    draw = <function 320>,
+    handle_events = <function 321>,
+    <metatable> = {
+      __index = {}
+    }
+  },
   script = <userdata 2253>,
   script_reloader = <userdata 2254>,
   scriptable_component = <userdata 2255>,
@@ -2201,16 +1730,16 @@ _G:
     weight = 1
   },
   seek_behaviour = <userdata 2258>,
-  select = <function 318>,
+  select = <function 322>,
   sensor_avoidance_steering = <userdata 2260>,
   separation_behaviour = <userdata 2261>,
   separation_steering = <userdata 2262>,
-  set_components_from_entry = <function 319>,
-  set_physics_info = <function 320>,
-  set_polygon_color = <function 321>,
-  set_world_reloading_script = <function 322>,
-  set_zoom_level = <function 323>,
-  setmetatable = <function 324>,
+  set_components_from_entry = <function 323>,
+  set_physics_info = <function 324>,
+  set_polygon_color = <function 325>,
+  set_world_reloading_script = <function 326>,
+  set_zoom_level = <function 327>,
+  setmetatable = <function 328>,
   sfMusic = <userdata 2263>,
   sfSound = <userdata 2264>,
   sfSoundBuffer = <userdata 2265>,
@@ -2315,7 +1844,7 @@ _G:
           restitution = 0,
           shape_type = 0
         },
-        bullet_callback = <function 325>,
+        bullet_callback = <function 329>,
         bullet_damage = <userdata 2268>,
         bullet_distance_offset = <userdata 183>,
         bullet_render = {
@@ -2342,9 +1871,9 @@ _G:
   shooter_sprite = <userdata 2267>,
   shot_message = <userdata 2269>,
   should_debug_draw = false,
-  simple_create_polygon = <function 326>,
-  simple_integration = <function 327>,
-  spairs = <function 328>,
+  simple_create_polygon = <function 330>,
+  simple_integration = <function 331>,
+  spairs = <function 332>,
   spatial_instability_crosshair_pos = 1,
   spatial_instability_fragment_shader = <userdata 2270>,
   spatial_instability_light_attenuation = 3,
@@ -2355,20 +1884,20 @@ _G:
   spatial_instability_time = 7,
   spatial_instability_vertex_shader = <userdata 2272>,
   spatial_instability_zoom = 8,
-  spawn_clock = <function 329>,
-  spawn_entity = <function 330>,
-  spawn_player = <function 331>,
-  spawn_pusher = <function 332>,
-  spawn_shooter = <function 333>,
-  spawn_wayward = <function 334>,
+  spawn_clock = <function 333>,
+  spawn_entity = <function 334>,
+  spawn_player = <function 335>,
+  spawn_pusher = <function 336>,
+  spawn_shooter = <function 337>,
+  spawn_wayward = <function 338>,
   sprite = <userdata 2273>,
   steering_behaviour = <userdata 2274>,
   steering_component = <userdata 2275>,
   stepped_timer = <userdata 2276>,
   string = <table 27>,
-  super = <function 335>,
+  super = <function 339>,
   table = <table 28>,
-  table_of_tables = <function 336>,
+  table_of_tables = <function 340>,
   target_entity_archetype = {
     render = {
       layer = 0
@@ -2380,11 +1909,11 @@ _G:
   target_seek_steering = <userdata 2278>,
   temporary_instability = 0,
   text_button = {
-    constructor = <function 337>,
-    create = <function 338>,
-    draw = <function 339>,
-    handle_events = <function 340>,
-    set = <function 341>,
+    constructor = <function 341>,
+    create = <function 342>,
+    draw = <function 343>,
+    handle_events = <function 344>,
+    set = <function 345>,
     <metatable> = {
       __index = {}
     }
@@ -2404,13 +1933,13 @@ _G:
   },
   tiled_map_loader = {
     allow_unknown_types = true,
-    basic_entity_table = <function 342>,
-    create_entities_from_map = <function 343>,
-    error_callback = <function 344>,
-    for_every_object = <function 345>,
-    get_all_objects_by_type = <function 346>,
-    get_all_textures = <function 347>,
-    load_world_properties = <function 348>,
+    basic_entity_table = <function 346>,
+    create_entities_from_map = <function 347>,
+    error_callback = <function 348>,
+    for_every_object = <function 349>,
+    get_all_objects_by_type = <function 350>,
+    get_all_textures = <function 351>,
+    load_world_properties = <function 352>,
     map_scale = 1.2,
     texture_property_name = "texture",
     type_library = "sensibilia/maps/object_types",
@@ -2420,30 +1949,30 @@ _G:
   time_speed_variation = 0,
   time_uniform = 1,
   timer = <userdata 2281>,
-  to_vec2 = <function 349>,
-  to_vec2_table = <function 350>,
-  tonumber = <function 351>,
-  tostring = <function 352>,
-  towchar = <function 353>,
-  towchar_vec = <function 354>,
+  to_vec2 = <function 353>,
+  to_vec2_table = <function 354>,
+  tonumber = <function 355>,
+  tostring = <function 356>,
+  towchar = <function 357>,
+  towchar_vec = <function 358>,
   transform_component = <userdata 2282>,
   transform_state = <userdata 2283>,
   triangle_buffer = <userdata 2284>,
-  type = <function 355>,
+  type = <function 359>,
   v_offset_multiplier = 1,
   value_animator = <userdata 2285>,
-  vblur_coroutine = <function 356>,
+  vblur_coroutine = <function 360>,
   vblur_fragment_shader = <userdata 2286>,
-  vblur_instability_effect = <function 357>,
+  vblur_instability_effect = <function 361>,
   vblur_program = <userdata 2287>,
   vblur_vertex_shader = <userdata 2288>,
   vec2 = <userdata 2289>,
   vec2_i = <userdata 2290>,
   vec2_vector = <userdata 2291>,
-  vector_to_table = <function 358>,
+  vector_to_table = <function 362>,
   vertex = <userdata 2292>,
-  vertex_shift_coroutine = <function 359>,
-  vertex_shift_instability_effect = <function 360>,
+  vertex_shift_coroutine = <function 363>,
+  vertex_shift_instability_effect = <function 364>,
   vertex_triangle = <userdata 2293>,
   visibility_component = <userdata 2294>,
   visibility_discontinuity = <userdata 2295>,
@@ -2458,11 +1987,11 @@ _G:
   wander_steering = <userdata 2299>,
   wayward_archetype = {},
   waywardness_module = {
-    constructor = <function 361>,
-    create = <function 362>,
-    damage_message = <function 363>,
-    return_to_initial_transform = <function 364>,
-    substep = <function 365>,
+    constructor = <function 365>,
+    create = <function 366>,
+    damage_message = <function 367>,
+    return_to_initial_transform = <function 368>,
+    substep = <function 369>,
     <metatable> = {
       __index = {}
     }
@@ -2475,71 +2004,748 @@ _G:
   world_class = <table 16>,
   world_information = {},
   world_instance = <userdata 2303>,
-  xpcall = <function 366>
+  xpcall = <function 370>
 }
 
-color_adjustment_vertex_shader:
+behaviour_tree_component:
 <userdata 1>
 
-lookat_component:
-<userdata 1>
-
-load:
-<function 1>
-
-seek_archetype:
+level_world:
 {
-  behaviour_type = <userdata 1>,
-  force_color = <userdata 2>,
-  weight = 1
-}
-
-random_instability_ray_layer_order:
-<function 1>
-
-create_particle_effect:
-<function 1>
-
-target_entity_archetype:
-{
-  render = {
-    layer = 0
+  globals = {
+    group_by_entity = {
+      [<userdata 1>] = <1>{
+        body = <userdata 2>,
+        crosshair = <userdata 3>
+      },
+      [<userdata 4>] = <table 1>,
+      [<userdata 5>] = {
+        body = <userdata 6>,
+        hour_hand = <userdata 7>,
+        minute_hand = <userdata 8>,
+        second_hand = <userdata 9>
+      }
+    },
+    input_system = <userdata 10>,
+    pathfinding_system = <userdata 11>,
+    physics_system = <userdata 12>,
+    polygon_particle_userdatas_saved = { <userdata 13>, <userdata 14>, <userdata 15>, <userdata 16>, <userdata 17>, <userdata 18>, <userdata 19>, <userdata 20>, <userdata 21>, <userdata 22> },
+    render_system = <userdata 23>,
+    visibility_system = <userdata 24>,
+    world = <userdata 25>
   },
-  transform = {}
+  loop = <function 1>,
+  world_inst = <userdata 26>,
+  <metatable> = {
+    __index = {
+      constructor = <function 2>,
+      create = <function 3>,
+      loop = <function 4>,
+      process_all_systems = <function 5>,
+      set_current = <function 6>,
+      <metatable> = {
+        __index = {}
+      }
+    }
+  }
 }
 
-world_instance:
+npc_effects:
 <userdata 1>
 
-main_input_routine:
+create_steering:
 <function 1>
 
-open_script:
+all_enemies_max_health_points:
+0
+
+example_map:
+{ {}, { <userdata 1>, <userdata 2>, <userdata 3>, <userdata 4> } }
+
+loader_1:
+{
+  create_entities_from_map = <function 1>
+}
+
+spawn_wayward:
 <function 1>
 
-simple_integration:
+bitflag:
 <function 1>
 
-add_roots:
+point_below_segment:
 <function 1>
 
-create_particle:
+wayward_archetype:
+{}
+
+collision_message:
+<userdata 1>
+
+player_class:
+{
+  constructor = <function 1>,
+  create = <function 2>,
+  intent_message = <function 3>,
+  is_shooting = <function 4>,
+  loop = <function 5>,
+  substep = <function 6>,
+  <metatable> = {
+    __index = {
+      all_modules = <function 7>,
+      constructor = <function 8>,
+      create = <function 9>,
+      loop = <function 10>,
+      substep = <function 11>,
+      try_module_method = <function 12>,
+      <metatable> = {
+        __index = {}
+      }
+    }
+  }
+}
+
+set_world_reloading_script:
 <function 1>
+
+player_group_archetype:
+{
+  body = {
+    children = { "crosshair", "gun_entity" },
+    input = { 999999990, 2, 3, 999999985, 999999993, 999999989, 999999987, 5 },
+    movement = {
+      air_resistance = 0.1,
+      ground_filter = {
+        categoryBits = 127,
+        maskBits = 15
+      },
+      input_acceleration = <userdata 1>,
+      inverse_thrust_brake = <userdata 2>,
+      max_speed_animation = 2300,
+      receivers = {},
+      sidescroller_setup = true
+    },
+    physics = {
+      body_info = {
+        angled_damping = true,
+        bullet = true,
+        density = 1,
+        filter = {
+          categoryBits = 1,
+          maskBits = 95
+        },
+        fixed_rotation = true,
+        friction = 2,
+        radius = 60,
+        shape_type = 0
+      },
+      body_type = 2
+    },
+    render = {
+      layer = 2,
+      model = <userdata 3>
+    },
+    scriptable = {},
+    transform = {},
+    visibility = {
+      interval_ms = 16,
+      visibility_layers = {
+        [998] = {
+          color = <userdata 4>,
+          filter = {
+            categoryBits = 127,
+            maskBits = 14
+          },
+          ignore_discontinuities_shorter_than = -1,
+          square_side = 6000
+        },
+        [999] = {
+          color = <userdata 5>,
+          filter = {
+            categoryBits = 127,
+            maskBits = 14
+          },
+          ignore_discontinuities_shorter_than = -1,
+          square_side = 6000
+        },
+        [1000] = {
+          color = <userdata 6>,
+          filter = {
+            categoryBits = 127,
+            maskBits = 14
+          },
+          ignore_discontinuities_shorter_than = -1,
+          square_side = 6000
+        }
+      }
+    }
+  },
+  crosshair = {
+    chase = {
+      relative = true,
+      target = "body"
+    },
+    crosshair = {
+      sensitivity = <userdata 7>,
+      size_multiplier = <userdata 8>
+    },
+    input = { 5 },
+    render = {
+      layer = 0
+    },
+    transform = {
+      pos = <userdata 9>,
+      rotation = 0
+    }
+  },
+  gun_entity = {
+    chase = {
+      chase_rotation = false,
+      target = "body"
+    },
+    gun = {
+      bullet_body = {
+        air_resistance = 0,
+        angular_damping = 160,
+        density = 0.1,
+        filter = {
+          categoryBits = 32,
+          maskBits = 78
+        },
+        fixed_rotation = false,
+        friction = 100,
+        gravity_scale = 0,
+        linear_damping = 0,
+        rect_size = <userdata 10>,
+        restitution = 0,
+        shape_type = 0
+      },
+      bullet_callback = <function 1>,
+      bullet_damage = <userdata 11>,
+      bullet_distance_offset = <userdata 12>,
+      bullet_render = {
+        mask = 1
+      },
+      bullet_speed = <userdata 13>,
+      bullets_once = 20,
+      current_rounds = 3000,
+      is_automatic = true,
+      max_bullet_distance = 4000,
+      max_rounds = 3000,
+      shake_radius = 39.5,
+      shake_spread_degrees = 45,
+      shooting_interval_ms = 50,
+      spread_degrees = 5.5,
+      target_camera_to_shake = <userdata 14>
+    },
+    input = { 4 },
+    lookat = {
+      target = "crosshair"
+    },
+    transform = {}
+  }
+}
+
+rect_ltrb_i:
+<userdata 1>
+
+player_debug_circle:
+<userdata 1>
+
+my_crosshair_sprite:
+<userdata 1>
+
+set_components_from_entry:
+<function 1>
+
+gun_component:
+<userdata 1>
+
+body_to_entity:
+<function 1>
+
+dofile:
+<function 1>
+
+debug_sensor:
+<userdata 1>
+
+shot_message:
+<userdata 1>
+
+spawn_shooter:
+<function 1>
+
+shooter_archetype:
+{
+  body = {
+    behaviour_tree = {
+      trees = { <userdata 1>, <userdata 2> }
+    },
+    children = { "gun_entity" },
+    lookat = {
+      averages_per_sec = 10,
+      easing_mode = 2,
+      update_value = false
+    },
+    movement = {
+      air_resistance = 0.1,
+      braking_damping = 1,
+      ground_filter = {
+        categoryBits = 127,
+        maskBits = 15
+      },
+      input_acceleration = <userdata 3>,
+      inverse_thrust_brake = <userdata 4>,
+      max_speed_animation = 2300,
+      receivers = {},
+      sidescroller_setup = true
+    },
+    particle_emitter = {
+      available_particle_effects = <userdata 5>
+    },
+    pathfinding = {
+      distance_navpoint_hit = 2,
+      enable_backtracking = true,
+      favor_velocity_parallellness = false,
+      force_persistent_navpoints = true,
+      force_touch_sensors = true,
+      rotate_navpoints = 10,
+      target_offset = 3
+    },
+    physics = {
+      body_info = {
+        angled_damping = true,
+        bullet = true,
+        density = 100,
+        filter = {
+          categoryBits = 2,
+          maskBits = 63
+        },
+        fixed_rotation = true,
+        friction = 2,
+        radius = 60,
+        shape_type = 0
+      },
+      body_type = 2
+    },
+    render = {
+      layer = 2,
+      mask = 0,
+      model = <userdata 6>
+    },
+    scriptable = {},
+    steering = {
+      max_resultant_force = -1,
+      max_speed = 16970.562748477
+    },
+    transform = {
+      pos = <userdata 7>
+    },
+    visibility = {
+      interval_ms = 16,
+      visibility_layers = { {
+          color = <userdata 8>,
+          filter = {
+            categoryBits = 127,
+            maskBits = 12
+          },
+          ignore_discontinuities_shorter_than = 150,
+          square_side = 2000
+        } }
+    }
+  },
+  gun_entity = {
+    chase = {
+      chase_rotation = false,
+      target = "body"
+    },
+    gun = {
+      bullet_body = {
+        air_resistance = 0,
+        angular_damping = 160,
+        density = 0.1,
+        filter = {
+          categoryBits = 64,
+          maskBits = 45
+        },
+        fixed_rotation = false,
+        friction = 100,
+        gravity_scale = 0,
+        linear_damping = 0,
+        rect_size = <userdata 9>,
+        restitution = 0,
+        shape_type = 0
+      },
+      bullet_callback = <function 1>,
+      bullet_damage = <userdata 10>,
+      bullet_distance_offset = <userdata 11>,
+      bullet_render = {
+        mask = 1
+      },
+      bullet_speed = <userdata 12>,
+      bullets_once = 5,
+      current_rounds = 3000,
+      is_automatic = true,
+      max_bullet_distance = 4000,
+      max_rounds = 3000,
+      shake_radius = 39.5,
+      shake_spread_degrees = 45,
+      shooting_interval_ms = 50,
+      spread_degrees = 5.5,
+      target_camera_to_shake = <userdata 13>
+    },
+    lookat = {
+      target = "body"
+    },
+    transform = {}
+  }
+}
+
+shooter_sprite:
+<userdata 1>
+
+spawn_pusher:
+<function 1>
+
+pusher_archetype:
+{
+  body = {
+    behaviour_tree = {
+      trees = { <userdata 1>, <userdata 2> }
+    },
+    lookat = {
+      averages_per_sec = 10,
+      easing_mode = 2,
+      update_value = false
+    },
+    movement = {
+      air_resistance = 0.1,
+      ground_filter = {
+        categoryBits = 127,
+        maskBits = 15
+      },
+      input_acceleration = <userdata 3>,
+      inverse_thrust_brake = <userdata 4>,
+      max_speed_animation = 2300,
+      receivers = {},
+      sidescroller_setup = true
+    },
+    particle_emitter = {
+      available_particle_effects = <userdata 5>
+    },
+    pathfinding = {
+      distance_navpoint_hit = 2,
+      enable_backtracking = true,
+      favor_velocity_parallellness = false,
+      force_persistent_navpoints = true,
+      force_touch_sensors = true,
+      rotate_navpoints = 10,
+      target_offset = 3
+    },
+    physics = {
+      body_info = {
+        angled_damping = true,
+        bullet = true,
+        density = 100,
+        filter = {
+          categoryBits = 2,
+          maskBits = 63
+        },
+        fixed_rotation = true,
+        friction = 2,
+        radius = 60,
+        shape_type = 0
+      },
+      body_type = 2
+    },
+    render = {
+      layer = 2,
+      mask = 0,
+      model = <userdata 6>
+    },
+    scriptable = {},
+    steering = {
+      max_resultant_force = -1,
+      max_speed = 16970.562748477
+    },
+    transform = {
+      pos = <userdata 7>
+    },
+    visibility = {
+      interval_ms = 16,
+      visibility_layers = { {
+          color = <userdata 8>,
+          filter = {
+            categoryBits = 127,
+            maskBits = 12
+          },
+          ignore_discontinuities_shorter_than = 150,
+          square_side = 2000
+        } }
+    }
+  }
+}
+
+minmax_u:
+<userdata 1>
+
+GLSL_program:
+<userdata 1>
+
+behaviour_decorator:
+<userdata 1>
+
+global_sound_table:
+{}
+
+handle_dying_instability_rays:
+<function 1>
+
+scene_program:
+<userdata 1>
+
+loop_instability_gun_bullets:
+<function 1>
+
+set_zoom_level:
+<function 1>
+
+_destroy_system:
+<userdata 1>
+
+spatial_instability_zoom:
+8
+
+table_of_tables:
+<function 1>
+
+npc_sprite:
+<userdata 1>
+
+spawn_clock:
+<function 1>
+
+config_table:
+{
+  bpp = 24,
+  doublebuffer = 1,
+  fullscreen = 1,
+  resolution_h = 1080,
+  resolution_w = 1920,
+  sensitivity = <userdata 1>,
+  window_border = 0,
+  window_name = "example",
+  window_x = 0,
+  window_y = 0
+}
+
+clock_renderer_archetype:
+{
+  body = {
+    render = {
+      layer = 0,
+      mask = 0
+    },
+    transform = {}
+  }
+}
+
+world:
+<userdata 1>
+
+reversed:
+<function 1>
+
+transform_component:
+<userdata 1>
+
+instability_ray_module:
+{
+  cast = <function 1>,
+  construct_world_polygon = <function 2>,
+  constructor = <function 3>,
+  create = <function 4>,
+  generate_triangles = <function 5>,
+  loop = <function 6>,
+  <metatable> = {
+    __index = {}
+  }
+}
+
+waywardness_module:
+{
+  constructor = <function 1>,
+  create = <function 2>,
+  damage_message = <function 3>,
+  return_to_initial_transform = <function 4>,
+  substep = <function 5>,
+  <metatable> = {
+    __index = {}
+  }
+}
+
+vblur_program:
+<userdata 1>
+
+v_offset_multiplier:
+1
+
+randval_i:
+<function 1>
+
+transform_state:
+<userdata 1>
+
+pursuit_steering:
+<userdata 1>
 
 bounce_number:
 2
 
-spairs:
+_particle_emitter_system:
+<userdata 1>
+
+particle_burst_message:
+<userdata 1>
+
+current_world:
+{
+  globals = {
+    group_by_entity = {
+      [<userdata 1>] = <1>{
+        body = <userdata 2>,
+        crosshair = <userdata 3>
+      },
+      [<userdata 4>] = <table 1>,
+      [<userdata 5>] = {
+        body = <userdata 6>,
+        hour_hand = <userdata 7>,
+        minute_hand = <userdata 8>,
+        second_hand = <userdata 9>
+      }
+    },
+    input_system = <userdata 10>,
+    pathfinding_system = <userdata 11>,
+    physics_system = <userdata 12>,
+    polygon_particle_userdatas_saved = { <userdata 13>, <userdata 14>, <userdata 15>, <userdata 16>, <userdata 17>, <userdata 18>, <userdata 19>, <userdata 20>, <userdata 21>, <userdata 22> },
+    render_system = <userdata 23>,
+    visibility_system = <userdata 24>,
+    world = <userdata 25>
+  },
+  loop = <function 1>,
+  world_inst = <userdata 26>,
+  <metatable> = {
+    __index = {
+      constructor = <function 2>,
+      create = <function 3>,
+      loop = <function 4>,
+      process_all_systems = <function 5>,
+      set_current = <function 6>,
+      <metatable> = {
+        __index = {}
+      }
+    }
+  }
+}
+
+set_physics_info:
 <function 1>
 
-font_file:
+obstacle_avoidance_steering:
 <userdata 1>
 
-shift_amount_uniform:
-3
-
-separation_behaviour:
+timer:
 <userdata 1>
+
+sprite:
+<userdata 1>
+
+wander_steering:
+<userdata 1>
+
+ptr_lookup:
+<function 1>
+
+containment_archetype:
+{
+  avoidance_rectangle_width = 0,
+  behaviour_type = <userdata 1>,
+  force_color = <userdata 2>,
+  intervention_time_ms = 240,
+  only_threats_in_OBB = false,
+  randomize_rays = true,
+  ray_count = 5,
+  ray_filter = {
+    categoryBits = 127,
+    maskBits = 15
+  },
+  weight = 1
+}
+
+containment_steering:
+<userdata 1>
+
+b2WeldJoint:
+<userdata 1>
+
+b2RevoluteJointDef:
+<userdata 1>
+
+obstacle_avoidance_behaviour:
+<userdata 1>
+
+target_seek_steering:
+<userdata 1>
+
+filter_characters_separation:
+{
+  categoryBits = 127,
+  maskBits = 2
+}
+
+jumping_module:
+{
+  constructor = <function 1>,
+  create = <function 2>,
+  handle_jumping = <function 3>,
+  handle_variable_height_jump = <function 4>,
+  jump = <function 5>,
+  loop = <function 6>,
+  set_foot_sensor_from_circle = <function 7>,
+  set_foot_sensor_from_sprite = <function 8>,
+  substep = <function 9>,
+  <metatable> = {
+    __index = {}
+  }
+}
+
+h_offset_multiplier:
+1
+
+time_uniform:
+1
+
+character_module:
+{
+  constructor = <function 1>,
+  create = <function 2>,
+  damage_message = <function 3>,
+  init_hp = <function 4>,
+  set_base_movement_speed = <function 5>,
+  set_gravity_shift_state = <function 6>,
+  set_movement_speed_multiplier = <function 7>,
+  update_movement_speeds = <function 8>,
+  <metatable> = {
+    __index = {}
+  }
+}
+
+spawn_entity:
+<function 1>
+
+spatial_instability_rotation:
+6
 
 clock_renderer_module:
 {
@@ -2558,448 +2764,303 @@ npc_alertness:
   temporary_alertness = <userdata 3>
 }
 
-minmax_u:
-<userdata 1>
-
-_script_system:
-<userdata 1>
-
-minmax:
-<userdata 1>
-
-random_enemy_bullet_models:
-{ <userdata 1>, <userdata 2>, <userdata 3>, <userdata 4>, <userdata 5>, <userdata 6>, <userdata 7>, <userdata 8>, <userdata 9>, <userdata 10>, <userdata 11>, <userdata 12>, <userdata 13>, <userdata 14>, <userdata 15>, <userdata 16>, <userdata 17>, <userdata 18>, <userdata 19>, <userdata 20>, <userdata 21>, <userdata 22>, <userdata 23>, <userdata 24>, <userdata 25>, <userdata 26>, <userdata 27>, <userdata 28>, <userdata 29>, <userdata 30>, <userdata 31>, <userdata 32>, <userdata 33>, <userdata 34>, <userdata 35>, <userdata 36>, <userdata 37>, <userdata 38>, <userdata 39>, <userdata 40>, <userdata 41>, <userdata 42>, <userdata 43>, <userdata 44>, <userdata 45>, <userdata 46>, <userdata 47>, <userdata 48>, <userdata 49>, <userdata 50>, <userdata 51>, <userdata 52>, <userdata 53>, <userdata 54>, <userdata 55>, <userdata 56>, <userdata 57>, <userdata 58>, <userdata 59>, <userdata 60>, <userdata 61>, <userdata 62>, <userdata 63>, <userdata 64>, <userdata 65>, <userdata 66>, <userdata 67>, <userdata 68>, <userdata 69>, <userdata 70>, <userdata 71>, <userdata 72>, <userdata 73>, <userdata 74>, <userdata 75>, <userdata 76>, <userdata 77>, <userdata 78>, <userdata 79>, <userdata 80>, <userdata 81>, <userdata 82>, <userdata 83>, <userdata 84>, <userdata 85>, <userdata 86>, <userdata 87>, <userdata 88>, <userdata 89>, <userdata 90>, <userdata 91>, <userdata 92>, <userdata 93>, <userdata 94>, <userdata 95>, <userdata 96>, <userdata 97>, <userdata 98>, <userdata 99>, <userdata 100>, <userdata 101>, <userdata 102>, <userdata 103>, <userdata 104>, <userdata 105>, <userdata 106>, <userdata 107>, <userdata 108>, <userdata 109>, <userdata 110>, <userdata 111>, <userdata 112>, <userdata 113>, <userdata 114>, <userdata 115>, <userdata 116>, <userdata 117>, <userdata 118>, <userdata 119>, <userdata 120>, <userdata 121>, <userdata 122>, <userdata 123>, <userdata 124>, <userdata 125>, <userdata 126>, <userdata 127>, <userdata 128>, <userdata 129>, <userdata 130>, <userdata 131>, <userdata 132>, <userdata 133>, <userdata 134>, <userdata 135>, <userdata 136>, <userdata 137>, <userdata 138>, <userdata 139>, <userdata 140>, <userdata 141>, <userdata 142>, <userdata 143>, <userdata 144>, <userdata 145>, <userdata 146>, <userdata 147>, <userdata 148>, <userdata 149>, <userdata 150>, <userdata 151>, <userdata 152>, <userdata 153>, <userdata 154>, <userdata 155>, <userdata 156>, <userdata 157>, <userdata 158>, <userdata 159>, <userdata 160>, <userdata 161>, <userdata 162>, <userdata 163>, <userdata 164>, <userdata 165>, <userdata 166>, <userdata 167>, <userdata 168>, <userdata 169>, <userdata 170>, <userdata 171>, <userdata 172>, <userdata 173>, <userdata 174>, <userdata 175>, <userdata 176>, <userdata 177>, <userdata 178>, <userdata 179>, <userdata 180>, <userdata 181>, <userdata 182>, <userdata 183>, <userdata 184>, <userdata 185>, <userdata 186>, <userdata 187>, <userdata 188>, <userdata 189>, <userdata 190>, <userdata 191>, <userdata 192>, <userdata 193>, <userdata 194>, <userdata 195>, <userdata 196>, <userdata 197>, <userdata 198>, <userdata 199>, <userdata 200>, <userdata 201>, <userdata 202>, <userdata 203>, <userdata 204>, <userdata 205>, <userdata 206>, <userdata 207>, <userdata 208>, <userdata 209>, <userdata 210>, <userdata 211>, <userdata 212>, <userdata 213>, <userdata 214>, <userdata 215>, <userdata 216>, <userdata 217>, <userdata 218>, <userdata 219>, <userdata 220>, <userdata 221>, <userdata 222>, <userdata 223>, <userdata 224>, <userdata 225>, <userdata 226>, <userdata 227>, <userdata 228>, <userdata 229>, <userdata 230>, <userdata 231>, <userdata 232>, <userdata 233>, <userdata 234>, <userdata 235>, <userdata 236>, <userdata 237>, <userdata 238>, <userdata 239>, <userdata 240>, <userdata 241>, <userdata 242>, <userdata 243>, <userdata 244>, <userdata 245>, <userdata 246>, <userdata 247>, <userdata 248>, <userdata 249>, <userdata 250>, <userdata 251>, <userdata 252>, <userdata 253>, <userdata 254>, <userdata 255>, <userdata 256>, <userdata 257>, <userdata 258>, <userdata 259>, <userdata 260>, <userdata 261>, <userdata 262>, <userdata 263>, <userdata 264>, <userdata 265>, <userdata 266>, <userdata 267>, <userdata 268>, <userdata 269>, <userdata 270>, <userdata 271>, <userdata 272>, <userdata 273>, <userdata 274>, <userdata 275>, <userdata 276>, <userdata 277>, <userdata 278>, <userdata 279>, <userdata 280>, <userdata 281>, <userdata 282>, <userdata 283>, <userdata 284>, <userdata 285>, <userdata 286>, <userdata 287>, <userdata 288>, <userdata 289>, <userdata 290>, <userdata 291>, <userdata 292>, <userdata 293>, <userdata 294>, <userdata 295>, <userdata 296>, <userdata 297>, <userdata 298>, <userdata 299>, <userdata 300>, <userdata 301>, <userdata 302>, <userdata 303>, <userdata 304>, <userdata 305>, <userdata 306>, <userdata 307>, <userdata 308>, <userdata 309>, <userdata 310>, <userdata 311>, <userdata 312>, <userdata 313>, <userdata 314>, <userdata 315>, <userdata 316>, <userdata 317>, <userdata 318>, <userdata 319>, <userdata 320>, <userdata 321>, <userdata 322>, <userdata 323>, <userdata 324>, <userdata 325>, <userdata 326>, <userdata 327>, <userdata 328>, <userdata 329>, <userdata 330>, <userdata 331>, <userdata 332>, <userdata 333>, <userdata 334>, <userdata 335>, <userdata 336>, <userdata 337>, <userdata 338>, <userdata 339>, <userdata 340>, <userdata 341>, <userdata 342>, <userdata 343>, <userdata 344>, <userdata 345>, <userdata 346>, <userdata 347>, <userdata 348>, <userdata 349>, <userdata 350>, <userdata 351>, <userdata 352>, <userdata 353>, <userdata 354>, <userdata 355>, <userdata 356>, <userdata 357>, <userdata 358>, <userdata 359>, <userdata 360>, <userdata 361>, <userdata 362>, <userdata 363>, <userdata 364>, <userdata 365>, <userdata 366>, <userdata 367>, <userdata 368>, <userdata 369>, <userdata 370>, <userdata 371>, <userdata 372>, <userdata 373>, <userdata 374>, <userdata 375>, <userdata 376>, <userdata 377>, <userdata 378>, <userdata 379>, <userdata 380>, <userdata 381>, <userdata 382>, <userdata 383>, <userdata 384>, <userdata 385>, <userdata 386>, <userdata 387>, <userdata 388>, <userdata 389>, <userdata 390>, <userdata 391>, <userdata 392>, <userdata 393>, <userdata 394>, <userdata 395>, <userdata 396>, <userdata 397>, <userdata 398>, <userdata 399>, <userdata 400>, <userdata 401>, <userdata 402>, <userdata 403>, <userdata 404>, <userdata 405>, <userdata 406>, <userdata 407>, <userdata 408>, <userdata 409>, <userdata 410>, <userdata 411>, <userdata 412>, <userdata 413>, <userdata 414>, <userdata 415>, <userdata 416>, <userdata 417>, <userdata 418>, <userdata 419>, <userdata 420>, <userdata 421>, <userdata 422>, <userdata 423>, <userdata 424>, <userdata 425>, <userdata 426>, <userdata 427>, <userdata 428>, <userdata 429>, <userdata 430>, <userdata 431>, <userdata 432>, <userdata 433>, <userdata 434>, <userdata 435>, <userdata 436>, <userdata 437>, <userdata 438>, <userdata 439>, <userdata 440>, <userdata 441>, <userdata 442>, <userdata 443>, <userdata 444>, <userdata 445>, <userdata 446>, <userdata 447>, <userdata 448>, <userdata 449>, <userdata 450>, <userdata 451>, <userdata 452>, <userdata 453>, <userdata 454>, <userdata 455>, <userdata 456>, <userdata 457>, <userdata 458>, <userdata 459>, <userdata 460>, <userdata 461>, <userdata 462>, <userdata 463>, <userdata 464>, <userdata 465>, <userdata 466>, <userdata 467>, <userdata 468>, <userdata 469>, <userdata 470>, <userdata 471>, <userdata 472>, <userdata 473>, <userdata 474>, <userdata 475>, <userdata 476>, <userdata 477>, <userdata 478>, <userdata 479>, <userdata 480>, <userdata 481>, <userdata 482>, <userdata 483>, <userdata 484>, <userdata 485>, <userdata 486>, <userdata 487>, <userdata 488>, <userdata 489>, <userdata 490>, <userdata 491>, <userdata 492>, <userdata 493>, <userdata 494>, <userdata 495>, <userdata 496>, <userdata 497>, <userdata 498>, <userdata 499>, <userdata 500>, <userdata 501>, <userdata 502>, <userdata 503>, <userdata 504>, <userdata 505>, <userdata 506>, <userdata 507>, <userdata 508>, <userdata 509>, <userdata 510>, <userdata 511>, <userdata 512>, <userdata 513>, <userdata 514>, <userdata 515>, <userdata 516>, <userdata 517>, <userdata 518>, <userdata 519>, <userdata 520>, <userdata 521>, <userdata 522>, <userdata 523>, <userdata 524>, <userdata 525>, <userdata 526>, <userdata 527>, <userdata 528>, <userdata 529>, <userdata 530>, <userdata 531>, <userdata 532>, <userdata 533>, <userdata 534>, <userdata 535>, <userdata 536>, <userdata 537>, <userdata 538>, <userdata 539>, <userdata 540>, <userdata 541>, <userdata 542>, <userdata 543>, <userdata 544>, <userdata 545>, <userdata 546>, <userdata 547>, <userdata 548>, <userdata 549>, <userdata 550>, <userdata 551>, <userdata 552>, <userdata 553>, <userdata 554>, <userdata 555>, <userdata 556>, <userdata 557>, <userdata 558>, <userdata 559>, <userdata 560>, <userdata 561>, <userdata 562>, <userdata 563>, <userdata 564>, <userdata 565>, <userdata 566>, <userdata 567>, <userdata 568>, <userdata 569>, <userdata 570>, <userdata 571>, <userdata 572>, <userdata 573>, <userdata 574>, <userdata 575>, <userdata 576>, <userdata 577>, <userdata 578>, <userdata 579>, <userdata 580>, <userdata 581>, <userdata 582>, <userdata 583>, <userdata 584>, <userdata 585>, <userdata 586>, <userdata 587>, <userdata 588>, <userdata 589>, <userdata 590>, <userdata 591>, <userdata 592>, <userdata 593>, <userdata 594>, <userdata 595>, <userdata 596>, <userdata 597>, <userdata 598>, <userdata 599>, <userdata 600>, <userdata 601>, <userdata 602>, <userdata 603>, <userdata 604>, <userdata 605>, <userdata 606>, <userdata 607>, <userdata 608>, <userdata 609>, <userdata 610>, <userdata 611>, <userdata 612>, <userdata 613>, <userdata 614>, <userdata 615>, <userdata 616>, <userdata 617>, <userdata 618>, <userdata 619>, <userdata 620>, <userdata 621>, <userdata 622>, <userdata 623>, <userdata 624>, <userdata 625>, <userdata 626>, <userdata 627>, <userdata 628>, <userdata 629>, <userdata 630>, <userdata 631>, <userdata 632>, <userdata 633>, <userdata 634>, <userdata 635>, <userdata 636>, <userdata 637>, <userdata 638>, <userdata 639>, <userdata 640>, <userdata 641>, <userdata 642>, <userdata 643>, <userdata 644>, <userdata 645>, <userdata 646>, <userdata 647>, <userdata 648>, <userdata 649>, <userdata 650>, <userdata 651>, <userdata 652>, <userdata 653>, <userdata 654>, <userdata 655>, <userdata 656>, <userdata 657>, <userdata 658>, <userdata 659>, <userdata 660>, <userdata 661>, <userdata 662>, <userdata 663>, <userdata 664>, <userdata 665>, <userdata 666>, <userdata 667>, <userdata 668>, <userdata 669>, <userdata 670>, <userdata 671>, <userdata 672>, <userdata 673>, <userdata 674>, <userdata 675>, <userdata 676>, <userdata 677>, <userdata 678>, <userdata 679>, <userdata 680>, <userdata 681>, <userdata 682>, <userdata 683>, <userdata 684>, <userdata 685>, <userdata 686>, <userdata 687>, <userdata 688>, <userdata 689>, <userdata 690>, <userdata 691>, <userdata 692>, <userdata 693>, <userdata 694>, <userdata 695>, <userdata 696>, <userdata 697>, <userdata 698>, <userdata 699>, <userdata 700>, <userdata 701>, <userdata 702>, <userdata 703>, <userdata 704>, <userdata 705>, <userdata 706>, <userdata 707>, <userdata 708>, <userdata 709>, <userdata 710>, <userdata 711>, <userdata 712>, <userdata 713>, <userdata 714>, <userdata 715>, <userdata 716>, <userdata 717>, <userdata 718>, <userdata 719>, <userdata 720>, <userdata 721>, <userdata 722>, <userdata 723>, <userdata 724>, <userdata 725>, <userdata 726>, <userdata 727>, <userdata 728>, <userdata 729>, <userdata 730>, <userdata 731>, <userdata 732>, <userdata 733>, <userdata 734>, <userdata 735>, <userdata 736>, <userdata 737>, <userdata 738>, <userdata 739>, <userdata 740>, <userdata 741>, <userdata 742>, <userdata 743>, <userdata 744>, <userdata 745>, <userdata 746>, <userdata 747>, <userdata 748>, <userdata 749>, <userdata 750>, <userdata 751>, <userdata 752>, <userdata 753>, <userdata 754>, <userdata 755>, <userdata 756>, <userdata 757>, <userdata 758>, <userdata 759>, <userdata 760>, <userdata 761>, <userdata 762>, <userdata 763>, <userdata 764>, <userdata 765>, <userdata 766>, <userdata 767>, <userdata 768>, <userdata 769>, <userdata 770>, <userdata 771>, <userdata 772>, <userdata 773>, <userdata 774>, <userdata 775>, <userdata 776>, <userdata 777>, <userdata 778>, <userdata 779>, <userdata 780>, <userdata 781>, <userdata 782>, <userdata 783>, <userdata 784>, <userdata 785>, <userdata 786>, <userdata 787>, <userdata 788>, <userdata 789>, <userdata 790>, <userdata 791>, <userdata 792>, <userdata 793>, <userdata 794>, <userdata 795>, <userdata 796>, <userdata 797>, <userdata 798>, <userdata 799>, <userdata 800>, <userdata 801>, <userdata 802>, <userdata 803>, <userdata 804>, <userdata 805>, <userdata 806>, <userdata 807>, <userdata 808>, <userdata 809>, <userdata 810>, <userdata 811>, <userdata 812>, <userdata 813>, <userdata 814>, <userdata 815>, <userdata 816>, <userdata 817>, <userdata 818>, <userdata 819>, <userdata 820>, <userdata 821>, <userdata 822>, <userdata 823>, <userdata 824>, <userdata 825>, <userdata 826>, <userdata 827>, <userdata 828>, <userdata 829>, <userdata 830>, <userdata 831>, <userdata 832>, <userdata 833>, <userdata 834>, <userdata 835>, <userdata 836>, <userdata 837>, <userdata 838>, <userdata 839>, <userdata 840>, <userdata 841>, <userdata 842>, <userdata 843>, <userdata 844>, <userdata 845>, <userdata 846>, <userdata 847>, <userdata 848>, <userdata 849>, <userdata 850>, <userdata 851>, <userdata 852>, <userdata 853>, <userdata 854>, <userdata 855>, <userdata 856>, <userdata 857>, <userdata 858>, <userdata 859>, <userdata 860>, <userdata 861>, <userdata 862>, <userdata 863>, <userdata 864>, <userdata 865>, <userdata 866>, <userdata 867>, <userdata 868>, <userdata 869>, <userdata 870>, <userdata 871>, <userdata 872>, <userdata 873>, <userdata 874>, <userdata 875>, <userdata 876>, <userdata 877>, <userdata 878>, <userdata 879>, <userdata 880>, <userdata 881>, <userdata 882>, <userdata 883>, <userdata 884>, <userdata 885>, <userdata 886>, <userdata 887>, <userdata 888>, <userdata 889>, <userdata 890>, <userdata 891>, <userdata 892>, <userdata 893>, <userdata 894>, <userdata 895>, <userdata 896>, <userdata 897>, <userdata 898>, <userdata 899>, <userdata 900>, <userdata 901>, <userdata 902>, <userdata 903>, <userdata 904>, <userdata 905>, <userdata 906>, <userdata 907>, <userdata 908>, <userdata 909>, <userdata 910>, <userdata 911>, <userdata 912>, <userdata 913>, <userdata 914>, <userdata 915>, <userdata 916>, <userdata 917>, <userdata 918>, <userdata 919>, <userdata 920>, <userdata 921>, <userdata 922>, <userdata 923>, <userdata 924>, <userdata 925>, <userdata 926>, <userdata 927>, <userdata 928>, <userdata 929>, <userdata 930>, <userdata 931>, <userdata 932>, <userdata 933>, <userdata 934>, <userdata 935>, <userdata 936>, <userdata 937>, <userdata 938>, <userdata 939>, <userdata 940>, <userdata 941>, <userdata 942>, <userdata 943>, <userdata 944>, <userdata 945>, <userdata 946>, <userdata 947>, <userdata 948>, <userdata 949>, <userdata 950>, <userdata 951>, <userdata 952>, <userdata 953>, <userdata 954>, <userdata 955>, <userdata 956>, <userdata 957>, <userdata 958>, <userdata 959>, <userdata 960>, <userdata 961>, <userdata 962>, <userdata 963>, <userdata 964>, <userdata 965>, <userdata 966>, <userdata 967>, <userdata 968>, <userdata 969>, <userdata 970>, <userdata 971>, <userdata 972>, <userdata 973>, <userdata 974>, <userdata 975>, <userdata 976>, <userdata 977>, <userdata 978>, <userdata 979>, <userdata 980>, <userdata 981>, <userdata 982>, <userdata 983>, <userdata 984>, <userdata 985>, <userdata 986>, <userdata 987>, <userdata 988>, <userdata 989>, <userdata 990>, <userdata 991>, <userdata 992>, <userdata 993>, <userdata 994>, <userdata 995>, <userdata 996>, <userdata 997>, <userdata 998>, <userdata 999>, <userdata 1000> }
-
-random_player_bullet_models:
-{ <userdata 1>, <userdata 2>, <userdata 3>, <userdata 4>, <userdata 5>, <userdata 6>, <userdata 7>, <userdata 8>, <userdata 9>, <userdata 10>, <userdata 11>, <userdata 12>, <userdata 13>, <userdata 14>, <userdata 15>, <userdata 16>, <userdata 17>, <userdata 18>, <userdata 19>, <userdata 20>, <userdata 21>, <userdata 22>, <userdata 23>, <userdata 24>, <userdata 25>, <userdata 26>, <userdata 27>, <userdata 28>, <userdata 29>, <userdata 30>, <userdata 31>, <userdata 32>, <userdata 33>, <userdata 34>, <userdata 35>, <userdata 36>, <userdata 37>, <userdata 38>, <userdata 39>, <userdata 40>, <userdata 41>, <userdata 42>, <userdata 43>, <userdata 44>, <userdata 45>, <userdata 46>, <userdata 47>, <userdata 48>, <userdata 49>, <userdata 50>, <userdata 51>, <userdata 52>, <userdata 53>, <userdata 54>, <userdata 55>, <userdata 56>, <userdata 57>, <userdata 58>, <userdata 59>, <userdata 60>, <userdata 61>, <userdata 62>, <userdata 63>, <userdata 64>, <userdata 65>, <userdata 66>, <userdata 67>, <userdata 68>, <userdata 69>, <userdata 70>, <userdata 71>, <userdata 72>, <userdata 73>, <userdata 74>, <userdata 75>, <userdata 76>, <userdata 77>, <userdata 78>, <userdata 79>, <userdata 80>, <userdata 81>, <userdata 82>, <userdata 83>, <userdata 84>, <userdata 85>, <userdata 86>, <userdata 87>, <userdata 88>, <userdata 89>, <userdata 90>, <userdata 91>, <userdata 92>, <userdata 93>, <userdata 94>, <userdata 95>, <userdata 96>, <userdata 97>, <userdata 98>, <userdata 99>, <userdata 100>, <userdata 101>, <userdata 102>, <userdata 103>, <userdata 104>, <userdata 105>, <userdata 106>, <userdata 107>, <userdata 108>, <userdata 109>, <userdata 110>, <userdata 111>, <userdata 112>, <userdata 113>, <userdata 114>, <userdata 115>, <userdata 116>, <userdata 117>, <userdata 118>, <userdata 119>, <userdata 120>, <userdata 121>, <userdata 122>, <userdata 123>, <userdata 124>, <userdata 125>, <userdata 126>, <userdata 127>, <userdata 128>, <userdata 129>, <userdata 130>, <userdata 131>, <userdata 132>, <userdata 133>, <userdata 134>, <userdata 135>, <userdata 136>, <userdata 137>, <userdata 138>, <userdata 139>, <userdata 140>, <userdata 141>, <userdata 142>, <userdata 143>, <userdata 144>, <userdata 145>, <userdata 146>, <userdata 147>, <userdata 148>, <userdata 149>, <userdata 150>, <userdata 151>, <userdata 152>, <userdata 153>, <userdata 154>, <userdata 155>, <userdata 156>, <userdata 157>, <userdata 158>, <userdata 159>, <userdata 160>, <userdata 161>, <userdata 162>, <userdata 163>, <userdata 164>, <userdata 165>, <userdata 166>, <userdata 167>, <userdata 168>, <userdata 169>, <userdata 170>, <userdata 171>, <userdata 172>, <userdata 173>, <userdata 174>, <userdata 175>, <userdata 176>, <userdata 177>, <userdata 178>, <userdata 179>, <userdata 180>, <userdata 181>, <userdata 182>, <userdata 183>, <userdata 184>, <userdata 185>, <userdata 186>, <userdata 187>, <userdata 188>, <userdata 189>, <userdata 190>, <userdata 191>, <userdata 192>, <userdata 193>, <userdata 194>, <userdata 195>, <userdata 196>, <userdata 197>, <userdata 198>, <userdata 199>, <userdata 200>, <userdata 201>, <userdata 202>, <userdata 203>, <userdata 204>, <userdata 205>, <userdata 206>, <userdata 207>, <userdata 208>, <userdata 209>, <userdata 210>, <userdata 211>, <userdata 212>, <userdata 213>, <userdata 214>, <userdata 215>, <userdata 216>, <userdata 217>, <userdata 218>, <userdata 219>, <userdata 220>, <userdata 221>, <userdata 222>, <userdata 223>, <userdata 224>, <userdata 225>, <userdata 226>, <userdata 227>, <userdata 228>, <userdata 229>, <userdata 230>, <userdata 231>, <userdata 232>, <userdata 233>, <userdata 234>, <userdata 235>, <userdata 236>, <userdata 237>, <userdata 238>, <userdata 239>, <userdata 240>, <userdata 241>, <userdata 242>, <userdata 243>, <userdata 244>, <userdata 245>, <userdata 246>, <userdata 247>, <userdata 248>, <userdata 249>, <userdata 250>, <userdata 251>, <userdata 252>, <userdata 253>, <userdata 254>, <userdata 255>, <userdata 256>, <userdata 257>, <userdata 258>, <userdata 259>, <userdata 260>, <userdata 261>, <userdata 262>, <userdata 263>, <userdata 264>, <userdata 265>, <userdata 266>, <userdata 267>, <userdata 268>, <userdata 269>, <userdata 270>, <userdata 271>, <userdata 272>, <userdata 273>, <userdata 274>, <userdata 275>, <userdata 276>, <userdata 277>, <userdata 278>, <userdata 279>, <userdata 280>, <userdata 281>, <userdata 282>, <userdata 283>, <userdata 284>, <userdata 285>, <userdata 286>, <userdata 287>, <userdata 288>, <userdata 289>, <userdata 290>, <userdata 291>, <userdata 292>, <userdata 293>, <userdata 294>, <userdata 295>, <userdata 296>, <userdata 297>, <userdata 298>, <userdata 299>, <userdata 300>, <userdata 301>, <userdata 302>, <userdata 303>, <userdata 304>, <userdata 305>, <userdata 306>, <userdata 307>, <userdata 308>, <userdata 309>, <userdata 310>, <userdata 311>, <userdata 312>, <userdata 313>, <userdata 314>, <userdata 315>, <userdata 316>, <userdata 317>, <userdata 318>, <userdata 319>, <userdata 320>, <userdata 321>, <userdata 322>, <userdata 323>, <userdata 324>, <userdata 325>, <userdata 326>, <userdata 327>, <userdata 328>, <userdata 329>, <userdata 330>, <userdata 331>, <userdata 332>, <userdata 333>, <userdata 334>, <userdata 335>, <userdata 336>, <userdata 337>, <userdata 338>, <userdata 339>, <userdata 340>, <userdata 341>, <userdata 342>, <userdata 343>, <userdata 344>, <userdata 345>, <userdata 346>, <userdata 347>, <userdata 348>, <userdata 349>, <userdata 350>, <userdata 351>, <userdata 352>, <userdata 353>, <userdata 354>, <userdata 355>, <userdata 356>, <userdata 357>, <userdata 358>, <userdata 359>, <userdata 360>, <userdata 361>, <userdata 362>, <userdata 363>, <userdata 364>, <userdata 365>, <userdata 366>, <userdata 367>, <userdata 368>, <userdata 369>, <userdata 370>, <userdata 371>, <userdata 372>, <userdata 373>, <userdata 374>, <userdata 375>, <userdata 376>, <userdata 377>, <userdata 378>, <userdata 379>, <userdata 380>, <userdata 381>, <userdata 382>, <userdata 383>, <userdata 384>, <userdata 385>, <userdata 386>, <userdata 387>, <userdata 388>, <userdata 389>, <userdata 390>, <userdata 391>, <userdata 392>, <userdata 393>, <userdata 394>, <userdata 395>, <userdata 396>, <userdata 397>, <userdata 398>, <userdata 399>, <userdata 400>, <userdata 401>, <userdata 402>, <userdata 403>, <userdata 404>, <userdata 405>, <userdata 406>, <userdata 407>, <userdata 408>, <userdata 409>, <userdata 410>, <userdata 411>, <userdata 412>, <userdata 413>, <userdata 414>, <userdata 415>, <userdata 416>, <userdata 417>, <userdata 418>, <userdata 419>, <userdata 420>, <userdata 421>, <userdata 422>, <userdata 423>, <userdata 424>, <userdata 425>, <userdata 426>, <userdata 427>, <userdata 428>, <userdata 429>, <userdata 430>, <userdata 431>, <userdata 432>, <userdata 433>, <userdata 434>, <userdata 435>, <userdata 436>, <userdata 437>, <userdata 438>, <userdata 439>, <userdata 440>, <userdata 441>, <userdata 442>, <userdata 443>, <userdata 444>, <userdata 445>, <userdata 446>, <userdata 447>, <userdata 448>, <userdata 449>, <userdata 450>, <userdata 451>, <userdata 452>, <userdata 453>, <userdata 454>, <userdata 455>, <userdata 456>, <userdata 457>, <userdata 458>, <userdata 459>, <userdata 460>, <userdata 461>, <userdata 462>, <userdata 463>, <userdata 464>, <userdata 465>, <userdata 466>, <userdata 467>, <userdata 468>, <userdata 469>, <userdata 470>, <userdata 471>, <userdata 472>, <userdata 473>, <userdata 474>, <userdata 475>, <userdata 476>, <userdata 477>, <userdata 478>, <userdata 479>, <userdata 480>, <userdata 481>, <userdata 482>, <userdata 483>, <userdata 484>, <userdata 485>, <userdata 486>, <userdata 487>, <userdata 488>, <userdata 489>, <userdata 490>, <userdata 491>, <userdata 492>, <userdata 493>, <userdata 494>, <userdata 495>, <userdata 496>, <userdata 497>, <userdata 498>, <userdata 499>, <userdata 500>, <userdata 501>, <userdata 502>, <userdata 503>, <userdata 504>, <userdata 505>, <userdata 506>, <userdata 507>, <userdata 508>, <userdata 509>, <userdata 510>, <userdata 511>, <userdata 512>, <userdata 513>, <userdata 514>, <userdata 515>, <userdata 516>, <userdata 517>, <userdata 518>, <userdata 519>, <userdata 520>, <userdata 521>, <userdata 522>, <userdata 523>, <userdata 524>, <userdata 525>, <userdata 526>, <userdata 527>, <userdata 528>, <userdata 529>, <userdata 530>, <userdata 531>, <userdata 532>, <userdata 533>, <userdata 534>, <userdata 535>, <userdata 536>, <userdata 537>, <userdata 538>, <userdata 539>, <userdata 540>, <userdata 541>, <userdata 542>, <userdata 543>, <userdata 544>, <userdata 545>, <userdata 546>, <userdata 547>, <userdata 548>, <userdata 549>, <userdata 550>, <userdata 551>, <userdata 552>, <userdata 553>, <userdata 554>, <userdata 555>, <userdata 556>, <userdata 557>, <userdata 558>, <userdata 559>, <userdata 560>, <userdata 561>, <userdata 562>, <userdata 563>, <userdata 564>, <userdata 565>, <userdata 566>, <userdata 567>, <userdata 568>, <userdata 569>, <userdata 570>, <userdata 571>, <userdata 572>, <userdata 573>, <userdata 574>, <userdata 575>, <userdata 576>, <userdata 577>, <userdata 578>, <userdata 579>, <userdata 580>, <userdata 581>, <userdata 582>, <userdata 583>, <userdata 584>, <userdata 585>, <userdata 586>, <userdata 587>, <userdata 588>, <userdata 589>, <userdata 590>, <userdata 591>, <userdata 592>, <userdata 593>, <userdata 594>, <userdata 595>, <userdata 596>, <userdata 597>, <userdata 598>, <userdata 599>, <userdata 600>, <userdata 601>, <userdata 602>, <userdata 603>, <userdata 604>, <userdata 605>, <userdata 606>, <userdata 607>, <userdata 608>, <userdata 609>, <userdata 610>, <userdata 611>, <userdata 612>, <userdata 613>, <userdata 614>, <userdata 615>, <userdata 616>, <userdata 617>, <userdata 618>, <userdata 619>, <userdata 620>, <userdata 621>, <userdata 622>, <userdata 623>, <userdata 624>, <userdata 625>, <userdata 626>, <userdata 627>, <userdata 628>, <userdata 629>, <userdata 630>, <userdata 631>, <userdata 632>, <userdata 633>, <userdata 634>, <userdata 635>, <userdata 636>, <userdata 637>, <userdata 638>, <userdata 639>, <userdata 640>, <userdata 641>, <userdata 642>, <userdata 643>, <userdata 644>, <userdata 645>, <userdata 646>, <userdata 647>, <userdata 648>, <userdata 649>, <userdata 650>, <userdata 651>, <userdata 652>, <userdata 653>, <userdata 654>, <userdata 655>, <userdata 656>, <userdata 657>, <userdata 658>, <userdata 659>, <userdata 660>, <userdata 661>, <userdata 662>, <userdata 663>, <userdata 664>, <userdata 665>, <userdata 666>, <userdata 667>, <userdata 668>, <userdata 669>, <userdata 670>, <userdata 671>, <userdata 672>, <userdata 673>, <userdata 674>, <userdata 675>, <userdata 676>, <userdata 677>, <userdata 678>, <userdata 679>, <userdata 680>, <userdata 681>, <userdata 682>, <userdata 683>, <userdata 684>, <userdata 685>, <userdata 686>, <userdata 687>, <userdata 688>, <userdata 689>, <userdata 690>, <userdata 691>, <userdata 692>, <userdata 693>, <userdata 694>, <userdata 695>, <userdata 696>, <userdata 697>, <userdata 698>, <userdata 699>, <userdata 700>, <userdata 701>, <userdata 702>, <userdata 703>, <userdata 704>, <userdata 705>, <userdata 706>, <userdata 707>, <userdata 708>, <userdata 709>, <userdata 710>, <userdata 711>, <userdata 712>, <userdata 713>, <userdata 714>, <userdata 715>, <userdata 716>, <userdata 717>, <userdata 718>, <userdata 719>, <userdata 720>, <userdata 721>, <userdata 722>, <userdata 723>, <userdata 724>, <userdata 725>, <userdata 726>, <userdata 727>, <userdata 728>, <userdata 729>, <userdata 730>, <userdata 731>, <userdata 732>, <userdata 733>, <userdata 734>, <userdata 735>, <userdata 736>, <userdata 737>, <userdata 738>, <userdata 739>, <userdata 740>, <userdata 741>, <userdata 742>, <userdata 743>, <userdata 744>, <userdata 745>, <userdata 746>, <userdata 747>, <userdata 748>, <userdata 749>, <userdata 750>, <userdata 751>, <userdata 752>, <userdata 753>, <userdata 754>, <userdata 755>, <userdata 756>, <userdata 757>, <userdata 758>, <userdata 759>, <userdata 760>, <userdata 761>, <userdata 762>, <userdata 763>, <userdata 764>, <userdata 765>, <userdata 766>, <userdata 767>, <userdata 768>, <userdata 769>, <userdata 770>, <userdata 771>, <userdata 772>, <userdata 773>, <userdata 774>, <userdata 775>, <userdata 776>, <userdata 777>, <userdata 778>, <userdata 779>, <userdata 780>, <userdata 781>, <userdata 782>, <userdata 783>, <userdata 784>, <userdata 785>, <userdata 786>, <userdata 787>, <userdata 788>, <userdata 789>, <userdata 790>, <userdata 791>, <userdata 792>, <userdata 793>, <userdata 794>, <userdata 795>, <userdata 796>, <userdata 797>, <userdata 798>, <userdata 799>, <userdata 800>, <userdata 801>, <userdata 802>, <userdata 803>, <userdata 804>, <userdata 805>, <userdata 806>, <userdata 807>, <userdata 808>, <userdata 809>, <userdata 810>, <userdata 811>, <userdata 812>, <userdata 813>, <userdata 814>, <userdata 815>, <userdata 816>, <userdata 817>, <userdata 818>, <userdata 819>, <userdata 820>, <userdata 821>, <userdata 822>, <userdata 823>, <userdata 824>, <userdata 825>, <userdata 826>, <userdata 827>, <userdata 828>, <userdata 829>, <userdata 830>, <userdata 831>, <userdata 832>, <userdata 833>, <userdata 834>, <userdata 835>, <userdata 836>, <userdata 837>, <userdata 838>, <userdata 839>, <userdata 840>, <userdata 841>, <userdata 842>, <userdata 843>, <userdata 844>, <userdata 845>, <userdata 846>, <userdata 847>, <userdata 848>, <userdata 849>, <userdata 850>, <userdata 851>, <userdata 852>, <userdata 853>, <userdata 854>, <userdata 855>, <userdata 856>, <userdata 857>, <userdata 858>, <userdata 859>, <userdata 860>, <userdata 861>, <userdata 862>, <userdata 863>, <userdata 864>, <userdata 865>, <userdata 866>, <userdata 867>, <userdata 868>, <userdata 869>, <userdata 870>, <userdata 871>, <userdata 872>, <userdata 873>, <userdata 874>, <userdata 875>, <userdata 876>, <userdata 877>, <userdata 878>, <userdata 879>, <userdata 880>, <userdata 881>, <userdata 882>, <userdata 883>, <userdata 884>, <userdata 885>, <userdata 886>, <userdata 887>, <userdata 888>, <userdata 889>, <userdata 890>, <userdata 891>, <userdata 892>, <userdata 893>, <userdata 894>, <userdata 895>, <userdata 896>, <userdata 897>, <userdata 898>, <userdata 899>, <userdata 900>, <userdata 901>, <userdata 902>, <userdata 903>, <userdata 904>, <userdata 905>, <userdata 906>, <userdata 907>, <userdata 908>, <userdata 909>, <userdata 910>, <userdata 911>, <userdata 912>, <userdata 913>, <userdata 914>, <userdata 915>, <userdata 916>, <userdata 917>, <userdata 918>, <userdata 919>, <userdata 920>, <userdata 921>, <userdata 922>, <userdata 923>, <userdata 924>, <userdata 925>, <userdata 926>, <userdata 927>, <userdata 928>, <userdata 929>, <userdata 930>, <userdata 931>, <userdata 932>, <userdata 933>, <userdata 934>, <userdata 935>, <userdata 936>, <userdata 937>, <userdata 938>, <userdata 939>, <userdata 940>, <userdata 941>, <userdata 942>, <userdata 943>, <userdata 944>, <userdata 945>, <userdata 946>, <userdata 947>, <userdata 948>, <userdata 949>, <userdata 950>, <userdata 951>, <userdata 952>, <userdata 953>, <userdata 954>, <userdata 955>, <userdata 956>, <userdata 957>, <userdata 958>, <userdata 959>, <userdata 960>, <userdata 961>, <userdata 962>, <userdata 963>, <userdata 964>, <userdata 965>, <userdata 966>, <userdata 967>, <userdata 968>, <userdata 969>, <userdata 970>, <userdata 971>, <userdata 972>, <userdata 973>, <userdata 974>, <userdata 975>, <userdata 976>, <userdata 977>, <userdata 978>, <userdata 979>, <userdata 980>, <userdata 981>, <userdata 982>, <userdata 983>, <userdata 984>, <userdata 985>, <userdata 986>, <userdata 987>, <userdata 988>, <userdata 989>, <userdata 990>, <userdata 991>, <userdata 992>, <userdata 993>, <userdata 994>, <userdata 995>, <userdata 996>, <userdata 997>, <userdata 998>, <userdata 999>, <userdata 1000> }
-
-set_world_reloading_script:
+map_uv_square:
 <function 1>
 
-shooter_sprite:
+enemy_movement_behaviour_tree:
+{
+  follow_hint = <userdata 1>,
+  go_to_last_seen = <userdata 2>,
+  is_alert = <userdata 3>,
+  movement = <userdata 4>,
+  player_visible = <userdata 5>,
+  stand_still = <userdata 6>,
+  walk_around = <userdata 7>
+}
+
+animate_message:
 <userdata 1>
 
-font1:
+instability_gun:
+{
+  bullet_body = {
+    air_resistance = 0,
+    angular_damping = 160,
+    density = 0.1,
+    filter = {
+      categoryBits = 32,
+      maskBits = 78
+    },
+    fixed_rotation = false,
+    friction = 100,
+    gravity_scale = 0,
+    linear_damping = 0,
+    rect_size = <userdata 1>,
+    restitution = 0,
+    shape_type = 0
+  },
+  bullet_callback = <function 1>,
+  bullet_damage = <userdata 2>,
+  bullet_distance_offset = <userdata 3>,
+  bullet_render = {
+    mask = 1
+  },
+  bullet_speed = <userdata 4>,
+  bullets_once = 20,
+  current_rounds = 3000,
+  is_automatic = true,
+  max_bullet_distance = 4000,
+  max_rounds = 3000,
+  shake_radius = 39.5,
+  shake_spread_degrees = 45,
+  shooting_interval_ms = 50,
+  spread_degrees = 5.5,
+  target_camera_to_shake = <userdata 5>
+}
+
+b2Shape:
 <userdata 1>
 
-create_input_context:
-<function 1>
+vertex:
+<userdata 1>
 
-all_enemies_max_health_points:
-0
-
-animate_component:
+sfSound:
 <userdata 1>
 
 create_gun:
 <function 1>
 
-randval:
-<function 1>
-
-process_all_entities:
-<function 1>
-
-random_polygon:
-<function 1>
-
-table:
+os:
 {
-  concat = <function 1>,
-  concatenate = <function 2>,
-  insert = <function 3>,
-  inspect = {
-    _DESCRIPTION = "human-readable representations of tables",
-    _LICENSE = '    MIT LICENSE\n\n    Copyright (c) 2013 Enrique García Cota\n\n    Permission is hereby granted, free of charge, to any person obtaining a\n    copy of this software and associated documentation files (the\n    "Software"), to deal in the Software without restriction, including\n    without limitation the rights to use, copy, modify, merge, publish,\n    distribute, sublicense, and/or sell copies of the Software, and to\n    permit persons to whom the Software is furnished to do so, subject to\n    the following conditions:\n\n    The above copyright notice and this permission notice shall be included\n    in all copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS\n    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\n    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\n    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n  ',
-    _URL = "http://github.com/kikito/inspect.lua",
-    _VERSION = "inspect.lua 2.0.0",
-    inspect = <function 4>,
-    <metatable> = {
-      __call = <function 5>
-    }
-  },
-  pack = <function 6>,
+  clock = <function 1>,
+  date = <function 2>,
+  difftime = <function 3>,
+  execute = <function 4>,
+  exit = <function 5>,
+  getenv = <function 6>,
   remove = <function 7>,
-  shuffle = <function 8>,
-  sort = <function 9>,
-  unpack = <function 10>
+  rename = <function 8>,
+  setlocale = <function 9>,
+  time = <function 10>,
+  tmpname = <function 11>
 }
 
-ipairs:
+create_scriptable_info:
 <function 1>
 
-MAP_LOADER_FILENAME:
-"sensibilia\\maps\\loader.lua"
-
-flush_message_tables:
-<function 1>
-
-global_message_table:
-{ {}, {} }
-
-should_debug_draw:
-false
-
-create_animation_set:
-<function 1>
-
-set_physics_info:
-<function 1>
-
-behaviour_state:
-<userdata 1>
-
-global_scriptables_table:
-{}
-
-containment_archetype:
-{
-  avoidance_rectangle_width = 0,
-  behaviour_type = <userdata 1>,
-  force_color = <userdata 2>,
-  intervention_time_ms = 240,
-  only_threats_in_OBB = false,
-  randomize_rays = true,
-  ray_count = 5,
-  ray_filter = {
-    categoryBits = 127,
-    maskBits = 15
-  },
-  weight = 1
-}
-
-input_component:
-<userdata 1>
-
-_particle_group_system:
-<userdata 1>
-
-b2Shape:
-<userdata 1>
-
-chromatic_aberration_fragment_shader:
-<userdata 1>
-
-chase_component:
-<userdata 1>
-
-transform_state:
-<userdata 1>
-
-get_self:
-<function 1>
-
-entity_class:
-{
-  all_modules = <function 1>,
-  constructor = <function 2>,
-  create = <function 3>,
-  loop = <function 4>,
-  substep = <function 5>,
-  try_module_method = <function 6>,
-  <metatable> = {
-    __index = {}
-  }
-}
-
-body_to_entity:
-<function 1>
-
-b2JointDef:
-<userdata 1>
-
-filter_nothing:
-{
-  categoryBits = 0,
-  maskBits = 0
-}
-
-global_instability_rays:
-{}
-
-def:
-<function 1>
-
-spatial_instability_rotation:
-6
-
-rawset:
-<function 1>
-
-obstacle_avoidance_steering:
-<userdata 1>
-
-augmentations_main_loop_callback:
-<function 1>
-
-film_grain_variation_coroutine:
-<function 1>
-
-gui_context:
-<userdata 1>
-
-aberration_coroutine:
-<function 1>
-
-glwindow:
-<userdata 1>
-
-recursive_write:
-<function 1>
-
-vblur_coroutine:
-<function 1>
-
-hblur_coroutine:
-<function 1>
-
-accumulated_camera_time:
-0
-
-random_time_speed_variation_coroutine:
-<function 1>
-
-random_instability_variation_coroutine:
-<function 1>
-
-steering_component:
-<userdata 1>
-
-randomize_properties:
-<function 1>
-
-raw_texture:
-<userdata 1>
-
-clamp:
-<function 1>
-
-destroy_message:
-<userdata 1>
-
-vertex_shift_coroutine:
-<function 1>
-
-create:
-<function 1>
-
-refresh_coroutines:
-<function 1>
-
-player_pos_uniform:
-1
-
-config_table:
-{
-  bpp = 24,
-  doublebuffer = 1,
-  fullscreen = 1,
-  resolution_h = 1080,
-  resolution_w = 1920,
-  sensitivity = <userdata 1>,
-  window_border = 0,
-  window_name = "example",
-  window_x = 0,
-  window_y = 0
-}
-
-get_display:
-<function 1>
-
-_animation_system:
-<userdata 1>
-
-create_options:
-<function 1>
-
-filter_enemy_bullets:
-{
-  categoryBits = 64,
-  maskBits = 45
-}
-
-film_grain_variation_instability_effect:
-<function 1>
-
-aberration_instability_effect:
-<function 1>
-
-vblur_instability_effect:
-<function 1>
-
-super:
-<function 1>
-
-randomize_properties_vector:
-<function 1>
-
-visibility_discontinuity:
-<userdata 1>
-
-mouse:
-<userdata 1>
-
-containment_behaviour:
-<userdata 1>
-
-texture:
-<userdata 1>
-
-temporary_instability:
-0
-
-visibility_layer:
-<userdata 1>
-
-spatial_instability_time:
-7
-
-animate_message:
-<userdata 1>
-
-fullscreen_pass:
-<function 1>
-
-vector_to_table:
-<function 1>
-
-steering_behaviour:
-<userdata 1>
-
-intensity_fbo:
-<userdata 1>
-
-sfSoundBuffer:
-<userdata 1>
-
-bitflag:
-<function 1>
-
-physics_component:
-<userdata 1>
-
-_lookat_system:
-<userdata 1>
-
-shot_message:
-<userdata 1>
-
-font3:
-<userdata 1>
-
-format_text:
-<function 1>
-
-create_emission:
-<function 1>
-
-type:
-<function 1>
-
-spatial_instability_zoom:
-8
-
-_crosshair_system:
-<userdata 1>
-
-spatial_instability_crosshair_pos:
-1
-
-world_information:
-{}
-
-spatial_instability_multiplier:
-4
-
-script_reloader:
-<userdata 1>
-
-message:
-<userdata 1>
-
-spatial_instability_program:
-<userdata 1>
-
-pursuit_steering:
-<userdata 1>
-
-print:
-<function 1>
-
-_input_system:
-<userdata 1>
-
-filter_instability_ray_player:
-{
-  categoryBits = 127,
-  maskBits = 2
-}
-
-color_adjustment_program:
-<userdata 1>
-
-color_adjustment_fragment_shader:
-<userdata 1>
-
-class:
-<function 1>
-
-containment_steering:
-<userdata 1>
-
-rect_ltrb_i:
-<userdata 1>
-
-h_offset_multiplier:
-1
-
-Box2D:
-<userdata 1>
-
-physics_system:
-<userdata 1>
-
-target_gravity_rotation:
-0
-
-towchar_vec:
-<function 1>
-
-GL:
+debug_line:
 <userdata 1>
 
 polygon_fader:
 <userdata 1>
 
-seek_behaviour:
-<userdata 1>
+current_postprocessing_fbo:
+0
 
-window:
-<userdata 1>
-
-ENEMY_BULLETS:
-64
-
-getmetatable:
+random_polygon:
 <function 1>
 
-_visibility_system:
+scriptable_zoom:
 <userdata 1>
 
-chromatic_aberration_program:
-<userdata 1>
+blood_effect:
+{ {
+    angular_offset = <userdata 1>,
+    angular_velocity = <userdata 2>,
+    initial_rotation_variation = 180,
+    particle_lifetime_ms = <userdata 3>,
+    particle_render_template = {
+      layer = 0,
+      mask = 1
+    },
+    particle_templates = { {
+        acc = <userdata 4>,
+        angular_damping = 1000,
+        linear_damping = 25000,
+        model = <userdata 5>,
+        should_disappear = true
+      }, {
+        acc = <userdata 6>,
+        angular_damping = 1000,
+        linear_damping = 25000,
+        model = <userdata 7>,
+        should_disappear = true
+      }, {
+        acc = <userdata 8>,
+        angular_damping = 1000,
+        linear_damping = 25000,
+        model = <userdata 9>,
+        should_disappear = true
+      }, {
+        acc = <userdata 10>,
+        angular_damping = 1000,
+        linear_damping = 25000,
+        model = <userdata 11>,
+        should_disappear = true
+      }, {
+        acc = <userdata 12>,
+        angular_damping = 1000,
+        linear_damping = 25000,
+        model = <userdata 13>,
+        should_disappear = true
+      }, {
+        acc = <userdata 14>,
+        angular_damping = 1000,
+        linear_damping = 25000,
+        model = <userdata 15>,
+        should_disappear = true
+      }, {
+        acc = <userdata 16>,
+        angular_damping = 1000,
+        linear_damping = 25000,
+        model = <userdata 17>,
+        should_disappear = true
+      }, {
+        acc = <userdata 18>,
+        angular_damping = 1000,
+        linear_damping = 25000,
+        model = <userdata 19>,
+        should_disappear = true
+      }, {
+        acc = <userdata 20>,
+        angular_damping = 1000,
+        linear_damping = 25000,
+        model = <userdata 21>,
+        should_disappear = true
+      }, {
+        acc = <userdata 22>,
+        angular_damping = 1000,
+        linear_damping = 25000,
+        model = <userdata 23>,
+        should_disappear = true
+      } },
+    particles_per_burst = <userdata 24>,
+    size_multiplier = <userdata 25>,
+    spread_degrees = 0,
+    type = 0,
+    velocity = <userdata 26>
+  } }
 
-to_vec2_table:
+process_all_entities:
 <function 1>
 
-b2WeldJoint:
+entity_basic_scriptable_info:
 <userdata 1>
 
-xpcall:
+flush_message_tables:
 <function 1>
 
-float_vector:
+OBJECTS:
+4
+
+math:
+{
+  abs = <function 1>,
+  acos = <function 2>,
+  asin = <function 3>,
+  atan = <function 4>,
+  atan2 = <function 5>,
+  ceil = <function 6>,
+  cos = <function 7>,
+  cosh = <function 8>,
+  deg = <function 9>,
+  exp = <function 10>,
+  floor = <function 11>,
+  fmod = <function 12>,
+  frexp = <function 13>,
+  huge = 1.#INF,
+  ldexp = <function 14>,
+  log = <function 15>,
+  max = <function 16>,
+  min = <function 17>,
+  modf = <function 18>,
+  pi = 3.1415926535898,
+  pow = <function 19>,
+  rad = <function 20>,
+  random = <function 21>,
+  randomseed = <function 22>,
+  sin = <function 23>,
+  sinh = <function 24>,
+  sqrt = <function 25>,
+  tan = <function 26>,
+  tanh = <function 27>
+}
+
+vertex_triangle:
 <userdata 1>
+
+global_message_table:
+{ {}, {} }
+
+bit32:
+{
+  arshift = <function 1>,
+  band = <function 2>,
+  bnot = <function 3>,
+  bor = <function 4>,
+  btest = <function 5>,
+  bxor = <function 6>,
+  extract = <function 7>,
+  lrotate = <function 8>,
+  lshift = <function 9>,
+  replace = <function 10>,
+  rrotate = <function 11>,
+  rshift = <function 12>
+}
+
+global_scriptables_table:
+{}
+
+clock_hand_time:
+0
+
+animation:
+<userdata 1>
+
+randval:
+<function 1>
+
+camera_component:
+<userdata 1>
+
+pairs:
+<function 1>
+
+get_self:
+<function 1>
+
+def_ptr:
+<function 1>
+
+STATIC_OBJECTS:
+8
+
+def:
+<function 1>
+
+hblur_vertex_shader:
+<userdata 1>
+
+fullscreen_vertex_shader:
+"#version 330\\nlayout(location = 0) in vec2 position;\\n\\nout vec2 theTexcoord;\\n\\nvoid main() \\n{\\n\\tvec4 output_vert;\\n\\toutput_vert.x = position.x * 2.0 - 1.0;\\t\\t\\n\\toutput_vert.y = position.y * 2.0 - 1.0;\\t\\t\\t\\t\\n\\toutput_vert.z = 0.0f;\\t\\t\\t\\t\\t\\t\\n\\toutput_vert.w = 1.0f;\\n\\t\\n\\tgl_Position = output_vert;\\n\\ttheTexcoord = position;\\n}\\n"
+
+containment_behaviour:
+<userdata 1>
+
+sfSoundBuffer:
+<userdata 1>
+
+rendering_routine:
+<function 1>
+
+process_all_entity_modules:
+<function 1>
+
+main_input_component:
+{ 999999996, 999999992, 999999997, 999999988, 5, 999999984 }
+
+vblur_coroutine:
+<function 1>
 
 filter_pathfinding_visibility:
 {
@@ -3007,183 +3068,213 @@ filter_pathfinding_visibility:
   maskBits = 12
 }
 
-EFFECTS_DIRECTORY:
-"sensibilia\\scripts\\effects\\"
-
-setmetatable:
-<function 1>
-
-main_context:
+font3:
 <userdata 1>
 
-time_uniform:
-1
+global_entity_table:
+{ {
+    clock_renderer = {
+      alpha_scalars = { 0.19607843137255, 0.19607843137255, 0.19607843137255, 0.19607843137255 },
+      body_rotation_variation = <function 1>,
+      body_rotation_variation_table = {
+        callback = <function 2>,
+        constant_transition_delta = false,
+        max_transition_ms = 200,
+        max_value = 5,
+        max_wait_ms = 200,
+        min_transition_ms = 100,
+        min_value = -5,
+        min_wait_ms = 100,
+        value_additive = false,
+        wait_probability = 0.01
+      },
+      clock_alpha = 1,
+      clock_center = <userdata 1>,
+      clock_sprite = <userdata 2>,
+      global_hand_time = 0,
+      global_timer = <userdata 3>,
+      gravity_rotation_multiplier = 1,
+      group = <1>{
+        body = <userdata 4>,
+        hour_hand = <userdata 5>,
+        minute_hand = <userdata 6>,
+        second_hand = <userdata 7>
+      },
+      hour_hand_sprite = <userdata 8>,
+      hour_rotation = 0,
+      logarithmic_blink_coroutine = <function 3>,
+      logarithmic_blink_mult = 1,
+      logarithmic_blink_params = {
+        max_wait_ms = 5000,
+        min_wait_ms = 100
+      },
+      logarithmic_blinks = true,
+      minute_hand_sprite = <userdata 9>,
+      minute_rotation = 0,
+      overwrite_position = false,
+      randomization_speed_mult = 3.5440661907196,
+      randomized_hands_values = true,
+      rotate_body = true,
+      rotation_variation_tables = { {
+          callback = <function 4>,
+          constant_transition_delta = false,
+          max_transition_ms = 400,
+          max_value = 160,
+          max_wait_ms = 1500,
+          min_transition_ms = 100,
+          min_value = -100,
+          min_wait_ms = 100,
+          value_additive = true,
+          wait_probability = 0.01
+        }, {
+          callback = <function 5>,
+          constant_transition_delta = false,
+          max_transition_ms = 400,
+          max_value = 160,
+          max_wait_ms = 1500,
+          min_transition_ms = 100,
+          min_value = -100,
+          min_wait_ms = 100,
+          value_additive = true,
+          wait_probability = 0.01
+        }, {
+          callback = <function 6>,
+          constant_transition_delta = false,
+          max_transition_ms = 400,
+          max_value = 160,
+          max_wait_ms = 1500,
+          min_transition_ms = 100,
+          min_value = -100,
+          min_wait_ms = 100,
+          value_additive = true,
+          wait_probability = 0.01
+        } },
+      rotation_variations = { <function 7>, <function 8>, <function 9> },
+      second_hand_sprite = <userdata 10>,
+      second_rotation = 0,
+      size_scalars = { 0.91922378540039, 1.0971004664898, 1.0652065575123, 1.1956587135792 },
+      <metatable> = {
+        __index = {
+          constructor = <function 10>,
+          create = <function 11>,
+          loop = <function 12>,
+          <metatable> = {
+            __index = {}
+          }
+        }
+      }
+    },
+    parent_group = <table 1>,
+    <metatable> = {
+      __index = {
+        all_modules = <function 13>,
+        constructor = <function 14>,
+        create = <function 15>,
+        loop = <function 16>,
+        substep = <function 17>,
+        try_module_method = <function 18>,
+        <metatable> = {
+          __index = {}
+        }
+      }
+    }
+  } }
 
-ptr_lookup:
-<function 1>
-
-set_polygon_color:
-<function 1>
-
-crosshair_component:
+intent_message:
 <userdata 1>
 
-film_grain_program:
-<userdata 1>
-
-custom_intents:
-{
-  DROP_WEAPON = 999999991,
-  GRAVITY_CHANGE = 999999989,
-  GUI_MOUSECLICK = 999999984,
-  INSTABILITY_RAY = 999999986,
-  INSTANT_SLOWDOWN = 999999996,
-  JUMP = 999999990,
-  MY_INTENT = 999999988,
-  QUIT = 999999992,
-  REALITY_CHECK = 999999985,
-  RESTART = 999999997,
-  SHOW_CLOCK = 999999987,
-  SPEED_CHANGE = 999999993,
-  STEERING_REQUEST = 999999998,
-  ZOOM_CAMERA = 999999999,
-  ZOOM_IN = 999999995,
-  ZOOM_OUT = 999999994
-}
+pcall:
+<function 1>
 
 tostring:
 <function 1>
 
-vertex_shift_instability_effect:
-<function 1>
-
-projection_matrix_uniform:
-2
-
-target_info:
+particle_emitter_info:
 <userdata 1>
 
-draw_input:
-<userdata 1>
+accumulated_camera_time:
+0
 
-scene_program:
-<userdata 1>
-
-blood_droplets:
+text_button:
 {
-  angular_offset = <userdata 1>,
-  angular_velocity = <userdata 2>,
-  initial_rotation_variation = 180,
-  particle_lifetime_ms = <userdata 3>,
-  particle_render_template = {
-    layer = 0,
-    mask = 1
-  },
-  particle_templates = { {
-      acc = <userdata 4>,
-      angular_damping = 1000,
-      linear_damping = 25000,
-      model = <userdata 5>,
-      should_disappear = true
-    }, {
-      acc = <userdata 6>,
-      angular_damping = 1000,
-      linear_damping = 25000,
-      model = <userdata 7>,
-      should_disappear = true
-    }, {
-      acc = <userdata 8>,
-      angular_damping = 1000,
-      linear_damping = 25000,
-      model = <userdata 9>,
-      should_disappear = true
-    }, {
-      acc = <userdata 10>,
-      angular_damping = 1000,
-      linear_damping = 25000,
-      model = <userdata 11>,
-      should_disappear = true
-    }, {
-      acc = <userdata 12>,
-      angular_damping = 1000,
-      linear_damping = 25000,
-      model = <userdata 13>,
-      should_disappear = true
-    }, {
-      acc = <userdata 14>,
-      angular_damping = 1000,
-      linear_damping = 25000,
-      model = <userdata 15>,
-      should_disappear = true
-    }, {
-      acc = <userdata 16>,
-      angular_damping = 1000,
-      linear_damping = 25000,
-      model = <userdata 17>,
-      should_disappear = true
-    }, {
-      acc = <userdata 18>,
-      angular_damping = 1000,
-      linear_damping = 25000,
-      model = <userdata 19>,
-      should_disappear = true
-    }, {
-      acc = <userdata 20>,
-      angular_damping = 1000,
-      linear_damping = 25000,
-      model = <userdata 21>,
-      should_disappear = true
-    }, {
-      acc = <userdata 22>,
-      angular_damping = 1000,
-      linear_damping = 25000,
-      model = <userdata 23>,
-      should_disappear = true
-    } },
-  particles_per_burst = <userdata 24>,
-  size_multiplier = <userdata 25>,
-  spread_degrees = 0,
-  type = 0,
-  velocity = <userdata 26>
+  constructor = <function 1>,
+  create = <function 2>,
+  draw = <function 3>,
+  handle_events = <function 4>,
+  set = <function 5>,
+  <metatable> = {
+    __index = {}
+  }
 }
-
-render_layers:
-{
-  BACKGROUND_1 = 5,
-  BACKGROUND_2 = 6,
-  BACKGROUND_3 = 7,
-  CHARACTERS = 3,
-  CLOCKS = 4,
-  FOREGROUND = 1,
-  GUI_OBJECTS = 0,
-  OBJECTS = 2
-}
-
-entity_ptr_vector:
-<userdata 1>
-
-scene_vertex_shader:
-<userdata 1>
-
-npc_effects:
-<userdata 1>
-
-can_point_be_reached_by_jump:
-<function 1>
-
-fullscreen_vertex_shader:
-"#version 330\\nlayout(location = 0) in vec2 position;\\n\\nout vec2 theTexcoord;\\n\\nvoid main() \\n{\\n\\tvec4 output_vert;\\n\\toutput_vert.x = position.x * 2.0 - 1.0;\\t\\t\\n\\toutput_vert.y = position.y * 2.0 - 1.0;\\t\\t\\t\\t\\n\\toutput_vert.z = 0.0f;\\t\\t\\t\\t\\t\\t\\n\\toutput_vert.w = 1.0f;\\n\\t\\n\\tgl_Position = output_vert;\\n\\ttheTexcoord = position;\\n}\\n"
 
 film_grain_intensity:
 0
 
-wchar_t:
+random_time_speed_variation_coroutine:
+<function 1>
+
+b2PolygonShape:
 <userdata 1>
 
-_chase_system:
+augmentations_main_loop_callback:
+<function 1>
+
+random_instability_variation_coroutine:
+<function 1>
+
+filter_bullets:
+{
+  categoryBits = 32,
+  maskBits = 78
+}
+
+scriptable_component:
 <userdata 1>
 
-pairs:
+post_destroy:
+<function 1>
+
+seek_behaviour:
+<userdata 1>
+
+super:
+<function 1>
+
+random_instability_ray_layer_order:
+<function 1>
+
+create_entity:
+<function 1>
+
+camera_archetype:
+{
+  camera = {
+    angled_look_length = 100,
+    averages_per_sec = 15,
+    enable_smoothing = true,
+    enabled = true,
+    layer = 0,
+    mask = 0,
+    max_look_expand = <userdata 1>,
+    orbit_mode = 2,
+    smoothing_average_factor = 0.5
+  },
+  chase = {
+    relative = false
+  },
+  transform = {
+    pos = <userdata 2>,
+    rotation = 0
+  }
+}
+
+movement_component:
+<userdata 1>
+
+value_animator:
+<userdata 1>
+
+SetFriction:
 <function 1>
 
 character_group_archetype:
@@ -3225,7 +3316,178 @@ character_group_archetype:
   }
 }
 
-flush_dead_entities_in_group_by_entity:
+bitor:
+<function 1>
+
+refresh_coroutines:
+<function 1>
+
+current_zoom_level:
+0
+
+group_by_entity:
+{
+  [<userdata 1>] = <1>{
+    body = <userdata 2>,
+    crosshair = <userdata 3>
+  },
+  [<userdata 4>] = <table 1>,
+  [<userdata 5>] = {
+    body = <userdata 6>,
+    hour_hand = <userdata 7>,
+    minute_hand = <userdata 8>,
+    second_hand = <userdata 9>
+  }
+}
+
+drawable_concave:
+<userdata 1>
+
+GLSL_shader:
+<userdata 1>
+
+intensity_fbo:
+<userdata 1>
+
+world_information:
+{}
+
+_VERSION:
+"Lua 5.2"
+
+vertex_shift_instability_effect:
+<function 1>
+
+INSTABILITY_RAY:
+16
+
+filter_instability_ray_enemy:
+{
+  categoryBits = 127,
+  maskBits = 1
+}
+
+b2JointDef:
+<userdata 1>
+
+scene_vertex_shader:
+<userdata 1>
+
+aberration_instability_effect:
+<function 1>
+
+visibility_system:
+<userdata 1>
+
+call_on_modification:
+<function 1>
+
+filter_static_objects:
+{
+  categoryBits = 8,
+  maskBits = 111
+}
+
+next:
+<function 1>
+
+randomize_properties:
+<function 1>
+
+ipairs:
+<function 1>
+
+fullscreen_pass:
+<function 1>
+
+input_context:
+<userdata 1>
+
+towchar_vec:
+<function 1>
+
+random_enemy_bullet_models:
+{ <userdata 1>, <userdata 2>, <userdata 3>, <userdata 4>, <userdata 5>, <userdata 6>, <userdata 7>, <userdata 8>, <userdata 9>, <userdata 10>, <userdata 11>, <userdata 12>, <userdata 13>, <userdata 14>, <userdata 15>, <userdata 16>, <userdata 17>, <userdata 18>, <userdata 19>, <userdata 20>, <userdata 21>, <userdata 22>, <userdata 23>, <userdata 24>, <userdata 25>, <userdata 26>, <userdata 27>, <userdata 28>, <userdata 29>, <userdata 30>, <userdata 31>, <userdata 32>, <userdata 33>, <userdata 34>, <userdata 35>, <userdata 36>, <userdata 37>, <userdata 38>, <userdata 39>, <userdata 40>, <userdata 41>, <userdata 42>, <userdata 43>, <userdata 44>, <userdata 45>, <userdata 46>, <userdata 47>, <userdata 48>, <userdata 49>, <userdata 50>, <userdata 51>, <userdata 52>, <userdata 53>, <userdata 54>, <userdata 55>, <userdata 56>, <userdata 57>, <userdata 58>, <userdata 59>, <userdata 60>, <userdata 61>, <userdata 62>, <userdata 63>, <userdata 64>, <userdata 65>, <userdata 66>, <userdata 67>, <userdata 68>, <userdata 69>, <userdata 70>, <userdata 71>, <userdata 72>, <userdata 73>, <userdata 74>, <userdata 75>, <userdata 76>, <userdata 77>, <userdata 78>, <userdata 79>, <userdata 80>, <userdata 81>, <userdata 82>, <userdata 83>, <userdata 84>, <userdata 85>, <userdata 86>, <userdata 87>, <userdata 88>, <userdata 89>, <userdata 90>, <userdata 91>, <userdata 92>, <userdata 93>, <userdata 94>, <userdata 95>, <userdata 96>, <userdata 97>, <userdata 98>, <userdata 99>, <userdata 100>, <userdata 101>, <userdata 102>, <userdata 103>, <userdata 104>, <userdata 105>, <userdata 106>, <userdata 107>, <userdata 108>, <userdata 109>, <userdata 110>, <userdata 111>, <userdata 112>, <userdata 113>, <userdata 114>, <userdata 115>, <userdata 116>, <userdata 117>, <userdata 118>, <userdata 119>, <userdata 120>, <userdata 121>, <userdata 122>, <userdata 123>, <userdata 124>, <userdata 125>, <userdata 126>, <userdata 127>, <userdata 128>, <userdata 129>, <userdata 130>, <userdata 131>, <userdata 132>, <userdata 133>, <userdata 134>, <userdata 135>, <userdata 136>, <userdata 137>, <userdata 138>, <userdata 139>, <userdata 140>, <userdata 141>, <userdata 142>, <userdata 143>, <userdata 144>, <userdata 145>, <userdata 146>, <userdata 147>, <userdata 148>, <userdata 149>, <userdata 150>, <userdata 151>, <userdata 152>, <userdata 153>, <userdata 154>, <userdata 155>, <userdata 156>, <userdata 157>, <userdata 158>, <userdata 159>, <userdata 160>, <userdata 161>, <userdata 162>, <userdata 163>, <userdata 164>, <userdata 165>, <userdata 166>, <userdata 167>, <userdata 168>, <userdata 169>, <userdata 170>, <userdata 171>, <userdata 172>, <userdata 173>, <userdata 174>, <userdata 175>, <userdata 176>, <userdata 177>, <userdata 178>, <userdata 179>, <userdata 180>, <userdata 181>, <userdata 182>, <userdata 183>, <userdata 184>, <userdata 185>, <userdata 186>, <userdata 187>, <userdata 188>, <userdata 189>, <userdata 190>, <userdata 191>, <userdata 192>, <userdata 193>, <userdata 194>, <userdata 195>, <userdata 196>, <userdata 197>, <userdata 198>, <userdata 199>, <userdata 200>, <userdata 201>, <userdata 202>, <userdata 203>, <userdata 204>, <userdata 205>, <userdata 206>, <userdata 207>, <userdata 208>, <userdata 209>, <userdata 210>, <userdata 211>, <userdata 212>, <userdata 213>, <userdata 214>, <userdata 215>, <userdata 216>, <userdata 217>, <userdata 218>, <userdata 219>, <userdata 220>, <userdata 221>, <userdata 222>, <userdata 223>, <userdata 224>, <userdata 225>, <userdata 226>, <userdata 227>, <userdata 228>, <userdata 229>, <userdata 230>, <userdata 231>, <userdata 232>, <userdata 233>, <userdata 234>, <userdata 235>, <userdata 236>, <userdata 237>, <userdata 238>, <userdata 239>, <userdata 240>, <userdata 241>, <userdata 242>, <userdata 243>, <userdata 244>, <userdata 245>, <userdata 246>, <userdata 247>, <userdata 248>, <userdata 249>, <userdata 250>, <userdata 251>, <userdata 252>, <userdata 253>, <userdata 254>, <userdata 255>, <userdata 256>, <userdata 257>, <userdata 258>, <userdata 259>, <userdata 260>, <userdata 261>, <userdata 262>, <userdata 263>, <userdata 264>, <userdata 265>, <userdata 266>, <userdata 267>, <userdata 268>, <userdata 269>, <userdata 270>, <userdata 271>, <userdata 272>, <userdata 273>, <userdata 274>, <userdata 275>, <userdata 276>, <userdata 277>, <userdata 278>, <userdata 279>, <userdata 280>, <userdata 281>, <userdata 282>, <userdata 283>, <userdata 284>, <userdata 285>, <userdata 286>, <userdata 287>, <userdata 288>, <userdata 289>, <userdata 290>, <userdata 291>, <userdata 292>, <userdata 293>, <userdata 294>, <userdata 295>, <userdata 296>, <userdata 297>, <userdata 298>, <userdata 299>, <userdata 300>, <userdata 301>, <userdata 302>, <userdata 303>, <userdata 304>, <userdata 305>, <userdata 306>, <userdata 307>, <userdata 308>, <userdata 309>, <userdata 310>, <userdata 311>, <userdata 312>, <userdata 313>, <userdata 314>, <userdata 315>, <userdata 316>, <userdata 317>, <userdata 318>, <userdata 319>, <userdata 320>, <userdata 321>, <userdata 322>, <userdata 323>, <userdata 324>, <userdata 325>, <userdata 326>, <userdata 327>, <userdata 328>, <userdata 329>, <userdata 330>, <userdata 331>, <userdata 332>, <userdata 333>, <userdata 334>, <userdata 335>, <userdata 336>, <userdata 337>, <userdata 338>, <userdata 339>, <userdata 340>, <userdata 341>, <userdata 342>, <userdata 343>, <userdata 344>, <userdata 345>, <userdata 346>, <userdata 347>, <userdata 348>, <userdata 349>, <userdata 350>, <userdata 351>, <userdata 352>, <userdata 353>, <userdata 354>, <userdata 355>, <userdata 356>, <userdata 357>, <userdata 358>, <userdata 359>, <userdata 360>, <userdata 361>, <userdata 362>, <userdata 363>, <userdata 364>, <userdata 365>, <userdata 366>, <userdata 367>, <userdata 368>, <userdata 369>, <userdata 370>, <userdata 371>, <userdata 372>, <userdata 373>, <userdata 374>, <userdata 375>, <userdata 376>, <userdata 377>, <userdata 378>, <userdata 379>, <userdata 380>, <userdata 381>, <userdata 382>, <userdata 383>, <userdata 384>, <userdata 385>, <userdata 386>, <userdata 387>, <userdata 388>, <userdata 389>, <userdata 390>, <userdata 391>, <userdata 392>, <userdata 393>, <userdata 394>, <userdata 395>, <userdata 396>, <userdata 397>, <userdata 398>, <userdata 399>, <userdata 400>, <userdata 401>, <userdata 402>, <userdata 403>, <userdata 404>, <userdata 405>, <userdata 406>, <userdata 407>, <userdata 408>, <userdata 409>, <userdata 410>, <userdata 411>, <userdata 412>, <userdata 413>, <userdata 414>, <userdata 415>, <userdata 416>, <userdata 417>, <userdata 418>, <userdata 419>, <userdata 420>, <userdata 421>, <userdata 422>, <userdata 423>, <userdata 424>, <userdata 425>, <userdata 426>, <userdata 427>, <userdata 428>, <userdata 429>, <userdata 430>, <userdata 431>, <userdata 432>, <userdata 433>, <userdata 434>, <userdata 435>, <userdata 436>, <userdata 437>, <userdata 438>, <userdata 439>, <userdata 440>, <userdata 441>, <userdata 442>, <userdata 443>, <userdata 444>, <userdata 445>, <userdata 446>, <userdata 447>, <userdata 448>, <userdata 449>, <userdata 450>, <userdata 451>, <userdata 452>, <userdata 453>, <userdata 454>, <userdata 455>, <userdata 456>, <userdata 457>, <userdata 458>, <userdata 459>, <userdata 460>, <userdata 461>, <userdata 462>, <userdata 463>, <userdata 464>, <userdata 465>, <userdata 466>, <userdata 467>, <userdata 468>, <userdata 469>, <userdata 470>, <userdata 471>, <userdata 472>, <userdata 473>, <userdata 474>, <userdata 475>, <userdata 476>, <userdata 477>, <userdata 478>, <userdata 479>, <userdata 480>, <userdata 481>, <userdata 482>, <userdata 483>, <userdata 484>, <userdata 485>, <userdata 486>, <userdata 487>, <userdata 488>, <userdata 489>, <userdata 490>, <userdata 491>, <userdata 492>, <userdata 493>, <userdata 494>, <userdata 495>, <userdata 496>, <userdata 497>, <userdata 498>, <userdata 499>, <userdata 500>, <userdata 501>, <userdata 502>, <userdata 503>, <userdata 504>, <userdata 505>, <userdata 506>, <userdata 507>, <userdata 508>, <userdata 509>, <userdata 510>, <userdata 511>, <userdata 512>, <userdata 513>, <userdata 514>, <userdata 515>, <userdata 516>, <userdata 517>, <userdata 518>, <userdata 519>, <userdata 520>, <userdata 521>, <userdata 522>, <userdata 523>, <userdata 524>, <userdata 525>, <userdata 526>, <userdata 527>, <userdata 528>, <userdata 529>, <userdata 530>, <userdata 531>, <userdata 532>, <userdata 533>, <userdata 534>, <userdata 535>, <userdata 536>, <userdata 537>, <userdata 538>, <userdata 539>, <userdata 540>, <userdata 541>, <userdata 542>, <userdata 543>, <userdata 544>, <userdata 545>, <userdata 546>, <userdata 547>, <userdata 548>, <userdata 549>, <userdata 550>, <userdata 551>, <userdata 552>, <userdata 553>, <userdata 554>, <userdata 555>, <userdata 556>, <userdata 557>, <userdata 558>, <userdata 559>, <userdata 560>, <userdata 561>, <userdata 562>, <userdata 563>, <userdata 564>, <userdata 565>, <userdata 566>, <userdata 567>, <userdata 568>, <userdata 569>, <userdata 570>, <userdata 571>, <userdata 572>, <userdata 573>, <userdata 574>, <userdata 575>, <userdata 576>, <userdata 577>, <userdata 578>, <userdata 579>, <userdata 580>, <userdata 581>, <userdata 582>, <userdata 583>, <userdata 584>, <userdata 585>, <userdata 586>, <userdata 587>, <userdata 588>, <userdata 589>, <userdata 590>, <userdata 591>, <userdata 592>, <userdata 593>, <userdata 594>, <userdata 595>, <userdata 596>, <userdata 597>, <userdata 598>, <userdata 599>, <userdata 600>, <userdata 601>, <userdata 602>, <userdata 603>, <userdata 604>, <userdata 605>, <userdata 606>, <userdata 607>, <userdata 608>, <userdata 609>, <userdata 610>, <userdata 611>, <userdata 612>, <userdata 613>, <userdata 614>, <userdata 615>, <userdata 616>, <userdata 617>, <userdata 618>, <userdata 619>, <userdata 620>, <userdata 621>, <userdata 622>, <userdata 623>, <userdata 624>, <userdata 625>, <userdata 626>, <userdata 627>, <userdata 628>, <userdata 629>, <userdata 630>, <userdata 631>, <userdata 632>, <userdata 633>, <userdata 634>, <userdata 635>, <userdata 636>, <userdata 637>, <userdata 638>, <userdata 639>, <userdata 640>, <userdata 641>, <userdata 642>, <userdata 643>, <userdata 644>, <userdata 645>, <userdata 646>, <userdata 647>, <userdata 648>, <userdata 649>, <userdata 650>, <userdata 651>, <userdata 652>, <userdata 653>, <userdata 654>, <userdata 655>, <userdata 656>, <userdata 657>, <userdata 658>, <userdata 659>, <userdata 660>, <userdata 661>, <userdata 662>, <userdata 663>, <userdata 664>, <userdata 665>, <userdata 666>, <userdata 667>, <userdata 668>, <userdata 669>, <userdata 670>, <userdata 671>, <userdata 672>, <userdata 673>, <userdata 674>, <userdata 675>, <userdata 676>, <userdata 677>, <userdata 678>, <userdata 679>, <userdata 680>, <userdata 681>, <userdata 682>, <userdata 683>, <userdata 684>, <userdata 685>, <userdata 686>, <userdata 687>, <userdata 688>, <userdata 689>, <userdata 690>, <userdata 691>, <userdata 692>, <userdata 693>, <userdata 694>, <userdata 695>, <userdata 696>, <userdata 697>, <userdata 698>, <userdata 699>, <userdata 700>, <userdata 701>, <userdata 702>, <userdata 703>, <userdata 704>, <userdata 705>, <userdata 706>, <userdata 707>, <userdata 708>, <userdata 709>, <userdata 710>, <userdata 711>, <userdata 712>, <userdata 713>, <userdata 714>, <userdata 715>, <userdata 716>, <userdata 717>, <userdata 718>, <userdata 719>, <userdata 720>, <userdata 721>, <userdata 722>, <userdata 723>, <userdata 724>, <userdata 725>, <userdata 726>, <userdata 727>, <userdata 728>, <userdata 729>, <userdata 730>, <userdata 731>, <userdata 732>, <userdata 733>, <userdata 734>, <userdata 735>, <userdata 736>, <userdata 737>, <userdata 738>, <userdata 739>, <userdata 740>, <userdata 741>, <userdata 742>, <userdata 743>, <userdata 744>, <userdata 745>, <userdata 746>, <userdata 747>, <userdata 748>, <userdata 749>, <userdata 750>, <userdata 751>, <userdata 752>, <userdata 753>, <userdata 754>, <userdata 755>, <userdata 756>, <userdata 757>, <userdata 758>, <userdata 759>, <userdata 760>, <userdata 761>, <userdata 762>, <userdata 763>, <userdata 764>, <userdata 765>, <userdata 766>, <userdata 767>, <userdata 768>, <userdata 769>, <userdata 770>, <userdata 771>, <userdata 772>, <userdata 773>, <userdata 774>, <userdata 775>, <userdata 776>, <userdata 777>, <userdata 778>, <userdata 779>, <userdata 780>, <userdata 781>, <userdata 782>, <userdata 783>, <userdata 784>, <userdata 785>, <userdata 786>, <userdata 787>, <userdata 788>, <userdata 789>, <userdata 790>, <userdata 791>, <userdata 792>, <userdata 793>, <userdata 794>, <userdata 795>, <userdata 796>, <userdata 797>, <userdata 798>, <userdata 799>, <userdata 800>, <userdata 801>, <userdata 802>, <userdata 803>, <userdata 804>, <userdata 805>, <userdata 806>, <userdata 807>, <userdata 808>, <userdata 809>, <userdata 810>, <userdata 811>, <userdata 812>, <userdata 813>, <userdata 814>, <userdata 815>, <userdata 816>, <userdata 817>, <userdata 818>, <userdata 819>, <userdata 820>, <userdata 821>, <userdata 822>, <userdata 823>, <userdata 824>, <userdata 825>, <userdata 826>, <userdata 827>, <userdata 828>, <userdata 829>, <userdata 830>, <userdata 831>, <userdata 832>, <userdata 833>, <userdata 834>, <userdata 835>, <userdata 836>, <userdata 837>, <userdata 838>, <userdata 839>, <userdata 840>, <userdata 841>, <userdata 842>, <userdata 843>, <userdata 844>, <userdata 845>, <userdata 846>, <userdata 847>, <userdata 848>, <userdata 849>, <userdata 850>, <userdata 851>, <userdata 852>, <userdata 853>, <userdata 854>, <userdata 855>, <userdata 856>, <userdata 857>, <userdata 858>, <userdata 859>, <userdata 860>, <userdata 861>, <userdata 862>, <userdata 863>, <userdata 864>, <userdata 865>, <userdata 866>, <userdata 867>, <userdata 868>, <userdata 869>, <userdata 870>, <userdata 871>, <userdata 872>, <userdata 873>, <userdata 874>, <userdata 875>, <userdata 876>, <userdata 877>, <userdata 878>, <userdata 879>, <userdata 880>, <userdata 881>, <userdata 882>, <userdata 883>, <userdata 884>, <userdata 885>, <userdata 886>, <userdata 887>, <userdata 888>, <userdata 889>, <userdata 890>, <userdata 891>, <userdata 892>, <userdata 893>, <userdata 894>, <userdata 895>, <userdata 896>, <userdata 897>, <userdata 898>, <userdata 899>, <userdata 900>, <userdata 901>, <userdata 902>, <userdata 903>, <userdata 904>, <userdata 905>, <userdata 906>, <userdata 907>, <userdata 908>, <userdata 909>, <userdata 910>, <userdata 911>, <userdata 912>, <userdata 913>, <userdata 914>, <userdata 915>, <userdata 916>, <userdata 917>, <userdata 918>, <userdata 919>, <userdata 920>, <userdata 921>, <userdata 922>, <userdata 923>, <userdata 924>, <userdata 925>, <userdata 926>, <userdata 927>, <userdata 928>, <userdata 929>, <userdata 930>, <userdata 931>, <userdata 932>, <userdata 933>, <userdata 934>, <userdata 935>, <userdata 936>, <userdata 937>, <userdata 938>, <userdata 939>, <userdata 940>, <userdata 941>, <userdata 942>, <userdata 943>, <userdata 944>, <userdata 945>, <userdata 946>, <userdata 947>, <userdata 948>, <userdata 949>, <userdata 950>, <userdata 951>, <userdata 952>, <userdata 953>, <userdata 954>, <userdata 955>, <userdata 956>, <userdata 957>, <userdata 958>, <userdata 959>, <userdata 960>, <userdata 961>, <userdata 962>, <userdata 963>, <userdata 964>, <userdata 965>, <userdata 966>, <userdata 967>, <userdata 968>, <userdata 969>, <userdata 970>, <userdata 971>, <userdata 972>, <userdata 973>, <userdata 974>, <userdata 975>, <userdata 976>, <userdata 977>, <userdata 978>, <userdata 979>, <userdata 980>, <userdata 981>, <userdata 982>, <userdata 983>, <userdata 984>, <userdata 985>, <userdata 986>, <userdata 987>, <userdata 988>, <userdata 989>, <userdata 990>, <userdata 991>, <userdata 992>, <userdata 993>, <userdata 994>, <userdata 995>, <userdata 996>, <userdata 997>, <userdata 998>, <userdata 999>, <userdata 1000> }
+
+_movement_system:
+<userdata 1>
+
+behaviour_node:
+<userdata 1>
+
+create:
+<function 1>
+
+add_roots:
+<function 1>
+
+chromatic_aberration_offset:
+0
+
+fullscreen_quad:
+<function 1>
+
+formatted_text:
+<userdata 1>
+
+script:
+<userdata 1>
+
+create_behaviour_tree:
+<function 1>
+
+spatial_instability_crosshair_pos:
+1
+
+scene_fragment_shader:
+<userdata 1>
+
+particle:
+<userdata 1>
+
+ENGINE_DIRECTORY:
+"engine\\"
+
+spatial_instability_player_pos:
+5
+
+spatial_instability_multiplier:
+4
+
+spatial_instability_time:
+7
+
+spatial_instability_program:
+<userdata 1>
+
+spatial_instability_fragment_shader:
+<userdata 1>
+
+rect_xywh_i:
+<userdata 1>
+
+visibility_discontinuity:
+<userdata 1>
+
+GL:
+<userdata 1>
+
+color_adjustment_program:
+<userdata 1>
+
+message:
+<userdata 1>
+
+scene_shader_time_uniform:
+4
+
+lookat_component:
+<userdata 1>
+
+all_num:
+<function 1>
+
+create_polygon:
 <function 1>
 
 filter_player_visibility:
@@ -3234,175 +3496,202 @@ filter_player_visibility:
   maskBits = 12
 }
 
-entity_ptr:
-<userdata 1>
+is_instability_ray_over_postprocessing:
+true
 
-create_entity:
-<function 1>
-
-scriptable_zoom:
-<userdata 1>
-
-blood_templates:
-{ {
-    acc = <userdata 1>,
-    angular_damping = 1000,
-    linear_damping = 25000,
-    model = <userdata 2>,
-    should_disappear = true
-  }, {
-    acc = <userdata 3>,
-    angular_damping = 1000,
-    linear_damping = 25000,
-    model = <userdata 4>,
-    should_disappear = true
-  }, {
-    acc = <userdata 5>,
-    angular_damping = 1000,
-    linear_damping = 25000,
-    model = <userdata 6>,
-    should_disappear = true
-  }, {
-    acc = <userdata 7>,
-    angular_damping = 1000,
-    linear_damping = 25000,
-    model = <userdata 8>,
-    should_disappear = true
-  }, {
-    acc = <userdata 9>,
-    angular_damping = 1000,
-    linear_damping = 25000,
-    model = <userdata 10>,
-    should_disappear = true
-  }, {
-    acc = <userdata 11>,
-    angular_damping = 1000,
-    linear_damping = 25000,
-    model = <userdata 12>,
-    should_disappear = true
-  }, {
-    acc = <userdata 13>,
-    angular_damping = 1000,
-    linear_damping = 25000,
-    model = <userdata 14>,
-    should_disappear = true
-  }, {
-    acc = <userdata 15>,
-    angular_damping = 1000,
-    linear_damping = 25000,
-    model = <userdata 16>,
-    should_disappear = true
-  }, {
-    acc = <userdata 17>,
-    angular_damping = 1000,
-    linear_damping = 25000,
-    model = <userdata 18>,
-    should_disappear = true
-  }, {
-    acc = <userdata 19>,
-    angular_damping = 1000,
-    linear_damping = 25000,
-    model = <userdata 20>,
-    should_disappear = true
-  } }
-
-global_sound_table:
-{}
-
-flee_behaviour:
-<userdata 1>
-
-create_sprite:
-<function 1>
-
-current_zoom_multiplier:
-1
-
-current_zoom_level:
-0
-
-camera_archetype:
+coordination_module:
 {
-  camera = {
-    angled_look_length = 100,
-    averages_per_sec = 15,
-    enable_smoothing = true,
-    enabled = true,
-    layer = 0,
-    mask = 0,
-    max_look_expand = <userdata 1>,
-    orbit_mode = 2,
-    smoothing_average_factor = 0.5
-  },
-  chase = {
-    relative = false
-  },
-  transform = {
-    pos = <userdata 2>,
-    rotation = 0
+  angle_fits_in_threshold = <function 1>,
+  constructor = <function 2>,
+  create = <function 3>,
+  death_callback = <function 4>,
+  determine_jumpability = <function 5>,
+  handle_flying_state = <function 6>,
+  handle_player_visibility = <function 7>,
+  handle_steering = <function 8>,
+  handle_visibility_offset = <function 9>,
+  is_pathfinding = <function 10>,
+  loop = <function 11>,
+  map_vector_to_movement = <function 12>,
+  pursue_target = <function 13>,
+  refresh_behaviours = <function 14>,
+  set_all_behaviours_enabled = <function 15>,
+  set_movement_mode_flying = <function 16>,
+  stop_pursuit = <function 17>,
+  <metatable> = {
+    __index = {}
   }
 }
 
-scene_shader_time_uniform:
-4
-
-SetFriction:
-<function 1>
-
-physics_info:
+triangle_buffer:
 <userdata 1>
 
-gravity_angle_offset:
-0
+button_class:
+{
+  check_mouse_events = <function 1>,
+  construct_xywh = <function 2>,
+  constructor = <function 3>,
+  create = <function 4>,
+  set = <function 5>,
+  <metatable> = {
+    __index = {}
+  }
+}
 
-debugger_break:
+damage_component:
+<userdata 1>
+
+vblur_fragment_shader:
+<userdata 1>
+
+hblur_fragment_shader:
+<userdata 1>
+
+animation_events:
+<userdata 1>
+
+chromatic_aberration_program:
+<userdata 1>
+
+spawn_player:
 <function 1>
 
-collision_message:
+b2World:
+<userdata 1>
+
+entity_ptr:
+<userdata 1>
+
+wchar_t_vec:
+<userdata 1>
+
+chromatic_aberration_vertex_shader:
+<userdata 1>
+
+_animation_system:
+<userdata 1>
+
+visibility_layer:
+<userdata 1>
+
+vertex_shift_coroutine:
+<function 1>
+
+to_vec2:
+<function 1>
+
+filter_bullets_passed_wall:
+{
+  categoryBits = 32,
+  maskBits = 66
+}
+
+film_grain_program:
+<userdata 1>
+
+film_grain_fragment_shader:
+<userdata 1>
+
+film_grain_vertex_shader:
+<userdata 1>
+
+color_adjustment_fragment_shader:
 <userdata 1>
 
 BULLETS:
 32
 
-b2RevoluteJointDef:
-<userdata 1>
-
-rawget:
+load:
 <function 1>
 
-behaviour_tree_task:
+current_gravity:
 <userdata 1>
 
-scene_fragment_shader:
+rewrite:
+<function 1>
+
+b2Body:
 <userdata 1>
 
-_physics_system:
-<userdata 1>
-
-my_timer:
-<userdata 1>
-
-visibility_system:
-<userdata 1>
-
-images:
+tiled_map_loader:
 {
-  blank = <userdata 1>,
-  blue_clock = <userdata 2>,
-  brown_clock = <userdata 3>,
-  bullet_map = <userdata 4>,
-  crosshair_map = <userdata 5>,
-  hand_1 = <userdata 6>,
-  hand_2 = <userdata 7>,
-  hand_3 = <userdata 8>,
-  metal = <userdata 9>
+  allow_unknown_types = true,
+  basic_entity_table = <function 1>,
+  create_entities_from_map = <function 2>,
+  error_callback = <function 3>,
+  for_every_object = <function 4>,
+  get_all_objects_by_type = <function 5>,
+  get_all_textures = <function 6>,
+  load_world_properties = <function 7>,
+  map_scale = 1.2,
+  texture_property_name = "texture",
+  type_library = "sensibilia/maps/object_types",
+  world_camera_entity = <userdata 1>,
+  world_information_library = "sensibilia/maps/world_properties"
 }
 
-create_behaviour_tree:
+keys:
+<userdata 1>
+
+children_component:
+<userdata 1>
+
+shift_amount_uniform:
+3
+
+player_pos_uniform:
+1
+
+projection_matrix_uniform:
+2
+
+film_grain_variation_instability_effect:
 <function 1>
 
-spatial_instability_fragment_shader:
+hblur_coroutine:
+<function 1>
+
+global_instability_rays:
+{}
+
+render_component:
 <userdata 1>
+
+render_system:
+<userdata 1>
+
+mouse:
+<userdata 1>
+
+player_light_fader:
+<userdata 1>
+
+current_zoom_multiplier:
+1
+
+temporary_instability:
+0
+
+get_text_bbox:
+<function 1>
+
+entries_from_archetypes:
+<function 1>
+
+base_gravity:
+<userdata 1>
+
+visibility_edge:
+<userdata 1>
+
+to_vec2_table:
+<function 1>
+
+require:
+<function 1>
+
+can_point_be_reached_by_jump:
+<function 1>
 
 textures_by_name:
 {
@@ -3418,68 +3707,44 @@ textures_by_name:
   ["my_type_1.jpg"] = <userdata 10>
 }
 
-_damage_system:
+film_grain_variation_coroutine:
+<function 1>
+
+gui_context:
 <userdata 1>
+
+main_context:
+<userdata 1>
+
+io:
+{
+  close = <function 1>,
+  flush = <function 2>,
+  input = <function 3>,
+  lines = <function 4>,
+  open = <function 5>,
+  output = <function 6>,
+  popen = <function 7>,
+  read = <function 8>,
+  stderr = <userdata 1>,
+  stdin = <userdata 2>,
+  stdout = <userdata 3>,
+  tmpfile = <function 9>,
+  type = <function 10>,
+  write = <function 11>
+}
+
+rawset:
+<function 1>
 
 scriptable_info:
 <userdata 1>
 
-_entity:
-<userdata 1>
+target_gravity_rotation:
+0
 
-character_module:
-{
-  constructor = <function 1>,
-  create = <function 2>,
-  damage_message = <function 3>,
-  init_hp = <function 4>,
-  set_base_movement_speed = <function 5>,
-  set_gravity_shift_state = <function 6>,
-  set_movement_speed_multiplier = <function 7>,
-  update_movement_speeds = <function 8>,
-  <metatable> = {
-    __index = {}
-  }
-}
-
-b2PolygonShape:
-<userdata 1>
-
-create_textures:
-<function 1>
-
-query_output:
-<userdata 1>
-
-filter_obstacle_visibility:
-{
-  categoryBits = 127,
-  maskBits = 15
-}
-
-archetyped:
-<function 1>
-
-filter_bullets:
-{
-  categoryBits = 32,
-  maskBits = 78
-}
-
-filter_instability_ray_obstruction:
-{
-  categoryBits = 127,
-  maskBits = 12
-}
-
-filter_instability_ray_enemy:
-{
-  categoryBits = 127,
-  maskBits = 1
-}
-
-inherits_from:
-<function 1>
+gravity_angle_offset:
+0
 
 package:
 <1>{
@@ -3907,13 +4172,13 @@ package:
               body = <userdata 110>,
               crosshair = <userdata 111>
             },
-            [<userdata 112>] = <15>{
-              body = <userdata 113>,
-              hour_hand = <userdata 114>,
-              minute_hand = <userdata 115>,
-              second_hand = <userdata 116>
-            },
-            [<userdata 117>] = <table 14>
+            [<userdata 112>] = <table 14>,
+            [<userdata 113>] = <15>{
+              body = <userdata 114>,
+              hour_hand = <userdata 115>,
+              minute_hand = <userdata 116>,
+              second_hand = <userdata 117>
+            }
           },
           input_system = <userdata 118>,
           pathfinding_system = <userdata 119>,
@@ -4149,7 +4414,7 @@ package:
             minute_hand_sprite = <userdata 171>,
             minute_rotation = 0,
             overwrite_position = false,
-            randomization_speed_mult = 3.307147026062,
+            randomization_speed_mult = 3.5440661907196,
             randomized_hands_values = true,
             rotate_body = true,
             rotation_variation_tables = { {
@@ -4189,7 +4454,7 @@ package:
             rotation_variations = { <function 164>, <function 165>, <function 166> },
             second_hand_sprite = <userdata 172>,
             second_rotation = 0,
-            size_scalars = { 0.85679531097412, 0.82758847624063, 1.3336471617222, 1.0367512702942 },
+            size_scalars = { 0.91922378540039, 1.0971004664898, 1.0652065575123, 1.1956587135792 },
             <metatable> = {
               __index = <table 9>
             }
@@ -4719,6 +4984,15 @@ package:
       scene_program = <userdata 2249>,
       scene_shader_time_uniform = 4,
       scene_vertex_shader = <userdata 2250>,
+      screen_class = {
+        constructor = <function 288>,
+        create = <function 289>,
+        draw = <function 290>,
+        handle_events = <function 291>,
+        <metatable> = {
+          __index = {}
+        }
+      },
       script = <userdata 2251>,
       script_reloader = <userdata 2252>,
       scriptable_component = <userdata 2253>,
@@ -4730,16 +5004,16 @@ package:
         weight = 1
       },
       seek_behaviour = <userdata 2256>,
-      select = <function 288>,
+      select = <function 292>,
       sensor_avoidance_steering = <userdata 2258>,
       separation_behaviour = <userdata 2259>,
       separation_steering = <userdata 2260>,
-      set_components_from_entry = <function 289>,
-      set_physics_info = <function 290>,
-      set_polygon_color = <function 291>,
-      set_world_reloading_script = <function 292>,
-      set_zoom_level = <function 293>,
-      setmetatable = <function 294>,
+      set_components_from_entry = <function 293>,
+      set_physics_info = <function 294>,
+      set_polygon_color = <function 295>,
+      set_world_reloading_script = <function 296>,
+      set_zoom_level = <function 297>,
+      setmetatable = <function 298>,
       sfMusic = <userdata 2261>,
       sfSound = <userdata 2262>,
       sfSoundBuffer = <userdata 2263>,
@@ -4844,7 +5118,7 @@ package:
               restitution = 0,
               shape_type = 0
             },
-            bullet_callback = <function 295>,
+            bullet_callback = <function 299>,
             bullet_damage = <userdata 2266>,
             bullet_distance_offset = <userdata 183>,
             bullet_render = {
@@ -4871,9 +5145,9 @@ package:
       shooter_sprite = <userdata 2265>,
       shot_message = <userdata 2267>,
       should_debug_draw = false,
-      simple_create_polygon = <function 296>,
-      simple_integration = <function 297>,
-      spairs = <function 298>,
+      simple_create_polygon = <function 300>,
+      simple_integration = <function 301>,
+      spairs = <function 302>,
       spatial_instability_crosshair_pos = 1,
       spatial_instability_fragment_shader = <userdata 2268>,
       spatial_instability_light_attenuation = 3,
@@ -4884,54 +5158,54 @@ package:
       spatial_instability_time = 7,
       spatial_instability_vertex_shader = <userdata 2270>,
       spatial_instability_zoom = 8,
-      spawn_clock = <function 299>,
-      spawn_entity = <function 300>,
-      spawn_player = <function 301>,
-      spawn_pusher = <function 302>,
-      spawn_shooter = <function 303>,
-      spawn_wayward = <function 304>,
+      spawn_clock = <function 303>,
+      spawn_entity = <function 304>,
+      spawn_player = <function 305>,
+      spawn_pusher = <function 306>,
+      spawn_shooter = <function 307>,
+      spawn_wayward = <function 308>,
       sprite = <userdata 2271>,
       steering_behaviour = <userdata 2272>,
       steering_component = <userdata 2273>,
       stepped_timer = <userdata 2274>,
       string = <25>{
-        byte = <function 305>,
-        char = <function 306>,
-        dump = <function 307>,
-        find = <function 308>,
-        format = <function 309>,
-        gmatch = <function 310>,
-        gsub = <function 311>,
-        len = <function 312>,
-        lower = <function 313>,
-        match = <function 314>,
-        rep = <function 315>,
-        reverse = <function 316>,
-        sub = <function 317>,
-        upper = <function 318>
+        byte = <function 309>,
+        char = <function 310>,
+        dump = <function 311>,
+        find = <function 312>,
+        format = <function 313>,
+        gmatch = <function 314>,
+        gsub = <function 315>,
+        len = <function 316>,
+        lower = <function 317>,
+        match = <function 318>,
+        rep = <function 319>,
+        reverse = <function 320>,
+        sub = <function 321>,
+        upper = <function 322>
       },
-      super = <function 319>,
+      super = <function 323>,
       table = <26>{
-        concat = <function 320>,
-        concatenate = <function 321>,
-        insert = <function 322>,
+        concat = <function 324>,
+        concatenate = <function 325>,
+        insert = <function 326>,
         inspect = <27>{
           _DESCRIPTION = "human-readable representations of tables",
           _LICENSE = '    MIT LICENSE\n\n    Copyright (c) 2013 Enrique García Cota\n\n    Permission is hereby granted, free of charge, to any person obtaining a\n    copy of this software and associated documentation files (the\n    "Software"), to deal in the Software without restriction, including\n    without limitation the rights to use, copy, modify, merge, publish,\n    distribute, sublicense, and/or sell copies of the Software, and to\n    permit persons to whom the Software is furnished to do so, subject to\n    the following conditions:\n\n    The above copyright notice and this permission notice shall be included\n    in all copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS\n    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\n    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\n    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n  ',
           _URL = "http://github.com/kikito/inspect.lua",
           _VERSION = "inspect.lua 2.0.0",
-          inspect = <function 323>,
+          inspect = <function 327>,
           <metatable> = {
-            __call = <function 324>
+            __call = <function 328>
           }
         },
-        pack = <function 325>,
-        remove = <function 326>,
-        shuffle = <function 327>,
-        sort = <function 328>,
-        unpack = <function 329>
+        pack = <function 329>,
+        remove = <function 330>,
+        shuffle = <function 331>,
+        sort = <function 332>,
+        unpack = <function 333>
       },
-      table_of_tables = <function 330>,
+      table_of_tables = <function 334>,
       target_entity_archetype = {
         render = {
           layer = 0
@@ -4943,11 +5217,11 @@ package:
       target_seek_steering = <userdata 2276>,
       temporary_instability = 0,
       text_button = {
-        constructor = <function 331>,
-        create = <function 332>,
-        draw = <function 333>,
-        handle_events = <function 334>,
-        set = <function 335>,
+        constructor = <function 335>,
+        create = <function 336>,
+        draw = <function 337>,
+        handle_events = <function 338>,
+        set = <function 339>,
         <metatable> = {
           __index = {}
         }
@@ -4967,13 +5241,13 @@ package:
       },
       tiled_map_loader = {
         allow_unknown_types = true,
-        basic_entity_table = <function 336>,
-        create_entities_from_map = <function 337>,
-        error_callback = <function 338>,
-        for_every_object = <function 339>,
-        get_all_objects_by_type = <function 340>,
-        get_all_textures = <function 341>,
-        load_world_properties = <function 342>,
+        basic_entity_table = <function 340>,
+        create_entities_from_map = <function 341>,
+        error_callback = <function 342>,
+        for_every_object = <function 343>,
+        get_all_objects_by_type = <function 344>,
+        get_all_textures = <function 345>,
+        load_world_properties = <function 346>,
         map_scale = 1.2,
         texture_property_name = "texture",
         type_library = "sensibilia/maps/object_types",
@@ -4983,30 +5257,30 @@ package:
       time_speed_variation = 0,
       time_uniform = 1,
       timer = <userdata 2279>,
-      to_vec2 = <function 343>,
-      to_vec2_table = <function 344>,
-      tonumber = <function 345>,
-      tostring = <function 346>,
-      towchar = <function 347>,
-      towchar_vec = <function 348>,
+      to_vec2 = <function 347>,
+      to_vec2_table = <function 348>,
+      tonumber = <function 349>,
+      tostring = <function 350>,
+      towchar = <function 351>,
+      towchar_vec = <function 352>,
       transform_component = <userdata 2280>,
       transform_state = <userdata 2281>,
       triangle_buffer = <userdata 2282>,
-      type = <function 349>,
+      type = <function 353>,
       v_offset_multiplier = 1,
       value_animator = <userdata 2283>,
-      vblur_coroutine = <function 350>,
+      vblur_coroutine = <function 354>,
       vblur_fragment_shader = <userdata 2284>,
-      vblur_instability_effect = <function 351>,
+      vblur_instability_effect = <function 355>,
       vblur_program = <userdata 2285>,
       vblur_vertex_shader = <userdata 2286>,
       vec2 = <userdata 2287>,
       vec2_i = <userdata 2288>,
       vec2_vector = <userdata 2289>,
-      vector_to_table = <function 352>,
+      vector_to_table = <function 356>,
       vertex = <userdata 2290>,
-      vertex_shift_coroutine = <function 353>,
-      vertex_shift_instability_effect = <function 354>,
+      vertex_shift_coroutine = <function 357>,
+      vertex_shift_instability_effect = <function 358>,
       vertex_triangle = <userdata 2291>,
       visibility_component = <userdata 2292>,
       visibility_discontinuity = <userdata 2293>,
@@ -5021,11 +5295,11 @@ package:
       wander_steering = <userdata 2297>,
       wayward_archetype = {},
       waywardness_module = {
-        constructor = <function 355>,
-        create = <function 356>,
-        damage_message = <function 357>,
-        return_to_initial_transform = <function 358>,
-        substep = <function 359>,
+        constructor = <function 359>,
+        create = <function 360>,
+        damage_message = <function 361>,
+        return_to_initial_transform = <function 362>,
+        substep = <function 363>,
         <metatable> = {
           __index = {}
         }
@@ -5038,7 +5312,7 @@ package:
       world_class = <table 17>,
       world_information = {},
       world_instance = <userdata 2301>,
-      xpcall = <function 360>
+      xpcall = <function 364>
     },
     bit32 = <table 4>,
     coroutine = <table 11>,
@@ -5192,47 +5466,270 @@ package:
     string = <table 25>,
     table = <table 26>
   },
-  loadlib = <function 361>,
+  loadlib = <function 365>,
   path = "C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\lua\\?\\init.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?.lua;C:\\Users\\Anon\\Documents\\GitHub\\Augmentations\\..\\Sensibilia\\?\\init.lua;.\\?.lua",
   preload = {},
-  searchers = { <function 362>, <function 363>, <function 364>, <function 365> },
-  searchpath = <function 366>
+  searchers = { <function 366>, <function 367>, <function 368>, <function 369> },
+  searchpath = <function 370>
 }
 
-spatial_instability_vertex_shader:
-<userdata 1>
-
-quick_print_text:
-<function 1>
-
-rewrite:
-<function 1>
-
-io:
+blood_droplets:
 {
-  close = <function 1>,
-  flush = <function 2>,
-  input = <function 3>,
-  lines = <function 4>,
-  open = <function 5>,
-  output = <function 6>,
-  popen = <function 7>,
-  read = <function 8>,
-  stderr = <userdata 1>,
-  stdin = <userdata 2>,
-  stdout = <userdata 3>,
-  tmpfile = <function 9>,
-  type = <function 10>,
-  write = <function 11>
+  angular_offset = <userdata 1>,
+  angular_velocity = <userdata 2>,
+  initial_rotation_variation = 180,
+  particle_lifetime_ms = <userdata 3>,
+  particle_render_template = {
+    layer = 0,
+    mask = 1
+  },
+  particle_templates = { {
+      acc = <userdata 4>,
+      angular_damping = 1000,
+      linear_damping = 25000,
+      model = <userdata 5>,
+      should_disappear = true
+    }, {
+      acc = <userdata 6>,
+      angular_damping = 1000,
+      linear_damping = 25000,
+      model = <userdata 7>,
+      should_disappear = true
+    }, {
+      acc = <userdata 8>,
+      angular_damping = 1000,
+      linear_damping = 25000,
+      model = <userdata 9>,
+      should_disappear = true
+    }, {
+      acc = <userdata 10>,
+      angular_damping = 1000,
+      linear_damping = 25000,
+      model = <userdata 11>,
+      should_disappear = true
+    }, {
+      acc = <userdata 12>,
+      angular_damping = 1000,
+      linear_damping = 25000,
+      model = <userdata 13>,
+      should_disappear = true
+    }, {
+      acc = <userdata 14>,
+      angular_damping = 1000,
+      linear_damping = 25000,
+      model = <userdata 15>,
+      should_disappear = true
+    }, {
+      acc = <userdata 16>,
+      angular_damping = 1000,
+      linear_damping = 25000,
+      model = <userdata 17>,
+      should_disappear = true
+    }, {
+      acc = <userdata 18>,
+      angular_damping = 1000,
+      linear_damping = 25000,
+      model = <userdata 19>,
+      should_disappear = true
+    }, {
+      acc = <userdata 20>,
+      angular_damping = 1000,
+      linear_damping = 25000,
+      model = <userdata 21>,
+      should_disappear = true
+    }, {
+      acc = <userdata 22>,
+      angular_damping = 1000,
+      linear_damping = 25000,
+      model = <userdata 23>,
+      should_disappear = true
+    } },
+  particles_per_burst = <userdata 24>,
+  size_multiplier = <userdata 25>,
+  spread_degrees = 0,
+  type = 0,
+  velocity = <userdata 26>
 }
 
-particle_effect:
+_render_system:
 <userdata 1>
+
+orthographic_projection:
+<function 1>
+
+steering_behaviour:
+<userdata 1>
+
+postprocessing_fbos:
+{ <userdata 1>,
+  [0] = <userdata 2>
+}
+
+rawlen:
+<function 1>
+
+blood_piece:
+{
+  acc = <userdata 1>,
+  angular_damping = 1000,
+  linear_damping = 25000,
+  should_disappear = true
+}
+
+font2:
+<userdata 1>
+
+DEFAULT_GAMEPLAY_TEXTURES:
+{
+  blank = <userdata 1>,
+  blue_clock = <userdata 2>,
+  brown_clock = <userdata 3>,
+  bullet_map = <userdata 4>,
+  crosshair_map = <userdata 5>,
+  hand_1 = <userdata 6>,
+  hand_2 = <userdata 7>,
+  hand_3 = <userdata 8>,
+  metal = <userdata 9>
+}
+
+ENEMIES:
+2
+
+steering_component:
+<userdata 1>
+
+get_font:
+<function 1>
+
+font_files:
+{ <userdata 1>, <userdata 2>, <userdata 3> }
+
+clamp:
+<function 1>
+
+float_ptr:
+<userdata 1>
+
+_script_reloader:
+<userdata 1>
+
+GAMEPLAY_TEXTURES:
+{
+  blank = <userdata 1>,
+  blue_clock = <userdata 2>,
+  brown_clock = <userdata 3>,
+  bullet_map = <userdata 4>,
+  crosshair_map = <userdata 5>,
+  hand_1 = <userdata 6>,
+  hand_2 = <userdata 7>,
+  hand_3 = <userdata 8>,
+  metal = <userdata 9>
+}
+
+physics_info:
+<userdata 1>
+
+minmax:
+<userdata 1>
+
+collectgarbage:
+<function 1>
+
+type:
+<function 1>
+
+framebuffer_object:
+<userdata 1>
+
+font1:
+<userdata 1>
+
+SHADERS_DIRECTORY:
+"sensibilia\\scripts\\resources\\shaders\\"
+
+world_instance:
+<userdata 1>
+
+create_textures:
+<function 1>
+
+crosshair_component:
+<userdata 1>
+
+filter_obstacle_visibility:
+{
+  categoryBits = 127,
+  maskBits = 15
+}
+
+_camera_system:
+<userdata 1>
+
+select:
+<function 1>
+
+print:
+<function 1>
+
+string:
+{
+  byte = <function 1>,
+  char = <function 2>,
+  dump = <function 3>,
+  find = <function 4>,
+  format = <function 5>,
+  gmatch = <function 6>,
+  gsub = <function 7>,
+  len = <function 8>,
+  lower = <function 9>,
+  match = <function 10>,
+  rep = <function 11>,
+  reverse = <function 12>,
+  sub = <function 13>,
+  upper = <function 14>
+}
+
+seek_archetype:
+{
+  behaviour_type = <userdata 1>,
+  force_color = <userdata 2>,
+  weight = 1
+}
+
+_gun_system:
+<userdata 1>
+
+PIXELS_TO_METERS:
+0.02
+
+separation_behaviour:
+<userdata 1>
+
+debug_draw:
+<function 1>
+
+filter_character_feet:
+{
+  categoryBits = 127,
+  maskBits = 15
+}
+
+vec2:
+<userdata 1>
+
+EFFECTS_DIRECTORY:
+"sensibilia\\scripts\\effects\\"
 
 filter_enemies:
 {
   categoryBits = 2,
   maskBits = 63
+}
+
+filter_characters:
+{
+  categoryBits = 1,
+  maskBits = 95
 }
 
 filter_objects:
@@ -5241,17 +5738,51 @@ filter_objects:
   maskBits = 111
 }
 
-sprite:
-<userdata 1>
-
-GLSL_program:
-<userdata 1>
-
-add_vals:
+hblur_instability_effect:
 <function 1>
 
-behaviour_timer_decorator:
+flee_behaviour:
 <userdata 1>
+
+debug:
+{
+  debug = <function 1>,
+  gethook = <function 2>,
+  getinfo = <function 3>,
+  getlocal = <function 4>,
+  getmetatable = <function 5>,
+  getregistry = <function 6>,
+  getupvalue = <function 7>,
+  getuservalue = <function 8>,
+  my_breakpoint = <function 9>,
+  my_traceback = <function 10>,
+  sethook = <function 11>,
+  setlocal = <function 12>,
+  setmetatable = <function 13>,
+  setupvalue = <function 14>,
+  setuservalue = <function 15>,
+  traceback = <function 16>,
+  upvalueid = <function 17>,
+  upvaluejoin = <function 18>
+}
+
+_damage_system:
+<userdata 1>
+
+filter_light_visibility:
+{
+  categoryBits = 127,
+  maskBits = 14
+}
+
+rawget:
+<function 1>
+
+window:
+<userdata 1>
+
+gen_circle_vertices:
+<function 1>
 
 visibility_layers:
 {
@@ -5259,50 +5790,8 @@ visibility_layers:
   LIGHT_BOUNCE = 999
 }
 
-player_light_fader:
+draw_input:
 <userdata 1>
-
-filter_enemy_bullets_passed_wall:
-{
-  categoryBits = 64,
-  maskBits = 33
-}
-
-loadfile:
-<function 1>
-
-filter_characters_separation:
-{
-  categoryBits = 127,
-  maskBits = 2
-}
-
-METERS_TO_PIXELS:
-50
-
-instability:
-0
-
-vec2_vector:
-<userdata 1>
-
-INSTABILITY_RAY:
-16
-
-STATIC_OBJECTS:
-8
-
-create_entity_group:
-<function 1>
-
-sfMusic:
-<userdata 1>
-
-map_uv_square:
-<function 1>
-
-ptr_create_entity:
-<function 1>
 
 CHARACTERS:
 1
@@ -5313,11 +5802,38 @@ render_masks:
   WORLD = 0
 }
 
-debug_line:
+render_layers:
+{
+  BACKGROUND_1 = 5,
+  BACKGROUND_2 = 6,
+  BACKGROUND_3 = 7,
+  CHARACTERS = 3,
+  CLOCKS = 4,
+  FOREGROUND = 1,
+  GUI_OBJECTS = 0,
+  OBJECTS = 2
+}
+
+vec2_vector:
 <userdata 1>
+
+b2Filter:
+<userdata 1>
+
+sfMusic:
+<userdata 1>
+
+pathfinding_component:
+<userdata 1>
+
+create_particle_effect:
+<function 1>
 
 MAP_FILENAME:
 "sensibilia\\maps\\menu_map"
+
+create_animation:
+<function 1>
 
 level_resources:
 {
@@ -5345,684 +5861,60 @@ level_resources:
   rendered_crosshair_entity = <userdata 2>
 }
 
-filter_static_objects:
-{
-  categoryBits = 8,
-  maskBits = 111
-}
-
-input_system:
-<userdata 1>
-
-pusher_archetype:
-{
-  body = {
-    behaviour_tree = {
-      trees = { <userdata 1>, <userdata 2> }
-    },
-    lookat = {
-      averages_per_sec = 10,
-      easing_mode = 2,
-      update_value = false
-    },
-    movement = {
-      air_resistance = 0.1,
-      ground_filter = {
-        categoryBits = 127,
-        maskBits = 15
-      },
-      input_acceleration = <userdata 3>,
-      inverse_thrust_brake = <userdata 4>,
-      max_speed_animation = 2300,
-      receivers = {},
-      sidescroller_setup = true
-    },
-    particle_emitter = {
-      available_particle_effects = <userdata 5>
-    },
-    pathfinding = {
-      distance_navpoint_hit = 2,
-      enable_backtracking = true,
-      favor_velocity_parallellness = false,
-      force_persistent_navpoints = true,
-      force_touch_sensors = true,
-      rotate_navpoints = 10,
-      target_offset = 3
-    },
-    physics = {
-      body_info = {
-        angled_damping = true,
-        bullet = true,
-        density = 100,
-        filter = {
-          categoryBits = 2,
-          maskBits = 63
-        },
-        fixed_rotation = true,
-        friction = 2,
-        radius = 60,
-        shape_type = 0
-      },
-      body_type = 2
-    },
-    render = {
-      layer = 2,
-      mask = 0,
-      model = <userdata 6>
-    },
-    scriptable = {},
-    steering = {
-      max_resultant_force = -1,
-      max_speed = 16970.562748477
-    },
-    transform = {
-      pos = <userdata 7>
-    },
-    visibility = {
-      interval_ms = 16,
-      visibility_layers = { {
-          color = <userdata 8>,
-          filter = {
-            categoryBits = 127,
-            maskBits = 12
-          },
-          ignore_discontinuities_shorter_than = 150,
-          square_side = 2000
-        } }
-    }
-  }
-}
-
-value_animator:
-<userdata 1>
-
-polygon:
-<userdata 1>
-
-particle_emitter_component:
-<userdata 1>
-
-font_files:
-{ <userdata 1>, <userdata 2>, <userdata 3> }
-
-group_by_entity:
-{
-  [<userdata 1>] = <1>{
-    body = <userdata 2>,
-    crosshair = <userdata 3>
-  },
-  [<userdata 4>] = {
-    body = <userdata 5>,
-    hour_hand = <userdata 6>,
-    minute_hand = <userdata 7>,
-    second_hand = <userdata 8>
-  },
-  [<userdata 9>] = <table 1>
-}
-
-level_world:
-{
-  globals = {
-    group_by_entity = {
-      [<userdata 1>] = <1>{
-        body = <userdata 2>,
-        crosshair = <userdata 3>
-      },
-      [<userdata 4>] = {
-        body = <userdata 5>,
-        hour_hand = <userdata 6>,
-        minute_hand = <userdata 7>,
-        second_hand = <userdata 8>
-      },
-      [<userdata 9>] = <table 1>
-    },
-    input_system = <userdata 10>,
-    pathfinding_system = <userdata 11>,
-    physics_system = <userdata 12>,
-    polygon_particle_userdatas_saved = { <userdata 13>, <userdata 14>, <userdata 15>, <userdata 16>, <userdata 17>, <userdata 18>, <userdata 19>, <userdata 20>, <userdata 21>, <userdata 22> },
-    render_system = <userdata 23>,
-    visibility_system = <userdata 24>,
-    world = <userdata 25>
-  },
-  loop = <function 1>,
-  world_inst = <userdata 26>,
-  <metatable> = {
-    __index = {
-      constructor = <function 2>,
-      create = <function 3>,
-      loop = <function 4>,
-      process_all_systems = <function 5>,
-      set_current = <function 6>,
-      <metatable> = {
-        __index = {}
-      }
-    }
-  }
-}
-
-randval_i:
+vector_to_table:
 <function 1>
 
-animated_text:
+time_speed_variation:
+0
+
+separation_steering:
+<userdata 1>
+
+custom_intents:
 {
-  constructor = <function 1>,
-  create = <function 2>,
-  get_formatted_text = <function 3>,
-  randomize_duration = <function 4>,
-  refresh_characters = <function 5>,
-  reset_character = <function 6>,
-  set = <function 7>,
-  <metatable> = {
-    __index = {}
-  }
+  DROP_WEAPON = 999999991,
+  GRAVITY_CHANGE = 999999989,
+  GUI_MOUSECLICK = 999999984,
+  INSTABILITY_RAY = 999999986,
+  INSTANT_SLOWDOWN = 999999996,
+  JUMP = 999999990,
+  MY_INTENT = 999999988,
+  QUIT = 999999992,
+  REALITY_CHECK = 999999985,
+  RESTART = 999999997,
+  SHOW_CLOCK = 999999987,
+  SPEED_CHANGE = 999999993,
+  STEERING_REQUEST = 999999998,
+  ZOOM_CAMERA = 999999999,
+  ZOOM_IN = 999999995,
+  ZOOM_OUT = 999999994
 }
 
-_render_system:
+_physics_system:
 <userdata 1>
+
+polygon_particle_userdatas_saved:
+{ <userdata 1>, <userdata 2>, <userdata 3>, <userdata 4>, <userdata 5>, <userdata 6>, <userdata 7>, <userdata 8>, <userdata 9>, <userdata 10> }
 
 commands:
 <userdata 1>
 
-reload_default_level_resources:
-<function 1>
+spatial_instability_light_attenuation:
+3
 
-create_steering:
-<function 1>
-
-create_scriptable_info:
-<function 1>
-
-flocking_behaviour:
+animate_component:
 <userdata 1>
 
-damage_message:
-<userdata 1>
-
-create_particle_emitter_info:
-<function 1>
-
-vec2_i:
-<userdata 1>
-
-b2WeldJointDef:
-<userdata 1>
-
-chromatic_aberration_offset:
-0
-
-require:
-<function 1>
-
-entries_from_archetypes:
-<function 1>
-
-instability_gun_bullet_callback:
-<function 1>
-
-_particle_emitter_system:
-<userdata 1>
-
-component_helpers:
-{
-  parallax_chase = <function 1>
-}
-
-formatted_text:
-<userdata 1>
-
-simple_create_polygon:
+loadfile:
 <function 1>
 
 _behaviour_tree_system:
 <userdata 1>
 
-pathfinding_component:
-<userdata 1>
-
-gen_circle_vertices:
+get_display:
 <function 1>
 
-damage_component:
-<userdata 1>
-
-PIXELS_TO_METERS:
-0.02
-
-_steering_system:
-<userdata 1>
-
-rect_xywh:
-<userdata 1>
-
-camera_component:
-<userdata 1>
-
-create_polygon:
-<function 1>
-
-behaviour_node:
-<userdata 1>
-
-bit32:
-{
-  arshift = <function 1>,
-  band = <function 2>,
-  bnot = <function 3>,
-  bor = <function 4>,
-  btest = <function 5>,
-  bxor = <function 6>,
-  extract = <function 7>,
-  lrotate = <function 8>,
-  lshift = <function 9>,
-  replace = <function 10>,
-  rrotate = <function 11>,
-  rshift = <function 12>
-}
-
-shooter_archetype:
-{
-  body = {
-    behaviour_tree = {
-      trees = { <userdata 1>, <userdata 2> }
-    },
-    children = { "gun_entity" },
-    lookat = {
-      averages_per_sec = 10,
-      easing_mode = 2,
-      update_value = false
-    },
-    movement = {
-      air_resistance = 0.1,
-      braking_damping = 1,
-      ground_filter = {
-        categoryBits = 127,
-        maskBits = 15
-      },
-      input_acceleration = <userdata 3>,
-      inverse_thrust_brake = <userdata 4>,
-      max_speed_animation = 2300,
-      receivers = {},
-      sidescroller_setup = true
-    },
-    particle_emitter = {
-      available_particle_effects = <userdata 5>
-    },
-    pathfinding = {
-      distance_navpoint_hit = 2,
-      enable_backtracking = true,
-      favor_velocity_parallellness = false,
-      force_persistent_navpoints = true,
-      force_touch_sensors = true,
-      rotate_navpoints = 10,
-      target_offset = 3
-    },
-    physics = {
-      body_info = {
-        angled_damping = true,
-        bullet = true,
-        density = 100,
-        filter = {
-          categoryBits = 2,
-          maskBits = 63
-        },
-        fixed_rotation = true,
-        friction = 2,
-        radius = 60,
-        shape_type = 0
-      },
-      body_type = 2
-    },
-    render = {
-      layer = 2,
-      mask = 0,
-      model = <userdata 6>
-    },
-    scriptable = {},
-    steering = {
-      max_resultant_force = -1,
-      max_speed = 16970.562748477
-    },
-    transform = {
-      pos = <userdata 7>
-    },
-    visibility = {
-      interval_ms = 16,
-      visibility_layers = { {
-          color = <userdata 8>,
-          filter = {
-            categoryBits = 127,
-            maskBits = 12
-          },
-          ignore_discontinuities_shorter_than = 150,
-          square_side = 2000
-        } }
-    }
-  },
-  gun_entity = {
-    chase = {
-      chase_rotation = false,
-      target = "body"
-    },
-    gun = {
-      bullet_body = {
-        air_resistance = 0,
-        angular_damping = 160,
-        density = 0.1,
-        filter = {
-          categoryBits = 64,
-          maskBits = 45
-        },
-        fixed_rotation = false,
-        friction = 100,
-        gravity_scale = 0,
-        linear_damping = 0,
-        rect_size = <userdata 9>,
-        restitution = 0,
-        shape_type = 0
-      },
-      bullet_callback = <function 1>,
-      bullet_damage = <userdata 10>,
-      bullet_distance_offset = <userdata 11>,
-      bullet_render = {
-        mask = 1
-      },
-      bullet_speed = <userdata 12>,
-      bullets_once = 5,
-      current_rounds = 3000,
-      is_automatic = true,
-      max_bullet_distance = 4000,
-      max_rounds = 3000,
-      shake_radius = 39.5,
-      shake_spread_degrees = 45,
-      shooting_interval_ms = 50,
-      spread_degrees = 5.5,
-      target_camera_to_shake = <userdata 13>
-    },
-    lookat = {
-      target = "body"
-    },
-    transform = {}
-  }
-}
-
-b2Vec2:
-<userdata 1>
-
-float_ptr:
-<userdata 1>
-
-avoidance_behaviour:
-<userdata 1>
-
-ptr_create_entity_group:
-<function 1>
-
-keys:
-<userdata 1>
-
-behaviour_tree_component:
-<userdata 1>
-
-obstacle_avoidance_behaviour:
-<userdata 1>
-
-instability_gun:
-{
-  bullet_body = {
-    air_resistance = 0,
-    angular_damping = 160,
-    density = 0.1,
-    filter = {
-      categoryBits = 32,
-      maskBits = 78
-    },
-    fixed_rotation = false,
-    friction = 100,
-    gravity_scale = 0,
-    linear_damping = 0,
-    rect_size = <userdata 1>,
-    restitution = 0,
-    shape_type = 0
-  },
-  bullet_callback = <function 1>,
-  bullet_damage = <userdata 2>,
-  bullet_distance_offset = <userdata 3>,
-  bullet_render = {
-    mask = 1
-  },
-  bullet_speed = <userdata 4>,
-  bullets_once = 20,
-  current_rounds = 3000,
-  is_automatic = true,
-  max_bullet_distance = 4000,
-  max_rounds = 3000,
-  shake_radius = 39.5,
-  shake_spread_degrees = 45,
-  shooting_interval_ms = 50,
-  spread_degrees = 5.5,
-  target_camera_to_shake = <userdata 5>
-}
-
-set_zoom_level:
-<function 1>
-
-math:
-{
-  abs = <function 1>,
-  acos = <function 2>,
-  asin = <function 3>,
-  atan = <function 4>,
-  atan2 = <function 5>,
-  ceil = <function 6>,
-  cos = <function 7>,
-  cosh = <function 8>,
-  deg = <function 9>,
-  exp = <function 10>,
-  floor = <function 11>,
-  fmod = <function 12>,
-  frexp = <function 13>,
-  huge = 1.#INF,
-  ldexp = <function 14>,
-  log = <function 15>,
-  max = <function 16>,
-  min = <function 17>,
-  modf = <function 18>,
-  pi = 3.1415926535898,
-  pow = <function 19>,
-  rad = <function 20>,
-  random = <function 21>,
-  randomseed = <function 22>,
-  sin = <function 23>,
-  sinh = <function 24>,
-  sqrt = <function 25>,
-  tan = <function 26>,
-  tanh = <function 27>
-}
-
-raycast_output:
-<userdata 1>
-
-rect_ltrb:
-<userdata 1>
-
-chromatic_aberration_vertex_shader:
-<userdata 1>
-
-movement_component:
-<userdata 1>
-
-ENEMIES:
-2
-
-OBJECTS:
-4
-
-hblur_fragment_shader:
-<userdata 1>
-
-wchar_t_vec:
-<userdata 1>
-
-get_group_by_entity:
-<function 1>
-
-wander_behaviour:
-<userdata 1>
-
-GLSL_shader:
-<userdata 1>
-
-_movement_system:
-<userdata 1>
-
-font_instance:
-<userdata 1>
-
-blood_effect:
-{ {
-    angular_offset = <userdata 1>,
-    angular_velocity = <userdata 2>,
-    initial_rotation_variation = 180,
-    particle_lifetime_ms = <userdata 3>,
-    particle_render_template = {
-      layer = 0,
-      mask = 1
-    },
-    particle_templates = { {
-        acc = <userdata 4>,
-        angular_damping = 1000,
-        linear_damping = 25000,
-        model = <userdata 5>,
-        should_disappear = true
-      }, {
-        acc = <userdata 6>,
-        angular_damping = 1000,
-        linear_damping = 25000,
-        model = <userdata 7>,
-        should_disappear = true
-      }, {
-        acc = <userdata 8>,
-        angular_damping = 1000,
-        linear_damping = 25000,
-        model = <userdata 9>,
-        should_disappear = true
-      }, {
-        acc = <userdata 10>,
-        angular_damping = 1000,
-        linear_damping = 25000,
-        model = <userdata 11>,
-        should_disappear = true
-      }, {
-        acc = <userdata 12>,
-        angular_damping = 1000,
-        linear_damping = 25000,
-        model = <userdata 13>,
-        should_disappear = true
-      }, {
-        acc = <userdata 14>,
-        angular_damping = 1000,
-        linear_damping = 25000,
-        model = <userdata 15>,
-        should_disappear = true
-      }, {
-        acc = <userdata 16>,
-        angular_damping = 1000,
-        linear_damping = 25000,
-        model = <userdata 17>,
-        should_disappear = true
-      }, {
-        acc = <userdata 18>,
-        angular_damping = 1000,
-        linear_damping = 25000,
-        model = <userdata 19>,
-        should_disappear = true
-      }, {
-        acc = <userdata 20>,
-        angular_damping = 1000,
-        linear_damping = 25000,
-        model = <userdata 21>,
-        should_disappear = true
-      }, {
-        acc = <userdata 22>,
-        angular_damping = 1000,
-        linear_damping = 25000,
-        model = <userdata 23>,
-        should_disappear = true
-      } },
-    particles_per_burst = <userdata 24>,
-    size_multiplier = <userdata 25>,
-    spread_degrees = 0,
-    type = 0,
-    velocity = <userdata 26>
-  } }
-
-calc_air_resistance:
-<function 1>
-
-world_camera:
-<userdata 1>
-
-count_all:
-<function 1>
-
-drawable_concave:
-<userdata 1>
-
-process_all_entity_modules:
-<function 1>
-
-assert:
-<function 1>
-
-filter_character_feet:
-{
-  categoryBits = 127,
-  maskBits = 15
-}
-
-base_gravity:
-<userdata 1>
-
-world_class:
-{
-  constructor = <function 1>,
-  create = <function 2>,
-  loop = <function 3>,
-  process_all_systems = <function 4>,
-  set_current = <function 5>,
-  <metatable> = {
-    __index = {}
-  }
-}
-
-button_class:
-{
-  check_mouse_events = <function 1>,
-  construct_xywh = <function 2>,
-  constructor = <function 3>,
-  create = <function 4>,
-  set = <function 5>,
-  <metatable> = {
-    __index = {}
-  }
-}
-
-orthographic_projection:
-<function 1>
-
-children_component:
-<userdata 1>
-
-current_postprocessing_fbo:
-0
-
-next:
-<function 1>
-
-to_vec2:
-<function 1>
-
-_gun_system:
+physics_component:
 <userdata 1>
 
 coroutine:
@@ -6039,236 +5931,370 @@ coroutine:
   yield = <function 10>
 }
 
-render_component:
-<userdata 1>
-
-create_physics_component:
+create_emission:
 <function 1>
 
-select:
+filter_nothing:
+{
+  categoryBits = 0,
+  maskBits = 0
+}
+
+create_input_context:
 <function 1>
 
-directed_behaviour:
+create_animation_set:
+<function 1>
+
+glwindow:
 <userdata 1>
+
+visibility_component:
+<userdata 1>
+
+raw_texture:
+<userdata 1>
+
+archetyped:
+<function 1>
+
+filter_enemy_bullets:
+{
+  categoryBits = 64,
+  maskBits = 45
+}
+
+simple_create_polygon:
+<function 1>
+
+create_particle:
+<function 1>
+
+instability:
+0
+
+create_entity_group:
+<function 1>
+
+error:
+<function 1>
+
+create_sprite:
+<function 1>
+
+calc_air_resistance:
+<function 1>
 
 animate_info:
 <userdata 1>
 
-create_animation:
+create_inverse_enum:
 <function 1>
 
-gun_component:
-<userdata 1>
-
-navigation_hint:
-<userdata 1>
-
-rawlen:
+calc_max_jump_height:
 <function 1>
 
-pcall:
+ptr_create_entity_group:
 <function 1>
 
-sfSound:
-<userdata 1>
-
-global_entity_table:
+blood_templates:
 { {
-    clock_renderer = {
-      alpha_scalars = { 0.19607843137255, 0.19607843137255, 0.19607843137255, 0.19607843137255 },
-      body_rotation_variation = <function 1>,
-      body_rotation_variation_table = {
-        callback = <function 2>,
-        constant_transition_delta = false,
-        max_transition_ms = 200,
-        max_value = 5,
-        max_wait_ms = 200,
-        min_transition_ms = 100,
-        min_value = -5,
-        min_wait_ms = 100,
-        value_additive = false,
-        wait_probability = 0.01
-      },
-      clock_alpha = 1,
-      clock_center = <userdata 1>,
-      clock_sprite = <userdata 2>,
-      global_hand_time = 0,
-      global_timer = <userdata 3>,
-      gravity_rotation_multiplier = 1,
-      group = <1>{
-        body = <userdata 4>,
-        hour_hand = <userdata 5>,
-        minute_hand = <userdata 6>,
-        second_hand = <userdata 7>
-      },
-      hour_hand_sprite = <userdata 8>,
-      hour_rotation = 0,
-      logarithmic_blink_coroutine = <function 3>,
-      logarithmic_blink_mult = 1,
-      logarithmic_blink_params = {
-        max_wait_ms = 5000,
-        min_wait_ms = 100
-      },
-      logarithmic_blinks = true,
-      minute_hand_sprite = <userdata 9>,
-      minute_rotation = 0,
-      overwrite_position = false,
-      randomization_speed_mult = 3.307147026062,
-      randomized_hands_values = true,
-      rotate_body = true,
-      rotation_variation_tables = { {
-          callback = <function 4>,
-          constant_transition_delta = false,
-          max_transition_ms = 400,
-          max_value = 160,
-          max_wait_ms = 1500,
-          min_transition_ms = 100,
-          min_value = -100,
-          min_wait_ms = 100,
-          value_additive = true,
-          wait_probability = 0.01
-        }, {
-          callback = <function 5>,
-          constant_transition_delta = false,
-          max_transition_ms = 400,
-          max_value = 160,
-          max_wait_ms = 1500,
-          min_transition_ms = 100,
-          min_value = -100,
-          min_wait_ms = 100,
-          value_additive = true,
-          wait_probability = 0.01
-        }, {
-          callback = <function 6>,
-          constant_transition_delta = false,
-          max_transition_ms = 400,
-          max_value = 160,
-          max_wait_ms = 1500,
-          min_transition_ms = 100,
-          min_value = -100,
-          min_wait_ms = 100,
-          value_additive = true,
-          wait_probability = 0.01
-        } },
-      rotation_variations = { <function 7>, <function 8>, <function 9> },
-      second_hand_sprite = <userdata 10>,
-      second_rotation = 0,
-      size_scalars = { 0.85679531097412, 0.82758847624063, 1.3336471617222, 1.0367512702942 },
-      <metatable> = {
-        __index = {
-          constructor = <function 10>,
-          create = <function 11>,
-          loop = <function 12>,
-          <metatable> = {
-            __index = {}
-          }
-        }
-      }
-    },
-    parent_group = <table 1>,
-    <metatable> = {
-      __index = {
-        all_modules = <function 13>,
-        constructor = <function 14>,
-        create = <function 15>,
-        loop = <function 16>,
-        substep = <function 17>,
-        try_module_method = <function 18>,
-        <metatable> = {
-          __index = {}
-        }
-      }
-    }
+    acc = <userdata 1>,
+    angular_damping = 1000,
+    linear_damping = 25000,
+    model = <userdata 2>,
+    should_disappear = true
+  }, {
+    acc = <userdata 3>,
+    angular_damping = 1000,
+    linear_damping = 25000,
+    model = <userdata 4>,
+    should_disappear = true
+  }, {
+    acc = <userdata 5>,
+    angular_damping = 1000,
+    linear_damping = 25000,
+    model = <userdata 6>,
+    should_disappear = true
+  }, {
+    acc = <userdata 7>,
+    angular_damping = 1000,
+    linear_damping = 25000,
+    model = <userdata 8>,
+    should_disappear = true
+  }, {
+    acc = <userdata 9>,
+    angular_damping = 1000,
+    linear_damping = 25000,
+    model = <userdata 10>,
+    should_disappear = true
+  }, {
+    acc = <userdata 11>,
+    angular_damping = 1000,
+    linear_damping = 25000,
+    model = <userdata 12>,
+    should_disappear = true
+  }, {
+    acc = <userdata 13>,
+    angular_damping = 1000,
+    linear_damping = 25000,
+    model = <userdata 14>,
+    should_disappear = true
+  }, {
+    acc = <userdata 15>,
+    angular_damping = 1000,
+    linear_damping = 25000,
+    model = <userdata 16>,
+    should_disappear = true
+  }, {
+    acc = <userdata 17>,
+    angular_damping = 1000,
+    linear_damping = 25000,
+    model = <userdata 18>,
+    should_disappear = true
+  }, {
+    acc = <userdata 19>,
+    angular_damping = 1000,
+    linear_damping = 25000,
+    model = <userdata 20>,
+    should_disappear = true
   } }
 
-text_button:
+rect_ltrb:
+<userdata 1>
+
+set_polygon_color:
+<function 1>
+
+my_timer:
+<userdata 1>
+
+component_helpers:
+{
+  parallax_chase = <function 1>
+}
+
+Box2D:
+<userdata 1>
+
+_entity:
+<userdata 1>
+
+physics_system:
+<userdata 1>
+
+raycast_output:
+<userdata 1>
+
+hblur_program:
+<userdata 1>
+
+font_instance:
+<userdata 1>
+
+b2Vec2:
+<userdata 1>
+
+spatial_instability_vertex_shader:
+<userdata 1>
+
+flush_dead_entities_in_group_by_entity:
+<function 1>
+
+getmetatable:
+<function 1>
+
+inherits_from:
+<function 1>
+
+pv:
+<function 1>
+
+particle_emitter_component:
+<userdata 1>
+
+get_group_by_entity:
+<function 1>
+
+entity_ptr_vector:
+<userdata 1>
+
+script_reloader:
+<userdata 1>
+
+table:
+{
+  concat = <function 1>,
+  concatenate = <function 2>,
+  insert = <function 3>,
+  inspect = {
+    _DESCRIPTION = "human-readable representations of tables",
+    _LICENSE = '    MIT LICENSE\n\n    Copyright (c) 2013 Enrique García Cota\n\n    Permission is hereby granted, free of charge, to any person obtaining a\n    copy of this software and associated documentation files (the\n    "Software"), to deal in the Software without restriction, including\n    without limitation the rights to use, copy, modify, merge, publish,\n    distribute, sublicense, and/or sell copies of the Software, and to\n    permit persons to whom the Software is furnished to do so, subject to\n    the following conditions:\n\n    The above copyright notice and this permission notice shall be included\n    in all copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS\n    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\n    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\n    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\n    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n  ',
+    _URL = "http://github.com/kikito/inspect.lua",
+    _VERSION = "inspect.lua 2.0.0",
+    inspect = <function 4>,
+    <metatable> = {
+      __call = <function 5>
+    }
+  },
+  pack = <function 6>,
+  remove = <function 7>,
+  shuffle = <function 8>,
+  sort = <function 9>,
+  unpack = <function 10>
+}
+
+create_options:
+<function 1>
+
+emission:
+<userdata 1>
+
+_crosshair_system:
+<userdata 1>
+
+particle_effect:
+<userdata 1>
+
+count_all:
+<function 1>
+
+filter_instability_ray_player:
+{
+  categoryBits = 127,
+  maskBits = 2
+}
+
+destroy_message:
+<userdata 1>
+
+polygon:
+<userdata 1>
+
+_input_system:
+<userdata 1>
+
+create_particle_emitter_info:
+<function 1>
+
+property:
+<function 1>
+
+wander_behaviour:
+<userdata 1>
+
+world_class:
 {
   constructor = <function 1>,
   create = <function 2>,
-  draw = <function 3>,
-  handle_events = <function 4>,
-  set = <function 5>,
+  loop = <function 3>,
+  process_all_systems = <function 4>,
+  set_current = <function 5>,
   <metatable> = {
     __index = {}
   }
 }
 
-_world:
+_pathfinding_system:
 <userdata 1>
 
-call_on_modification:
+flocking_behaviour:
+<userdata 1>
+
+player_sprite:
+<userdata 1>
+
+format_text:
 <function 1>
 
-get_text_bbox:
+open_script:
 <function 1>
 
-b2Body:
-<userdata 1>
-
-current_gravity:
-<userdata 1>
-
-formatted_char:
-<userdata 1>
-
-loop_instability_gun_bullets:
+create_joint:
 <function 1>
 
-SHADERS_DIRECTORY:
-"sensibilia\\scripts\\resources\\shaders\\"
-
-vblur_fragment_shader:
+_particle_group_system:
 <userdata 1>
 
-blood_piece:
-{
-  acc = <userdata 1>,
-  angular_damping = 1000,
-  linear_damping = 25000,
-  should_disappear = true
-}
+spairs:
+<function 1>
 
-b2Filter:
+_steering_system:
 <userdata 1>
 
-animation:
+color_adjustment_vertex_shader:
 <userdata 1>
 
-scriptable_component:
+rawequal:
+<function 1>
+
+my_atlas:
 <userdata 1>
 
-postprocessing_fbos:
-{ <userdata 1>,
-  [0] = <userdata 2>
-}
+chromatic_aberration_fragment_shader:
+<userdata 1>
 
-string:
-{
-  byte = <function 1>,
-  char = <function 2>,
-  dump = <function 3>,
-  find = <function 4>,
-  format = <function 5>,
-  gmatch = <function 6>,
-  gsub = <function 7>,
-  len = <function 8>,
-  lower = <function 9>,
-  match = <function 10>,
-  rep = <function 11>,
-  reverse = <function 12>,
-  sub = <function 13>,
-  upper = <function 14>
-}
-
-emission:
+damage_message:
 <userdata 1>
 
 stepped_timer:
 <userdata 1>
 
-property:
+vblur_instability_effect:
 <function 1>
 
-vertex_triangle:
+METERS_TO_PIXELS:
+50
+
+behaviour_tree_task:
+<userdata 1>
+
+images:
+{
+  blank = <userdata 1>,
+  blue_clock = <userdata 2>,
+  brown_clock = <userdata 3>,
+  bullet_map = <userdata 4>,
+  crosshair_map = <userdata 5>,
+  hand_1 = <userdata 6>,
+  hand_2 = <userdata 7>,
+  hand_3 = <userdata 8>,
+  metal = <userdata 9>
+}
+
+input_system:
+<userdata 1>
+
+directed_behaviour:
+<userdata 1>
+
+debugger_break:
+<function 1>
+
+instability_gun_bullet_callback:
+<function 1>
+
+font_file:
+<userdata 1>
+
+b2WeldJointDef:
+<userdata 1>
+
+query_output:
+<userdata 1>
+
+main_input_routine:
+<function 1>
+
+ENEMY_BULLETS:
+64
+
+avoidance_behaviour:
+<userdata 1>
+
+rect_xywh:
+<userdata 1>
+
+rgba:
 <userdata 1>
 

@@ -1,5 +1,6 @@
 level_world = world_class:create()
 collectgarbage("collect")
+
 level_world.loop = function(self)
 	self:process_all_systems()
 	return input_system.quit_flag
@@ -8,104 +9,18 @@ end
 level_world:set_current()
 reload_default_level_resources("menu_map", "loader.lua", nil)
 
+dofile "sensibilia\\scripts\\menu_screens\\screen_class.lua"
+
 local menu = level_resources
-menu.crosshair_group = create_entity_group {
-	body = {
-		transform = { pos = vec2(0, 0) }
-	},
-	
-	crosshair = {
-		transform = {
-			pos = vec2(0, 0),
-			rotation = 0
-		},
-		
-		crosshair = {
-			sensitivity = config_table.sensitivity,
-			size_multiplier = vec2(10, 10)
-		},
-		
-		chase = {
-			target = "body",
-			relative = true
-		},
-		
-		input = {
-			intent_message.AIM
-		}
-	}
-}
-
-menu.rendered_crosshair_entity = menu.crosshair_group.crosshair
-
-world_camera.chase:set_target(menu.crosshair_group.body)
-world_camera.camera.player:set(menu.crosshair_group.body)
-world_camera.camera.crosshair:set(menu.crosshair_group.crosshair)
-world_camera.camera.max_look_expand = vec2(40, 40)
-
-input_system:clear_contexts()
-input_system:add_context(gui_context)
-
-menu.menu_button_archetype = { 
-	bbox_callback = function(bbox, entry) 
-		entry.text_pos.x = entry.text_pos.x - bbox.x/2 
-	end,
-
-	in_min_interval = 100, 
-	in_max_interval = 120, 
-	out_min_interval = 2000, 
-	out_max_interval = 7000,
-	text_size_mult = 0.5,
-	callbacks = {},
-	text_pos = vec2(0, 0),
-	
-	animated_text_input = {
-		min_interval_ms = 100, 
-		max_interval_ms = 120, 
-		str = "new game", 
-		font_table = { font1, font2, font3 }, 
-		color = rgba(255, 255, 255, 255)
-	}
-}
-
-menu.menu_buttons = {
-	text_button:create(archetyped(menu.menu_button_archetype, { text_size_mult = 1, text_pos = vec2(0, -config_table.resolution_h/2+100), animated_text_input = { str = "sensibilia" } } )), 
-	
-	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+430), animated_text_input = { str = "new_game" } } )), 
-	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+580), animated_text_input = { str = "load chapter" } } )), 
-	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+730), animated_text_input = { str = "options" } } )), 
-	
-	
-	
-	text_button:create(archetyped(menu.menu_button_archetype, { text_pos = vec2(0, -config_table.resolution_h/2+880), 
-	
-	callbacks = {
-	
-		mouseclick = function() 
-			input_system.quit_flag = 1
-		end
-	},
-	
-	animated_text_input = { str = "quit" } } )) 
-}
 
 menu.main_input_callback = function(message)
-	for i=1, #menu.menu_buttons do
-		menu.menu_buttons[i]:handle_events(message, menu.crosshair_group.crosshair.transform.current.pos)
-	end
+	menu.current_screen:handle_events(message)
 	return true
 end
 
 menu.basic_geometry_callback = function(camera_draw_input)
-	local my_text_draw_input = draw_input(camera_draw_input)
-	my_text_draw_input.transform.rotation = 0
-	
-	my_text_draw_input.additional_info = nil
-	my_text_draw_input.always_visible = true
-	
-	for i=1, #menu.menu_buttons do
-		menu.menu_buttons[i]:draw(my_text_draw_input)
-	end
+	menu.current_screen:draw(camera_draw_input)
 end
+
 
 --dofile "sensibilia\\levels\\level_1.lua"
