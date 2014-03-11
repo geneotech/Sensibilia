@@ -26,7 +26,7 @@ return {
 	},
 	
 	clock3_pos = {
-		texture = "brown_clock.png",
+		texture = "blue_clock.png",
 		color = rgba(50, 50, 50, 255)
 	},
 	
