@@ -67,9 +67,9 @@ function get_font(filename, size, letters)
 	return new_font_object
 end
 
-font1 = get_font("font.ttf", 100, "abcdefghijklmnoprstuvwxyzq ")
-font2 = get_font("font2.ttf", 100, "abcdefghijklmnoprstuvwxyzq ")
-font3 = get_font("font3.ttf", 100, "abcdefghijklmnoprstuvwxyzq ")
+font1 = get_font("font.ttf", 70, "abcdefghijklmnoprstuvwxyzq ")
+font2 = get_font("font2.ttf", 70, "abcdefghijklmnoprstuvwxyzq ")
+font3 = get_font("font3.ttf", 70, "abcdefghijklmnoprstuvwxyzq ")
 
 create_textures(my_atlas, textures_by_name)
 

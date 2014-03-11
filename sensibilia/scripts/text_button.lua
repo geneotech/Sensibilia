@@ -4,6 +4,7 @@ function text_button:constructor(entry)
 	if entry ~= nil then self:set(entry) end
 end
 
+-- entry.text_pos specifies the left-top corner of the text
 function text_button:set(entry)
 	self.text = animated_text:create(entry.animated_text_input)
 	self.text.min_interval_ms = entry.out_min_interval
@@ -28,18 +29,21 @@ function text_button:set(entry)
 		mousein = function()
 			self.text.min_interval_ms = entry.in_min_interval
 			self.text.max_interval_ms = entry.in_max_interval
+			self.text:refresh_characters()
 			if self.my_callbacks.mousein ~= nil then self.my_callbacks.mousein() end
 		end,
 		
 		mouseout = function()
 			self.text.min_interval_ms = entry.out_min_interval
 			self.text.max_interval_ms = entry.out_max_interval
+			self.text:refresh_characters()
 			if self.my_callbacks.mouseout ~= nil then self.my_callbacks.mouseout() end
 		end,
 		
 		mouseclick = function()
 			self.text.min_interval_ms = entry.out_min_interval
 			self.text.max_interval_ms = entry.out_max_interval
+			self.text:refresh_characters()
 			if self.my_callbacks.mouseclick ~= nil then self.my_callbacks.mouseclick() end
 		end
 	})

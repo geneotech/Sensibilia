@@ -145,6 +145,8 @@ function rendering_routine(subject,
 			if player ~= nil then
 				crosshair_pos = player.crosshair:get().transform.current.pos
 				player_pos = player.body:get().transform.current.pos
+			elseif level_resources.rendered_crosshair_entity ~= nil then
+				crosshair_pos = level_resources.rendered_crosshair_entity.transform.current.pos
 			end
 			
 			GL.glUniform2f(player_pos_uniform, crosshair_pos.x, crosshair_pos.y)

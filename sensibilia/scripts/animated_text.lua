@@ -30,6 +30,12 @@ function animated_text:randomize_duration(i)
 	self.characters[i].duration = randval(self.min_interval_ms, self.max_interval_ms)
 end
 
+function animated_text:refresh_characters()
+	for i=1, #self.characters do
+		self:randomize_duration(i)
+	end
+end
+
 function animated_text:reset_character(i)
 	self:randomize_duration(i)
 	self.characters[i].change_timer = timer()

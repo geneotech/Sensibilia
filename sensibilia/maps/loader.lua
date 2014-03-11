@@ -65,10 +65,6 @@ loader_1.create_entities_from_map = function(filename)
 	
 	if objects["PLAYER_START"] ~= nil then
 		player = spawn_player(objects["PLAYER_START"][1].pos)
-		world_camera.chase:set_target(player.body:get())
-		world_camera.camera.player:set(player.body:get())
-		world_camera.camera.crosshair:set(player.crosshair:get())
-		world_camera.transform.pos = objects["PLAYER_START"][1].pos
 	end
 	
 	return { polygons, rectangles }

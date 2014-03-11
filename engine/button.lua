@@ -11,29 +11,37 @@ function button_class:set(pos, size, callbacks)
 	self.was_hovered = false
 end
 
-function button_class:set_from_xywh(rect, callbacks)
-	self.size = vec2(rect.w, rect.h)
-	self.pos = vec2(rect.x + rect.w / 2, rect.y + rect.h / 2)
-	
-	self.callbacks = callbacks
-	self.was_hovered = false
-end
+--function button_class:set_from_xywh(rect, callbacks)
+--	self.size = vec2(rect.w, rect.h)
+--	self.pos = vec2(rect.x + rect.w / 2, rect.y + rect.h / 2)
+--	
+--	self.callbacks = callbacks
+--	self.was_hovered = false
+--end
 
 function button_class:construct_xywh()
-	return rect_xywh(self.pos.x - self.size.x/2, self.pos.y - self.size.y/2, self.pos.x + self.size.x/2, self.pos.y + self.size.y/2)
+	return rect_xywh(self.pos.x, self.pos.y, self.size.x, self.size.y)
 end
 
 function button_class:check_mouse_events(message, crosshair_pos, mousemove_intent, mouseclick_intent)
-	local is_hovering = self:construct_xywh():hover(message.mouse_pos)
+	local is_hovering = self:construct_xywh():hover(crosshair_pos)
+	--print(is_hovering)
+	--pv(crosshair_pos)
+	--print "xywh: \n" 
+	--print(self:construct_xywh().x, self:construct_xywh().y, self:construct_xywh().w, self:construct_xywh().h)
+	
 	
 	if message.intent == mousemove_intent then
 		if is_hovering and not self.was_hovered then
 			if self.callbacks.mousein ~= nil then self.callbacks.mousein() end
+				print "in"
 			self.was_hovered = true
 		end
 		
 		if not is_hovering and self.was_hovered then
 			if self.callbacks.mouseout ~= nil then self.callbacks.mouseout() end
+			
+				print "out"
 			self.was_hovered = false
 		end
 	end
