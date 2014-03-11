@@ -18,7 +18,7 @@ end
 
 
 animated_menu_text = animated_text:create()
-animated_menu_text:set("sensibilia", { font1, font2, font3 }, rgba(255, 255, 255, 255), 100)
+animated_menu_text:set("sensibilia", { font1, font2, font3 }, rgba(255, 255, 255, 255), 100, 120)
 
 level_resources.basic_geometry_callback = function(camera_draw_input)
 	local my_text_draw_input = draw_input(camera_draw_input)

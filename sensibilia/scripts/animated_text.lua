@@ -4,54 +4,61 @@ function animated_text:constructor()
 	self.main_timer = timer()
 end
 
-function animated_text:set(str, font_table, color, change_interval_ms)
+function animated_text:set(str, font_table, color, min_interval_ms, max_interval_ms)
 	self.color = color
 	self.str = str
 	self.wstr = towchar_vec(str)
 	self.font_table = font_table
 	self.change_interval_ms = change_interval_ms
 	
-	self.character_font_tables = {}
+	self.min_interval_ms = min_interval_ms
+	self.max_interval_ms = max_interval_ms
+	
+	self.characters = {}
 	
 	for i=1, self.wstr:size() do
-		table.insert(self.character_font_tables, {})
-		for f=1, #font_table do
-			table.insert(self.character_font_tables[i], font_table[f])
-		end
+		table.insert(self.characters, {})
+		self:reset_character(i)
 	end
-	
-	self:shuffle_tables()
 end
 
-function animated_text:shuffle_tables()
-	for i=1, #self.character_font_tables do
-		table.shuffle(self.character_font_tables[i])
-	end
-	
-	self.current_iteration = 1
+function animated_text:randomize_duration(i)
+	self.characters[i].duration = randval(self.min_interval_ms, self.max_interval_ms)
 end
 
+function animated_text:reset_character(i)
+	self:randomize_duration(i)
+	self.characters[i].change_timer = timer()
+	self.characters[i].iteration = 1
+	self.characters[i].font_table = {}
+	
+	for f=1, #self.font_table do
+		table.insert(self.characters[i].font_table, self.font_table[f])
+	end
+	
+	table.shuffle(self.characters[i].font_table)
+end
 
 function animated_text:get_formatted_text()
-	if self.main_timer:get_milliseconds() > self.change_interval_ms then
-		self.current_iteration = self.current_iteration + 1
-		
-		if self.current_iteration == #self.font_table then
-			self:shuffle_tables()
+	for i=1, #self.characters do
+		if self.characters[i].change_timer:get_milliseconds() > self.characters[i].duration then
+			self.characters[i].iteration = self.characters[i].iteration + 1
+			self:randomize_duration(i)
+			
+			if self.characters[i].iteration == #self.font_table then
+				self:reset_character(i)
+			end
 		end
-		
-		self.main_timer:reset()
 	end
-	
+
 	local my_formatted_text = formatted_text() --{ { str = self.str, col = self.color, font = self.font_table[1] }}
 	
-	for i=1, #self.character_font_tables do
+	for i=1, #self.characters do
 		my_formatted_text:add(create(formatted_char, {
 			r = self.color.r, g = self.color.g, b = self.color.b, a = self.color.a,
-			c = self.wstr:at(i-1), font_used = self.character_font_tables[i][self.current_iteration]
+			c = self.wstr:at(i-1), font_used = self.characters[i].font_table[self.characters[i].iteration]
 		}))
 	end
-	
 	
 	return my_formatted_text
 end
