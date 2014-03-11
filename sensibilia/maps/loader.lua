@@ -11,7 +11,7 @@ loader_1.create_entities_from_map = function(filename)
 		local new_entity = create_entity (tiled_map_loader.basic_entity_table(v, types[v], polygons, rectangles))
 	end
 
-	local clocks_table = table.concatenate({ objects["clock1_pos"], objects["clock2_pos"] })
+	local clocks_table = table.concatenate({ objects["clock1_pos"], objects["clock2_pos"], objects["clock3_pos"] })
 	
 	for k, v in ipairs(clocks_table) do
 		types[v].scrolling_speed = randval(0.05, 0.3)
@@ -29,6 +29,16 @@ loader_1.create_entities_from_map = function(filename)
 		local new_clock_self = get_self(new_clock_group.body:get())
 		
 		local randomized_vals = randval(0, 1) > 0.2
+		if types[v].force_randomized == "1" then
+			print "forcing randomized"
+			print "forcing randomized"
+			print "forcing randomized"
+			print "forcing randomized"
+			print "forcing randomized"
+			print "forcing randomized"
+			randomized_vals = true
+		end
+		
 		new_clock_self.clock_renderer.overwrite_position = false
 		new_clock_self.clock_renderer.randomized_hands_values = randomized_vals
 		new_clock_self.clock_renderer.rotate_body = randomized_vals

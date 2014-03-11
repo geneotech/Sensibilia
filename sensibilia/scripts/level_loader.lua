@@ -120,7 +120,6 @@ function reload_default_level_resources(
 				--player.gun_entity:get().gun.trigger_mode = gun_component.SHOOT
 				--physics_system.timestep_multiplier = 0.01
 				-- messages processed, clear tables
-				print(player.body:get().transform.current.pos.x)
 				flush_message_tables()
 			end
 		}

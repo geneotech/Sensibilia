@@ -190,9 +190,11 @@ end
 function table.concatenate(all_tables)
 	local sum_of_all = {}
 	
-	for	index, source_table in ipairs(all_tables) do
-		for key, val in ipairs(source_table) do
-			table.insert(sum_of_all, val)
+	if all_tables ~= nil then
+		for	index, source_table in pairs(all_tables) do
+			for key, val in ipairs(source_table) do
+				table.insert(sum_of_all, val)
+			end
 		end
 	end
 	

@@ -25,6 +25,11 @@ return {
 		texture = "brown_clock.png"
 	},
 	
+	clock3_pos = {
+		texture = "brown_clock.png",
+		color = rgba(50, 50, 50, 255)
+	},
+	
 	default_type = {
 		render_layer = "OBJECTS",
 		texture = "my_type_1.jpg",

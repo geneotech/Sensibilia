@@ -127,6 +127,28 @@ return {
           properties = {}
         }
       }
+    },
+    {
+      type = "objectgroup",
+      name = "Object Layer 2",
+      visible = true,
+      opacity = 1,
+      properties = {},
+      objects = {
+        {
+          name = "",
+          type = "clock3_pos",
+          shape = "rectangle",
+          x = 1088,
+          y = 1056,
+          width = 192,
+          height = 192,
+          visible = true,
+          properties = {
+            ["force_randomized"] = "1"
+          }
+        }
+      }
     }
   }
 }

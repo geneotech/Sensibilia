@@ -14,4 +14,11 @@
   <object type="bg_object_3" x="800" y="864" width="800" height="736"/>
   <object type="bg_object_3" x="0" y="864" width="800" height="736"/>
  </objectgroup>
+ <objectgroup name="Object Layer 2" width="50" height="50">
+  <object type="clock3_pos" x="1088" y="1056" width="192" height="192">
+   <properties>
+    <property name="force_randomized" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

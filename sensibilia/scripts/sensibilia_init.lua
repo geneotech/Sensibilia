@@ -84,8 +84,8 @@ level_resources.basic_geometry_callback = function(camera_draw_input)
 			
 			local bbox_vec = get_text_bbox(my_fstr, 0)
 			
-			my_text_draw_input.transform.pos.x = config_table.resolution_w/2-bbox_vec.x/2
-			my_text_draw_input.transform.pos.y = -config_table.resolution_h/2+bbox_vec.y+100
+			my_text_draw_input.transform.pos.x = -bbox_vec.x/2
+			my_text_draw_input.transform.pos.y = -config_table.resolution_h/2+30
 			
 			quick_print_text(my_text_draw_input, my_fstr, vec2_i(0, 0), 0)		
 end
