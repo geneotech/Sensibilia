@@ -19,5 +19,6 @@ dofile (ENGINE_DIRECTORY .. "resource_creation_util.lua")
 dofile (ENGINE_DIRECTORY .. "tiled_map_loader.lua")
 
 dofile "sensibilia\\scripts\\level_loader.lua"
+dofile "sensibilia\\scripts\\animated_text.lua"
 dofile "sensibilia\\scripts\\sensibilia_init.lua"
 --dofile "sensibilia\\levels\\level_1.lua"

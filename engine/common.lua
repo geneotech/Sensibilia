@@ -1,6 +1,15 @@
 -- Create a new class that inherits from a base class
 --
 
+function table.shuffle(array)
+    local n = #array
+    for i = n, 2, -1 do
+        local j = randval_i(1, i)
+        array[i], array[j] = array[j], array[i]
+    end
+    return array
+end
+
 function coroutine.wait_routine(my_timer, ms_wait, loop_func, constant_delta)
 	if constant_delta == nil then constant_delta = false end
 

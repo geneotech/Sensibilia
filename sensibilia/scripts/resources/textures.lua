@@ -50,13 +50,26 @@ for k, filename in pairs(images) do
 	textures_by_name[filename] = true
 end
 	
-	
-new_font_file = font_file()
-new_font_file:open("sensibilia\\resources\\font.ttf", 120, "sensibilia")
 
-new_font_object = font_instance()
-new_font_object:build(new_font_file)
-new_font_object:add_to_atlas(my_atlas)	
+font_files = {}
+collectgarbage("collect")
+
+function get_font(filename, size, letters)
+	local new_font_file = font_file()
+	new_font_file:open("sensibilia\\resources\\" .. filename, 120, "sensibilia")
+	
+	local new_font_object = font_instance()
+	new_font_object:build(new_font_file)
+	new_font_object:add_to_atlas(my_atlas)	
+
+	table.insert(font_files, new_font_file)
+	
+	return new_font_object
+end
+
+font1 = get_font("font.ttf", 120, "sensibilia")
+font2 = get_font("font2.ttf", 120, "sensibilia")
+font3 = get_font("font3.ttf", 120, "sensibilia")
 
 create_textures(my_atlas, textures_by_name)
 
