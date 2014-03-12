@@ -246,7 +246,6 @@ function player_class:substep()
 	end
 	
 	process_all_entity_modules("waywardness", "return_to_initial_transform", should_return)
-	print(should_return)
 end
 
 function player_class:loop()
@@ -309,6 +308,7 @@ function player_class:loop()
 		instability = instability - decrease_amount
 	end
 	
+	--print ("instability")
 	self.delta_timer:reset()
 				
 	

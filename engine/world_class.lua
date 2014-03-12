@@ -18,6 +18,7 @@ function world_class:constructor()
 		polygon_particle_userdatas_saved = {}	
 	}
 	
+	self.is_paused = false
 end
 
 function world_class:set_current()
@@ -39,40 +40,65 @@ function world_class:process_all_systems()
 	my_instance.input_system:process_entities(world)
 	my_instance.camera_system:consume_events(world)
     
-	my_instance.movement_system:process_entities(world)
+	if not self.is_paused then
+		my_instance.movement_system:process_entities(world)
+	end
      
 	my_instance.camera_system:process_entities(world)
     
-	my_instance.physics_system:process_entities(world)
-    
-	my_instance.behaviour_tree_system:process_entities(world)
+	
+	if not self.is_paused then
+		my_instance.physics_system:process_entities(world)
+    end
+	
+	if not self.is_paused then
+		my_instance.behaviour_tree_system:process_entities(world)
+	end
 	my_instance.lookat_system:process_entities(world)
 	my_instance.chase_system:process_entities(world)
 	my_instance.crosshair_system:process_entities(world)
-	my_instance.gun_system:process_entities(world)
-	my_instance.damage_system:process_entities(world)
-	my_instance.particle_group_system:process_entities(world)
-	my_instance.animation_system:process_entities(world)
-	my_instance.visibility_system:process_entities(world)
-	my_instance.pathfinding_system:process_entities(world)
-		
+	
+	if not self.is_paused then
+		my_instance.gun_system:process_entities(world)
+		my_instance.damage_system:process_entities(world)
+		my_instance.particle_group_system:process_entities(world)
+		my_instance.animation_system:process_entities(world)
+		my_instance.visibility_system:process_entities(world)
+		my_instance.pathfinding_system:process_entities(world)
+	end	
+	
 	my_instance.render_system:process_entities(world)
 	my_instance.script_system:process_entities(world)
     
-	my_instance.damage_system:process_events(world)
+	
+	if not self.is_paused then
+		my_instance.damage_system:process_events(world)
+	end
+	
 	my_instance.destroy_system:consume_events(world)
     
 	my_instance.script_system:process_events(world)
     
-	my_instance.damage_system:process_events(world)
+	
+	if not self.is_paused then
+		my_instance.damage_system:process_events(world)
+	end
+	
 	my_instance.destroy_system:consume_events(world)
     
-	my_instance.movement_system:consume_events(world)
-	my_instance.animation_system:consume_events(world)
+	
+	if not self.is_paused then
+		my_instance.movement_system:consume_events(world)
+		my_instance.animation_system:consume_events(world)
+	end
+	
 	my_instance.crosshair_system:consume_events(world)
-	my_instance.gun_system:consume_events(world)
-	my_instance.particle_emitter_system:consume_events(world)
-    
+	
+	if not self.is_paused then
+		my_instance.gun_system:consume_events(world)
+		my_instance.particle_emitter_system:consume_events(world)
+	end
+	
 	my_instance.camera_system:process_rendering(world)
     
 	world:flush_message_queues()
