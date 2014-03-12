@@ -1,7 +1,7 @@
 function film_grain_variation_instability_effect()
 	while true do
 		--if randval(0, 1) > 0.5 then
-			coroutine.wait(randval(0, 5000), function()  
+			coroutine.wait(randval(0, 14000), function()  
 				GL.glUniform1f(film_grain_intensity, 0.1) 
 			end, false)
 		--end

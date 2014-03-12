@@ -14,6 +14,7 @@ function reload_default_level_resources(
 	
 	dofile "sensibilia\\scripts\\resources\\layers.lua"
 	dofile "sensibilia\\scripts\\resources\\textures.lua"
+	dofile "sensibilia\\scripts\\resources\\animations.lua"
 	dofile "sensibilia\\scripts\\resources\\particle_effects.lua"
 	dofile "sensibilia\\scripts\\settings.lua"
 	

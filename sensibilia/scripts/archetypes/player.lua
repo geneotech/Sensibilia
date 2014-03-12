@@ -1,6 +1,7 @@
 player_sprite = create_sprite {
-	image = images.blank,
-	size = vec2(15, 50)
+	image = images.run_1,
+	--size = vec2(15, 50)
+	size_multiplier = vec2(0.3, 0.3)
 }
 
 debug_sensor = create_sprite {
@@ -48,6 +49,8 @@ player_group_archetype = archetyped(character_group_archetype, {
 		render = {
 			model = player_sprite
 		},
+		
+		animate = {},
 		
 		transform = {},
 		
@@ -252,6 +255,9 @@ function player_class:loop()
 	physics_system.timestep_multiplier = self.timestep_corrector:get_animated()
 	
 	local gun_info = self.parent_group.gun_entity:get().gun
+	local player_body = self.parent_group.body:get()
+	local crosshair = self.parent_group.crosshair:get()
+	
 	gun_info.spread_degrees = 5 + 30 * instability
 	gun_info.shake_radius = 5+20*instability
 		
@@ -259,7 +265,7 @@ function player_class:loop()
 	
 	
 	-- handle variable gravity
-	gravity_angle_offset = self.parent_group.body:get().physics.body:GetAngle() / 0.01745329251994329576923690768489
+	gravity_angle_offset = player_body.physics.body:GetAngle() / 0.01745329251994329576923690768489
 	current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
 	
 	for i=1, #global_entity_table do
@@ -270,11 +276,11 @@ function player_class:loop()
 		end
 	end
 	
-	self.parent_group.crosshair:get().transform.current.pos:rotate(self.base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, self.parent_group.body:get().transform.current.pos)
+	crosshair.transform.current.pos:rotate(self.base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player_body.transform.current.pos)
 	self.base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
 	
-	self.parent_group.crosshair:get().crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
-	self.parent_group.crosshair:get().transform.current.rotation = -world_camera.camera.last_interpolant.rotation
+	crosshair.crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
+	crosshair.transform.current.rotation = -world_camera.camera.last_interpolant.rotation
 	
 	physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
 
@@ -323,7 +329,40 @@ function player_class:loop()
 	--print(showing_clock, clock_alpha)
 	self.gui_clock_self.clock_renderer.clock_center = vec2(world_camera.transform.previous.pos)
 	self.gui_clock_self.clock_renderer.clock_alpha = clock_alpha
-				
+	
+	
+	-- handle animations
+	
+	local msg = animate_message()
+	msg.subject = player_body
+	
+	local should_flip = false
+	local target_animation;
+	
+	local vel = self.parent_group.body:get().physics.body:GetLinearVelocity()
+	
+	if math.abs(vel.x) < 0.1 then 
+		-- standing state
+		target_animation = "standing"
+		
+		
+	else
+		-- running state
+		target_animation = "running"
+		should_flip = vel.x < 0
+	
+	end
+	
+	player_body.render.flip_horizontally = should_flip
+	
+	msg.set_animation = player_animations[target_animation]
+	msg.change_animation = true
+	msg.change_speed = true
+	msg.preserve_state_if_animation_changes = false
+	msg.speed_factor = 1
+	msg.message_type = animate_message.CONTINUE
+	
+	world:post_message(msg)
 end
 
 function spawn_player(position)

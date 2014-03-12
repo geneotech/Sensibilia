@@ -36,9 +36,27 @@ DEFAULT_GAMEPLAY_TEXTURES = {
 	
 	blue_clock = "blue_clock.png",
 	brown_clock = "brown_clock.png",
+	
 	hand_1 = "hand_1.png",
 	hand_2 = "hand_2.png",
-	hand_3 = "hand_3.png"
+	hand_3 = "hand_3.png",
+	
+	run_1 = "run_1.png",
+	run_2 = "run_2.png",
+	run_3 = "run_3.png",
+	run_4 = "run_4.png",
+	run_5 = "run_5.png",
+	run_6 = "run_6.png",
+	run_7 = "run_7.png",
+	run_8 = "run_8.png",
+	
+	shoot_1 = "shoot_1.png",
+	shoot_2 = "shoot_2.png",
+	shoot_3 = "shoot_3.png",
+	
+	stand = "stand.png",
+	
+	jump_shoot = "jump_shoot.png"
 }
 
 if GAMEPLAY_TEXTURES == nil then GAMEPLAY_TEXTURES = DEFAULT_GAMEPLAY_TEXTURES end

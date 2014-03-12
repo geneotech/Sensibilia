@@ -68,11 +68,11 @@ end
 time_speed_variation = 0
 random_time_speed_variation_coroutine = coroutine.wrap(
 function ()	
-	local last_mult = 0
+	local last_mult = 0.1
 		
 	while true do
 		local transition_duration = randval(1, 400)
-		local target_variation = randval(0.01, 20.0)
+		local target_variation = randval(0.1, 20.0)
 		
 		local my_val_animator = value_animator(last_mult, target_variation, transition_duration)
 		
@@ -224,9 +224,18 @@ function rendering_routine(subject,
 				
 				player_light_fader:loop()
 				player_light_fader:generate_triangles(camera_draw_input)
+			
+				local player_draw_input = draw_input(camera_draw_input)
+				
+				player_draw_input.additional_info = player.body:get().render
+				player_draw_input.transform = player.body:get().transform.current
+				
+				player.body:get().render:get_sprite().color = rgba(0, 0, 0, 230-30*instability)
+				player.body:get().render.model:draw(player_draw_input)
+				player.body:get().render:get_sprite().color = rgba(255, 255, 255, 255)
 			end
 			
-
+			
 			
 			renderer:call_triangles()
 			renderer:clear_triangles()

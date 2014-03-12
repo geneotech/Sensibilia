@@ -31,11 +31,11 @@ function create_help_screen(back_button_target)
 		make_button(( { text_pos = vec2(0, -550-130-config_table.resolution_h/2+430+120*9-30), animated_text_input = { str = "g and move mouse" } } )), 
 		
 		
-		make_button(( { text_pos = vec2(0, -550-130-config_table.resolution_h/2+430+120*10), text_size_mult = 0.2, animated_text_input = { str = "manipulate time speed" } } )), 
+		make_button(( { text_pos = vec2(0, -550-130-config_table.resolution_h/2+430+120*10), text_size_mult = 0.2, animated_text_input = { str = "slow motion" } } )), 
 		make_button(( { text_pos = vec2(0, -550-130-config_table.resolution_h/2+430+120*11-30), animated_text_input = { str = "mouse scroll" } } )), 
 		
-		make_button(( { text_pos = vec2(0, -550-130-config_table.resolution_h/2+430+120*13), text_size_mult = 1, animated_text_input = { str = "stay in the dream." } } )), 
-		make_button(( { text_pos = vec2(0, -550-130-config_table.resolution_h/2+430+120*15), text_size_mult = 0.3, animated_text_input = { str = "please just dont wake up." } } )), 
+		make_button(( { text_pos = vec2(0, -550-130-config_table.resolution_h/2+430+120*13), text_size_mult = 1, animated_text_input = { str = "stay in the dream..." } } )), 
+		make_button(( { text_pos = vec2(0, -550-130-config_table.resolution_h/2+430+120*15), text_size_mult = 0.3, animated_text_input = { str = "..please just dont wake up." } } )), 
 		
 		make_button(( { text_pos = vec2(0, -550-130-config_table.resolution_h/2+430+120*17), 
 		
