@@ -11,7 +11,16 @@ reload_default_level_resources("menu_map", "loader.lua", nil)
 
 dofile "sensibilia\\scripts\\menu_screens\\screen_class.lua"
 
+
 local menu = level_resources
+
+
+level_music:stop()
+menu_music:play()
+menu_music:setLoop(true)
+menu_music:setVolume(100)
+
+
 menu.current_screen = menu.main_menu
 
 menu.main_input_callback = function(message)

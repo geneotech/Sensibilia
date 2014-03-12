@@ -18,3 +18,6 @@ end
 
 level_world:set_current()
 reload_default_level_resources("map_1", "loader.lua", nil)
+
+menu_music:stop()
+level_music:play()

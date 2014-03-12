@@ -139,8 +139,6 @@ function archetyped(archetype, entries)
 	return final_entries
 end
 
-global_sound_table = {}
-
 function reversed(input_table)
 	local out_table = {}
 	

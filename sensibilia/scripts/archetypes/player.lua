@@ -386,10 +386,13 @@ function player_class:loop()
 	
 	local is_in_movement = math.abs(vel.x) > 15
 	
-	if not is_in_movement then 
+	if self:is_shooting() or not is_in_movement then 
 		should_flip = (player_body.transform.current.pos.x - crosshair.transform.current.pos.x) > 0
 	else
 		should_flip = vel.x < 0
+	end
+		
+	if is_in_movement then 
 		msg.speed_factor = vel:length()/6000
 	end
 	
