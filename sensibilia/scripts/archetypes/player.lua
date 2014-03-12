@@ -1,6 +1,6 @@
 player_sprite = create_sprite {
 	image = images.blank,
-	size = vec2(15, 100)
+	size = vec2(15, 200)
 	--size_multiplier = vec2(0.3, 0.3)
 }
 
@@ -66,6 +66,9 @@ player_group_archetype = archetyped(character_group_archetype, {
 			custom_intents.SPEED_CHANGE,
 			custom_intents.GRAVITY_CHANGE,
 			custom_intents.SHOW_CLOCK,
+			
+			
+			intent_message.SHOOT,
 			
 			intent_message.AIM
 		},
@@ -169,14 +172,52 @@ function player_class:is_shooting()
 end
 
 function player_class:intent_message(message)
+
+	local msg = animate_message()
+	msg.subject = self.parent_group.body:get()
+		
+		
 	--print "handling intent"
 	if message.intent == custom_intents.JUMP then
 		should_debug_draw = not message.state_flag
 		
 		--if message.state_flag then self.parent_group.body:get().physics.body:ApplyLinearImpulse(b2Vec2(0, -50), self.parent_group.body:get().physics.body:GetWorldCenter(), true) end
 	
+		msg.animation_priority = 1
+		
+		msg.set_animation = player_animations.take_jump
+		msg.change_animation = true
+		msg.change_speed = true
+		msg.preserve_state_if_animation_changes = false
+		
+		msg.message_type = animate_message.START
+		
+		world:post_message(msg)
+		
 		get_self(message.subject).jumping:jump(message.state_flag)
 		--get_self(message.subject):handle_jumping()
+		
+	elseif message.intent == intent_message.SHOOT then
+		
+		if message.state_flag then
+			if self.jumping.something_under_foot then 
+				msg.set_animation = player_animations.begin_shooting
+			else
+				msg.set_animation = player_animations.begin_shooting_in_air
+			end
+		else
+			msg.set_animation = player_animations.stop_shooting
+		end
+		
+		msg.animation_priority = 2
+		
+		msg.change_animation = true
+		msg.change_speed = true
+		msg.preserve_state_if_animation_changes = false
+		
+		msg.message_type = animate_message.START
+		
+		world:post_message(msg)
 	elseif message.intent == custom_intents.REALITY_CHECK then
 		if message.state_flag then
 			self.is_reality_checking = true
@@ -343,7 +384,7 @@ function player_class:loop()
 	local vel = self.parent_group.body:get().physics.body:GetLinearVelocity()
 	vel = vec2(vel.x, vel.y) * 50
 	
-	local is_in_movement = math.abs(vel.x) > 5
+	local is_in_movement = math.abs(vel.x) > 15
 	
 	if not is_in_movement then 
 		should_flip = (player_body.transform.current.pos.x - crosshair.transform.current.pos.x) > 0

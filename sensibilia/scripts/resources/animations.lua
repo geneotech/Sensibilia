@@ -1,5 +1,5 @@
 duration_multiplier = 0.7
-npc_size_multiplier = vec2(0.4, 0.4)
+npc_size_multiplier = vec2(0.6, 0.6)
 
 player_animations = {}
 
@@ -30,7 +30,7 @@ player_animations.running = create_animation {
 
 player_animations.take_jump = create_animation {
 	frames = {
-		{ model = { image = images.jump_1,  size_multiplier = npc_size_multiplier }, duration_ms = 20*duration_multiplier },
+		{ model = { image = images.jump_1,  size_multiplier = npc_size_multiplier }, duration_ms = 200*duration_multiplier },
 		{ model = { image = images.jump_2,  size_multiplier = npc_size_multiplier }, duration_ms = 20*duration_multiplier }
 	},
 	
@@ -57,7 +57,7 @@ player_animations.begin_shooting = create_animation {
 	frames = {
 		{ model = { image = images.shoot_1,  size_multiplier = npc_size_multiplier }, duration_ms = 20*duration_multiplier },
 		{ model = { image = images.shoot_2,  size_multiplier = npc_size_multiplier }, duration_ms = 20*duration_multiplier },
-		{ model = { image = images.shoot_3,  size_multiplier = npc_size_multiplier }, duration_ms = 20*duration_multiplier }
+		{ model = { image = images.shoot_3,  size_multiplier = npc_size_multiplier }, duration_ms = 200000*duration_multiplier }
 	},
 	
 	loop_mode = animation.NONE
@@ -79,5 +79,5 @@ player_animations.begin_shooting_in_air = create_animation {
 		{ model = { image = images.jump_shoot,  size_multiplier = npc_size_multiplier }, duration_ms = 20*duration_multiplier }
 	},
 	
-	loop_mode = animation.NONE
+	loop_mode = animation.REPEAT
 }
