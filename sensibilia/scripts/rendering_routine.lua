@@ -144,11 +144,11 @@ function rendering_routine(subject,
 			local crosshair_pos = vec2(0, 0)
 			local player_pos = vec2(0, 0)
 			
-			if player ~= nil then
+			if level_resources.rendered_crosshair_entity ~= nil then
+				crosshair_pos = level_resources.rendered_crosshair_entity.transform.current.pos
+			elseif player ~= nil then
 				crosshair_pos = player.crosshair:get().transform.current.pos
 				player_pos = player.body:get().transform.current.pos
-			elseif level_resources.rendered_crosshair_entity ~= nil then
-				crosshair_pos = level_resources.rendered_crosshair_entity.transform.current.pos
 			end
 			
 			GL.glUniform2f(player_pos_uniform, crosshair_pos.x, crosshair_pos.y)
@@ -194,7 +194,7 @@ function rendering_routine(subject,
 			local bounce_layer;
 			local bounce1_layer; 
 			
-			if player ~= nil then
+			if not level_world.is_paused and player ~= nil then
 				lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
 				bounce_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE)
 				bounce1_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE + 1)
@@ -318,7 +318,7 @@ function rendering_routine(subject,
 			
 			instability = prev_instability
 			
-			if player ~= nil then
+			if not level_world.is_paused and player ~= nil then
 				lighting_layer.offset = vec2.random_on_circle(randval(1,59)*instability)
 					
 				local random_discontinuity_end = function(source_layer)

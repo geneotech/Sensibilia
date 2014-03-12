@@ -348,10 +348,15 @@ function spawn_player(position)
 	new_group.crosshair:get().name = "player_crosshair"
 	new_group.gun_entity:get().name = "player_gun"
 	
-	world_camera.chase:set_target(new_group.body:get())
-	world_camera.camera.player:set(new_group.body:get())
-	world_camera.camera.crosshair:set(new_group.crosshair:get())
-	world_camera.transform.pos = position
-		
+	setup_camera(new_group)
+	
 	return new_group
+end
+
+
+function setup_camera(group)
+	world_camera.chase:set_target(group.body:get())
+	world_camera.camera.player:set(group.body:get())
+	world_camera.camera.crosshair:set(group.crosshair:get())
+	world_camera.transform.pos = group.body:get().transform.current.pos
 end

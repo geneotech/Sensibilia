@@ -73,6 +73,25 @@ input_system:add_context(main_context)
 
 bounce_number = 2
 
+function unpause_world()
+	local menu = level_resources
+	
+	menu.pause_screen = nil
+	menu.current_screen = nil
+	menu.main_input_callback = nil
+	menu.basic_geometry_callback = nil
+	menu.rendered_crosshair_entity = nil
+	
+	setup_camera(player)
+	set_zoom_level(world_camera)
+	
+	
+	input_system:clear_contexts()
+	input_system:add_context(main_context)
+	
+	level_world.is_paused = false
+end
+
 function main_input_routine(message)
 	local continue_input = true
 
@@ -84,6 +103,31 @@ function main_input_routine(message)
 		if message.intent == custom_intents.QUIT and message.state_flag then
 			level_world.is_paused = not level_world.is_paused
 			get_self(player.body:get()).delta_timer:pause(level_world.is_paused)
+			
+			if level_world.is_paused then
+				local menu = level_resources
+				
+				dofile "sensibilia\\scripts\\menu_screens\\screen_class.lua"
+				dofile "sensibilia\\scripts\\menu_screens\\pause_screen.lua"
+				
+				menu.current_screen = menu.pause_screen
+				menu.pause_screen.translation = player.body:get().transform.current.pos
+				
+				menu.main_input_callback = function(message)
+					menu.current_screen:handle_events(message)
+					return true
+				end
+				
+				menu.basic_geometry_callback = function(camera_draw_input)
+					--camera_draw_input.camera_transform.rotation = player.body:get().transform.current.pos
+					menu.current_screen:draw(camera_draw_input)
+				end
+				
+				switch_to_gui(menu.pause_screen.translation)
+			else
+				unpause_world()
+			end
+
 		elseif message.intent == custom_intents.RESTART then
 				should_world_be_reloaded = true
 				print "reloading world"

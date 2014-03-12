@@ -24,6 +24,8 @@ function text_button:set(entry)
 	self.my_callbacks = entry.callbacks
 	self.text_pos = entry.text_pos
 	
+	self.translation = vec2(0, 0)
+	
 	--self.event_handler:set_from_xywh(rect_xywh(text_pos.x, text_pos.y, bbox_vec.x, bbox_vec.y), callbacks)
 	self.event_handler:set(entry.text_pos, bbox_vec, 
 	{
@@ -51,13 +53,14 @@ function text_button:set(entry)
 end
 
 function text_button:handle_events(message, crosshair_pos)
-	self.event_handler:check_mouse_events(message, crosshair_pos, intent_message.AIM, custom_intents.GUI_MOUSECLICK)
+	self.event_handler:check_mouse_events(message, crosshair_pos - self.translation, intent_message.AIM, custom_intents.GUI_MOUSECLICK)
 end
 
 function text_button:draw(my_draw_input)
 	local myfstr = self.text:get_formatted_text()
 	
-	my_draw_input.transform.pos = self.text_pos
+	local input_copy = draw_input(my_draw_input)
+	input_copy.transform.pos = self.text_pos + self.translation
 	
-	quick_print_text(my_draw_input, myfstr, vec2_i(0, 0), self.text_size_mult, 0)	
+	quick_print_text(input_copy, myfstr, vec2_i(0, 0), self.text_size_mult, 0)	
 end

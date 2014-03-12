@@ -4,6 +4,7 @@ screen_class = inherits_from {}
 
 function screen_class:constructor()
 	self.buttons = {}
+	self.translation = vec2(0, 0)
 end
 
 function screen_class:draw(camera_draw_input)
@@ -14,6 +15,7 @@ function screen_class:draw(camera_draw_input)
 	my_text_draw_input.always_visible = true
 	
 	for i=1, #self.buttons do
+		self.buttons[i].translation = self.translation
 		self.buttons[i]:draw(my_text_draw_input)
 	end
 end
@@ -53,13 +55,6 @@ menu.crosshair_group = create_entity_group {
 	}
 }
 
-menu.rendered_crosshair_entity = menu.crosshair_group.crosshair
-
-world_camera.chase:set_target(menu.crosshair_group.body)
-world_camera.camera.player:set(menu.crosshair_group.body)
-world_camera.camera.crosshair:set(menu.crosshair_group.crosshair)
-
-
 
 function bigger_expand(units)
 	local add_expand = 0
@@ -70,10 +65,26 @@ function bigger_expand(units)
 	world_camera.camera.max_look_expand = vec2(80, units + 220+add_expand*2)
 end
 
-bigger_expand(0)
+function switch_to_gui(crosshair_pos)
+	if crosshair_pos ~= nil then 
+		menu.rendered_crosshair_entity.transform.current.pos = crosshair_pos 
+		menu.crosshair_group.body.transform.current.pos = crosshair_pos	
+		menu.crosshair_group.crosshair.transform.current.pos = crosshair_pos
+	end
+	
+	menu.rendered_crosshair_entity = menu.crosshair_group.crosshair
+	
+	world_camera.chase:set_target(menu.crosshair_group.body)
+	world_camera.camera.player:set(menu.crosshair_group.body)
+	world_camera.camera.crosshair:set(menu.crosshair_group.crosshair)
+	
+	bigger_expand(0)
+	
+	input_system:clear_contexts()
+	input_system:add_context(gui_context)
+end
 
-input_system:clear_contexts()
-input_system:add_context(gui_context)
+switch_to_gui()
 
 menu.menu_button_archetype = { 
 	bbox_callback = function(bbox, entry) 
@@ -103,7 +114,6 @@ end
 
 
 dofile "sensibilia\\scripts\\menu_screens\\main_menu.lua"
-menu.current_screen = menu.main_menu
 
 dofile "sensibilia\\scripts\\menu_screens\\credits.lua"
 dofile "sensibilia\\scripts\\menu_screens\\help.lua"
