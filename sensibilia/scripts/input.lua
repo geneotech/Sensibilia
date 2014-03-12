@@ -109,9 +109,10 @@ function main_input_routine(message)
 				
 				dofile "sensibilia\\scripts\\menu_screens\\screen_class.lua"
 				dofile "sensibilia\\scripts\\menu_screens\\pause_screen.lua"
+				dofile "sensibilia\\scripts\\menu_screens\\help.lua"
+				create_help_screen(menu.pause_screen)
 				
 				menu.current_screen = menu.pause_screen
-				menu.pause_screen.translation = player.body:get().transform.current.pos
 				
 				menu.main_input_callback = function(message)
 					menu.current_screen:handle_events(message)
@@ -120,10 +121,11 @@ function main_input_routine(message)
 				
 				menu.basic_geometry_callback = function(camera_draw_input)
 					--camera_draw_input.camera_transform.rotation = player.body:get().transform.current.pos
+					menu.current_screen.translation = player.body:get().transform.current.pos
 					menu.current_screen:draw(camera_draw_input)
 				end
 				
-				switch_to_gui(menu.pause_screen.translation)
+				switch_to_gui(player.body:get().transform.current.pos)
 			else
 				unpause_world()
 			end

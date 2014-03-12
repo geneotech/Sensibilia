@@ -16,7 +16,21 @@ menu.pause_screen.buttons = {
 	},
 	
 	animated_text_input = { str = "resume" } } )), 
-	make_button(( { text_pos = vec2(0, -160-config_table.resolution_h/2+430+150*1-30), animated_text_input = { str = "help" } } )), 
+	
+	
+	make_button(( { text_pos = vec2(0, -160-config_table.resolution_h/2+430+150*1-30), 
+	
+	callbacks = {
+		mouseclick = function() 
+			call_once_after_loop = function()
+				bigger_expand(700)
+				menu.crosshair_group.crosshair.transform.current.pos.y = menu.crosshair_group.crosshair.transform.current.pos.y - 700
+				menu.current_screen = menu.help_screen
+			end
+		end
+	},
+	
+	animated_text_input = { str = "help" } } )), 
 	
 	make_button(( { text_pos = vec2(0, -130-config_table.resolution_h/2+430+150*3), 
 	

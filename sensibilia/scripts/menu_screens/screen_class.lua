@@ -117,6 +117,7 @@ dofile "sensibilia\\scripts\\menu_screens\\main_menu.lua"
 
 dofile "sensibilia\\scripts\\menu_screens\\credits.lua"
 dofile "sensibilia\\scripts\\menu_screens\\help.lua"
+create_help_screen(menu.main_menu)
 dofile "sensibilia\\scripts\\menu_screens\\load_chapter.lua"
 
 
