@@ -67,7 +67,7 @@ function bigger_expand(units)
 		add_expand = 1080 - config_table.resolution_h
 	end
 	
-	world_camera.camera.max_look_expand = vec2(40, units + 220+add_expand*2)
+	world_camera.camera.max_look_expand = vec2(80, units + 220+add_expand*2)
 end
 
 bigger_expand(0)
@@ -97,6 +97,9 @@ menu.menu_button_archetype = {
 	}
 }
 
+function make_button(override)
+	return text_button:create(archetyped(menu.menu_button_archetype, override))
+end
 
 
 dofile "sensibilia\\scripts\\menu_screens\\main_menu.lua"
