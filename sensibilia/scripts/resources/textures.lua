@@ -41,6 +41,9 @@ DEFAULT_GAMEPLAY_TEXTURES = {
 	hand_2 = "hand_2.png",
 	hand_3 = "hand_3.png",
 	
+	jump_1 = "jump_1.png",
+	jump_2 = "jump_2.png",
+	
 	run_1 = "run_1.png",
 	run_2 = "run_2.png",
 	run_3 = "run_3.png",

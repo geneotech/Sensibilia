@@ -1,5 +1,5 @@
 duration_multiplier = 0.7
-npc_size_multiplier = vec2(0.3, 0.3)
+npc_size_multiplier = vec2(0.4, 0.4)
 
 player_animations = {}
 
@@ -32,6 +32,22 @@ player_animations.take_jump = create_animation {
 	frames = {
 		{ model = { image = images.jump_1,  size_multiplier = npc_size_multiplier }, duration_ms = 20*duration_multiplier },
 		{ model = { image = images.jump_2,  size_multiplier = npc_size_multiplier }, duration_ms = 20*duration_multiplier }
+	},
+	
+	loop_mode = animation.NONE
+}
+
+player_animations.in_air = create_animation {
+	frames = {
+		{ model = { image = images.jump_2,  size_multiplier = npc_size_multiplier }, duration_ms = 20*duration_multiplier }
+	},
+	
+	loop_mode = animation.NONE
+}
+
+player_animations.falling = create_animation {
+	frames = {
+		{ model = { image = images.jump_1,  size_multiplier = npc_size_multiplier }, duration_ms = 20*duration_multiplier }
 	},
 	
 	loop_mode = animation.NONE

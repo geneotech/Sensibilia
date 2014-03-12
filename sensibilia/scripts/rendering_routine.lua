@@ -230,7 +230,7 @@ function rendering_routine(subject,
 				player_draw_input.additional_info = player.body:get().render
 				player_draw_input.transform = player.body:get().transform.current
 				
-				player.body:get().render:get_sprite().color = rgba(0, 0, 0, 230-30*instability)
+				player.body:get().render:get_sprite().color = rgba(0, 0, 0, 250-20*instability)
 				player.body:get().render.model:draw(player_draw_input)
 				player.body:get().render:get_sprite().color = rgba(255, 255, 255, 255)
 			end

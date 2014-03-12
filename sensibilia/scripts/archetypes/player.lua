@@ -1,6 +1,6 @@
 player_sprite = create_sprite {
 	image = images.blank,
-	size = vec2(15, 50)
+	size = vec2(15, 100)
 	--size_multiplier = vec2(0.3, 0.3)
 }
 
@@ -339,20 +339,31 @@ function player_class:loop()
 	local should_flip = false
 	local target_animation;
 	
+	
 	local vel = self.parent_group.body:get().physics.body:GetLinearVelocity()
 	vel = vec2(vel.x, vel.y) * 50
 	
-	if math.abs(vel.x) < 5 then 
-		-- standing state
-		target_animation = "standing"
-		
+	local is_in_movement = math.abs(vel.x) > 5
+	
+	if not is_in_movement then 
 		should_flip = (player_body.transform.current.pos.x - crosshair.transform.current.pos.x) > 0
 	else
-		-- running state
-		target_animation = "running"
 		should_flip = vel.x < 0
-		
 		msg.speed_factor = vel:length()/6000
+	end
+	
+	if self.jumping.something_under_foot then
+		if is_in_movement then
+			target_animation = "running"
+		else
+			target_animation = "standing"
+		end
+	else
+		if vel.y > 0 then
+			target_animation = "falling"
+		else
+			target_animation = "in_air"
+		end
 	end
 	
 	player_body.render.flip_horizontally = should_flip
