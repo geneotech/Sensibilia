@@ -1,7 +1,7 @@
 player_sprite = create_sprite {
-	image = images.run_1,
-	--size = vec2(15, 50)
-	size_multiplier = vec2(0.3, 0.3)
+	image = images.blank,
+	size = vec2(15, 50)
+	--size_multiplier = vec2(0.3, 0.3)
 }
 
 debug_sensor = create_sprite {
@@ -340,17 +340,19 @@ function player_class:loop()
 	local target_animation;
 	
 	local vel = self.parent_group.body:get().physics.body:GetLinearVelocity()
+	vel = vec2(vel.x, vel.y) * 50
 	
-	if math.abs(vel.x) < 0.1 then 
+	if math.abs(vel.x) < 5 then 
 		-- standing state
 		target_animation = "standing"
 		
-		
+		should_flip = (player_body.transform.current.pos.x - crosshair.transform.current.pos.x) > 0
 	else
 		-- running state
 		target_animation = "running"
 		should_flip = vel.x < 0
-	
+		
+		msg.speed_factor = vel:length()/6000
 	end
 	
 	player_body.render.flip_horizontally = should_flip
@@ -359,7 +361,7 @@ function player_class:loop()
 	msg.change_animation = true
 	msg.change_speed = true
 	msg.preserve_state_if_animation_changes = false
-	msg.speed_factor = 1
+	
 	msg.message_type = animate_message.CONTINUE
 	
 	world:post_message(msg)
