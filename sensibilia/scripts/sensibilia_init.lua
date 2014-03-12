@@ -15,6 +15,12 @@ local menu = level_resources
 
 menu.main_input_callback = function(message)
 	menu.current_screen:handle_events(message)
+	
+	if message.intent == custom_intents.QUIT then
+		input_system.quit_flag = 1
+		return false
+	end
+	
 	return true
 end
 

@@ -27,7 +27,8 @@ function vertex_shift_instability_effect()
 			
 			if inst_mult > 1 then inst_mult = 1 end
 			
-			GL.glUniform1f(shift_amount_uniform, shift_multiplier * last_mult * instability)
+			local shift_val = shift_multiplier * last_mult * instability
+			GL.glUniform1f(shift_amount_uniform, shift_val) 
 		end, true)
 	end
 end	

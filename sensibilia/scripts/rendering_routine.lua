@@ -124,6 +124,8 @@ function rendering_routine(subject,
 			local prev_instability = instability
 			instability = instability + temporary_instability
 			
+			if level_world.is_paused then instability = 0.2 end
+			
 			-- right away update all the uniforms
 			scene_program:use()
 			
@@ -154,6 +156,7 @@ function rendering_routine(subject,
 			instability = instability - temporary_instability + temporary_instability/2
 			vertex_shift_coroutine(instability)
 			instability = prev_instability + temporary_instability
+			if level_world.is_paused then instability = 0.2 end
 			
 			--GL.glUniform1f(shift_amount_uniform, math.pow(700, instability))
 
@@ -162,9 +165,11 @@ function rendering_routine(subject,
 			
 		--	GL.glColorMask(GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE)
 			
-			renderer:generate_triangles(camera_draw_input, render_masks.EFFECTS)
-			for k, v in ipairs(global_instability_rays) do
-				v:generate_triangles(camera_draw_input)
+			if not level_world.is_paused then 
+				renderer:generate_triangles(camera_draw_input, render_masks.EFFECTS) 
+				for k, v in ipairs(global_instability_rays) do
+					v:generate_triangles(camera_draw_input)
+				end
 			end
 			
 			renderer:call_triangles()

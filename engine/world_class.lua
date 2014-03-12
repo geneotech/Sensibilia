@@ -36,6 +36,11 @@ function world_class:process_all_systems()
 	local world = my_instance.world
 	
 	world:validate_delayed_messages()
+	world:flush_message_queues()
+	
+	if not self.is_paused then
+		my_instance.physics_system:process_entities(world)
+    end
     
 	my_instance.input_system:process_entities(world)
 	my_instance.camera_system:consume_events(world)
@@ -47,9 +52,6 @@ function world_class:process_all_systems()
 	my_instance.camera_system:process_entities(world)
     
 	
-	if not self.is_paused then
-		my_instance.physics_system:process_entities(world)
-    end
 	
 	if not self.is_paused then
 		my_instance.behaviour_tree_system:process_entities(world)
@@ -67,25 +69,14 @@ function world_class:process_all_systems()
 		my_instance.pathfinding_system:process_entities(world)
 	end	
 	
-	my_instance.render_system:process_entities(world)
-	my_instance.script_system:process_entities(world)
-    
-	
 	if not self.is_paused then
 		my_instance.damage_system:process_events(world)
 	end
 	
-	my_instance.destroy_system:consume_events(world)
-    
 	my_instance.script_system:process_events(world)
+	my_instance.script_system:process_entities(world)    
     
-	
-	if not self.is_paused then
-		my_instance.damage_system:process_events(world)
-	end
-	
 	my_instance.destroy_system:consume_events(world)
-    
 	
 	if not self.is_paused then
 		my_instance.movement_system:consume_events(world)
@@ -101,7 +92,6 @@ function world_class:process_all_systems()
 	
 	my_instance.camera_system:process_rendering(world)
     
-	world:flush_message_queues()
 end
 
 	-- default loop

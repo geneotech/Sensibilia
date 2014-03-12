@@ -32,7 +32,7 @@ main_context = create_input_context {
 		[mouse.rdoubleclick] 	= custom_intents.REALITY_CHECK,
 		[keys.V] 				= custom_intents.INSTANT_SLOWDOWN,
 		[keys.E] 				= custom_intents.SHOW_CLOCK,
-		--[keys.C] 				= custom_intents.SHOW_CLOCK,
+		--[keys.C] 				= custom_intents.MY_INTENT,
 		
 		[mouse.ldoubleclick] 	= intent_message.SHOOT,
 		[mouse.ltripleclick] 	= intent_message.SHOOT,
@@ -81,8 +81,9 @@ function main_input_routine(message)
 	end
 	
 	if continue_input then
-		if message.intent == custom_intents.QUIT then
-			input_system.quit_flag = 1
+		if message.intent == custom_intents.QUIT and message.state_flag then
+			level_world.is_paused = not level_world.is_paused
+			get_self(player.body:get()).delta_timer:pause(level_world.is_paused)
 		elseif message.intent == custom_intents.RESTART then
 				should_world_be_reloaded = true
 				print "reloading world"
@@ -90,12 +91,12 @@ function main_input_routine(message)
 		elseif message.intent == custom_intents.INSTANT_SLOWDOWN then
 			physics_system.timestep_multiplier = 0.00001
 	
-		elseif message.intent == custom_intents.MY_INTENT then
-			if not message.state_flag then 
-				bounce_number = bounce_number + 1 
-				bounce_number = bounce_number - math.floor(bounce_number/3)*3
-				print(bounce_number)
-			end 
+		--elseif message.intent == custom_intents.MY_INTENT then
+		--	if not message.state_flag then 
+		--		bounce_number = bounce_number + 1 
+		--		bounce_number = bounce_number - math.floor(bounce_number/3)*3
+		--		print(bounce_number)
+		--	end 
 		end
 	end
 end
