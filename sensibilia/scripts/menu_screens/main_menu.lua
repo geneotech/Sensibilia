@@ -32,7 +32,8 @@ menu.main_menu.buttons = {
 		
 		callbacks = {
 			mouseclick = function()
-				menu.crosshair_group.crosshair.transform.current.pos.y = menu.crosshair_group.crosshair.transform.current.pos.y - 700
+				bigger_expand(300)
+				menu.crosshair_group.crosshair.transform.current.pos.y = menu.crosshair_group.crosshair.transform.current.pos.y - 1000
 				menu.current_screen = menu.credits_screen
 			end
 		},
