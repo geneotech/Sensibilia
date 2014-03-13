@@ -13,7 +13,7 @@ menu.load_chapter_screen.buttons = {
 		callbacks = {
 			mouseclick = function() 
 				call_once_after_loop = function()
-					dofile "sensibilia\\levels\\level_1.lua"
+					load_level "sensibilia\\levels\\level_1.lua"
 				end
 			end
 		},
@@ -25,7 +25,7 @@ menu.load_chapter_screen.buttons = {
 		callbacks = {
 			mouseclick = function() 
 				call_once_after_loop = function()
-					dofile "sensibilia\\levels\\level_2.lua"
+					load_level "sensibilia\\levels\\level_2.lua"
 				end
 			end
 		},

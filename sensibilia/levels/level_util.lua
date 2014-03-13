@@ -19,11 +19,11 @@ function load_level (filename)
 		
 		return input_system.quit_flag
 	end
-	
-	current_zoom_level = 1000
-	set_zoom_level(world_camera)
 
 	stop_all_music()
 	
 	dofile (filename)
+	
+	current_zoom_level = 1000
+	set_zoom_level(world_camera)
 end
