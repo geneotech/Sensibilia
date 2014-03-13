@@ -261,7 +261,7 @@ function player_class:intent_message(message)
 			if global_entity_table[i].character ~= nil then global_entity_table[i].character:set_gravity_shift_state(self.changing_gravity) end
 		end
 		
-	elseif message.intent == custom_intents.SPEED_CHANGE then
+	elseif message.intent == custom_intents.SPEED_CHANGE and not input_system:is_down(keys.LCTRL) then
 		physics_system.timestep_multiplier = physics_system.timestep_multiplier + message.wheel_amount/60.0 * 0.05
 		
 		if physics_system.timestep_multiplier < 0.01 then
