@@ -1,3 +1,17 @@
+global_level_table = {
+	{
+		caption = "prelude",
+		title = "homecoming",
+		filename = "sensibilia\\levels\\level_1.lua"
+	},
+	
+	{
+		caption = "interval first",
+		title = "in crisis",
+		filename = "sensibilia\\levels\\level_2.lua"
+	}
+}
+
 function load_level (filename)
 	should_world_be_reloaded = false
 
@@ -23,6 +37,10 @@ function load_level (filename)
 	stop_all_music()
 	
 	dofile (filename)
+	
+	--local found_level 
+	--
+	--level_resources.NEXT_LEVEL = 
 	
 	current_zoom_level = 1000
 	set_zoom_level(world_camera)

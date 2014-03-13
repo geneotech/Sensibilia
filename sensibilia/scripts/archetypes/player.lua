@@ -165,6 +165,15 @@ function player_class:constructor(parent_group)
 
 	self.changing_gravity = false
 	self.delta_timer = timer()
+	
+	self.game_over_procedure = coroutine.wrap(function()
+		
+	
+	end)
+	
+	self.next_level_procedure = coroutine.wrap(function()
+	
+	end)
 end
 
 function player_class:is_shooting()

@@ -9,6 +9,7 @@ end
 level_world:set_current()
 reload_default_level_resources("menu_map", "loader.lua", nil)
 
+dofile "sensibilia\\levels\\level_util.lua"
 dofile "sensibilia\\scripts\\menu_screens\\screen_class.lua"
 
 
@@ -38,5 +39,3 @@ menu.basic_geometry_callback = function(camera_draw_input)
 	menu.current_screen:draw(camera_draw_input)
 end
 
-
-dofile "sensibilia\\levels\\level_util.lua"
