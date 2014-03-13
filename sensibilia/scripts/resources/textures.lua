@@ -30,7 +30,6 @@ end
 
 DEFAULT_GAMEPLAY_TEXTURES = {
 	blank = "blank.png",
-	metal = "metal.jpg",
 	crosshair_map = "crosshair_map.png",
 	bullet_map = "bullet_map.png",
 	

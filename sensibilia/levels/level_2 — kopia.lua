@@ -17,7 +17,7 @@ level_world.loop = function(self)
 end
 
 level_world:set_current()
-reload_default_level_resources("map_3", "loader.lua", nil)
+reload_default_level_resources("map_2", "loader.lua", nil)
 
 	current_zoom_level = 1000
 	set_zoom_level(world_camera)

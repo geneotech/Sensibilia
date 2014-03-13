@@ -19,5 +19,8 @@ end
 level_world:set_current()
 reload_default_level_resources("map_1", "loader.lua", nil)
 
+	current_zoom_level = 1000
+	set_zoom_level(world_camera)
+	
 menu_music:stop()
 level_music:play()

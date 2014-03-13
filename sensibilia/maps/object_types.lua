@@ -33,15 +33,15 @@ return {
 	
 	default_type = {
 		render_layer = "OBJECTS",
-		texture = "my_type_1.jpg",
+		texture = "default_env.jpg",
 		entity_archetype = environmental_archetype
 	},
 	
 	bg_object_3 = {
-		color = rgba(82, 82, 82, 255),
+		color = rgba(30, 30, 30, 255),
 		render_layer = "BACKGROUND_3",
 		scrolling_speed = 0.3,
-		texture = "my_type_1.jpg",
+		texture = "default_env.jpg",
 		entity_archetype = {}
 	},
 	
@@ -53,7 +53,7 @@ return {
 	
 	my_type_2 = {
 		render_layer = "OBJECTS",
-		texture = "my_type_2.jpg",
+		texture = "default_env.jpg",
 		entity_archetype = environmental_archetype
 	}
 }

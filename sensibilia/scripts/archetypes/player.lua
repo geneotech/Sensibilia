@@ -348,9 +348,9 @@ function player_class:loop()
 	self.jumping.is_currently_post_jetpacking and math.abs(physics_system.timestep_multiplier-1) < 0.1
 	
 	then
-		local decrease_amount = (self.delta_timer:get_seconds() / 10)
+		local decrease_amount = (self.delta_timer:get_seconds() / 5)
 		
-		if get_self(player.body:get()).is_reality_checking then decrease_amount = decrease_amount * 3 end
+		if get_self(player.body:get()).is_reality_checking then decrease_amount = decrease_amount * 6 end
 		
 		instability = instability - decrease_amount
 	end
