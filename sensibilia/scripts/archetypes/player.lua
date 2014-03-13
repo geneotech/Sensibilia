@@ -166,13 +166,30 @@ function player_class:constructor(parent_group)
 	self.changing_gravity = false
 	self.delta_timer = timer()
 	
-	self.game_over_procedure = coroutine.wrap(function()
-		
+	self.current_procedure = nil
 	
+	self.game_over_procedure = coroutine.wrap(function()
+		self.intent_message = nil
 	end)
 	
 	self.next_level_procedure = coroutine.wrap(function()
-	
+		self.intent_message = nil
+		local entity = self.parent_group.body:get()
+		
+		process_all_entity_modules("waywardness", "set_attractive_point", entity.transform.current.pos)
+		
+		coroutine.wait(randval(1000, 3000), function() 
+			instability = 3
+			local body = entity.physics.body
+			SetRestitution(body, 1.2)
+			body:ApplyForce(b2Vec2(0, -500), body:GetWorldCenter(), true)
+			
+			
+			end, true)
+		
+		call_once_after_loop = function()
+			load_level (level_resources.NEXT_LEVEL.filename)
+		end
 	end)
 end
 
@@ -302,133 +319,145 @@ function player_class:substep()
 end
 
 function player_class:loop()
-	physics_system.timestep_multiplier = self.timestep_corrector:get_animated()
+	if instability > 0.99 then
+		self.current_procedure = self.game_over_procedure
+	end
 	
-	local gun_info = self.parent_group.gun_entity:get().gun
-	local player_body = self.parent_group.body:get()
-	local crosshair = self.parent_group.crosshair:get()
-	
-	gun_info.spread_degrees = 5 + 30 * instability
-	gun_info.shake_radius = 5+20*instability
+	if character_module.sum_of_all_healths() <= 0.1 then
+		self.current_procedure = self.next_level_procedure
+	end
 		
-	loop_instability_gun_bullets(rgba(0, 255, 0, 255), self.all_player_bullets, instability, physics_system.timestep_multiplier, base_gravity)
-	
-	
-	-- handle variable gravity
-	gravity_angle_offset = player_body.physics.body:GetAngle() / 0.01745329251994329576923690768489
-	current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
-	
-	for i=1, #global_entity_table do
-		local maybe_movement = global_entity_table[i].parent_group.body:get().movement
-		
-		if maybe_movement ~= nil then
-			maybe_movement.axis_rotation_degrees = gravity_angle_offset
-		end
-	end
-	
-	crosshair.transform.current.pos:rotate(self.base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player_body.transform.current.pos)
-	self.base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
-	
-	crosshair.crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
-	crosshair.transform.current.rotation = -world_camera.camera.last_interpolant.rotation
-	
-	physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
-
-	
-	
-	
-	-- handle increasing/decreasing instability
-	
-	if self.changing_gravity then
-		instability = instability + (self.delta_timer:get_seconds()/3)
-	end
-	
-	if self:is_shooting() then
-		instability = instability + self.delta_timer:get_milliseconds()/10000
-	end
-	
-	if self.jumping.is_currently_post_jetpacking then
-		instability = instability + self.delta_timer:get_milliseconds()/3000
-	end
-	
-	instability = instability + (1-physics_system.timestep_multiplier) * self.delta_timer:get_milliseconds()/16000
-	
-	if not self:is_shooting() and not self.changing_gravity and not 
-	self.jumping.is_currently_post_jetpacking and math.abs(physics_system.timestep_multiplier-1) < 0.1
-	
-	then
-		local decrease_amount = (self.delta_timer:get_seconds() / 5)
-		
-		if get_self(player.body:get()).is_reality_checking then decrease_amount = decrease_amount * 6 end
-		
-		instability = instability - decrease_amount
-	end
-	
-	--print ("instability")
-	self.delta_timer:reset()
-				
-	
-				
-	-- handle clock gui
-	local clock_alpha = 1
-				
-	if not self.showing_clock then
-		clock_alpha = self.clock_alpha_animator:get_animated()
-		--clock_alpha = prev_instability*prev_instability*prev_instability*prev_instability*prev_instability*prev_instability
-	end
-	--print(showing_clock, clock_alpha)
-	self.gui_clock_self.clock_renderer.clock_center = vec2(world_camera.transform.previous.pos)
-	self.gui_clock_self.clock_renderer.clock_alpha = clock_alpha
-	
-	
-	-- handle animations
-	
-	local msg = animate_message()
-	msg.subject = player_body
-	
-	local should_flip = false
-	local target_animation;
-	
-	
-	local vel = self.parent_group.body:get().physics.body:GetLinearVelocity()
-	vel = vec2(vel.x, vel.y) * 50
-	
-	local is_in_movement = math.abs(vel.x) > 15
-	
-	if self:is_shooting() or not is_in_movement then 
-		should_flip = (player_body.transform.current.pos.x - crosshair.transform.current.pos.x) > 0
+	if self.current_procedure ~= nil then
+		self.current_procedure()
 	else
-		should_flip = vel.x < 0
-	end
+		physics_system.timestep_multiplier = self.timestep_corrector:get_animated()
+	
+		local gun_info = self.parent_group.gun_entity:get().gun
+		local player_body = self.parent_group.body:get()
+		local crosshair = self.parent_group.crosshair:get()
 		
-	if is_in_movement then 
-		msg.speed_factor = vel:length()/6000
-	end
-	
-	if self.jumping.something_under_foot then
-		if is_in_movement then
-			target_animation = "running"
-		else
-			target_animation = "standing"
+		gun_info.spread_degrees = 5 + 30 * instability
+		gun_info.shake_radius = 5+20*instability
+			
+		loop_instability_gun_bullets(rgba(0, 255, 0, 255), self.all_player_bullets, instability, physics_system.timestep_multiplier, base_gravity)
+		
+		
+		-- handle variable gravity
+		gravity_angle_offset = player_body.physics.body:GetAngle() / 0.01745329251994329576923690768489
+		current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
+		
+		for i=1, #global_entity_table do
+			local maybe_movement = global_entity_table[i].parent_group.body:get().movement
+			
+			if maybe_movement ~= nil then
+				maybe_movement.axis_rotation_degrees = gravity_angle_offset
+			end
 		end
-	else
-		if vel.y > 0 then
-			target_animation = "falling"
-		else
-			target_animation = "in_air"
+		
+		crosshair.transform.current.pos:rotate(self.base_crosshair_rotation - world_camera.camera.last_interpolant.rotation, player_body.transform.current.pos)
+		self.base_crosshair_rotation = world_camera.camera.last_interpolant.rotation
+		
+		crosshair.crosshair.rotation_offset = -world_camera.camera.last_interpolant.rotation		
+		crosshair.transform.current.rotation = -world_camera.camera.last_interpolant.rotation
+		
+		physics_system.b2world:SetGravity(b2Vec2(current_gravity.x, current_gravity.y))
+	
+		
+		
+		
+		-- handle increasing/decreasing instability
+		
+		if self.changing_gravity then
+			instability = instability + (self.delta_timer:get_seconds()/3)
 		end
+		
+		if self:is_shooting() then
+			instability = instability + self.delta_timer:get_milliseconds()/10000
+		end
+		
+		if self.jumping.is_currently_post_jetpacking then
+			instability = instability + self.delta_timer:get_milliseconds()/3000
+		end
+		
+		instability = instability + (1-physics_system.timestep_multiplier) * self.delta_timer:get_milliseconds()/16000
+		
+		if not self:is_shooting() and not self.changing_gravity and not 
+		self.jumping.is_currently_post_jetpacking and math.abs(physics_system.timestep_multiplier-1) < 0.1
+		
+		then
+			local decrease_amount = (self.delta_timer:get_seconds() / 5)
+			
+			if get_self(player.body:get()).is_reality_checking then decrease_amount = decrease_amount * 6 end
+			
+			instability = instability - decrease_amount
+		end
+		
+		--print ("instability")
+		self.delta_timer:reset()
+					
+		
+					
+		-- handle clock gui
+		local clock_alpha = 1
+					
+		if not self.showing_clock then
+			clock_alpha = self.clock_alpha_animator:get_animated()
+			--clock_alpha = prev_instability*prev_instability*prev_instability*prev_instability*prev_instability*prev_instability
+		end
+		--print(showing_clock, clock_alpha)
+		self.gui_clock_self.clock_renderer.clock_center = vec2(world_camera.transform.previous.pos)
+		self.gui_clock_self.clock_renderer.clock_alpha = clock_alpha
+		
+		
+		-- handle animations
+		
+		local msg = animate_message()
+		msg.subject = player_body
+		
+		local should_flip = false
+		local target_animation;
+		
+		
+		local vel = self.parent_group.body:get().physics.body:GetLinearVelocity()
+		vel = vec2(vel.x, vel.y) * 50
+		
+		local is_in_movement = math.abs(vel.x) > 15
+		
+		if self:is_shooting() or not is_in_movement then 
+			should_flip = (player_body.transform.current.pos.x - crosshair.transform.current.pos.x) > 0
+		else
+			should_flip = vel.x < 0
+		end
+			
+		if is_in_movement then 
+			msg.speed_factor = vel:length()/6000
+		end
+		
+		if self.jumping.something_under_foot then
+			if is_in_movement then
+				target_animation = "running"
+			else
+				target_animation = "standing"
+			end
+		else
+			if vel.y > 0 then
+				target_animation = "falling"
+			else
+				target_animation = "in_air"
+			end
+		end
+		
+		player_body.render.flip_horizontally = should_flip
+		
+		msg.set_animation = player_animations[target_animation]
+		msg.change_animation = true
+		msg.change_speed = true
+		msg.preserve_state_if_animation_changes = false
+		
+		msg.message_type = animate_message.CONTINUE
+		
+		world:post_message(msg)
 	end
-	
-	player_body.render.flip_horizontally = should_flip
-	
-	msg.set_animation = player_animations[target_animation]
-	msg.change_animation = true
-	msg.change_speed = true
-	msg.preserve_state_if_animation_changes = false
-	
-	msg.message_type = animate_message.CONTINUE
-	
-	world:post_message(msg)
 end
 
 function spawn_player(position)

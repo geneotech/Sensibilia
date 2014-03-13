@@ -117,7 +117,7 @@ function rendering_routine(subject,
 			random_instability_variation_coroutine()
 			random_instability_ray_layer_order(1 + instability*5)
 			
-			if instability > 1 then instability = 1 end
+			--if instability > 1 then instability = 1 end
 			
 			--is_instability_ray_over_postprocessing = true--not (instability > 0.85)
 			

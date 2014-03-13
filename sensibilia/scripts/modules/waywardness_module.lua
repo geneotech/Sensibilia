@@ -36,6 +36,8 @@ function waywardness_module:constructor(subject_entity, force_multiplier)
 	}
 	
 	self.waywardness_decreaser = stepped_timer(physics_system)
+	
+	self.attractive_point = nil
 end
 
 function waywardness_module:damage_message(msg)
@@ -71,15 +73,19 @@ function waywardness_module:substep()
 	self.entity.physics.enable_angle_motor = self.should_return
 	self.entity.physics.angle_motor_force_multiplier = 0.5
 	
-	if self.should_return then
+	if self.attractive_point ~= nil or self.should_return then
 		self.entity.physics.target_angle = self.initial_rotation
 		local current_pos = self.entity.transform.current.pos
+		
+		local seek_target = self.initial_position
+		if self.attractive_point ~= nil then seek_target = self.attractive_point end
 		
 		local resultant_vector = vec2(0, 0)
 		local radius_of_effect = 400
 		local max_speed = 800
-		local distance = (self.initial_position - current_pos):length()
-		local direction = (self.initial_position - current_pos):normalize()
+		if self.attractive_point then max_speed = 3000 end
+		local distance = (seek_target - current_pos):length()
+		local direction = (seek_target - current_pos):normalize()
 		local velocity = vec2(body:GetLinearVelocity().x, body:GetLinearVelocity().y) * 50
 		
 		-- simple arrival steering behaviour
@@ -107,4 +113,9 @@ end
 
 function waywardness_module:return_to_initial_transform(flag)
 	self.should_return = flag
+end
+
+function waywardness_module:set_attractive_point(new_point)
+	self.attractive_point = new_point
+	SetRestitution(self.entity.physics.body, 20)
 end
