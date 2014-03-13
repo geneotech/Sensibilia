@@ -117,6 +117,10 @@ function rendering_routine(subject,
 			random_instability_variation_coroutine()
 			random_instability_ray_layer_order(1 + instability*5)
 			
+			if not level_resources.draw_geometry then
+				is_instability_ray_over_postprocessing = false
+			end
+			
 			--if instability > 1 then instability = 1 end
 			
 			--is_instability_ray_over_postprocessing = true--not (instability > 0.85)
@@ -165,7 +169,7 @@ function rendering_routine(subject,
 			
 		--	GL.glColorMask(GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE, GL.GL_TRUE)
 			
-			if not level_world.is_paused then 
+			if not level_world.is_paused and level_resources.draw_geometry then 
 				renderer:generate_triangles(camera_draw_input, render_masks.EFFECTS) 
 				for k, v in ipairs(global_instability_rays) do
 					v:generate_triangles(camera_draw_input)
@@ -194,7 +198,7 @@ function rendering_routine(subject,
 			local bounce_layer;
 			local bounce1_layer; 
 			
-			if not level_world.is_paused and player ~= nil then
+			if level_resources.draw_geometry and not level_world.is_paused and player ~= nil then
 				lighting_layer = player.body:get().visibility:get_layer(visibility_layers.BASIC_LIGHTING)
 				bounce_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE)
 				bounce1_layer = player.body:get().visibility:get_layer(visibility_layers.LIGHT_BOUNCE + 1)
@@ -248,7 +252,9 @@ function rendering_routine(subject,
 			postprocessing_fbos[0]:use()
 			GL.glClear(GL.GL_COLOR_BUFFER_BIT)
 			
-			renderer:generate_triangles(camera_draw_input, mask)
+			if level_resources.draw_geometry then
+				renderer:generate_triangles(camera_draw_input, mask)
+			end
 			
 			if level_resources.basic_geometry_callback then
 				level_resources.basic_geometry_callback(camera_draw_input)
@@ -327,7 +333,7 @@ function rendering_routine(subject,
 			
 			instability = prev_instability
 			
-			if not level_world.is_paused and player ~= nil then
+			if level_resources.draw_geometry and not level_world.is_paused and player ~= nil then
 				lighting_layer.offset = vec2.random_on_circle(randval(1,59)*instability)
 					
 				local random_discontinuity_end = function(source_layer)

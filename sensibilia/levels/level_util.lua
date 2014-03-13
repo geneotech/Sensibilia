@@ -15,6 +15,12 @@ global_level_table = {
 		caption = "interval second",
 		title = "immersion",
 		filename = "sensibilia\\levels\\level_1.lua"
+	},	
+	
+	{
+		caption = "interval third",
+		title = "immersion",
+		filename = "sensibilia\\levels\\level_1.lua"
 	}
 }
 
@@ -57,6 +63,9 @@ function load_level (filename)
 			end			
 		end
 	end
+	
+	
+	level_resources.CURRENT_LEVEL = global_level_table[found_level]
 	
 	if next_level ~= nil then
 		level_resources.NEXT_LEVEL = global_level_table[next_level]

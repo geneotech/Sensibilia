@@ -170,6 +170,17 @@ function player_class:constructor(parent_group)
 	
 	self.game_over_procedure = coroutine.wrap(function()
 		self.intent_message = nil
+		instability = 2
+		
+		coroutine.wait(randval(1000, 1500), nil, true) 
+		
+		level_resources.draw_geometry = false
+	
+		stop_all_music()
+		
+		coroutine.wait(randval(2000, 4000), nil, true)
+			
+		call_once_after_loop = function() load_level (level_resources.CURRENT_LEVEL.filename) end
 	end)
 	
 	self.next_level_procedure = coroutine.wrap(function()

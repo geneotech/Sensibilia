@@ -1,7 +1,8 @@
 function reload_default_level_resources(
 		map_filename, 
 		map_loader_filename, 
-		gameplay_textures -- optional, if not provided then switching to default gameplay textures
+		gameplay_textures, -- optional, if not provided then switching to default gameplay textures
+		reload_textures
 		)
 		
 	-- destruct previous level data
@@ -13,11 +14,12 @@ function reload_default_level_resources(
 	GAMEPLAY_TEXTURES = gameplay_textures
 	
 	dofile "sensibilia\\scripts\\resources\\layers.lua"
-	dofile "sensibilia\\scripts\\resources\\textures.lua"
+	if reload_textures == nil or reload_textures then dofile "sensibilia\\scripts\\resources\\textures.lua" end
 	dofile "sensibilia\\scripts\\resources\\animations.lua"
 	dofile "sensibilia\\scripts\\resources\\particle_effects.lua"
 	dofile "sensibilia\\scripts\\settings.lua"
 	
+	level_resources.draw_geometry = true
 	
 	-- 1 - max
 	instability = 0
