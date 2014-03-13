@@ -1,20 +1,24 @@
 function reload_default_level_resources(
 		map_filename, 
 		map_loader_filename, 
-		gameplay_textures, -- optional, if not provided then switching to default gameplay textures
-		reload_textures
+		gameplay_textures -- optional, if not provided then switching to default gameplay textures
 		)
 		
 	-- destruct previous level data
 	level_resources = {}
 	collectgarbage("collect")
 	
+	local prev_filename = MAP_FILENAME
 	MAP_FILENAME = "sensibilia\\maps\\" .. map_filename
 	MAP_LOADER_FILENAME = "sensibilia\\maps\\" .. map_loader_filename
 	GAMEPLAY_TEXTURES = gameplay_textures
 	
 	dofile "sensibilia\\scripts\\resources\\layers.lua"
-	if reload_textures == nil or reload_textures then dofile "sensibilia\\scripts\\resources\\textures.lua" end
+	
+	if prev_filename == nil or MAP_FILENAME ~= prev_filename then
+		dofile "sensibilia\\scripts\\resources\\textures.lua"
+	end 
+	
 	dofile "sensibilia\\scripts\\resources\\animations.lua"
 	dofile "sensibilia\\scripts\\resources\\particle_effects.lua"
 	dofile "sensibilia\\scripts\\settings.lua"

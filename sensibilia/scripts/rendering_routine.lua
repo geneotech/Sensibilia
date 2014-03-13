@@ -1,14 +1,8 @@
-SHADERS_DIRECTORY = "sensibilia\\scripts\\resources\\shaders\\"
+
+
+
 EFFECTS_DIRECTORY = "sensibilia\\scripts\\effects\\"
 
-dofile (SHADERS_DIRECTORY .. "fullscreen_vertex_shader.lua")
-
-dofile (SHADERS_DIRECTORY .. "scene_shader.lua")
-dofile (SHADERS_DIRECTORY .. "film_grain.lua")
-dofile (SHADERS_DIRECTORY .. "chromatic_aberration.lua")
-dofile (SHADERS_DIRECTORY .. "blur.lua")
-dofile (SHADERS_DIRECTORY .. "color_adjustment.lua")
-dofile (SHADERS_DIRECTORY .. "spatial_instability.lua")
 
 dofile (EFFECTS_DIRECTORY .. "utility.lua")
 dofile (EFFECTS_DIRECTORY .. "blur.lua")
