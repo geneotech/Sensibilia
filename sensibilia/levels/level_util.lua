@@ -67,6 +67,8 @@ function load_level (filename, skip_intro)
 			level_resources.NEXT_LEVEL = global_level_table[next_level]
 		else
 			level_resources.NEXT_LEVEL = CREDITS_LEVEL
+			
+			if player ~= nil then get_self(player.body:get()).blackout_after_nextlevel = true end
 		end
 	
 		

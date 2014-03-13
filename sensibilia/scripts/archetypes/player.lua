@@ -183,6 +183,7 @@ function player_class:constructor(parent_group)
 		call_once_after_loop = function() load_level (level_resources.CURRENT_LEVEL.filename, true) end
 	end)
 	
+	self.blackout_after_nextlevel = false
 	self.next_level_procedure = coroutine.wrap(function()
 		self.intent_message = nil
 		local entity = self.parent_group.body:get()
@@ -197,6 +198,14 @@ function player_class:constructor(parent_group)
 			
 			
 			end, true)
+		
+		if self.blackout_after_nextlevel then
+			level_resources.draw_geometry = false
+		
+			stop_all_music()
+			
+			coroutine.wait(randval(2000, 4000), nil, true)
+		end
 		
 		call_once_after_loop = function()
 			load_level (level_resources.NEXT_LEVEL.filename)

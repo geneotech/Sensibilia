@@ -4,7 +4,17 @@ menu.main_menu = screen_class:create()
 menu.main_menu.buttons = {
 	make_button(( { text_size_mult = 1, text_pos = vec2(0, -130-config_table.resolution_h/2+100), animated_text_input = { str = "sensibilia" } } )), 
 	
-	make_button(( { text_pos = vec2(0, -130-config_table.resolution_h/2+430+150*0), animated_text_input = { str = "new_game" } } )), 
+	make_button(( { text_pos = vec2(0, -130-config_table.resolution_h/2+430+150*0), 
+	
+		callbacks = {
+			mouseclick = function() 
+				call_once_after_loop = function()
+					load_level (global_level_table[1].filename)
+				end
+			end
+		},
+	
+	animated_text_input = { str = "new_game" } } )), 
 	make_button(( { text_pos = vec2(0, -130-config_table.resolution_h/2+430+150*1), 
 		callbacks = {
 			mouseclick = function()
