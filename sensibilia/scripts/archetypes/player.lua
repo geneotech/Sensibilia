@@ -151,7 +151,6 @@ function player_class:constructor(parent_group)
 	
 	self.is_reality_checking = false
 	self.all_player_bullets = entity_ptr_vector()
-	
 
 	self.showing_clock = false
 	self.clock_alpha_animator = value_animator(0, 0, 1)
@@ -339,6 +338,10 @@ function player_class:substep()
 end
 
 function player_class:loop()
+	if not self.level_bound:hover(self.parent_group.body:get().transform.current.pos) then
+		instability = 1
+	end
+
 	if instability > 0.99 then
 		self.current_procedure = self.game_over_procedure
 	end

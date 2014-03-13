@@ -67,6 +67,11 @@ loader_1.create_entities_from_map = function(filename)
 		player = spawn_player(objects["PLAYER_START"][1].pos)
 	end
 	
+	if objects["level_bounds"] ~= nil then
+		local bound = objects["level_bounds"][1]
+		get_self(player.body:get()).level_bound = rect_xywh(bound.pos.x, bound.pos.y, bound.width, bound.height) 
+	end
+	
 	return { polygons, rectangles }
 end
 
