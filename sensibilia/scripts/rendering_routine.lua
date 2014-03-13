@@ -165,8 +165,10 @@ function rendering_routine(subject,
 			
 			if not level_world.is_paused and level_resources.draw_geometry then 
 				renderer:generate_triangles(camera_draw_input, render_masks.EFFECTS) 
-				for k, v in ipairs(global_instability_rays) do
-					v:generate_triangles(camera_draw_input)
+				if global_instability_rays ~= nil then
+					for k, v in ipairs(global_instability_rays) do
+						v:generate_triangles(camera_draw_input)
+					end
 				end
 			end
 			

@@ -27,6 +27,7 @@ end
 
 menu_music = create_music "menu.ogg"
 level_music = create_music "pulsating.ogg"
+clock_music = create_music "clock.wav"
 button_clicked_snd = create_sound "select.ogg"
 
 global_sound_table = {}

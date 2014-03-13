@@ -39,7 +39,6 @@ function reload_default_level_resources(
 	
 	world_information = tiled_map_loader.load_world_properties (MAP_FILENAME)
 	dofile "sensibilia\\scripts\\camera.lua"
-	
 	current_zoom_level = 0
 	current_zoom_level = 0
 	set_zoom_level(world_camera)

@@ -180,7 +180,7 @@ function player_class:constructor(parent_group)
 		
 		coroutine.wait(randval(2000, 4000), nil, true)
 			
-		call_once_after_loop = function() load_level (level_resources.CURRENT_LEVEL.filename) end
+		call_once_after_loop = function() load_level (level_resources.CURRENT_LEVEL.filename, true) end
 	end)
 	
 	self.next_level_procedure = coroutine.wrap(function()

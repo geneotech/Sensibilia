@@ -58,6 +58,12 @@ gui_context = create_input_context {
 	}
 }
 
+cutscene_context = create_input_context {
+	intents = { 
+		[mouse.raw_motion] 		= intent_message.AIM
+	}
+}
+
 main_input_component = {
 	custom_intents.INSTANT_SLOWDOWN,
 	custom_intents.QUIT,
