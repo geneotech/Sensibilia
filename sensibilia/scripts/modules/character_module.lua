@@ -1,4 +1,17 @@
 character_module = inherits_from {}
+character_module.sum_of_all_healths = function()
+	local sum = 0
+	for k, v in pairs(global_entity_table) do
+		if v.character ~= nil then
+			if v.character.is_enemy then
+				sum = sum + v.character.hp
+			end
+		end
+	end
+	
+	return sum
+end
+	
 
 function character_module:constructor(subject_entity, base_movement)
 	self.entity = subject_entity

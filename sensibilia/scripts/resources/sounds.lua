@@ -1,14 +1,33 @@
 RESOURCE_DIR = "sensibilia\\resources\\" 
 
-menu_music = sfMusic()
-menu_music:openFromFile(RESOURCE_DIR .. "menu.ogg")
 
-level_music = sfMusic()
-level_music:openFromFile(RESOURCE_DIR .. "pulsating.ogg")
-level_music:setLoop(true)
+global_music_table = {}
 
-button_clicked_snd = sfSoundBuffer()
-button_clicked_snd:loadFromFile(RESOURCE_DIR .. "select.ogg")
+function create_music(filename)
+	local new_music = sfMusic()
+	new_music:openFromFile(RESOURCE_DIR .. filename)
+	new_music:setLoop(true)
+	
+	table.insert(global_music_table, new_music)
+	
+	return new_music
+end
+
+function create_sound(filename)
+	local new_sound = sfSoundBuffer()
+	new_sound:loadFromFile(RESOURCE_DIR .. filename)
+	return new_sound
+end
+
+function stop_all_music()
+	for i=1, #global_music_table do
+		global_music_table[i]:stop()
+	end
+end
+
+menu_music = create_music "menu.ogg"
+level_music = create_music "pulsating.ogg"
+button_clicked_snd = create_sound "select.ogg"
 
 global_sound_table = {}
 

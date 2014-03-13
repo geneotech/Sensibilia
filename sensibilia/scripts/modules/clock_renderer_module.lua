@@ -142,22 +142,13 @@ function clock_renderer_module:loop()
 	
 	--clock_sprite:draw(clock_draw_input)
 	
-	local current_sum_of_all_healths = 0
 	
 	local final_rotations = { 0, 0, 0 }
 	
 	if not self.randomized_hands_values then
-		for k, v in pairs(global_entity_table) do
-			if v.character ~= nil then
-				if v.character.is_enemy then
-					current_sum_of_all_healths = current_sum_of_all_healths + v.character.hp
-				end
-			end
-		end
-	
 		self.second_rotation = self.global_hand_time/6
 		self.minute_rotation = -90 + (20 + (instability + temporary_instability/10) * 340)
-		self.hour_rotation = -90 + (20 + (1-(current_sum_of_all_healths/all_enemies_max_health_points)) * 340)
+		self.hour_rotation = -90 + (20 + (1-(character_module.sum_of_all_healths()/all_enemies_max_health_points)) * 340)
 	else
 		--debugger_break()
 		self.rotation_variations[1](delta_multiplier)
