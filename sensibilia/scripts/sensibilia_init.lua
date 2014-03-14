@@ -16,11 +16,8 @@ dofile "sensibilia\\scripts\\menu_screens\\screen_class.lua"
 local menu = level_resources
 
 
-level_music:stop()
+stop_all_music()
 menu_music:play()
-menu_music:setLoop(true)
-menu_music:setVolume(100)
-
 
 menu.current_screen = menu.main_menu
 

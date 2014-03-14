@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="170" height="170" tilewidth="32" tileheight="32">
+ <layer name="Tile Layer 1" width="170" height="170" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T+1tB6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3gDDnwAB
+  </data>
+ </layer>
+ <objectgroup name="Background" width="170" height="170">
+  <properties>
+   <property name="scrolling_speed" value="0.1"/>
+  </properties>
+  <object type="bg_object_4" x="224" y="224" width="800" height="736"/>
+  <object type="bg_object_4" x="1024" y="224" width="800" height="736"/>
+  <object type="bg_object_4" x="1824" y="224" width="800" height="736"/>
+  <object type="bg_object_4" x="1024" y="960" width="800" height="736"/>
+  <object type="bg_object_4" x="224" y="960" width="800" height="736"/>
+  <object type="bg_object_4" x="1824" y="960" width="800" height="736"/>
+  <object type="bg_object_4" x="1024" y="1696" width="800" height="736"/>
+  <object type="bg_object_4" x="224" y="1696" width="800" height="736"/>
+  <object type="bg_object_4" x="1824" y="1696" width="800" height="736"/>
+  <object type="bg_object_4" x="1824" y="3168" width="800" height="736"/>
+  <object type="bg_object_4" x="1024" y="3168" width="800" height="736"/>
+  <object type="bg_object_4" x="224" y="3168" width="800" height="736"/>
+  <object type="bg_object_4" x="1824" y="2432" width="800" height="736"/>
+  <object type="bg_object_4" x="224" y="2432" width="800" height="736"/>
+  <object type="bg_object_4" x="1024" y="2432" width="800" height="736"/>
+  <object type="bg_object_4" x="2624" y="3168" width="800" height="736"/>
+  <object type="bg_object_4" x="2624" y="2432" width="800" height="736"/>
+  <object type="bg_object_4" x="2624" y="960" width="800" height="736"/>
+  <object type="bg_object_4" x="2624" y="1696" width="800" height="736"/>
+  <object type="bg_object_4" x="2624" y="224" width="800" height="736"/>
+  <object type="bg_object_4" x="3424" y="3168" width="800" height="736"/>
+  <object type="bg_object_4" x="3424" y="2432" width="800" height="736"/>
+  <object type="bg_object_4" x="3424" y="960" width="800" height="736"/>
+  <object type="bg_object_4" x="3424" y="1696" width="800" height="736"/>
+  <object type="bg_object_4" x="3424" y="224" width="800" height="736"/>
+  <object type="bg_object_4" x="4224" y="1696" width="800" height="736"/>
+  <object type="bg_object_4" x="4224" y="224" width="800" height="736"/>
+  <object type="bg_object_4" x="4224" y="960" width="800" height="736"/>
+  <object type="bg_object_4" x="4224" y="2432" width="800" height="736"/>
+  <object type="bg_object_4" x="4224" y="3168" width="800" height="736"/>
+  <object type="bg_object_4" x="1824" y="3904" width="800" height="736"/>
+  <object type="bg_object_4" x="2624" y="3904" width="800" height="736"/>
+  <object type="bg_object_4" x="1024" y="3904" width="800" height="736"/>
+  <object type="bg_object_4" x="224" y="3904" width="800" height="736"/>
+  <object type="bg_object_4" x="4224" y="3904" width="800" height="736"/>
+  <object type="bg_object_4" x="3424" y="3904" width="800" height="736"/>
+  <object type="bg_object_4" x="5024" y="224" width="800" height="736"/>
+  <object type="bg_object_4" x="5024" y="960" width="800" height="736"/>
+  <object type="bg_object_4" x="5024" y="3904" width="800" height="736"/>
+  <object type="bg_object_4" x="5024" y="3168" width="800" height="736"/>
+  <object type="bg_object_4" x="5024" y="2432" width="800" height="736"/>
+  <object type="bg_object_4" x="5024" y="1696" width="800" height="736"/>
+  <object type="bg_object_4" x="-576" y="224" width="800" height="736"/>
+  <object type="bg_object_4" x="-576" y="960" width="800" height="736"/>
+  <object type="bg_object_4" x="-576" y="3904" width="800" height="736"/>
+  <object type="bg_object_4" x="-576" y="3168" width="800" height="736"/>
+  <object type="bg_object_4" x="-576" y="2432" width="800" height="736"/>
+  <object type="bg_object_4" x="-576" y="1696" width="800" height="736"/>
+  <object type="bg_object_4" x="1824" y="4640" width="800" height="736"/>
+  <object type="bg_object_4" x="224" y="4640" width="800" height="736"/>
+  <object type="bg_object_4" x="-576" y="4640" width="800" height="736"/>
+  <object type="bg_object_4" x="4224" y="4640" width="800" height="736"/>
+  <object type="bg_object_4" x="3424" y="4640" width="800" height="736"/>
+  <object type="bg_object_4" x="1024" y="4640" width="800" height="736"/>
+  <object type="bg_object_4" x="2624" y="4640" width="800" height="736"/>
+  <object type="bg_object_4" x="5024" y="4640" width="800" height="736"/>
+  <object type="bg_object_4" x="1824" y="5376" width="800" height="736"/>
+  <object type="bg_object_4" x="224" y="5376" width="800" height="736"/>
+  <object type="bg_object_4" x="-576" y="5376" width="800" height="736"/>
+  <object type="bg_object_4" x="4224" y="5376" width="800" height="736"/>
+  <object type="bg_object_4" x="3424" y="5376" width="800" height="736"/>
+  <object type="bg_object_4" x="1024" y="5376" width="800" height="736"/>
+  <object type="bg_object_4" x="2624" y="5376" width="800" height="736"/>
+  <object type="bg_object_4" x="5024" y="5376" width="800" height="736"/>
+  <object type="bg_object_4" x="1824" y="-512" width="800" height="736"/>
+  <object type="bg_object_4" x="224" y="-512" width="800" height="736"/>
+  <object type="bg_object_4" x="-576" y="-512" width="800" height="736"/>
+  <object type="bg_object_4" x="4224" y="-512" width="800" height="736"/>
+  <object type="bg_object_4" x="3424" y="-512" width="800" height="736"/>
+  <object type="bg_object_4" x="1024" y="-512" width="800" height="736"/>
+  <object type="bg_object_4" x="2624" y="-512" width="800" height="736"/>
+  <object type="bg_object_4" x="5024" y="-512" width="800" height="736"/>
+ </objectgroup>
+ <objectgroup name="clocks" width="170" height="170">
+  <object type="clock1_pos" x="2976" y="2592" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="3360" y="3072" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="1760" y="2144" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="1248" y="2976" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="1696" y="1152" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="2864" y="1712" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="1984" y="3424" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="3984" y="1424" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="4048" y="2448" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="2368" y="2560" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="416" y="1568" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="576" y="2688" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock1_pos" x="992" y="1888" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="2368" y="1344" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="2528" y="2208" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="1696" y="1632" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="1632" y="3136" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="2912" y="3680" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="2304" y="3104" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="4096" y="3264" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="3904" y="3648" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="3648" y="2656" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="3536" y="1872" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="3264" y="1152" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+  <object type="clock2_pos" x="2624" y="928" width="96" height="96">
+   <properties>
+    <property name="max_size" value="1.2"/>
+    <property name="min_size" value="0.2"/>
+    <property name="randomized_pos" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="enemies" width="170" height="170">
+  <object type="SHOOTER_START" x="2328" y="1344" width="64" height="64"/>
+  <object type="PUSHER_START" x="3692" y="1020" width="64" height="64"/>
+  <object type="PUSHER_START" x="2768" y="1104" width="64" height="64"/>
+  <object type="PUSHER_START" x="736" y="232" width="64" height="64"/>
+  <object type="PUSHER_START" x="1564" y="480" width="64" height="64"/>
+  <object type="SHOOTER_START" x="1928" y="192" width="64" height="64"/>
+  <object type="SHOOTER_START" x="652" y="1492" width="64" height="64"/>
+  <object type="SHOOTER_START" x="840" y="2504" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="info" width="170" height="170">
+  <object type="PLAYER_START" x="4136" y="4448" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="Object Layer 6" width="170" height="170">
+  <object type="level_bounds" x="-2400" y="-1888" width="10400" height="9824"/>
+ </objectgroup>
+ <objectgroup name="Object Layer 6" width="170" height="170">
+  <object type="my_type_4" x="768" y="912">
+   <polygon points="0,0 172,172 412,88 768,-216 1060,-84 1332,-396 1572,-312 1772,-128 1392,-64 1464,224 1128,264 892,612 500,316 140,540 -84,232"/>
+  </object>
+  <object type="my_type_4" x="3876" y="424">
+   <polygon points="0,0 -404,-248 -1264,104 -1592,-48 -1132,544 -652,500 -852,184 -192,364 276,228"/>
+  </object>
+  <object type="my_type_4" x="672" y="532">
+   <polygon points="0,0 -332,4 -352,336 -44,328 -252,580 272,240"/>
+  </object>
+  <object type="my_type_4" x="224" y="200">
+   <polygon points="0,0 -84,260 28,436 -124,608 56,768 92,68 -64,-148"/>
+  </object>
+  <object type="my_type_4" x="288" y="1572">
+   <polygon points="0,0 764,104 564,428 200,484 -72,488"/>
+  </object>
+  <object type="my_type_4" x="2324" y="2296">
+   <polygon points="0,0 -4,-656 724,-972 760,-392 296,-520"/>
+  </object>
+  <object type="my_type_4" x="1192" y="2452">
+   <polygon points="0,0 24,-484 700,-516 828,24 368,-360"/>
+  </object>
+  <object type="my_type_4" x="4804" y="848">
+   <polygon points="0,0 -692,76 -1048,912 -136,1244 -476,500"/>
+  </object>
+  <object type="my_type_4" x="5112" y="264">
+   <polygon points="0,0 -664,-128 -688,292 112,468 -252,180"/>
+  </object>
+  <object type="my_type_4" x="3276" y="3152">
+   <polygon points="0,0 -160,-572 356,-824 76,-1140 884,-756 724,-212 364,-528 360,8"/>
+  </object>
+  <object type="my_type_4" x="1496" y="2988">
+   <polygon points="0,0 1420,-548 1396,40 692,100 736,-108 376,128"/>
+  </object>
+  <object type="my_type_4" x="900" y="2752">
+   <polygon points="0,0 -192,352 -800,172 -384,-532 64,-584 -428,16"/>
+  </object>
+  <object type="my_type_4" x="864" y="3680" width="600" height="184"/>
+  <object type="my_type_3" x="504" y="3392" width="616" height="88"/>
+  <object type="my_type_3" x="1920" y="3496" width="192" height="1152"/>
+  <object type="my_type_4" x="2472" y="4128" width="2400" height="192"/>
+  <object type="my_type_3" x="3752" y="3808" width="936" height="128"/>
+  <object type="my_type_3" x="4612" y="3160" width="136" height="396"/>
+  <object type="my_type_3" x="4996" y="3708" width="232" height="784"/>
+  <object type="my_type_3" x="3732" y="4652" width="908" height="396"/>
+  <object type="my_type_3" x="2444" y="4580" width="204" height="596"/>
+  <object type="my_type_3" x="2908" y="4580" width="332" height="168"/>
+  <object type="my_type_3" x="2820" y="3464" width="168" height="380"/>
+  <object type="my_type_3" x="5024" y="2328">
+   <polygon points="0,0 -1648,1444 -1264,1324 -544,724"/>
+  </object>
+  <object type="my_type_3" x="5584" y="2372">
+   <polygon points="0,0 -408,1296 60,1232"/>
+  </object>
+  <object type="my_type_3" x="2068" y="5136">
+   <polygon points="0,0 -1952,-1608 -1072,-524"/>
+  </object>
+ </objectgroup>
+</map>
