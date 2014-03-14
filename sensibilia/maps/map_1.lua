@@ -202,7 +202,7 @@ return {
       objects = {
         {
           name = "p1",
-          type = "",
+          type = "my_type_2",
           shape = "polygon",
           x = 576,
           y = 2208,
@@ -219,7 +219,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_2",
           shape = "polygon",
           x = 1696,
           y = 1760,
@@ -236,7 +236,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_1",
           shape = "polygon",
           x = 2464,
           y = 3520,
@@ -308,7 +308,7 @@ return {
         },
         {
           name = "p2",
-          type = "",
+          type = "my_type_1",
           shape = "polygon",
           x = 3072,
           y = 3520,
@@ -396,7 +396,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_1",
           shape = "polygon",
           x = 4896,
           y = 3936,
@@ -457,7 +457,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_2",
           shape = "rectangle",
           x = 3328,
           y = 928,
@@ -490,7 +490,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_1",
           shape = "rectangle",
           x = 3680,
           y = 288,
@@ -512,7 +512,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_2",
           shape = "rectangle",
           x = 1856,
           y = 96,
@@ -523,7 +523,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_1",
           shape = "rectangle",
           x = 3968,
           y = 448,
@@ -631,7 +631,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_2",
           shape = "polygon",
           x = 1344,
           y = 2688,
@@ -648,7 +648,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_1",
           shape = "polygon",
           x = 4352,
           y = 1664,
@@ -699,7 +699,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_1",
           shape = "polygon",
           x = 2240,
           y = 3392,
@@ -716,7 +716,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_1",
           shape = "polygon",
           x = 1088,
           y = 3904,
@@ -735,7 +735,7 @@ return {
     {
       type = "objectgroup",
       name = "Background",
-      visible = false,
+      visible = true,
       opacity = 1,
       properties = {
         ["scrolling_speed"] = "0.1"
@@ -1274,7 +1274,7 @@ return {
     {
       type = "objectgroup",
       name = "clocks",
-      visible = false,
+      visible = true,
       opacity = 1,
       properties = {},
       objects = {
@@ -1658,7 +1658,7 @@ return {
     {
       type = "objectgroup",
       name = "enemies",
-      visible = false,
+      visible = true,
       opacity = 1,
       properties = {},
       objects = {
@@ -1733,7 +1733,7 @@ return {
     {
       type = "objectgroup",
       name = "Object Layer 5",
-      visible = false,
+      visible = true,
       opacity = 1,
       properties = {},
       objects = {

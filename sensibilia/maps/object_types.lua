@@ -45,6 +45,14 @@ return {
 		entity_archetype = {}
 	},
 	
+	bg_object_4 = {
+		color = rgba(30, 30, 30, 255),
+		render_layer = "BACKGROUND_3",
+		scrolling_speed = 0.3,
+		texture = "my_type_4.jpg",
+		entity_archetype = {}
+	},
+	
 	my_type_1 = {
 		render_layer = "OBJECTS",
 		texture = "my_type_1.jpg",
@@ -53,7 +61,19 @@ return {
 	
 	my_type_2 = {
 		render_layer = "OBJECTS",
-		texture = "default_env.jpg",
+		texture = "my_type_2.jpg",
+		entity_archetype = environmental_archetype
+	},
+	
+	my_type_3 = {
+		render_layer = "OBJECTS",
+		texture = "my_type_3.jpg",
+		entity_archetype = environmental_archetype
+	},
+	
+	my_type_4 = {
+		render_layer = "OBJECTS",
+		texture = "my_type_4.jpg",
 		entity_archetype = environmental_archetype
 	}
 }

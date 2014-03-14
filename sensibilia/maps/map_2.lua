@@ -204,7 +204,7 @@ return {
       objects = {
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 224,
           y = 224,
@@ -215,7 +215,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1024,
           y = 224,
@@ -226,7 +226,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1824,
           y = 224,
@@ -237,7 +237,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1024,
           y = 960,
@@ -248,7 +248,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 224,
           y = 960,
@@ -259,7 +259,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1824,
           y = 960,
@@ -270,7 +270,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1024,
           y = 1696,
@@ -281,7 +281,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 224,
           y = 1696,
@@ -292,7 +292,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1824,
           y = 1696,
@@ -303,7 +303,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1824,
           y = 3168,
@@ -314,7 +314,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1024,
           y = 3168,
@@ -325,7 +325,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 224,
           y = 3168,
@@ -336,7 +336,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1824,
           y = 2432,
@@ -347,7 +347,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 224,
           y = 2432,
@@ -358,7 +358,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1024,
           y = 2432,
@@ -369,7 +369,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 2624,
           y = 3168,
@@ -380,7 +380,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 2624,
           y = 2432,
@@ -391,7 +391,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 2624,
           y = 960,
@@ -402,7 +402,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 2624,
           y = 1696,
@@ -413,7 +413,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 2624,
           y = 224,
@@ -424,7 +424,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 3424,
           y = 3168,
@@ -435,7 +435,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 3424,
           y = 2432,
@@ -446,7 +446,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 3424,
           y = 960,
@@ -457,7 +457,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 3424,
           y = 1696,
@@ -468,7 +468,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 3424,
           y = 224,
@@ -479,7 +479,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 4224,
           y = 1696,
@@ -490,7 +490,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 4224,
           y = 224,
@@ -501,7 +501,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 4224,
           y = 960,
@@ -512,7 +512,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 4224,
           y = 2432,
@@ -523,7 +523,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 4224,
           y = 3168,
@@ -534,7 +534,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1824,
           y = 3904,
@@ -545,7 +545,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 2624,
           y = 3904,
@@ -556,7 +556,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 1024,
           y = 3904,
@@ -567,7 +567,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 224,
           y = 3904,
@@ -578,7 +578,7 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 4224,
           y = 3904,
@@ -589,10 +589,406 @@ return {
         },
         {
           name = "",
-          type = "bg_object_3",
+          type = "bg_object_4",
           shape = "rectangle",
           x = 3424,
           y = 3904,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 5024,
+          y = 224,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 5024,
+          y = 960,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 5024,
+          y = 3904,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 5024,
+          y = 3168,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 5024,
+          y = 2432,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 5024,
+          y = 1696,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = -576,
+          y = 224,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = -576,
+          y = 960,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = -576,
+          y = 3904,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = -576,
+          y = 3168,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = -576,
+          y = 2432,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = -576,
+          y = 1696,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 1824,
+          y = 4640,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 224,
+          y = 4640,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = -576,
+          y = 4640,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 4224,
+          y = 4640,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 3424,
+          y = 4640,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 1024,
+          y = 4640,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 2624,
+          y = 4640,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 5024,
+          y = 4640,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 1824,
+          y = 5376,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 224,
+          y = 5376,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = -576,
+          y = 5376,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 4224,
+          y = 5376,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 3424,
+          y = 5376,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 1024,
+          y = 5376,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 2624,
+          y = 5376,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 5024,
+          y = 5376,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 1824,
+          y = -512,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 224,
+          y = -512,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = -576,
+          y = -512,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 4224,
+          y = -512,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 3424,
+          y = -512,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 1024,
+          y = -512,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 2624,
+          y = -512,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_4",
+          shape = "rectangle",
+          x = 5024,
+          y = -512,
           width = 800,
           height = 736,
           visible = true,
@@ -1110,7 +1506,7 @@ return {
       objects = {
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 448,
           y = 352,
@@ -1121,7 +1517,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 448,
           y = 672,
@@ -1132,7 +1528,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 832,
           y = 320,
@@ -1143,7 +1539,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 928,
           y = 384,
@@ -1154,7 +1550,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 928,
           y = 64,
@@ -1165,7 +1561,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 1728,
           y = 128,
@@ -1176,7 +1572,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 1056,
           y = 672,
@@ -1187,7 +1583,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 224,
           y = 32,
@@ -1198,7 +1594,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 256,
           y = 1056,
@@ -1209,7 +1605,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 640,
           y = 800,
@@ -1220,7 +1616,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 1088,
           y = 768,
@@ -1231,7 +1627,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 1312,
           y = 1344,
@@ -1242,7 +1638,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2048,
           y = 608,
@@ -1253,7 +1649,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2048,
           y = 256,
@@ -1264,7 +1660,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 448,
           y = 1632,
@@ -1275,7 +1671,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2336,
           y = 480,
@@ -1286,7 +1682,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2464,
           y = 32,
@@ -1297,7 +1693,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2656,
           y = 992,
@@ -1308,7 +1704,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 320,
           y = 1280,
@@ -1319,7 +1715,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 960,
           y = 1920,
@@ -1330,7 +1726,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2848,
           y = 1376,
@@ -1341,7 +1737,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2016,
           y = 1824,
@@ -1352,7 +1748,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2528,
           y = 1344,
@@ -1363,7 +1759,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2688,
           y = 384,
@@ -1374,7 +1770,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 3008,
           y = 704,
@@ -1385,7 +1781,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2624,
           y = 704,
@@ -1396,7 +1792,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 3744,
           y = 64,
@@ -1407,7 +1803,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 3360,
           y = 704,
@@ -1418,7 +1814,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 1696,
           y = 2528,
@@ -1429,7 +1825,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 1984,
           y = 2048,
@@ -1440,7 +1836,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 288,
           y = 1856,
@@ -1451,7 +1847,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 608,
           y = 1728,
@@ -1462,7 +1858,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 992,
           y = 2560,
@@ -1473,7 +1869,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 1216,
           y = 2208,
@@ -1484,7 +1880,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 1184,
           y = 1696,
@@ -1495,7 +1891,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2112,
           y = 1888,
@@ -1506,7 +1902,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2368,
           y = 1408,
@@ -1517,7 +1913,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2464,
           y = 576,
@@ -1528,7 +1924,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 3072,
           y = 544,
@@ -1539,7 +1935,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 3232,
           y = 1728,
@@ -1550,7 +1946,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 3616,
           y = 1728,
@@ -1561,7 +1957,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 3488,
           y = 2080,
@@ -1572,7 +1968,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "rectangle",
           x = 2144,
           y = 2144,
@@ -1583,7 +1979,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "polygon",
           x = 1376,
           y = 992,
@@ -1599,23 +1995,7 @@ return {
         },
         {
           name = "",
-          type = "",
-          shape = "polygon",
-          x = 1056,
-          y = 2880,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 896, y = 32 },
-            { x = 576, y = 160 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
+          type = "my_type_3",
           shape = "polygon",
           x = 224,
           y = 1472,
@@ -1631,7 +2011,7 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_3",
           shape = "polygon",
           x = 1984,
           y = 64,
@@ -1644,10 +2024,39 @@ return {
             { x = -32, y = 128 }
           },
           properties = {}
-        },
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Object Layer 6",
+      visible = true,
+      opacity = 1,
+      properties = {},
+      objects = {
         {
           name = "",
-          type = "",
+          type = "level_bounds",
+          shape = "rectangle",
+          x = -2400,
+          y = -1888,
+          width = 10400,
+          height = 9824,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "tris",
+      visible = true,
+      opacity = 1,
+      properties = {},
+      objects = {
+        {
+          name = "",
+          type = "my_type_4",
           shape = "polygon",
           x = 4128,
           y = 96,
@@ -1663,103 +2072,7 @@ return {
         },
         {
           name = "",
-          type = "",
-          shape = "polygon",
-          x = 4480,
-          y = 960,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = -544, y = 32 },
-            { x = -320, y = 288 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 4416,
-          y = 1472,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = -224, y = 128 },
-            { x = 64, y = 160 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 3904,
-          y = 2048,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 544, y = -32 },
-            { x = 512, y = 288 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 4160,
-          y = 3040,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = -64, y = -448 },
-            { x = 160, y = -448 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 3584,
-          y = 2816,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 256, y = 224 },
-            { x = -192, y = 256 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 2624,
-          y = 2720,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 320, y = 256 },
-            { x = -288, y = 256 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
+          type = "my_type_4",
           shape = "polygon",
           x = 4960,
           y = 224,
@@ -1775,183 +2088,39 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_4",
           shape = "polygon",
-          x = 5024,
+          x = 3904,
+          y = 2048,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 544, y = -32 },
+            { x = 512, y = 288 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 4416,
           y = 1472,
           width = 0,
           height = 0,
           visible = true,
           polygon = {
             { x = 0, y = 0 },
-            { x = -448, y = 352 },
-            { x = -96, y = 480 }
+            { x = -224, y = 128 },
+            { x = 64, y = 160 }
           },
           properties = {}
         },
         {
           name = "",
-          type = "",
-          shape = "polygon",
-          x = 4800,
-          y = 896,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = -256, y = 288 },
-            { x = 352, y = 352 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 416,
-          y = 3136,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 672, y = 192 },
-            { x = 64, y = 384 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 1856,
-          y = 3712,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 320, y = -448 },
-            { x = 896, y = -416 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 1152,
-          y = 3520,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 544, y = -384 },
-            { x = 544, y = 32 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 3232,
-          y = 3200,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 992, y = 192 },
-            { x = 320, y = 544 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 2240,
-          y = 3872,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 608, y = 288 },
-            { x = -160, y = 320 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 416,
-          y = 3872,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 704, y = 224 },
-            { x = 128, y = 288 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 1152,
-          y = 3616,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 544, y = 288 },
-            { x = -128, y = 352 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 2848,
-          y = 3552,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 608, y = 160 },
-            { x = -224, y = 256 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
-          shape = "polygon",
-          x = 4544,
-          y = 3296,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 224, y = 288 },
-            { x = -384, y = 544 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
+          type = "my_type_4",
           shape = "polygon",
           x = 4864,
           y = 2624,
@@ -1967,7 +2136,23 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 4160,
+          y = 3040,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = -64, y = -448 },
+            { x = 160, y = -448 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
           shape = "polygon",
           x = 5088,
           y = 2080,
@@ -1983,7 +2168,103 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 4800,
+          y = 896,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = -256, y = 288 },
+            { x = 352, y = 352 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 5024,
+          y = 1472,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = -448, y = 352 },
+            { x = -96, y = 480 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 4480,
+          y = 960,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = -544, y = 32 },
+            { x = -320, y = 288 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 4544,
+          y = 3296,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 224, y = 288 },
+            { x = -384, y = 544 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 4836,
+          y = 4128,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 160, y = 480 },
+            { x = -256, y = 576 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 416,
+          y = 3136,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 672, y = 192 },
+            { x = 64, y = 384 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
           shape = "polygon",
           x = 4704,
           y = 4096,
@@ -1999,55 +2280,39 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_4",
           shape = "polygon",
-          x = 3264,
-          y = 3904,
+          x = 2624,
+          y = 2720,
           width = 0,
           height = 0,
           visible = true,
           polygon = {
             { x = 0, y = 0 },
-            { x = -320, y = 96 },
-            { x = 128, y = 352 }
+            { x = 320, y = 256 },
+            { x = -288, y = 256 }
           },
           properties = {}
         },
         {
           name = "",
-          type = "",
+          type = "my_type_4",
           shape = "polygon",
-          x = 1280,
-          y = 4288,
+          x = 3232,
+          y = 3200,
           width = 0,
           height = 0,
           visible = true,
           polygon = {
             { x = 0, y = 0 },
-            { x = 608, y = -64 },
-            { x = 640, y = 256 }
+            { x = 992, y = 192 },
+            { x = 320, y = 544 }
           },
           properties = {}
         },
         {
           name = "",
-          type = "",
-          shape = "polygon",
-          x = 320,
-          y = 4448,
-          width = 0,
-          height = 0,
-          visible = true,
-          polygon = {
-            { x = 0, y = 0 },
-            { x = 768, y = 0 },
-            { x = 704, y = 256 }
-          },
-          properties = {}
-        },
-        {
-          name = "",
-          type = "",
+          type = "my_type_4",
           shape = "polygon",
           x = 2432,
           y = 4544,
@@ -2063,7 +2328,119 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 3264,
+          y = 3904,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = -320, y = 96 },
+            { x = 128, y = 352 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 3584,
+          y = 2816,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 256, y = 224 },
+            { x = -192, y = 256 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 1856,
+          y = 3712,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 320, y = -448 },
+            { x = 896, y = -416 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 2848,
+          y = 3552,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 608, y = 160 },
+            { x = -224, y = 256 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 1152,
+          y = 3520,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 544, y = -384 },
+            { x = 544, y = 32 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 320,
+          y = 4448,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 768, y = 0 },
+            { x = 704, y = 256 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 1152,
+          y = 3616,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 544, y = 288 },
+            { x = -128, y = 352 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
           shape = "polygon",
           x = 4352,
           y = 4608,
@@ -2079,17 +2456,65 @@ return {
         },
         {
           name = "",
-          type = "",
+          type = "my_type_4",
           shape = "polygon",
-          x = 4832,
-          y = 4128,
+          x = 1056,
+          y = 2880,
           width = 0,
           height = 0,
           visible = true,
           polygon = {
             { x = 0, y = 0 },
-            { x = 160, y = 480 },
-            { x = -256, y = 576 }
+            { x = 896, y = 32 },
+            { x = 576, y = 160 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 1280,
+          y = 4288,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 608, y = -64 },
+            { x = 640, y = 256 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 2240,
+          y = 3872,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 608, y = 288 },
+            { x = -160, y = 320 }
+          },
+          properties = {}
+        },
+        {
+          name = "",
+          type = "my_type_4",
+          shape = "polygon",
+          x = 416,
+          y = 3872,
+          width = 0,
+          height = 0,
+          visible = true,
+          polygon = {
+            { x = 0, y = 0 },
+            { x = 704, y = 224 },
+            { x = 128, y = 288 }
           },
           properties = {}
         }

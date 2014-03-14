@@ -3,11 +3,11 @@ loader_1.create_entities_from_map = function(filename)
 	local objects, types = tiled_map_loader.get_all_objects_by_type(filename)
 	local polygons, rectangles = {}, {}
 	
-	for k, v in ipairs(table.concatenate { 	objects["default_type"] }) do
+	for k, v in ipairs(table.concatenate { 	objects["default_type"], objects["my_type_1"], objects["my_type_2"], objects["my_type_3"], objects["my_type_4"]  }) do
 		local new_object_group = spawn_wayward (v.pos, tiled_map_loader.basic_entity_table(v, types[v], polygons, rectangles), 500)
 	end
 	
-	for k, v in ipairs(table.concatenate { objects["bg_object_3"] }) do
+	for k, v in ipairs(table.concatenate { objects["bg_object_3"], objects["bg_object_4"] }) do
 		local new_entity = create_entity (tiled_map_loader.basic_entity_table(v, types[v], polygons, rectangles))
 	end
 
@@ -67,6 +67,7 @@ loader_1.create_entities_from_map = function(filename)
 		player = spawn_player(objects["PLAYER_START"][1].pos)
 	end
 	
+	print (table.inspect(objects))
 	if objects["level_bounds"] ~= nil then
 		local bound = objects["level_bounds"][1]
 		get_self(player.body:get()).level_bound = rect_xywh(bound.pos.x, bound.pos.y, bound.width, bound.height) 

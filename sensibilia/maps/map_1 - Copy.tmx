@@ -6,75 +6,34 @@
   </data>
  </layer>
  <objectgroup name="main" width="170" height="170">
-  <object name="p1" type="my_type_2" x="576" y="2208">
-   <polygon points="0,0 192,-128 352,-64 416,64"/>
-  </object>
-  <object type="my_type_2" x="1696" y="1760">
-   <polygon points="0,0 448,96 320,224 0,192"/>
-  </object>
-  <object type="my_type_1" x="2464" y="3520">
-   <polygon points="0,0 256,-32 224,96 64,96"/>
-  </object>
-  <object x="1280" y="1792" width="96" height="32"/>
-  <object x="2592" y="864" width="128" height="64"/>
-  <object x="3744" y="2720" width="32" height="32"/>
-  <object x="4032" y="2528" width="32" height="64"/>
-  <object x="896" y="1856" width="192" height="64"/>
-  <object name="p2" type="my_type_1" x="3072" y="3520">
-   <polygon points="0,0 -160,-160 416,-128 416,64"/>
-  </object>
-  <object x="3776" y="2592" width="64" height="32"/>
-  <object x="4128" y="2688" width="64" height="64"/>
-  <object x="1664" y="1312">
-   <polygon points="0,0 -352,0 160,192"/>
-  </object>
-  <object x="1216" y="1440" width="192" height="96"/>
-  <object x="1472" y="1664" width="96" height="32"/>
-  <object x="1088" y="1696" width="64" height="32"/>
-  <object type="my_type_1" x="4896" y="3936">
-   <polygon points="0,0 -992,-128 -960,128 64,160"/>
-  </object>
-  <object type="PLAYER_START" x="4640" y="3264"/>
-  <object x="2048" y="1440" width="896" height="96"/>
-  <object x="2848" y="1056" width="96" height="384"/>
-  <object x="2112" y="608" width="1440" height="96"/>
-  <object type="my_type_2" x="3328" y="928" width="96" height="1152"/>
-  <object x="2336" y="1728" width="928" height="96"/>
-  <object x="2336" y="2080" width="1088" height="96"/>
-  <object type="my_type_1" x="3680" y="288" width="96" height="1472"/>
-  <object x="2848" y="288" width="64" height="224"/>
-  <object type="my_type_2" x="1856" y="96" width="96" height="1536"/>
-  <object type="my_type_1" x="3968" y="448" width="96" height="1408"/>
-  <object x="2240" y="2368" width="2080" height="96"/>
-  <object x="3680" y="2080" width="704" height="96"/>
-  <object x="1216" y="2080" width="960" height="96"/>
-  <object x="2304" y="1088">
-   <polygon points="0,0 384,224 128,256"/>
-  </object>
-  <object x="3104" y="1632">
-   <polygon points="0,0 128,-96 128,0"/>
-  </object>
-  <object x="3008" y="1312">
-   <polygon points="0,0 0,128 96,128"/>
-  </object>
-  <object x="1920" y="2240">
-   <polygon points="0,0 224,256 -192,224"/>
-  </object>
-  <object type="my_type_2" x="1344" y="2688">
-   <polygon points="0,0 2272,96 2112,288 -224,288"/>
-  </object>
-  <object type="my_type_1" x="4352" y="1664">
-   <polygon points="0,0 -160,288 192,288 192,-256 32,-288"/>
-  </object>
-  <object x="4416" y="3008" width="64" height="320"/>
-  <object x="4416" y="2848" width="448" height="96"/>
-  <object x="4768" y="3040" width="96" height="800"/>
-  <object type="my_type_1" x="2240" y="3392">
-   <polygon points="0,0 -704,160 -384,352 -32,352"/>
-  </object>
-  <object type="my_type_1" x="1088" y="3904">
-   <polygon points="0,0 -928,-2400 -768,224"/>
-  </object>
+  <object type="my_type_2" x="672" y="672" width="224" height="1088"/>
+  <object type="my_type_2" x="672" y="1760" width="800" height="128"/>
+  <object type="my_type_2" x="1248" y="704" width="160" height="1056"/>
+  <object type="my_type_2" x="1440" y="736" width="512" height="96"/>
+  <object type="my_type_2" x="1824" y="864" width="96" height="1120"/>
+  <object type="my_type_2" x="1856" y="2016" width="1216" height="128"/>
+  <object type="my_type_2" x="2528" y="736" width="128" height="1024"/>
+  <object type="my_type_2" x="2528" y="1824" width="96" height="192"/>
+  <object type="my_type_2" x="2496" y="288" width="1440" height="128"/>
+  <object type="my_type_2" x="2304" y="-256" width="1760" height="128"/>
+  <object type="my_type_2" x="4544" y="-256" width="160" height="1824"/>
+  <object type="my_type_2" x="4160" y="320" width="128" height="1312"/>
+  <object type="my_type_2" x="3680" y="512" width="224" height="1344"/>
+  <object type="my_type_2" x="3648" y="2080" width="1248" height="192"/>
+  <object type="my_type_2" x="5056" y="576" width="160" height="1664"/>
+  <object type="my_type_2" x="2080" y="2432" width="1984" height="192"/>
+  <object type="my_type_2" x="832" y="2272" width="192" height="1056"/>
+  <object type="my_type_2" x="1408" y="2528" width="160" height="1600"/>
+  <object type="my_type_2" x="416" y="3648" width="704" height="160"/>
+  <object type="my_type_2" x="2272" y="2976" width="2784" height="160"/>
+  <object type="my_type_2" x="4768" y="3616" width="224" height="1504"/>
+  <object type="my_type_2" x="4544" y="2528" width="128" height="448"/>
+  <object type="my_type_2" x="3296" y="3136" width="160" height="1312"/>
+  <object type="my_type_2" x="1696" y="4576" width="3072" height="224"/>
+  <object type="my_type_2" x="3584" y="3360" width="1600" height="256"/>
+  <object type="my_type_2" x="448" y="4512" width="1248" height="160"/>
+  <object type="my_type_2" x="2080" y="3424" width="192" height="1152"/>
+  <object type="my_type_2" x="736" y="512" width="672" height="128"/>
  </objectgroup>
  <objectgroup name="Background" width="170" height="170">
   <properties>
@@ -307,14 +266,56 @@
   </object>
  </objectgroup>
  <objectgroup name="enemies" width="170" height="170">
-  <object type="SHOOTER_START" x="1760" y="1280"/>
-  <object type="SHOOTER_START" x="2176" y="416"/>
-  <object type="SHOOTER_START" x="2905" y="916"/>
-  <object type="PUSHER_START" x="2676" y="1608" width="60" height="67"/>
+  <object type="SHOOTER_START" x="5120" y="4032" width="96" height="96"/>
+  <object type="SHOOTER_START" x="4064" y="4128" width="128" height="96"/>
+  <object type="SHOOTER_START" x="4096" y="1856" width="64" height="96"/>
+  <object type="PUSHER_START" x="3296" y="2240" width="60" height="67"/>
   <object type="PUSHER_START" x="2214" y="847" width="60" height="67"/>
-  <object type="PUSHER_START" x="3810" y="711" width="60" height="67"/>
+  <object type="PUSHER_START" x="4864" y="2496" width="60" height="67"/>
+  <object type="SHOOTER_START" x="4096" y="4160"/>
+  <object type="SHOOTER_START" x="4128" y="4272" width="128" height="96"/>
+  <object type="SHOOTER_START" x="2624" y="4016" width="128" height="96"/>
+  <object type="PLAYER_START" x="1056" y="1632" width="96" height="96"/>
  </objectgroup>
  <objectgroup name="Object Layer 5" width="170" height="170">
   <object type="level_bounds" x="-2432" y="-2208" width="10656" height="10272"/>
+ </objectgroup>
+ <objectgroup name="Object Layer 6" width="170" height="170">
+  <object type="my_type_1" x="3264" y="1024">
+   <polygon points="0,0 -384,224 -96,224"/>
+  </object>
+  <object type="my_type_1" x="3488" y="768">
+   <polygon points="0,0 -352,-160 -96,-320"/>
+  </object>
+  <object type="my_type_1" x="3328" y="1984">
+   <polygon points="0,0 160,192 -64,192"/>
+  </object>
+  <object type="my_type_1" x="4384" y="2624">
+   <polygon points="0,0 -256,128 -32,160"/>
+  </object>
+  <object type="my_type_1" x="2784" y="2720">
+   <polygon points="0,0 160,160 -32,160"/>
+  </object>
+  <object type="my_type_1" x="3968" y="3840">
+   <polygon points="0,0 128,64 -64,192"/>
+  </object>
+  <object type="my_type_1" x="2624" y="4032">
+   <polygon points="0,0 224,192 -32,224"/>
+  </object>
+  <object type="my_type_1" x="4512" y="3744">
+   <polygon points="0,0 128,32 96,288 -128,416 -288,224 -192,64"/>
+  </object>
+  <object type="my_type_1" x="2240" y="1120">
+   <polygon points="0,0 -160,128 -32,384 -128,608 64,704 256,640 224,448 96,480 192,-128"/>
+  </object>
+  <object type="my_type_1" x="576" y="2368">
+   <polygon points="0,0 -224,-32 -320,256 64,384 256,-192"/>
+  </object>
+  <object type="my_type_1" x="800" y="4352">
+   <polygon points="0,0 -384,-256 -416,-192 -512,64 -672,256"/>
+  </object>
+  <object type="my_type_1" x="928" y="4896">
+   <polygon points="0,0 384,224 832,256 480,0"/>
+  </object>
  </objectgroup>
 </map>

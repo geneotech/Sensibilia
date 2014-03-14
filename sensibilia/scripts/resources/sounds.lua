@@ -27,6 +27,8 @@ end
 
 menu_music = create_music "menu.ogg"
 level_music = create_music "pulsating.ogg"
+level2_music = create_music "drone2.ogg"
+level3_music = create_music "drone3.ogg"
 clock_music = create_music "clock.wav"
 button_clicked_snd = create_sound "select.ogg"
 
