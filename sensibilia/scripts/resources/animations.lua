@@ -1,5 +1,5 @@
 duration_multiplier = 0.7
-npc_size_multiplier = vec2(0.6, 0.6)
+npc_size_multiplier = vec2(1, 1)
 
 player_animations = {}
 

@@ -144,7 +144,7 @@ void main()
 	outputColor.a = 1 - player_intensity * enemy_intensity;
 	
 	//{
-	//	vec2 res = vec2(1920, 1080);
+	//	vec2 res = vec2(]] .. config_table.resolution_w .. [[,]] .. config_table.resolution_h .. [[);
 	//	
 	//	vec2 r_fcoord = rotate(gl_FragCoord.xy, player_pos, radtodeg(rotation) + 90.0);
 	//	vec2 ppos = player_pos/res;

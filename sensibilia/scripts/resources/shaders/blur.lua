@@ -4,7 +4,7 @@ hblur_vertex_shader = GLSL_shader(GL.GL_VERTEX_SHADER, [[
 layout(location = 0) in vec2 position;
 
 out vec2 theTexcoord;
-smooth out vec2 blur_coords[14];
+out vec2 blur_coords[14];
 
 uniform float offset_multiplier;
 
@@ -42,7 +42,7 @@ vblur_vertex_shader = GLSL_shader(GL.GL_VERTEX_SHADER, [[
 layout(location = 0) in vec2 position;
 
 out vec2 theTexcoord;
-smooth out vec2 blur_coords[14];
+out vec2 blur_coords[14];
 
 uniform float offset_multiplier;
 
