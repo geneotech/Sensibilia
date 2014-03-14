@@ -2,7 +2,11 @@ global_level_table = {
 	{
 		caption = "prelude",
 		title = "homecoming",
-		filename = "sensibilia\\levels\\level_1.lua"
+		filename = "sensibilia\\levels\\level_1.lua",
+		quote =  {
+			"Whatever I have accepted until now as most true has come to me through my senses.",
+			"But occasionally I have found that they have deceived me, and it is unwise to trust completely those who have deceived us even once."
+			}
 	},
 	
 	{

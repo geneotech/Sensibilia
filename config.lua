@@ -1,4 +1,6 @@
 config_table = {
+	godmode = 0,
+	
 	window_name = "example",
 	fullscreen = 1,
 	window_border = 0,
@@ -8,6 +10,7 @@ config_table = {
 	resolution_w = 1300,
 	resolution_h = 1000,
 	doublebuffer = 1,
+	
 	
 	sensitivity = vec2(2.5, 2.5)
 }

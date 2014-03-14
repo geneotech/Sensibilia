@@ -398,8 +398,8 @@ return {
           name = "",
           type = "",
           shape = "polygon",
-          x = 4592,
-          y = 3672,
+          x = 4896,
+          y = 3936,
           width = 0,
           height = 0,
           visible = true,
@@ -1136,13 +1136,145 @@ return {
           height = 736,
           visible = true,
           properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 5024,
+          y = 1696,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 5016,
+          y = 3168,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 5024,
+          y = 224,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 5024,
+          y = 960,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 5024,
+          y = 2432,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = 5024,
+          y = 3904,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = -568,
+          y = 224,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = -576,
+          y = 3168,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = -568,
+          y = 960,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = -568,
+          y = 2432,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = -568,
+          y = 3904,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
+        },
+        {
+          name = "",
+          type = "bg_object_3",
+          shape = "rectangle",
+          x = -568,
+          y = 1696,
+          width = 800,
+          height = 736,
+          visible = true,
+          properties = {}
         }
       }
     },
     {
       type = "objectgroup",
       name = "clocks",
-      visible = true,
+      visible = false,
       opacity = 1,
       properties = {},
       objects = {
@@ -1526,7 +1658,7 @@ return {
     {
       type = "objectgroup",
       name = "enemies",
-      visible = true,
+      visible = false,
       opacity = 1,
       properties = {},
       objects = {
@@ -1601,7 +1733,7 @@ return {
     {
       type = "objectgroup",
       name = "Object Layer 5",
-      visible = true,
+      visible = false,
       opacity = 1,
       properties = {},
       objects = {
@@ -1609,7 +1741,7 @@ return {
           name = "",
           type = "level_bounds",
           shape = "rectangle",
-          x = -2464,
+          x = -2432,
           y = -2208,
           width = 10656,
           height = 10272,

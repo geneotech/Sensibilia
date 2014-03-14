@@ -23,8 +23,8 @@ menu.pause_screen.buttons = {
 	callbacks = {
 		mouseclick = function() 
 			call_once_after_loop = function()
-				bigger_expand(700)
-				menu.crosshair_group.crosshair.transform.current.pos.y = menu.crosshair_group.crosshair.transform.current.pos.y - 700
+				bigger_expand(850)
+				menu.crosshair_group.crosshair.transform.current.pos.y = menu.crosshair_group.crosshair.transform.current.pos.y - 1600
 				menu.current_screen = menu.help_screen
 			end
 		end

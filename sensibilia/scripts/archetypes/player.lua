@@ -342,8 +342,12 @@ function player_class:loop()
 		instability = 1
 	end
 
-	if instability > 0.99 then
+	if config_table.godmode == 0 and instability > 0.99 then
 		self.current_procedure = self.game_over_procedure
+	end
+	
+	if config_table.godmode ~= 0 and instability > 0.99 then
+		instability = 0.99
 	end
 	
 	if character_module.sum_of_all_healths() <= 0.1 then

@@ -30,8 +30,8 @@ menu.main_menu.buttons = {
 	make_button(( { text_pos = vec2(0, -130-config_table.resolution_h/2+430+150*3), 
 		callbacks = {
 			mouseclick = function()
-				bigger_expand(700)
-				menu.crosshair_group.crosshair.transform.current.pos.y = menu.crosshair_group.crosshair.transform.current.pos.y - 1200
+				bigger_expand(850)
+				menu.crosshair_group.crosshair.transform.current.pos.y = menu.crosshair_group.crosshair.transform.current.pos.y - 1600
 				menu.current_screen = menu.help_screen
 			end
 		},
