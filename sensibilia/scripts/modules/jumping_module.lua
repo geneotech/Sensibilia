@@ -80,7 +80,7 @@ function jumping_module:handle_jumping()
 	-- perform jumping 
 	if self.wants_to_jump and self.jump_timer:get_steps() > 7 then
 		if self.something_under_foot then
-			local jump_impulse = self.jump_impulse:rotate(gravity_angle_offset, vec2(0, 0)) * self.jump_force_multiplier * body:GetMass()
+			local jump_impulse = vec2(self.jump_impulse):rotate(gravity_angle_offset, vec2(0, 0)) * self.jump_force_multiplier * body:GetMass()
 			
 			body:SetGravityScale(1.0)
 			self.entity.movement.thrust_parallel_to_ground_length = 0
@@ -102,7 +102,7 @@ function jumping_module:handle_variable_height_jump()
 	self.is_currently_post_jetpacking = false
 	if self.still_holding_jetpack then
 		local jetpack_steps = self.jetpack_timer:get_steps()
-		local jetpack_force = self.jetpack_impulse:rotate(gravity_angle_offset, vec2(0, 0)) * self.jump_force_multiplier  * body:GetMass()
+		local jetpack_force = vec2(self.jetpack_impulse):rotate(gravity_angle_offset, vec2(0, 0)) * self.jump_force_multiplier  * body:GetMass()
 			
 		if jetpack_steps < self.max_jetpack_steps then
 		--	print(self.still_holding_jetpack, self.jetpack_timer:get_steps(), self.max_jetpack_steps)
