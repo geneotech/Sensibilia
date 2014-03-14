@@ -446,12 +446,12 @@ function player_class:loop()
 		
 		
 		local vel = self.parent_group.body:get().physics.body:GetLinearVelocity()
-		vel = vec2(vel.x, vel.y) * 50
+		vel = vec2(vel.x, vel.y):rotate(-gravity_angle_offset, vec2(0, 0)) * 50
 		
 		local is_in_movement = math.abs(vel.x) > 15
 		
 		if self:is_shooting() or not is_in_movement then 
-			should_flip = (player_body.transform.current.pos.x - crosshair.transform.current.pos.x) > 0
+			should_flip = (player_body.transform.current.pos - crosshair.transform.current.pos):rotate(-gravity_angle_offset, vec2(0, 0)).x > 0
 		else
 			should_flip = vel.x < 0
 		end
