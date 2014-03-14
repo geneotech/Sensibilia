@@ -30,7 +30,7 @@ end
 	
 table.insert(menu.load_chapter_screen.buttons,
 
-make_button(( { text_pos = vec2(0, -330-config_table.resolution_h/2+430+120*9), 
+make_button(( { text_pos = vec2(0, -330-config_table.resolution_h/2+430+120*11), 
 
 callbacks = {
 	mouseclick = function() 

@@ -25,6 +25,12 @@ global_level_table = {
 		caption = "interval third",
 		title = "addiction",
 		filename = "sensibilia\\levels\\level_4.lua"
+	},	
+	
+	{
+		caption = "epilogue",
+		title = "the awakening",
+		filename = "sensibilia\\levels\\level_5.lua"
 	}
 }
 
