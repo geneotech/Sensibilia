@@ -64,7 +64,7 @@ function character_module:damage_message(message)
 		for i=1, #global_entity_table do
 			if global_entity_table[i].character ~= nil and global_entity_table[i].character == self then
 				table.remove(global_entity_table, i)
-				print "removing"
+				--print "removing"
 				break
 			end
 		end

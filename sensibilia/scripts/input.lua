@@ -140,9 +140,9 @@ function main_input_routine(message)
 				unpause_world()
 			end
 
-		elseif message.intent == custom_intents.RESTART then
-				should_world_be_reloaded = true
-				print "reloading world"
+		--elseif message.intent == custom_intents.RESTART then
+		--		should_world_be_reloaded = true
+		--		print "reloading world"
 	
 		elseif message.intent == custom_intents.INSTANT_SLOWDOWN then
 			physics_system.timestep_multiplier = 0.00001

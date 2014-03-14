@@ -36,12 +36,6 @@ loader_1.create_entities_from_map = function(filename)
 		
 		local randomized_vals = randval(0, 1) > 0.2
 		if types[v].force_randomized == "1" then
-			print "forcing randomized"
-			print "forcing randomized"
-			print "forcing randomized"
-			print "forcing randomized"
-			print "forcing randomized"
-			print "forcing randomized"
 			randomized_vals = true
 		end
 		
@@ -67,7 +61,6 @@ loader_1.create_entities_from_map = function(filename)
 		player = spawn_player(objects["PLAYER_START"][1].pos)
 	end
 	
-	print (table.inspect(objects))
 	if objects["level_bounds"] ~= nil then
 		local bound = objects["level_bounds"][1]
 		get_self(player.body:get()).level_bound = rect_xywh(bound.pos.x, bound.pos.y, bound.width, bound.height) 

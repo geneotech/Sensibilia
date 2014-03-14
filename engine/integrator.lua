@@ -1,7 +1,7 @@
 should_debug_draw = false
 
 function pv(v)
-	print(v.x, v.y)
+	--print(v.x, v.y)
 end
 
 function debug_draw(p1, p2, r, g, b, a)

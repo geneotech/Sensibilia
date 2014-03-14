@@ -276,9 +276,14 @@ function rendering_routine(subject,
 			
 			local instability_ray_fx = function()
 				spatial_instability_program:use()
+				local used_offset = -gravity_angle_offset
 				
-				local screen_space_player = ((player_pos - camera_draw_input.camera_transform.pos):rotate(-gravity_angle_offset, vec2(0, 0)) + visible_area/2) / current_zoom_multiplier
-				local screen_space_crosshair = ((crosshair_pos - camera_draw_input.camera_transform.pos):rotate(-gravity_angle_offset, vec2(0, 0)) + visible_area/2)  / current_zoom_multiplier
+				if level_world.is_paused then 
+					used_offset = 0 
+				end
+				
+				local screen_space_player = ((player_pos - camera_draw_input.camera_transform.pos):rotate(used_offset, vec2(0, 0)) + visible_area/2) / current_zoom_multiplier
+				local screen_space_crosshair = ((crosshair_pos - camera_draw_input.camera_transform.pos):rotate(used_offset, vec2(0, 0)) + visible_area/2)  / current_zoom_multiplier
 				--:rotate(gravity_angle_offset, vec2(0, 0)) 
 				GL.glUniform1i(spatial_instability_time, sent_time)
 				GL.glUniform1f(spatial_instability_rotation, (crosshair_pos - player_pos):perpendicular_cw():get_radians() + 3.14159265)

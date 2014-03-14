@@ -241,17 +241,17 @@ function create_behaviour_tree(entries)
 		if v.decorator_chain ~= nil then
 			
 			out_my_nodes[k].decorator_chain = out_my_nodes[v.decorator_chain]
-			print(out_my_nodes[k].decorator_chain.maximum_running_time_ms)
+			--print(out_my_nodes[k].decorator_chain.maximum_running_time_ms)
 		end
 		
 		out_my_nodes[k].name = k
 	end
 	
 	for root, v in pairs(entries.connections) do
-		print("parent is: " .. root)
+		--print("parent is: " .. root)
 		for i=1, #v do
 			
-			print(i, v[i])
+			--print(i, v[i])
 			out_my_nodes[root]:add_child(out_my_nodes[v[i]])
 		end
 	end
@@ -266,7 +266,7 @@ function create_behaviour_tree(entries)
 end
 
 function create_gun(entries)
-	print("creating gun..")
+	--print("creating gun..")
 	local temp = create_entity { gun = entries }
 	local new_gun = gun_component(temp.gun)
 	

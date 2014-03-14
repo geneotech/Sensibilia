@@ -22,7 +22,7 @@ textures_by_name = {}
 
 -- concatenate essential textures with level textures
 local level_textures = tiled_map_loader.get_all_textures(MAP_FILENAME)
-print (table.inspect(level_textures))
+--print (table.inspect(level_textures))
 
 for filename, v in pairs(level_textures) do
 	textures_by_name[filename] = true
@@ -66,7 +66,7 @@ if GAMEPLAY_TEXTURES == nil then GAMEPLAY_TEXTURES = DEFAULT_GAMEPLAY_TEXTURES e
 images = GAMEPLAY_TEXTURES
 
 for k, filename in pairs(images) do
-	print (filename)
+	--print (filename)
 	textures_by_name[filename] = true
 end
 	

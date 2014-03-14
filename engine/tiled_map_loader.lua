@@ -61,7 +61,7 @@ tiled_map_loader = {
 						-- validation
 						if this_type_table.entity_archetype == nil then
 							--err("unspecified entity archetype for type " .. object.type)
-							print("unspecified entity archetype for type " .. object.type)
+							--print("unspecified entity archetype for type " .. object.type)
 							this_type_table.entity_archetype = {}
 						end
 					

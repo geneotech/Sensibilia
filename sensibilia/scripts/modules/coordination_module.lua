@@ -49,11 +49,11 @@ function coordination_module:constructor(subject_entity)
 	self.flying_state_changer = coroutine.create(
 		function() 
 			while true do
-				print "lecimy"
+				--print "lecimy"
 				self:set_movement_mode_flying(true)
 				local mov_speed_mult = get_self(self.entity).character.movement_speed_multiplier
 				coroutine.stepped_wait(randval(1000/mov_speed_mult, 3000/mov_speed_mult))
-				print "idziemy"
+				--print "idziemy"
 				self:set_movement_mode_flying(false)
 				coroutine.stepped_wait(randval(200, 1000))
 			end
