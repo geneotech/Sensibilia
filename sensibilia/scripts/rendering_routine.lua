@@ -87,7 +87,7 @@ end
 
 
 accumulated_camera_time = 0
-clock_hand_time = 0
+film_grain_time = 0
 
 refresh_coroutines()
 
@@ -103,7 +103,7 @@ function rendering_routine(subject,
 			
 			local extracted_ms = my_timer:extract_milliseconds()
 			
-			clock_hand_time = clock_hand_time + extracted_ms
+			film_grain_time = film_grain_time + extracted_ms
 			local sent_time = (accumulated_camera_time + (extracted_ms*time_speed_variation) * (1+instability*instability*instability*instability*2) * physics_system.timestep_multiplier) 
 			accumulated_camera_time = sent_time
 				
@@ -312,14 +312,14 @@ function rendering_routine(subject,
 				film_grain_program:use()
 				film_grain_variation_coroutine(1+ instability)
 				--film_grain_program:use()
-				GL.glUniform1i(time_uniform, clock_hand_time)
+				GL.glUniform1i(time_uniform, film_grain_time)
 				fullscreen_quad()
 				aberration_coroutine(instability)
 				
 			else
 				film_grain_program:use()
 				GL.glUniform1f(film_grain_intensity, 0.1)
-				GL.glUniform1i(time_uniform, clock_hand_time)
+				GL.glUniform1i(time_uniform, film_grain_time)
 				fullscreen_quad()
 				refresh_coroutines()
 			end
