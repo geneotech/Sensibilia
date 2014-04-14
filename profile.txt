@@ -3311,7 +3311,7 @@ Time spent in self per sample: 0.00000s/sample
 
 Child L:entries_from_archetypes@@engine\common.lua:122 sampled      4 times. Took 0.01s
 
-------------------- L:spawn_entity@@sensibilia\scripts\entity_class.lua:91 -------------------
+------------------- L:spawn_entity_group@@sensibilia\scripts\entity_class.lua:91 -------------------
 Sample count:            1
 Time spend total:       0.003s
 Time spent in children: 0.003s
@@ -3589,7 +3589,7 @@ Time spent in self:     0.000s
 Time spent per sample:  0.00300s/sample
 Time spent in self per sample: 0.00000s/sample
 
-Child L:spawn_entity@@sensibilia\scripts\entity_class.lua:91 sampled      1 times. Took 0.00s
+Child L:spawn_entity_group@@sensibilia\scripts\entity_class.lua:91 sampled      1 times. Took 0.00s
 
 ------------------- L:<function: 0x0a27aa68>@@engine\common.lua:253 -------------------
 Sample count:            1

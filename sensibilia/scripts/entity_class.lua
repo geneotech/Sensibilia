@@ -102,7 +102,7 @@ function process_all_entity_modules(module_name, method_name, ...)
 	end
 end
 
-function spawn_entity(group_table, what_class, ...)
+function spawn_entity_group(group_table, what_class, ...)
 	if what_class == nil then what_class = entity_class end
 	
 	group_table = archetyped( { body = { scriptable = { } } }, group_table )

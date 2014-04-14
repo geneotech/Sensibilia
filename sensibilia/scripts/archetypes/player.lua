@@ -488,7 +488,7 @@ function player_class:loop()
 end
 
 function spawn_player(position)
-	local new_group = spawn_entity(archetyped(player_group_archetype, { body = { transform = { pos = position } }}), player_class)
+	local new_group = spawn_entity_group(archetyped(player_group_archetype, { body = { transform = { pos = position } }}), player_class)
 	local this = get_self(new_group.body:get())
 	
 	this.jumping = jumping_module:create(new_group.body:get())

@@ -1,8 +1,4 @@
-
-
-
 EFFECTS_DIRECTORY = "sensibilia\\scripts\\effects\\"
-
 
 dofile (EFFECTS_DIRECTORY .. "utility.lua")
 dofile (EFFECTS_DIRECTORY .. "blur.lua")
