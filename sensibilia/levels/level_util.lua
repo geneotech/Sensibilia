@@ -152,8 +152,6 @@ function load_level (filename, skip_intro)
 			return input_system.quit_flag
 		end
 	
-		
-		current_zoom_level = 1000
-		set_zoom_level(world_camera)
+		world_camera_self:set_zoom_level(1000)
 	end
 end

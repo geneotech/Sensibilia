@@ -89,15 +89,14 @@ function unpause_world()
 	menu.rendered_crosshair_entity = nil
 	
 	setup_camera(player)
-	set_zoom_level(world_camera)
-	
+	world_camera_self:set_zoom_level(world_camera_self:get_zoom_level())
 	
 	input_system:clear_contexts()
 	input_system:add_context(main_context)
 	
 	level_world.is_paused = false
-	current_zoom_level = 1000
-	set_zoom_level(world_camera)
+	
+	world_camera_self:set_zoom_level(1000)
 end
 
 function main_input_routine(message)
@@ -134,8 +133,7 @@ function main_input_routine(message)
 				end
 				
 				switch_to_gui(player.body:get().transform.current.pos)
-	current_zoom_level = 0
-	set_zoom_level(world_camera)
+				world_camera_self:set_zoom_level(0)
 			else
 				unpause_world()
 			end
