@@ -37,7 +37,7 @@ menu.pause_screen.buttons = {
 	callbacks = {
 		mouseclick = function() 
 			call_once_after_loop = function()
-				dofile "sensibilia\\scripts\\sensibilia_init.lua"
+				dofile "sensibilia\\scripts\\enter_menu_screen.lua"
 			end
 		end
 	},

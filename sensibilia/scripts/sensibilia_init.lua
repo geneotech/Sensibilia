@@ -1,38 +1,20 @@
-level_world = world_class:create()
-collectgarbage("collect")
+-- initialize game-related libraries
+dofile "sensibilia\\scripts\\resources\\sounds.lua"
 
-level_world.loop = function(self)
-	self:process_all_systems()
-	return input_system.quit_flag
-end
+dofile "sensibilia\\scripts\\level_loader.lua"
+dofile "sensibilia\\scripts\\animated_text.lua"
+dofile "sensibilia\\scripts\\text_button.lua"
 
-level_world:set_current()
-reload_default_level_resources("menu_map", "loader.lua", nil)
+SHADERS_DIRECTORY = "sensibilia\\scripts\\resources\\shaders\\"
 
-dofile "sensibilia\\levels\\level_util.lua"
-dofile "sensibilia\\scripts\\menu_screens\\screen_class.lua"
+dofile (SHADERS_DIRECTORY .. "fullscreen_vertex_shader.lua")
+
+dofile (SHADERS_DIRECTORY .. "scene_shader.lua")
+dofile (SHADERS_DIRECTORY .. "film_grain.lua")
+dofile (SHADERS_DIRECTORY .. "chromatic_aberration.lua")
+dofile (SHADERS_DIRECTORY .. "blur.lua")
+dofile (SHADERS_DIRECTORY .. "color_adjustment.lua")
+dofile (SHADERS_DIRECTORY .. "spatial_instability.lua")
 
 
-local menu = level_resources
-
-
-stop_all_music()
-menu_music:play()
-
-menu.current_screen = menu.main_menu
-
-menu.main_input_callback = function(message)
-	menu.current_screen:handle_events(message)
-	
-	if message.intent == custom_intents.QUIT then
-		input_system.quit_flag = 1
-		return false
-	end
-	
-	return true
-end
-
-menu.basic_geometry_callback = function(camera_draw_input)
-	menu.current_screen:draw(camera_draw_input)
-end
-
+dofile "sensibilia\\scripts\\enter_menu_screen.lua"

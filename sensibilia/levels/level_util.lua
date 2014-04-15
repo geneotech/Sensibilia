@@ -43,7 +43,7 @@ CREDITS_LEVEL = {
 
 function load_level (filename, skip_intro)
 	if filename == CREDITS_LEVEL.filename then
-		dofile "sensibilia\\scripts\\sensibilia_init.lua"
+		dofile "sensibilia\\scripts\\enter_menu_screen.lua"
 		bigger_expand(300)
 		level_resources.crosshair_group.crosshair.transform.current.pos.y = level_resources.crosshair_group.crosshair.transform.current.pos.y - 1000
 		level_resources.current_screen = level_resources.credits_screen
