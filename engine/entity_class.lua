@@ -27,6 +27,52 @@ function entity_system:flush_message_tables()
 	end
 end
 
+function entity_system:tick(is_substepping)
+	-- process entities
+	
+	local method_name = "loop"
+	
+	if is_substepping then
+		method_name = "substep"
+	end
+	
+	self:process_all_entities(
+	function(e)
+		e:try_module_method("character", method_name)
+		e:try_module_method("jumping", method_name)
+		e:try_module_method("coordination", method_name)
+		e:try_module_method("instability_ray", method_name)
+		e:try_module_method("clock_renderer", method_name)
+		e:try_module_method("waywardness", method_name)
+	end
+	)
+	
+	local name_map = {
+		[scriptable_component.DAMAGE_MESSAGE] = "damage_message",
+		[scriptable_component.INTENT_MESSAGE] = "intent_message"
+	}
+	
+	-- send all events to entities globally
+	for msg_key, msg_table in pairs(self.message_table) do
+		for k, msg in pairs(self.message_table[msg_key]) do
+			local entity_self = get_self(msg.subject)
+			
+			-- callback
+			local callback = entity_self[name_map[msg_key]]
+			
+			if callback ~= nil then
+				callback(entity_self, msg)
+			end
+			
+			-- by the way, send every single event to all interested modules of this entity respectively
+			entity_self:all_modules(name_map[msg_key], msg)
+		end
+	end
+	
+	-- messages processed, clear tables
+	self:flush_message_tables()
+end
+
 entity_class = inherits_from {}
 
 function entity_class:constructor(parent_entity)
@@ -110,7 +156,7 @@ function generate_entity_object(what_entity, what_class, ...)
 	if what_class == nil then what_class = entity_class end
 	
 	-- if scriptable component does not exist, add a new one
-	--if what_entity:get().scriptable == nil then what_entity:get():add(scriptable_component()) end
+	if what_entity:get().scriptable == nil then what_entity:get():add(scriptable_component()) end
 	--group_table = archetyped( { body = { scriptable = { } } }, group_table )
 	
 	--print (table.inspect(group_table))

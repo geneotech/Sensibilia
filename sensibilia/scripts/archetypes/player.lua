@@ -187,7 +187,7 @@ function player_class:constructor(parent_group)
 		self.intent_message = nil
 		local entity = self.parent_group.body:get()
 		
-		process_all_entity_modules("waywardness", "set_attractive_point", entity.transform.current.pos)
+		level_world.entity_system_instance:process_all_entity_modules("waywardness", "set_attractive_point", entity.transform.current.pos)
 		
 		coroutine.wait(randval(1000, 3000), function() 
 			instability = 3

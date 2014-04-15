@@ -79,53 +79,7 @@ function reload_default_level_resources(
 			[scriptable_component.LOOP] = function(subject, is_substepping)	
 				if not level_world.is_paused then
 					handle_dying_instability_rays()
-					-- process entities
-					
-					local method_name = "loop"
-					
-					if is_substepping then
-						method_name = "substep"
-					end
-					
-					local current_entity_system = level_world.entity_system_instance
-					
-					current_entity_system:process_all_entities(
-					function(e)
-						e:try_module_method("character", method_name)
-						e:try_module_method("jumping", method_name)
-						e:try_module_method("coordination", method_name)
-						e:try_module_method("instability_ray", method_name)
-						e:try_module_method("clock_renderer", method_name)
-						e:try_module_method("waywardness", method_name)
-					end
-					)
-					
-					local name_map = {
-						[scriptable_component.DAMAGE_MESSAGE] = "damage_message",
-						[scriptable_component.INTENT_MESSAGE] = "intent_message"
-					}
-					
-					-- send all events to entities globally
-					for msg_key, msg_table in pairs(global_message_table) do
-						for k, msg in pairs(global_message_table[msg_key]) do
-							local entity_self = get_self(msg.subject)
-							
-							-- callback
-							local callback = entity_self[name_map[msg_key]]
-							
-							if callback ~= nil then
-								callback(entity_self, msg)
-							end
-							
-							-- by the way, send every single event to all interested modules of this entity respectively
-							entity_self:all_modules(name_map[msg_key], msg)
-						end
-					end
-					
-					--player.gun_entity:get().gun.trigger_mode = gun_component.SHOOT
-					--physics_system.timestep_multiplier = 0.01
-					-- messages processed, clear tables
-					current_entity_system:flush_message_tables()
+					level_world.entity_system_instance:tick(is_substepping)
 				end
 			end
 		}
