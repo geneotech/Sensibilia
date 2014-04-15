@@ -1,4 +1,3 @@
-
 function random_polygon(color, scalar)
 	local current_angle = 0
 	local vertices = {}
@@ -21,15 +20,19 @@ function random_polygon(color, scalar)
 	return new_bullet_poly
 end
 
-random_player_bullet_models = {}
-random_enemy_bullet_models = {}
-
-for i=1, 1000 do
-	table.insert(random_player_bullet_models, random_polygon(rgba(0, 255, 0, 29), 1))
-end
-
-for i=1, 1000 do
-	table.insert(random_enemy_bullet_models, random_polygon(rgba(255, 0, 0, 29), 1))
+function initialize_random_bullet_models()
+	local random_player_bullet_models = {}
+	local random_enemy_bullet_models = {}
+	
+	for i=1, 1000 do
+		table.insert(random_player_bullet_models, random_polygon(rgba(0, 255, 0, 29), 1))
+	end
+	
+	for i=1, 1000 do
+		table.insert(random_enemy_bullet_models, random_polygon(rgba(255, 0, 0, 29), 1))
+	end
+	
+	return random_player_bullet_models, random_enemy_bullet_models
 end
 
 function instability_gun_bullet_callback(subject, new_bullet, bullet_models, wall_passed_filter)
@@ -56,39 +59,41 @@ function instability_gun_bullet_callback(subject, new_bullet, bullet_models, wal
 	end
 end
 
-instability_gun = {
-	bullet_callback = function(subject, new_bullet)
-		--instability_gun_bullet_callback(subject, new_bullet, your_table)
-	end,
-	
-	bullets_once = 20,
-	bullet_distance_offset = vec2(130, 0),
-	bullet_damage = minmax(0.1, 1),
-	bullet_speed = minmax(100, 6000),
-	bullet_render = { model = bullet_sprite, mask = render_masks.EFFECTS },
-	is_automatic = true,
-	max_rounds = 3000,
-	shooting_interval_ms = 50,
-	spread_degrees = 5.5,
-	shake_radius = 39.5,
-	shake_spread_degrees = 45,
-	
-	bullet_body = {
-		filter = filter_bullets,
-		shape_type = physics_info.RECT,
-		rect_size = vec2(60, 60),
-		fixed_rotation = false,
-		density = 0.1,
-		air_resistance = 0,
-		gravity_scale = 0,
-		linear_damping = 0,
-		angular_damping = 160,
-		restitution = 0,
-		friction = 100
-	},
-	
-	max_bullet_distance = 4000,
-	current_rounds = 3000,
-	
-	target_camera_to_shake = world_camera 
-}
+function get_instability_gun()
+	return {
+		bullet_callback = function(subject, new_bullet)
+			--instability_gun_bullet_callback(subject, new_bullet, your_table)
+		end,
+		
+		bullets_once = 20,
+		bullet_distance_offset = vec2(130, 0),
+		bullet_damage = minmax(0.1, 1),
+		bullet_speed = minmax(100, 6000),
+		bullet_render = { model = nil, mask = render_masks.EFFECTS },
+		is_automatic = true,
+		max_rounds = 3000,
+		shooting_interval_ms = 50,
+		spread_degrees = 5.5,
+		shake_radius = 39.5,
+		shake_spread_degrees = 45,
+		
+		bullet_body = {
+			filter = filter_bullets,
+			shape_type = physics_info.RECT,
+			rect_size = vec2(60, 60),
+			fixed_rotation = false,
+			density = 0.1,
+			air_resistance = 0,
+			gravity_scale = 0,
+			linear_damping = 0,
+			angular_damping = 160,
+			restitution = 0,
+			friction = 100
+		},
+		
+		max_bullet_distance = 4000,
+		current_rounds = 3000,
+		
+		target_camera_to_shake = world_camera 
+	}
+end

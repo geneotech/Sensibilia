@@ -77,7 +77,6 @@ main_input_component = {
 input_system:clear_contexts()
 input_system:add_context(main_context)
 
-bounce_number = 2
 
 function unpause_world()
 	local menu = level_resources
@@ -137,20 +136,9 @@ function main_input_routine(message)
 			else
 				unpause_world()
 			end
-
-		--elseif message.intent == custom_intents.RESTART then
-		--		should_world_be_reloaded = true
-		--		print "reloading world"
-	
+			
 		elseif message.intent == custom_intents.INSTANT_SLOWDOWN then
 			physics_system.timestep_multiplier = 0.00001
-	
-		--elseif message.intent == custom_intents.MY_INTENT then
-		--	if not message.state_flag then 
-		--		bounce_number = bounce_number + 1 
-		--		bounce_number = bounce_number - math.floor(bounce_number/3)*3
-		--		print(bounce_number)
-		--	end 
 		end
 	end
 end

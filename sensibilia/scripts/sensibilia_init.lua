@@ -17,4 +17,18 @@ dofile (SHADERS_DIRECTORY .. "color_adjustment.lua")
 dofile (SHADERS_DIRECTORY .. "spatial_instability.lua")
 
 
+dofile "sensibilia\\scripts\\resources\\layers.lua"
+
+dofile "sensibilia\\scripts\\instability_gun.lua"
+
+dofile "sensibilia\\scripts\\enemy_ai.lua"
+	
+dofile "sensibilia\\scripts\\modules\\clock_renderer_module.lua"
+dofile "sensibilia\\scripts\\modules\\character_module.lua"
+dofile "sensibilia\\scripts\\modules\\jumping_module.lua"
+dofile "sensibilia\\scripts\\modules\\coordination_module.lua"
+dofile "sensibilia\\scripts\\modules\\instability_ray_module.lua"
+dofile "sensibilia\\scripts\\modules\\waywardness_module.lua"
+
+	
 dofile "sensibilia\\scripts\\enter_menu_screen.lua"

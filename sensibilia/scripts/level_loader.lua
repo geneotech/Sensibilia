@@ -13,7 +13,6 @@ function reload_default_level_resources(
 	MAP_LOADER_FILENAME = "sensibilia\\maps\\" .. map_loader_filename
 	GAMEPLAY_TEXTURES = gameplay_textures
 	
-	dofile "sensibilia\\scripts\\resources\\layers.lua"
 	
 	if prev_filename == nil or MAP_FILENAME ~= prev_filename then
 		dofile "sensibilia\\scripts\\resources\\textures.lua"
@@ -42,22 +41,16 @@ function reload_default_level_resources(
 	
 	world_camera_self:set_zoom_level(0)
 	
-	dofile "sensibilia\\scripts\\instability_gun.lua"
+	random_player_bullet_models, random_enemy_bullet_models = initialize_random_bullet_models()
+	instability_gun = get_instability_gun()
 	
-	dofile "sensibilia\\scripts\\enemy_ai.lua"
-	
-	dofile "sensibilia\\scripts\\modules\\clock_renderer_module.lua"
-	dofile "sensibilia\\scripts\\modules\\character_module.lua"
-	dofile "sensibilia\\scripts\\modules\\jumping_module.lua"
-	dofile "sensibilia\\scripts\\modules\\coordination_module.lua"
-	dofile "sensibilia\\scripts\\modules\\instability_ray_module.lua"
-	dofile "sensibilia\\scripts\\modules\\waywardness_module.lua"
 	
 	dofile "sensibilia\\scripts\\archetypes\\clock_renderer.lua"
 	dofile "sensibilia\\scripts\\archetypes\\pusher_enemy.lua"
 	dofile "sensibilia\\scripts\\archetypes\\shooter_enemy.lua"
 	dofile "sensibilia\\scripts\\archetypes\\player.lua"
 	dofile "sensibilia\\scripts\\archetypes\\wayward_object.lua"
+
 	
 	tiled_map_loader.world_camera_entity = world_camera
 	dofile (MAP_LOADER_FILENAME)

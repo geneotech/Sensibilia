@@ -89,6 +89,7 @@ refresh_coroutines()
 
 player_light_fader = polygon_fader()
 player_light_fader.max_traces = -1
+bounce_number = 2
 
 function rendering_routine(subject, 
 			--visible_area, drawn_transform, 
