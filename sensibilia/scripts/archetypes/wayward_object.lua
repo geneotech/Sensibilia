@@ -1,10 +1,14 @@
-wayward_archetype = {}
+wayward_archetype = {
+	body = {
+		scriptable = {}
+	}	
+}
 
 function spawn_wayward(position, body_override, ...)
 	local final_group = archetyped(wayward_archetype, { body = body_override })
 	
-	local new_group = spawn_entity_group(final_group)
-	local this = get_self(new_group.body:get())
+	local new_group = ptr_create_entity_group(final_group)
+	local this = generate_entity_object(new_group.body)
 	
 	new_group.body:get().transform.pos = position
 	

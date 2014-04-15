@@ -39,12 +39,8 @@ function reload_default_level_resources(
 	
 	world_information = tiled_map_loader.load_world_properties (MAP_FILENAME)
 	dofile "sensibilia\\scripts\\camera.lua"
-	current_zoom_level = 0
-	current_zoom_level = 0
-	set_zoom_level(world_camera)
 	
-	
-	dofile "sensibilia\\scripts\\entity_class.lua"
+	world_camera_self:set_zoom_level(0)
 	
 	dofile "sensibilia\\scripts\\instability_gun.lua"
 	
@@ -91,7 +87,9 @@ function reload_default_level_resources(
 						method_name = "substep"
 					end
 					
-					process_all_entities(
+					local current_entity_system = level_world.entity_system_instance
+					
+					current_entity_system:process_all_entities(
 					function(e)
 						e:try_module_method("character", method_name)
 						e:try_module_method("jumping", method_name)
@@ -127,7 +125,7 @@ function reload_default_level_resources(
 					--player.gun_entity:get().gun.trigger_mode = gun_component.SHOOT
 					--physics_system.timestep_multiplier = 0.01
 					-- messages processed, clear tables
-					flush_message_tables()
+					current_entity_system:flush_message_tables()
 				end
 			end
 		}

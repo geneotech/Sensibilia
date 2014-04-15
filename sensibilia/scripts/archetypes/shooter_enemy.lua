@@ -48,9 +48,9 @@ shooter_archetype = archetyped(pusher_archetype, {
 })
 
 function spawn_shooter(position)
-	local new_group = spawn_entity_group(archetyped(shooter_archetype, { body = { transform = { pos = position } } } ))
+	local new_group = ptr_create_entity_group(archetyped(shooter_archetype, { body = { transform = { pos = position } } } ))
 	local gun_entity = new_group.gun_entity:get()
-	local this = get_self(new_group.body:get())
+	local this = generate_entity_object(new_group.body)
 	
 	this.all_player_bullets = entity_ptr_vector()
 	this.character = character_module:create(new_group.body:get(), 4000)

@@ -77,8 +77,8 @@ pusher_archetype = archetyped(character_group_archetype, {
 })
 
 function spawn_pusher(position)
-	local new_group = spawn_entity_group(archetyped(pusher_archetype, { body = { transform = { pos = position } }}))
-	local this = get_self(new_group.body:get())
+	local new_group = ptr_create_entity_group(archetyped(pusher_archetype, { body = { transform = { pos = position } }}))
+	local this = generate_entity_object(new_group.body)
 	
 	this.character = character_module:create(new_group.body:get(), 4000)
 	this.jumping = jumping_module:create(new_group.body:get())

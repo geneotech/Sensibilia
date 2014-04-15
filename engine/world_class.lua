@@ -3,6 +3,9 @@ current_world = nil
 
 function world_class:constructor()
 	self.world_inst = world_instance()
+	
+	self.entity_system_instance = entity_system:create()
+	
 	-- shortcuts
 	self.globals = {
 		world = self.world_inst.world,
@@ -14,10 +17,14 @@ function world_class:constructor()
 		physics_system = self.world_inst.physics_system,
 	
 		-- internals
-		group_by_entity = {},
+		group_by_entity = {},	
 		polygon_particle_userdatas_saved = {}	
 	}
 	
+	-- convenience shortcuts for entity system
+	self.globals.global_entity_table = self.entity_system_instance.entity_table
+	self.globals.global_message_table = self.entity_system_instance.message_table
+		
 	self.is_paused = false
 end
 

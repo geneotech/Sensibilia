@@ -1,7 +1,37 @@
+entity_system = inherits_from {}
+
+function entity_system:constructor()
+	self.entity_table = {}
+	self.scriptables_table = {}
+	self.message_table = {}
+	
+	self.message_table[scriptable_component.DAMAGE_MESSAGE] = {}
+	self.message_table[scriptable_component.INTENT_MESSAGE] = {}
+end
+
+function entity_system:process_all_entities(callback)
+	for i=1, #self.entity_table do
+		callback(self.entity_table[i])
+	end
+end
+
+function entity_system:process_all_entity_modules(module_name, method_name, ...)
+	for i=1, #self.entity_table do
+		self.entity_table[i]:try_module_method(module_name, method_name, ...)
+	end
+end
+
+function entity_system:flush_message_tables()
+	for k, v in pairs(self.message_table) do
+		self.message_table[k] = {}
+	end
+end
+
 entity_class = inherits_from {}
 
-function entity_class:constructor(parent_group)
-	self.parent_group = parent_group
+function entity_class:constructor(parent_entity)
+	self.parent_entity = parent_entity
+	self.parent_group = get_group_by_entity(parent_entity:get())
 end
 
 function get_self(entity)
@@ -51,19 +81,6 @@ function entity_class:try_module_method(module_name, method_name, ...)
 	end
 end
 
-global_entity_table = {}
-global_scriptables_table = {}
-global_message_table = {}
-
-global_message_table[scriptable_component.DAMAGE_MESSAGE] = {}
-global_message_table[scriptable_component.INTENT_MESSAGE] = {}
-
-function flush_message_tables()
-	for k, v in pairs(global_message_table) do
-		global_message_table[k] = {}
-	end
-end
-
 entity_basic_scriptable_info = create_scriptable_info {
 	scripted_events = {
 		[scriptable_component.LOOP] = function (subject, is_substepping)
@@ -89,37 +106,25 @@ entity_basic_scriptable_info = create_scriptable_info {
 	}
 }
 
-
-function process_all_entities(callback)
-	for i=1, #global_entity_table do
-		callback(global_entity_table[i])
-	end
-end
-
-function process_all_entity_modules(module_name, method_name, ...)
-	for i=1, #global_entity_table do
-		global_entity_table[i]:try_module_method(module_name, method_name, ...)
-	end
-end
-
-function spawn_entity_group(group_table, what_class, ...)
+function generate_entity_object(what_entity, what_class, ...)
 	if what_class == nil then what_class = entity_class end
 	
-	group_table = archetyped( { body = { scriptable = { } } }, group_table )
+	-- if scriptable component does not exist, add a new one
+	--if what_entity:get().scriptable == nil then what_entity:get():add(scriptable_component()) end
+	--group_table = archetyped( { body = { scriptable = { } } }, group_table )
 	
 	--print (table.inspect(group_table))
-	
-	local my_new_entity_group = ptr_create_entity_group (group_table)
-	local new_entity_script_data = what_class:create(my_new_entity_group, ...)
+	--local my_new_entity_group = ptr_create_entity_group (group_table)
+	local new_entity_script_data = what_class:create(what_entity, ...)
 	-- there is no need to override the basic scriptable info as it provides entities with all needed functionality
 	-- and in fact should not be modified
 	--local new_scriptable_info = create_scriptable_info (scriptable_table)
 	
-	my_new_entity_group.body:get().scriptable.script_data = new_entity_script_data
-	my_new_entity_group.body:get().scriptable.available_scripts = entity_basic_scriptable_info
+	
+	what_entity:get().scriptable.script_data = new_entity_script_data
+	what_entity:get().scriptable.available_scripts = entity_basic_scriptable_info
 	
 	table.insert(global_entity_table, new_entity_script_data)
-	--table.insert(global_scriptables_table, new_scriptable_info)
-	
-	return my_new_entity_group
+
+	return new_entity_script_data
 end

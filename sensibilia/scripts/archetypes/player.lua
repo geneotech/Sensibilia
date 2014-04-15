@@ -334,7 +334,7 @@ function player_class:substep()
 		instability = 0 
 	end
 	
-	process_all_entity_modules("waywardness", "return_to_initial_transform", should_return)
+	level_world.entity_system_instance:process_all_entity_modules("waywardness", "return_to_initial_transform", should_return)
 end
 
 function player_class:loop()
@@ -374,7 +374,7 @@ function player_class:loop()
 		current_gravity = vec2(base_gravity):rotate(gravity_angle_offset, vec2(0, 0))
 		
 		for i=1, #global_entity_table do
-			local maybe_movement = global_entity_table[i].parent_group.body:get().movement
+			local maybe_movement = global_entity_table[i].parent_entity:get().movement
 			
 			if maybe_movement ~= nil then
 				maybe_movement.axis_rotation_degrees = gravity_angle_offset
@@ -488,8 +488,8 @@ function player_class:loop()
 end
 
 function spawn_player(position)
-	local new_group = spawn_entity_group(archetyped(player_group_archetype, { body = { transform = { pos = position } }}), player_class)
-	local this = get_self(new_group.body:get())
+	local new_group = ptr_create_entity_group(archetyped(player_group_archetype, { body = { transform = { pos = position } }}))
+	local this = generate_entity_object(new_group.body, player_class)
 	
 	this.jumping = jumping_module:create(new_group.body:get())
 	this.jumping:set_foot_sensor_from_sprite(player_sprite, 3, 1)

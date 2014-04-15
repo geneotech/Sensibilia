@@ -189,7 +189,7 @@ function ptr_create_entity(entry)
 	local result = create_entity(entry)
 	local my_new_ptr = entity_ptr()
 	my_new_ptr:set(result)
-	return result
+	return my_new_ptr
 end
 
 function ptr_create_entity_group(entries)
