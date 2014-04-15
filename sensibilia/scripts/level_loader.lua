@@ -79,7 +79,14 @@ function reload_default_level_resources(
 			[scriptable_component.LOOP] = function(subject, is_substepping)	
 				if not level_world.is_paused then
 					handle_dying_instability_rays()
-					level_world.entity_system_instance:tick(is_substepping)
+					level_world.entity_system_instance:tick(is_substepping, {
+						"character",
+						"jumping",
+						"coordination",
+						"instability_ray",
+						"clock_renderer",
+						"waywardness"
+					})
 				end
 			end
 		}

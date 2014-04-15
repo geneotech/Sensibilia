@@ -17,6 +17,7 @@ dofile (ENGINE_DIRECTORY .. "entity_creation_util.lua" )
 dofile (ENGINE_DIRECTORY .. "resource_creation_util.lua")
 
 dofile (ENGINE_DIRECTORY .. "entity_class.lua")
+dofile (ENGINE_DIRECTORY .. "entity_system.lua")
 dofile (ENGINE_DIRECTORY .. "world_class.lua")
 
 dofile (ENGINE_DIRECTORY .. "tiled_map_loader.lua")
