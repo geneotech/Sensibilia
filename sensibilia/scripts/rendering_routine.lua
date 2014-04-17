@@ -1,10 +1,4 @@
-EFFECTS_DIRECTORY = "sensibilia\\scripts\\effects\\"
 
-dofile (EFFECTS_DIRECTORY .. "utility.lua")
-dofile (EFFECTS_DIRECTORY .. "blur.lua")
-dofile (EFFECTS_DIRECTORY .. "chromatic_aberration.lua")
-dofile (EFFECTS_DIRECTORY .. "film_grain_variation.lua")
-dofile (EFFECTS_DIRECTORY .. "vertex_shift.lua")
 
 function refresh_coroutines()
 	hblur_coroutine = coroutine.wrap(hblur_instability_effect)
