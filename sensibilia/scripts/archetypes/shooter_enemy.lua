@@ -78,7 +78,7 @@ function spawn_shooter(position)
 			this.all_player_bullets, 
 			instability, 
 			1, 
-			base_gravity)	
+			vec2(0, 0))	
 	end
 	
 	return new_group

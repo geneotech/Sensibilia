@@ -363,10 +363,10 @@ function player_class:loop()
 		local player_body = self.parent_group.body:get()
 		local crosshair = self.parent_group.crosshair:get()
 		
-		gun_info.spread_degrees = 5 + 30 * instability
+		gun_info.spread_degrees = 80 * instability* instability
 		gun_info.shake_radius = 5+20*instability
 			
-		loop_instability_gun_bullets(rgba(0, 255, 0, 255), self.all_player_bullets, instability, physics_system.timestep_multiplier, base_gravity)
+		loop_instability_gun_bullets(rgba(0, 255, 0, 255), self.all_player_bullets, instability, physics_system.timestep_multiplier, vec2(0, 0))
 		
 		
 		-- handle variable gravity

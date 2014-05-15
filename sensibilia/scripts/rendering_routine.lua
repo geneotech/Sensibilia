@@ -257,10 +257,10 @@ function rendering_routine(subject,
 			-- postprocessing
 			
 			hblur_program:use()
-			GL.glUniform1f(h_offset_multiplier, instability*instability*instability*instability*instability*instability*instability*instability*1.8)
+			GL.glUniform1f(h_offset_multiplier, 0*instability*1.8 + 0.5 )
 			fullscreen_pass(false, nil, intensity_fbo)
 			vblur_program:use()
-			GL.glUniform1f(v_offset_multiplier, instability*instability*instability*instability*instability*instability*instability*instability*1.8)
+			GL.glUniform1f(v_offset_multiplier, 0*instability*1.8 + 0.5 )
 			fullscreen_pass(true, intensity_fbo)
 			
 			current_postprocessing_fbo = 0

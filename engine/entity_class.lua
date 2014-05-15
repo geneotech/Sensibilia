@@ -77,6 +77,7 @@ entity_basic_scriptable_info = create_scriptable_info {
 	}
 }
 
+-- merely generates an entity object inside scriptable
 function generate_entity_object(what_entity, what_class, ...)
 	if what_class == nil then what_class = entity_class end
 	

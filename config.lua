@@ -2,7 +2,7 @@ config_table = {
 	godmode = 0,
 	
 	window_name = "example",
-	fullscreen = 0,
+	fullscreen = 1,
 	window_border = 0,
 	window_x = 0,
 	window_y = 0,

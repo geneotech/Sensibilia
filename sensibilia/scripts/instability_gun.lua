@@ -3,7 +3,7 @@ function random_polygon(color, scalar)
 	local vertices = {}
 	
 	local vertex_amnt = randval_i(5, 13)
-	local scale = randval(0.01, 1) * scalar
+	local scale = randval(0.5, 0.6) * scalar
 	
 	for i = 1, vertex_amnt do
 		current_angle = current_angle + randval(10, 40)
@@ -45,18 +45,18 @@ function instability_gun_bullet_callback(subject, new_bullet, bullet_models, wal
 	get_self(get_group_by_entity(subject).body:get()).all_player_bullets:add(new_entity_ptr)
 	
 	--SetDensity(new_bullet.physics.body, 0.01)
-	if randval(0, 1) > 0.5 then
-		SetFilter(new_bullet.physics.body, create(b2Filter, wall_passed_filter))
-	end
+	--if randval(0, 1) > 0.5 then
+	--	SetFilter(new_bullet.physics.body, create(b2Filter, wall_passed_filter))
+	--end
 	
 	new_bullet.physics.body:SetBullet(false)
 	
-	if randval(0, 1) > 0.95 then
-		local body = new_bullet.physics.body
-		local rand_vec = (vec2.from_degrees(new_bullet.transform.current.rotation + randval(-15, 15)) * randval(50, 10000))*2/50
-		
-		body:ApplyLinearImpulse(b2Vec2(rand_vec.x, rand_vec.y), body:GetWorldCenter(), true)
-	end
+	--if randval(0, 1) > 0.95 then
+	--	local body = new_bullet.physics.body
+	--	local rand_vec = (vec2.from_degrees(new_bullet.transform.current.rotation + randval(-15, 15)) * randval(50, 10000))*2/50
+	--	
+	--	body:ApplyLinearImpulse(b2Vec2(rand_vec.x, rand_vec.y), body:GetWorldCenter(), true)
+	--end
 end
 
 function get_instability_gun()
@@ -65,15 +65,15 @@ function get_instability_gun()
 			--instability_gun_bullet_callback(subject, new_bullet, your_table)
 		end,
 		
-		bullets_once = 20,
-		bullet_distance_offset = vec2(130, 0),
+		bullets_once = 10,
+		bullet_distance_offset = vec2(50, 0),
 		bullet_damage = minmax(0.1, 1),
-		bullet_speed = minmax(100, 6000),
+		bullet_speed = minmax(6000, 7000),
 		bullet_render = { model = nil, mask = render_masks.EFFECTS },
 		is_automatic = true,
 		max_rounds = 3000,
-		shooting_interval_ms = 50,
-		spread_degrees = 5.5,
+		shooting_interval_ms = 1,
+		spread_degrees = 0,
 		shake_radius = 39.5,
 		shake_spread_degrees = 45,
 		

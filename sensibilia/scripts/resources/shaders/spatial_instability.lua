@@ -16,40 +16,31 @@ uniform vec2 crosshair_pos;
 
 uniform vec3 light_attenuation;
 
-
 vec4 desaturated(vec4 input_v) {
-	float avg_pixel = (input_v.r + input_v.g + input_v.b) / 3;
-	return vec4(avg_pixel, avg_pixel, avg_pixel, 1.0);
+float avg_pixel = (input_v.r + input_v.g + input_v.b) / 3;
+return vec4(avg_pixel, avg_pixel, avg_pixel, 1.0);
 }
-	
 
 float radtodeg(float f) {
-	return f / 0.01745329251994329576923690768489; 
+return f / 0.01745329251994329576923690768489;
 }
 
 vec2 rotate(vec2 v, vec2 origin, float angle) {
-	angle *= 0.01745329251994329576923690768489;
-	float s = sin(angle);
-	float c = cos(angle);
-	vec2 rotated;
+angle *= 0.01745329251994329576923690768489;
+float s = sin(angle);
+float c = cos(angle);
+vec2 rotated;
 
-	v -= origin;
+v -= origin;
 
-	rotated.x = v.x * c - v.y * s;
-	rotated.y = v.x * s + v.y * c;
+rotated.x = v.x * c - v.y * s;
+rotated.y = v.x * s + v.y * c;
 
-	return v = (rotated + origin);
+return v = (rotated + origin);
 }
-	
 
 void main() 
 {	
-
-	// get temporal input and convert it to float, slow down it a little
-	float used_time = time;
-	used_time = used_time / 520 ;
-	
-	
 	// get the pixel from scene
 	vec4 pixel = texture(basic_texture, theTexcoord);
 	
@@ -58,8 +49,18 @@ void main()
 	
 	float enemy_intensity = intensity_pixel.r;
 	float player_intensity = intensity_pixel.g;
+	float light_intensity = intensity_pixel.b;
 	
-	float[3] intensities;
+	light_intensity = min(1-enemy_intensity, light_intensity);
+	light_intensity = min(1-player_intensity, light_intensity);
+	float basic_intensity = max(enemy_intensity, player_intensity);
+	
+	// get temporal input and convert it to float, slow down it a little
+	float used_time = time;
+	used_time = used_time /( 520*5) ;
+	
+	// take one more pixel from a coordinate randomly shifted in time
+			float[3] intensities;
 	{
 		vec2 res = vec2(1920, 1080);
 		
@@ -91,19 +92,48 @@ void main()
 		
 		) - uv.y) < 0.0006*multiplier+ 0.010*(sin(used_time/50)+1.01));	
 	}
-		
-	float earlier = player_intensity;
-	player_intensity *= (intensities[0] + intensities[1] + intensities[2]);
-	player_intensity += earlier;
 	
-	float light_intensity = intensity_pixel.b + player_intensity;
+	float intensity_sum = intensities[0] + intensities[1] + intensities[2];
+
+	vec4 effect_pixel = texture(basic_texture, theTexcoord + vec2(sin(used_time/10+rotation)*0.01, tan(used_time/10+rotation)*0.007));
+	float effect_amount = 10;
 	
-	// take one more pixel from a coordinate randomly shifted in time
-	vec4 effect_pixel = texture(basic_texture, theTexcoord + vec2(0.02, -0.02) //+sin(used_time/100)//+ vec2(0.04, 0.04)*multiplier
-	//(player_intensity + enemy_intensity*10)*
-	//vec2(player_intensity*0.09+sin(used_time/10+rotation)*0.017+0.09-multiplier, player_intensity*0.09+sin(used_time/10+rotation)*0.017-0.09*multiplier)
+	float used_multiplier = multiplier;
+	// shortcuts to simplify notation
+	float X = 50*(1-multiplier) - 10*basic_intensity - 5*enemy_intensity;
+	float Y = 50*(1-multiplier) - 10*basic_intensity - 5*enemy_intensity;
 	
+	float ac = cos(rotation);
+	float as = sin(rotation);
+	
+	// rotate the texture coordinate
+	vec2 rotated_texcoord = theTexcoord;//vec2(theTexcoord.x * ac - theTexcoord.y * as, theTexcoord.x * as + theTexcoord.y * ac);
+	
+	vec2 rt = rotated_texcoord;
+
+	int iterations = 0;
+	
+
+	float fractal_amnt = 0.0;
+	
+	effect_amount = 15 + (enemy_intensity)*2;
+	
+	float other_mult = enemy_intensity > 0 ? 0 : 1;
+	// totally random calculations that produce interesting color effect
+	vec4 my_colors = 
+	
+	vec4(
+		cos(fractal_amnt*10+rt.x*X+used_time+effect_pixel.r*effect_amount+(enemy_intensity))+sin(fractal_amnt*10+rt.y*Y+used_time*2.0+effect_pixel.r*effect_amount),	
+		other_mult*(sin(fractal_amnt*10+rt.x*Y+effect_pixel.g*effect_amount)+cos(fractal_amnt*10+rt.y*X+used_time+effect_pixel.g*effect_amount)),
+		other_mult*(sin(fractal_amnt*10+rt.x*rt.y+used_time+effect_pixel.b*effect_amount)+cos(fractal_amnt*10+rt.y*X+used_time+effect_pixel.b*effect_amount+(enemy_intensity))), 
+		1.0
 	);
+	
+	// clamp it
+	my_colors = clamp(my_colors, vec4(0.0), vec4(1.0));
+
+	float avg = (my_colors.r + my_colors.g + my_colors.b) / 3;
+	//my_colors = mix(my_colors, vec4(avg, avg, avg, my_colors.a), enemy_intensity);
 	
 	float light_distance = length(gl_FragCoord.xy - player_pos) * zoom;
 	float crosshair_light_distance = length(gl_FragCoord.xy - crosshair_pos) * zoom;
@@ -111,60 +141,36 @@ void main()
 	float aux = (crosshair_light_distance/352 + 0.01);
 	float crosshair_light_factor = 1.0/(0.00001+0.0001*crosshair_light_distance+0.01*crosshair_light_distance*crosshair_light_distance);
 	vec3 used_attenuation = light_attenuation; //* (1-multiplier);
+	//used_attenuation.x += 0.1;
 	
 	
-	float light_factor = //(light_intensity*light_intensity) 
-	((light_intensity*((1-enemy_intensity)+0.01))* (
+	pixel = mix(vec4(0.7) * (vec4(-0.2) + pixel), vec4(2.5) * (vec4(0.1) + pixel), //(light_intensity*light_intensity) 
+	(light_intensity)* (
 	//1.0/((light_distance/1500 + 1.0)*(light_distance/1500 + 1.0))
 	1.0/(used_attenuation.x+used_attenuation.y*light_distance+used_attenuation.z*light_distance*light_distance)
 	
 	+ 
 	crosshair_light_factor)
 	
-	* (1+(tan(used_time/5000000*(1-multiplier))*0.07*multiplier)));
-	
-
+	* (1+(tan(used_time/50000*(1-multiplier))*0.07*multiplier))); 
 	
 	
-	//float avg_pixel = (pixel.r + pixel.g + pixel.b) / 3;
+	float avg_pixel = (pixel.r + pixel.g + pixel.b) / 3;
 	
-	vec4 desat = desaturated(pixel);
-	vec4 final_pixel = mix(pixel, desat, 0.7+sin(used_time/280)*0.3);
-		
+	// interpolate between the actual pixel on scene and the calculated pixel
+	outputColor = mix(mix(pixel, vec4(avg_pixel, avg_pixel, avg_pixel, 1.0), 0.8), my_colors, basic_intensity //* ((my_colors.r +my_colors.g +my_colors.b)/3)
+	);
 	
+	if (player_intensity > 0) {
+		outputColor = mix(outputColor, vec4(vec3(153*sin(used_time), 85*cos(used_time), 187*tan(used_time))/255.0, 1.0), intensity_sum);
+	}
 	
-	final_pixel = mix(final_pixel, vec4(vec3(153*sin(used_time), 85*cos(used_time), 187*tan(used_time))/255.0, 1.0), (enemy_intensity + player_intensity)*(intensities[0] + intensities[1] + intensities[2]));
-	final_pixel = mix(vec4(0.7) * (vec4(-0.2) + final_pixel), vec4(2.5) * (vec4(0.1) + final_pixel), 
-	light_factor
+	if (enemy_intensity > 0)  {
+	vec4 outcol = desaturated(outputColor);
+	outcol.a = 1;
+		outputColor = mix(outputColor, vec4(0, 0, 0, 1), intensity_sum);
+	}
 	
-	); 
-	
-	outputColor = final_pixel;
-	//outputColor = pixel;
-	outputColor.a = 1 - player_intensity * enemy_intensity;
-	
-	//{
-	//	vec2 res = vec2(]] .. config_table.resolution_w .. [[,]] .. config_table.resolution_h .. [[);
-	//	
-	//	vec2 r_fcoord = rotate(gl_FragCoord.xy, player_pos, radtodeg(rotation) + 90.0);
-	//	vec2 ppos = player_pos/res;
-	//	
-	//	vec2 uv = r_fcoord.xy/res;
-    //
-	//	
-	//	
-	//	outputColor += vec4(0, 0, abs(
-	//	
-	//	(1+sin(uv.x*20+used_time)*cos(uv.x+used_time/20)/16-(1-ppos.y)
-	//	
-	//	) - uv.y) < 0.01, 0);
-	//	
-	//	outputColor += vec4(abs((1+cos(uv.x*20+used_time)*cos(uv.x+used_time/20)/16-(1-ppos.y)) - uv.y) < 0.001, 0, 0, 0);
-	//}
-
-
-
-	//* ((my_colors.r +my_colors.g +my_colors.b)/3);
 //outputColor = vec4(vec3(light_intensity), 1.0);	
 }
 
