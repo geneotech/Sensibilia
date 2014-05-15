@@ -115,7 +115,7 @@ function load_level (filename, skip_intro)
 				level_resources.draw_geometry = false
 				level_world.is_paused = true
 				
-				coroutine.wait(60, nil, true)
+				coroutine.wait(6000, nil, true)
 				
 				level_resources.basic_geometry_callback = nil
 				level_resources.draw_geometry = true
