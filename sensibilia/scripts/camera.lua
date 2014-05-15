@@ -21,30 +21,24 @@ function camera_class:set_zoom_level(new_zoom_level)
 	--target_entity.crosshair.size_multiplier = vec2(mult, mult)
 end
 
+function camera_class:intent_message(message)
+	if message.intent == custom_intents.SPEED_CHANGE and input_system:is_down(keys.LCTRL) then
+		local zoom_level = self:get_zoom_level()
+		
+		zoom_level = zoom_level-message.wheel_amount
+		if zoom_level < 0 then zoom_level = 0 end
+		if zoom_level > 1000 then zoom_level = 1000 end
+		self:set_zoom_level(zoom_level)
+	end
+	--elseif message.intent == custom_intents.ZOOM_OUT then
+	--	current_zoom_level = current_zoom_level+120
+	--	set_zoom_level(message.subject)
+	--end
+end
+
 function camera_class:get_zoom_level()
 	return self.current_zoom_level
 end
-
-scriptable_zoom = create_scriptable_info {
-	scripted_events = {
-		[scriptable_component.INTENT_MESSAGE] = function(message)
-				if message.intent == custom_intents.SPEED_CHANGE and input_system:is_down(keys.LCTRL) then
-					local camera_self = get_self(message.subject)
-					local zoom_level = camera_self:get_zoom_level()
-					
-					zoom_level = zoom_level-message.wheel_amount
-					if zoom_level < 0 then zoom_level = 0 end
-					if zoom_level > 1000 then zoom_level = 1000 end
-					camera_self:set_zoom_level(zoom_level)
-				end
-				--elseif message.intent == custom_intents.ZOOM_OUT then
-				--	current_zoom_level = current_zoom_level+120
-				--	set_zoom_level(message.subject)
-				--end
-			return false
-		end
-	}
-}
 
 dofile "sensibilia\\scripts\\rendering_routine.lua"
 
