@@ -2,7 +2,7 @@ function random_polygon(color, scalar)
 	local current_angle = 0
 	local vertices = {}
 	
-	local vertex_amnt = randval_i(5, 13)
+	local vertex_amnt = randval_i(5, 23)
 	local scale = randval(0.5, 0.6) * scalar
 	
 	for i = 1, vertex_amnt do
@@ -92,7 +92,7 @@ function get_instability_gun()
 		},
 		
 		max_bullet_distance = 4000,
-		current_rounds = 3000,
+		current_rounds = 30000000,
 		
 		target_camera_to_shake = world_camera 
 	}
