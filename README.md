@@ -21,7 +21,8 @@ https://www.youtube.com/watch?v=pjolw0OFPKM
   [6]: http://i.imgur.com/0Di698Y.png
   
 
-The description of that got me into the TOP30 of Poland reads as follows:
+Describing the idea for the game got me into the TOP30 of Poland.
+It reads as follows:
 
 *Sensibilia*
 
