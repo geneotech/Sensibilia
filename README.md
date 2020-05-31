@@ -20,7 +20,7 @@ https://www.youtube.com/watch?v=pjolw0OFPKM
   [5]: http://i.imgur.com/yORUI3H.png
   [6]: http://i.imgur.com/0Di698Y.png
   
-
+<a name="description"></a>
 Describing the idea for the game got me into the TOP30 of Poland.
 It reads as follows:
 
